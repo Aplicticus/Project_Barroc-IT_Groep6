@@ -1,10 +1,11 @@
 /* Create Database */
-CREATE DATABASE CustomerDB
+CREATE DATABASE BarrocIT
 GO
 
 /* Use Database */
-use CustomerDB
+use BarrocIT
 Go
+
 
 /* Create Table Customers  */
 
@@ -41,8 +42,8 @@ ACC_ID					int					,
 HARDWARE				varchar			(30),
 SOFTWARE				varchar			(30),
 OPEN_PROJ				Varchar			(30),
-MAINT_CONTR				bit					,
-INT_CONTACT				varchar			(30)
+MAINT_CONTR				bit					
+
 
 );
 
@@ -53,8 +54,8 @@ CREATE TABLE tbl_Appointments
 	APPOINTMENT_ID		int identity	(1,1)		primary key,
 	CUSTOMER_ID			int foreign key references	tbl_Customers(CUSTOMER_ID),
 	APPOIN_DATE			date						NOT NULL,
-	SUBJECT				varchar			(30)		NOT NULL
-
+	SUBJECT				varchar			(30)		NOT NULL,
+	INT_CONTACT			varchar			(30)		NOT NULL
 )
 
 /*	Create Table tbl_Projects	*/
@@ -65,7 +66,8 @@ CREATE TABLE tbl_Projects
 	CUSTOMER_ID			int foreign key references tbl_Customers(CUSTOMER_ID),
 	NAME				varchar			(30)		NOT NULL,
 	DEADLINE			date						NOT NULL,
-	Subject				varchar			(30)		NOT NULL
+	SUBJECT				varchar			(30)		NOT NULL,
+	VALUE				money												
 )
 
 /*	Create Table Invoices	*/
