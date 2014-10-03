@@ -11,7 +11,7 @@ namespace Barroc_IT
 {
     class DatabaseHandler
     {
-        private static SqlConnection conn;
+        private SqlConnection conn;
 
         public DatabaseHandler()
         {
@@ -25,16 +25,46 @@ namespace Barroc_IT
         }
         public void TestConnection()
         {
+            bool connOpen = false;
+
             try
             {
-                conn.Open();
-                MessageBox.Show("conn opE1!");
-                conn.Close();
+                OpenConnection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    connOpen = true;
+                }
+                CloseConnection();
+            }
+
+            if (!connOpen)
+            {
+                Application.Exit();
+            }
+            OpenConnection();
+            CloseConnection();
+        }
+
+        public void OpenConnection()
+        {
+            conn.Open();
+        }
+
+        public void CloseConnection()
+        {
+            conn.Close();
+        }
+
+        public SqlConnection GetConnection()
+        {
+            return this.conn;
         }
     }
 }
