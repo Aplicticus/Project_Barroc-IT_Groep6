@@ -48,8 +48,6 @@ namespace Barroc_IT
             {
                 Application.Exit();
             }
-            OpenConnection();
-            CloseConnection();
         }
 
         public void OpenConnection()
