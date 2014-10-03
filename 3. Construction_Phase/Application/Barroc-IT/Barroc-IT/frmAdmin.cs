@@ -49,9 +49,9 @@ namespace Barroc_IT
 
         }
 
-      
-
-        
-        
+        private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }        
     }
 }
