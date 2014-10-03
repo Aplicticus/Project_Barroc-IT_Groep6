@@ -8,21 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Barroc_IT.Admin_Panel
+namespace Barroc_IT
 {
-    public partial class Admin_Panel : Form
+    public partial class frmLogin : Form
     {
-        public Admin_Panel()
+        public frmLogin()
         {
             InitializeComponent();
         }
 
-        private void lblAdminPanel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Admin_Panel_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

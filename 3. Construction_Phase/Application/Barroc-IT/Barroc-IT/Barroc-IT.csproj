@@ -59,34 +59,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin_Panel\Admin_Panel_Register.cs">
+    <Compile Include="frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin_Panel\Admin_Panel_Register.Designer.cs">
-      <DependentUpon>Admin_Panel_Register.cs</DependentUpon>
+    <Compile Include="frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Panel\Admin_Panel.cs">
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin_Panel\Admin_Panel.Designer.cs">
-      <DependentUpon>Admin_Panel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomeScreen\WelcomeScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WelcomeScreen\WelcomeScreen.Designer.cs">
-      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Admin_Panel\Admin_Panel_Register.resx">
-      <DependentUpon>Admin_Panel_Register.cs</DependentUpon>
+    <EmbeddedResource Include="frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin_Panel\Admin_Panel.resx">
-      <DependentUpon>Admin_Panel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WelcomeScreen\WelcomeScreen.resx">
-      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -31,12 +31,12 @@
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblAdminPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
-            this.pContent = new System.Windows.Forms.Panel();
-            this.btnHome = new System.Windows.Forms.Button();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.btnUserInfo = new System.Windows.Forms.Button();
-            this.btnDeactivatedUsers = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnDeactivatedUsers = new System.Windows.Forms.Button();
+            this.btnUserInfo = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.pContent = new System.Windows.Forms.Panel();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
@@ -45,7 +45,7 @@
             // 
             // pWelcome
             // 
-            this.pWelcome.BackColor = System.Drawing.SystemColors.Desktop;
+            this.pWelcome.BackColor = System.Drawing.SystemColors.Control;
             this.pWelcome.Controls.Add(this.lblAdminPanel);
             this.pWelcome.Location = new System.Drawing.Point(12, 12);
             this.pWelcome.Name = "pWelcome";
@@ -66,7 +66,7 @@
             // 
             // pButtons
             // 
-            this.pButtons.BackColor = System.Drawing.SystemColors.Desktop;
+            this.pButtons.BackColor = System.Drawing.SystemColors.Control;
             this.pButtons.Controls.Add(this.btnLogout);
             this.pButtons.Controls.Add(this.btnDeactivatedUsers);
             this.pButtons.Controls.Add(this.btnUserInfo);
@@ -77,44 +77,15 @@
             this.pButtons.Size = new System.Drawing.Size(211, 600);
             this.pButtons.TabIndex = 1;
             // 
-            // pContent
+            // btnLogout
             // 
-            this.pContent.BackColor = System.Drawing.SystemColors.Desktop;
-            this.pContent.Controls.Add(this.lblWelcome);
-            this.pContent.Location = new System.Drawing.Point(229, 118);
-            this.pContent.Name = "pContent";
-            this.pContent.Size = new System.Drawing.Size(767, 600);
-            this.pContent.TabIndex = 2;
-            // 
-            // btnHome
-            // 
-            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.Location = new System.Drawing.Point(24, 33);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(165, 43);
-            this.btnHome.TabIndex = 0;
-            this.btnHome.Text = "Home";
-            this.btnHome.UseVisualStyleBackColor = true;
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.Location = new System.Drawing.Point(24, 104);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(165, 43);
-            this.btnRegister.TabIndex = 1;
-            this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            // 
-            // btnUserInfo
-            // 
-            this.btnUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserInfo.Location = new System.Drawing.Point(24, 172);
-            this.btnUserInfo.Name = "btnUserInfo";
-            this.btnUserInfo.Size = new System.Drawing.Size(165, 43);
-            this.btnUserInfo.TabIndex = 2;
-            this.btnUserInfo.Text = "User Information";
-            this.btnUserInfo.UseVisualStyleBackColor = true;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(24, 533);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(165, 43);
+            this.btnLogout.TabIndex = 4;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
             // 
             // btnDeactivatedUsers
             // 
@@ -126,15 +97,45 @@
             this.btnDeactivatedUsers.Text = "Deactived Users";
             this.btnDeactivatedUsers.UseVisualStyleBackColor = true;
             // 
-            // btnLogout
+            // btnUserInfo
             // 
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(24, 533);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(165, 43);
-            this.btnLogout.TabIndex = 4;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserInfo.Location = new System.Drawing.Point(24, 172);
+            this.btnUserInfo.Name = "btnUserInfo";
+            this.btnUserInfo.Size = new System.Drawing.Size(165, 43);
+            this.btnUserInfo.TabIndex = 2;
+            this.btnUserInfo.Text = "User Information";
+            this.btnUserInfo.UseVisualStyleBackColor = true;
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Location = new System.Drawing.Point(24, 104);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(165, 43);
+            this.btnRegister.TabIndex = 1;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.Location = new System.Drawing.Point(24, 33);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(165, 43);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            // 
+            // pContent
+            // 
+            this.pContent.BackColor = System.Drawing.SystemColors.Control;
+            this.pContent.Controls.Add(this.lblWelcome);
+            this.pContent.Location = new System.Drawing.Point(229, 118);
+            this.pContent.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.pContent.Name = "pContent";
+            this.pContent.Size = new System.Drawing.Size(767, 600);
+            this.pContent.TabIndex = 2;
             // 
             // lblWelcome
             // 

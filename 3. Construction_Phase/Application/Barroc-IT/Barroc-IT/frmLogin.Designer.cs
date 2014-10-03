@@ -1,6 +1,6 @@
 ﻿namespace Barroc_IT
 {
-    partial class WelcomeScreen
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.

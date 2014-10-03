@@ -16,7 +16,7 @@ namespace Barroc_IT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WelcomeScreen());
+            Application.Run(new frmLogin());
         }
     }
 }
