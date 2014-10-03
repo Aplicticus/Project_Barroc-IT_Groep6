@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Barroc_IT
 {
-    public partial class frmAdmin : Form
+    public partial class frmSales : Form
     {
        
-        public frmAdmin()
+        public frmSales()
         {
             InitializeComponent();
         }

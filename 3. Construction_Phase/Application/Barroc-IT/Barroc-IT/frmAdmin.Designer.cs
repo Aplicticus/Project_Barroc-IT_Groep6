@@ -32,33 +32,32 @@
             this.lblAdminPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.btnDeactivatedUsers = new System.Windows.Forms.Button();
-            this.btnUserInfo = new System.Windows.Forms.Button();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
+            this.btnAdminDeactivatedUsers = new System.Windows.Forms.Button();
+            this.btnAdminUserInfo = new System.Windows.Forms.Button();
+            this.btnAdminRegister = new System.Windows.Forms.Button();
+            this.btnAdminHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.tablessControl1 = new TablessControl();
+            this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lblHome = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblAdminHome = new System.Windows.Forms.Label();
+            this.lblAdminWelcome = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.dDownDepartment = new System.Windows.Forms.DomainUpDown();
-            this.lblDepartment = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.lblInsertion = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblSurname = new System.Windows.Forms.Label();
-            this.lblRegister = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnConfirmRegister = new System.Windows.Forms.Button();
+            this.txtAdminRepeatPassword = new System.Windows.Forms.TextBox();
+            this.lblAdminRepeatPassword = new System.Windows.Forms.Label();
+            this.txtAdminPassword = new System.Windows.Forms.TextBox();
+            this.lblAdminPassword = new System.Windows.Forms.Label();
+            this.txtAdminUsername = new System.Windows.Forms.TextBox();
+            this.lblAdminUsername = new System.Windows.Forms.Label();
+            this.dAdminDownDepartment = new System.Windows.Forms.DomainUpDown();
+            this.lblAdminDepartment = new System.Windows.Forms.Label();
+            this.txtAdminInsertion = new System.Windows.Forms.TextBox();
+            this.lblAdminInsertion = new System.Windows.Forms.Label();
+            this.txtAdminSurname = new System.Windows.Forms.TextBox();
+            this.lblAdminSurname = new System.Windows.Forms.Label();
+            this.lblAdminRegister = new System.Windows.Forms.Label();
+            this.lblAdminName = new System.Windows.Forms.Label();
+            this.txtAdminName = new System.Windows.Forms.TextBox();
+            this.btnAdminConfirmRegister = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.DGVUserInfo = new System.Windows.Forms.DataGridView();
             this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,10 +78,11 @@
             this.dEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dActivate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tablessControl1.SuspendLayout();
+            this.tbContr.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -115,10 +115,10 @@
             // 
             this.pButtons.BackColor = System.Drawing.SystemColors.Control;
             this.pButtons.Controls.Add(this.btnLogout);
-            this.pButtons.Controls.Add(this.btnDeactivatedUsers);
-            this.pButtons.Controls.Add(this.btnUserInfo);
-            this.pButtons.Controls.Add(this.btnRegister);
-            this.pButtons.Controls.Add(this.btnHome);
+            this.pButtons.Controls.Add(this.btnAdminDeactivatedUsers);
+            this.pButtons.Controls.Add(this.btnAdminUserInfo);
+            this.pButtons.Controls.Add(this.btnAdminRegister);
+            this.pButtons.Controls.Add(this.btnAdminHome);
             this.pButtons.Location = new System.Drawing.Point(12, 118);
             this.pButtons.Name = "pButtons";
             this.pButtons.Size = new System.Drawing.Size(211, 600);
@@ -135,75 +135,75 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // btnDeactivatedUsers
+            // btnAdminDeactivatedUsers
             // 
-            this.btnDeactivatedUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeactivatedUsers.Location = new System.Drawing.Point(24, 240);
-            this.btnDeactivatedUsers.Name = "btnDeactivatedUsers";
-            this.btnDeactivatedUsers.Size = new System.Drawing.Size(165, 43);
-            this.btnDeactivatedUsers.TabIndex = 3;
-            this.btnDeactivatedUsers.Text = "Deactived Users";
-            this.btnDeactivatedUsers.UseVisualStyleBackColor = true;
-            this.btnDeactivatedUsers.Click += new System.EventHandler(this.btnDeactivatedUsers_Click);
+            this.btnAdminDeactivatedUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminDeactivatedUsers.Location = new System.Drawing.Point(24, 240);
+            this.btnAdminDeactivatedUsers.Name = "btnAdminDeactivatedUsers";
+            this.btnAdminDeactivatedUsers.Size = new System.Drawing.Size(165, 43);
+            this.btnAdminDeactivatedUsers.TabIndex = 3;
+            this.btnAdminDeactivatedUsers.Text = "Deactived Users";
+            this.btnAdminDeactivatedUsers.UseVisualStyleBackColor = true;
+            this.btnAdminDeactivatedUsers.Click += new System.EventHandler(this.btnDeactivatedUsers_Click);
             // 
-            // btnUserInfo
+            // btnAdminUserInfo
             // 
-            this.btnUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserInfo.Location = new System.Drawing.Point(24, 172);
-            this.btnUserInfo.Name = "btnUserInfo";
-            this.btnUserInfo.Size = new System.Drawing.Size(165, 43);
-            this.btnUserInfo.TabIndex = 2;
-            this.btnUserInfo.Text = "User Information";
-            this.btnUserInfo.UseVisualStyleBackColor = true;
-            this.btnUserInfo.Click += new System.EventHandler(this.btnUserInfo_Click);
+            this.btnAdminUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminUserInfo.Location = new System.Drawing.Point(24, 172);
+            this.btnAdminUserInfo.Name = "btnAdminUserInfo";
+            this.btnAdminUserInfo.Size = new System.Drawing.Size(165, 43);
+            this.btnAdminUserInfo.TabIndex = 2;
+            this.btnAdminUserInfo.Text = "User Information";
+            this.btnAdminUserInfo.UseVisualStyleBackColor = true;
+            this.btnAdminUserInfo.Click += new System.EventHandler(this.btnUserInfo_Click);
             // 
-            // btnRegister
+            // btnAdminRegister
             // 
-            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.Location = new System.Drawing.Point(24, 104);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(165, 43);
-            this.btnRegister.TabIndex = 1;
-            this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            this.btnAdminRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminRegister.Location = new System.Drawing.Point(24, 104);
+            this.btnAdminRegister.Name = "btnAdminRegister";
+            this.btnAdminRegister.Size = new System.Drawing.Size(165, 43);
+            this.btnAdminRegister.TabIndex = 1;
+            this.btnAdminRegister.Text = "Register";
+            this.btnAdminRegister.UseVisualStyleBackColor = true;
+            this.btnAdminRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // btnHome
+            // btnAdminHome
             // 
-            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.Location = new System.Drawing.Point(24, 33);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(165, 43);
-            this.btnHome.TabIndex = 0;
-            this.btnHome.Text = "Home";
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            this.btnAdminHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminHome.Location = new System.Drawing.Point(24, 33);
+            this.btnAdminHome.Name = "btnAdminHome";
+            this.btnAdminHome.Size = new System.Drawing.Size(165, 43);
+            this.btnAdminHome.TabIndex = 0;
+            this.btnAdminHome.Text = "Home";
+            this.btnAdminHome.UseVisualStyleBackColor = true;
+            this.btnAdminHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tablessControl1);
+            this.panel1.Controls.Add(this.tbContr);
             this.panel1.Location = new System.Drawing.Point(229, 118);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(767, 600);
             this.panel1.TabIndex = 2;
             // 
-            // tablessControl1
+            // tbContr
             // 
-            this.tablessControl1.Controls.Add(this.tabPage1);
-            this.tablessControl1.Controls.Add(this.tabPage2);
-            this.tablessControl1.Controls.Add(this.tabPage3);
-            this.tablessControl1.Controls.Add(this.tabPage4);
-            this.tablessControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablessControl1.Location = new System.Drawing.Point(0, 0);
-            this.tablessControl1.Name = "tablessControl1";
-            this.tablessControl1.SelectedIndex = 0;
-            this.tablessControl1.Size = new System.Drawing.Size(767, 600);
-            this.tablessControl1.TabIndex = 0;
+            this.tbContr.Controls.Add(this.tabPage1);
+            this.tbContr.Controls.Add(this.tabPage2);
+            this.tbContr.Controls.Add(this.tabPage3);
+            this.tbContr.Controls.Add(this.tabPage4);
+            this.tbContr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbContr.Location = new System.Drawing.Point(0, 0);
+            this.tbContr.Name = "tbContr";
+            this.tbContr.SelectedIndex = 0;
+            this.tbContr.Size = new System.Drawing.Size(767, 600);
+            this.tbContr.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.lblHome);
-            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.lblAdminHome);
+            this.tabPage1.Controls.Add(this.lblAdminWelcome);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -212,44 +212,44 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // lblHome
+            // lblAdminHome
             // 
-            this.lblHome.AutoSize = true;
-            this.lblHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHome.Location = new System.Drawing.Point(326, 39);
-            this.lblHome.Name = "lblHome";
-            this.lblHome.Size = new System.Drawing.Size(90, 31);
-            this.lblHome.TabIndex = 32;
-            this.lblHome.Text = "Home";
+            this.lblAdminHome.AutoSize = true;
+            this.lblAdminHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminHome.Location = new System.Drawing.Point(326, 39);
+            this.lblAdminHome.Name = "lblAdminHome";
+            this.lblAdminHome.Size = new System.Drawing.Size(90, 31);
+            this.lblAdminHome.TabIndex = 32;
+            this.lblAdminHome.Text = "Home";
             // 
-            // label2
+            // lblAdminWelcome
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(104, 126);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 25);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Welcome, Administrator";
+            this.lblAdminWelcome.AutoSize = true;
+            this.lblAdminWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminWelcome.Location = new System.Drawing.Point(104, 126);
+            this.lblAdminWelcome.Name = "lblAdminWelcome";
+            this.lblAdminWelcome.Size = new System.Drawing.Size(219, 25);
+            this.lblAdminWelcome.TabIndex = 31;
+            this.lblAdminWelcome.Text = "Welcome, Administrator";
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox6);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.textBox5);
-            this.tabPage2.Controls.Add(this.lblPassword);
-            this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.lblUsername);
-            this.tabPage2.Controls.Add(this.dDownDepartment);
-            this.tabPage2.Controls.Add(this.lblDepartment);
-            this.tabPage2.Controls.Add(this.textBox3);
-            this.tabPage2.Controls.Add(this.lblInsertion);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.lblSurname);
-            this.tabPage2.Controls.Add(this.lblRegister);
-            this.tabPage2.Controls.Add(this.lblName);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.btnConfirmRegister);
+            this.tabPage2.Controls.Add(this.txtAdminRepeatPassword);
+            this.tabPage2.Controls.Add(this.lblAdminRepeatPassword);
+            this.tabPage2.Controls.Add(this.txtAdminPassword);
+            this.tabPage2.Controls.Add(this.lblAdminPassword);
+            this.tabPage2.Controls.Add(this.txtAdminUsername);
+            this.tabPage2.Controls.Add(this.lblAdminUsername);
+            this.tabPage2.Controls.Add(this.dAdminDownDepartment);
+            this.tabPage2.Controls.Add(this.lblAdminDepartment);
+            this.tabPage2.Controls.Add(this.txtAdminInsertion);
+            this.tabPage2.Controls.Add(this.lblAdminInsertion);
+            this.tabPage2.Controls.Add(this.txtAdminSurname);
+            this.tabPage2.Controls.Add(this.lblAdminSurname);
+            this.tabPage2.Controls.Add(this.lblAdminRegister);
+            this.tabPage2.Controls.Add(this.lblAdminName);
+            this.tabPage2.Controls.Add(this.txtAdminName);
+            this.tabPage2.Controls.Add(this.btnAdminConfirmRegister);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -258,144 +258,145 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // txtAdminRepeatPassword
             // 
-            this.textBox6.Location = new System.Drawing.Point(415, 371);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(137, 20);
-            this.textBox6.TabIndex = 31;
+            this.txtAdminRepeatPassword.Location = new System.Drawing.Point(415, 371);
+            this.txtAdminRepeatPassword.Name = "txtAdminRepeatPassword";
+            this.txtAdminRepeatPassword.Size = new System.Drawing.Size(137, 20);
+            this.txtAdminRepeatPassword.TabIndex = 31;
             // 
-            // label1
+            // lblAdminRepeatPassword
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(207, 365);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 25);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Repeat Password:";
+            this.lblAdminRepeatPassword.AutoSize = true;
+            this.lblAdminRepeatPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminRepeatPassword.Location = new System.Drawing.Point(207, 365);
+            this.lblAdminRepeatPassword.Name = "lblAdminRepeatPassword";
+            this.lblAdminRepeatPassword.Size = new System.Drawing.Size(171, 25);
+            this.lblAdminRepeatPassword.TabIndex = 30;
+            this.lblAdminRepeatPassword.Text = "Repeat Password:";
             // 
-            // textBox5
+            // txtAdminPassword
             // 
-            this.textBox5.Location = new System.Drawing.Point(415, 328);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(137, 20);
-            this.textBox5.TabIndex = 29;
+            this.txtAdminPassword.Location = new System.Drawing.Point(415, 328);
+            this.txtAdminPassword.Name = "txtAdminPassword";
+            this.txtAdminPassword.Size = new System.Drawing.Size(137, 20);
+            this.txtAdminPassword.TabIndex = 29;
             // 
-            // lblPassword
+            // lblAdminPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(207, 322);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(104, 25);
-            this.lblPassword.TabIndex = 28;
-            this.lblPassword.Text = "Password:";
+            this.lblAdminPassword.AutoSize = true;
+            this.lblAdminPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminPassword.Location = new System.Drawing.Point(207, 322);
+            this.lblAdminPassword.Name = "lblAdminPassword";
+            this.lblAdminPassword.Size = new System.Drawing.Size(104, 25);
+            this.lblAdminPassword.TabIndex = 28;
+            this.lblAdminPassword.Text = "Password:";
             // 
-            // textBox4
+            // txtAdminUsername
             // 
-            this.textBox4.Location = new System.Drawing.Point(415, 289);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(137, 20);
-            this.textBox4.TabIndex = 27;
+            this.txtAdminUsername.Location = new System.Drawing.Point(415, 289);
+            this.txtAdminUsername.Name = "txtAdminUsername";
+            this.txtAdminUsername.Size = new System.Drawing.Size(137, 20);
+            this.txtAdminUsername.TabIndex = 27;
             // 
-            // lblUsername
+            // lblAdminUsername
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(207, 283);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(108, 25);
-            this.lblUsername.TabIndex = 26;
-            this.lblUsername.Text = "Username:";
+            this.lblAdminUsername.AutoSize = true;
+            this.lblAdminUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminUsername.Location = new System.Drawing.Point(207, 283);
+            this.lblAdminUsername.Name = "lblAdminUsername";
+            this.lblAdminUsername.Size = new System.Drawing.Size(108, 25);
+            this.lblAdminUsername.TabIndex = 26;
+            this.lblAdminUsername.Text = "Username:";
             // 
-            // dDownDepartment
+            // dAdminDownDepartment
             // 
-            this.dDownDepartment.Location = new System.Drawing.Point(415, 246);
-            this.dDownDepartment.Name = "dDownDepartment";
-            this.dDownDepartment.Size = new System.Drawing.Size(137, 20);
-            this.dDownDepartment.TabIndex = 25;
+            this.dAdminDownDepartment.Location = new System.Drawing.Point(415, 246);
+            this.dAdminDownDepartment.Name = "dAdminDownDepartment";
+            this.dAdminDownDepartment.Size = new System.Drawing.Size(137, 20);
+            this.dAdminDownDepartment.TabIndex = 25;
             // 
-            // lblDepartment
+            // lblAdminDepartment
             // 
-            this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepartment.Location = new System.Drawing.Point(207, 242);
-            this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(119, 25);
-            this.lblDepartment.TabIndex = 24;
-            this.lblDepartment.Text = "Department:";
+            this.lblAdminDepartment.AutoSize = true;
+            this.lblAdminDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminDepartment.Location = new System.Drawing.Point(207, 242);
+            this.lblAdminDepartment.Name = "lblAdminDepartment";
+            this.lblAdminDepartment.Size = new System.Drawing.Size(119, 25);
+            this.lblAdminDepartment.TabIndex = 24;
+            this.lblAdminDepartment.Text = "Department:";
             // 
-            // textBox3
+            // txtAdminInsertion
             // 
-            this.textBox3.Location = new System.Drawing.Point(415, 207);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(137, 20);
-            this.textBox3.TabIndex = 23;
+            this.txtAdminInsertion.Location = new System.Drawing.Point(415, 207);
+            this.txtAdminInsertion.Name = "txtAdminInsertion";
+            this.txtAdminInsertion.Size = new System.Drawing.Size(137, 20);
+            this.txtAdminInsertion.TabIndex = 23;
             // 
-            // lblInsertion
+            // lblAdminInsertion
             // 
-            this.lblInsertion.AutoSize = true;
-            this.lblInsertion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInsertion.Location = new System.Drawing.Point(207, 201);
-            this.lblInsertion.Name = "lblInsertion";
-            this.lblInsertion.Size = new System.Drawing.Size(92, 25);
-            this.lblInsertion.TabIndex = 22;
-            this.lblInsertion.Text = "Insertion:";
+            this.lblAdminInsertion.AutoSize = true;
+            this.lblAdminInsertion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminInsertion.Location = new System.Drawing.Point(207, 201);
+            this.lblAdminInsertion.Name = "lblAdminInsertion";
+            this.lblAdminInsertion.Size = new System.Drawing.Size(92, 25);
+            this.lblAdminInsertion.TabIndex = 22;
+            this.lblAdminInsertion.Text = "Insertion:";
             // 
-            // textBox2
+            // txtAdminSurname
             // 
-            this.textBox2.Location = new System.Drawing.Point(415, 169);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(137, 20);
-            this.textBox2.TabIndex = 21;
+            this.txtAdminSurname.Location = new System.Drawing.Point(415, 169);
+            this.txtAdminSurname.Name = "txtAdminSurname";
+            this.txtAdminSurname.Size = new System.Drawing.Size(137, 20);
+            this.txtAdminSurname.TabIndex = 21;
             // 
-            // lblSurname
+            // lblAdminSurname
             // 
-            this.lblSurname.AutoSize = true;
-            this.lblSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSurname.Location = new System.Drawing.Point(207, 163);
-            this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(98, 25);
-            this.lblSurname.TabIndex = 20;
-            this.lblSurname.Text = "Surname:";
+            this.lblAdminSurname.AutoSize = true;
+            this.lblAdminSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminSurname.Location = new System.Drawing.Point(207, 163);
+            this.lblAdminSurname.Name = "lblAdminSurname";
+            this.lblAdminSurname.Size = new System.Drawing.Size(98, 25);
+            this.lblAdminSurname.TabIndex = 20;
+            this.lblAdminSurname.Text = "Surname:";
             // 
-            // lblRegister
+            // lblAdminRegister
             // 
-            this.lblRegister.AutoSize = true;
-            this.lblRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegister.Location = new System.Drawing.Point(297, 44);
-            this.lblRegister.Name = "lblRegister";
-            this.lblRegister.Size = new System.Drawing.Size(124, 31);
-            this.lblRegister.TabIndex = 19;
-            this.lblRegister.Text = "Register";
+            this.lblAdminRegister.AutoSize = true;
+            this.lblAdminRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminRegister.Location = new System.Drawing.Point(297, 44);
+            this.lblAdminRegister.Name = "lblAdminRegister";
+            this.lblAdminRegister.Size = new System.Drawing.Size(124, 31);
+            this.lblAdminRegister.TabIndex = 19;
+            this.lblAdminRegister.Text = "Register";
             // 
-            // lblName
+            // lblAdminName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(207, 125);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(70, 25);
-            this.lblName.TabIndex = 18;
-            this.lblName.Text = "Name:";
+            this.lblAdminName.AutoSize = true;
+            this.lblAdminName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminName.Location = new System.Drawing.Point(207, 125);
+            this.lblAdminName.Name = "lblAdminName";
+            this.lblAdminName.Size = new System.Drawing.Size(70, 25);
+            this.lblAdminName.TabIndex = 18;
+            this.lblAdminName.Text = "Name:";
             // 
-            // textBox1
+            // txtAdminName
             // 
-            this.textBox1.Location = new System.Drawing.Point(415, 131);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(137, 20);
-            this.textBox1.TabIndex = 17;
+            this.txtAdminName.Location = new System.Drawing.Point(415, 131);
+            this.txtAdminName.Name = "txtAdminName";
+            this.txtAdminName.Size = new System.Drawing.Size(137, 20);
+            this.txtAdminName.TabIndex = 17;
             // 
-            // btnConfirmRegister
+            // btnAdminConfirmRegister
             // 
-            this.btnConfirmRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmRegister.Location = new System.Drawing.Point(334, 479);
-            this.btnConfirmRegister.Name = "btnConfirmRegister";
-            this.btnConfirmRegister.Size = new System.Drawing.Size(110, 32);
-            this.btnConfirmRegister.TabIndex = 16;
-            this.btnConfirmRegister.Text = "Register";
-            this.btnConfirmRegister.UseVisualStyleBackColor = true;
+            this.btnAdminConfirmRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminConfirmRegister.Location = new System.Drawing.Point(334, 479);
+            this.btnAdminConfirmRegister.Name = "btnAdminConfirmRegister";
+            this.btnAdminConfirmRegister.Size = new System.Drawing.Size(110, 32);
+            this.btnAdminConfirmRegister.TabIndex = 16;
+            this.btnAdminConfirmRegister.Text = "Register";
+            this.btnAdminConfirmRegister.UseVisualStyleBackColor = true;
+            this.btnAdminConfirmRegister.Click += new System.EventHandler(this.btnAdminConfirmRegister_Click);
             // 
             // tabPage3
             // 
@@ -557,7 +558,7 @@
             this.pWelcome.PerformLayout();
             this.pButtons.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.tablessControl1.ResumeLayout(false);
+            this.tbContr.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -577,35 +578,35 @@
         private System.Windows.Forms.Panel pWelcome;
         private System.Windows.Forms.Label lblAdminPanel;
         private System.Windows.Forms.Panel pButtons;
-        private System.Windows.Forms.Button btnDeactivatedUsers;
-        private System.Windows.Forms.Button btnUserInfo;
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnAdminDeactivatedUsers;
+        private System.Windows.Forms.Button btnAdminUserInfo;
+        private System.Windows.Forms.Button btnAdminRegister;
+        private System.Windows.Forms.Button btnAdminHome;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel1;
-        private TablessControl tablessControl1;
+        private TablessControl tbContr;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.DomainUpDown dDownDepartment;
-        private System.Windows.Forms.Label lblDepartment;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label lblInsertion;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label lblSurname;
-        private System.Windows.Forms.Label lblRegister;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnConfirmRegister;
+        private System.Windows.Forms.Label lblAdminWelcome;
+        private System.Windows.Forms.TextBox txtAdminRepeatPassword;
+        private System.Windows.Forms.Label lblAdminRepeatPassword;
+        private System.Windows.Forms.TextBox txtAdminPassword;
+        private System.Windows.Forms.Label lblAdminPassword;
+        private System.Windows.Forms.TextBox txtAdminUsername;
+        private System.Windows.Forms.Label lblAdminUsername;
+        private System.Windows.Forms.DomainUpDown dAdminDownDepartment;
+        private System.Windows.Forms.Label lblAdminDepartment;
+        private System.Windows.Forms.TextBox txtAdminInsertion;
+        private System.Windows.Forms.Label lblAdminInsertion;
+        private System.Windows.Forms.TextBox txtAdminSurname;
+        private System.Windows.Forms.Label lblAdminSurname;
+        private System.Windows.Forms.Label lblAdminRegister;
+        private System.Windows.Forms.Label lblAdminName;
+        private System.Windows.Forms.TextBox txtAdminName;
+        private System.Windows.Forms.Button btnAdminConfirmRegister;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label lblHome;
+        private System.Windows.Forms.Label lblAdminHome;
         private System.Windows.Forms.Label lblUserInfo;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.DataGridView DGVUserInfo;
