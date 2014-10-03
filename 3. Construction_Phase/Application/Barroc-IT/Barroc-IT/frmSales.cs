@@ -31,7 +31,7 @@ namespace Barroc_IT
         private void btnUserInfo_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 2;
-            DGVUserInfo.ReadOnly = true;
+          //  DGVUserInfo.ReadOnly = true;
         }
         private void btnDeactivatedUsers_Click(object sender, EventArgs e)
         {

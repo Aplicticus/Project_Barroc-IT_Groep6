@@ -88,15 +88,6 @@
             this.txtSalesCompanyName = new System.Windows.Forms.TextBox();
             this.btnSalesAdd = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.DGVUserInfo = new System.Windows.Forms.DataGridView();
-            this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDeactivate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblUserInfo = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.lblDeactivatedUsers = new System.Windows.Forms.Label();
             this.DGVDeactivatedUsers = new System.Windows.Forms.DataGridView();
@@ -114,8 +105,6 @@
             this.tbContr.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVUserInfo)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDeactivatedUsers)).BeginInit();
             this.SuspendLayout();
@@ -706,8 +695,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.DGVUserInfo);
-            this.tabPage3.Controls.Add(this.lblUserInfo);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -715,67 +702,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // DGVUserInfo
-            // 
-            this.DGVUserInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVUserInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cUserID,
-            this.cName,
-            this.cUsername,
-            this.cDepartment,
-            this.cEmail,
-            this.cLastLogin,
-            this.cDeactivate});
-            this.DGVUserInfo.Location = new System.Drawing.Point(6, 94);
-            this.DGVUserInfo.Name = "DGVUserInfo";
-            this.DGVUserInfo.Size = new System.Drawing.Size(747, 477);
-            this.DGVUserInfo.TabIndex = 21;
-            // 
-            // cUserID
-            // 
-            this.cUserID.HeaderText = "UserID";
-            this.cUserID.Name = "cUserID";
-            // 
-            // cName
-            // 
-            this.cName.HeaderText = "Name";
-            this.cName.Name = "cName";
-            // 
-            // cUsername
-            // 
-            this.cUsername.HeaderText = "Username";
-            this.cUsername.Name = "cUsername";
-            // 
-            // cDepartment
-            // 
-            this.cDepartment.HeaderText = "Department";
-            this.cDepartment.Name = "cDepartment";
-            // 
-            // cEmail
-            // 
-            this.cEmail.HeaderText = "E-mail";
-            this.cEmail.Name = "cEmail";
-            // 
-            // cLastLogin
-            // 
-            this.cLastLogin.HeaderText = "Last Login";
-            this.cLastLogin.Name = "cLastLogin";
-            // 
-            // cDeactivate
-            // 
-            this.cDeactivate.HeaderText = "Deactivate";
-            this.cDeactivate.Name = "cDeactivate";
-            // 
-            // lblUserInfo
-            // 
-            this.lblUserInfo.AutoSize = true;
-            this.lblUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserInfo.Location = new System.Drawing.Point(130, 60);
-            this.lblUserInfo.Name = "lblUserInfo";
-            this.lblUserInfo.Size = new System.Drawing.Size(295, 31);
-            this.lblUserInfo.TabIndex = 20;
-            this.lblUserInfo.Text = "Customer Information";
             // 
             // tabPage4
             // 
@@ -869,9 +795,6 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVUserInfo)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDeactivatedUsers)).EndInit();
@@ -912,16 +835,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label lblSalesHome;
-        private System.Windows.Forms.Label lblUserInfo;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.DataGridView DGVUserInfo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cUserID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cUsername;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDepartment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cLastLogin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDeactivate;
         private System.Windows.Forms.DataGridView DGVDeactivatedUsers;
         private System.Windows.Forms.Label lblDeactivatedUsers;
         private System.Windows.Forms.DataGridViewTextBoxColumn dUserID;
