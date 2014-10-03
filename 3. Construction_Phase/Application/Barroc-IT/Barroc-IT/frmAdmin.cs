@@ -8,23 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Barroc_IT.Admin_Panel
+namespace Barroc_IT
 {
-    public partial class Admin_Panel : Form
+    public partial class frmAdmin : Form
     {
-        public Admin_Panel()
+        public frmAdmin()
         {
             InitializeComponent();
         }
 
-        private void lblAdminPanel_Click(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Admin_Panel_Load(object sender, EventArgs e)
-        {
-
+            tablessControl1.SelectedIndex = 1;
         }
     }
 }

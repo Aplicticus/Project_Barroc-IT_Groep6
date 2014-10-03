@@ -1,6 +1,6 @@
-﻿namespace Barroc_IT.Admin_Panel
+﻿namespace Barroc_IT
 {
-    partial class Admin_Panel
+    partial class frmAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -36,11 +36,18 @@
             this.btnUserInfo = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.pContent = new System.Windows.Forms.Panel();
-            this.lblWelcome = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tablessControl1 = new TablessControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
-            this.pContent.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tablessControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pWelcome
@@ -62,7 +69,6 @@
             this.lblAdminPanel.Size = new System.Drawing.Size(314, 39);
             this.lblAdminPanel.TabIndex = 0;
             this.lblAdminPanel.Text = "Administrator Panel";
-            this.lblAdminPanel.Click += new System.EventHandler(this.lblAdminPanel_Click);
             // 
             // pButtons
             // 
@@ -116,6 +122,7 @@
             this.btnRegister.TabIndex = 1;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnHome
             // 
@@ -127,43 +134,85 @@
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
             // 
-            // pContent
+            // panel1
             // 
-            this.pContent.BackColor = System.Drawing.SystemColors.Control;
-            this.pContent.Controls.Add(this.lblWelcome);
-            this.pContent.Location = new System.Drawing.Point(229, 118);
-            this.pContent.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            this.pContent.Name = "pContent";
-            this.pContent.Size = new System.Drawing.Size(767, 600);
-            this.pContent.TabIndex = 2;
+            this.panel1.Controls.Add(this.tablessControl1);
+            this.panel1.Location = new System.Drawing.Point(229, 118);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(767, 600);
+            this.panel1.TabIndex = 2;
             // 
-            // lblWelcome
+            // tablessControl1
             // 
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.BackColor = System.Drawing.SystemColors.Control;
-            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(59, 33);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(219, 25);
-            this.lblWelcome.TabIndex = 0;
-            this.lblWelcome.Text = "Welcome, Administrator";
+            this.tablessControl1.Controls.Add(this.tabPage1);
+            this.tablessControl1.Controls.Add(this.tabPage2);
+            this.tablessControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablessControl1.Location = new System.Drawing.Point(0, 0);
+            this.tablessControl1.Name = "tablessControl1";
+            this.tablessControl1.SelectedIndex = 0;
+            this.tablessControl1.Size = new System.Drawing.Size(767, 600);
+            this.tablessControl1.TabIndex = 0;
             // 
-            // Admin_Panel
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(759, 574);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(54, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.radioButton1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(759, 574);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(153, 36);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 730);
-            this.Controls.Add(this.pContent);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pButtons);
             this.Controls.Add(this.pWelcome);
-            this.Name = "Admin_Panel";
+            this.Name = "frmAdmin";
             this.Text = "Admin_Panel";
-            this.Load += new System.EventHandler(this.Admin_Panel_Load);
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();
             this.pButtons.ResumeLayout(false);
-            this.pContent.ResumeLayout(false);
-            this.pContent.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.tablessControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -173,12 +222,16 @@
         private System.Windows.Forms.Panel pWelcome;
         private System.Windows.Forms.Label lblAdminPanel;
         private System.Windows.Forms.Panel pButtons;
-        private System.Windows.Forms.Panel pContent;
         private System.Windows.Forms.Button btnDeactivatedUsers;
         private System.Windows.Forms.Button btnUserInfo;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Panel panel1;
+        private TablessControl tablessControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
