@@ -56,7 +56,7 @@ namespace Barroc_IT
                         {
                             case "Administrator":
                                 this.Hide();
-                                frmAdmin formAdmin = new frmAdmin();
+                                frmAdmin formAdmin = new frmAdmin(handler);
                                 formAdmin.Show();
                                 break;
                             case "Sales":
@@ -71,7 +71,7 @@ namespace Barroc_IT
                             //    break;
                             case "Development":
                                 this.Hide();
-                                frmDevelopment formDevelopment = new frmDevelopment();
+                                frmDevelopment formDevelopment = new frmDevelopment(handler);
                                 formDevelopment.Show();
                                 break;
                         }
@@ -84,6 +84,11 @@ namespace Barroc_IT
             {
                 MessageBox.Show("Incorrect username, password!");
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

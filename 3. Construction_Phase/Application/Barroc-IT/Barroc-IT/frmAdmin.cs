@@ -12,10 +12,12 @@ namespace Barroc_IT
 {
     public partial class frmAdmin : Form
     {
-       
-        public frmAdmin()
+
+        private DatabaseHandler handler;
+        public frmAdmin(DatabaseHandler handler)
         {
             InitializeComponent();
+            this.handler = handler;
         }
 
 

@@ -12,11 +12,12 @@ namespace Barroc_IT
 {
     public partial class frmDevelopment : Form
     {
-
-        public frmDevelopment()
+        private DatabaseHandler handler;
+        public frmDevelopment(DatabaseHandler handler)
         {
             InitializeComponent();
             cBoxSearch.SelectedIndex = 0;
+            this.handler = handler;
         }
 
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
