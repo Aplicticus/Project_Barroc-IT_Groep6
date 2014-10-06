@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace Barroc_IT
 {
-
     public partial class frmLogin : Form
     {
         private DatabaseHandler handler;
@@ -34,6 +33,7 @@ namespace Barroc_IT
         {
             string sqlQuery = "SELECT * FROM tbl_Users";
             string department = "";
+            bool loggedIn = false;
             if ((username != null && username.Length > 0) && (password != null && password.Length > 0))
             {
                 SqlDataAdapter dAdapter = new SqlDataAdapter(sqlQuery, handler.GetConnection());
@@ -49,6 +49,7 @@ namespace Barroc_IT
                 {
                     if (username == dRow["USER_NAME"].ToString() && password == dRow["PASSWORD"].ToString())
                     {
+                        loggedIn = true;
                         department = dRow["DEPARTMENT"].ToString();
 
                         switch (department)
@@ -77,9 +78,13 @@ namespace Barroc_IT
                     }
                     else
                     {
-                        MessageBox.Show("Incorrect username, password!");
-                        break;
+                        loggedIn = false;
                     }
+                }
+
+                if (!loggedIn)
+                {
+                    MessageBox.Show("Incorrect username, password!");
                 }
             }
             else
