@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Barroc_IT
@@ -23,6 +18,23 @@ namespace Barroc_IT
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
+        }
+
+        private void tbContr_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sqlQuery = "SELECT * FROM tbl_Customers";
+            if (tbContr.SelectedIndex == 1)
+            {
+                SqlDataAdapter dAdapter = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+                DataSet dSet = new DataSet();
+
+                handler.OpenConnection();
+                dAdapter.Fill(dSet);
+                handler.CloseConnection();
+
+                DataTable dTable = dSet.Tables[0];
+                DGVUserInfo.DataSource = dTable;
+            }
         }
     }
 }

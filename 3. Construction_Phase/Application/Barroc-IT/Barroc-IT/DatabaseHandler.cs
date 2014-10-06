@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Barroc_IT
 {
-    class DatabaseHandler
+    public class DatabaseHandler
     {
         private SqlConnection conn;
 

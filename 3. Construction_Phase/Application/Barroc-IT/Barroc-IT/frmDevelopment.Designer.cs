@@ -149,6 +149,7 @@
             this.tbContr.SelectedIndex = 0;
             this.tbContr.Size = new System.Drawing.Size(779, 612);
             this.tbContr.TabIndex = 0;
+            this.tbContr.SelectedIndexChanged += new System.EventHandler(this.tbContr_SelectedIndexChanged);
             // 
             // tabPage1
             // 
