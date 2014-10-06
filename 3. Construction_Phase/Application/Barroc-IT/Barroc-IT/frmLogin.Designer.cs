@@ -35,6 +35,8 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblBaroc
@@ -51,7 +53,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(352, 275);
+            this.lblUsername.Location = new System.Drawing.Point(316, 215);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(119, 26);
             this.lblUsername.TabIndex = 1;
@@ -61,7 +63,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(352, 333);
+            this.lblPassword.Location = new System.Drawing.Point(316, 273);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(114, 26);
             this.lblPassword.TabIndex = 2;
@@ -69,21 +71,21 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(477, 281);
+            this.txtUsername.Location = new System.Drawing.Point(477, 221);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(132, 20);
             this.txtUsername.TabIndex = 3;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(477, 339);
+            this.txtPassword.Location = new System.Drawing.Point(477, 279);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(132, 20);
             this.txtPassword.TabIndex = 4;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(357, 392);
+            this.btnLogin.Location = new System.Drawing.Point(321, 392);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(109, 23);
             this.btnLogin.TabIndex = 5;
@@ -100,11 +102,32 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(316, 324);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 26);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Department:";
+            // 
+            // cbDepartment
+            // 
+            this.cbDepartment.FormattingEnabled = true;
+            this.cbDepartment.Location = new System.Drawing.Point(477, 328);
+            this.cbDepartment.Name = "cbDepartment";
+            this.cbDepartment.Size = new System.Drawing.Size(132, 21);
+            this.cbDepartment.TabIndex = 10;
+            this.cbDepartment.Text = "Choose a department...";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.Controls.Add(this.cbDepartment);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -129,6 +152,8 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbDepartment;
     }
 }
 

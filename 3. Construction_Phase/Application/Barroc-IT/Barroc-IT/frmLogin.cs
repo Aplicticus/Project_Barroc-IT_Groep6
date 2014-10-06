@@ -11,13 +11,23 @@ using System.Windows.Forms;
 
 namespace Barroc_IT
 {
-    
+
     public partial class frmLogin : Form
     {
         private DatabaseHandler handler;
         public frmLogin()
         {
             InitializeComponent();
+            LoadDepartments();
+            txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void LoadDepartments()
+        {
+            cbDepartment.Items.Add("Sales");
+            cbDepartment.Items.Add("Finance");
+            cbDepartment.Items.Add("Development");
+            cbDepartment.Items.Add("Administrator");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -27,38 +37,70 @@ namespace Barroc_IT
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Login(txtUsername.Text, txtPassword.Text);
+            string selectedDepartment = cbDepartment.SelectedItem.ToString();
+            Login(txtUsername.Text, txtPassword.Text, selectedDepartment);            
         }
 
-        public void Login(string username, string password)
+        public void Login(string username, string password, string department)
         {
-            if ((username != null && username.Length > 0) && (password != null && password.Length > 0))
+            if ((username != null && username.Length > 0) && (password != null && password.Length > 0) && (department != null))
             {
-                string sqlQuery = "SELECT COUNT(*) FROM tbl_Users WHERE USER_NAME=@Username AND PASSWORD=@Password";
-
-                handler.OpenConnection();
-                using (SqlCommand command = new SqlCommand(sqlQuery, handler.GetConnection()))
-                {
-                    //Add username and password to parameters
-                    command.Parameters.Add(new SqlParameter("Username", username));
-                    command.Parameters.Add(new SqlParameter("Password", password));
+                string sqlQuery = "SELECT * FROM tbl_Users";
 
 
-                    //Get count of rows
-                    Int32 count = (Int32)command.ExecuteScalar();
-                    if (count == 1)
+                    SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());                    
+                    DataSet DS = new DataSet();
+                    DA.Fill(DS);
+
+                    DataTable DT = DS.Tables[0];
+                    
+                    foreach (DataRow DR in DT.Rows)
                     {
-                        this.Hide();
-                        frmAdmin formAdmin = new frmAdmin();
-                        formAdmin.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Incorrect username or password!");
-                    }
+
+                        if (username == DR["USER_NAME"].ToString() && password == DR["PASSWORD"].ToString() && department == DR["DEPARTMENT"].ToString())
+                        {
+                            switch (department)
+                            {
+                                case "Administrator":
+                                    this.Hide();
+                                    frmAdmin formAdmin = new frmAdmin();
+                                    formAdmin.Show();
+                                    break;
+
+                                case "Sales":
+                                    this.Hide();
+                                    frmSales formSales = new frmSales();
+                                    formSales.Show();
+                                    break;
+
+                                //case "Finance":
+                                //    this.Hide();
+                                //    frmFinance = new frmFinance();
+                                //    formFinance.Show();
+                                //    break;
+
+                                case "Development":
+                                    this.Hide();
+                                    frmDevelopment formDevelopment = new frmDevelopment();
+                                    formDevelopment.Show();
+                                    break;
+                            }
+
+                        }
+                       
                 }
-                handler.CloseConnection();
+                 
             }
+            else
+            {
+                MessageBox.Show("Incorrect username, password or department!");
+            }
+            handler.CloseConnection();
         }
     }
 }
+    
+
+
+
+
