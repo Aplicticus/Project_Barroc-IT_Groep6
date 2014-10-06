@@ -75,6 +75,11 @@ namespace Barroc_IT
                                 break;
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Incorrect username, password!");
+                        break;
+                    }
                 }
             }
             else
