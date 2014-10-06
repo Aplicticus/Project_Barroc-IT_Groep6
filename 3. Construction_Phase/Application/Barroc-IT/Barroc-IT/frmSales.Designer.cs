@@ -263,6 +263,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.txtSalesCity2);
             this.tabPage2.Controls.Add(this.txtSalesSalePercentage);
             this.tabPage2.Controls.Add(this.lblSalesSalePercentage);
@@ -313,7 +314,6 @@
             this.tabPage2.Size = new System.Drawing.Size(759, 574);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // txtSalesCity2
             // 
