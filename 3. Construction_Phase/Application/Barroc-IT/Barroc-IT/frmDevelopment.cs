@@ -18,14 +18,8 @@ namespace Barroc_IT
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
-            DGVUserInfo.Rows.Clear();
-            GetCustomerInfo();    
-        }
-
-        private void tbContr_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DGVUserInfo.Rows.Clear();
-            GetCustomerInfo();            
+            //DGVUserInfo.Rows.Clear();
+            GetCustomerInfo(); 
         }
         private void GetCustomerInfo()
         {
@@ -35,13 +29,18 @@ namespace Barroc_IT
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
 
-            foreach (DataRow DR in DT.Rows)
+            foreach (DataRow dr in DT.Rows)
             {
-                DGVUserInfo.Rows.Add(DR["Customer_ID"].ToString(), DR["COMPANYNAME"].ToString(), DR["ADDRESS1"].ToString(), DR["POSTALCODE1"].ToString(),
-                DR["RESIDENCE1"].ToString(), DR[""].ToString()
-                    
-                    );
+                DGVUserInfo.Rows.Add(dr.ItemArray);
             }
+            //DGVUserInfo.Rows.Add(DS.Tables[0].Rows);
+            //foreach (DataRow DR in DT.Rows)
+            //{
+            //    DGVUserInfo.Rows.Add(DR["Customer_ID"].ToString(), DR["COMPANYNAME"].ToString(), DR["ADDRESS1"].ToString(), DR["POSTALCODE1"].ToString(),
+            //    DR["RESIDENCE1"].ToString()
+
+            //        );
+            //}
             
 
             //     DGV.Rows.Add(DR["CustomerID"].ToString(), DR["CompanyName"].ToString(),

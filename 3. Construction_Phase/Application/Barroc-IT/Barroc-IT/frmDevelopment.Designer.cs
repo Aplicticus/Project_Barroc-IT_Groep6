@@ -44,23 +44,16 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.DGVUserInfo = new System.Windows.Forms.DataGridView();
-            this.cViewCustomer = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lblCustomer = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblSoftware = new System.Windows.Forms.Label();
+            this.lblAppointments = new System.Windows.Forms.Label();
+            this.lblInternalContact = new System.Windows.Forms.Label();
+            this.lblHardware = new System.Windows.Forms.Label();
+            this.lblApplications = new System.Windows.Forms.Label();
+            this.lblOpenProject = new System.Windows.Forms.Label();
             this.txtHardware = new System.Windows.Forms.TextBox();
             this.txtInternalContact = new System.Windows.Forms.TextBox();
             this.txtAppointments = new System.Windows.Forms.TextBox();
@@ -81,14 +74,21 @@
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
-            this.lblOpenProject = new System.Windows.Forms.Label();
-            this.lblApplications = new System.Windows.Forms.Label();
-            this.lblHardware = new System.Windows.Forms.Label();
-            this.lblInternalContact = new System.Windows.Forms.Label();
-            this.lblAppointments = new System.Windows.Forms.Label();
-            this.lblSoftware = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblCustomer = new System.Windows.Forms.Label();
+            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -181,7 +181,6 @@
             this.tbContr.SelectedIndex = 0;
             this.tbContr.Size = new System.Drawing.Size(779, 612);
             this.tbContr.TabIndex = 0;
-            this.tbContr.SelectedIndexChanged += new System.EventHandler(this.tbContr_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -264,7 +263,7 @@
             this.DGVUserInfo.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DGVUserInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVUserInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cViewCustomer,
+            this.cViewButton,
             this.cCompanyName,
             this.cAddress1,
             this.cPostalCode1,
@@ -283,77 +282,6 @@
             this.DGVUserInfo.Name = "DGVUserInfo";
             this.DGVUserInfo.Size = new System.Drawing.Size(771, 563);
             this.DGVUserInfo.TabIndex = 23;
-            // 
-            // cViewCustomer
-            // 
-            this.cViewCustomer.HeaderText = "View";
-            this.cViewCustomer.Name = "cViewCustomer";
-            this.cViewCustomer.Text = "View";
-            // 
-            // cCompanyName
-            // 
-            this.cCompanyName.HeaderText = "Company Name";
-            this.cCompanyName.Name = "cCompanyName";
-            // 
-            // cAddress1
-            // 
-            this.cAddress1.HeaderText = "Address 1";
-            this.cAddress1.Name = "cAddress1";
-            // 
-            // cPostalCode1
-            // 
-            this.cPostalCode1.HeaderText = "Postal Code 1";
-            this.cPostalCode1.Name = "cPostalCode1";
-            // 
-            // cResidence1
-            // 
-            this.cResidence1.HeaderText = "Residence 1";
-            this.cResidence1.Name = "cResidence1";
-            // 
-            // cAddress2
-            // 
-            this.cAddress2.HeaderText = "Address 2";
-            this.cAddress2.Name = "cAddress2";
-            // 
-            // cPostalCode2
-            // 
-            this.cPostalCode2.HeaderText = "Postal Code 2";
-            this.cPostalCode2.Name = "cPostalCode2";
-            // 
-            // cResidence2
-            // 
-            this.cResidence2.HeaderText = "Residence 2";
-            this.cResidence2.Name = "cResidence2";
-            // 
-            // cContactPerson
-            // 
-            this.cContactPerson.HeaderText = "Contactperson";
-            this.cContactPerson.Name = "cContactPerson";
-            // 
-            // cInitials
-            // 
-            this.cInitials.HeaderText = "Initials";
-            this.cInitials.Name = "cInitials";
-            // 
-            // cPhoneNumber1
-            // 
-            this.cPhoneNumber1.HeaderText = "Phone Number 1";
-            this.cPhoneNumber1.Name = "cPhoneNumber1";
-            // 
-            // cPhoneNumber2
-            // 
-            this.cPhoneNumber2.HeaderText = "Phone Number 2";
-            this.cPhoneNumber2.Name = "cPhoneNumber2";
-            // 
-            // cFaxNumber
-            // 
-            this.cFaxNumber.HeaderText = "Fax Number";
-            this.cFaxNumber.Name = "cFaxNumber";
-            // 
-            // cEmail
-            // 
-            this.cEmail.HeaderText = "E-Mail";
-            this.cEmail.Name = "cEmail";
             // 
             // lblCustomers
             // 
@@ -404,15 +332,82 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
-            // lblCustomer
+            // textBox2
             // 
-            this.lblCustomer.AutoSize = true;
-            this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(315, 3);
-            this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(140, 31);
-            this.lblCustomer.TabIndex = 23;
-            this.lblCustomer.Text = "Customer";
+            this.textBox2.Location = new System.Drawing.Point(226, 227);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(137, 20);
+            this.textBox2.TabIndex = 125;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(51, 221);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(146, 25);
+            this.label7.TabIndex = 124;
+            this.label7.Text = "Contactperson:";
+            // 
+            // lblSoftware
+            // 
+            this.lblSoftware.AutoSize = true;
+            this.lblSoftware.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoftware.Location = new System.Drawing.Point(369, 161);
+            this.lblSoftware.Name = "lblSoftware";
+            this.lblSoftware.Size = new System.Drawing.Size(95, 25);
+            this.lblSoftware.TabIndex = 123;
+            this.lblSoftware.Text = "Software:";
+            // 
+            // lblAppointments
+            // 
+            this.lblAppointments.AutoSize = true;
+            this.lblAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppointments.Location = new System.Drawing.Point(369, 191);
+            this.lblAppointments.Name = "lblAppointments";
+            this.lblAppointments.Size = new System.Drawing.Size(138, 25);
+            this.lblAppointments.TabIndex = 122;
+            this.lblAppointments.Text = "Appointments:";
+            // 
+            // lblInternalContact
+            // 
+            this.lblInternalContact.AutoSize = true;
+            this.lblInternalContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInternalContact.Location = new System.Drawing.Point(369, 221);
+            this.lblInternalContact.Name = "lblInternalContact";
+            this.lblInternalContact.Size = new System.Drawing.Size(222, 25);
+            this.lblInternalContact.TabIndex = 121;
+            this.lblInternalContact.Text = "Internal Contact Person:";
+            // 
+            // lblHardware
+            // 
+            this.lblHardware.AutoSize = true;
+            this.lblHardware.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHardware.Location = new System.Drawing.Point(369, 131);
+            this.lblHardware.Name = "lblHardware";
+            this.lblHardware.Size = new System.Drawing.Size(102, 25);
+            this.lblHardware.TabIndex = 120;
+            this.lblHardware.Text = "Hardware:";
+            // 
+            // lblApplications
+            // 
+            this.lblApplications.AutoSize = true;
+            this.lblApplications.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApplications.Location = new System.Drawing.Point(369, 102);
+            this.lblApplications.Name = "lblApplications";
+            this.lblApplications.Size = new System.Drawing.Size(124, 25);
+            this.lblApplications.TabIndex = 119;
+            this.lblApplications.Text = "Applications:";
+            // 
+            // lblOpenProject
+            // 
+            this.lblOpenProject.AutoSize = true;
+            this.lblOpenProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpenProject.Location = new System.Drawing.Point(369, 72);
+            this.lblOpenProject.Name = "lblOpenProject";
+            this.lblOpenProject.Size = new System.Drawing.Size(132, 25);
+            this.lblOpenProject.TabIndex = 118;
+            this.lblOpenProject.Text = "Open Project:";
             // 
             // txtHardware
             // 
@@ -575,82 +570,85 @@
             this.txtCompanyName.Size = new System.Drawing.Size(137, 20);
             this.txtCompanyName.TabIndex = 75;
             // 
-            // lblOpenProject
+            // lblCustomer
             // 
-            this.lblOpenProject.AutoSize = true;
-            this.lblOpenProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpenProject.Location = new System.Drawing.Point(369, 72);
-            this.lblOpenProject.Name = "lblOpenProject";
-            this.lblOpenProject.Size = new System.Drawing.Size(132, 25);
-            this.lblOpenProject.TabIndex = 118;
-            this.lblOpenProject.Text = "Open Project:";
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomer.Location = new System.Drawing.Point(315, 3);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(140, 31);
+            this.lblCustomer.TabIndex = 23;
+            this.lblCustomer.Text = "Customer";
             // 
-            // lblApplications
+            // cViewButton
             // 
-            this.lblApplications.AutoSize = true;
-            this.lblApplications.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApplications.Location = new System.Drawing.Point(369, 102);
-            this.lblApplications.Name = "lblApplications";
-            this.lblApplications.Size = new System.Drawing.Size(124, 25);
-            this.lblApplications.TabIndex = 119;
-            this.lblApplications.Text = "Applications:";
+            this.cViewButton.HeaderText = "View";
+            this.cViewButton.Name = "cViewButton";
             // 
-            // lblHardware
+            // cCompanyName
             // 
-            this.lblHardware.AutoSize = true;
-            this.lblHardware.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHardware.Location = new System.Drawing.Point(369, 131);
-            this.lblHardware.Name = "lblHardware";
-            this.lblHardware.Size = new System.Drawing.Size(102, 25);
-            this.lblHardware.TabIndex = 120;
-            this.lblHardware.Text = "Hardware:";
+            this.cCompanyName.HeaderText = "Company Name";
+            this.cCompanyName.Name = "cCompanyName";
             // 
-            // lblInternalContact
+            // cAddress1
             // 
-            this.lblInternalContact.AutoSize = true;
-            this.lblInternalContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInternalContact.Location = new System.Drawing.Point(369, 221);
-            this.lblInternalContact.Name = "lblInternalContact";
-            this.lblInternalContact.Size = new System.Drawing.Size(222, 25);
-            this.lblInternalContact.TabIndex = 121;
-            this.lblInternalContact.Text = "Internal Contact Person:";
+            this.cAddress1.HeaderText = "Address 1";
+            this.cAddress1.Name = "cAddress1";
             // 
-            // lblAppointments
+            // cPostalCode1
             // 
-            this.lblAppointments.AutoSize = true;
-            this.lblAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppointments.Location = new System.Drawing.Point(369, 191);
-            this.lblAppointments.Name = "lblAppointments";
-            this.lblAppointments.Size = new System.Drawing.Size(138, 25);
-            this.lblAppointments.TabIndex = 122;
-            this.lblAppointments.Text = "Appointments:";
+            this.cPostalCode1.HeaderText = "Postal Code 1";
+            this.cPostalCode1.Name = "cPostalCode1";
             // 
-            // lblSoftware
+            // cResidence1
             // 
-            this.lblSoftware.AutoSize = true;
-            this.lblSoftware.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoftware.Location = new System.Drawing.Point(369, 161);
-            this.lblSoftware.Name = "lblSoftware";
-            this.lblSoftware.Size = new System.Drawing.Size(95, 25);
-            this.lblSoftware.TabIndex = 123;
-            this.lblSoftware.Text = "Software:";
+            this.cResidence1.HeaderText = "Residence 1";
+            this.cResidence1.Name = "cResidence1";
             // 
-            // textBox2
+            // cAddress2
             // 
-            this.textBox2.Location = new System.Drawing.Point(226, 227);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(137, 20);
-            this.textBox2.TabIndex = 125;
+            this.cAddress2.HeaderText = "Address 2";
+            this.cAddress2.Name = "cAddress2";
             // 
-            // label7
+            // cPostalCode2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(51, 221);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 25);
-            this.label7.TabIndex = 124;
-            this.label7.Text = "Contactperson:";
+            this.cPostalCode2.HeaderText = "Postal Code 2";
+            this.cPostalCode2.Name = "cPostalCode2";
+            // 
+            // cResidence2
+            // 
+            this.cResidence2.HeaderText = "Residence 2";
+            this.cResidence2.Name = "cResidence2";
+            // 
+            // cContactPerson
+            // 
+            this.cContactPerson.HeaderText = "Contactperson";
+            this.cContactPerson.Name = "cContactPerson";
+            // 
+            // cInitials
+            // 
+            this.cInitials.HeaderText = "Initials";
+            this.cInitials.Name = "cInitials";
+            // 
+            // cPhoneNumber1
+            // 
+            this.cPhoneNumber1.HeaderText = "Phone Number 1";
+            this.cPhoneNumber1.Name = "cPhoneNumber1";
+            // 
+            // cPhoneNumber2
+            // 
+            this.cPhoneNumber2.HeaderText = "Phone Number 2";
+            this.cPhoneNumber2.Name = "cPhoneNumber2";
+            // 
+            // cFaxNumber
+            // 
+            this.cFaxNumber.HeaderText = "Fax Number";
+            this.cFaxNumber.Name = "cFaxNumber";
+            // 
+            // cEmail
+            // 
+            this.cEmail.HeaderText = "E-Mail";
+            this.cEmail.Name = "cEmail";
             // 
             // frmDevelopment
             // 
@@ -701,20 +699,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView DGVUserInfo;
         private System.Windows.Forms.Label lblCustomers;
-        private System.Windows.Forms.DataGridViewButtonColumn cViewCustomer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.TextBox txtHardware;
@@ -745,5 +729,19 @@
         private System.Windows.Forms.Label lblHardware;
         private System.Windows.Forms.Label lblApplications;
         private System.Windows.Forms.Label lblOpenProject;
+        private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
     }
 }
