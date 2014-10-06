@@ -18,16 +18,6 @@ namespace Barroc_IT
         public frmLogin()
         {
             InitializeComponent();
-            LoadDepartments();
-            txtPassword.UseSystemPasswordChar = true;
-        }
-
-        private void LoadDepartments()
-        {
-            cbDepartment.Items.Add("Sales");
-            cbDepartment.Items.Add("Finance");
-            cbDepartment.Items.Add("Development");
-            cbDepartment.Items.Add("Administrator");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -37,69 +27,64 @@ namespace Barroc_IT
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string selectedDepartment = cbDepartment.SelectedItem.ToString();
-            Login(txtUsername.Text, txtPassword.Text, selectedDepartment);            
+            Login(txtUsername.Text, txtPassword.Text);
         }
 
-        public void Login(string username, string password, string department)
+        public void Login(string username, string password)
         {
-            if ((username != null && username.Length > 0) && (password != null && password.Length > 0) && (department != null))
+            string sqlQuery = "SELECT * FROM tbl_Users";
+            string department = "";
+            if ((username != null && username.Length > 0) && (password != null && password.Length > 0))
             {
-                string sqlQuery = "SELECT * FROM tbl_Users";
+                SqlDataAdapter dAdapter = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+                DataSet dSet = new DataSet();
 
+                handler.OpenConnection();
 
-                    SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());                    
-                    DataSet DS = new DataSet();
-                    DA.Fill(DS);
+                dAdapter.Fill(dSet);
 
-                    DataTable DT = DS.Tables[0];
-                    
-                    foreach (DataRow DR in DT.Rows)
+                DataTable dTable = dSet.Tables[0];
+                handler.CloseConnection();
+                foreach (DataRow dRow in dTable.Rows)
+                {
+                    if (username == dRow["USER_NAME"].ToString() && password == dRow["PASSWORD"].ToString())
                     {
+                        department = dRow["DEPARTMENT"].ToString();
 
-                        if (username == DR["USER_NAME"].ToString() && password == DR["PASSWORD"].ToString() && department == DR["DEPARTMENT"].ToString())
+                        switch (department)
                         {
-                            switch (department)
-                            {
-                                case "Administrator":
-                                    this.Hide();
-                                    frmAdmin formAdmin = new frmAdmin();
-                                    formAdmin.Show();
-                                    break;
-
-                                case "Sales":
-                                    this.Hide();
-                                    frmSales formSales = new frmSales();
-                                    formSales.Show();
-                                    break;
-
-                                //case "Finance":
-                                //    this.Hide();
-                                //    frmFinance = new frmFinance();
-                                //    formFinance.Show();
-                                //    break;
-
-                                case "Development":
-                                    this.Hide();
-                                    frmDevelopment formDevelopment = new frmDevelopment();
-                                    formDevelopment.Show();
-                                    break;
-                            }
-
+                            case "Administrator":
+                                this.Hide();
+                                frmAdmin formAdmin = new frmAdmin();
+                                formAdmin.Show();
+                                break;
+                            case "Sales":
+                                this.Hide();
+                                frmSales formSales = new frmSales();
+                                formSales.Show();
+                                break;
+                            //case "Finance":
+                            //    this.Hide();
+                            //    frmFinance = new frmFinance();
+                            //    formFinance.Show();
+                            //    break;
+                            case "Development":
+                                this.Hide();
+                                frmDevelopment formDevelopment = new frmDevelopment();
+                                formDevelopment.Show();
+                                break;
                         }
-                       
+                    }
                 }
-                 
             }
             else
             {
-                MessageBox.Show("Incorrect username, password or department!");
+                MessageBox.Show("Incorrect username, password!");
             }
-            handler.CloseConnection();
         }
     }
 }
-    
+
 
 
 

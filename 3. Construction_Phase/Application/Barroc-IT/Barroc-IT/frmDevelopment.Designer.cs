@@ -44,7 +44,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.DGVUserInfo = new System.Windows.Forms.DataGridView();
-            this.lblCustomers = new System.Windows.Forms.Label();
             this.cViewCustomer = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,7 @@
             this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblCustomers = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -250,22 +250,11 @@
             this.DGVUserInfo.Size = new System.Drawing.Size(771, 563);
             this.DGVUserInfo.TabIndex = 23;
             // 
-            // lblCustomers
-            // 
-            this.lblCustomers.AutoSize = true;
-            this.lblCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomers.Location = new System.Drawing.Point(3, 1);
-            this.lblCustomers.Name = "lblCustomers";
-            this.lblCustomers.Size = new System.Drawing.Size(155, 31);
-            this.lblCustomers.TabIndex = 22;
-            this.lblCustomers.Text = "Customers";
-            // 
             // cViewCustomer
             // 
             this.cViewCustomer.HeaderText = "View";
             this.cViewCustomer.Name = "cViewCustomer";
             this.cViewCustomer.Text = "View";
-            this.cViewCustomer.UseColumnTextForButtonValue = true;
             // 
             // cCompanyName
             // 
@@ -332,6 +321,16 @@
             this.cEmail.HeaderText = "E-Mail";
             this.cEmail.Name = "cEmail";
             // 
+            // lblCustomers
+            // 
+            this.lblCustomers.AutoSize = true;
+            this.lblCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomers.Location = new System.Drawing.Point(3, 1);
+            this.lblCustomers.Name = "lblCustomers";
+            this.lblCustomers.Size = new System.Drawing.Size(155, 31);
+            this.lblCustomers.TabIndex = 22;
+            this.lblCustomers.Text = "Customers";
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,7 +340,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pButtons);
             this.Controls.Add(this.pWelcome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmDevelopment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Development";
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();

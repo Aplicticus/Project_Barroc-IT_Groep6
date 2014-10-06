@@ -23,6 +23,5 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 1;
         }
-
     }
 }
