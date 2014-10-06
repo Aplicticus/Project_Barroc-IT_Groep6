@@ -71,7 +71,7 @@ namespace Barroc_IT
                             //    break;
                             case "Development":
                                 this.Hide();
-                                frmDevelopment formDevelopment = new frmDevelopment();
+                                frmDevelopment formDevelopment = new frmDevelopment(handler);
                                 formDevelopment.Show();
                                 break;
                         }
