@@ -38,7 +38,8 @@ namespace Barroc_IT
             foreach (DataRow DR in DT.Rows)
             {
                 DGVUserInfo.Rows.Add(DR["Customer_ID"].ToString(), DR["COMPANYNAME"].ToString(), DR["ADDRESS1"].ToString(), DR["POSTALCODE1"].ToString(),
-                DR["RESIDENCE1"].ToString(), DR[""].ToString()
+                DR["RESIDENCE1"].ToString(), DR["ADDRESS2"].ToString(), DR["POSTALCODE2"].ToString(), DR["RESIDENCE2"].ToString(),DR["CONTACTPERSON"].ToString(),DR["INITIALS"].ToString(),
+                DR["PHONE_NR1"].ToString(),  DR["PHONE_NR2"].ToString(),DR["FAXNUMBER"].ToString(),DR["EMAIL"].ToString(),DR["DATE_OF_ACTION"].ToString(),DR["LAST_CONTACT_DATE"].ToString(),DR["NEXT_ACTION"].ToString(),DR["OFFER_NUMBERS"].ToString(),
                     
                     );
             }
