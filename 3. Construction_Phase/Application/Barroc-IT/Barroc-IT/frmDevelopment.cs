@@ -12,29 +12,44 @@ namespace Barroc_IT
         {
             InitializeComponent();
             cBoxSearch.SelectedIndex = 0;
-            this.handler = handler;
+            this.handler = handler;           
         }
 
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
+            DGVUserInfo.Rows.Clear();
+            GetCustomerInfo();    
         }
 
         private void tbContr_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sqlQuery = "SELECT * FROM tbl_Customers";
-            if (tbContr.SelectedIndex == 1)
+            DGVUserInfo.Rows.Clear();
+            GetCustomerInfo();            
+        }
+        private void GetCustomerInfo()
+        {
+            string sqlQuery = "SELECT * FROM tbl_Customers ";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            DataSet DS = new DataSet();            
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+
+            foreach (DataRow DR in DT.Rows)
             {
-                SqlDataAdapter dAdapter = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-                DataSet dSet = new DataSet();
-
-                handler.OpenConnection();
-                dAdapter.Fill(dSet);
-                handler.CloseConnection();
-
-                DataTable dTable = dSet.Tables[0];
-                DGVUserInfo.DataSource = dTable;
+                DGVUserInfo.Rows.Add(DR["Customer_ID"].ToString(), DR["COMPANYNAME"].ToString(), DR["ADDRESS1"].ToString(), DR["POSTALCODE1"].ToString(),
+                DR["RESIDENCE1"].ToString(), DR[""].ToString()
+                    
+                    );
             }
+            
+
+            //     DGV.Rows.Add(DR["CustomerID"].ToString(), DR["CompanyName"].ToString(),
+                //DR["ContactName"].ToString(), DR["ContactTitle"].ToString(),
+                //DR["Address"].ToString(), DR["City"].ToString(), DR["Region"].ToString(),
+                //DR["PostalCode"].ToString(), DR["Country"].ToString(),
+                //DR["Phone"].ToString(), DR["Fax"].ToString());
+
         }
     }
 }
