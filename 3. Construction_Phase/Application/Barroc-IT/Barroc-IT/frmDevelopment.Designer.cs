@@ -59,6 +59,7 @@
             this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -143,6 +144,7 @@
             // 
             this.tbContr.Controls.Add(this.tabPage1);
             this.tbContr.Controls.Add(this.tabPage2);
+            this.tbContr.Controls.Add(this.tabPage3);
             this.tbContr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbContr.Location = new System.Drawing.Point(0, 0);
             this.tbContr.Name = "tbContr";
@@ -332,6 +334,16 @@
             this.lblCustomers.TabIndex = 22;
             this.lblCustomers.Text = "Customers";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(771, 586);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,5 +405,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
