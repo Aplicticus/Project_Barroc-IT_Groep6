@@ -60,6 +60,8 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblSoftware = new System.Windows.Forms.Label();
@@ -282,7 +284,6 @@
             this.DGVUserInfo.Name = "DGVUserInfo";
             this.DGVUserInfo.Size = new System.Drawing.Size(771, 563);
             this.DGVUserInfo.TabIndex = 23;
-            this.DGVUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVUserInfo_CellContentClick);
             // 
             // cViewButton
             // 
@@ -293,43 +294,36 @@
             // 
             this.cCompanyName.HeaderText = "Company Name";
             this.cCompanyName.Name = "cCompanyName";
-            this.cCompanyName.ReadOnly = true;
             // 
             // cAddress1
             // 
             this.cAddress1.HeaderText = "Address 1";
             this.cAddress1.Name = "cAddress1";
-            this.cAddress1.ReadOnly = true;
             // 
             // cPostalCode1
             // 
             this.cPostalCode1.HeaderText = "Postal Code 1";
             this.cPostalCode1.Name = "cPostalCode1";
-            this.cPostalCode1.ReadOnly = true;
             // 
             // cResidence1
             // 
             this.cResidence1.HeaderText = "Residence 1";
             this.cResidence1.Name = "cResidence1";
-            this.cResidence1.ReadOnly = true;
             // 
             // cAddress2
             // 
             this.cAddress2.HeaderText = "Address 2";
             this.cAddress2.Name = "cAddress2";
-            this.cAddress2.ReadOnly = true;
             // 
             // cPostalCode2
             // 
             this.cPostalCode2.HeaderText = "Postal Code 2";
             this.cPostalCode2.Name = "cPostalCode2";
-            this.cPostalCode2.ReadOnly = true;
             // 
             // cResidence2
             // 
             this.cResidence2.HeaderText = "Residence 2";
             this.cResidence2.Name = "cResidence2";
-            this.cResidence2.ReadOnly = true;
             // 
             // cContactPerson
             // 
@@ -374,6 +368,8 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.btnEdit);
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.lblSoftware);
@@ -410,10 +406,32 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(203, 510);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 43);
+            this.button1.TabIndex = 126;
+            this.button1.Text = "View Projects";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(32, 510);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(165, 43);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "Edit Fields";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(226, 227);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(137, 20);
             this.textBox2.TabIndex = 125;
             // 
@@ -491,6 +509,7 @@
             // 
             this.txtHardware.Location = new System.Drawing.Point(594, 137);
             this.txtHardware.Name = "txtHardware";
+            this.txtHardware.ReadOnly = true;
             this.txtHardware.Size = new System.Drawing.Size(137, 20);
             this.txtHardware.TabIndex = 117;
             // 
@@ -498,6 +517,7 @@
             // 
             this.txtInternalContact.Location = new System.Drawing.Point(594, 227);
             this.txtInternalContact.Name = "txtInternalContact";
+            this.txtInternalContact.ReadOnly = true;
             this.txtInternalContact.Size = new System.Drawing.Size(137, 20);
             this.txtInternalContact.TabIndex = 110;
             // 
@@ -505,6 +525,7 @@
             // 
             this.txtAppointments.Location = new System.Drawing.Point(594, 197);
             this.txtAppointments.Name = "txtAppointments";
+            this.txtAppointments.ReadOnly = true;
             this.txtAppointments.Size = new System.Drawing.Size(137, 20);
             this.txtAppointments.TabIndex = 108;
             // 
@@ -522,6 +543,7 @@
             // 
             this.txtSoftware.Location = new System.Drawing.Point(594, 167);
             this.txtSoftware.Name = "txtSoftware";
+            this.txtSoftware.ReadOnly = true;
             this.txtSoftware.Size = new System.Drawing.Size(137, 20);
             this.txtSoftware.TabIndex = 106;
             // 
@@ -529,6 +551,7 @@
             // 
             this.txtApplications.Location = new System.Drawing.Point(594, 108);
             this.txtApplications.Name = "txtApplications";
+            this.txtApplications.ReadOnly = true;
             this.txtApplications.Size = new System.Drawing.Size(137, 20);
             this.txtApplications.TabIndex = 103;
             // 
@@ -536,6 +559,7 @@
             // 
             this.txtOpenProject.Location = new System.Drawing.Point(594, 78);
             this.txtOpenProject.Name = "txtOpenProject";
+            this.txtOpenProject.ReadOnly = true;
             this.txtOpenProject.Size = new System.Drawing.Size(137, 20);
             this.txtOpenProject.TabIndex = 101;
             // 
@@ -553,6 +577,7 @@
             // 
             this.txtMaintenance.Location = new System.Drawing.Point(594, 48);
             this.txtMaintenance.Name = "txtMaintenance";
+            this.txtMaintenance.ReadOnly = true;
             this.txtMaintenance.Size = new System.Drawing.Size(137, 20);
             this.txtMaintenance.TabIndex = 98;
             // 
@@ -560,6 +585,7 @@
             // 
             this.txtPhoneNumber1.Location = new System.Drawing.Point(226, 137);
             this.txtPhoneNumber1.Name = "txtPhoneNumber1";
+            this.txtPhoneNumber1.ReadOnly = true;
             this.txtPhoneNumber1.Size = new System.Drawing.Size(137, 20);
             this.txtPhoneNumber1.TabIndex = 97;
             // 
@@ -567,6 +593,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(226, 197);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(137, 20);
             this.txtEmail.TabIndex = 86;
             // 
@@ -584,6 +611,7 @@
             // 
             this.txtFaxNumber.Location = new System.Drawing.Point(226, 167);
             this.txtFaxNumber.Name = "txtFaxNumber";
+            this.txtFaxNumber.ReadOnly = true;
             this.txtFaxNumber.Size = new System.Drawing.Size(137, 20);
             this.txtFaxNumber.TabIndex = 84;
             // 
@@ -601,6 +629,7 @@
             // 
             this.txtPostalCode1.Location = new System.Drawing.Point(226, 108);
             this.txtPostalCode1.Name = "txtPostalCode1";
+            this.txtPostalCode1.ReadOnly = true;
             this.txtPostalCode1.Size = new System.Drawing.Size(137, 20);
             this.txtPostalCode1.TabIndex = 81;
             // 
@@ -618,6 +647,7 @@
             // 
             this.txtAddress1.Location = new System.Drawing.Point(226, 78);
             this.txtAddress1.Name = "txtAddress1";
+            this.txtAddress1.ReadOnly = true;
             this.txtAddress1.Size = new System.Drawing.Size(137, 20);
             this.txtAddress1.TabIndex = 79;
             // 
@@ -645,6 +675,7 @@
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(226, 48);
             this.txtCompanyName.Name = "txtCompanyName";
+            this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(137, 20);
             this.txtCompanyName.TabIndex = 75;
             // 
@@ -751,5 +782,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
