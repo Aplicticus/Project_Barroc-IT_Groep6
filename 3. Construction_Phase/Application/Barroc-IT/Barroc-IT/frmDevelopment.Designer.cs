@@ -266,6 +266,7 @@
             this.btnCustomerSearch.TabIndex = 25;
             this.btnCustomerSearch.Text = "Search";
             this.btnCustomerSearch.UseVisualStyleBackColor = true;
+            this.btnCustomerSearch.Click += new System.EventHandler(this.btnCustomerSearch_Click);
             // 
             // txtCustomerSearch
             // 
@@ -276,6 +277,7 @@
             // 
             // DGVUserInfo
             // 
+            this.DGVUserInfo.AllowUserToAddRows = false;
             this.DGVUserInfo.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DGVUserInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVUserInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
