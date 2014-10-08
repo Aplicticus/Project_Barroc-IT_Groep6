@@ -60,6 +60,8 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblSoftware = new System.Windows.Forms.Label();
@@ -89,8 +91,6 @@
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
             this.lblCustomer = new System.Windows.Forms.Label();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -406,6 +406,27 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(203, 510);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 43);
+            this.button1.TabIndex = 126;
+            this.button1.Text = "View Projects";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(32, 510);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(165, 43);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "Edit Fields";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(226, 227);
@@ -667,26 +688,6 @@
             this.lblCustomer.Size = new System.Drawing.Size(140, 31);
             this.lblCustomer.TabIndex = 23;
             this.lblCustomer.Text = "Customer";
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(32, 510);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(165, 43);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Edit Fields";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(203, 510);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 43);
-            this.button1.TabIndex = 126;
-            this.button1.Text = "View Projects";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmDevelopment
             // 
