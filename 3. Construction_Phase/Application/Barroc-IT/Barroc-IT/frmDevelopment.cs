@@ -65,10 +65,12 @@ namespace Barroc_IT
         }
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == DGVUserInfo.Columns["cViewButton"].Index && e.RowIndex >= 0)
+            
+
+            if (e.ColumnIndex == DGVUserInfo.Columns["cViewButton"].Index)
             {
                 tbContr.SelectedIndex = 2;
-                string sqlQuery = "SELECT * FROM tbl_Customers ";
+                string sqlQuery = "SELECT * FROM tbl_Customers";
                 SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
                 DataSet DS = new DataSet();
                 DA.Fill(DS);
@@ -76,10 +78,17 @@ namespace Barroc_IT
 
                 foreach (DataRow DR in DT.Rows)
                 {
-                    txtCompanyName.Text = DR["COMPANYNAME"].ToString();
-                    txtAddress1.Text = DR["ADDRESS1"].ToString();
-                    txtPostalCode1.Text = DR["POSTALCODE1"].ToString();
+                    
                 }
+                
+
+                
+                //foreach (DataRow DR in DT.Rows)
+                //{
+                //    txtCompanyName.Text = DR["COMPANYNAME"].ToString();
+                //    txtAddress1.Text = DR["ADDRESS1"].ToString();
+                //    txtPostalCode1.Text = DR["POSTALCODE1"].ToString();
+                //}
             }
         }
     }
