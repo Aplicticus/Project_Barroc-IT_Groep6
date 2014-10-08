@@ -9,6 +9,7 @@ namespace Barroc_IT
     {
         private DatabaseHandler handler;
         private int selectedCustomer;
+        //private int selectedProject;
         public frmDevelopment(DatabaseHandler handler)
         {
             InitializeComponent();
@@ -19,7 +20,7 @@ namespace Barroc_IT
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
-            DGVUserInfo.Rows.Clear();
+            dgvUserInfo.Rows.Clear();
             GetCustomers(); 
         }
 
@@ -33,9 +34,23 @@ namespace Barroc_IT
 
             foreach (DataRow dr in DT.Rows)
             {
-                DGVUserInfo.Rows.Add(dr.ItemArray);
+                dgvUserInfo.Rows.Add(dr.ItemArray);
             }          
         }       
+
+        private void GetProjects()
+        {
+            string sqlQuery = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            DataSet DS = new DataSet();            
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+
+            foreach (DataRow dr in DT.Rows)
+            {
+                dgvProjects.Rows.Add(dr.ItemArray);
+            }          
+        }
 
         private void btnEditFields_Click(object sender, EventArgs e)
         {
@@ -101,7 +116,7 @@ namespace Barroc_IT
             txtInternalContact.Text = DRApo["INT_CONTACT"].ToString();
         }*/
 
-       /* private void LoadProjectDetails()
+        private void LoadProjectDetails()
         {
             string sqlQuery = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID='" + selectedCustomer + "'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
@@ -111,15 +126,15 @@ namespace Barroc_IT
 
             foreach (DataRow dr in DT.Rows)
             {
-                DGVUserInfo.Rows.Add(dr.ItemArray);
+                dgvUserInfo.Rows.Add(dr.ItemArray);
             }            
-        } */      
+        }     
         
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == DGVUserInfo.Columns["cViewButton"].Index)
+            if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
             {
-                selectedCustomer = int.Parse(DGVUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
+                selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
                 LoadCustomerDetails();
                 //LoadAppointmentDetails();
                 //LoadProjectDetails();
@@ -129,9 +144,10 @@ namespace Barroc_IT
         }
 
         private void btnViewProjects_Click(object sender, EventArgs e)
-        {
-            //LoadProjectDetails();
+        {            
             tbContr.SelectedIndex = 3;
+            dgvProjects.Rows.Clear();
+            GetProjects();
         }
 
         private void btnCustomerSearch_Click(object sender, EventArgs e)
@@ -145,10 +161,10 @@ namespace Barroc_IT
                     DataSet DS = new DataSet();
                     DA.Fill(DS);
                     DataTable DT = DS.Tables[0];
-                    DGVUserInfo.Rows.Clear();
+                    dgvUserInfo.Rows.Clear();
                     foreach (DataRow dr in DT.Rows)
                     {
-                        DGVUserInfo.Rows.Add(dr.ItemArray);
+                        dgvUserInfo.Rows.Add(dr.ItemArray);
                     }
                 }
             }
@@ -159,10 +175,10 @@ namespace Barroc_IT
                 DataSet DS = new DataSet();
                 DA.Fill(DS);
                 DataTable DT = DS.Tables[0];
-                DGVUserInfo.Rows.Clear();
+                dgvUserInfo.Rows.Clear();
                 foreach (DataRow dr in DT.Rows)
                 {
-                    DGVUserInfo.Rows.Add(dr.ItemArray);
+                    dgvUserInfo.Rows.Add(dr.ItemArray);
                 }
             }
         }
@@ -170,6 +186,12 @@ namespace Barroc_IT
         private void btnAddProject_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 5;
+        }
+
+        private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //selectedProject = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
+            
         }
     }
 }
