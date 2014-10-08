@@ -11,7 +11,7 @@ namespace Barroc_IT
         public frmDevelopment(DatabaseHandler handler)
         {
             InitializeComponent();
-            cBoxSearch.SelectedIndex = 0;
+            cBoxCustomerSearch.SelectedIndex = 0;
             this.handler = handler;           
         }
 
@@ -37,9 +37,9 @@ namespace Barroc_IT
             }          
         }       
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnEditFields_Click(object sender, EventArgs e)
         {
-            if (btnEdit.Text == "Edit Fields")
+            if (btnEditFields.Text == "Edit Fields")
             {
                 txtMaintenance.ReadOnly = false;
                 txtOpenProject.ReadOnly = false;
@@ -48,9 +48,9 @@ namespace Barroc_IT
                 txtSoftware.ReadOnly = false;
                 txtAppointments.ReadOnly = false;
                 txtInternalContact.ReadOnly = false;
-                btnEdit.Text = "Save Changes";
+                btnEditFields.Text = "Save Changes";
             }
-            else if(btnEdit.Text == "Save Changes")
+            else if(btnEditFields.Text == "Save Changes")
             {
                 txtMaintenance.ReadOnly = true;
                 txtOpenProject.ReadOnly = true;
@@ -59,7 +59,7 @@ namespace Barroc_IT
                 txtSoftware.ReadOnly = true;
                 txtAppointments.ReadOnly = true;
                 txtInternalContact.ReadOnly = true;
-                btnEdit.Text = "Edit Fields";
+                btnEditFields.Text = "Edit Fields";
                 //Svae changes needs to be implemented
             }
         }
@@ -68,7 +68,7 @@ namespace Barroc_IT
             if (e.ColumnIndex == DGVUserInfo.Columns["cViewButton"].Index && e.RowIndex >= 0)
             {
                 tbContr.SelectedIndex = 2;
-                string sqlQuery = "SELECT * FROM tbl_Customers ";
+                string sqlQuery = "SELECT * FROM tbl_Customers";
                 SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
                 DataSet DS = new DataSet();
                 DA.Fill(DS);
@@ -81,6 +81,11 @@ namespace Barroc_IT
                     txtPostalCode1.Text = DR["POSTALCODE1"].ToString();
                 }
             }
+        }
+
+        private void btnViewProjects_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 3;
         }
     }
 }
