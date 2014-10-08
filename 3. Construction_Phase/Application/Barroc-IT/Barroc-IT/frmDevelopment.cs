@@ -200,8 +200,35 @@ namespace Barroc_IT
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
                 //LoadAppointmentDetails();
                 LoadProjectDetails();
+                btnSubmitProject.Hide();
                 tbContr.SelectedIndex = 4;
             }
+        }
+
+        private void btnEditProject_Click(object sender, EventArgs e)
+        {
+            txtProjectName.ReadOnly = false;
+            txtProjectDeadline.ReadOnly = false;
+            txtProjectSubject.ReadOnly = false;
+            txtProjectValue.ReadOnly = false;
+            btnSubmitProject.Show();
+        }
+
+        private void btnSubmitProject_Click(object sender, EventArgs e)
+        {
+            string sqlQuery = "UPDATE tbl_Projects SET NAME='" + txtProjectName.Text + "', DEADLINE='" + txtProjectDeadline.Text + "', SUBJECT='" + txtProjectSubject.Text + "', VALUE='" + txtProjectValue.Text + "' WHERE PROJECT_ID ='" + selectedProject + "'";
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+           
+
+            LoadProjectDetails();
+            tbContr.SelectedIndex = 4;
+            
+            
+
+
         }
     }
 }
