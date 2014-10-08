@@ -134,5 +134,10 @@ namespace Barroc_IT
                 }
             }
         }
+
+        private void btnAddProject_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 5;
+        }
     }
 }
