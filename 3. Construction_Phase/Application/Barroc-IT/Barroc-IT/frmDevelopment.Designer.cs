@@ -31,18 +31,18 @@
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblSalesPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
-            this.btnDevSelectCustomer = new System.Windows.Forms.Button();
+            this.btnSelectCustomer = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnSalesHome = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pViewCustomer = new System.Windows.Forms.Panel();
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblHome = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cBoxSearch = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cBoxCustomerSearch = new System.Windows.Forms.ComboBox();
+            this.btnCustomerSearch = new System.Windows.Forms.Button();
+            this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.DGVUserInfo = new System.Windows.Forms.DataGridView();
             this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,10 +60,10 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnViewProjects = new System.Windows.Forms.Button();
+            this.btnEditFields = new System.Windows.Forms.Button();
+            this.txtContactPerson = new System.Windows.Forms.TextBox();
+            this.lblContactperson = new System.Windows.Forms.Label();
             this.lblSoftware = new System.Windows.Forms.Label();
             this.lblAppointments = new System.Windows.Forms.Label();
             this.lblInternalContact = new System.Windows.Forms.Label();
@@ -91,14 +91,27 @@
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
             this.lblCustomer = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.cBoxProjectSearch = new System.Windows.Forms.ComboBox();
+            this.btnProjectSearch = new System.Windows.Forms.Button();
+            this.txtProjectSearch = new System.Windows.Forms.TextBox();
+            this.dgvProjects = new System.Windows.Forms.DataGridView();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblProjects = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pViewCustomer.SuspendLayout();
             this.tbContr.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVUserInfo)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
             this.SuspendLayout();
             // 
             // pWelcome
@@ -125,7 +138,7 @@
             // pButtons
             // 
             this.pButtons.BackColor = System.Drawing.SystemColors.Control;
-            this.pButtons.Controls.Add(this.btnDevSelectCustomer);
+            this.pButtons.Controls.Add(this.btnSelectCustomer);
             this.pButtons.Controls.Add(this.btnLogout);
             this.pButtons.Controls.Add(this.btnSalesHome);
             this.pButtons.Location = new System.Drawing.Point(0, 118);
@@ -133,16 +146,16 @@
             this.pButtons.Size = new System.Drawing.Size(223, 612);
             this.pButtons.TabIndex = 1;
             // 
-            // btnDevSelectCustomer
+            // btnSelectCustomer
             // 
-            this.btnDevSelectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDevSelectCustomer.Location = new System.Drawing.Point(24, 110);
-            this.btnDevSelectCustomer.Name = "btnDevSelectCustomer";
-            this.btnDevSelectCustomer.Size = new System.Drawing.Size(165, 43);
-            this.btnDevSelectCustomer.TabIndex = 5;
-            this.btnDevSelectCustomer.Text = "Select Customer";
-            this.btnDevSelectCustomer.UseVisualStyleBackColor = true;
-            this.btnDevSelectCustomer.Click += new System.EventHandler(this.btnDevSelectCustomer_Click);
+            this.btnSelectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectCustomer.Location = new System.Drawing.Point(24, 110);
+            this.btnSelectCustomer.Name = "btnSelectCustomer";
+            this.btnSelectCustomer.Size = new System.Drawing.Size(165, 43);
+            this.btnSelectCustomer.TabIndex = 5;
+            this.btnSelectCustomer.Text = "Select Customer";
+            this.btnSelectCustomer.UseVisualStyleBackColor = true;
+            this.btnSelectCustomer.Click += new System.EventHandler(this.btnDevSelectCustomer_Click);
             // 
             // btnLogout
             // 
@@ -164,19 +177,20 @@
             this.btnSalesHome.Text = "Home";
             this.btnSalesHome.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // pViewCustomer
             // 
-            this.panel1.Controls.Add(this.tbContr);
-            this.panel1.Location = new System.Drawing.Point(229, 118);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(779, 612);
-            this.panel1.TabIndex = 2;
+            this.pViewCustomer.Controls.Add(this.tbContr);
+            this.pViewCustomer.Location = new System.Drawing.Point(229, 118);
+            this.pViewCustomer.Name = "pViewCustomer";
+            this.pViewCustomer.Size = new System.Drawing.Size(779, 612);
+            this.pViewCustomer.TabIndex = 2;
             // 
             // tbContr
             // 
             this.tbContr.Controls.Add(this.tabPage1);
             this.tbContr.Controls.Add(this.tabPage2);
             this.tbContr.Controls.Add(this.tabPage3);
+            this.tbContr.Controls.Add(this.tabPage4);
             this.tbContr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbContr.Location = new System.Drawing.Point(0, 0);
             this.tbContr.Name = "tbContr";
@@ -219,9 +233,9 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.cBoxSearch);
-            this.tabPage2.Controls.Add(this.btnSearch);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.cBoxCustomerSearch);
+            this.tabPage2.Controls.Add(this.btnCustomerSearch);
+            this.tabPage2.Controls.Add(this.txtCustomerSearch);
             this.tabPage2.Controls.Add(this.DGVUserInfo);
             this.tabPage2.Controls.Add(this.lblCustomers);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -230,35 +244,35 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
-            // cBoxSearch
+            // cBoxCustomerSearch
             // 
-            this.cBoxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxSearch.FormattingEnabled = true;
-            this.cBoxSearch.Items.AddRange(new object[] {
+            this.cBoxCustomerSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxCustomerSearch.FormattingEnabled = true;
+            this.cBoxCustomerSearch.Items.AddRange(new object[] {
             "Company Name",
             "E-Mail",
             "Initials"});
-            this.cBoxSearch.Location = new System.Drawing.Point(438, 11);
-            this.cBoxSearch.Name = "cBoxSearch";
-            this.cBoxSearch.Size = new System.Drawing.Size(121, 21);
-            this.cBoxSearch.Sorted = true;
-            this.cBoxSearch.TabIndex = 26;
+            this.cBoxCustomerSearch.Location = new System.Drawing.Point(438, 11);
+            this.cBoxCustomerSearch.Name = "cBoxCustomerSearch";
+            this.cBoxCustomerSearch.Size = new System.Drawing.Size(121, 21);
+            this.cBoxCustomerSearch.Sorted = true;
+            this.cBoxCustomerSearch.TabIndex = 26;
             // 
-            // btnSearch
+            // btnCustomerSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(688, 10);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 25;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnCustomerSearch.Location = new System.Drawing.Point(688, 10);
+            this.btnCustomerSearch.Name = "btnCustomerSearch";
+            this.btnCustomerSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnCustomerSearch.TabIndex = 25;
+            this.btnCustomerSearch.Text = "Search";
+            this.btnCustomerSearch.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtCustomerSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(565, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(119, 20);
-            this.textBox1.TabIndex = 24;
+            this.txtCustomerSearch.Location = new System.Drawing.Point(565, 12);
+            this.txtCustomerSearch.Name = "txtCustomerSearch";
+            this.txtCustomerSearch.Size = new System.Drawing.Size(119, 20);
+            this.txtCustomerSearch.TabIndex = 24;
             // 
             // DGVUserInfo
             // 
@@ -281,7 +295,9 @@
             this.cEmail});
             this.DGVUserInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DGVUserInfo.Location = new System.Drawing.Point(0, 23);
+            this.DGVUserInfo.MultiSelect = false;
             this.DGVUserInfo.Name = "DGVUserInfo";
+            this.DGVUserInfo.RowHeadersVisible = false;
             this.DGVUserInfo.Size = new System.Drawing.Size(771, 563);
             this.DGVUserInfo.TabIndex = 23;
             this.DGVUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVUserInfo_CellContentClick);
@@ -369,10 +385,10 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.btnEdit);
-            this.tabPage3.Controls.Add(this.textBox2);
-            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.btnViewProjects);
+            this.tabPage3.Controls.Add(this.btnEditFields);
+            this.tabPage3.Controls.Add(this.txtContactPerson);
+            this.tabPage3.Controls.Add(this.lblContactperson);
             this.tabPage3.Controls.Add(this.lblSoftware);
             this.tabPage3.Controls.Add(this.lblAppointments);
             this.tabPage3.Controls.Add(this.lblInternalContact);
@@ -407,44 +423,45 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
-            // button1
+            // btnViewProjects
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(203, 510);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 43);
-            this.button1.TabIndex = 126;
-            this.button1.Text = "View Projects";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnViewProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewProjects.Location = new System.Drawing.Point(203, 510);
+            this.btnViewProjects.Name = "btnViewProjects";
+            this.btnViewProjects.Size = new System.Drawing.Size(165, 43);
+            this.btnViewProjects.TabIndex = 126;
+            this.btnViewProjects.Text = "View Projects";
+            this.btnViewProjects.UseVisualStyleBackColor = true;
+            this.btnViewProjects.Click += new System.EventHandler(this.btnViewProjects_Click);
             // 
-            // btnEdit
+            // btnEditFields
             // 
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(32, 510);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(165, 43);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Edit Fields";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEditFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditFields.Location = new System.Drawing.Point(32, 510);
+            this.btnEditFields.Name = "btnEditFields";
+            this.btnEditFields.Size = new System.Drawing.Size(165, 43);
+            this.btnEditFields.TabIndex = 6;
+            this.btnEditFields.Text = "Edit Fields";
+            this.btnEditFields.UseVisualStyleBackColor = true;
+            this.btnEditFields.Click += new System.EventHandler(this.btnEditFields_Click);
             // 
-            // textBox2
+            // txtContactPerson
             // 
-            this.textBox2.Location = new System.Drawing.Point(226, 227);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(137, 20);
-            this.textBox2.TabIndex = 125;
+            this.txtContactPerson.Location = new System.Drawing.Point(226, 227);
+            this.txtContactPerson.Name = "txtContactPerson";
+            this.txtContactPerson.ReadOnly = true;
+            this.txtContactPerson.Size = new System.Drawing.Size(137, 20);
+            this.txtContactPerson.TabIndex = 125;
             // 
-            // label7
+            // lblContactperson
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(51, 221);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 25);
-            this.label7.TabIndex = 124;
-            this.label7.Text = "Contactperson:";
+            this.lblContactperson.AutoSize = true;
+            this.lblContactperson.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContactperson.Location = new System.Drawing.Point(51, 221);
+            this.lblContactperson.Name = "lblContactperson";
+            this.lblContactperson.Size = new System.Drawing.Size(146, 25);
+            this.lblContactperson.TabIndex = 124;
+            this.lblContactperson.Text = "Contactperson:";
             // 
             // lblSoftware
             // 
@@ -666,7 +683,7 @@
             // 
             this.lblCompanyName.AutoSize = true;
             this.lblCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompanyName.Location = new System.Drawing.Point(51, 42);
+            this.lblCompanyName.Location = new System.Drawing.Point(51, 43);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Size = new System.Drawing.Size(160, 25);
             this.lblCompanyName.TabIndex = 76;
@@ -690,13 +707,109 @@
             this.lblCustomer.TabIndex = 23;
             this.lblCustomer.Text = "Customer";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.cBoxProjectSearch);
+            this.tabPage4.Controls.Add(this.btnProjectSearch);
+            this.tabPage4.Controls.Add(this.txtProjectSearch);
+            this.tabPage4.Controls.Add(this.dgvProjects);
+            this.tabPage4.Controls.Add(this.lblProjects);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(771, 586);
+            this.tabPage4.TabIndex = 4;
+            this.tabPage4.Text = "tabPage4";
+            // 
+            // cBoxProjectSearch
+            // 
+            this.cBoxProjectSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxProjectSearch.FormattingEnabled = true;
+            this.cBoxProjectSearch.Items.AddRange(new object[] {
+            "Company Name",
+            "E-Mail",
+            "Initials"});
+            this.cBoxProjectSearch.Location = new System.Drawing.Point(438, 11);
+            this.cBoxProjectSearch.Name = "cBoxProjectSearch";
+            this.cBoxProjectSearch.Size = new System.Drawing.Size(121, 21);
+            this.cBoxProjectSearch.Sorted = true;
+            this.cBoxProjectSearch.TabIndex = 26;
+            // 
+            // btnProjectSearch
+            // 
+            this.btnProjectSearch.Location = new System.Drawing.Point(688, 10);
+            this.btnProjectSearch.Name = "btnProjectSearch";
+            this.btnProjectSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnProjectSearch.TabIndex = 25;
+            this.btnProjectSearch.Text = "Search";
+            this.btnProjectSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtProjectSearch
+            // 
+            this.txtProjectSearch.Location = new System.Drawing.Point(565, 12);
+            this.txtProjectSearch.Name = "txtProjectSearch";
+            this.txtProjectSearch.Size = new System.Drawing.Size(119, 20);
+            this.txtProjectSearch.TabIndex = 24;
+            // 
+            // dgvProjects
+            // 
+            this.dgvProjects.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewButtonColumn1,
+            this.cProjectName,
+            this.cProjectDeadline,
+            this.cProjectSubject,
+            this.cProjectValue});
+            this.dgvProjects.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvProjects.Location = new System.Drawing.Point(0, 23);
+            this.dgvProjects.Name = "dgvProjects";
+            this.dgvProjects.RowHeadersVisible = false;
+            this.dgvProjects.Size = new System.Drawing.Size(771, 563);
+            this.dgvProjects.TabIndex = 23;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "View";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            // 
+            // cProjectName
+            // 
+            this.cProjectName.HeaderText = "Project Name";
+            this.cProjectName.Name = "cProjectName";
+            // 
+            // cProjectDeadline
+            // 
+            this.cProjectDeadline.HeaderText = "Deadline";
+            this.cProjectDeadline.Name = "cProjectDeadline";
+            // 
+            // cProjectSubject
+            // 
+            this.cProjectSubject.HeaderText = "Subject";
+            this.cProjectSubject.Name = "cProjectSubject";
+            // 
+            // cProjectValue
+            // 
+            this.cProjectValue.HeaderText = "Value";
+            this.cProjectValue.Name = "cProjectValue";
+            // 
+            // lblProjects
+            // 
+            this.lblProjects.AutoSize = true;
+            this.lblProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjects.Location = new System.Drawing.Point(3, 1);
+            this.lblProjects.Name = "lblProjects";
+            this.lblProjects.Size = new System.Drawing.Size(121, 31);
+            this.lblProjects.TabIndex = 22;
+            this.lblProjects.Text = "Projects";
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1008, 730);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pViewCustomer);
             this.Controls.Add(this.pButtons);
             this.Controls.Add(this.pWelcome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -707,7 +820,7 @@
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();
             this.pButtons.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.pViewCustomer.ResumeLayout(false);
             this.tbContr.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -716,6 +829,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGVUserInfo)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -727,16 +843,16 @@
         private System.Windows.Forms.Panel pButtons;
         private System.Windows.Forms.Button btnSalesHome;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pViewCustomer;
         private TablessControl tbContr;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label lblHome;
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.Button btnDevSelectCustomer;
+        private System.Windows.Forms.Button btnSelectCustomer;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ComboBox cBoxSearch;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cBoxCustomerSearch;
+        private System.Windows.Forms.Button btnCustomerSearch;
+        private System.Windows.Forms.TextBox txtCustomerSearch;
         private System.Windows.Forms.DataGridView DGVUserInfo;
         private System.Windows.Forms.Label lblCustomers;
         private System.Windows.Forms.TabPage tabPage3;
@@ -761,8 +877,8 @@
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.TextBox txtCompanyName;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtContactPerson;
+        private System.Windows.Forms.Label lblContactperson;
         private System.Windows.Forms.Label lblSoftware;
         private System.Windows.Forms.Label lblAppointments;
         private System.Windows.Forms.Label lblInternalContact;
@@ -783,7 +899,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnViewProjects;
+        private System.Windows.Forms.Button btnEditFields;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.ComboBox cBoxProjectSearch;
+        private System.Windows.Forms.Button btnProjectSearch;
+        private System.Windows.Forms.TextBox txtProjectSearch;
+        private System.Windows.Forms.DataGridView dgvProjects;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
+        private System.Windows.Forms.Label lblProjects;
     }
 }
