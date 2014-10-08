@@ -284,6 +284,7 @@
             this.DGVUserInfo.Name = "DGVUserInfo";
             this.DGVUserInfo.Size = new System.Drawing.Size(771, 563);
             this.DGVUserInfo.TabIndex = 23;
+            this.DGVUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVUserInfo_CellContentClick);
             // 
             // cViewButton
             // 
