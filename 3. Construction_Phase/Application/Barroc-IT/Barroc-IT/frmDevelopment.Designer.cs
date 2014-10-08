@@ -102,6 +102,20 @@
             this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblProjects = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.txtProjectSubject = new System.Windows.Forms.TextBox();
+            this.lblProjectSubject = new System.Windows.Forms.Label();
+            this.txtProjectValue = new System.Windows.Forms.TextBox();
+            this.lblProjectValue = new System.Windows.Forms.Label();
+            this.txtProjectDeadline = new System.Windows.Forms.TextBox();
+            this.lblProjectDeadline = new System.Windows.Forms.Label();
+            this.btnArchiveProject = new System.Windows.Forms.Button();
+            this.btnEditProject = new System.Windows.Forms.Button();
+            this.lblProjectName = new System.Windows.Forms.Label();
+            this.txtProjectName = new System.Windows.Forms.TextBox();
+            this.lblProject = new System.Windows.Forms.Label();
+            this.lblProjectCompanyName = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -112,6 +126,7 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // pWelcome
@@ -191,6 +206,7 @@
             this.tbContr.Controls.Add(this.tabPage2);
             this.tbContr.Controls.Add(this.tabPage3);
             this.tbContr.Controls.Add(this.tabPage4);
+            this.tbContr.Controls.Add(this.tabPage5);
             this.tbContr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbContr.Location = new System.Drawing.Point(0, 0);
             this.tbContr.Name = "tbContr";
@@ -208,7 +224,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(771, 586);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "startDev";
             // 
             // lblHome
             // 
@@ -242,7 +258,7 @@
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(771, 586);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "listCustomers";
             // 
             // cBoxCustomerSearch
             // 
@@ -423,7 +439,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(771, 586);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "selectedCustomer";
             // 
             // btnViewProjects
             // 
@@ -721,7 +737,7 @@
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(771, 586);
             this.tabPage4.TabIndex = 4;
-            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.Text = "listProjects";
             // 
             // cBoxProjectSearch
             // 
@@ -805,6 +821,149 @@
             this.lblProjects.TabIndex = 22;
             this.lblProjects.Text = "Projects";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.textBox1);
+            this.tabPage5.Controls.Add(this.lblProjectCompanyName);
+            this.tabPage5.Controls.Add(this.txtProjectSubject);
+            this.tabPage5.Controls.Add(this.lblProjectSubject);
+            this.tabPage5.Controls.Add(this.txtProjectValue);
+            this.tabPage5.Controls.Add(this.lblProjectValue);
+            this.tabPage5.Controls.Add(this.txtProjectDeadline);
+            this.tabPage5.Controls.Add(this.lblProjectDeadline);
+            this.tabPage5.Controls.Add(this.btnArchiveProject);
+            this.tabPage5.Controls.Add(this.btnEditProject);
+            this.tabPage5.Controls.Add(this.lblProjectName);
+            this.tabPage5.Controls.Add(this.txtProjectName);
+            this.tabPage5.Controls.Add(this.lblProject);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(771, 586);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "selectedproject";
+            // 
+            // txtProjectSubject
+            // 
+            this.txtProjectSubject.Location = new System.Drawing.Point(217, 133);
+            this.txtProjectSubject.Name = "txtProjectSubject";
+            this.txtProjectSubject.ReadOnly = true;
+            this.txtProjectSubject.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectSubject.TabIndex = 134;
+            // 
+            // lblProjectSubject
+            // 
+            this.lblProjectSubject.AutoSize = true;
+            this.lblProjectSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectSubject.Location = new System.Drawing.Point(51, 128);
+            this.lblProjectSubject.Name = "lblProjectSubject";
+            this.lblProjectSubject.Size = new System.Drawing.Size(84, 25);
+            this.lblProjectSubject.TabIndex = 133;
+            this.lblProjectSubject.Text = "Subject:";
+            // 
+            // txtProjectValue
+            // 
+            this.txtProjectValue.Location = new System.Drawing.Point(217, 163);
+            this.txtProjectValue.Name = "txtProjectValue";
+            this.txtProjectValue.ReadOnly = true;
+            this.txtProjectValue.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectValue.TabIndex = 132;
+            // 
+            // lblProjectValue
+            // 
+            this.lblProjectValue.AutoSize = true;
+            this.lblProjectValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectValue.Location = new System.Drawing.Point(51, 158);
+            this.lblProjectValue.Name = "lblProjectValue";
+            this.lblProjectValue.Size = new System.Drawing.Size(69, 25);
+            this.lblProjectValue.TabIndex = 131;
+            this.lblProjectValue.Text = "Value:";
+            // 
+            // txtProjectDeadline
+            // 
+            this.txtProjectDeadline.Location = new System.Drawing.Point(217, 103);
+            this.txtProjectDeadline.Name = "txtProjectDeadline";
+            this.txtProjectDeadline.ReadOnly = true;
+            this.txtProjectDeadline.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectDeadline.TabIndex = 128;
+            // 
+            // lblProjectDeadline
+            // 
+            this.lblProjectDeadline.AutoSize = true;
+            this.lblProjectDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectDeadline.Location = new System.Drawing.Point(51, 97);
+            this.lblProjectDeadline.Name = "lblProjectDeadline";
+            this.lblProjectDeadline.Size = new System.Drawing.Size(95, 25);
+            this.lblProjectDeadline.TabIndex = 127;
+            this.lblProjectDeadline.Text = "Deadline:";
+            // 
+            // btnArchiveProject
+            // 
+            this.btnArchiveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArchiveProject.Location = new System.Drawing.Point(203, 510);
+            this.btnArchiveProject.Name = "btnArchiveProject";
+            this.btnArchiveProject.Size = new System.Drawing.Size(165, 43);
+            this.btnArchiveProject.TabIndex = 126;
+            this.btnArchiveProject.Text = "Delete Project";
+            this.btnArchiveProject.UseVisualStyleBackColor = true;
+            // 
+            // btnEditProject
+            // 
+            this.btnEditProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditProject.Location = new System.Drawing.Point(32, 510);
+            this.btnEditProject.Name = "btnEditProject";
+            this.btnEditProject.Size = new System.Drawing.Size(165, 43);
+            this.btnEditProject.TabIndex = 6;
+            this.btnEditProject.Text = "Edit Fields";
+            this.btnEditProject.UseVisualStyleBackColor = true;
+            // 
+            // lblProjectName
+            // 
+            this.lblProjectName.AutoSize = true;
+            this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectName.Location = new System.Drawing.Point(51, 67);
+            this.lblProjectName.Name = "lblProjectName";
+            this.lblProjectName.Size = new System.Drawing.Size(70, 25);
+            this.lblProjectName.TabIndex = 76;
+            this.lblProjectName.Text = "Name:";
+            // 
+            // txtProjectName
+            // 
+            this.txtProjectName.Location = new System.Drawing.Point(217, 43);
+            this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.ReadOnly = true;
+            this.txtProjectName.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectName.TabIndex = 75;
+            // 
+            // lblProject
+            // 
+            this.lblProject.AutoSize = true;
+            this.lblProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProject.Location = new System.Drawing.Point(315, 3);
+            this.lblProject.Name = "lblProject";
+            this.lblProject.Size = new System.Drawing.Size(106, 31);
+            this.lblProject.TabIndex = 23;
+            this.lblProject.Text = "Project";
+            // 
+            // lblProjectCompanyName
+            // 
+            this.lblProjectCompanyName.AutoSize = true;
+            this.lblProjectCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectCompanyName.Location = new System.Drawing.Point(51, 37);
+            this.lblProjectCompanyName.Name = "lblProjectCompanyName";
+            this.lblProjectCompanyName.Size = new System.Drawing.Size(160, 25);
+            this.lblProjectCompanyName.TabIndex = 135;
+            this.lblProjectCompanyName.Text = "Company Name:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(217, 73);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(137, 20);
+            this.textBox1.TabIndex = 136;
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -834,6 +993,8 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -914,5 +1075,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.Label lblProjects;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button btnArchiveProject;
+        private System.Windows.Forms.Button btnEditProject;
+        private System.Windows.Forms.Label lblProjectName;
+        private System.Windows.Forms.TextBox txtProjectName;
+        private System.Windows.Forms.Label lblProject;
+        private System.Windows.Forms.TextBox txtProjectSubject;
+        private System.Windows.Forms.Label lblProjectSubject;
+        private System.Windows.Forms.TextBox txtProjectValue;
+        private System.Windows.Forms.Label lblProjectValue;
+        private System.Windows.Forms.TextBox txtProjectDeadline;
+        private System.Windows.Forms.Label lblProjectDeadline;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblProjectCompanyName;
     }
 }
