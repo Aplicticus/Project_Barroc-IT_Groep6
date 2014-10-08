@@ -87,7 +87,7 @@ namespace Barroc_IT
             txtSoftware.Text = DRCus["SOFTWARE"].ToString();
         }
 
-        private void LoadAppointmentDetails()
+       /* private void LoadAppointmentDetails()
         {
             string sqlQueryApo = "SELECT * FROM tbl_Appointments";
 
@@ -99,9 +99,9 @@ namespace Barroc_IT
 
             txtAppointments.Text = DRApo["APPOIN_DATE"].ToString();
             txtInternalContact.Text = DRApo["INT_CONTACT"].ToString();
-        }
+        }*/
 
-        private void LoadProjectDetails()
+       /* private void LoadProjectDetails()
         {
             string sqlQuery = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID='" + selectedCustomer + "'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
@@ -113,7 +113,7 @@ namespace Barroc_IT
             {
                 DGVUserInfo.Rows.Add(dr.ItemArray);
             }            
-        }       
+        } */      
         
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -121,8 +121,8 @@ namespace Barroc_IT
             {
                 selectedCustomer = int.Parse(DGVUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
                 LoadCustomerDetails();
-                LoadAppointmentDetails();
-                LoadProjectDetails();
+                //LoadAppointmentDetails();
+                //LoadProjectDetails();
 
                 tbContr.SelectedIndex = 2;
             }
@@ -130,7 +130,7 @@ namespace Barroc_IT
 
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
-            LoadProjectDetails();
+            //LoadProjectDetails();
             tbContr.SelectedIndex = 3;
         }
 
