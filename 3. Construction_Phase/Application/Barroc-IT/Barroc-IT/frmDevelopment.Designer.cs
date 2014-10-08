@@ -44,20 +44,6 @@
             this.btnCustomerSearch = new System.Windows.Forms.Button();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.DGVUserInfo = new System.Windows.Forms.DataGridView();
-            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnAddProject = new System.Windows.Forms.Button();
@@ -97,6 +83,11 @@
             this.btnProjectSearch = new System.Windows.Forms.Button();
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblProjects = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -126,11 +117,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cViewButtonProject = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -337,76 +337,6 @@
             this.DGVUserInfo.Size = new System.Drawing.Size(771, 563);
             this.DGVUserInfo.TabIndex = 23;
             this.DGVUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVUserInfo_CellContentClick);
-            // 
-            // cViewButton
-            // 
-            this.cViewButton.HeaderText = "View";
-            this.cViewButton.Name = "cViewButton";
-            // 
-            // cCompanyName
-            // 
-            this.cCompanyName.HeaderText = "Company Name";
-            this.cCompanyName.Name = "cCompanyName";
-            // 
-            // cAddress1
-            // 
-            this.cAddress1.HeaderText = "Address 1";
-            this.cAddress1.Name = "cAddress1";
-            // 
-            // cPostalCode1
-            // 
-            this.cPostalCode1.HeaderText = "Postal Code 1";
-            this.cPostalCode1.Name = "cPostalCode1";
-            // 
-            // cResidence1
-            // 
-            this.cResidence1.HeaderText = "Residence 1";
-            this.cResidence1.Name = "cResidence1";
-            // 
-            // cAddress2
-            // 
-            this.cAddress2.HeaderText = "Address 2";
-            this.cAddress2.Name = "cAddress2";
-            // 
-            // cPostalCode2
-            // 
-            this.cPostalCode2.HeaderText = "Postal Code 2";
-            this.cPostalCode2.Name = "cPostalCode2";
-            // 
-            // cResidence2
-            // 
-            this.cResidence2.HeaderText = "Residence 2";
-            this.cResidence2.Name = "cResidence2";
-            // 
-            // cContactPerson
-            // 
-            this.cContactPerson.HeaderText = "Contactperson";
-            this.cContactPerson.Name = "cContactPerson";
-            // 
-            // cInitials
-            // 
-            this.cInitials.HeaderText = "Initials";
-            this.cInitials.Name = "cInitials";
-            // 
-            // cPhoneNumber1
-            // 
-            this.cPhoneNumber1.HeaderText = "Phone Number 1";
-            this.cPhoneNumber1.Name = "cPhoneNumber1";
-            // 
-            // cPhoneNumber2
-            // 
-            this.cPhoneNumber2.HeaderText = "Phone Number 2";
-            this.cPhoneNumber2.Name = "cPhoneNumber2";
-            // 
-            // cFaxNumber
-            // 
-            this.cFaxNumber.HeaderText = "Fax Number";
-            this.cFaxNumber.Name = "cFaxNumber";
-            // 
-            // cEmail
-            // 
-            this.cEmail.HeaderText = "E-Mail";
-            this.cEmail.Name = "cEmail";
             // 
             // lblCustomers
             // 
@@ -804,7 +734,7 @@
             this.dgvProjects.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cViewButtonProject,
+            this.dataGridViewButtonColumn1,
             this.cProjectName,
             this.cProjectDeadline,
             this.cProjectSubject,
@@ -815,6 +745,31 @@
             this.dgvProjects.RowHeadersVisible = false;
             this.dgvProjects.Size = new System.Drawing.Size(771, 563);
             this.dgvProjects.TabIndex = 23;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "View";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            // 
+            // cProjectName
+            // 
+            this.cProjectName.HeaderText = "Project Name";
+            this.cProjectName.Name = "cProjectName";
+            // 
+            // cProjectDeadline
+            // 
+            this.cProjectDeadline.HeaderText = "Deadline";
+            this.cProjectDeadline.Name = "cProjectDeadline";
+            // 
+            // cProjectSubject
+            // 
+            this.cProjectSubject.HeaderText = "Subject";
+            this.cProjectSubject.Name = "cProjectSubject";
+            // 
+            // cProjectValue
+            // 
+            this.cProjectValue.HeaderText = "Value";
+            this.cProjectValue.Name = "cProjectValue";
             // 
             // lblProjects
             // 
@@ -1001,11 +956,6 @@
             0,
             131072});
             this.numericUpDown1.Location = new System.Drawing.Point(369, 165);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            -1304428545,
-            434162106,
-            542,
-            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 138;
@@ -1120,30 +1070,75 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Project";
             // 
-            // cViewButtonProject
+            // cEmail
             // 
-            this.cViewButtonProject.HeaderText = "View";
-            this.cViewButtonProject.Name = "cViewButtonProject";
+            this.cEmail.HeaderText = "E-Mail";
+            this.cEmail.Name = "cEmail";
             // 
-            // cProjectName
+            // cFaxNumber
             // 
-            this.cProjectName.HeaderText = "Project Name";
-            this.cProjectName.Name = "cProjectName";
+            this.cFaxNumber.HeaderText = "Fax Number";
+            this.cFaxNumber.Name = "cFaxNumber";
             // 
-            // cProjectDeadline
+            // cPhoneNumber2
             // 
-            this.cProjectDeadline.HeaderText = "Deadline";
-            this.cProjectDeadline.Name = "cProjectDeadline";
+            this.cPhoneNumber2.HeaderText = "Phone Number 2";
+            this.cPhoneNumber2.Name = "cPhoneNumber2";
             // 
-            // cProjectSubject
+            // cPhoneNumber1
             // 
-            this.cProjectSubject.HeaderText = "Subject";
-            this.cProjectSubject.Name = "cProjectSubject";
+            this.cPhoneNumber1.HeaderText = "Phone Number 1";
+            this.cPhoneNumber1.Name = "cPhoneNumber1";
             // 
-            // cProjectValue
+            // cInitials
             // 
-            this.cProjectValue.HeaderText = "Value";
-            this.cProjectValue.Name = "cProjectValue";
+            this.cInitials.HeaderText = "Initials";
+            this.cInitials.Name = "cInitials";
+            // 
+            // cContactPerson
+            // 
+            this.cContactPerson.HeaderText = "Contactperson";
+            this.cContactPerson.Name = "cContactPerson";
+            // 
+            // cResidence2
+            // 
+            this.cResidence2.HeaderText = "Residence 2";
+            this.cResidence2.Name = "cResidence2";
+            // 
+            // cPostalCode2
+            // 
+            this.cPostalCode2.HeaderText = "Postal Code 2";
+            this.cPostalCode2.Name = "cPostalCode2";
+            // 
+            // cAddress2
+            // 
+            this.cAddress2.HeaderText = "Address 2";
+            this.cAddress2.Name = "cAddress2";
+            // 
+            // cResidence1
+            // 
+            this.cResidence1.HeaderText = "Residence 1";
+            this.cResidence1.Name = "cResidence1";
+            // 
+            // cPostalCode1
+            // 
+            this.cPostalCode1.HeaderText = "Postal Code 1";
+            this.cPostalCode1.Name = "cPostalCode1";
+            // 
+            // cAddress1
+            // 
+            this.cAddress1.HeaderText = "Address 1";
+            this.cAddress1.Name = "cAddress1";
+            // 
+            // cCompanyName
+            // 
+            this.cCompanyName.HeaderText = "Company Name";
+            this.cCompanyName.Name = "cCompanyName";
+            // 
+            // cViewButton
+            // 
+            this.cViewButton.HeaderText = "View";
+            this.cViewButton.Name = "cViewButton";
             // 
             // frmDevelopment
             // 
@@ -1232,20 +1227,6 @@
         private System.Windows.Forms.Label lblHardware;
         private System.Windows.Forms.Label lblApplications;
         private System.Windows.Forms.Label lblOpenProject;
-        private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.Button btnViewProjects;
         private System.Windows.Forms.Button btnEditFields;
         private System.Windows.Forms.TabPage tabPage4;
@@ -1253,6 +1234,11 @@
         private System.Windows.Forms.Button btnProjectSearch;
         private System.Windows.Forms.TextBox txtProjectSearch;
         private System.Windows.Forms.DataGridView dgvProjects;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.Label lblProjects;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button btnArchiveProject;
@@ -1283,10 +1269,19 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DataGridViewButtonColumn cViewButtonProject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
+        private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
     }
 }
