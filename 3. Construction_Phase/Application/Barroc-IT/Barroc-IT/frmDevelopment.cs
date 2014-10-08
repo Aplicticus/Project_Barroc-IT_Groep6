@@ -8,6 +8,7 @@ namespace Barroc_IT
     public partial class frmDevelopment : Form
     {
         private DatabaseHandler handler;
+        private int selectedCustomer;
         public frmDevelopment(DatabaseHandler handler)
         {
             InitializeComponent();
@@ -20,9 +21,8 @@ namespace Barroc_IT
             tbContr.SelectedIndex = 1;
             DGVUserInfo.Rows.Clear();
             GetCustomerInfo(); 
-
-
         }
+
         private void GetCustomerInfo()
         {
             string sqlQuery = "SELECT * FROM tbl_Customers ";
@@ -65,36 +65,74 @@ namespace Barroc_IT
         }
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-
             if (e.ColumnIndex == DGVUserInfo.Columns["cViewButton"].Index)
             {
-                tbContr.SelectedIndex = 2;
-                string sqlQuery = "SELECT * FROM tbl_Customers";
+                selectedCustomer = int.Parse(DGVUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
+
+                string sqlQuery = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID='" + selectedCustomer + "'";
                 SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
                 DataSet DS = new DataSet();
                 DA.Fill(DS);
                 DataTable DT = DS.Tables[0];
 
-                foreach (DataRow DR in DT.Rows)
-                {
-                    
-                }
-                
+                DataRow DR = DT.Rows[0];
 
-                
-                //foreach (DataRow DR in DT.Rows)
-                //{
-                //    txtCompanyName.Text = DR["COMPANYNAME"].ToString();
-                //    txtAddress1.Text = DR["ADDRESS1"].ToString();
-                //    txtPostalCode1.Text = DR["POSTALCODE1"].ToString();
-                //}
+                txtCompanyName.Text = DR["COMPANYNAME"].ToString();
+                txtAddress1.Text = DR["ADDRESS1"].ToString();
+                txtPostalCode1.Text = DR["POSTALCODE1"].ToString();
+
+                tbContr.SelectedIndex = 2;
             }
         }
 
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
+            string sqlQuery = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID='" + selectedCustomer + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+
+            foreach (DataRow dr in DT.Rows)
+            {
+                DGVUserInfo.Rows.Add(dr.ItemArray);
+            }      
             tbContr.SelectedIndex = 3;
+
+
+        }
+
+        private void btnCustomerSearch_Click(object sender, EventArgs e)
+        {
+            if (txtCustomerSearch.Text.Length > 0)
+            {
+                if (cBoxCustomerSearch.SelectedItem.ToString() == "Company Name")
+                {
+                    string sqlQuery = "SELECT * FROM tbl_Customers WHERE COMPANYNAME='" + txtCustomerSearch.Text + "'";
+                    SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+                    DataSet DS = new DataSet();
+                    DA.Fill(DS);
+                    DataTable DT = DS.Tables[0];
+                    DGVUserInfo.Rows.Clear();
+                    foreach (DataRow dr in DT.Rows)
+                    {
+                        DGVUserInfo.Rows.Add(dr.ItemArray);
+                    }
+                }
+            }
+            else
+            {
+                string sqlQuery = "SELECT * FROM tbl_Customers";
+                SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+                DataSet DS = new DataSet();
+                DA.Fill(DS);
+                DataTable DT = DS.Tables[0];
+                DGVUserInfo.Rows.Clear();
+                foreach (DataRow dr in DT.Rows)
+                {
+                    DGVUserInfo.Rows.Add(dr.ItemArray);
+                }
+            }
         }
     }
 }
