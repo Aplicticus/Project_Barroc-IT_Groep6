@@ -65,7 +65,6 @@ namespace Barroc_IT
         }
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
 
             if (e.ColumnIndex == DGVUserInfo.Columns["cViewButton"].Index)
             {
@@ -78,17 +77,9 @@ namespace Barroc_IT
 
                 foreach (DataRow DR in DT.Rows)
                 {
+                                          
                     
                 }
-                
-
-                
-                //foreach (DataRow DR in DT.Rows)
-                //{
-                //    txtCompanyName.Text = DR["COMPANYNAME"].ToString();
-                //    txtAddress1.Text = DR["ADDRESS1"].ToString();
-                //    txtPostalCode1.Text = DR["POSTALCODE1"].ToString();
-                //}
             }
         }
 
