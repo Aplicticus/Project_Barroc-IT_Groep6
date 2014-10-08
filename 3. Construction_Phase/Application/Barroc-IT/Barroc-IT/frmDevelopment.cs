@@ -9,6 +9,7 @@ namespace Barroc_IT
     {
         private DatabaseHandler handler;
         private int selectedCustomer;
+        private int selectedProject;
         //private int selectedProject;
         public frmDevelopment(DatabaseHandler handler)
         {
@@ -118,16 +119,21 @@ namespace Barroc_IT
 
         private void LoadProjectDetails()
         {
-            string sqlQuery = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID='" + selectedCustomer + "'";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
+            string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + selectedProject + "'";
+            SqlDataAdapter DAPro = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
+            DataSet DSPro = new DataSet();
+            DAPro.Fill(DSPro);
+            DataTable DTPro = DSPro.Tables[0];
+            DataRow DRPro = DTPro.Rows[0];
 
-            foreach (DataRow dr in DT.Rows)
-            {
-                dgvUserInfo.Rows.Add(dr.ItemArray);
-            }            
+
+            txtProjectCustomerID.Text = DRPro["CUSTOMER_ID"].ToString();
+            txtProjectName.Text = DRPro["NAME"].ToString();
+            txtProjectDeadline.Text = DRPro["DEADLINE"].ToString();
+            txtProjectSubject.Text = DRPro["SUBJECT"].ToString();
+            txtProjectValue.Text = DRPro["VALUE"].ToString();
+
+                
         }     
         
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -136,8 +142,7 @@ namespace Barroc_IT
             {
                 selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
                 LoadCustomerDetails();
-                //LoadAppointmentDetails();
-                //LoadProjectDetails();
+                //LoadAppointmentDetails();                
 
                 tbContr.SelectedIndex = 2;
             }
@@ -190,8 +195,13 @@ namespace Barroc_IT
 
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //selectedProject = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
-            
+            if (e.ColumnIndex == dgvProjects.Columns["cProjectViewButton"].Index)
+            {
+                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
+                //LoadAppointmentDetails();
+                LoadProjectDetails();
+                tbContr.SelectedIndex = 4;
+            }
         }
     }
 }
