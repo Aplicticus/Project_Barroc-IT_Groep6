@@ -21,6 +21,7 @@ namespace Barroc_IT
             DGVUserInfo.Rows.Clear();
             GetCustomerInfo(); 
 
+
         }
         private void GetCustomerInfo()
         {
@@ -34,6 +35,14 @@ namespace Barroc_IT
             {
                 DGVUserInfo.Rows.Add(dr.ItemArray);
             }          
+        }
+        private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           if (e.ColumnIndex == DGVUserInfo.Columns["cViewButton"].Index && e.RowIndex >= 0)
+           {
+               tbContr.SelectedIndex = 2;
+           }
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
