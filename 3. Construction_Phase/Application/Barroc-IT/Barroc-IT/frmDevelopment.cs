@@ -61,38 +61,40 @@ namespace Barroc_IT
                 txtOpenProject.ReadOnly = false;
                 txtApplications.ReadOnly = false;
                 txtHardware.ReadOnly = false;
-                txtSoftware.ReadOnly = false;
-                txtAppointments.ReadOnly = false;
+                txtSoftware.ReadOnly = false;                
                 txtInternalContact.ReadOnly = false;
                 btnEditFields.Text = "Save Changes";
             }
             else if(btnEditFields.Text == "Save Changes")
             {
-                string sqlQuery = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software, WHERE CUSTOMER_ID=@SelectedCustomer";
-                string sqlQueryApo = "";
+                string sqlQuery = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@SelectedCustomer";
+                string sqlQueryApo = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact WHERE CUSTOMER_ID=@SelectedCustomer";
                 SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
                 SqlCommand cmdApo = new SqlCommand(sqlQueryApo, handler.GetConnection());
 
-                cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
-                cmd.Parameters.Add(new SqlParameter("Deadline", txtProjectDeadline.Text));
-                cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
-                cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
-                cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
-
+                cmd.Parameters.Add(new SqlParameter("MaintenanceContract", txtMaintenance.Text));
+                cmd.Parameters.Add(new SqlParameter("OpenProjects", txtOpenProject.Text));
+                cmd.Parameters.Add(new SqlParameter("Hardware", txtHardware.Text));
+                cmd.Parameters.Add(new SqlParameter("Software", txtSoftware.Text));
+                cmd.Parameters.Add(new SqlParameter("SelectedCustomer", selectedCustomer));
+                cmdApo.Parameters.Add(new SqlParameter("InternalContact", txtInternalContact.Text));
+                cmdApo.Parameters.Add(new SqlParameter("SelectedCustomer", selectedCustomer));
+                
                 cmd.Connection.Open();
+                
                 cmd.ExecuteNonQuery();
+                cmdApo.ExecuteNonQuery();
                 cmd.Connection.Close();
+               
 
 
                 txtMaintenance.ReadOnly = true;
                 txtOpenProject.ReadOnly = true;
                 txtApplications.ReadOnly = true;
                 txtHardware.ReadOnly = true;
-                txtSoftware.ReadOnly = true;
-                txtAppointments.ReadOnly = true;
+                txtSoftware.ReadOnly = true;                
                 txtInternalContact.ReadOnly = true;
-                btnEditFields.Text = "Edit Fields";
-                //Svae changes needs to be implemented
+                btnEditFields.Text = "Edit Fields";                
             }
         }
 
@@ -249,13 +251,12 @@ namespace Barroc_IT
             LoadProjectDetails();
             tbContr.SelectedIndex = 4;
 
-                 txtProjectName.ReadOnly = true;
-                 txtProjectDeadline.ReadOnly = true;
-                 txtProjectSubject.ReadOnly = true;
-                 txtProjectValue.ReadOnly = true;
-                 btnEditProject.Text = "Edit Fields";
-             }
+            txtProjectName.ReadOnly = true;                 
+            txtProjectSubject.ReadOnly = true;
+            txtProjectValue.ReadOnly = true;
+            btnEditProject.Text = "Edit Fields";
         }
+    }
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
