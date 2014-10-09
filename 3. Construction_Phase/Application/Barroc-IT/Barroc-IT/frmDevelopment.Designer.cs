@@ -105,6 +105,7 @@
             this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblProjects = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dtpDeadlineProject = new System.Windows.Forms.DateTimePicker();
             this.btnSubmitProject = new System.Windows.Forms.Button();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.lblProjectCompanyName = new System.Windows.Forms.Label();
@@ -112,7 +113,6 @@
             this.lblProjectSubject = new System.Windows.Forms.Label();
             this.txtProjectValue = new System.Windows.Forms.TextBox();
             this.lblProjectValue = new System.Windows.Forms.Label();
-            this.txtProjectDeadline = new System.Windows.Forms.TextBox();
             this.lblProjectDeadline = new System.Windows.Forms.Label();
             this.btnArchiveProject = new System.Windows.Forms.Button();
             this.btnEditProject = new System.Windows.Forms.Button();
@@ -863,6 +863,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.dtpDeadlineProject);
             this.tabPage5.Controls.Add(this.btnSubmitProject);
             this.tabPage5.Controls.Add(this.txtProjectName);
             this.tabPage5.Controls.Add(this.lblProjectCompanyName);
@@ -870,7 +871,6 @@
             this.tabPage5.Controls.Add(this.lblProjectSubject);
             this.tabPage5.Controls.Add(this.txtProjectValue);
             this.tabPage5.Controls.Add(this.lblProjectValue);
-            this.tabPage5.Controls.Add(this.txtProjectDeadline);
             this.tabPage5.Controls.Add(this.lblProjectDeadline);
             this.tabPage5.Controls.Add(this.btnArchiveProject);
             this.tabPage5.Controls.Add(this.btnEditProject);
@@ -883,6 +883,15 @@
             this.tabPage5.Size = new System.Drawing.Size(771, 586);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "selectedproject";
+            // 
+            // dtpDeadlineProject
+            // 
+            this.dtpDeadlineProject.Enabled = false;
+            this.dtpDeadlineProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDeadlineProject.Location = new System.Drawing.Point(217, 102);
+            this.dtpDeadlineProject.Name = "dtpDeadlineProject";
+            this.dtpDeadlineProject.Size = new System.Drawing.Size(137, 20);
+            this.dtpDeadlineProject.TabIndex = 138;
             // 
             // btnSubmitProject
             // 
@@ -948,14 +957,6 @@
             this.lblProjectValue.Size = new System.Drawing.Size(69, 25);
             this.lblProjectValue.TabIndex = 131;
             this.lblProjectValue.Text = "Value:";
-            // 
-            // txtProjectDeadline
-            // 
-            this.txtProjectDeadline.Location = new System.Drawing.Point(217, 103);
-            this.txtProjectDeadline.Name = "txtProjectDeadline";
-            this.txtProjectDeadline.ReadOnly = true;
-            this.txtProjectDeadline.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectDeadline.TabIndex = 128;
             // 
             // lblProjectDeadline
             // 
@@ -1047,24 +1048,25 @@
             0,
             0,
             131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(369, 165);
+            this.numericUpDown1.Location = new System.Drawing.Point(217, 163);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(137, 20);
             this.numericUpDown1.TabIndex = 138;
             this.numericUpDown1.ThousandsSeparator = true;
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(217, 102);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(272, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(137, 20);
             this.dateTimePicker1.TabIndex = 137;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(217, 73);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(272, 20);
+            this.textBox2.Size = new System.Drawing.Size(137, 20);
             this.textBox2.TabIndex = 136;
             // 
             // label1
@@ -1081,7 +1083,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(217, 133);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(272, 20);
+            this.textBox3.Size = new System.Drawing.Size(137, 20);
             this.textBox3.TabIndex = 134;
             // 
             // label2
@@ -1149,7 +1151,7 @@
             this.textBox6.Location = new System.Drawing.Point(217, 43);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(272, 20);
+            this.textBox6.Size = new System.Drawing.Size(137, 20);
             this.textBox6.TabIndex = 75;
             // 
             // label6
@@ -1267,7 +1269,6 @@
         private System.Windows.Forms.Label lblProjectSubject;
         private System.Windows.Forms.TextBox txtProjectValue;
         private System.Windows.Forms.Label lblProjectValue;
-        private System.Windows.Forms.TextBox txtProjectDeadline;
         private System.Windows.Forms.Label lblProjectDeadline;
         private System.Windows.Forms.TextBox txtProjectName;
         private System.Windows.Forms.Label lblProjectCompanyName;
@@ -1307,5 +1308,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.Button btnSubmitProject;
+        private System.Windows.Forms.DateTimePicker dtpDeadlineProject;
     }
 }

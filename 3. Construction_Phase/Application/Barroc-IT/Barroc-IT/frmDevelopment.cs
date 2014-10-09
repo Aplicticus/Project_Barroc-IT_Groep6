@@ -120,18 +120,20 @@ namespace Barroc_IT
         private void LoadProjectDetails()
         {
             string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + selectedProject + "'";
-            SqlDataAdapter DAPro = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
-            DataSet DSPro = new DataSet();
-            DAPro.Fill(DSPro);
-            DataTable DTPro = DSPro.Tables[0];
-            DataRow DRPro = DTPro.Rows[0];
+            SqlDataAdapter daProject = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
+            DataSet dsProject = new DataSet();
+            daProject.Fill(dsProject);
+            DataTable dtProject = dsProject.Tables[0];
+            DataRow drProject = dtProject.Rows[0];
 
+            DateTime projectDeadline = new DateTime();
+            projectDeadline = DateTime.Parse(drProject["DEADLINE"].ToString());
 
-            txtProjectCustomerID.Text = DRPro["CUSTOMER_ID"].ToString();
-            txtProjectName.Text = DRPro["NAME"].ToString();
-            txtProjectDeadline.Text = DRPro["DEADLINE"].ToString();
-            txtProjectSubject.Text = DRPro["SUBJECT"].ToString();
-            txtProjectValue.Text = DRPro["VALUE"].ToString();
+            txtProjectCustomerID.Text = drProject["CUSTOMER_ID"].ToString();
+            txtProjectName.Text = drProject["NAME"].ToString();
+            dtpDeadlineProject.Value = projectDeadline;
+            txtProjectSubject.Text = drProject["SUBJECT"].ToString();
+            txtProjectValue.Text = drProject["VALUE"].ToString();
 
                 
         }     
@@ -208,7 +210,7 @@ namespace Barroc_IT
         private void btnEditProject_Click(object sender, EventArgs e)
         {
             txtProjectName.ReadOnly = false;
-            txtProjectDeadline.ReadOnly = false;
+            dtpDeadlineProject.Enabled = true;
             txtProjectSubject.ReadOnly = false;
             txtProjectValue.ReadOnly = false;
 
@@ -221,7 +223,7 @@ namespace Barroc_IT
 
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
-            cmd.Parameters.Add(new SqlParameter("Deadline", txtProjectDeadline.Text));
+            cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineProject.Value.Date));
             cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
             cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
             cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
