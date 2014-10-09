@@ -142,6 +142,18 @@ namespace Barroc_IT
 
         private void LoadProjectDetails()
         {
+            string sqlQueryCus = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryCus, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+
+            foreach (DataRow dr in DT.Rows)
+            {
+                txtProjectCustomerID.Text = dr["COMPANYNAME"].ToString();
+            } 
+
+
             string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + selectedProject + "'";
             SqlDataAdapter daProject = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
             DataSet dsProject = new DataSet();
@@ -151,8 +163,6 @@ namespace Barroc_IT
 
             DateTime projectDeadline = new DateTime();
             projectDeadline = DateTime.Parse(drProject["DEADLINE"].ToString());
-
-            txtProjectCustomerID.Text = drProject["CUSTOMER_ID"].ToString();
             txtProjectName.Text = drProject["NAME"].ToString();
             dtpDeadlineViewProject.Value = projectDeadline;
             txtProjectSubject.Text = drProject["SUBJECT"].ToString();
@@ -223,7 +233,7 @@ namespace Barroc_IT
 
             foreach (DataRow dr in DT.Rows)
             {
-                txtProjectAddCompanyName.Text = dr[0].ToString();
+                txtProjectAddCompanyName.Text = dr["COMPANYNAME"].ToString();
             } 
             tbContr.SelectedIndex = 5;
         }
