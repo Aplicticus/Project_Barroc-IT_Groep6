@@ -15,48 +15,49 @@ namespace Barroc_IT
         {
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
-            this.handler = handler;           
+            this.handler = handler;
         }
 
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
             dgvUserInfo.Rows.Clear();
-            GetCustomers(); 
+            GetCustomers();
         }
 
         private void GetCustomers()
         {
             string sqlQuery = "SELECT * FROM tbl_Customers ";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-            DataSet DS = new DataSet();            
+            DataSet DS = new DataSet();
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
 
             foreach (DataRow dr in DT.Rows)
             {
                 dgvUserInfo.Rows.Add(dr.ItemArray);
-            }          
-        }       
+            }
+        }
 
         private void GetProjects()
         {
             string sqlQuery = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-            DataSet DS = new DataSet();            
+            DataSet DS = new DataSet();
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
 
             foreach (DataRow dr in DT.Rows)
             {
                 dgvProjects.Rows.Add(dr.ItemArray);
-            }          
+            }
         }
 
         private void btnEditFields_Click(object sender, EventArgs e)
         {
             if (btnEditFields.Text == "Edit Fields")
             {
+                //Change fields readonly so they can be edited
                 txtMaintenance.ReadOnly = false;
                 txtOpenProject.ReadOnly = false;
                 txtApplications.ReadOnly = false;
@@ -66,24 +67,31 @@ namespace Barroc_IT
                 txtInternalContact.ReadOnly = false;
                 btnEditFields.Text = "Save Changes";
             }
-            else if(btnEditFields.Text == "Save Changes")
+            else if (btnEditFields.Text == "Save Changes")
             {
+                //sqlQuerys
                 string sqlQuery = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software, WHERE CUSTOMER_ID=@SelectedCustomer";
                 string sqlQueryApo = "";
+
+                //Create sqlcommands
                 SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
                 SqlCommand cmdApo = new SqlCommand(sqlQueryApo, handler.GetConnection());
 
+                //Add parameters
                 cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
-                cmd.Parameters.Add(new SqlParameter("Deadline", txtProjectDeadline.Text));
+                cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineProject.Value.Date));
                 cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
                 cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
                 cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
 
-                cmd.Connection.Open();
+                /*Open connection to database
+                // Save changes to database
+                // Close connection tot databaes */
+                handler.OpenConnection();
                 cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
+                handler.CloseConnection();
 
-
+                //Set fields taht could be changed to readOnly
                 txtMaintenance.ReadOnly = true;
                 txtOpenProject.ReadOnly = true;
                 txtApplications.ReadOnly = true;
@@ -92,7 +100,6 @@ namespace Barroc_IT
                 txtAppointments.ReadOnly = true;
                 txtInternalContact.ReadOnly = true;
                 btnEditFields.Text = "Edit Fields";
-                //Svae changes needs to be implemented
             }
         }
 
@@ -119,19 +126,19 @@ namespace Barroc_IT
             txtSoftware.Text = DRCus["SOFTWARE"].ToString();
         }
 
-       /* private void LoadAppointmentDetails()
-        {
-            string sqlQueryApo = "SELECT * FROM tbl_Appointments";
+        /* private void LoadAppointmentDetails()
+         {
+             string sqlQueryApo = "SELECT * FROM tbl_Appointments";
 
-            SqlDataAdapter DAApo = new SqlDataAdapter(sqlQueryApo, handler.GetConnection());
-            DataSet DSApo = new DataSet();
-            DAApo.Fill(DSApo);
-            DataTable DTApo = DSApo.Tables[0];
-            DataRow DRApo = DTApo.Rows[0];
+             SqlDataAdapter DAApo = new SqlDataAdapter(sqlQueryApo, handler.GetConnection());
+             DataSet DSApo = new DataSet();
+             DAApo.Fill(DSApo);
+             DataTable DTApo = DSApo.Tables[0];
+             DataRow DRApo = DTApo.Rows[0];
 
-            txtAppointments.Text = DRApo["APPOIN_DATE"].ToString();
-            txtInternalContact.Text = DRApo["INT_CONTACT"].ToString();
-        }*/
+             txtAppointments.Text = DRApo["APPOIN_DATE"].ToString();
+             txtInternalContact.Text = DRApo["INT_CONTACT"].ToString();
+         }*/
 
         private void LoadProjectDetails()
         {
@@ -151,9 +158,9 @@ namespace Barroc_IT
             txtProjectSubject.Text = drProject["SUBJECT"].ToString();
             txtProjectValue.Text = drProject["VALUE"].ToString();
 
-                
-        }     
-        
+
+        }
+
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
@@ -167,7 +174,7 @@ namespace Barroc_IT
         }
 
         private void btnViewProjects_Click(object sender, EventArgs e)
-        {            
+        {
             tbContr.SelectedIndex = 3;
             dgvProjects.Rows.Clear();
             GetProjects();
@@ -224,37 +231,37 @@ namespace Barroc_IT
 
         private void btnEditProject_Click(object sender, EventArgs e)
         {
-             if (btnEditProject.Text == "Edit Fields")
+            if (btnEditProject.Text == "Edit Fields")
             {
-            txtProjectName.ReadOnly = false;
-            dtpDeadlineProject.Enabled = true;
-            txtProjectSubject.ReadOnly = false;
-            txtProjectValue.ReadOnly = false;
-                 btnEditProject.Text = "Save Changes";
-        }
-             else if (btnEditProject.Text == "Save Changes")
-        {
-            string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
-            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-            cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
-            cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineProject.Value.Date));
-            cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
-            cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
-            cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
+                txtProjectName.ReadOnly = false;
+                dtpDeadlineProject.Enabled = true;
+                txtProjectSubject.ReadOnly = false;
+                txtProjectValue.ReadOnly = false;
+                btnEditProject.Text = "Save Changes";
+            }
+            else if (btnEditProject.Text == "Save Changes")
+            {
+                string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
+                SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+                cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
+                cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineProject.Value.Date));
+                cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
+                cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
+                cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
 
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
-           
-            LoadProjectDetails();
-            tbContr.SelectedIndex = 4;
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
 
-                 txtProjectName.ReadOnly = true;
-                 txtProjectDeadline.ReadOnly = true;
-                 txtProjectSubject.ReadOnly = true;
-                 txtProjectValue.ReadOnly = true;
-                 btnEditProject.Text = "Edit Fields";
-             }
+                LoadProjectDetails();
+                tbContr.SelectedIndex = 4;
+
+                txtProjectName.ReadOnly = true;
+                dtpDeadlineProject.Enabled = false;
+                txtProjectSubject.ReadOnly = true;
+                txtProjectValue.ReadOnly = true;
+                btnEditProject.Text = "Edit Fields";
+            }
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
