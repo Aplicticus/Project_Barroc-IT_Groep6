@@ -9,8 +9,7 @@ namespace Barroc_IT
     {
         private DatabaseHandler handler;
         private int selectedCustomer;
-        private int selectedProject;
-        //private int selectedProject;
+        private int selectedProject;        
         public frmDevelopment(DatabaseHandler handler)
         {
             InitializeComponent();
@@ -67,6 +66,7 @@ namespace Barroc_IT
             }
             else if(btnEditFields.Text == "Save Changes")
             {
+                // Update from tables Customers and Appointments
                 string sqlQuery = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@SelectedCustomer";
                 string sqlQueryApo = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact WHERE CUSTOMER_ID=@SelectedCustomer";
                 SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
@@ -80,14 +80,13 @@ namespace Barroc_IT
                 cmdApo.Parameters.Add(new SqlParameter("InternalContact", txtInternalContact.Text));
                 cmdApo.Parameters.Add(new SqlParameter("SelectedCustomer", selectedCustomer));
                 
-                cmd.Connection.Open();
-                
+                cmd.Connection.Open();                
                 cmd.ExecuteNonQuery();
                 cmdApo.ExecuteNonQuery();
                 cmd.Connection.Close();
                
 
-
+                // Disable Textboxes
                 txtMaintenance.ReadOnly = true;
                 txtOpenProject.ReadOnly = true;
                 txtApplications.ReadOnly = true;
