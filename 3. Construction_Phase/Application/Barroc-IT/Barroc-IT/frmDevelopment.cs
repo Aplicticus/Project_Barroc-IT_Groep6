@@ -211,24 +211,27 @@ namespace Barroc_IT
             txtProjectDeadline.ReadOnly = false;
             txtProjectSubject.ReadOnly = false;
             txtProjectValue.ReadOnly = false;
+
             btnSubmitProject.Show();
         }
 
         private void btnSubmitProject_Click(object sender, EventArgs e)
         {
-            string sqlQuery = "UPDATE tbl_Projects SET NAME='" + txtProjectName.Text + "', DEADLINE='" + txtProjectDeadline.Text + "', SUBJECT='" + txtProjectSubject.Text + "', VALUE='" + txtProjectValue.Text + "' WHERE PROJECT_ID ='" + selectedProject + "'";
+            string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
+
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
+            cmd.Parameters.Add(new SqlParameter("Deadline", txtProjectDeadline.Text));
+            cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
+            cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
+            cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
+
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
            
-
             LoadProjectDetails();
             tbContr.SelectedIndex = 4;
-            
-            
-
-
         }
     }
 }
