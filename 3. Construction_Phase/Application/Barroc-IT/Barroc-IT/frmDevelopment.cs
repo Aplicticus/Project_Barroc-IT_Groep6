@@ -231,7 +231,7 @@ namespace Barroc_IT
             dtpDeadlineProject.Enabled = true;
             txtProjectSubject.ReadOnly = false;
             txtProjectValue.ReadOnly = false;
-                 btnEditProject.Text = "Save Changes";
+            btnEditProject.Text = "Save Changes";
         }
              else if (btnEditProject.Text == "Save Changes")
         {
