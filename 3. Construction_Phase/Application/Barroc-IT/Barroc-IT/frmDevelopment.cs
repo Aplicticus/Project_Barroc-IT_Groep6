@@ -215,6 +215,16 @@ namespace Barroc_IT
 
         private void btnAddProject_Click(object sender, EventArgs e)
         {
+            string sqlQueryCus = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryCus, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+
+            foreach (DataRow dr in DT.Rows)
+            {
+                txtProjectAddCompanyName.Text = dr[0].ToString();
+            } 
             tbContr.SelectedIndex = 5;
         }
 
@@ -231,16 +241,16 @@ namespace Barroc_IT
 
         private void btnEditProject_Click(object sender, EventArgs e)
         {
-             if (btnEditProject.Text == "Edit Fields")
+            if (btnEditProject.Text == "Edit Fields")
             {
             txtProjectName.ReadOnly = false;
             dtpDeadlineViewProject.Enabled = true;
             txtProjectSubject.ReadOnly = false;
             txtProjectValue.ReadOnly = false;
-                 btnEditProject.Text = "Save Changes";
+            btnEditProject.Text = "Save Changes";
         }
-             else if (btnEditProject.Text == "Save Changes")
-        {
+            else if (btnEditProject.Text == "Save Changes")
+            {
             string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
@@ -260,13 +270,29 @@ namespace Barroc_IT
             txtProjectSubject.ReadOnly = true;
             txtProjectValue.ReadOnly = true;
             btnEditProject.Text = "Edit Fields";
+            }
         }
-    }
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmLogin formLogin = new frmLogin();
             formLogin.Show();
+        }
+
+        private void btnProjectAdd_Click(object sender, EventArgs e)
+        {
+            string sqlQuery = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("@SelectedCustomer", selectedCustomer));
+            cmd.Parameters.Add(new SqlParameter("@Name", txtProjectAddName.Text));
+            cmd.Parameters.Add(new SqlParameter("@Deadline", dtProjectAddDeadline.Value));
+            cmd.Parameters.Add(new SqlParameter("@Subject", txtProjectAddSubject.Text));
+            cmd.Parameters.Add(new SqlParameter("@Value", nudProjectAddValue.Value));
+           
+            // Connection & Execute
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
     }
 }
