@@ -274,9 +274,9 @@ namespace Barroc_IT
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Hide();
             frmLogin formLogin = new frmLogin();
             formLogin.Show();
+            this.Close();
         }
 
         private void btnProjectAdd_Click(object sender, EventArgs e)
