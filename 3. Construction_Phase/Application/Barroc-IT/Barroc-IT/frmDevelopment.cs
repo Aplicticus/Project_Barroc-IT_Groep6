@@ -134,18 +134,20 @@ namespace Barroc_IT
         private void LoadProjectDetails()
         {
             string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + selectedProject + "'";
-            SqlDataAdapter DAPro = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
-            DataSet DSPro = new DataSet();
-            DAPro.Fill(DSPro);
-            DataTable DTPro = DSPro.Tables[0];
-            DataRow DRPro = DTPro.Rows[0];
+            SqlDataAdapter daProject = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
+            DataSet dsProject = new DataSet();
+            daProject.Fill(dsProject);
+            DataTable dtProject = dsProject.Tables[0];
+            DataRow drProject = dtProject.Rows[0];
 
+            DateTime projectDeadline = new DateTime();
+            projectDeadline = DateTime.Parse(drProject["DEADLINE"].ToString());
 
-            txtProjectCustomerID.Text = DRPro["CUSTOMER_ID"].ToString();
-            txtProjectName.Text = DRPro["NAME"].ToString();
-            txtProjectDeadline.Text = DRPro["DEADLINE"].ToString();
-            txtProjectSubject.Text = DRPro["SUBJECT"].ToString();
-            txtProjectValue.Text = DRPro["VALUE"].ToString();
+            txtProjectCustomerID.Text = drProject["CUSTOMER_ID"].ToString();
+            txtProjectName.Text = drProject["NAME"].ToString();
+            dtpDeadlineProject.Value = projectDeadline;
+            txtProjectSubject.Text = drProject["SUBJECT"].ToString();
+            txtProjectValue.Text = drProject["VALUE"].ToString();
 
                 
         }     
@@ -213,7 +215,7 @@ namespace Barroc_IT
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
                 //LoadAppointmentDetails();
-                LoadProjectDetails();                
+                LoadProjectDetails();
                 tbContr.SelectedIndex = 4;
             }
         }
@@ -222,28 +224,28 @@ namespace Barroc_IT
         {
              if (btnEditProject.Text == "Edit Fields")
             {
-                 txtProjectName.ReadOnly = false;
-                 txtProjectDeadline.ReadOnly = false;
-                 txtProjectSubject.ReadOnly = false;
-                 txtProjectValue.ReadOnly = false;
+            txtProjectName.ReadOnly = false;
+            dtpDeadlineProject.Enabled = true;
+            txtProjectSubject.ReadOnly = false;
+            txtProjectValue.ReadOnly = false;
                  btnEditProject.Text = "Save Changes";
-            }
+        }
              else if (btnEditProject.Text == "Save Changes")
-             {
-                 string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
-                 SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-                 cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
-                 cmd.Parameters.Add(new SqlParameter("Deadline", txtProjectDeadline.Text));
-                 cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
-                 cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
-                 cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
+        {
+            string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
+            cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineProject.Value.Date));
+            cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
+            cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
+            cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
 
-                 cmd.Connection.Open();
-                 cmd.ExecuteNonQuery();
-                 cmd.Connection.Close();
-
-                 LoadProjectDetails();
-                 tbContr.SelectedIndex = 4;
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+           
+            LoadProjectDetails();
+            tbContr.SelectedIndex = 4;
 
                  txtProjectName.ReadOnly = true;
                  txtProjectDeadline.ReadOnly = true;
