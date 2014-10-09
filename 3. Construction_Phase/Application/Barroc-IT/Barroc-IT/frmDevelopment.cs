@@ -57,6 +57,7 @@ namespace Barroc_IT
         {
             if (btnEditFields.Text == "Edit Fields")
             {
+                //Change fields readonly so they can be edited
                 txtMaintenance.ReadOnly = false;
                 txtOpenProject.ReadOnly = false;
                 txtApplications.ReadOnly = false;
@@ -67,11 +68,15 @@ namespace Barroc_IT
             }
             else if(btnEditFields.Text == "Save Changes")
             {
-                string sqlQuery = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@SelectedCustomer";
-                string sqlQueryApo = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact WHERE CUSTOMER_ID=@SelectedCustomer";
-                SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-                SqlCommand cmdApo = new SqlCommand(sqlQueryApo, handler.GetConnection());
+                //sqlQuerys
+                string sqlQueryCustomers = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@SelectedCustomer";
+                string sqlQueryAppointments = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact WHERE CUSTOMER_ID=@SelectedCustomer";
 
+                //Create sqlcommands
+                SqlCommand cmd = new SqlCommand(sqlQueryCustomers, handler.GetConnection());
+                SqlCommand cmdApo = new SqlCommand(sqlQueryAppointments, handler.GetConnection());
+
+                //Add parameters
                 cmd.Parameters.Add(new SqlParameter("MaintenanceContract", txtMaintenance.Text));
                 cmd.Parameters.Add(new SqlParameter("OpenProjects", txtOpenProject.Text));
                 cmd.Parameters.Add(new SqlParameter("Hardware", txtHardware.Text));
@@ -79,15 +84,16 @@ namespace Barroc_IT
                 cmd.Parameters.Add(new SqlParameter("SelectedCustomer", selectedCustomer));
                 cmdApo.Parameters.Add(new SqlParameter("InternalContact", txtInternalContact.Text));
                 cmdApo.Parameters.Add(new SqlParameter("SelectedCustomer", selectedCustomer));
-                
-                cmd.Connection.Open();
-                
+
+                /*Open connection to database
+                 * Execute querys
+                 * Close connection */
+                handler.OpenConnection();
                 cmd.ExecuteNonQuery();
                 cmdApo.ExecuteNonQuery();
-                cmd.Connection.Close();
-               
+                handler.CloseConnection();
 
-
+                //Set fields taht could be changed to readOnly
                 txtMaintenance.ReadOnly = true;
                 txtOpenProject.ReadOnly = true;
                 txtApplications.ReadOnly = true;
