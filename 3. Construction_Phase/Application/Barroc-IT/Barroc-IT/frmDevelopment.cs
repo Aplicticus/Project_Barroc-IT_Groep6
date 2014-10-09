@@ -39,17 +39,17 @@ namespace Barroc_IT
         }       
 
         private void GetProjects()
-        {
-            string sqlQuery = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+        {            
+            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
             DataSet DS = new DataSet();            
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
 
             foreach (DataRow dr in DT.Rows)
             {
-                dgvProjects.Rows.Add(dr.ItemArray);
-            }          
+                dgvProjects.Rows.Add(dr.ItemArray);                
+            }
         }
 
         private void btnEditFields_Click(object sender, EventArgs e)
