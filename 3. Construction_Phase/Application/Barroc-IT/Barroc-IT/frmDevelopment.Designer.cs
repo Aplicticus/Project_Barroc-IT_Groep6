@@ -105,7 +105,6 @@
             this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblProjects = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.dtpDeadlineProject = new System.Windows.Forms.DateTimePicker();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.lblProjectCompanyName = new System.Windows.Forms.Label();
             this.txtProjectSubject = new System.Windows.Forms.TextBox();
@@ -132,6 +131,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.dtpDeadlineViewProject = new System.Windows.Forms.DateTimePicker();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -863,6 +863,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.dtpDeadlineViewProject);
             this.tabPage5.Controls.Add(this.txtProjectName);
             this.tabPage5.Controls.Add(this.lblProjectCompanyName);
             this.tabPage5.Controls.Add(this.txtProjectSubject);
@@ -881,15 +882,6 @@
             this.tabPage5.Size = new System.Drawing.Size(771, 586);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "selectedproject";
-            // 
-            // dtpDeadlineProject
-            // 
-            this.dtpDeadlineProject.Enabled = false;
-            this.dtpDeadlineProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDeadlineProject.Location = new System.Drawing.Point(217, 102);
-            this.dtpDeadlineProject.Name = "dtpDeadlineProject";
-            this.dtpDeadlineProject.Size = new System.Drawing.Size(137, 20);
-            this.dtpDeadlineProject.TabIndex = 138;
             // 
             // txtProjectName
             // 
@@ -1151,6 +1143,15 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Project";
             // 
+            // dtpDeadlineViewProject
+            // 
+            this.dtpDeadlineViewProject.Enabled = false;
+            this.dtpDeadlineViewProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(221, 102);
+            this.dtpDeadlineViewProject.Name = "dtpDeadlineViewProject";
+            this.dtpDeadlineViewProject.Size = new System.Drawing.Size(133, 20);
+            this.dtpDeadlineViewProject.TabIndex = 137;
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1294,6 +1295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
-        private System.Windows.Forms.DateTimePicker dtpDeadlineProject;
+        private System.Windows.Forms.DateTimePicker dtpDeadlineViewProject;
     }
 }

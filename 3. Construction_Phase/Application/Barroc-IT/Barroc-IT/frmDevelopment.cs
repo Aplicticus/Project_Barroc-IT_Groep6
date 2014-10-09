@@ -155,7 +155,7 @@ namespace Barroc_IT
 
             txtProjectCustomerID.Text = drProject["CUSTOMER_ID"].ToString();
             txtProjectName.Text = drProject["NAME"].ToString();
-            dtpDeadlineProject.Value = projectDeadline;
+            dtpDeadlineViewProject.Value = projectDeadline;
             txtProjectSubject.Text = drProject["SUBJECT"].ToString();
             txtProjectValue.Text = drProject["VALUE"].ToString();
 
@@ -235,7 +235,7 @@ namespace Barroc_IT
              if (btnEditProject.Text == "Edit Fields")
             {
             txtProjectName.ReadOnly = false;
-            dtpDeadlineProject.Enabled = true;
+            dtpDeadlineViewProject.Enabled = true;
             txtProjectSubject.ReadOnly = false;
             txtProjectValue.ReadOnly = false;
                  btnEditProject.Text = "Save Changes";
@@ -245,7 +245,7 @@ namespace Barroc_IT
             string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
-            cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineProject.Value.Date));
+            cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineViewProject.Value.Date));
             cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
             cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
             cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
