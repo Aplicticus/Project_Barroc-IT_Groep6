@@ -97,6 +97,13 @@
             this.btnProjectSearch = new System.Windows.Forms.Button();
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
+            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectAppointments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblProjects = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dtpDeadlineViewProject = new System.Windows.Forms.DateTimePicker();
@@ -126,12 +133,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -529,9 +530,9 @@
             this.lblAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAppointments.Location = new System.Drawing.Point(369, 191);
             this.lblAppointments.Name = "lblAppointments";
-            this.lblAppointments.Size = new System.Drawing.Size(138, 25);
+            this.lblAppointments.Size = new System.Drawing.Size(128, 25);
             this.lblAppointments.TabIndex = 122;
-            this.lblAppointments.Text = "Appointments:";
+            this.lblAppointments.Text = "Appointment:";
             // 
             // lblInternalContact
             // 
@@ -808,11 +809,12 @@
             this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cProjectViewButton,
-            this.cProjectCompanyName,
+            this.cProjectCustomerID,
             this.cProjectName,
             this.cProjectDeadline,
             this.cProjectSubject,
-            this.cProjectValue});
+            this.cProjectValue,
+            this.cProjectAppointments});
             this.dgvProjects.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvProjects.Location = new System.Drawing.Point(0, 23);
             this.dgvProjects.Name = "dgvProjects";
@@ -820,6 +822,41 @@
             this.dgvProjects.Size = new System.Drawing.Size(771, 563);
             this.dgvProjects.TabIndex = 23;
             this.dgvProjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjects_CellContentClick);
+            // 
+            // cProjectViewButton
+            // 
+            this.cProjectViewButton.HeaderText = "View";
+            this.cProjectViewButton.Name = "cProjectViewButton";
+            // 
+            // cProjectCustomerID
+            // 
+            this.cProjectCustomerID.HeaderText = "CustomerID";
+            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            // 
+            // cProjectName
+            // 
+            this.cProjectName.HeaderText = "Project Name";
+            this.cProjectName.Name = "cProjectName";
+            // 
+            // cProjectDeadline
+            // 
+            this.cProjectDeadline.HeaderText = "Deadline";
+            this.cProjectDeadline.Name = "cProjectDeadline";
+            // 
+            // cProjectSubject
+            // 
+            this.cProjectSubject.HeaderText = "Subject";
+            this.cProjectSubject.Name = "cProjectSubject";
+            // 
+            // cProjectValue
+            // 
+            this.cProjectValue.HeaderText = "Value";
+            this.cProjectValue.Name = "cProjectValue";
+            // 
+            // cProjectAppointments
+            // 
+            this.cProjectAppointments.HeaderText = "Appointments";
+            this.cProjectAppointments.Name = "cProjectAppointments";
             // 
             // lblProjects
             // 
@@ -1124,36 +1161,6 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Project";
             // 
-            // cProjectViewButton
-            // 
-            this.cProjectViewButton.HeaderText = "View";
-            this.cProjectViewButton.Name = "cProjectViewButton";
-            // 
-            // cProjectCompanyName
-            // 
-            this.cProjectCompanyName.HeaderText = "CompanyName";
-            this.cProjectCompanyName.Name = "cProjectCompanyName";
-            // 
-            // cProjectName
-            // 
-            this.cProjectName.HeaderText = "Project Name";
-            this.cProjectName.Name = "cProjectName";
-            // 
-            // cProjectDeadline
-            // 
-            this.cProjectDeadline.HeaderText = "Deadline";
-            this.cProjectDeadline.Name = "cProjectDeadline";
-            // 
-            // cProjectSubject
-            // 
-            this.cProjectSubject.HeaderText = "Subject";
-            this.cProjectSubject.Name = "cProjectSubject";
-            // 
-            // cProjectValue
-            // 
-            this.cProjectValue.HeaderText = "Value";
-            this.cProjectValue.Name = "cProjectValue";
-            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1293,10 +1300,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.DateTimePicker dtpDeadlineViewProject;
         private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
     }
 }

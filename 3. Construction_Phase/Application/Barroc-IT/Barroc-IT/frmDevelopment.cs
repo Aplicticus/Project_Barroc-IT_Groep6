@@ -16,14 +16,12 @@ namespace Barroc_IT
             cBoxCustomerSearch.SelectedIndex = 0;
             this.handler = handler;           
         }
-
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
             dgvUserInfo.Rows.Clear();
-            GetCustomers(); 
+            GetCustomers();            
         }
-
         private void GetCustomers()
         {
             string sqlQuery = "SELECT * FROM tbl_Customers ";
@@ -37,7 +35,6 @@ namespace Barroc_IT
                 dgvUserInfo.Rows.Add(dr.ItemArray);
             }          
         }       
-
         private void GetProjects()
         {            
             string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
@@ -51,7 +48,6 @@ namespace Barroc_IT
                 dgvProjects.Rows.Add(dr.ItemArray);                
             }
         }
-
         private void btnEditFields_Click(object sender, EventArgs e)
         {
             if (btnEditFields.Text == "Edit Fields")
@@ -102,7 +98,6 @@ namespace Barroc_IT
                 btnEditFields.Text = "Edit Fields";                
             }
         }
-
         private void LoadCustomerDetails()
         {
             string sqlQueryCus = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID='" + selectedCustomer + "'";
@@ -124,22 +119,26 @@ namespace Barroc_IT
             txtOpenProject.Text = DRCus["OPEN_PROJ"].ToString();
             txtHardware.Text = DRCus["HARDWARE"].ToString();
             txtSoftware.Text = DRCus["SOFTWARE"].ToString();
+            
         }
+        private void LoadAppointmentDetails()
+         {
+             txtAppointments.Text = "";
+             txtInternalContact.Text = "";
+             string sqlQuery = "SELECT * FROM tbl_Appointments WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
 
-       /* private void LoadAppointmentDetails()
-        {
-            string sqlQueryApo = "SELECT * FROM tbl_Appointments";
+             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+             DataSet DS = new DataSet();
+             DA.Fill(DS);
+             DataTable DT = DS.Tables[0];
 
-            SqlDataAdapter DAApo = new SqlDataAdapter(sqlQueryApo, handler.GetConnection());
-            DataSet DSApo = new DataSet();
-            DAApo.Fill(DSApo);
-            DataTable DTApo = DSApo.Tables[0];
-            DataRow DRApo = DTApo.Rows[0];
 
-            txtAppointments.Text = DRApo["APPOIN_DATE"].ToString();
-            txtInternalContact.Text = DRApo["INT_CONTACT"].ToString();
-        }*/
-
+             foreach (DataRow DR in DT.Rows)
+             {                 
+                 txtAppointments.Text = DR["APPOIN_DATE"].ToString();
+                 txtInternalContact.Text = DR["INT_CONTACT"].ToString();
+             }
+         }
         private void LoadProjectDetails()
         {
             string sqlQueryCus = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
@@ -169,27 +168,23 @@ namespace Barroc_IT
             txtProjectValue.Text = drProject["VALUE"].ToString();
 
                 
-        }     
-        
+        }             
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
             {
                 selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
                 LoadCustomerDetails();
-                //LoadAppointmentDetails();                
-
+                LoadAppointmentDetails(); 
                 tbContr.SelectedIndex = 2;
             }
         }
-
         private void btnViewProjects_Click(object sender, EventArgs e)
         {            
             tbContr.SelectedIndex = 3;
             dgvProjects.Rows.Clear();
             GetProjects();
         }
-
         private void btnCustomerSearch_Click(object sender, EventArgs e)
         {
             if (txtCustomerSearch.Text.Length > 0)
@@ -222,7 +217,6 @@ namespace Barroc_IT
                 }
             }
         }
-
         private void btnAddProject_Click(object sender, EventArgs e)
         {
             string sqlQueryCus = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
@@ -237,7 +231,6 @@ namespace Barroc_IT
             } 
             tbContr.SelectedIndex = 5;
         }
-
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvProjects.Columns["cProjectViewButton"].Index)
@@ -248,7 +241,6 @@ namespace Barroc_IT
                 tbContr.SelectedIndex = 4;
             }
         }
-
         private void btnEditProject_Click(object sender, EventArgs e)
         {
             if (btnEditProject.Text == "Edit Fields")
@@ -288,7 +280,6 @@ namespace Barroc_IT
             formLogin.Show();
             this.Close();
         }
-
         private void btnProjectAdd_Click(object sender, EventArgs e)
         {
             string sqlQuery = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
