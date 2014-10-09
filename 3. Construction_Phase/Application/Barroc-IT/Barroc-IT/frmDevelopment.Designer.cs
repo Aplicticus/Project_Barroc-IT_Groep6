@@ -106,7 +106,6 @@
             this.lblProjects = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dtpDeadlineProject = new System.Windows.Forms.DateTimePicker();
-            this.btnSubmitProject = new System.Windows.Forms.Button();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.lblProjectCompanyName = new System.Windows.Forms.Label();
             this.txtProjectSubject = new System.Windows.Forms.TextBox();
@@ -200,6 +199,7 @@
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnSalesHome
             // 
@@ -863,8 +863,6 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage5.Controls.Add(this.dtpDeadlineProject);
-            this.tabPage5.Controls.Add(this.btnSubmitProject);
             this.tabPage5.Controls.Add(this.txtProjectName);
             this.tabPage5.Controls.Add(this.lblProjectCompanyName);
             this.tabPage5.Controls.Add(this.txtProjectSubject);
@@ -892,17 +890,6 @@
             this.dtpDeadlineProject.Name = "dtpDeadlineProject";
             this.dtpDeadlineProject.Size = new System.Drawing.Size(137, 20);
             this.dtpDeadlineProject.TabIndex = 138;
-            // 
-            // btnSubmitProject
-            // 
-            this.btnSubmitProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmitProject.Location = new System.Drawing.Point(303, 510);
-            this.btnSubmitProject.Name = "btnSubmitProject";
-            this.btnSubmitProject.Size = new System.Drawing.Size(165, 43);
-            this.btnSubmitProject.TabIndex = 137;
-            this.btnSubmitProject.Text = "Submit Fields";
-            this.btnSubmitProject.UseVisualStyleBackColor = true;
-            this.btnSubmitProject.Click += new System.EventHandler(this.btnSubmitProject_Click);
             // 
             // txtProjectName
             // 
@@ -971,7 +958,7 @@
             // btnArchiveProject
             // 
             this.btnArchiveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveProject.Location = new System.Drawing.Point(568, 510);
+            this.btnArchiveProject.Location = new System.Drawing.Point(292, 510);
             this.btnArchiveProject.Name = "btnArchiveProject";
             this.btnArchiveProject.Size = new System.Drawing.Size(165, 43);
             this.btnArchiveProject.TabIndex = 126;
@@ -1307,7 +1294,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
-        private System.Windows.Forms.Button btnSubmitProject;
         private System.Windows.Forms.DateTimePicker dtpDeadlineProject;
     }
 }

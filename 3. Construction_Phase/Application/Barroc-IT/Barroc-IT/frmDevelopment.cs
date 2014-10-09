@@ -202,25 +202,23 @@ namespace Barroc_IT
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
                 //LoadAppointmentDetails();
                 LoadProjectDetails();
-                btnSubmitProject.Hide();
                 tbContr.SelectedIndex = 4;
             }
         }
 
         private void btnEditProject_Click(object sender, EventArgs e)
         {
+             if (btnEditProject.Text == "Edit Fields")
+            {
             txtProjectName.ReadOnly = false;
             dtpDeadlineProject.Enabled = true;
             txtProjectSubject.ReadOnly = false;
             txtProjectValue.ReadOnly = false;
-
-            btnSubmitProject.Show();
+                 btnEditProject.Text = "Save Changes";
         }
-
-        private void btnSubmitProject_Click(object sender, EventArgs e)
+             else if (btnEditProject.Text == "Save Changes")
         {
             string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
-
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
             cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineProject.Value.Date));
@@ -234,6 +232,19 @@ namespace Barroc_IT
            
             LoadProjectDetails();
             tbContr.SelectedIndex = 4;
+
+                 txtProjectName.ReadOnly = true;
+                 txtProjectDeadline.ReadOnly = true;
+                 txtProjectSubject.ReadOnly = true;
+                 txtProjectValue.ReadOnly = true;
+                 btnEditProject.Text = "Edit Fields";
+             }
+        }
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmLogin formLogin = new frmLogin();
+            formLogin.Show();
         }
     }
 }
