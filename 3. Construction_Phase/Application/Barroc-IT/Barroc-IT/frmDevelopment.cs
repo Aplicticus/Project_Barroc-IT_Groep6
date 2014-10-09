@@ -69,8 +69,10 @@ namespace Barroc_IT
             else if(btnEditFields.Text == "Save Changes")
             {
                 string sqlQuery = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software, WHERE CUSTOMER_ID=@SelectedCustomer";
+                string sqlQueryApo = "";
                 SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-                SqlCommand cmdApo = new SqlCommand(sqlQueryApo, )
+                SqlCommand cmdApo = new SqlCommand(sqlQueryApo, handler.GetConnection());
+
                 cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
                 cmd.Parameters.Add(new SqlParameter("Deadline", txtProjectDeadline.Text));
                 cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
