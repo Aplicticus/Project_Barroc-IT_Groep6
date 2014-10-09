@@ -199,39 +199,50 @@ namespace Barroc_IT
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
                 //LoadAppointmentDetails();
-                LoadProjectDetails();
-                btnSubmitProject.Hide();
+                LoadProjectDetails();                
                 tbContr.SelectedIndex = 4;
             }
         }
 
         private void btnEditProject_Click(object sender, EventArgs e)
         {
-            txtProjectName.ReadOnly = false;
-            txtProjectDeadline.ReadOnly = false;
-            txtProjectSubject.ReadOnly = false;
-            txtProjectValue.ReadOnly = false;
+             if (btnEditProject.Text == "Edit Fields")
+            {
+                 txtProjectName.ReadOnly = false;
+                 txtProjectDeadline.ReadOnly = false;
+                 txtProjectSubject.ReadOnly = false;
+                 txtProjectValue.ReadOnly = false;
+                 btnEditProject.Text = "Save Changes";
+            }
+             else if (btnEditProject.Text == "Save Changes")
+             {
+                 string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
+                 SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+                 cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
+                 cmd.Parameters.Add(new SqlParameter("Deadline", txtProjectDeadline.Text));
+                 cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
+                 cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
+                 cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
 
-            btnSubmitProject.Show();
+                 cmd.Connection.Open();
+                 cmd.ExecuteNonQuery();
+                 cmd.Connection.Close();
+
+                 LoadProjectDetails();
+                 tbContr.SelectedIndex = 4;
+
+                 txtProjectName.ReadOnly = true;
+                 txtProjectDeadline.ReadOnly = true;
+                 txtProjectSubject.ReadOnly = true;
+                 txtProjectValue.ReadOnly = true;
+                 btnEditProject.Text = "Edit Fields";
+             }
         }
-
-        private void btnSubmitProject_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
-
-            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-            cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
-            cmd.Parameters.Add(new SqlParameter("Deadline", txtProjectDeadline.Text));
-            cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
-            cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
-            cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
-
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
-           
-            LoadProjectDetails();
-            tbContr.SelectedIndex = 4;
+            this.Hide();
+            frmLogin formLogin = new frmLogin();
+            formLogin.Show();
         }
     }
 }
