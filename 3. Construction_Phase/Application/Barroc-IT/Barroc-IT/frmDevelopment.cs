@@ -221,14 +221,9 @@ namespace Barroc_IT
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
-           
 
             LoadProjectDetails();
             tbContr.SelectedIndex = 4;
-            
-            
-
-
         }
     }
 }
