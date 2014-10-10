@@ -98,6 +98,11 @@
             this.btnAppointmentSearch = new System.Windows.Forms.Button();
             this.txtAppointmentSearch = new System.Windows.Forms.TextBox();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cApppointmentSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentInternalContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblAppointments = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnArchiveAppointment = new System.Windows.Forms.Button();
@@ -106,11 +111,53 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.btnAppointmentAdd = new System.Windows.Forms.Button();
             this.lblAddAppointment = new System.Windows.Forms.Label();
-            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cApppointmentSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAppointmentInternalContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCusFaxnumber = new System.Windows.Forms.TabPage();
+            this.txtCusPhoneNumber2 = new System.Windows.Forms.TextBox();
+            this.txtCusPostalCode2 = new System.Windows.Forms.TextBox();
+            this.txtCusResidence2 = new System.Windows.Forms.TextBox();
+            this.lblCusResidence2 = new System.Windows.Forms.Label();
+            this.lblCusPhoneNumber2 = new System.Windows.Forms.Label();
+            this.lblCusPostalCode2 = new System.Windows.Forms.Label();
+            this.txtCusSalePercentage = new System.Windows.Forms.TextBox();
+            this.lblCusSalePercentage = new System.Windows.Forms.Label();
+            this.txtCusLastContactDate = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCusOfferNumbers = new System.Windows.Forms.TextBox();
+            this.lblCusFaxnumber = new System.Windows.Forms.Label();
+            this.txtCusProspect = new System.Windows.Forms.TextBox();
+            this.lblCusProspect = new System.Windows.Forms.Label();
+            this.lblCusLastContactDate = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblCusOfferNumbers = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtCusAddress2 = new System.Windows.Forms.TextBox();
+            this.lblCusEmail = new System.Windows.Forms.Label();
+            this.lblCusAddress2 = new System.Windows.Forms.Label();
+            this.txtCusEmail = new System.Windows.Forms.TextBox();
+            this.txtCusCreditworthy = new System.Windows.Forms.TextBox();
+            this.lblCusCreditworthy = new System.Windows.Forms.Label();
+            this.txtCusNextAction = new System.Windows.Forms.TextBox();
+            this.txtCusOfferStatus = new System.Windows.Forms.TextBox();
+            this.txtCusInitials = new System.Windows.Forms.TextBox();
+            this.lblCusContactperson = new System.Windows.Forms.Label();
+            this.txtCusDateOfAction = new System.Windows.Forms.TextBox();
+            this.lblCusDateOfAction = new System.Windows.Forms.Label();
+            this.lblCusNextAction = new System.Windows.Forms.Label();
+            this.lblCusOfferStatus = new System.Windows.Forms.Label();
+            this.lblCusInitials = new System.Windows.Forms.Label();
+            this.txtCusContactperson = new System.Windows.Forms.TextBox();
+            this.txtCusPhoneNumber1 = new System.Windows.Forms.TextBox();
+            this.txtCusPostalCode1 = new System.Windows.Forms.TextBox();
+            this.txtCusAddress1 = new System.Windows.Forms.TextBox();
+            this.lblCusCompanyName = new System.Windows.Forms.Label();
+            this.txtCusResidence1 = new System.Windows.Forms.TextBox();
+            this.lblCusResidence1 = new System.Windows.Forms.Label();
+            this.lblCusPhoneNumber1 = new System.Windows.Forms.Label();
+            this.lblCusPostalCode1 = new System.Windows.Forms.Label();
+            this.lblCusAddress1 = new System.Windows.Forms.Label();
+            this.txtCusCompanyName = new System.Windows.Forms.TextBox();
+            this.lblAddProject = new System.Windows.Forms.Label();
+            this.btnCusAddCustomer = new System.Windows.Forms.Button();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -123,6 +170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.txtCusFaxnumber.SuspendLayout();
             this.SuspendLayout();
             // 
             // pWelcome
@@ -188,6 +236,7 @@
             this.btnSalesAddCustomer.TabIndex = 1;
             this.btnSalesAddCustomer.Text = "Add Customer";
             this.btnSalesAddCustomer.UseVisualStyleBackColor = true;
+            this.btnSalesAddCustomer.Click += new System.EventHandler(this.btnSalesAddCustomer_Click);
             // 
             // btnSalesHome
             // 
@@ -215,6 +264,7 @@
             this.tbContr.Controls.Add(this.tabPage4);
             this.tbContr.Controls.Add(this.tabPage5);
             this.tbContr.Controls.Add(this.tabPage6);
+            this.tbContr.Controls.Add(this.txtCusFaxnumber);
             this.tbContr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbContr.Location = new System.Drawing.Point(0, 0);
             this.tbContr.Name = "tbContr";
@@ -232,7 +282,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(759, 574);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "startSles";
+            this.tabPage1.Text = "startSales";
             // 
             // lblHome
             // 
@@ -803,6 +853,31 @@
             this.dgvAppointments.Size = new System.Drawing.Size(759, 563);
             this.dgvAppointments.TabIndex = 23;
             // 
+            // cProjectViewButton
+            // 
+            this.cProjectViewButton.HeaderText = "View";
+            this.cProjectViewButton.Name = "cProjectViewButton";
+            // 
+            // cProjectCustomerID
+            // 
+            this.cProjectCustomerID.HeaderText = "CustomerID";
+            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            // 
+            // cAppointmentDate
+            // 
+            this.cAppointmentDate.HeaderText = "Appointment Date";
+            this.cAppointmentDate.Name = "cAppointmentDate";
+            // 
+            // cApppointmentSubject
+            // 
+            this.cApppointmentSubject.HeaderText = "Subject";
+            this.cApppointmentSubject.Name = "cApppointmentSubject";
+            // 
+            // cAppointmentInternalContact
+            // 
+            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
+            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
+            // 
             // lblAppointments
             // 
             this.lblAppointments.AutoSize = true;
@@ -888,30 +963,464 @@
             this.lblAddAppointment.TabIndex = 23;
             this.lblAddAppointment.Text = "Appointment";
             // 
-            // cProjectViewButton
+            // txtCusFaxnumber
             // 
-            this.cProjectViewButton.HeaderText = "View";
-            this.cProjectViewButton.Name = "cProjectViewButton";
+            this.txtCusFaxnumber.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCusFaxnumber.Controls.Add(this.btnCusAddCustomer);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusPhoneNumber2);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusPostalCode2);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusResidence2);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusResidence2);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusPhoneNumber2);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusPostalCode2);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusSalePercentage);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusSalePercentage);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusLastContactDate);
+            this.txtCusFaxnumber.Controls.Add(this.textBox3);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusOfferNumbers);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusFaxnumber);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusProspect);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusProspect);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusLastContactDate);
+            this.txtCusFaxnumber.Controls.Add(this.label5);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusOfferNumbers);
+            this.txtCusFaxnumber.Controls.Add(this.textBox6);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusAddress2);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusEmail);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusAddress2);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusEmail);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusCreditworthy);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusCreditworthy);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusNextAction);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusOfferStatus);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusInitials);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusContactperson);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusDateOfAction);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusDateOfAction);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusNextAction);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusOfferStatus);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusInitials);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusContactperson);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusPhoneNumber1);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusPostalCode1);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusAddress1);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusCompanyName);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusResidence1);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusResidence1);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusPhoneNumber1);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusPostalCode1);
+            this.txtCusFaxnumber.Controls.Add(this.lblCusAddress1);
+            this.txtCusFaxnumber.Controls.Add(this.txtCusCompanyName);
+            this.txtCusFaxnumber.Controls.Add(this.lblAddProject);
+            this.txtCusFaxnumber.Location = new System.Drawing.Point(4, 22);
+            this.txtCusFaxnumber.Name = "txtCusFaxnumber";
+            this.txtCusFaxnumber.Padding = new System.Windows.Forms.Padding(3);
+            this.txtCusFaxnumber.Size = new System.Drawing.Size(759, 574);
+            this.txtCusFaxnumber.TabIndex = 7;
+            this.txtCusFaxnumber.Text = "addCustomer";
             // 
-            // cProjectCustomerID
+            // txtCusPhoneNumber2
             // 
-            this.cProjectCustomerID.HeaderText = "CustomerID";
-            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            this.txtCusPhoneNumber2.Location = new System.Drawing.Point(547, 196);
+            this.txtCusPhoneNumber2.Name = "txtCusPhoneNumber2";
+            this.txtCusPhoneNumber2.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPhoneNumber2.TabIndex = 189;
             // 
-            // cAppointmentDate
+            // txtCusPostalCode2
             // 
-            this.cAppointmentDate.HeaderText = "Appointment Date";
-            this.cAppointmentDate.Name = "cAppointmentDate";
+            this.txtCusPostalCode2.Location = new System.Drawing.Point(547, 135);
+            this.txtCusPostalCode2.Name = "txtCusPostalCode2";
+            this.txtCusPostalCode2.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPostalCode2.TabIndex = 188;
             // 
-            // cApppointmentSubject
+            // txtCusResidence2
             // 
-            this.cApppointmentSubject.HeaderText = "Subject";
-            this.cApppointmentSubject.Name = "cApppointmentSubject";
+            this.txtCusResidence2.Location = new System.Drawing.Point(547, 165);
+            this.txtCusResidence2.Name = "txtCusResidence2";
+            this.txtCusResidence2.Size = new System.Drawing.Size(137, 20);
+            this.txtCusResidence2.TabIndex = 187;
             // 
-            // cAppointmentInternalContact
+            // lblCusResidence2
             // 
-            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
-            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
+            this.lblCusResidence2.AutoSize = true;
+            this.lblCusResidence2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusResidence2.Location = new System.Drawing.Point(376, 160);
+            this.lblCusResidence2.Name = "lblCusResidence2";
+            this.lblCusResidence2.Size = new System.Drawing.Size(121, 25);
+            this.lblCusResidence2.TabIndex = 186;
+            this.lblCusResidence2.Text = "Residence2:";
+            // 
+            // lblCusPhoneNumber2
+            // 
+            this.lblCusPhoneNumber2.AutoSize = true;
+            this.lblCusPhoneNumber2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusPhoneNumber2.Location = new System.Drawing.Point(376, 190);
+            this.lblCusPhoneNumber2.Name = "lblCusPhoneNumber2";
+            this.lblCusPhoneNumber2.Size = new System.Drawing.Size(160, 25);
+            this.lblCusPhoneNumber2.TabIndex = 185;
+            this.lblCusPhoneNumber2.Text = "Phone Number2:";
+            // 
+            // lblCusPostalCode2
+            // 
+            this.lblCusPostalCode2.AutoSize = true;
+            this.lblCusPostalCode2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusPostalCode2.Location = new System.Drawing.Point(376, 129);
+            this.lblCusPostalCode2.Name = "lblCusPostalCode2";
+            this.lblCusPostalCode2.Size = new System.Drawing.Size(136, 25);
+            this.lblCusPostalCode2.TabIndex = 184;
+            this.lblCusPostalCode2.Text = "Postal Code2:";
+            // 
+            // txtCusSalePercentage
+            // 
+            this.txtCusSalePercentage.Location = new System.Drawing.Point(547, 377);
+            this.txtCusSalePercentage.Name = "txtCusSalePercentage";
+            this.txtCusSalePercentage.Size = new System.Drawing.Size(137, 20);
+            this.txtCusSalePercentage.TabIndex = 183;
+            // 
+            // lblCusSalePercentage
+            // 
+            this.lblCusSalePercentage.AutoSize = true;
+            this.lblCusSalePercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusSalePercentage.Location = new System.Drawing.Point(376, 371);
+            this.lblCusSalePercentage.Name = "lblCusSalePercentage";
+            this.lblCusSalePercentage.Size = new System.Drawing.Size(163, 25);
+            this.lblCusSalePercentage.TabIndex = 182;
+            this.lblCusSalePercentage.Text = "Sale Percentage:";
+            // 
+            // txtCusLastContactDate
+            // 
+            this.txtCusLastContactDate.Location = new System.Drawing.Point(546, 347);
+            this.txtCusLastContactDate.Name = "txtCusLastContactDate";
+            this.txtCusLastContactDate.Size = new System.Drawing.Size(137, 20);
+            this.txtCusLastContactDate.TabIndex = 181;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(546, 286);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(137, 20);
+            this.textBox3.TabIndex = 180;
+            // 
+            // txtCusOfferNumbers
+            // 
+            this.txtCusOfferNumbers.Location = new System.Drawing.Point(546, 256);
+            this.txtCusOfferNumbers.Name = "txtCusOfferNumbers";
+            this.txtCusOfferNumbers.Size = new System.Drawing.Size(137, 20);
+            this.txtCusOfferNumbers.TabIndex = 179;
+            // 
+            // lblCusFaxnumber
+            // 
+            this.lblCusFaxnumber.AutoSize = true;
+            this.lblCusFaxnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusFaxnumber.Location = new System.Drawing.Point(375, 220);
+            this.lblCusFaxnumber.Name = "lblCusFaxnumber";
+            this.lblCusFaxnumber.Size = new System.Drawing.Size(117, 25);
+            this.lblCusFaxnumber.TabIndex = 178;
+            this.lblCusFaxnumber.Text = "Faxnumber:";
+            // 
+            // txtCusProspect
+            // 
+            this.txtCusProspect.Location = new System.Drawing.Point(546, 316);
+            this.txtCusProspect.Name = "txtCusProspect";
+            this.txtCusProspect.Size = new System.Drawing.Size(137, 20);
+            this.txtCusProspect.TabIndex = 177;
+            // 
+            // lblCusProspect
+            // 
+            this.lblCusProspect.AutoSize = true;
+            this.lblCusProspect.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusProspect.Location = new System.Drawing.Point(375, 311);
+            this.lblCusProspect.Name = "lblCusProspect";
+            this.lblCusProspect.Size = new System.Drawing.Size(95, 25);
+            this.lblCusProspect.TabIndex = 176;
+            this.lblCusProspect.Text = "Prospect:";
+            // 
+            // lblCusLastContactDate
+            // 
+            this.lblCusLastContactDate.AutoSize = true;
+            this.lblCusLastContactDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusLastContactDate.Location = new System.Drawing.Point(375, 341);
+            this.lblCusLastContactDate.Name = "lblCusLastContactDate";
+            this.lblCusLastContactDate.Size = new System.Drawing.Size(174, 25);
+            this.lblCusLastContactDate.TabIndex = 175;
+            this.lblCusLastContactDate.Text = "Last Contact Date:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(375, 280);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 25);
+            this.label5.TabIndex = 174;
+            this.label5.Text = "Offer Status:";
+            // 
+            // lblCusOfferNumbers
+            // 
+            this.lblCusOfferNumbers.AutoSize = true;
+            this.lblCusOfferNumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusOfferNumbers.Location = new System.Drawing.Point(375, 250);
+            this.lblCusOfferNumbers.Name = "lblCusOfferNumbers";
+            this.lblCusOfferNumbers.Size = new System.Drawing.Size(145, 25);
+            this.lblCusOfferNumbers.TabIndex = 173;
+            this.lblCusOfferNumbers.Text = "Offer Numbers:";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox6.Location = new System.Drawing.Point(546, 226);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(137, 20);
+            this.textBox6.TabIndex = 172;
+            // 
+            // txtCusAddress2
+            // 
+            this.txtCusAddress2.Location = new System.Drawing.Point(546, 105);
+            this.txtCusAddress2.Name = "txtCusAddress2";
+            this.txtCusAddress2.Size = new System.Drawing.Size(137, 20);
+            this.txtCusAddress2.TabIndex = 169;
+            // 
+            // lblCusEmail
+            // 
+            this.lblCusEmail.AutoSize = true;
+            this.lblCusEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusEmail.Location = new System.Drawing.Point(375, 69);
+            this.lblCusEmail.Name = "lblCusEmail";
+            this.lblCusEmail.Size = new System.Drawing.Size(73, 25);
+            this.lblCusEmail.TabIndex = 168;
+            this.lblCusEmail.Text = "E-mail:";
+            // 
+            // lblCusAddress2
+            // 
+            this.lblCusAddress2.AutoSize = true;
+            this.lblCusAddress2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusAddress2.Location = new System.Drawing.Point(375, 99);
+            this.lblCusAddress2.Name = "lblCusAddress2";
+            this.lblCusAddress2.Size = new System.Drawing.Size(102, 25);
+            this.lblCusAddress2.TabIndex = 163;
+            this.lblCusAddress2.Text = "Address2:";
+            // 
+            // txtCusEmail
+            // 
+            this.txtCusEmail.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusEmail.Location = new System.Drawing.Point(546, 75);
+            this.txtCusEmail.Name = "txtCusEmail";
+            this.txtCusEmail.ReadOnly = true;
+            this.txtCusEmail.Size = new System.Drawing.Size(137, 20);
+            this.txtCusEmail.TabIndex = 162;
+            // 
+            // txtCusCreditworthy
+            // 
+            this.txtCusCreditworthy.Location = new System.Drawing.Point(220, 377);
+            this.txtCusCreditworthy.Name = "txtCusCreditworthy";
+            this.txtCusCreditworthy.Size = new System.Drawing.Size(137, 20);
+            this.txtCusCreditworthy.TabIndex = 161;
+            // 
+            // lblCusCreditworthy
+            // 
+            this.lblCusCreditworthy.AutoSize = true;
+            this.lblCusCreditworthy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusCreditworthy.Location = new System.Drawing.Point(49, 371);
+            this.lblCusCreditworthy.Name = "lblCusCreditworthy";
+            this.lblCusCreditworthy.Size = new System.Drawing.Size(127, 25);
+            this.lblCusCreditworthy.TabIndex = 160;
+            this.lblCusCreditworthy.Text = "Creditworthy:";
+            // 
+            // txtCusNextAction
+            // 
+            this.txtCusNextAction.Location = new System.Drawing.Point(219, 347);
+            this.txtCusNextAction.Name = "txtCusNextAction";
+            this.txtCusNextAction.Size = new System.Drawing.Size(137, 20);
+            this.txtCusNextAction.TabIndex = 159;
+            // 
+            // txtCusOfferStatus
+            // 
+            this.txtCusOfferStatus.Location = new System.Drawing.Point(219, 286);
+            this.txtCusOfferStatus.Name = "txtCusOfferStatus";
+            this.txtCusOfferStatus.Size = new System.Drawing.Size(137, 20);
+            this.txtCusOfferStatus.TabIndex = 158;
+            // 
+            // txtCusInitials
+            // 
+            this.txtCusInitials.Location = new System.Drawing.Point(219, 256);
+            this.txtCusInitials.Name = "txtCusInitials";
+            this.txtCusInitials.Size = new System.Drawing.Size(137, 20);
+            this.txtCusInitials.TabIndex = 157;
+            // 
+            // lblCusContactperson
+            // 
+            this.lblCusContactperson.AutoSize = true;
+            this.lblCusContactperson.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusContactperson.Location = new System.Drawing.Point(48, 220);
+            this.lblCusContactperson.Name = "lblCusContactperson";
+            this.lblCusContactperson.Size = new System.Drawing.Size(146, 25);
+            this.lblCusContactperson.TabIndex = 156;
+            this.lblCusContactperson.Text = "Contactperson:";
+            // 
+            // txtCusDateOfAction
+            // 
+            this.txtCusDateOfAction.Location = new System.Drawing.Point(219, 316);
+            this.txtCusDateOfAction.Name = "txtCusDateOfAction";
+            this.txtCusDateOfAction.Size = new System.Drawing.Size(137, 20);
+            this.txtCusDateOfAction.TabIndex = 155;
+            // 
+            // lblCusDateOfAction
+            // 
+            this.lblCusDateOfAction.AutoSize = true;
+            this.lblCusDateOfAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusDateOfAction.Location = new System.Drawing.Point(48, 311);
+            this.lblCusDateOfAction.Name = "lblCusDateOfAction";
+            this.lblCusDateOfAction.Size = new System.Drawing.Size(145, 25);
+            this.lblCusDateOfAction.TabIndex = 154;
+            this.lblCusDateOfAction.Text = "Date Of Action:";
+            // 
+            // lblCusNextAction
+            // 
+            this.lblCusNextAction.AutoSize = true;
+            this.lblCusNextAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusNextAction.Location = new System.Drawing.Point(48, 341);
+            this.lblCusNextAction.Name = "lblCusNextAction";
+            this.lblCusNextAction.Size = new System.Drawing.Size(118, 25);
+            this.lblCusNextAction.TabIndex = 153;
+            this.lblCusNextAction.Text = "Next Action:";
+            // 
+            // lblCusOfferStatus
+            // 
+            this.lblCusOfferStatus.AutoSize = true;
+            this.lblCusOfferStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusOfferStatus.Location = new System.Drawing.Point(48, 280);
+            this.lblCusOfferStatus.Name = "lblCusOfferStatus";
+            this.lblCusOfferStatus.Size = new System.Drawing.Size(122, 25);
+            this.lblCusOfferStatus.TabIndex = 152;
+            this.lblCusOfferStatus.Text = "Offer Status:";
+            // 
+            // lblCusInitials
+            // 
+            this.lblCusInitials.AutoSize = true;
+            this.lblCusInitials.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusInitials.Location = new System.Drawing.Point(48, 250);
+            this.lblCusInitials.Name = "lblCusInitials";
+            this.lblCusInitials.Size = new System.Drawing.Size(72, 25);
+            this.lblCusInitials.TabIndex = 151;
+            this.lblCusInitials.Text = "Initials:";
+            // 
+            // txtCusContactperson
+            // 
+            this.txtCusContactperson.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusContactperson.Location = new System.Drawing.Point(219, 226);
+            this.txtCusContactperson.Name = "txtCusContactperson";
+            this.txtCusContactperson.ReadOnly = true;
+            this.txtCusContactperson.Size = new System.Drawing.Size(137, 20);
+            this.txtCusContactperson.TabIndex = 150;
+            // 
+            // txtCusPhoneNumber1
+            // 
+            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(219, 196);
+            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
+            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPhoneNumber1.TabIndex = 149;
+            // 
+            // txtCusPostalCode1
+            // 
+            this.txtCusPostalCode1.Location = new System.Drawing.Point(219, 135);
+            this.txtCusPostalCode1.Name = "txtCusPostalCode1";
+            this.txtCusPostalCode1.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPostalCode1.TabIndex = 148;
+            // 
+            // txtCusAddress1
+            // 
+            this.txtCusAddress1.Location = new System.Drawing.Point(219, 105);
+            this.txtCusAddress1.Name = "txtCusAddress1";
+            this.txtCusAddress1.Size = new System.Drawing.Size(137, 20);
+            this.txtCusAddress1.TabIndex = 147;
+            // 
+            // lblCusCompanyName
+            // 
+            this.lblCusCompanyName.AutoSize = true;
+            this.lblCusCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusCompanyName.Location = new System.Drawing.Point(48, 69);
+            this.lblCusCompanyName.Name = "lblCusCompanyName";
+            this.lblCusCompanyName.Size = new System.Drawing.Size(160, 25);
+            this.lblCusCompanyName.TabIndex = 146;
+            this.lblCusCompanyName.Text = "Company Name:";
+            // 
+            // txtCusResidence1
+            // 
+            this.txtCusResidence1.Location = new System.Drawing.Point(219, 165);
+            this.txtCusResidence1.Name = "txtCusResidence1";
+            this.txtCusResidence1.Size = new System.Drawing.Size(137, 20);
+            this.txtCusResidence1.TabIndex = 145;
+            // 
+            // lblCusResidence1
+            // 
+            this.lblCusResidence1.AutoSize = true;
+            this.lblCusResidence1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusResidence1.Location = new System.Drawing.Point(48, 160);
+            this.lblCusResidence1.Name = "lblCusResidence1";
+            this.lblCusResidence1.Size = new System.Drawing.Size(121, 25);
+            this.lblCusResidence1.TabIndex = 144;
+            this.lblCusResidence1.Text = "Residence1:";
+            // 
+            // lblCusPhoneNumber1
+            // 
+            this.lblCusPhoneNumber1.AutoSize = true;
+            this.lblCusPhoneNumber1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusPhoneNumber1.Location = new System.Drawing.Point(48, 190);
+            this.lblCusPhoneNumber1.Name = "lblCusPhoneNumber1";
+            this.lblCusPhoneNumber1.Size = new System.Drawing.Size(160, 25);
+            this.lblCusPhoneNumber1.TabIndex = 143;
+            this.lblCusPhoneNumber1.Text = "Phone Number1:";
+            // 
+            // lblCusPostalCode1
+            // 
+            this.lblCusPostalCode1.AutoSize = true;
+            this.lblCusPostalCode1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusPostalCode1.Location = new System.Drawing.Point(48, 129);
+            this.lblCusPostalCode1.Name = "lblCusPostalCode1";
+            this.lblCusPostalCode1.Size = new System.Drawing.Size(136, 25);
+            this.lblCusPostalCode1.TabIndex = 142;
+            this.lblCusPostalCode1.Text = "Postal Code1:";
+            // 
+            // lblCusAddress1
+            // 
+            this.lblCusAddress1.AutoSize = true;
+            this.lblCusAddress1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusAddress1.Location = new System.Drawing.Point(48, 99);
+            this.lblCusAddress1.Name = "lblCusAddress1";
+            this.lblCusAddress1.Size = new System.Drawing.Size(102, 25);
+            this.lblCusAddress1.TabIndex = 141;
+            this.lblCusAddress1.Text = "Address1:";
+            // 
+            // txtCusCompanyName
+            // 
+            this.txtCusCompanyName.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusCompanyName.Location = new System.Drawing.Point(219, 75);
+            this.txtCusCompanyName.Name = "txtCusCompanyName";
+            this.txtCusCompanyName.ReadOnly = true;
+            this.txtCusCompanyName.Size = new System.Drawing.Size(137, 20);
+            this.txtCusCompanyName.TabIndex = 140;
+            // 
+            // lblAddProject
+            // 
+            this.lblAddProject.AutoSize = true;
+            this.lblAddProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddProject.Location = new System.Drawing.Point(315, 3);
+            this.lblAddProject.Name = "lblAddProject";
+            this.lblAddProject.Size = new System.Drawing.Size(106, 31);
+            this.lblAddProject.TabIndex = 139;
+            this.lblAddProject.Text = "Project";
+            // 
+            // btnCusAddCustomer
+            // 
+            this.btnCusAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCusAddCustomer.Location = new System.Drawing.Point(32, 510);
+            this.btnCusAddCustomer.Name = "btnCusAddCustomer";
+            this.btnCusAddCustomer.Size = new System.Drawing.Size(165, 43);
+            this.btnCusAddCustomer.TabIndex = 190;
+            this.btnCusAddCustomer.Text = "Add Customer";
+            this.btnCusAddCustomer.UseVisualStyleBackColor = true;
+            this.btnCusAddCustomer.Click += new System.EventHandler(this.btnCusAddCustomer_Click);
             // 
             // frmSales
             // 
@@ -944,6 +1453,8 @@
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.txtCusFaxnumber.ResumeLayout(false);
+            this.txtCusFaxnumber.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1033,5 +1544,52 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cApppointmentSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;
+        private System.Windows.Forms.TabPage txtCusFaxnumber;
+        private System.Windows.Forms.TextBox txtCusAddress1;
+        private System.Windows.Forms.Label lblCusCompanyName;
+        private System.Windows.Forms.TextBox txtCusResidence1;
+        private System.Windows.Forms.Label lblCusResidence1;
+        private System.Windows.Forms.Label lblCusPhoneNumber1;
+        private System.Windows.Forms.Label lblCusPostalCode1;
+        private System.Windows.Forms.Label lblCusAddress1;
+        private System.Windows.Forms.TextBox txtCusCompanyName;
+        private System.Windows.Forms.Label lblAddProject;
+        private System.Windows.Forms.TextBox txtCusCreditworthy;
+        private System.Windows.Forms.Label lblCusCreditworthy;
+        private System.Windows.Forms.TextBox txtCusNextAction;
+        private System.Windows.Forms.TextBox txtCusOfferStatus;
+        private System.Windows.Forms.TextBox txtCusInitials;
+        private System.Windows.Forms.Label lblCusContactperson;
+        private System.Windows.Forms.TextBox txtCusDateOfAction;
+        private System.Windows.Forms.Label lblCusDateOfAction;
+        private System.Windows.Forms.Label lblCusNextAction;
+        private System.Windows.Forms.Label lblCusOfferStatus;
+        private System.Windows.Forms.Label lblCusInitials;
+        private System.Windows.Forms.TextBox txtCusContactperson;
+        private System.Windows.Forms.TextBox txtCusPhoneNumber1;
+        private System.Windows.Forms.TextBox txtCusPostalCode1;
+        private System.Windows.Forms.TextBox txtCusPhoneNumber2;
+        private System.Windows.Forms.TextBox txtCusPostalCode2;
+        private System.Windows.Forms.TextBox txtCusResidence2;
+        private System.Windows.Forms.Label lblCusResidence2;
+        private System.Windows.Forms.Label lblCusPhoneNumber2;
+        private System.Windows.Forms.Label lblCusPostalCode2;
+        private System.Windows.Forms.TextBox txtCusSalePercentage;
+        private System.Windows.Forms.Label lblCusSalePercentage;
+        private System.Windows.Forms.TextBox txtCusLastContactDate;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCusOfferNumbers;
+        private System.Windows.Forms.Label lblCusFaxnumber;
+        private System.Windows.Forms.TextBox txtCusProspect;
+        private System.Windows.Forms.Label lblCusProspect;
+        private System.Windows.Forms.Label lblCusLastContactDate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblCusOfferNumbers;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtCusAddress2;
+        private System.Windows.Forms.Label lblCusEmail;
+        private System.Windows.Forms.Label lblCusAddress2;
+        private System.Windows.Forms.TextBox txtCusEmail;
+        private System.Windows.Forms.Button btnCusAddCustomer;
     }
 }
