@@ -120,7 +120,8 @@ namespace Barroc_IT
                         break;
                 }
 
-                SearchText(selectedItem, txtCustomerSearch.Text);
+                DataTable resultOfSearch = SearchText(selectedItem, txtCustomerSearch.Text);
+                AddItemsToDataGridView(resultOfSearch, dgvCustomers);
             }
             else
             {
@@ -416,6 +417,7 @@ namespace Barroc_IT
 
         private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView)
         {
+            dataGridView.Rows.Clear();
             foreach (DataRow dr in table.Rows)
             {
                 dataGridView.Rows.Add(dr.ItemArray);
@@ -441,7 +443,7 @@ namespace Barroc_IT
                     break;
             }
 
-            string sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice +  "='" + searchString + "'";
+            string sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice + " LIKE '%" + searchString + "%'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
             
             DataSet DS = new DataSet();
