@@ -98,13 +98,6 @@
             this.btnAppointmentSearch = new System.Windows.Forms.Button();
             this.txtAppointmentSearch = new System.Windows.Forms.TextBox();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
-            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectAppointments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblAppointments = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnArchiveAppointment = new System.Windows.Forms.Button();
@@ -113,6 +106,11 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.btnAppointmentAdd = new System.Windows.Forms.Button();
             this.lblAddAppointment = new System.Windows.Forms.Label();
+            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cApppointmentSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentInternalContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -795,52 +793,15 @@
             this.dgvAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cProjectViewButton,
             this.cProjectCustomerID,
-            this.cProjectName,
-            this.cProjectDeadline,
-            this.cProjectSubject,
-            this.cProjectValue,
-            this.cProjectAppointments});
+            this.cAppointmentDate,
+            this.cApppointmentSubject,
+            this.cAppointmentInternalContact});
             this.dgvAppointments.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvAppointments.Location = new System.Drawing.Point(0, 11);
             this.dgvAppointments.Name = "dgvAppointments";
             this.dgvAppointments.RowHeadersVisible = false;
             this.dgvAppointments.Size = new System.Drawing.Size(759, 563);
             this.dgvAppointments.TabIndex = 23;
-            // 
-            // cProjectViewButton
-            // 
-            this.cProjectViewButton.HeaderText = "View";
-            this.cProjectViewButton.Name = "cProjectViewButton";
-            // 
-            // cProjectCustomerID
-            // 
-            this.cProjectCustomerID.HeaderText = "CustomerID";
-            this.cProjectCustomerID.Name = "cProjectCustomerID";
-            // 
-            // cProjectName
-            // 
-            this.cProjectName.HeaderText = "Project Name";
-            this.cProjectName.Name = "cProjectName";
-            // 
-            // cProjectDeadline
-            // 
-            this.cProjectDeadline.HeaderText = "Deadline";
-            this.cProjectDeadline.Name = "cProjectDeadline";
-            // 
-            // cProjectSubject
-            // 
-            this.cProjectSubject.HeaderText = "Subject";
-            this.cProjectSubject.Name = "cProjectSubject";
-            // 
-            // cProjectValue
-            // 
-            this.cProjectValue.HeaderText = "Value";
-            this.cProjectValue.Name = "cProjectValue";
-            // 
-            // cProjectAppointments
-            // 
-            this.cProjectAppointments.HeaderText = "Appointments";
-            this.cProjectAppointments.Name = "cProjectAppointments";
             // 
             // lblAppointments
             // 
@@ -926,6 +887,31 @@
             this.lblAddAppointment.Size = new System.Drawing.Size(177, 31);
             this.lblAddAppointment.TabIndex = 23;
             this.lblAddAppointment.Text = "Appointment";
+            // 
+            // cProjectViewButton
+            // 
+            this.cProjectViewButton.HeaderText = "View";
+            this.cProjectViewButton.Name = "cProjectViewButton";
+            // 
+            // cProjectCustomerID
+            // 
+            this.cProjectCustomerID.HeaderText = "CustomerID";
+            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            // 
+            // cAppointmentDate
+            // 
+            this.cAppointmentDate.HeaderText = "Appointment Date";
+            this.cAppointmentDate.Name = "cAppointmentDate";
+            // 
+            // cApppointmentSubject
+            // 
+            this.cApppointmentSubject.HeaderText = "Subject";
+            this.cApppointmentSubject.Name = "cApppointmentSubject";
+            // 
+            // cAppointmentInternalContact
+            // 
+            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
+            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
             // 
             // frmSales
             // 
@@ -1034,13 +1020,6 @@
         private System.Windows.Forms.Button btnAppointmentSearch;
         private System.Windows.Forms.TextBox txtAppointmentSearch;
         private System.Windows.Forms.DataGridView dgvAppointments;
-        private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
         private System.Windows.Forms.Label lblAppointments;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button btnArchiveAppointment;
@@ -1049,5 +1028,10 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Button btnAppointmentAdd;
         private System.Windows.Forms.Label lblAddAppointment;
+        private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cApppointmentSubject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;
     }
 }

@@ -1299,6 +1299,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
-        private System.Windows.Forms.DateTimePicker dtpDevAppointment;
     }
 }
