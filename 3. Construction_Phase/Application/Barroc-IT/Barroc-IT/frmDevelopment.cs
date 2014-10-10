@@ -8,12 +8,14 @@ namespace Barroc_IT
     public partial class frmDevelopment : Form
 
     {        
-        // ..........
+        // Properties Load
         private DatabaseHandler handler;
         private int selectedCustomer;
         private int selectedProject;
         private frmLogin loginForm;
         private bool closing = false;
+
+        // Form Load
         public frmDevelopment(DatabaseHandler handler, frmLogin loginForm)
         {
             InitializeComponent();
@@ -25,16 +27,7 @@ namespace Barroc_IT
         // Getters
         private void GetCustomers()
         {
-            string sqlQuery = "SELECT * FROM tbl_Customers ";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
-
-            foreach (DataRow dr in DT.Rows)
-            {
-                dgvUserInfo.Rows.Add(dr.ItemArray);
-            }
+            dgvUserInfoDisplayDefault();
         }
         private void GetProjects()
         {
@@ -64,12 +57,14 @@ namespace Barroc_IT
         }
         private void LoadAppointmentDetails()
         {
-            txtAppointments.Text = "";
+            dtpDevAppointment.Text = "";
             txtInternalContact.Text = "";
             DataTable dtAppointmentResults = LoadAppointments(selectedCustomer);
             foreach (DataRow DR in dtAppointmentResults.Rows)
             {
-                txtAppointments.Text = DR["APPOIN_DATE"].ToString();
+                DateTime projectAppointment = new DateTime();
+                projectAppointment = DateTime.Parse(DR["APPOIN_DATE"].ToString());
+                dtpDevAppointment.Value = projectAppointment;
                 txtInternalContact.Text = DR["INT_CONTACT"].ToString();
             }
         }
@@ -155,7 +150,7 @@ namespace Barroc_IT
             }
             else
             {
-                SearchDisplayDefault();
+                dgvUserInfoDisplayDefault();
             }
         }
         // Logout
@@ -333,7 +328,7 @@ namespace Barroc_IT
                     }
         }
 
-        public void SearchDisplayDefault()
+        public void dgvUserInfoDisplayDefault()
         {
             string sqlQuery = "SELECT * FROM tbl_Customers";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());

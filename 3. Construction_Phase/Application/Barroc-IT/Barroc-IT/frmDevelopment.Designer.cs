@@ -73,7 +73,6 @@
             this.lblOpenProject = new System.Windows.Forms.Label();
             this.txtHardware = new System.Windows.Forms.TextBox();
             this.txtInternalContact = new System.Windows.Forms.TextBox();
-            this.txtAppointments = new System.Windows.Forms.TextBox();
             this.lblFax = new System.Windows.Forms.Label();
             this.txtSoftware = new System.Windows.Forms.TextBox();
             this.txtApplications = new System.Windows.Forms.TextBox();
@@ -132,6 +131,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
+            this.dtpDevAppointment = new System.Windows.Forms.DateTimePicker();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -423,6 +423,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.dtpDevAppointment);
             this.tabPage3.Controls.Add(this.btnAddProject);
             this.tabPage3.Controls.Add(this.btnViewProjects);
             this.tabPage3.Controls.Add(this.btnEditFields);
@@ -436,7 +437,6 @@
             this.tabPage3.Controls.Add(this.lblOpenProject);
             this.tabPage3.Controls.Add(this.txtHardware);
             this.tabPage3.Controls.Add(this.txtInternalContact);
-            this.tabPage3.Controls.Add(this.txtAppointments);
             this.tabPage3.Controls.Add(this.lblFax);
             this.tabPage3.Controls.Add(this.txtSoftware);
             this.tabPage3.Controls.Add(this.txtApplications);
@@ -588,14 +588,6 @@
             this.txtInternalContact.ReadOnly = true;
             this.txtInternalContact.Size = new System.Drawing.Size(137, 20);
             this.txtInternalContact.TabIndex = 110;
-            // 
-            // txtAppointments
-            // 
-            this.txtAppointments.Location = new System.Drawing.Point(594, 197);
-            this.txtAppointments.Name = "txtAppointments";
-            this.txtAppointments.ReadOnly = true;
-            this.txtAppointments.Size = new System.Drawing.Size(137, 20);
-            this.txtAppointments.TabIndex = 108;
             // 
             // lblFax
             // 
@@ -1154,6 +1146,15 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Project";
             // 
+            // dtpDevAppointment
+            // 
+            this.dtpDevAppointment.Enabled = false;
+            this.dtpDevAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDevAppointment.Location = new System.Drawing.Point(594, 201);
+            this.dtpDevAppointment.Name = "dtpDevAppointment";
+            this.dtpDevAppointment.Size = new System.Drawing.Size(133, 20);
+            this.dtpDevAppointment.TabIndex = 138;
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1216,7 +1217,6 @@
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.TextBox txtHardware;
         private System.Windows.Forms.TextBox txtInternalContact;
-        private System.Windows.Forms.TextBox txtAppointments;
         private System.Windows.Forms.Label lblFax;
         private System.Windows.Forms.TextBox txtSoftware;
         private System.Windows.Forms.TextBox txtApplications;
@@ -1299,5 +1299,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
+        private System.Windows.Forms.DateTimePicker dtpDevAppointment;
     }
 }
