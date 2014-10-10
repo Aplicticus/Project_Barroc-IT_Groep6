@@ -416,6 +416,7 @@ namespace Barroc_IT
                 dataGridView.Rows.Add(dr.ItemArray);
             }
         }
+
         private DataTable SearchText(Choice choice, string searchString)
         {
             string selectedChoice = "";
