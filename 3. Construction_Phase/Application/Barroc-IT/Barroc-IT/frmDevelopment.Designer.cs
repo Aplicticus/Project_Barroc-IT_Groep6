@@ -204,7 +204,7 @@
             // btnSalesHome
             // 
             this.btnSalesHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalesHome.Location = new System.Drawing.Point(24, 33);
+            this.btnSalesHome.Location = new System.Drawing.Point(24, 22);
             this.btnSalesHome.Name = "btnSalesHome";
             this.btnSalesHome.Size = new System.Drawing.Size(165, 43);
             this.btnSalesHome.TabIndex = 0;
