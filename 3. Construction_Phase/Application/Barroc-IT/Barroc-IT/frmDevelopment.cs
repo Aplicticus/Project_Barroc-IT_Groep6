@@ -193,15 +193,20 @@ namespace Barroc_IT
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
                 //LoadAppointmentDetails();
                 DataTable projectDetails = LoadProjectDetails(selectedCustomer);
+                DataTable projectCustomerDetails = LoadCustomers(selectedCustomer);
 
                 foreach (DataRow dr in projectDetails.Rows)
-                {
+                {                    
                     DateTime projectDeadline = new DateTime();
                     projectDeadline = DateTime.Parse(dr["DEADLINE"].ToString());
                     txtProjectName.Text = dr["NAME"].ToString();
                     dtpDeadlineViewProject.Value = projectDeadline;
                     txtProjectSubject.Text = dr["SUBJECT"].ToString();
                     txtProjectValue.Text = dr["VALUE"].ToString();
+                }
+                foreach (DataRow drCus in projectCustomerDetails.Rows)
+                {
+                    txtProjectCompanyName.Text = drCus["COMPANYNAME"].ToString();
                 }
                 tbContr.SelectedIndex = 4;
             }
