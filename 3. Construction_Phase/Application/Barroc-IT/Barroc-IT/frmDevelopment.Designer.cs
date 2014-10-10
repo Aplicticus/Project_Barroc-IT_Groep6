@@ -118,7 +118,7 @@
             this.btnEditProject = new System.Windows.Forms.Button();
             this.lblProjectName = new System.Windows.Forms.Label();
             this.txtProjectCustomerID = new System.Windows.Forms.TextBox();
-            this.lblProject = new System.Windows.Forms.Label();
+            this.lblSelectedProject = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.numProjectAddValue = new System.Windows.Forms.NumericUpDown();
             this.dtProjectAddDeadline = new System.Windows.Forms.DateTimePicker();
@@ -131,7 +131,7 @@
             this.btnProjectAdd = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblAddProject = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -882,7 +882,7 @@
             this.tabPage5.Controls.Add(this.btnEditProject);
             this.tabPage5.Controls.Add(this.lblProjectName);
             this.tabPage5.Controls.Add(this.txtProjectCustomerID);
-            this.tabPage5.Controls.Add(this.lblProject);
+            this.tabPage5.Controls.Add(this.lblSelectedProject);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -1002,15 +1002,15 @@
             this.txtProjectCustomerID.Size = new System.Drawing.Size(137, 20);
             this.txtProjectCustomerID.TabIndex = 75;
             // 
-            // lblProject
+            // lblSelectedProject
             // 
-            this.lblProject.AutoSize = true;
-            this.lblProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProject.Location = new System.Drawing.Point(315, 3);
-            this.lblProject.Name = "lblProject";
-            this.lblProject.Size = new System.Drawing.Size(106, 31);
-            this.lblProject.TabIndex = 23;
-            this.lblProject.Text = "Project";
+            this.lblSelectedProject.AutoSize = true;
+            this.lblSelectedProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedProject.Location = new System.Drawing.Point(315, 3);
+            this.lblSelectedProject.Name = "lblSelectedProject";
+            this.lblSelectedProject.Size = new System.Drawing.Size(106, 31);
+            this.lblSelectedProject.TabIndex = 23;
+            this.lblSelectedProject.Text = "Project";
             // 
             // tabPage6
             // 
@@ -1026,7 +1026,7 @@
             this.tabPage6.Controls.Add(this.btnProjectAdd);
             this.tabPage6.Controls.Add(this.label5);
             this.tabPage6.Controls.Add(this.txtProjectAddCompanyName);
-            this.tabPage6.Controls.Add(this.label6);
+            this.tabPage6.Controls.Add(this.lblAddProject);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
@@ -1144,22 +1144,22 @@
             this.txtProjectAddCompanyName.Size = new System.Drawing.Size(137, 20);
             this.txtProjectAddCompanyName.TabIndex = 75;
             // 
-            // label6
+            // lblAddProject
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(315, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 31);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Project";
+            this.lblAddProject.AutoSize = true;
+            this.lblAddProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddProject.Location = new System.Drawing.Point(315, 3);
+            this.lblAddProject.Name = "lblAddProject";
+            this.lblAddProject.Size = new System.Drawing.Size(106, 31);
+            this.lblAddProject.TabIndex = 23;
+            this.lblAddProject.Text = "Project";
             // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.pViewCustomer);
             this.Controls.Add(this.pButtons);
             this.Controls.Add(this.pWelcome);
@@ -1255,7 +1255,7 @@
         private System.Windows.Forms.Button btnEditProject;
         private System.Windows.Forms.Label lblProjectName;
         private System.Windows.Forms.TextBox txtProjectCustomerID;
-        private System.Windows.Forms.Label lblProject;
+        private System.Windows.Forms.Label lblSelectedProject;
         private System.Windows.Forms.TextBox txtProjectSubject;
         private System.Windows.Forms.Label lblProjectSubject;
         private System.Windows.Forms.TextBox txtProjectValue;
@@ -1275,7 +1275,7 @@
         private System.Windows.Forms.Button btnProjectAdd;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtProjectAddCompanyName;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblAddProject;
         private System.Windows.Forms.NumericUpDown numProjectAddValue;
         private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;

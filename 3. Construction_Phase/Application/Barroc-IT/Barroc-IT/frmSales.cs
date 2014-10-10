@@ -49,8 +49,8 @@ namespace Barroc_IT
             if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
             {
                 selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
-                LoadCustomerDetails();
-                LoadAppointmentDetails();
+                //LoadCustomerDetails();
+                //LoadAppointmentDetails();
                 tbContr.SelectedIndex = 2;
             }
         }
