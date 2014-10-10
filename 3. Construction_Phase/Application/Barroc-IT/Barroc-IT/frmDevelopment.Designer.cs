@@ -60,6 +60,7 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dtpDevAppointment = new System.Windows.Forms.DateTimePicker();
             this.btnAddProject = new System.Windows.Forms.Button();
             this.btnViewProjects = new System.Windows.Forms.Button();
             this.btnEditFields = new System.Windows.Forms.Button();
@@ -131,7 +132,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
-            this.dtpDevAppointment = new System.Windows.Forms.DateTimePicker();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -182,7 +182,7 @@
             // btnSelectCustomer
             // 
             this.btnSelectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectCustomer.Location = new System.Drawing.Point(24, 110);
+            this.btnSelectCustomer.Location = new System.Drawing.Point(24, 85);
             this.btnSelectCustomer.Name = "btnSelectCustomer";
             this.btnSelectCustomer.Size = new System.Drawing.Size(165, 43);
             this.btnSelectCustomer.TabIndex = 5;
@@ -461,6 +461,15 @@
             this.tabPage3.Size = new System.Drawing.Size(771, 586);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
+            // 
+            // dtpDevAppointment
+            // 
+            this.dtpDevAppointment.Enabled = false;
+            this.dtpDevAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDevAppointment.Location = new System.Drawing.Point(594, 201);
+            this.dtpDevAppointment.Name = "dtpDevAppointment";
+            this.dtpDevAppointment.Size = new System.Drawing.Size(133, 20);
+            this.dtpDevAppointment.TabIndex = 138;
             // 
             // btnAddProject
             // 
@@ -1145,15 +1154,6 @@
             this.lblAddProject.Size = new System.Drawing.Size(106, 31);
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Project";
-            // 
-            // dtpDevAppointment
-            // 
-            this.dtpDevAppointment.Enabled = false;
-            this.dtpDevAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDevAppointment.Location = new System.Drawing.Point(594, 201);
-            this.dtpDevAppointment.Name = "dtpDevAppointment";
-            this.dtpDevAppointment.Size = new System.Drawing.Size(133, 20);
-            this.dtpDevAppointment.TabIndex = 138;
             // 
             // frmDevelopment
             // 
