@@ -198,6 +198,7 @@ namespace Barroc_IT
                 {
                     DateTime projectDeadline = new DateTime();
                     projectDeadline = DateTime.Parse(dr["DEADLINE"].ToString());
+
                     txtProjectName.Text = dr["NAME"].ToString();
                     dtpDeadlineViewProject.Value = projectDeadline;
                     txtProjectSubject.Text = dr["SUBJECT"].ToString();
