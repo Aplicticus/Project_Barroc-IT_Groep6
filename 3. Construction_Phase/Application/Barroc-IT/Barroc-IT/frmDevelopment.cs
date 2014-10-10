@@ -128,9 +128,8 @@ namespace Barroc_IT
                 btnEditFields.Text = "Edit Fields";
             }
         }
-        
-        
-       
+
+        // Datagridview Clicks
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
@@ -141,6 +140,8 @@ namespace Barroc_IT
                 tbContr.SelectedIndex = 2;
             }
         }
+       
+        
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
