@@ -9,7 +9,6 @@ namespace Barroc_IT
         private frmLogin loginForm;
 
         private int selectedCustomer = 0;
-
         private bool closing = false;
         public frmSales(DatabaseHandler handler, frmLogin loginForm)
         {

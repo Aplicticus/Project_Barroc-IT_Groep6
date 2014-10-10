@@ -5,111 +5,92 @@ using System.Windows.Forms;
 
 namespace Barroc_IT
 {
-    public partial class frmDevelopment : Form
+    public enum Choice
+    {
+        Company = 0,
+        Email = 1,
+        Initials = 2
+    }
 
-    {        
-        // Properties Load
+    public partial class frmDevelopment : Form
+    {
+        // Variables
         private DatabaseHandler handler;
+        private frmLogin loginForm;
+
         private int selectedCustomer;
         private int selectedProject;
-        private frmLogin loginForm;
         private bool closing = false;
 
-        // Form Load
+        // Form Constructor
         public frmDevelopment(DatabaseHandler handler, frmLogin loginForm)
         {
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
-            this.handler = handler;            
+
+            this.handler = handler;
             this.loginForm = loginForm;
         }
 
-        // Getters
-        private void GetCustomers()
+        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView)
         {
-            dgvUserInfoDisplayDefault();
-        }
-        private void GetProjects()
-        {
-            DataTable dtProjectResult = LoadProject(selectedCustomer);
-            foreach (DataRow dr in dtProjectResult.Rows)
+            foreach (DataRow dr in table.Rows)
             {
-                dgvProjects.Rows.Add(dr.ItemArray);
+                dataGridView.Rows.Add(dr.ItemArray);
             }
         }
 
-        // Loads
-        private void LoadCustomerDetails()
+        private void LoadCustomerDetails(DataTable table)
         {
-            DataTable dtCustomerResult = LoadCustomers(selectedCustomer);
-            DataRow drCustomer = dtCustomerResult.Rows[0];
-            txtCompanyName.Text = drCustomer["COMPANYNAME"].ToString();
-            txtAddress1.Text = drCustomer["ADDRESS1"].ToString();
-            txtPostalCode1.Text = drCustomer["POSTALCODE1"].ToString();
-            txtPhoneNumber1.Text = drCustomer["PHONE_NR1"].ToString();
-            txtFaxNumber.Text = drCustomer["FAXNUMBER"].ToString();
-            txtEmail.Text = drCustomer["EMAIL"].ToString();
-            txtContactPerson.Text = drCustomer["CONTACTPERSON"].ToString();
-            txtMaintenance.Text = drCustomer["MAINT_CONTR"].ToString();
-            txtOpenProject.Text = drCustomer["OPEN_PROJ"].ToString();
-            txtHardware.Text = drCustomer["HARDWARE"].ToString();
-            txtSoftware.Text = drCustomer["SOFTWARE"].ToString();
-        }
-        private void LoadAppointmentDetails()
-        {
-            dtpDevAppointment.Text = "";
-            txtInternalContact.Text = "";
-            DataTable dtAppointmentResults = LoadAppointments(selectedCustomer);
-            foreach (DataRow DR in dtAppointmentResults.Rows)
-            {
-                DateTime projectAppointment = new DateTime();
-                projectAppointment = DateTime.Parse(DR["APPOIN_DATE"].ToString());
-                dtpDevAppointment.Value = projectAppointment;
-                txtInternalContact.Text = DR["INT_CONTACT"].ToString();
-            }
-        }
-        private void LoadProjectDetails()
-        {
-            DataTable dtCustomerResult = LoadCustomers(selectedCustomer);
-            foreach (DataRow dr in dtCustomerResult.Rows)
-            {
-                txtProjectCustomerID.Text = dr["COMPANYNAME"].ToString();
-            }
+            DataRow row = table.Rows[0];
 
-            DataTable dtProjectResult = LoadProjectDetails(selectedProject);
-            foreach (DataRow dr in dtProjectResult.Rows)
-            {
-                DateTime projectDeadline = new DateTime();
-                projectDeadline = DateTime.Parse(dr["DEADLINE"].ToString());
-                txtProjectName.Text = dr["NAME"].ToString();
-                dtpDeadlineViewProject.Value = projectDeadline;
-                txtProjectSubject.Text = dr["SUBJECT"].ToString();
-                txtProjectValue.Text = dr["VALUE"].ToString();
-            }
+            txtCompanyName.Text = row["COMPANYNAME"].ToString();
+            txtAddress1.Text = row["ADDRESS1"].ToString();
+            txtPostalCode1.Text = row["POSTALCODE1"].ToString();
+            txtPhoneNumber1.Text = row["PHONE_NR1"].ToString();
+            txtFaxNumber.Text = row["FAXNUMBER"].ToString();
+            txtEmail.Text = row["EMAIL"].ToString();
+            txtContactPerson.Text = row["CONTACTPERSON"].ToString();
+
+            txtMaintenance.Text = row["MAINT_CONTR"].ToString();
+            txtOpenProject.Text = row["OPEN_PROJ"].ToString();
+            txtHardware.Text = row["HARDWARE"].ToString();
+            txtSoftware.Text = row["SOFTWARE"].ToString();
         }
 
-        // Click events
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
-            dgvUserInfo.Rows.Clear();
-            GetCustomers();
+            dgvCustomers.Rows.Clear();
+            DataTable customers = LoadCustomers();
+
+            AddItemsToDataGridView(customers, dgvCustomers);
         }
-        // Adds
-        private void btnProjectAdd_Click(object sender, EventArgs e)
+
+        private void btnCreateProject_Click(object sender, EventArgs e)
         {
-            AddDevProject();
+            if (AddProject() == true)
+            {
+                MessageBox.Show("Project succesfully added!");
+            }
+            else
+            {
+                MessageBox.Show("There is a problem with adding a project!");
+            }
         }
-        private void btnAddProject_Click(object sender, EventArgs e)
+
+        private void btnAddProjectCustomer_Click(object sender, EventArgs e)
         {
             DataTable dtCustomerResult = LoadCustomers(selectedCustomer);
+
             foreach (DataRow dr in dtCustomerResult.Rows)
             {
                 txtProjectAddCompanyName.Text = dr["COMPANYNAME"].ToString();
+                break;
             }
             tbContr.SelectedIndex = 5;
         }
-        // Edits
+
         private void btnEditProject_Click(object sender, EventArgs e)
         {
             if (btnEditProject.Text == "Edit Fields")
@@ -118,47 +99,66 @@ namespace Barroc_IT
                 dtpDeadlineViewProject.Enabled = true;
                 txtProjectSubject.ReadOnly = false;
                 txtProjectValue.ReadOnly = false;
+
                 btnEditProject.Text = "Save Changes";
             }
             else if (btnEditProject.Text == "Save Changes")
             {
-                UpdateDevProjectFields();
-                LoadProjectDetails();
-                tbContr.SelectedIndex = 4;
+                UpdateProject(selectedProject);
+                LoadProjectDetails(selectedProject);
+
                 txtProjectName.ReadOnly = true;
                 txtProjectSubject.ReadOnly = true;
                 txtProjectValue.ReadOnly = true;
+
                 btnEditProject.Text = "Edit Fields";
             }
         }
-        // Views
+
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
             dgvProjects.Rows.Clear();
-            GetProjects();
+            DataTable projects = LoadProjects(selectedCustomer);
+
+            AddItemsToDataGridView(projects, dgvProjects);
         }
-        // Search
+
         private void btnCustomerSearch_Click(object sender, EventArgs e)
         {
             if (txtCustomerSearch.Text.Length > 0)
             {
-                if (cBoxCustomerSearch.SelectedItem.ToString() == "Company Name")
+                Choice selectedItem;
+                switch(cBoxCustomerSearch.SelectedItem.ToString())
                 {
-                    SearchCompanyName();
+                    case "Company Name":
+                        selectedItem = Choice.Company;
+                        break;
+                    case "E-Mail":
+                        selectedItem = Choice.Email;
+                        break;
+                    case "Initials":
+                        selectedItem = Choice.Initials;
+                        break;
+                    default:
+                        selectedItem = Choice.Company;
+                        break;
                 }
+
+                SearchText(selectedItem, txtCustomerSearch.Text);
             }
             else
             {
-                dgvUserInfoDisplayDefault();
+                DataTable customers = LoadCustomers();
+                AddItemsToDataGridView(customers, dgvCustomers);
             }
         }
-        // Logout
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             CloseToLogin();
         }
-        // Updaters
+
         private void btnEditFields_Click(object sender, EventArgs e)
         {
             if (btnEditFields.Text == "Edit Fields")
@@ -174,9 +174,15 @@ namespace Barroc_IT
             }
             else if (btnEditFields.Text == "Save Changes")
             {
-                UpdateDevCustomersFields();
-                UpdateDevAppointmentFields();                 
-
+                if (UpdateCustomer(selectedCustomer) == true && UpdateAppointment(selectedCustomer))
+                {
+                    MessageBox.Show("Succesfully saved changes!");
+                }
+                else
+                {
+                    MessageBox.Show("There was an error saving changes!");
+                }
+                
                 //Set fields taht could be changed to readOnly
                 txtMaintenance.ReadOnly = true;
                 txtOpenProject.ReadOnly = true;
@@ -186,32 +192,45 @@ namespace Barroc_IT
                 txtInternalContact.ReadOnly = true;
                 btnEditFields.Text = "Edit Fields";
             }
-        }        
-        // Datagridview Clicks
+        }
+
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
+            if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
             {
-                selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
-                LoadCustomerDetails();
-                LoadAppointmentDetails();
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
+                DataTable customerDetails = LoadCustomers(selectedCustomer);
+
+                LoadCustomerDetails(customerDetails);
+                LoadAppointmentDetails(selectedCustomer);
                 tbContr.SelectedIndex = 2;
             }
         }
+
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvProjects.Columns["cProjectViewButton"].Index)
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
                 //LoadAppointmentDetails();
-                LoadProjectDetails();
+                DataTable projectDetails = LoadProjectDetails(selectedCustomer);
+
+                foreach (DataRow dr in projectDetails.Rows)
+                {
+                    DateTime projectDeadline = new DateTime();
+                    projectDeadline = DateTime.Parse(dr["DEADLINE"].ToString());
+                    txtProjectName.Text = dr["NAME"].ToString();
+                    dtpDeadlineViewProject.Value = projectDeadline;
+                    txtProjectSubject.Text = dr["SUBJECT"].ToString();
+                    txtProjectValue.Text = dr["VALUE"].ToString();
+                }
                 tbContr.SelectedIndex = 4;
             }
         }
-        // Close formDev
+
         private void frmDevelopment_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ;
+
             if (!closing)
             {
                 CloseToLogin();
@@ -219,8 +238,19 @@ namespace Barroc_IT
             }
         }
 
-        // Methods
-        public DataTable LoadCustomers(int customerID)
+        #region "Customer Methods"
+        private DataTable LoadCustomers()
+        {
+            string sqlQuery = "SELECT * FROM tbl_Customers";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+
+            return DT;
+        }
+
+        private DataTable LoadCustomers(int customerID)
         {
             string sqlQueryCustomer = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID ='" + customerID + "'";
             SqlDataAdapter daCustomer = new SqlDataAdapter(sqlQueryCustomer, handler.GetConnection());
@@ -230,8 +260,12 @@ namespace Barroc_IT
 
             return DT;
         }
+        #endregion
 
-        public DataTable LoadProject(int customerID)
+
+
+        #region "Project Methods"
+        private DataTable LoadProjects(int customerID)
         {
             string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + customerID + "'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
@@ -242,105 +276,175 @@ namespace Barroc_IT
             return DT;
         }
 
-        public DataTable LoadAppointments(int customerID)
-        {
-            string sqlQuery = "SELECT * FROM tbl_Appointments WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
-            return DT;
-        }
-
-        public DataTable LoadProjectDetails(int ProjectID)
+        private DataTable LoadProjectDetails(int projectID)
         {
             string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + selectedProject + "'";
+
             SqlDataAdapter daProject = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
             DataSet dsProject = new DataSet();
+
             daProject.Fill(dsProject);
-            DataTable dtProject = dsProject.Tables[0];            
+            DataTable dtProject = dsProject.Tables[0];
+
             return dtProject;
         }
 
-        public void AddDevProject()
+        private bool AddProject()
         {
             string sqlQuery = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+
             cmd.Parameters.Add(new SqlParameter("@SelectedCustomer", selectedCustomer));
             cmd.Parameters.Add(new SqlParameter("@Name", txtProjectAddName.Text));
             cmd.Parameters.Add(new SqlParameter("@Deadline", dtProjectAddDeadline.Value));
             cmd.Parameters.Add(new SqlParameter("@Subject", txtProjectAddSubject.Text));
             cmd.Parameters.Add(new SqlParameter("@Value", numProjectAddValue.Value));
+
             cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
+            int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public void UpdateDevCustomersFields()
+        private bool UpdateProject(int projectID)
         {
-            string sqlQueryCustomers = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@SelectedCustomer";
+            string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@ProjectID";
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+
+            cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
+            cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineViewProject.Value.Date));
+            cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
+            cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
+            cmd.Parameters.Add(new SqlParameter("ProjectID", projectID));
+
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region "Appointment Methods"
+        private DataTable LoadAppointments(int customerID)
+        {
+            string sqlQuery = "SELECT * FROM tbl_Appointments WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
+
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            DataSet DS = new DataSet();
+
+            DA.Fill(DS);
+
+            DataTable DT = DS.Tables[0];
+
+            return DT;
+        }
+        private void LoadAppointmentDetails(int customerID)
+        {
+            dtpDevAppointment.Text = "";
+            txtInternalContact.Text = "";
+
+            DataTable dtAppointmentResults = LoadAppointments(customerID);
+            foreach (DataRow DR in dtAppointmentResults.Rows)
+            {
+                DateTime projectAppointment = new DateTime();
+                projectAppointment = DateTime.Parse(DR["APPOIN_DATE"].ToString());
+
+                dtpDevAppointment.Value = projectAppointment;
+                txtInternalContact.Text = DR["INT_CONTACT"].ToString();
+            }
+        }
+
+        private bool UpdateAppointment(int customerID)
+        {
+            string sqlQuery = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact WHERE CUSTOMER_ID=@customerID";
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+
+            cmd.Parameters.Add(new SqlParameter("InternalContact", txtInternalContact.Text));
+            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
+
+            handler.OpenConnection();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            handler.CloseConnection();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        private bool UpdateCustomer(int customerID)
+        {
+            string sqlQueryCustomers = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@customerID";
             SqlCommand cmd = new SqlCommand(sqlQueryCustomers, handler.GetConnection());
+
             cmd.Parameters.Add(new SqlParameter("MaintenanceContract", txtMaintenance.Text));
             cmd.Parameters.Add(new SqlParameter("OpenProjects", txtOpenProject.Text));
             cmd.Parameters.Add(new SqlParameter("Hardware", txtHardware.Text));
             cmd.Parameters.Add(new SqlParameter("Software", txtSoftware.Text));
-            cmd.Parameters.Add(new SqlParameter("SelectedCustomer", selectedCustomer));
+            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
+
             handler.OpenConnection();
-            cmd.ExecuteNonQuery();
+            int rowsAffected = cmd.ExecuteNonQuery();
             handler.CloseConnection();
-        }         
-  
-        public void UpdateDevAppointmentFields()
-        {
-            string sqlQueryAppointments = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact WHERE CUSTOMER_ID=@SelectedCustomer";
-            SqlCommand cmdApo = new SqlCommand(sqlQueryAppointments, handler.GetConnection());
-            cmdApo.Parameters.Add(new SqlParameter("InternalContact", txtInternalContact.Text));
-            cmdApo.Parameters.Add(new SqlParameter("SelectedCustomer", selectedCustomer));
-            cmdApo.Connection.Open();
-            cmdApo.ExecuteNonQuery();
-            cmdApo.Connection.Close();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public void UpdateDevProjectFields()
+        private DataTable SearchText(Choice choice, string searchString)
         {
-            string sqlQuery = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@SelectedProject";
-                SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-                cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
-                cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineViewProject.Value.Date));
-                cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
-                cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
-                cmd.Parameters.Add(new SqlParameter("SelectedProject", selectedProject));
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
-        }
+            string selectedChoice = "";
+            switch (choice)
+            {
+                case Choice.Company:
+                    selectedChoice = "COMPANYNAME";
+                    break;
+                case Choice.Email:
+                    selectedChoice = "EMAIL";
+                    break;
+                case Choice.Initials:
+                    selectedChoice = "INITIALS";
+                    break;
+                default:
+                    selectedChoice = "";
+                    break;
+            }
 
-        public void SearchCompanyName()
-        {
-            string sqlQuery = "SELECT * FROM tbl_Customers WHERE COMPANYNAME='" + txtCustomerSearch.Text + "'";
-                    SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-                    DataSet DS = new DataSet();
-                    DA.Fill(DS);
-                    DataTable DT = DS.Tables[0];
-                    dgvUserInfo.Rows.Clear();
-                    foreach (DataRow dr in DT.Rows)
-                    {
-                        dgvUserInfo.Rows.Add(dr.ItemArray);
-                    }
-        }
-
-        public void dgvUserInfoDisplayDefault()
-        {
-            string sqlQuery = "SELECT * FROM tbl_Customers";
+            string sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice +  "='" + searchString + "'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            
             DataSet DS = new DataSet();
             DA.Fill(DS);
+
             DataTable DT = DS.Tables[0];
-            dgvUserInfo.Rows.Clear();
-            foreach (DataRow dr in DT.Rows)
-            {
-                dgvUserInfo.Rows.Add(dr.ItemArray);
-            }
+            return DT;
         }
 
         private void CloseToLogin()
@@ -348,6 +452,6 @@ namespace Barroc_IT
             closing = true;
             loginForm.Show();
             this.Close();
-        }        
+        }
     }
 }

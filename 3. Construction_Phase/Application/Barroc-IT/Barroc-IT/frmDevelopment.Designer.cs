@@ -43,7 +43,7 @@
             this.cBoxCustomerSearch = new System.Windows.Forms.ComboBox();
             this.btnCustomerSearch = new System.Windows.Forms.Button();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
-            this.dgvUserInfo = new System.Windows.Forms.DataGridView();
+            this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +60,8 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnAddProject = new System.Windows.Forms.Button();
+            this.dtpDevAppointment = new System.Windows.Forms.DateTimePicker();
+            this.btnAddProjectCustomer = new System.Windows.Forms.Button();
             this.btnViewProjects = new System.Windows.Forms.Button();
             this.btnEditFields = new System.Windows.Forms.Button();
             this.txtContactPerson = new System.Windows.Forms.TextBox();
@@ -127,18 +128,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnProjectAdd = new System.Windows.Forms.Button();
+            this.btnCreateProject = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
-            this.dtpDevAppointment = new System.Windows.Forms.DateTimePicker();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
             this.tbContr.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUserInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
@@ -272,7 +272,7 @@
             this.tabPage2.Controls.Add(this.cBoxCustomerSearch);
             this.tabPage2.Controls.Add(this.btnCustomerSearch);
             this.tabPage2.Controls.Add(this.txtCustomerSearch);
-            this.tabPage2.Controls.Add(this.dgvUserInfo);
+            this.tabPage2.Controls.Add(this.dgvCustomers);
             this.tabPage2.Controls.Add(this.lblCustomers);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -311,12 +311,12 @@
             this.txtCustomerSearch.Size = new System.Drawing.Size(119, 20);
             this.txtCustomerSearch.TabIndex = 24;
             // 
-            // dgvUserInfo
+            // dgvCustomers
             // 
-            this.dgvUserInfo.AllowUserToAddRows = false;
-            this.dgvUserInfo.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvUserInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUserInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCustomers.AllowUserToAddRows = false;
+            this.dgvCustomers.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cViewButton,
             this.cCompanyName,
             this.cAddress1,
@@ -331,14 +331,14 @@
             this.cPhoneNumber2,
             this.cFaxNumber,
             this.cEmail});
-            this.dgvUserInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvUserInfo.Location = new System.Drawing.Point(0, 23);
-            this.dgvUserInfo.MultiSelect = false;
-            this.dgvUserInfo.Name = "dgvUserInfo";
-            this.dgvUserInfo.RowHeadersVisible = false;
-            this.dgvUserInfo.Size = new System.Drawing.Size(771, 563);
-            this.dgvUserInfo.TabIndex = 23;
-            this.dgvUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
+            this.dgvCustomers.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvCustomers.Location = new System.Drawing.Point(0, 23);
+            this.dgvCustomers.MultiSelect = false;
+            this.dgvCustomers.Name = "dgvCustomers";
+            this.dgvCustomers.RowHeadersVisible = false;
+            this.dgvCustomers.Size = new System.Drawing.Size(771, 563);
+            this.dgvCustomers.TabIndex = 23;
+            this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
             // 
             // cViewButton
             // 
@@ -424,7 +424,7 @@
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.dtpDevAppointment);
-            this.tabPage3.Controls.Add(this.btnAddProject);
+            this.tabPage3.Controls.Add(this.btnAddProjectCustomer);
             this.tabPage3.Controls.Add(this.btnViewProjects);
             this.tabPage3.Controls.Add(this.btnEditFields);
             this.tabPage3.Controls.Add(this.txtContactPerson);
@@ -462,16 +462,25 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
             // 
-            // btnAddProject
+            // dtpDevAppointment
             // 
-            this.btnAddProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProject.Location = new System.Drawing.Point(203, 510);
-            this.btnAddProject.Name = "btnAddProject";
-            this.btnAddProject.Size = new System.Drawing.Size(165, 43);
-            this.btnAddProject.TabIndex = 127;
-            this.btnAddProject.Text = "Add Project";
-            this.btnAddProject.UseVisualStyleBackColor = true;
-            this.btnAddProject.Click += new System.EventHandler(this.btnAddProject_Click);
+            this.dtpDevAppointment.Enabled = false;
+            this.dtpDevAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDevAppointment.Location = new System.Drawing.Point(594, 194);
+            this.dtpDevAppointment.Name = "dtpDevAppointment";
+            this.dtpDevAppointment.Size = new System.Drawing.Size(133, 20);
+            this.dtpDevAppointment.TabIndex = 138;
+            // 
+            // btnAddProjectCustomer
+            // 
+            this.btnAddProjectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProjectCustomer.Location = new System.Drawing.Point(203, 510);
+            this.btnAddProjectCustomer.Name = "btnAddProjectCustomer";
+            this.btnAddProjectCustomer.Size = new System.Drawing.Size(165, 43);
+            this.btnAddProjectCustomer.TabIndex = 127;
+            this.btnAddProjectCustomer.Text = "Add Project";
+            this.btnAddProjectCustomer.UseVisualStyleBackColor = true;
+            this.btnAddProjectCustomer.Click += new System.EventHandler(this.btnAddProjectCustomer_Click);
             // 
             // btnViewProjects
             // 
@@ -1015,7 +1024,7 @@
             this.tabPage6.Controls.Add(this.label2);
             this.tabPage6.Controls.Add(this.label3);
             this.tabPage6.Controls.Add(this.label4);
-            this.tabPage6.Controls.Add(this.btnProjectAdd);
+            this.tabPage6.Controls.Add(this.btnCreateProject);
             this.tabPage6.Controls.Add(this.label5);
             this.tabPage6.Controls.Add(this.txtProjectAddCompanyName);
             this.tabPage6.Controls.Add(this.lblAddProject);
@@ -1107,16 +1116,16 @@
             this.label4.TabIndex = 127;
             this.label4.Text = "Deadline:";
             // 
-            // btnProjectAdd
+            // btnCreateProject
             // 
-            this.btnProjectAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectAdd.Location = new System.Drawing.Point(32, 510);
-            this.btnProjectAdd.Name = "btnProjectAdd";
-            this.btnProjectAdd.Size = new System.Drawing.Size(165, 43);
-            this.btnProjectAdd.TabIndex = 6;
-            this.btnProjectAdd.Text = "Add Project";
-            this.btnProjectAdd.UseVisualStyleBackColor = true;
-            this.btnProjectAdd.Click += new System.EventHandler(this.btnProjectAdd_Click);
+            this.btnCreateProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateProject.Location = new System.Drawing.Point(32, 510);
+            this.btnCreateProject.Name = "btnCreateProject";
+            this.btnCreateProject.Size = new System.Drawing.Size(165, 43);
+            this.btnCreateProject.TabIndex = 6;
+            this.btnCreateProject.Text = "Add Project";
+            this.btnCreateProject.UseVisualStyleBackColor = true;
+            this.btnCreateProject.Click += new System.EventHandler(this.btnCreateProject_Click);
             // 
             // label5
             // 
@@ -1146,15 +1155,6 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Project";
             // 
-            // dtpDevAppointment
-            // 
-            this.dtpDevAppointment.Enabled = false;
-            this.dtpDevAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDevAppointment.Location = new System.Drawing.Point(594, 194);
-            this.dtpDevAppointment.Name = "dtpDevAppointment";
-            this.dtpDevAppointment.Size = new System.Drawing.Size(133, 20);
-            this.dtpDevAppointment.TabIndex = 138;
-            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1179,7 +1179,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUserInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
@@ -1211,7 +1211,7 @@
         private System.Windows.Forms.ComboBox cBoxCustomerSearch;
         private System.Windows.Forms.Button btnCustomerSearch;
         private System.Windows.Forms.TextBox txtCustomerSearch;
-        private System.Windows.Forms.DataGridView dgvUserInfo;
+        private System.Windows.Forms.DataGridView dgvCustomers;
         private System.Windows.Forms.Label lblCustomers;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label lblCustomer;
@@ -1263,7 +1263,7 @@
         private System.Windows.Forms.Label lblProjectDeadline;
         private System.Windows.Forms.TextBox txtProjectName;
         private System.Windows.Forms.Label lblProjectCompanyName;
-        private System.Windows.Forms.Button btnAddProject;
+        private System.Windows.Forms.Button btnAddProjectCustomer;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.DateTimePicker dtProjectAddDeadline;
         private System.Windows.Forms.TextBox txtProjectAddName;
@@ -1272,7 +1272,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnProjectAdd;
+        private System.Windows.Forms.Button btnCreateProject;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtProjectAddCompanyName;
         private System.Windows.Forms.Label lblAddProject;
