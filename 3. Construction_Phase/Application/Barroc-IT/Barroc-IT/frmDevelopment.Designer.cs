@@ -120,7 +120,7 @@
             this.txtProjectCustomerID = new System.Windows.Forms.TextBox();
             this.lblProject = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.nudProjectAddValue = new System.Windows.Forms.NumericUpDown();
+            this.numProjectAddValue = new System.Windows.Forms.NumericUpDown();
             this.dtProjectAddDeadline = new System.Windows.Forms.DateTimePicker();
             this.txtProjectAddName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -128,7 +128,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnProjectAdd = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
@@ -145,7 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudProjectAddValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numProjectAddValue)).BeginInit();
             this.SuspendLayout();
             // 
             // pWelcome
@@ -967,7 +966,7 @@
             // btnArchiveProject
             // 
             this.btnArchiveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveProject.Location = new System.Drawing.Point(292, 510);
+            this.btnArchiveProject.Location = new System.Drawing.Point(203, 510);
             this.btnArchiveProject.Name = "btnArchiveProject";
             this.btnArchiveProject.Size = new System.Drawing.Size(165, 43);
             this.btnArchiveProject.TabIndex = 126;
@@ -977,7 +976,7 @@
             // btnEditProject
             // 
             this.btnEditProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProject.Location = new System.Drawing.Point(37, 510);
+            this.btnEditProject.Location = new System.Drawing.Point(32, 510);
             this.btnEditProject.Name = "btnEditProject";
             this.btnEditProject.Size = new System.Drawing.Size(165, 43);
             this.btnEditProject.TabIndex = 6;
@@ -1016,7 +1015,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage6.Controls.Add(this.nudProjectAddValue);
+            this.tabPage6.Controls.Add(this.numProjectAddValue);
             this.tabPage6.Controls.Add(this.dtProjectAddDeadline);
             this.tabPage6.Controls.Add(this.txtProjectAddName);
             this.tabPage6.Controls.Add(this.label1);
@@ -1024,7 +1023,6 @@
             this.tabPage6.Controls.Add(this.label2);
             this.tabPage6.Controls.Add(this.label3);
             this.tabPage6.Controls.Add(this.label4);
-            this.tabPage6.Controls.Add(this.button1);
             this.tabPage6.Controls.Add(this.btnProjectAdd);
             this.tabPage6.Controls.Add(this.label5);
             this.tabPage6.Controls.Add(this.txtProjectAddCompanyName);
@@ -1036,19 +1034,24 @@
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "addProject";
             // 
-            // nudProjectAddValue
+            // numProjectAddValue
             // 
-            this.nudProjectAddValue.DecimalPlaces = 2;
-            this.nudProjectAddValue.Increment = new decimal(new int[] {
+            this.numProjectAddValue.DecimalPlaces = 2;
+            this.numProjectAddValue.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.nudProjectAddValue.Location = new System.Drawing.Point(217, 163);
-            this.nudProjectAddValue.Name = "nudProjectAddValue";
-            this.nudProjectAddValue.Size = new System.Drawing.Size(137, 20);
-            this.nudProjectAddValue.TabIndex = 138;
-            this.nudProjectAddValue.ThousandsSeparator = true;
+            this.numProjectAddValue.Location = new System.Drawing.Point(217, 163);
+            this.numProjectAddValue.Maximum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            0});
+            this.numProjectAddValue.Name = "numProjectAddValue";
+            this.numProjectAddValue.Size = new System.Drawing.Size(137, 20);
+            this.numProjectAddValue.TabIndex = 138;
+            this.numProjectAddValue.ThousandsSeparator = true;
             // 
             // dtProjectAddDeadline
             // 
@@ -1112,16 +1115,6 @@
             this.label4.TabIndex = 127;
             this.label4.Text = "Deadline:";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(203, 510);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 43);
-            this.button1.TabIndex = 126;
-            this.button1.Text = "Delete Project";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // btnProjectAdd
             // 
             this.btnProjectAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1175,6 +1168,7 @@
             this.Name = "frmDevelopment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Development";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDevelopment_FormClosing);
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();
             this.pButtons.ResumeLayout(false);
@@ -1194,7 +1188,7 @@
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudProjectAddValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numProjectAddValue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1278,12 +1272,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnProjectAdd;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtProjectAddCompanyName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown nudProjectAddValue;
+        private System.Windows.Forms.NumericUpDown numProjectAddValue;
         private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;

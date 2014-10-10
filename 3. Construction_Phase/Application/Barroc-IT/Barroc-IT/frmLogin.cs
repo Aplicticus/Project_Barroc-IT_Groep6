@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Barroc_IT
@@ -61,7 +55,7 @@ namespace Barroc_IT
                                 break;
                             case "Sales":
                                 this.Hide();
-                                frmSales formSales = new frmSales();
+                                frmSales formSales = new frmSales(handler, this);
                                 formSales.Show();
                                 break;
                             //case "Finance":
@@ -71,7 +65,7 @@ namespace Barroc_IT
                             //    break;
                             case "Development":
                                 this.Hide();
-                                frmDevelopment formDevelopment = new frmDevelopment(handler);
+                                frmDevelopment formDevelopment = new frmDevelopment(handler, this);
                                 formDevelopment.Show();
                                 break;
                         }
@@ -87,6 +81,16 @@ namespace Barroc_IT
         }
 
         private void btnExit_Click(object sender, EventArgs e)
+        {
+            ExitProgram();
+        }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ExitProgram();
+        }
+
+        private void ExitProgram()
         {
             Application.Exit();
         }

@@ -10,11 +10,14 @@ namespace Barroc_IT
         private DatabaseHandler handler;
         private int selectedCustomer;
         private int selectedProject;
-        public frmDevelopment(DatabaseHandler handler)
+        private frmLogin loginForm;
+        private bool closing = false;
+        public frmDevelopment(DatabaseHandler handler, frmLogin loginForm)
         {
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
             this.handler = handler;
+            this.loginForm = loginForm;
         }
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
@@ -261,9 +264,7 @@ namespace Barroc_IT
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            frmLogin formLogin = new frmLogin();
-            formLogin.Show();
-            this.Close();
+            CloseToLogin();
         }
         private void btnProjectAdd_Click(object sender, EventArgs e)
         {
@@ -273,7 +274,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@Name", txtProjectAddName.Text));
             cmd.Parameters.Add(new SqlParameter("@Deadline", dtProjectAddDeadline.Value));
             cmd.Parameters.Add(new SqlParameter("@Subject", txtProjectAddSubject.Text));
-            cmd.Parameters.Add(new SqlParameter("@Value", nudProjectAddValue.Value));
+            cmd.Parameters.Add(new SqlParameter("@Value", numProjectAddValue.Value));
 
             // Connection & Execute
             cmd.Connection.Open();
@@ -290,6 +291,22 @@ namespace Barroc_IT
             DataTable DT = dSetCustomer.Tables[0];
 
             return DT;
+        }
+
+        private void CloseToLogin()
+        {
+            closing = true;
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void frmDevelopment_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closing)
+            {
+                CloseToLogin();
+                closing = true;
+            }
         }
     }
 }
