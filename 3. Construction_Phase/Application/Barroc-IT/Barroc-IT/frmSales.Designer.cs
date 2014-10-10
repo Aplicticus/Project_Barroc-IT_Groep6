@@ -528,6 +528,7 @@
             this.btnEditFields.TabIndex = 6;
             this.btnEditFields.Text = "Edit Fields";
             this.btnEditFields.UseVisualStyleBackColor = true;
+            this.btnEditFields.Click += new System.EventHandler(this.btnEditFields_Click);
             // 
             // txtContactPerson
             // 
