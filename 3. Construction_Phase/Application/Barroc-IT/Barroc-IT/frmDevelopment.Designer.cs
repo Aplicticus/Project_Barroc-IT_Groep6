@@ -131,7 +131,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
-            this.txtAppointments = new System.Windows.Forms.TextBox();
+            this.dtpDevAppointment = new System.Windows.Forms.DateTimePicker();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -423,6 +423,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.dtpDevAppointment);
             this.tabPage3.Controls.Add(this.btnAddProject);
             this.tabPage3.Controls.Add(this.btnViewProjects);
             this.tabPage3.Controls.Add(this.btnEditFields);
@@ -436,7 +437,6 @@
             this.tabPage3.Controls.Add(this.lblOpenProject);
             this.tabPage3.Controls.Add(this.txtHardware);
             this.tabPage3.Controls.Add(this.txtInternalContact);
-            this.tabPage3.Controls.Add(this.txtAppointments);
             this.tabPage3.Controls.Add(this.lblFax);
             this.tabPage3.Controls.Add(this.txtSoftware);
             this.tabPage3.Controls.Add(this.txtApplications);
@@ -1146,14 +1146,6 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Project";
             // 
-            // txtAppointments
-            // 
-            this.txtAppointments.Location = new System.Drawing.Point(594, 197);
-            this.txtAppointments.Name = "txtAppointments";
-            this.txtAppointments.ReadOnly = true;
-            this.txtAppointments.Size = new System.Drawing.Size(137, 20);
-            this.txtAppointments.TabIndex = 108;
-            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1298,6 +1290,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
-        private System.Windows.Forms.TextBox txtAppointments;
     }
 }
