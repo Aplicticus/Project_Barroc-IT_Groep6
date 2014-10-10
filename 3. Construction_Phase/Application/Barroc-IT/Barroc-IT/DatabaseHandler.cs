@@ -14,11 +14,13 @@ namespace Barroc_IT
             conn = new SqlConnection();
             conn.ConnectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Resources\BarrocIT.mdf;Integrated Security=True";
         }
+
         public DatabaseHandler(string connectionString)
         {
             conn = new SqlConnection();
             conn.ConnectionString = connectionString;
         }
+
         public void TestConnection()
         {
             bool connOpen = false;

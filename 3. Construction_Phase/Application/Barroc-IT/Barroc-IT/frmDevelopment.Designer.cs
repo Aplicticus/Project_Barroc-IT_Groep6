@@ -117,7 +117,7 @@
             this.btnArchiveProject = new System.Windows.Forms.Button();
             this.btnEditProject = new System.Windows.Forms.Button();
             this.lblProjectName = new System.Windows.Forms.Label();
-            this.txtProjectCompanyName = new System.Windows.Forms.TextBox();
+            this.txtProjectCustomerID = new System.Windows.Forms.TextBox();
             this.lblSelectedProject = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.numProjectAddValue = new System.Windows.Forms.NumericUpDown();
@@ -882,7 +882,7 @@
             this.tabPage5.Controls.Add(this.btnArchiveProject);
             this.tabPage5.Controls.Add(this.btnEditProject);
             this.tabPage5.Controls.Add(this.lblProjectName);
-            this.tabPage5.Controls.Add(this.txtProjectCompanyName);
+            this.tabPage5.Controls.Add(this.txtProjectCustomerID);
             this.tabPage5.Controls.Add(this.lblSelectedProject);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
@@ -995,13 +995,13 @@
             this.lblProjectName.TabIndex = 76;
             this.lblProjectName.Text = "Name:";
             // 
-            // txtProjectCompanyName
+            // txtProjectCustomerID
             // 
-            this.txtProjectCompanyName.Location = new System.Drawing.Point(217, 43);
-            this.txtProjectCompanyName.Name = "txtProjectCompanyName";
-            this.txtProjectCompanyName.ReadOnly = true;
-            this.txtProjectCompanyName.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectCompanyName.TabIndex = 75;
+            this.txtProjectCustomerID.Location = new System.Drawing.Point(217, 43);
+            this.txtProjectCustomerID.Name = "txtProjectCustomerID";
+            this.txtProjectCustomerID.ReadOnly = true;
+            this.txtProjectCustomerID.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectCustomerID.TabIndex = 75;
             // 
             // lblSelectedProject
             // 
@@ -1254,7 +1254,7 @@
         private System.Windows.Forms.Button btnArchiveProject;
         private System.Windows.Forms.Button btnEditProject;
         private System.Windows.Forms.Label lblProjectName;
-        private System.Windows.Forms.TextBox txtProjectCompanyName;
+        private System.Windows.Forms.TextBox txtProjectCustomerID;
         private System.Windows.Forms.Label lblSelectedProject;
         private System.Windows.Forms.TextBox txtProjectSubject;
         private System.Windows.Forms.Label lblProjectSubject;
