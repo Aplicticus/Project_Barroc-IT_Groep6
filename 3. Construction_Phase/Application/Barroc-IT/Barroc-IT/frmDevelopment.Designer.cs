@@ -205,7 +205,7 @@
             // btnSalesHome
             // 
             this.btnSalesHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalesHome.Location = new System.Drawing.Point(24, 33);
+            this.btnSalesHome.Location = new System.Drawing.Point(24, 22);
             this.btnSalesHome.Name = "btnSalesHome";
             this.btnSalesHome.Size = new System.Drawing.Size(165, 43);
             this.btnSalesHome.TabIndex = 0;
@@ -967,7 +967,7 @@
             // btnArchiveProject
             // 
             this.btnArchiveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveProject.Location = new System.Drawing.Point(292, 510);
+            this.btnArchiveProject.Location = new System.Drawing.Point(203, 510);
             this.btnArchiveProject.Name = "btnArchiveProject";
             this.btnArchiveProject.Size = new System.Drawing.Size(165, 43);
             this.btnArchiveProject.TabIndex = 126;
@@ -977,7 +977,7 @@
             // btnEditProject
             // 
             this.btnEditProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProject.Location = new System.Drawing.Point(37, 510);
+            this.btnEditProject.Location = new System.Drawing.Point(32, 510);
             this.btnEditProject.Name = "btnEditProject";
             this.btnEditProject.Size = new System.Drawing.Size(165, 43);
             this.btnEditProject.TabIndex = 6;
