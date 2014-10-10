@@ -12,13 +12,14 @@ namespace Barroc_IT
         private DatabaseHandler handler;
         private int selectedCustomer;
         private int selectedProject;
-
-        // Load Form
-        public frmDevelopment(DatabaseHandler handler)
+        private frmLogin loginForm;
+        private bool closing = false;
+        public frmDevelopment(DatabaseHandler handler, frmLogin loginForm)
         {
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
             this.handler = handler;            
+            this.loginForm = loginForm;
         }
 
         // Getters
@@ -128,7 +129,7 @@ namespace Barroc_IT
                 btnEditFields.Text = "Edit Fields";
             }
         }
-
+        
         // Datagridview Clicks
         private void DGVUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -234,9 +235,7 @@ namespace Barroc_IT
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            frmLogin formLogin = new frmLogin();
-            formLogin.Show();
-            this.Close();
+            CloseToLogin();
         }
         private void btnProjectAdd_Click(object sender, EventArgs e)
         {
@@ -246,7 +245,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@Name", txtProjectAddName.Text));
             cmd.Parameters.Add(new SqlParameter("@Deadline", dtProjectAddDeadline.Value));
             cmd.Parameters.Add(new SqlParameter("@Subject", txtProjectAddSubject.Text));
-            cmd.Parameters.Add(new SqlParameter("@Value", nudProjectAddValue.Value));
+            cmd.Parameters.Add(new SqlParameter("@Value", numProjectAddValue.Value));
 
             // Connection & Execute
             cmd.Connection.Open();
@@ -265,6 +264,7 @@ namespace Barroc_IT
 
             return DT;
         }
+
         public DataTable LoadProject(int customerID)
         {
             string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + customerID + "'";
@@ -275,6 +275,7 @@ namespace Barroc_IT
 
             return DT;
         }
+
         public DataTable LoadAppointments(int customerID)
         {
             string sqlQuery = "SELECT * FROM tbl_Appointments WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
@@ -284,6 +285,7 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
+
         public DataTable LoadProjectDetails(int ProjectID)
         {
             string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + selectedProject + "'";
@@ -293,6 +295,7 @@ namespace Barroc_IT
             DataTable dtProject = dsProject.Tables[0];            
             return dtProject;
         }
+
         public void UpdateDevCustomersFields()
         {
             string sqlQueryCustomers = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@SelectedCustomer";
@@ -306,6 +309,7 @@ namespace Barroc_IT
             cmd.ExecuteNonQuery();
             handler.CloseConnection();
         }         
+  
         public void UpdateDevAppointmentFields()
         {
             string sqlQueryAppointments = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact WHERE CUSTOMER_ID=@SelectedCustomer";
@@ -315,6 +319,22 @@ namespace Barroc_IT
             cmdApo.Connection.Open();
             cmdApo.ExecuteNonQuery();
             cmdApo.Connection.Close();
+        }
+
+        private void CloseToLogin()
+        {
+            closing = true;
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void frmDevelopment_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closing)
+            {
+                CloseToLogin();
+                closing = true;
+            }
         }
     }
 }

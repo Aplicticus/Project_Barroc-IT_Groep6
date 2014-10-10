@@ -1,57 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Barroc_IT
 {
     public partial class frmSales : Form
     {
-       
-        public frmSales()
+        private DatabaseHandler handler;
+        private frmLogin loginForm;
+
+        private int selectedCustomer = 0;
+
+        private bool closing = false;
+        public frmSales(DatabaseHandler handler, frmLogin loginForm)
         {
             InitializeComponent();
+            this.handler = handler;
+            this.loginForm = loginForm;
         }
 
-
-        // Click events
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void btnSalesSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
         }
-        private void btnHome_Click(object sender, EventArgs e)
+
+        private void frmSales_FormClosing(object sender, FormClosingEventArgs e)
         {
-            tbContr.SelectedIndex = 0;
+            if (!closing)
+            {
+                CloseToLogin();
+                closing = true;
+            }
         }
-        private void btnUserInfo_Click(object sender, EventArgs e)
+
+        private void CloseToLogin()
         {
-            tbContr.SelectedIndex = 2;
-          //  DGVUserInfo.ReadOnly = true;
+            closing = true;
+            loginForm.Show();
+            this.Close();
         }
-        private void btnDeactivatedUsers_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 3;
-            DGVDeactivatedUsers.ReadOnly = true;
-        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            
-            
+            CloseToLogin();
         }
 
-        private void btnAdminConfirmRegister_Click(object sender, EventArgs e)
+        private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
+            {
+                selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
+                LoadCustomerDetails();
+                LoadAppointmentDetails();
+                tbContr.SelectedIndex = 2;
+            }
         }
 
-      
-
-        
-        
     }
 }
