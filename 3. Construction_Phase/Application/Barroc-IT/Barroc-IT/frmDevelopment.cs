@@ -131,7 +131,11 @@ namespace Barroc_IT
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            CloseToLogin();
+            DialogResult confirmationLogout = MessageBox.Show("Are you sure you want to log out?", "Confirm log out", MessageBoxButtons.YesNo);
+            if (confirmationLogout == DialogResult.Yes)
+            {
+                CloseToLogin();
+            }
         }
 
         private void btnEditFields_Click(object sender, EventArgs e)
