@@ -60,7 +60,6 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dtpDevAppointment = new System.Windows.Forms.DateTimePicker();
             this.btnAddProject = new System.Windows.Forms.Button();
             this.btnViewProjects = new System.Windows.Forms.Button();
             this.btnEditFields = new System.Windows.Forms.Button();
@@ -132,6 +131,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
+            this.dtpDevAppointment = new System.Windows.Forms.DateTimePicker();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -461,15 +461,6 @@
             this.tabPage3.Size = new System.Drawing.Size(771, 586);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
-            // 
-            // dtpDevAppointment
-            // 
-            this.dtpDevAppointment.Enabled = false;
-            this.dtpDevAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDevAppointment.Location = new System.Drawing.Point(594, 201);
-            this.dtpDevAppointment.Name = "dtpDevAppointment";
-            this.dtpDevAppointment.Size = new System.Drawing.Size(133, 20);
-            this.dtpDevAppointment.TabIndex = 138;
             // 
             // btnAddProject
             // 
@@ -1155,6 +1146,15 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Project";
             // 
+            // dtpDevAppointment
+            // 
+            this.dtpDevAppointment.Enabled = false;
+            this.dtpDevAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDevAppointment.Location = new System.Drawing.Point(594, 194);
+            this.dtpDevAppointment.Name = "dtpDevAppointment";
+            this.dtpDevAppointment.Size = new System.Drawing.Size(133, 20);
+            this.dtpDevAppointment.TabIndex = 138;
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1299,5 +1299,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
+        private System.Windows.Forms.DateTimePicker dtpDevAppointment;
     }
 }
