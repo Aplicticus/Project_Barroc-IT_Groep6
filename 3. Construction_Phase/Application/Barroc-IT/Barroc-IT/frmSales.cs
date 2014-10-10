@@ -54,5 +54,20 @@ namespace Barroc_IT
             }
         }
 
+        private void btnSalesAddCustomer_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 6;
+        }
+
+        private void btnCusAddCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditFields_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
