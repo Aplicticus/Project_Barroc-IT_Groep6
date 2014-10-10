@@ -30,34 +30,9 @@ namespace Barroc_IT
 
             this.handler = handler;
             this.loginForm = loginForm;
-        }
+        }      
 
-        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView)
-        {
-            foreach (DataRow dr in table.Rows)
-            {
-                dataGridView.Rows.Add(dr.ItemArray);
-            }
-        }
-
-        private void LoadCustomerDetails(DataTable table)
-        {
-            DataRow row = table.Rows[0];
-
-            txtCompanyName.Text = row["COMPANYNAME"].ToString();
-            txtAddress1.Text = row["ADDRESS1"].ToString();
-            txtPostalCode1.Text = row["POSTALCODE1"].ToString();
-            txtPhoneNumber1.Text = row["PHONE_NR1"].ToString();
-            txtFaxNumber.Text = row["FAXNUMBER"].ToString();
-            txtEmail.Text = row["EMAIL"].ToString();
-            txtContactPerson.Text = row["CONTACTPERSON"].ToString();
-
-            txtMaintenance.Text = row["MAINT_CONTR"].ToString();
-            txtOpenProject.Text = row["OPEN_PROJ"].ToString();
-            txtHardware.Text = row["HARDWARE"].ToString();
-            txtSoftware.Text = row["SOFTWARE"].ToString();
-        }
-
+        #region "Events"
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
@@ -237,6 +212,7 @@ namespace Barroc_IT
                 closing = true;
             }
         }
+        #endregion
 
         #region "Customer Methods"
         private DataTable LoadCustomers()
@@ -260,9 +236,49 @@ namespace Barroc_IT
 
             return DT;
         }
+        private void LoadCustomerDetails(DataTable table)
+        {
+            DataRow row = table.Rows[0];
+
+            txtCompanyName.Text = row["COMPANYNAME"].ToString();
+            txtAddress1.Text = row["ADDRESS1"].ToString();
+            txtPostalCode1.Text = row["POSTALCODE1"].ToString();
+            txtPhoneNumber1.Text = row["PHONE_NR1"].ToString();
+            txtFaxNumber.Text = row["FAXNUMBER"].ToString();
+            txtEmail.Text = row["EMAIL"].ToString();
+            txtContactPerson.Text = row["CONTACTPERSON"].ToString();
+
+            txtMaintenance.Text = row["MAINT_CONTR"].ToString();
+            txtOpenProject.Text = row["OPEN_PROJ"].ToString();
+            txtHardware.Text = row["HARDWARE"].ToString();
+            txtSoftware.Text = row["SOFTWARE"].ToString();
+        }
+
+        private bool UpdateCustomer(int customerID)
+        {
+            string sqlQueryCustomers = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@customerID";
+            SqlCommand cmd = new SqlCommand(sqlQueryCustomers, handler.GetConnection());
+
+            cmd.Parameters.Add(new SqlParameter("MaintenanceContract", txtMaintenance.Text));
+            cmd.Parameters.Add(new SqlParameter("OpenProjects", txtOpenProject.Text));
+            cmd.Parameters.Add(new SqlParameter("Hardware", txtHardware.Text));
+            cmd.Parameters.Add(new SqlParameter("Software", txtSoftware.Text));
+            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
+
+            handler.OpenConnection();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            handler.CloseConnection();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
-
-
 
         #region "Project Methods"
         private DataTable LoadProjects(int customerID)
@@ -393,31 +409,13 @@ namespace Barroc_IT
         }
         #endregion
 
-        private bool UpdateCustomer(int customerID)
+        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView)
         {
-            string sqlQueryCustomers = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@customerID";
-            SqlCommand cmd = new SqlCommand(sqlQueryCustomers, handler.GetConnection());
-
-            cmd.Parameters.Add(new SqlParameter("MaintenanceContract", txtMaintenance.Text));
-            cmd.Parameters.Add(new SqlParameter("OpenProjects", txtOpenProject.Text));
-            cmd.Parameters.Add(new SqlParameter("Hardware", txtHardware.Text));
-            cmd.Parameters.Add(new SqlParameter("Software", txtSoftware.Text));
-            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
-
-            handler.OpenConnection();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            handler.CloseConnection();
-
-            if (rowsAffected > 0)
+            foreach (DataRow dr in table.Rows)
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                dataGridView.Rows.Add(dr.ItemArray);
             }
         }
-
         private DataTable SearchText(Choice choice, string searchString)
         {
             string selectedChoice = "";
