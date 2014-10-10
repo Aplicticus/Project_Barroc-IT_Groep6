@@ -338,7 +338,7 @@
             this.dgvUserInfo.RowHeadersVisible = false;
             this.dgvUserInfo.Size = new System.Drawing.Size(771, 563);
             this.dgvUserInfo.TabIndex = 23;
-            this.dgvUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVUserInfo_CellContentClick);
+            this.dgvUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
             // 
             // cViewButton
             // 
