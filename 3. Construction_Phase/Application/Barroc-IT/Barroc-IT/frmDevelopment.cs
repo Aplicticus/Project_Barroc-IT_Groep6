@@ -216,6 +216,7 @@ namespace Barroc_IT
         // Close formDev
         private void frmDevelopment_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ;
             if (!closing)
             {
                 CloseToLogin();

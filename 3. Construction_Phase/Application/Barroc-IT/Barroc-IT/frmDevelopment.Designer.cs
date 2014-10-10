@@ -73,7 +73,6 @@
             this.lblOpenProject = new System.Windows.Forms.Label();
             this.txtHardware = new System.Windows.Forms.TextBox();
             this.txtInternalContact = new System.Windows.Forms.TextBox();
-            this.txtAppointments = new System.Windows.Forms.TextBox();
             this.lblFax = new System.Windows.Forms.Label();
             this.txtSoftware = new System.Windows.Forms.TextBox();
             this.txtApplications = new System.Windows.Forms.TextBox();
@@ -132,6 +131,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
+            this.txtAppointments = new System.Windows.Forms.TextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -588,14 +588,6 @@
             this.txtInternalContact.ReadOnly = true;
             this.txtInternalContact.Size = new System.Drawing.Size(137, 20);
             this.txtInternalContact.TabIndex = 110;
-            // 
-            // txtAppointments
-            // 
-            this.txtAppointments.Location = new System.Drawing.Point(594, 197);
-            this.txtAppointments.Name = "txtAppointments";
-            this.txtAppointments.ReadOnly = true;
-            this.txtAppointments.Size = new System.Drawing.Size(137, 20);
-            this.txtAppointments.TabIndex = 108;
             // 
             // lblFax
             // 
@@ -1154,6 +1146,14 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Project";
             // 
+            // txtAppointments
+            // 
+            this.txtAppointments.Location = new System.Drawing.Point(594, 197);
+            this.txtAppointments.Name = "txtAppointments";
+            this.txtAppointments.ReadOnly = true;
+            this.txtAppointments.Size = new System.Drawing.Size(137, 20);
+            this.txtAppointments.TabIndex = 108;
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1216,7 +1216,6 @@
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.TextBox txtHardware;
         private System.Windows.Forms.TextBox txtInternalContact;
-        private System.Windows.Forms.TextBox txtAppointments;
         private System.Windows.Forms.Label lblFax;
         private System.Windows.Forms.TextBox txtSoftware;
         private System.Windows.Forms.TextBox txtApplications;
@@ -1299,5 +1298,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
+        private System.Windows.Forms.TextBox txtAppointments;
     }
 }
