@@ -61,10 +61,35 @@ namespace Barroc_IT
 
         private void btnCusAddCustomer_Click(object sender, EventArgs e)
         {
+            
+
+
+            TextBox[] Textboxes = {txtCusCompanyName, txtAddress1};
+            
+            foreach (var item in Textboxes.ToString()) 
+            {
+                if (item.ToString() == "")
+                {
+                    MessageBox.Show("loool");
+                }
+                else
+                {
+                    MessageBox.Show("nee");
+                }
+            }
+
+            
+
+
 
         }
 
         private void btnEditFields_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAppointmentAdd_Click(object sender, EventArgs e)
         {
 
         }

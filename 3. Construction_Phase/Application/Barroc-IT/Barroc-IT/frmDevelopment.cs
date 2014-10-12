@@ -17,6 +17,7 @@ namespace Barroc_IT
         // Variables
         private DatabaseHandler handler;
         private frmLogin loginForm;
+        
 
         private int selectedCustomer;
         private int selectedProject;
@@ -30,6 +31,7 @@ namespace Barroc_IT
 
             this.handler = handler;
             this.loginForm = loginForm;
+            
         }      
 
         #region "Events"
