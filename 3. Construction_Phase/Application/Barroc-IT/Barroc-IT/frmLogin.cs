@@ -8,7 +8,7 @@ namespace Barroc_IT
     public partial class frmLogin : Form
     {
         private DatabaseHandler handler;
-        
+       
         
         public frmLogin()
         {
