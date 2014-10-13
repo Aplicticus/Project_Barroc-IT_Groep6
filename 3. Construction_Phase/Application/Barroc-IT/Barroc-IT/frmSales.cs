@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Barroc_IT
@@ -34,6 +36,7 @@ namespace Barroc_IT
         private void CloseToLogin()
         {
             closing = true;
+            loginForm.ClearTextBoxes();
             loginForm.Show();
             this.Close();
         }
@@ -59,40 +62,56 @@ namespace Barroc_IT
             tbContr.SelectedIndex = 6;
         }
 
-        private void btnCusAddCustomer_Click(object sender, EventArgs e)
+        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
-            
-
-
-            TextBox[] Textboxes = {txtCusCompanyName, txtAddress1};
-            
-            foreach (var item in Textboxes.ToString()) 
+            dataGridView.Rows.Clear();
+            table.Columns.Add(idColumnName);
+            table.Columns[idColumnName].SetOrdinal(0);
+            foreach (DataRow dr in table.Rows)
             {
-                if (item.ToString() == "")
-                {
-                    MessageBox.Show("loool");
-                }
-                else
-                {
-                    MessageBox.Show("nee");
-                }
+                dataGridView.Rows.Add(dr.ItemArray);
             }
-
-            
-
-
-
         }
 
-        private void btnEditFields_Click(object sender, EventArgs e)
+        #region "Customer Methods"
+        private DataTable LoadCustomers()
         {
+            string sqlQuery = "SELECT * FROM tbl_Customers";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
 
+            return DT;
         }
 
-        private void btnAppointmentAdd_Click(object sender, EventArgs e)
+        private DataTable LoadCustomers(int customerID)
         {
+            string sqlQueryCustomer = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID ='" + customerID + "'";
+            SqlDataAdapter daCustomer = new SqlDataAdapter(sqlQueryCustomer, handler.GetConnection());
+            DataSet dSetCustomer = new DataSet();
+            daCustomer.Fill(dSetCustomer);
+            DataTable DT = dSetCustomer.Tables[0];
 
+            return DT;
         }
+        private void LoadCustomerDetails(DataTable table)
+        {
+            DataRow row = table.Rows[0];
 
+            txtCompanyName.Text = row["COMPANYNAME"].ToString();
+            txtAddress1.Text = row["ADDRESS1"].ToString();
+            txtPostalCode1.Text = row["POSTALCODE1"].ToString();
+            txtPhoneNumber1.Text = row["PHONE_NR1"].ToString();
+            txtFaxNumber.Text = row["FAXNUMBER"].ToString();
+            txtEmail.Text = row["EMAIL"].ToString();
+            txtContactPerson.Text = row["CONTACTPERSON"].ToString();
+
+            txtMaintenance.Text = row["MAINT_CONTR"].ToString();
+            txtOpenProject.Text = row["OPEN_PROJ"].ToString();
+            txtHardware.Text = row["HARDWARE"].ToString();
+            txtSoftware.Text = row["SOFTWARE"].ToString();
+        }
+        #endregion
     }
 }

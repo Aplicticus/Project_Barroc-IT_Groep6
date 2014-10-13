@@ -20,6 +20,7 @@ namespace Barroc_IT
         private void CloseToLogin()
         {
             closing = true;
+            loginForm.ClearTextBoxes();
             loginForm.Show();
             this.Close();
         }
