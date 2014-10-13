@@ -37,6 +37,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tbContr = new TablessControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cbFinBKR = new System.Windows.Forms.ComboBox();
+            this.lblFinBKR = new System.Windows.Forms.Label();
             this.btnEditFields = new System.Windows.Forms.Button();
             this.txtContactPerson = new System.Windows.Forms.TextBox();
             this.lblContactperson = new System.Windows.Forms.Label();
@@ -86,8 +88,6 @@
             this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblFinBKR = new System.Windows.Forms.Label();
-            this.cbFinBKR = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cBoxProjectSearch = new System.Windows.Forms.ComboBox();
             this.btnProjectSearch = new System.Windows.Forms.Button();
@@ -101,6 +101,7 @@
             this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectAppointments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnAddInvoice = new System.Windows.Forms.Button();
             this.dtpDeadlineViewProject = new System.Windows.Forms.DateTimePicker();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.lblProjectCompanyName = new System.Windows.Forms.Label();
@@ -112,7 +113,6 @@
             this.lblProjectName = new System.Windows.Forms.Label();
             this.txtProjectCompanyName = new System.Windows.Forms.TextBox();
             this.lblSelectedProject = new System.Windows.Forms.Label();
-            this.btnAddInvoice = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
@@ -252,6 +252,28 @@
             this.tabPage3.Size = new System.Drawing.Size(759, 574);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
+            // 
+            // cbFinBKR
+            // 
+            this.cbFinBKR.FormattingEnabled = true;
+            this.cbFinBKR.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cbFinBKR.Location = new System.Drawing.Point(594, 252);
+            this.cbFinBKR.Name = "cbFinBKR";
+            this.cbFinBKR.Size = new System.Drawing.Size(137, 21);
+            this.cbFinBKR.TabIndex = 193;
+            this.cbFinBKR.Text = "Yes";
+            // 
+            // lblFinBKR
+            // 
+            this.lblFinBKR.AutoSize = true;
+            this.lblFinBKR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinBKR.Location = new System.Drawing.Point(369, 248);
+            this.lblFinBKR.Name = "lblFinBKR";
+            this.lblFinBKR.Size = new System.Drawing.Size(58, 25);
+            this.lblFinBKR.TabIndex = 129;
+            this.lblFinBKR.Text = "BKR:";
             // 
             // btnEditFields
             // 
@@ -667,28 +689,6 @@
             this.cEmail.HeaderText = "E-Mail";
             this.cEmail.Name = "cEmail";
             // 
-            // lblFinBKR
-            // 
-            this.lblFinBKR.AutoSize = true;
-            this.lblFinBKR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinBKR.Location = new System.Drawing.Point(369, 248);
-            this.lblFinBKR.Name = "lblFinBKR";
-            this.lblFinBKR.Size = new System.Drawing.Size(58, 25);
-            this.lblFinBKR.TabIndex = 129;
-            this.lblFinBKR.Text = "BKR:";
-            // 
-            // cbFinBKR
-            // 
-            this.cbFinBKR.FormattingEnabled = true;
-            this.cbFinBKR.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.cbFinBKR.Location = new System.Drawing.Point(594, 252);
-            this.cbFinBKR.Name = "cbFinBKR";
-            this.cbFinBKR.Size = new System.Drawing.Size(137, 21);
-            this.cbFinBKR.TabIndex = 193;
-            this.cbFinBKR.Text = "Yes";
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.cBoxProjectSearch);
@@ -810,6 +810,16 @@
             this.tabPage4.TabIndex = 5;
             this.tabPage4.Text = "selectedProject";
             // 
+            // btnAddInvoice
+            // 
+            this.btnAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddInvoice.Location = new System.Drawing.Point(40, 511);
+            this.btnAddInvoice.Name = "btnAddInvoice";
+            this.btnAddInvoice.Size = new System.Drawing.Size(165, 43);
+            this.btnAddInvoice.TabIndex = 149;
+            this.btnAddInvoice.Text = "Add Invoice";
+            this.btnAddInvoice.UseVisualStyleBackColor = true;
+            // 
             // dtpDeadlineViewProject
             // 
             this.dtpDeadlineViewProject.Enabled = false;
@@ -911,16 +921,6 @@
             this.lblSelectedProject.TabIndex = 138;
             this.lblSelectedProject.Text = "Project";
             // 
-            // btnAddInvoice
-            // 
-            this.btnAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInvoice.Location = new System.Drawing.Point(40, 511);
-            this.btnAddInvoice.Name = "btnAddInvoice";
-            this.btnAddInvoice.Size = new System.Drawing.Size(165, 43);
-            this.btnAddInvoice.TabIndex = 149;
-            this.btnAddInvoice.Text = "Add Invoice";
-            this.btnAddInvoice.UseVisualStyleBackColor = true;
-            // 
             // tabPage5
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
@@ -942,6 +942,7 @@
             this.Name = "frmFinance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Finance";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFinance_FormClosing);
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();
             this.pButtons.ResumeLayout(false);
