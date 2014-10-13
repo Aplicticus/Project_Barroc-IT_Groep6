@@ -45,6 +45,7 @@
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,6 +99,7 @@
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
             this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -318,6 +320,7 @@
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cViewButton,
+            this.cCustomerID,
             this.cCompanyName,
             this.cAddress1,
             this.cPostalCode1,
@@ -342,8 +345,15 @@
             // 
             // cViewButton
             // 
+            this.cViewButton.Frozen = true;
             this.cViewButton.HeaderText = "View";
             this.cViewButton.Name = "cViewButton";
+            // 
+            // cCustomerID
+            // 
+            this.cCustomerID.HeaderText = "CustomerID";
+            this.cCustomerID.Name = "cCustomerID";
+            this.cCustomerID.Visible = false;
             // 
             // cCompanyName
             // 
@@ -809,6 +819,7 @@
             this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cProjectViewButton,
+            this.cProjectID,
             this.cProjectCustomerID,
             this.cProjectName,
             this.cProjectDeadline,
@@ -827,6 +838,12 @@
             // 
             this.cProjectViewButton.HeaderText = "View";
             this.cProjectViewButton.Name = "cProjectViewButton";
+            // 
+            // cProjectID
+            // 
+            this.cProjectID.HeaderText = "ProjectID";
+            this.cProjectID.Name = "cProjectID";
+            this.cProjectID.Visible = false;
             // 
             // cProjectCustomerID
             // 
@@ -895,9 +912,9 @@
             // 
             this.dtpDeadlineViewProject.Enabled = false;
             this.dtpDeadlineViewProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(220, 137);
+            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(216, 137);
             this.dtpDeadlineViewProject.Name = "dtpDeadlineViewProject";
-            this.dtpDeadlineViewProject.Size = new System.Drawing.Size(133, 20);
+            this.dtpDeadlineViewProject.Size = new System.Drawing.Size(137, 20);
             this.dtpDeadlineViewProject.TabIndex = 137;
             // 
             // txtProjectName
@@ -1277,7 +1294,10 @@
         private System.Windows.Forms.TextBox txtProjectAddCompanyName;
         private System.Windows.Forms.Label lblAddProject;
         private System.Windows.Forms.NumericUpDown numProjectAddValue;
+        private System.Windows.Forms.DateTimePicker dtpDeadlineViewProject;
+        private System.Windows.Forms.DateTimePicker dtpDevAppointment;
         private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
@@ -1291,14 +1311,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
-        private System.Windows.Forms.DateTimePicker dtpDeadlineViewProject;
         private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
-        private System.Windows.Forms.DateTimePicker dtpDevAppointment;
     }
 }

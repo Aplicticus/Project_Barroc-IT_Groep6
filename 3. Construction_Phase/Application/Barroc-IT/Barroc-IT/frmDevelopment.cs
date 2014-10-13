@@ -22,6 +22,8 @@ namespace Barroc_IT
         private int selectedProject;
         private bool closing = false;
 
+        private DataTable dtCustomerResult;
+
         // Form Constructor
         public frmDevelopment(DatabaseHandler handler, frmLogin loginForm)
         {
@@ -40,7 +42,7 @@ namespace Barroc_IT
             dgvCustomers.Rows.Clear();
             DataTable customers = LoadCustomers();
 
-            AddItemsToDataGridView(customers, dgvCustomers);
+            AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
 
         private void btnCreateProject_Click(object sender, EventArgs e)
@@ -97,7 +99,7 @@ namespace Barroc_IT
             dgvProjects.Rows.Clear();
             DataTable projects = LoadProjects(selectedCustomer);
 
-            AddItemsToDataGridView(projects, dgvProjects);
+            AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
         }
 
         private void btnCustomerSearch_Click(object sender, EventArgs e)
@@ -122,12 +124,12 @@ namespace Barroc_IT
                 }
 
                 DataTable resultOfSearch = SearchText(selectedItem, txtCustomerSearch.Text);
-                AddItemsToDataGridView(resultOfSearch, dgvCustomers);
+                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
             else
             {
                 DataTable customers = LoadCustomers();
-                AddItemsToDataGridView(customers, dgvCustomers);
+                AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
             }
         }
 
@@ -179,7 +181,7 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
             {
-                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
                 DataTable customerDetails = LoadCustomers(selectedCustomer);
 
                 LoadCustomerDetails(customerDetails);
@@ -192,7 +194,7 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvProjects.Columns["cProjectViewButton"].Index)
             {
-                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectViewButton"].Value.ToString());
+                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 //LoadAppointmentDetails();
                 DataTable projectDetails = LoadProjectDetails(selectedCustomer);
                 DataTable projectCustomerDetails = LoadCustomers(selectedCustomer);
@@ -217,7 +219,6 @@ namespace Barroc_IT
 
         private void frmDevelopment_FormClosing(object sender, FormClosingEventArgs e)
         {
-
             if (!closing)
             {
                 CloseToLogin();
@@ -421,9 +422,11 @@ namespace Barroc_IT
         }
         #endregion
 
-        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView)
+        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
             dataGridView.Rows.Clear();
+            table.Columns.Add(idColumnName);
+            table.Columns[idColumnName].SetOrdinal(0);
             foreach (DataRow dr in table.Rows)
             {
                 dataGridView.Rows.Add(dr.ItemArray);
