@@ -60,15 +60,18 @@ namespace Barroc_IT
                                 frmSales formSales = new frmSales(handler, this);
                                 formSales.Show();
                                 break;
-                            //case "Finance":
-                            //    this.Hide();
-                            //    frmFinance = new frmFinance();
-                            //    formFinance.Show();
-                            //    break;
+                            case "Finance":
+                                this.Hide();
+                                frmFinance formFinance = new frmFinance(handler, this);
+                                formFinance.Show();
+                                break;
                             case "Development":
                                 this.Hide();
                                 frmDevelopment formDevelopment = new frmDevelopment(handler, this);
                                 formDevelopment.Show();
+                                break;
+                            default:
+                                MessageBox.Show("Something went wrong, please try again!");
                                 break;
                         }
                         break;

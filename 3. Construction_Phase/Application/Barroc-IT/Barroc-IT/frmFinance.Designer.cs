@@ -977,6 +977,7 @@
             this.Name = "frmFinance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Finance";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFinance_FormClosing);
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();
             this.pButtons.ResumeLayout(false);

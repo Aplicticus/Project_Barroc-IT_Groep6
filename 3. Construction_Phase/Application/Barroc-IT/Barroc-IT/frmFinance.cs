@@ -9,7 +9,7 @@ namespace Barroc_IT
         private frmLogin loginForm;
 
         //private int selectedCustomer = 0;
-        //private bool closing = false;
+        private bool closing = false;
         public frmFinance(DatabaseHandler handler, frmLogin loginForm)
         {
             InitializeComponent();
@@ -17,20 +17,20 @@ namespace Barroc_IT
             this.loginForm = loginForm;
         }
 
-        
-
-       
-
         private void CloseToLogin()
         {
-            //closing = true;
+            closing = true;
             loginForm.Show();
             this.Close();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            CloseToLogin();
+            DialogResult confirmationLogout = MessageBox.Show("Are you sure you want to log out?", "Confirm log out", MessageBoxButtons.YesNo);
+            if (confirmationLogout == DialogResult.Yes)
+            {
+                CloseToLogin();
+            }
         }
 
         private void btnFinanceSelectCustomer_Click(object sender, EventArgs e)
@@ -38,21 +38,12 @@ namespace Barroc_IT
             tbContr.SelectedIndex = 1;
         }
 
-        private void btnEditFields_Click(object sender, EventArgs e)
+        private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (!closing)
+            {
+                CloseToLogin();
+            }
         }
-
-        private void btnAppointmentAdd_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCusAddCustomer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

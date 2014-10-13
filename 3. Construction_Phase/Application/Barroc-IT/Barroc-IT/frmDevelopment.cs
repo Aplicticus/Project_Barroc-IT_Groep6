@@ -18,7 +18,6 @@ namespace Barroc_IT
         private DatabaseHandler handler;
         private frmLogin loginForm;
         
-
         private int selectedCustomer;
         private int selectedProject;
         private bool closing = false;
