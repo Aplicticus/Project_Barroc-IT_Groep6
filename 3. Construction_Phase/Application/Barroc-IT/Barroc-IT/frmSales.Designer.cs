@@ -556,7 +556,6 @@
             this.btnEditFields.TabIndex = 6;
             this.btnEditFields.Text = "Edit Fields";
             this.btnEditFields.UseVisualStyleBackColor = true;
-            this.btnEditFields.Click += new System.EventHandler(this.btnEditFields_Click);
             // 
             // txtContactPerson
             // 
@@ -1263,7 +1262,6 @@
             this.btnAppointmentAdd.TabIndex = 6;
             this.btnAppointmentAdd.Text = "Add Appointment";
             this.btnAppointmentAdd.UseVisualStyleBackColor = true;
-            this.btnAppointmentAdd.Click += new System.EventHandler(this.btnAppointmentAdd_Click);
             // 
             // lblAddAppointment
             // 
@@ -1364,7 +1362,6 @@
             this.btnCusAddCustomer.TabIndex = 190;
             this.btnCusAddCustomer.Text = "Add Customer";
             this.btnCusAddCustomer.UseVisualStyleBackColor = true;
-            this.btnCusAddCustomer.Click += new System.EventHandler(this.btnCusAddCustomer_Click);
             // 
             // txtCusPhoneNumber2
             // 

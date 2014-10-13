@@ -43,29 +43,29 @@ namespace Barroc_IT
                 handler.CloseConnection();
                 foreach (DataRow dRow in dTable.Rows)
                 {
-                    if (username == dRow["USER_NAME"].ToString() && password == dRow["PASSWORD"].ToString())
+                    if (username.ToLower() == dRow["USER_NAME"].ToString().ToLower() && password.ToLower() == dRow["PASSWORD"].ToString().ToLower())
                     {
                         loggedIn = true;
-                        department = dRow["DEPARTMENT"].ToString();
+                        department = dRow["DEPARTMENT"].ToString().ToLower();
 
                         switch (department)
                         {
-                            case "Administrator":
+                            case "administrator":
                                 this.Hide();
                                 frmAdmin formAdmin = new frmAdmin(handler);
                                 formAdmin.Show();
                                 break;
-                            case "Sales":
+                            case "sales":
                                 this.Hide();
                                 frmSales formSales = new frmSales(handler, this);
                                 formSales.Show();
                                 break;
-                            case "Finance":
+                            case "finance":
                                 this.Hide();
                                 frmFinance formFinance = new frmFinance(handler, this);
                                 formFinance.Show();
                                 break;
-                            case "Development":
+                            case "development":
                                 this.Hide();
                                 frmDevelopment formDevelopment = new frmDevelopment(handler, this);
                                 formDevelopment.Show();
@@ -82,6 +82,7 @@ namespace Barroc_IT
             if (!loggedIn)
             {
                 MessageBox.Show("Incorrect username, password!");
+                ClearTextBoxes();
             }
         }
 
@@ -98,6 +99,20 @@ namespace Barroc_IT
         private void ExitProgram()
         {
             Application.Exit();
+        }
+
+        private void txtLoginKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login(txtUsername.Text, txtPassword.Text);
+            }
+        }
+
+        public void ClearTextBoxes()
+        {
+            txtUsername.Clear();
+            txtPassword.Clear();
         }
     }
 }

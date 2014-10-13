@@ -48,6 +48,7 @@ namespace Barroc_IT
             if (AddProject() == true)
             {
                 MessageBox.Show("Project succesfully added!");
+                tbContr.SelectedIndex = 4;
             }
             else
             {
@@ -463,8 +464,29 @@ namespace Barroc_IT
         private void CloseToLogin()
         {
             closing = true;
+            loginForm.ClearTextBoxes();
             loginForm.Show();
             this.Close();
+        }
+
+        private void btnListCustomerBack_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 0;
+        }
+
+        private void btnListProjectBack_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 2;
+        }
+
+        private void btnSelectedProjectBack_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 3;
+        }
+
+        private void btnSelectedCustomerBack_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 1;
         }
     }
 }
