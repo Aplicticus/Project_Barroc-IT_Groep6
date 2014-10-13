@@ -22,8 +22,6 @@ namespace Barroc_IT
         private int selectedProject;
         private bool closing = false;
 
-        private DataTable dtCustomerResult;
-
         // Form Constructor
         public frmDevelopment(DatabaseHandler handler, frmLogin loginForm)
         {
