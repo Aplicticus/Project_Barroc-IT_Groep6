@@ -37,28 +37,27 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tbContr = new TablessControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnChangeBKR = new System.Windows.Forms.Button();
             this.btnEditFields = new System.Windows.Forms.Button();
             this.txtContactPerson = new System.Windows.Forms.TextBox();
             this.lblContactperson = new System.Windows.Forms.Label();
-            this.lblSoftware = new System.Windows.Forms.Label();
-            this.lblAppointmentCount = new System.Windows.Forms.Label();
-            this.lblInternalContact = new System.Windows.Forms.Label();
-            this.lblHardware = new System.Windows.Forms.Label();
-            this.lblApplications = new System.Windows.Forms.Label();
-            this.lblOpenProject = new System.Windows.Forms.Label();
-            this.txtHardware = new System.Windows.Forms.TextBox();
-            this.txtInternalContact = new System.Windows.Forms.TextBox();
-            this.txtAppointments = new System.Windows.Forms.TextBox();
+            this.lblFinLimit = new System.Windows.Forms.Label();
+            this.lblFinLegderID = new System.Windows.Forms.Label();
+            this.lblFinBTWCode = new System.Windows.Forms.Label();
+            this.lblFinSales = new System.Windows.Forms.Label();
+            this.lblFinInvoices = new System.Windows.Forms.Label();
+            this.lblFinBalance = new System.Windows.Forms.Label();
+            this.txtFinSales = new System.Windows.Forms.TextBox();
+            this.txtFinBTWCode = new System.Windows.Forms.TextBox();
+            this.txtFinLegderID = new System.Windows.Forms.TextBox();
             this.lblFax = new System.Windows.Forms.Label();
-            this.txtSoftware = new System.Windows.Forms.TextBox();
-            this.txtApplications = new System.Windows.Forms.TextBox();
-            this.txtOpenProject = new System.Windows.Forms.TextBox();
+            this.txtFinLimit = new System.Windows.Forms.TextBox();
+            this.txtFinInvoices = new System.Windows.Forms.TextBox();
+            this.txtFinBalance = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.txtMaintenance = new System.Windows.Forms.TextBox();
+            this.txtFinAccountID = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber1 = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblMaintenance = new System.Windows.Forms.Label();
+            this.lblFinAccountID = new System.Windows.Forms.Label();
             this.txtFaxNumber = new System.Windows.Forms.TextBox();
             this.lblPhoneNumber1 = new System.Windows.Forms.Label();
             this.txtPostalCode1 = new System.Windows.Forms.TextBox();
@@ -68,11 +67,63 @@
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
             this.lblCustomer = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cBoxCustomerSearch = new System.Windows.Forms.ComboBox();
+            this.btnCustomerSearch = new System.Windows.Forms.Button();
+            this.txtCustomerSearch = new System.Windows.Forms.TextBox();
+            this.dgvUserInfo = new System.Windows.Forms.DataGridView();
+            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFinBKR = new System.Windows.Forms.Label();
+            this.cbFinBKR = new System.Windows.Forms.ComboBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cBoxProjectSearch = new System.Windows.Forms.ComboBox();
+            this.btnProjectSearch = new System.Windows.Forms.Button();
+            this.txtProjectSearch = new System.Windows.Forms.TextBox();
+            this.dgvProjects = new System.Windows.Forms.DataGridView();
+            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectAppointments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dtpDeadlineViewProject = new System.Windows.Forms.DateTimePicker();
+            this.txtProjectName = new System.Windows.Forms.TextBox();
+            this.lblProjectCompanyName = new System.Windows.Forms.Label();
+            this.txtProjectSubject = new System.Windows.Forms.TextBox();
+            this.lblProjectSubject = new System.Windows.Forms.Label();
+            this.txtProjectValue = new System.Windows.Forms.TextBox();
+            this.lblProjectValue = new System.Windows.Forms.Label();
+            this.lblProjectDeadline = new System.Windows.Forms.Label();
+            this.lblProjectName = new System.Windows.Forms.Label();
+            this.txtProjectCompanyName = new System.Windows.Forms.TextBox();
+            this.lblSelectedProject = new System.Windows.Forms.Label();
+            this.btnAddInvoice = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tbContr.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUserInfo)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pWelcome
@@ -149,6 +200,10 @@
             // tbContr
             // 
             this.tbContr.Controls.Add(this.tabPage3);
+            this.tbContr.Controls.Add(this.tabPage1);
+            this.tbContr.Controls.Add(this.tabPage2);
+            this.tbContr.Controls.Add(this.tabPage4);
+            this.tbContr.Controls.Add(this.tabPage5);
             this.tbContr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbContr.Location = new System.Drawing.Point(0, 0);
             this.tbContr.Name = "tbContr";
@@ -159,28 +214,29 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.btnChangeBKR);
+            this.tabPage3.Controls.Add(this.cbFinBKR);
+            this.tabPage3.Controls.Add(this.lblFinBKR);
             this.tabPage3.Controls.Add(this.btnEditFields);
             this.tabPage3.Controls.Add(this.txtContactPerson);
             this.tabPage3.Controls.Add(this.lblContactperson);
-            this.tabPage3.Controls.Add(this.lblSoftware);
-            this.tabPage3.Controls.Add(this.lblAppointmentCount);
-            this.tabPage3.Controls.Add(this.lblInternalContact);
-            this.tabPage3.Controls.Add(this.lblHardware);
-            this.tabPage3.Controls.Add(this.lblApplications);
-            this.tabPage3.Controls.Add(this.lblOpenProject);
-            this.tabPage3.Controls.Add(this.txtHardware);
-            this.tabPage3.Controls.Add(this.txtInternalContact);
-            this.tabPage3.Controls.Add(this.txtAppointments);
+            this.tabPage3.Controls.Add(this.lblFinLimit);
+            this.tabPage3.Controls.Add(this.lblFinLegderID);
+            this.tabPage3.Controls.Add(this.lblFinBTWCode);
+            this.tabPage3.Controls.Add(this.lblFinSales);
+            this.tabPage3.Controls.Add(this.lblFinInvoices);
+            this.tabPage3.Controls.Add(this.lblFinBalance);
+            this.tabPage3.Controls.Add(this.txtFinSales);
+            this.tabPage3.Controls.Add(this.txtFinBTWCode);
+            this.tabPage3.Controls.Add(this.txtFinLegderID);
             this.tabPage3.Controls.Add(this.lblFax);
-            this.tabPage3.Controls.Add(this.txtSoftware);
-            this.tabPage3.Controls.Add(this.txtApplications);
-            this.tabPage3.Controls.Add(this.txtOpenProject);
+            this.tabPage3.Controls.Add(this.txtFinLimit);
+            this.tabPage3.Controls.Add(this.txtFinInvoices);
+            this.tabPage3.Controls.Add(this.txtFinBalance);
             this.tabPage3.Controls.Add(this.lblEmail);
-            this.tabPage3.Controls.Add(this.txtMaintenance);
+            this.tabPage3.Controls.Add(this.txtFinAccountID);
             this.tabPage3.Controls.Add(this.txtPhoneNumber1);
             this.tabPage3.Controls.Add(this.txtEmail);
-            this.tabPage3.Controls.Add(this.lblMaintenance);
+            this.tabPage3.Controls.Add(this.lblFinAccountID);
             this.tabPage3.Controls.Add(this.txtFaxNumber);
             this.tabPage3.Controls.Add(this.lblPhoneNumber1);
             this.tabPage3.Controls.Add(this.txtPostalCode1);
@@ -196,16 +252,6 @@
             this.tabPage3.Size = new System.Drawing.Size(759, 574);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
-            // 
-            // btnChangeBKR
-            // 
-            this.btnChangeBKR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeBKR.Location = new System.Drawing.Point(203, 510);
-            this.btnChangeBKR.Name = "btnChangeBKR";
-            this.btnChangeBKR.Size = new System.Drawing.Size(165, 43);
-            this.btnChangeBKR.TabIndex = 127;
-            this.btnChangeBKR.Text = "Change BKR";
-            this.btnChangeBKR.UseVisualStyleBackColor = true;
             // 
             // btnEditFields
             // 
@@ -235,89 +281,89 @@
             this.lblContactperson.TabIndex = 124;
             this.lblContactperson.Text = "Contactperson:";
             // 
-            // lblSoftware
+            // lblFinLimit
             // 
-            this.lblSoftware.AutoSize = true;
-            this.lblSoftware.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoftware.Location = new System.Drawing.Point(369, 161);
-            this.lblSoftware.Name = "lblSoftware";
-            this.lblSoftware.Size = new System.Drawing.Size(95, 25);
-            this.lblSoftware.TabIndex = 123;
-            this.lblSoftware.Text = "Software:";
+            this.lblFinLimit.AutoSize = true;
+            this.lblFinLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinLimit.Location = new System.Drawing.Point(369, 161);
+            this.lblFinLimit.Name = "lblFinLimit";
+            this.lblFinLimit.Size = new System.Drawing.Size(58, 25);
+            this.lblFinLimit.TabIndex = 123;
+            this.lblFinLimit.Text = "Limit:";
             // 
-            // lblAppointmentCount
+            // lblFinLegderID
             // 
-            this.lblAppointmentCount.AutoSize = true;
-            this.lblAppointmentCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppointmentCount.Location = new System.Drawing.Point(369, 191);
-            this.lblAppointmentCount.Name = "lblAppointmentCount";
-            this.lblAppointmentCount.Size = new System.Drawing.Size(128, 25);
-            this.lblAppointmentCount.TabIndex = 122;
-            this.lblAppointmentCount.Text = "Appointment:";
+            this.lblFinLegderID.AutoSize = true;
+            this.lblFinLegderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinLegderID.Location = new System.Drawing.Point(369, 191);
+            this.lblFinLegderID.Name = "lblFinLegderID";
+            this.lblFinLegderID.Size = new System.Drawing.Size(153, 25);
+            this.lblFinLegderID.TabIndex = 122;
+            this.lblFinLegderID.Text = "Ledger Number:";
             // 
-            // lblInternalContact
+            // lblFinBTWCode
             // 
-            this.lblInternalContact.AutoSize = true;
-            this.lblInternalContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInternalContact.Location = new System.Drawing.Point(369, 221);
-            this.lblInternalContact.Name = "lblInternalContact";
-            this.lblInternalContact.Size = new System.Drawing.Size(222, 25);
-            this.lblInternalContact.TabIndex = 121;
-            this.lblInternalContact.Text = "Internal Contact Person:";
+            this.lblFinBTWCode.AutoSize = true;
+            this.lblFinBTWCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinBTWCode.Location = new System.Drawing.Point(369, 221);
+            this.lblFinBTWCode.Name = "lblFinBTWCode";
+            this.lblFinBTWCode.Size = new System.Drawing.Size(117, 25);
+            this.lblFinBTWCode.TabIndex = 121;
+            this.lblFinBTWCode.Text = "BTW Code:";
             // 
-            // lblHardware
+            // lblFinSales
             // 
-            this.lblHardware.AutoSize = true;
-            this.lblHardware.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHardware.Location = new System.Drawing.Point(369, 131);
-            this.lblHardware.Name = "lblHardware";
-            this.lblHardware.Size = new System.Drawing.Size(102, 25);
-            this.lblHardware.TabIndex = 120;
-            this.lblHardware.Text = "Hardware:";
+            this.lblFinSales.AutoSize = true;
+            this.lblFinSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinSales.Location = new System.Drawing.Point(369, 131);
+            this.lblFinSales.Name = "lblFinSales";
+            this.lblFinSales.Size = new System.Drawing.Size(68, 25);
+            this.lblFinSales.TabIndex = 120;
+            this.lblFinSales.Text = "Sales:";
             // 
-            // lblApplications
+            // lblFinInvoices
             // 
-            this.lblApplications.AutoSize = true;
-            this.lblApplications.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApplications.Location = new System.Drawing.Point(369, 102);
-            this.lblApplications.Name = "lblApplications";
-            this.lblApplications.Size = new System.Drawing.Size(124, 25);
-            this.lblApplications.TabIndex = 119;
-            this.lblApplications.Text = "Applications:";
+            this.lblFinInvoices.AutoSize = true;
+            this.lblFinInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinInvoices.Location = new System.Drawing.Point(369, 102);
+            this.lblFinInvoices.Name = "lblFinInvoices";
+            this.lblFinInvoices.Size = new System.Drawing.Size(90, 25);
+            this.lblFinInvoices.TabIndex = 119;
+            this.lblFinInvoices.Text = "Invoices:";
             // 
-            // lblOpenProject
+            // lblFinBalance
             // 
-            this.lblOpenProject.AutoSize = true;
-            this.lblOpenProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpenProject.Location = new System.Drawing.Point(369, 72);
-            this.lblOpenProject.Name = "lblOpenProject";
-            this.lblOpenProject.Size = new System.Drawing.Size(132, 25);
-            this.lblOpenProject.TabIndex = 118;
-            this.lblOpenProject.Text = "Open Project:";
+            this.lblFinBalance.AutoSize = true;
+            this.lblFinBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinBalance.Location = new System.Drawing.Point(369, 72);
+            this.lblFinBalance.Name = "lblFinBalance";
+            this.lblFinBalance.Size = new System.Drawing.Size(89, 25);
+            this.lblFinBalance.TabIndex = 118;
+            this.lblFinBalance.Text = "Balance:";
             // 
-            // txtHardware
+            // txtFinSales
             // 
-            this.txtHardware.Location = new System.Drawing.Point(594, 137);
-            this.txtHardware.Name = "txtHardware";
-            this.txtHardware.ReadOnly = true;
-            this.txtHardware.Size = new System.Drawing.Size(137, 20);
-            this.txtHardware.TabIndex = 117;
+            this.txtFinSales.Location = new System.Drawing.Point(594, 137);
+            this.txtFinSales.Name = "txtFinSales";
+            this.txtFinSales.ReadOnly = true;
+            this.txtFinSales.Size = new System.Drawing.Size(137, 20);
+            this.txtFinSales.TabIndex = 117;
             // 
-            // txtInternalContact
+            // txtFinBTWCode
             // 
-            this.txtInternalContact.Location = new System.Drawing.Point(594, 227);
-            this.txtInternalContact.Name = "txtInternalContact";
-            this.txtInternalContact.ReadOnly = true;
-            this.txtInternalContact.Size = new System.Drawing.Size(137, 20);
-            this.txtInternalContact.TabIndex = 110;
+            this.txtFinBTWCode.Location = new System.Drawing.Point(594, 227);
+            this.txtFinBTWCode.Name = "txtFinBTWCode";
+            this.txtFinBTWCode.ReadOnly = true;
+            this.txtFinBTWCode.Size = new System.Drawing.Size(137, 20);
+            this.txtFinBTWCode.TabIndex = 110;
             // 
-            // txtAppointments
+            // txtFinLegderID
             // 
-            this.txtAppointments.Location = new System.Drawing.Point(594, 197);
-            this.txtAppointments.Name = "txtAppointments";
-            this.txtAppointments.ReadOnly = true;
-            this.txtAppointments.Size = new System.Drawing.Size(137, 20);
-            this.txtAppointments.TabIndex = 108;
+            this.txtFinLegderID.Location = new System.Drawing.Point(594, 197);
+            this.txtFinLegderID.Name = "txtFinLegderID";
+            this.txtFinLegderID.ReadOnly = true;
+            this.txtFinLegderID.Size = new System.Drawing.Size(137, 20);
+            this.txtFinLegderID.TabIndex = 108;
             // 
             // lblFax
             // 
@@ -329,29 +375,29 @@
             this.lblFax.TabIndex = 107;
             this.lblFax.Text = "Fax Number: ";
             // 
-            // txtSoftware
+            // txtFinLimit
             // 
-            this.txtSoftware.Location = new System.Drawing.Point(594, 167);
-            this.txtSoftware.Name = "txtSoftware";
-            this.txtSoftware.ReadOnly = true;
-            this.txtSoftware.Size = new System.Drawing.Size(137, 20);
-            this.txtSoftware.TabIndex = 106;
+            this.txtFinLimit.Location = new System.Drawing.Point(594, 167);
+            this.txtFinLimit.Name = "txtFinLimit";
+            this.txtFinLimit.ReadOnly = true;
+            this.txtFinLimit.Size = new System.Drawing.Size(137, 20);
+            this.txtFinLimit.TabIndex = 106;
             // 
-            // txtApplications
+            // txtFinInvoices
             // 
-            this.txtApplications.Location = new System.Drawing.Point(594, 108);
-            this.txtApplications.Name = "txtApplications";
-            this.txtApplications.ReadOnly = true;
-            this.txtApplications.Size = new System.Drawing.Size(137, 20);
-            this.txtApplications.TabIndex = 103;
+            this.txtFinInvoices.Location = new System.Drawing.Point(594, 108);
+            this.txtFinInvoices.Name = "txtFinInvoices";
+            this.txtFinInvoices.ReadOnly = true;
+            this.txtFinInvoices.Size = new System.Drawing.Size(137, 20);
+            this.txtFinInvoices.TabIndex = 103;
             // 
-            // txtOpenProject
+            // txtFinBalance
             // 
-            this.txtOpenProject.Location = new System.Drawing.Point(594, 78);
-            this.txtOpenProject.Name = "txtOpenProject";
-            this.txtOpenProject.ReadOnly = true;
-            this.txtOpenProject.Size = new System.Drawing.Size(137, 20);
-            this.txtOpenProject.TabIndex = 101;
+            this.txtFinBalance.Location = new System.Drawing.Point(594, 78);
+            this.txtFinBalance.Name = "txtFinBalance";
+            this.txtFinBalance.ReadOnly = true;
+            this.txtFinBalance.Size = new System.Drawing.Size(137, 20);
+            this.txtFinBalance.TabIndex = 101;
             // 
             // lblEmail
             // 
@@ -363,13 +409,13 @@
             this.lblEmail.TabIndex = 99;
             this.lblEmail.Text = "E-mail:";
             // 
-            // txtMaintenance
+            // txtFinAccountID
             // 
-            this.txtMaintenance.Location = new System.Drawing.Point(594, 48);
-            this.txtMaintenance.Name = "txtMaintenance";
-            this.txtMaintenance.ReadOnly = true;
-            this.txtMaintenance.Size = new System.Drawing.Size(137, 20);
-            this.txtMaintenance.TabIndex = 98;
+            this.txtFinAccountID.Location = new System.Drawing.Point(594, 48);
+            this.txtFinAccountID.Name = "txtFinAccountID";
+            this.txtFinAccountID.ReadOnly = true;
+            this.txtFinAccountID.Size = new System.Drawing.Size(137, 20);
+            this.txtFinAccountID.TabIndex = 98;
             // 
             // txtPhoneNumber1
             // 
@@ -387,15 +433,15 @@
             this.txtEmail.Size = new System.Drawing.Size(137, 20);
             this.txtEmail.TabIndex = 86;
             // 
-            // lblMaintenance
+            // lblFinAccountID
             // 
-            this.lblMaintenance.AutoSize = true;
-            this.lblMaintenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaintenance.Location = new System.Drawing.Point(369, 42);
-            this.lblMaintenance.Name = "lblMaintenance";
-            this.lblMaintenance.Size = new System.Drawing.Size(210, 25);
-            this.lblMaintenance.TabIndex = 85;
-            this.lblMaintenance.Text = "Maintenance Contract:";
+            this.lblFinAccountID.AutoSize = true;
+            this.lblFinAccountID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinAccountID.Location = new System.Drawing.Point(369, 42);
+            this.lblFinAccountID.Name = "lblFinAccountID";
+            this.lblFinAccountID.Size = new System.Drawing.Size(164, 25);
+            this.lblFinAccountID.TabIndex = 85;
+            this.lblFinAccountID.Text = "Account Number:";
             // 
             // txtFaxNumber
             // 
@@ -473,11 +519,417 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(315, 3);
+            this.lblCustomer.Location = new System.Drawing.Point(297, 3);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(140, 31);
             this.lblCustomer.TabIndex = 23;
             this.lblCustomer.Text = "Customer";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.cBoxCustomerSearch);
+            this.tabPage1.Controls.Add(this.btnCustomerSearch);
+            this.tabPage1.Controls.Add(this.txtCustomerSearch);
+            this.tabPage1.Controls.Add(this.dgvUserInfo);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(759, 574);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "listCustomers";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cBoxCustomerSearch
+            // 
+            this.cBoxCustomerSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxCustomerSearch.FormattingEnabled = true;
+            this.cBoxCustomerSearch.Items.AddRange(new object[] {
+            "Company Name",
+            "E-Mail",
+            "Initials"});
+            this.cBoxCustomerSearch.Location = new System.Drawing.Point(430, 3);
+            this.cBoxCustomerSearch.Name = "cBoxCustomerSearch";
+            this.cBoxCustomerSearch.Size = new System.Drawing.Size(121, 21);
+            this.cBoxCustomerSearch.Sorted = true;
+            this.cBoxCustomerSearch.TabIndex = 29;
+            // 
+            // btnCustomerSearch
+            // 
+            this.btnCustomerSearch.Location = new System.Drawing.Point(680, 2);
+            this.btnCustomerSearch.Name = "btnCustomerSearch";
+            this.btnCustomerSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnCustomerSearch.TabIndex = 28;
+            this.btnCustomerSearch.Text = "Search";
+            this.btnCustomerSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtCustomerSearch
+            // 
+            this.txtCustomerSearch.Location = new System.Drawing.Point(557, 4);
+            this.txtCustomerSearch.Name = "txtCustomerSearch";
+            this.txtCustomerSearch.Size = new System.Drawing.Size(119, 20);
+            this.txtCustomerSearch.TabIndex = 27;
+            // 
+            // dgvUserInfo
+            // 
+            this.dgvUserInfo.AllowUserToAddRows = false;
+            this.dgvUserInfo.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvUserInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUserInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cViewButton,
+            this.cCompanyName,
+            this.cAddress1,
+            this.cPostalCode1,
+            this.cResidence1,
+            this.cAddress2,
+            this.cPostalCode2,
+            this.cResidence2,
+            this.cContactPerson,
+            this.cInitials,
+            this.cPhoneNumber1,
+            this.cPhoneNumber2,
+            this.cFaxNumber,
+            this.cEmail});
+            this.dgvUserInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvUserInfo.Location = new System.Drawing.Point(3, 8);
+            this.dgvUserInfo.MultiSelect = false;
+            this.dgvUserInfo.Name = "dgvUserInfo";
+            this.dgvUserInfo.RowHeadersVisible = false;
+            this.dgvUserInfo.Size = new System.Drawing.Size(753, 563);
+            this.dgvUserInfo.TabIndex = 24;
+            // 
+            // cViewButton
+            // 
+            this.cViewButton.HeaderText = "View";
+            this.cViewButton.Name = "cViewButton";
+            // 
+            // cCompanyName
+            // 
+            this.cCompanyName.HeaderText = "Company Name";
+            this.cCompanyName.Name = "cCompanyName";
+            // 
+            // cAddress1
+            // 
+            this.cAddress1.HeaderText = "Address 1";
+            this.cAddress1.Name = "cAddress1";
+            // 
+            // cPostalCode1
+            // 
+            this.cPostalCode1.HeaderText = "Postal Code 1";
+            this.cPostalCode1.Name = "cPostalCode1";
+            // 
+            // cResidence1
+            // 
+            this.cResidence1.HeaderText = "Residence 1";
+            this.cResidence1.Name = "cResidence1";
+            // 
+            // cAddress2
+            // 
+            this.cAddress2.HeaderText = "Address 2";
+            this.cAddress2.Name = "cAddress2";
+            // 
+            // cPostalCode2
+            // 
+            this.cPostalCode2.HeaderText = "Postal Code 2";
+            this.cPostalCode2.Name = "cPostalCode2";
+            // 
+            // cResidence2
+            // 
+            this.cResidence2.HeaderText = "Residence 2";
+            this.cResidence2.Name = "cResidence2";
+            // 
+            // cContactPerson
+            // 
+            this.cContactPerson.HeaderText = "Contactperson";
+            this.cContactPerson.Name = "cContactPerson";
+            // 
+            // cInitials
+            // 
+            this.cInitials.HeaderText = "Initials";
+            this.cInitials.Name = "cInitials";
+            // 
+            // cPhoneNumber1
+            // 
+            this.cPhoneNumber1.HeaderText = "Phone Number 1";
+            this.cPhoneNumber1.Name = "cPhoneNumber1";
+            // 
+            // cPhoneNumber2
+            // 
+            this.cPhoneNumber2.HeaderText = "Phone Number 2";
+            this.cPhoneNumber2.Name = "cPhoneNumber2";
+            // 
+            // cFaxNumber
+            // 
+            this.cFaxNumber.HeaderText = "Fax Number";
+            this.cFaxNumber.Name = "cFaxNumber";
+            // 
+            // cEmail
+            // 
+            this.cEmail.HeaderText = "E-Mail";
+            this.cEmail.Name = "cEmail";
+            // 
+            // lblFinBKR
+            // 
+            this.lblFinBKR.AutoSize = true;
+            this.lblFinBKR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinBKR.Location = new System.Drawing.Point(369, 248);
+            this.lblFinBKR.Name = "lblFinBKR";
+            this.lblFinBKR.Size = new System.Drawing.Size(58, 25);
+            this.lblFinBKR.TabIndex = 129;
+            this.lblFinBKR.Text = "BKR:";
+            // 
+            // cbFinBKR
+            // 
+            this.cbFinBKR.FormattingEnabled = true;
+            this.cbFinBKR.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cbFinBKR.Location = new System.Drawing.Point(594, 252);
+            this.cbFinBKR.Name = "cbFinBKR";
+            this.cbFinBKR.Size = new System.Drawing.Size(137, 21);
+            this.cbFinBKR.TabIndex = 193;
+            this.cbFinBKR.Text = "Yes";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.cBoxProjectSearch);
+            this.tabPage2.Controls.Add(this.btnProjectSearch);
+            this.tabPage2.Controls.Add(this.txtProjectSearch);
+            this.tabPage2.Controls.Add(this.dgvProjects);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(759, 574);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "listProjects";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cBoxProjectSearch
+            // 
+            this.cBoxProjectSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxProjectSearch.FormattingEnabled = true;
+            this.cBoxProjectSearch.Items.AddRange(new object[] {
+            "Company Name",
+            "E-Mail",
+            "Initials"});
+            this.cBoxProjectSearch.Location = new System.Drawing.Point(434, 9);
+            this.cBoxProjectSearch.Name = "cBoxProjectSearch";
+            this.cBoxProjectSearch.Size = new System.Drawing.Size(121, 21);
+            this.cBoxProjectSearch.Sorted = true;
+            this.cBoxProjectSearch.TabIndex = 30;
+            // 
+            // btnProjectSearch
+            // 
+            this.btnProjectSearch.Location = new System.Drawing.Point(684, 8);
+            this.btnProjectSearch.Name = "btnProjectSearch";
+            this.btnProjectSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnProjectSearch.TabIndex = 29;
+            this.btnProjectSearch.Text = "Search";
+            this.btnProjectSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtProjectSearch
+            // 
+            this.txtProjectSearch.Location = new System.Drawing.Point(561, 10);
+            this.txtProjectSearch.Name = "txtProjectSearch";
+            this.txtProjectSearch.Size = new System.Drawing.Size(119, 20);
+            this.txtProjectSearch.TabIndex = 28;
+            // 
+            // dgvProjects
+            // 
+            this.dgvProjects.AllowUserToAddRows = false;
+            this.dgvProjects.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cProjectViewButton,
+            this.cProjectCustomerID,
+            this.cProjectName,
+            this.cProjectDeadline,
+            this.cProjectSubject,
+            this.cProjectValue,
+            this.cProjectAppointments});
+            this.dgvProjects.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvProjects.Location = new System.Drawing.Point(3, 8);
+            this.dgvProjects.Name = "dgvProjects";
+            this.dgvProjects.RowHeadersVisible = false;
+            this.dgvProjects.Size = new System.Drawing.Size(753, 563);
+            this.dgvProjects.TabIndex = 27;
+            // 
+            // cProjectViewButton
+            // 
+            this.cProjectViewButton.HeaderText = "View";
+            this.cProjectViewButton.Name = "cProjectViewButton";
+            // 
+            // cProjectCustomerID
+            // 
+            this.cProjectCustomerID.HeaderText = "CustomerID";
+            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            // 
+            // cProjectName
+            // 
+            this.cProjectName.HeaderText = "Project Name";
+            this.cProjectName.Name = "cProjectName";
+            // 
+            // cProjectDeadline
+            // 
+            this.cProjectDeadline.HeaderText = "Deadline";
+            this.cProjectDeadline.Name = "cProjectDeadline";
+            // 
+            // cProjectSubject
+            // 
+            this.cProjectSubject.HeaderText = "Subject";
+            this.cProjectSubject.Name = "cProjectSubject";
+            // 
+            // cProjectValue
+            // 
+            this.cProjectValue.HeaderText = "Value";
+            this.cProjectValue.Name = "cProjectValue";
+            // 
+            // cProjectAppointments
+            // 
+            this.cProjectAppointments.HeaderText = "Appointments";
+            this.cProjectAppointments.Name = "cProjectAppointments";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.btnAddInvoice);
+            this.tabPage4.Controls.Add(this.dtpDeadlineViewProject);
+            this.tabPage4.Controls.Add(this.txtProjectName);
+            this.tabPage4.Controls.Add(this.lblProjectCompanyName);
+            this.tabPage4.Controls.Add(this.txtProjectSubject);
+            this.tabPage4.Controls.Add(this.lblProjectSubject);
+            this.tabPage4.Controls.Add(this.txtProjectValue);
+            this.tabPage4.Controls.Add(this.lblProjectValue);
+            this.tabPage4.Controls.Add(this.lblProjectDeadline);
+            this.tabPage4.Controls.Add(this.lblProjectName);
+            this.tabPage4.Controls.Add(this.txtProjectCompanyName);
+            this.tabPage4.Controls.Add(this.lblSelectedProject);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(759, 574);
+            this.tabPage4.TabIndex = 5;
+            this.tabPage4.Text = "selectedProject";
+            // 
+            // dtpDeadlineViewProject
+            // 
+            this.dtpDeadlineViewProject.Enabled = false;
+            this.dtpDeadlineViewProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(241, 134);
+            this.dtpDeadlineViewProject.Name = "dtpDeadlineViewProject";
+            this.dtpDeadlineViewProject.Size = new System.Drawing.Size(133, 20);
+            this.dtpDeadlineViewProject.TabIndex = 148;
+            // 
+            // txtProjectName
+            // 
+            this.txtProjectName.Location = new System.Drawing.Point(237, 105);
+            this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.ReadOnly = true;
+            this.txtProjectName.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectName.TabIndex = 147;
+            // 
+            // lblProjectCompanyName
+            // 
+            this.lblProjectCompanyName.AutoSize = true;
+            this.lblProjectCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectCompanyName.Location = new System.Drawing.Point(71, 69);
+            this.lblProjectCompanyName.Name = "lblProjectCompanyName";
+            this.lblProjectCompanyName.Size = new System.Drawing.Size(160, 25);
+            this.lblProjectCompanyName.TabIndex = 146;
+            this.lblProjectCompanyName.Text = "Company Name:";
+            // 
+            // txtProjectSubject
+            // 
+            this.txtProjectSubject.Location = new System.Drawing.Point(237, 165);
+            this.txtProjectSubject.Name = "txtProjectSubject";
+            this.txtProjectSubject.ReadOnly = true;
+            this.txtProjectSubject.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectSubject.TabIndex = 145;
+            // 
+            // lblProjectSubject
+            // 
+            this.lblProjectSubject.AutoSize = true;
+            this.lblProjectSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectSubject.Location = new System.Drawing.Point(71, 160);
+            this.lblProjectSubject.Name = "lblProjectSubject";
+            this.lblProjectSubject.Size = new System.Drawing.Size(84, 25);
+            this.lblProjectSubject.TabIndex = 144;
+            this.lblProjectSubject.Text = "Subject:";
+            // 
+            // txtProjectValue
+            // 
+            this.txtProjectValue.Location = new System.Drawing.Point(237, 195);
+            this.txtProjectValue.Name = "txtProjectValue";
+            this.txtProjectValue.ReadOnly = true;
+            this.txtProjectValue.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectValue.TabIndex = 143;
+            // 
+            // lblProjectValue
+            // 
+            this.lblProjectValue.AutoSize = true;
+            this.lblProjectValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectValue.Location = new System.Drawing.Point(71, 190);
+            this.lblProjectValue.Name = "lblProjectValue";
+            this.lblProjectValue.Size = new System.Drawing.Size(69, 25);
+            this.lblProjectValue.TabIndex = 142;
+            this.lblProjectValue.Text = "Value:";
+            // 
+            // lblProjectDeadline
+            // 
+            this.lblProjectDeadline.AutoSize = true;
+            this.lblProjectDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectDeadline.Location = new System.Drawing.Point(71, 129);
+            this.lblProjectDeadline.Name = "lblProjectDeadline";
+            this.lblProjectDeadline.Size = new System.Drawing.Size(95, 25);
+            this.lblProjectDeadline.TabIndex = 141;
+            this.lblProjectDeadline.Text = "Deadline:";
+            // 
+            // lblProjectName
+            // 
+            this.lblProjectName.AutoSize = true;
+            this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectName.Location = new System.Drawing.Point(71, 99);
+            this.lblProjectName.Name = "lblProjectName";
+            this.lblProjectName.Size = new System.Drawing.Size(70, 25);
+            this.lblProjectName.TabIndex = 140;
+            this.lblProjectName.Text = "Name:";
+            // 
+            // txtProjectCompanyName
+            // 
+            this.txtProjectCompanyName.Location = new System.Drawing.Point(237, 75);
+            this.txtProjectCompanyName.Name = "txtProjectCompanyName";
+            this.txtProjectCompanyName.ReadOnly = true;
+            this.txtProjectCompanyName.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectCompanyName.TabIndex = 139;
+            // 
+            // lblSelectedProject
+            // 
+            this.lblSelectedProject.AutoSize = true;
+            this.lblSelectedProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedProject.Location = new System.Drawing.Point(330, 26);
+            this.lblSelectedProject.Name = "lblSelectedProject";
+            this.lblSelectedProject.Size = new System.Drawing.Size(106, 31);
+            this.lblSelectedProject.TabIndex = 138;
+            this.lblSelectedProject.Text = "Project";
+            // 
+            // btnAddInvoice
+            // 
+            this.btnAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddInvoice.Location = new System.Drawing.Point(40, 511);
+            this.btnAddInvoice.Name = "btnAddInvoice";
+            this.btnAddInvoice.Size = new System.Drawing.Size(165, 43);
+            this.btnAddInvoice.TabIndex = 149;
+            this.btnAddInvoice.Text = "Add Invoice";
+            this.btnAddInvoice.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(759, 574);
+            this.tabPage5.TabIndex = 6;
+            this.tabPage5.Text = "addInvoice";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // frmFinance
             // 
@@ -489,7 +941,7 @@
             this.Controls.Add(this.pWelcome);
             this.Name = "frmFinance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Finance";            
+            this.Text = "Finance";
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();
             this.pButtons.ResumeLayout(false);
@@ -497,6 +949,14 @@
             this.tbContr.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUserInfo)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -512,28 +972,27 @@
         private System.Windows.Forms.Panel panel1;
         private TablessControl tbContr;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button btnChangeBKR;
         private System.Windows.Forms.Button btnEditFields;
         private System.Windows.Forms.TextBox txtContactPerson;
         private System.Windows.Forms.Label lblContactperson;
-        private System.Windows.Forms.Label lblSoftware;
-        private System.Windows.Forms.Label lblAppointmentCount;
-        private System.Windows.Forms.Label lblInternalContact;
-        private System.Windows.Forms.Label lblHardware;
-        private System.Windows.Forms.Label lblApplications;
-        private System.Windows.Forms.Label lblOpenProject;
-        private System.Windows.Forms.TextBox txtHardware;
-        private System.Windows.Forms.TextBox txtInternalContact;
-        private System.Windows.Forms.TextBox txtAppointments;
+        private System.Windows.Forms.Label lblFinLimit;
+        private System.Windows.Forms.Label lblFinLegderID;
+        private System.Windows.Forms.Label lblFinBTWCode;
+        private System.Windows.Forms.Label lblFinSales;
+        private System.Windows.Forms.Label lblFinInvoices;
+        private System.Windows.Forms.Label lblFinBalance;
+        private System.Windows.Forms.TextBox txtFinSales;
+        private System.Windows.Forms.TextBox txtFinBTWCode;
+        private System.Windows.Forms.TextBox txtFinLegderID;
         private System.Windows.Forms.Label lblFax;
-        private System.Windows.Forms.TextBox txtSoftware;
-        private System.Windows.Forms.TextBox txtApplications;
-        private System.Windows.Forms.TextBox txtOpenProject;
+        private System.Windows.Forms.TextBox txtFinLimit;
+        private System.Windows.Forms.TextBox txtFinInvoices;
+        private System.Windows.Forms.TextBox txtFinBalance;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.TextBox txtMaintenance;
+        private System.Windows.Forms.TextBox txtFinAccountID;
         private System.Windows.Forms.TextBox txtPhoneNumber1;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label lblMaintenance;
+        private System.Windows.Forms.Label lblFinAccountID;
         private System.Windows.Forms.TextBox txtFaxNumber;
         private System.Windows.Forms.Label lblPhoneNumber1;
         private System.Windows.Forms.TextBox txtPostalCode1;
@@ -543,5 +1002,52 @@
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.TextBox txtCompanyName;
         private System.Windows.Forms.Label lblCustomer;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView dgvUserInfo;
+        private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
+        private System.Windows.Forms.ComboBox cBoxCustomerSearch;
+        private System.Windows.Forms.Button btnCustomerSearch;
+        private System.Windows.Forms.TextBox txtCustomerSearch;
+        private System.Windows.Forms.Label lblFinBKR;
+        private System.Windows.Forms.ComboBox cbFinBKR;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox cBoxProjectSearch;
+        private System.Windows.Forms.Button btnProjectSearch;
+        private System.Windows.Forms.TextBox txtProjectSearch;
+        private System.Windows.Forms.DataGridView dgvProjects;
+        private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectAppointments;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DateTimePicker dtpDeadlineViewProject;
+        private System.Windows.Forms.TextBox txtProjectName;
+        private System.Windows.Forms.Label lblProjectCompanyName;
+        private System.Windows.Forms.TextBox txtProjectSubject;
+        private System.Windows.Forms.Label lblProjectSubject;
+        private System.Windows.Forms.TextBox txtProjectValue;
+        private System.Windows.Forms.Label lblProjectValue;
+        private System.Windows.Forms.Label lblProjectDeadline;
+        private System.Windows.Forms.Label lblProjectName;
+        private System.Windows.Forms.TextBox txtProjectCompanyName;
+        private System.Windows.Forms.Label lblSelectedProject;
+        private System.Windows.Forms.Button btnAddInvoice;
+        private System.Windows.Forms.TabPage tabPage5;
     }
 }

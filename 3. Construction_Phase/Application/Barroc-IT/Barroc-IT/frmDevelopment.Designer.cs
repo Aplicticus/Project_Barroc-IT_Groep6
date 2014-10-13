@@ -895,14 +895,14 @@
             // 
             this.dtpDeadlineViewProject.Enabled = false;
             this.dtpDeadlineViewProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(221, 102);
+            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(220, 137);
             this.dtpDeadlineViewProject.Name = "dtpDeadlineViewProject";
             this.dtpDeadlineViewProject.Size = new System.Drawing.Size(133, 20);
             this.dtpDeadlineViewProject.TabIndex = 137;
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(217, 73);
+            this.txtProjectName.Location = new System.Drawing.Point(216, 108);
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.ReadOnly = true;
             this.txtProjectName.Size = new System.Drawing.Size(137, 20);
@@ -912,7 +912,7 @@
             // 
             this.lblProjectCompanyName.AutoSize = true;
             this.lblProjectCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectCompanyName.Location = new System.Drawing.Point(51, 37);
+            this.lblProjectCompanyName.Location = new System.Drawing.Point(50, 72);
             this.lblProjectCompanyName.Name = "lblProjectCompanyName";
             this.lblProjectCompanyName.Size = new System.Drawing.Size(160, 25);
             this.lblProjectCompanyName.TabIndex = 135;
@@ -920,7 +920,7 @@
             // 
             // txtProjectSubject
             // 
-            this.txtProjectSubject.Location = new System.Drawing.Point(217, 133);
+            this.txtProjectSubject.Location = new System.Drawing.Point(216, 168);
             this.txtProjectSubject.Name = "txtProjectSubject";
             this.txtProjectSubject.ReadOnly = true;
             this.txtProjectSubject.Size = new System.Drawing.Size(137, 20);
@@ -930,7 +930,7 @@
             // 
             this.lblProjectSubject.AutoSize = true;
             this.lblProjectSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectSubject.Location = new System.Drawing.Point(51, 128);
+            this.lblProjectSubject.Location = new System.Drawing.Point(50, 163);
             this.lblProjectSubject.Name = "lblProjectSubject";
             this.lblProjectSubject.Size = new System.Drawing.Size(84, 25);
             this.lblProjectSubject.TabIndex = 133;
@@ -938,7 +938,7 @@
             // 
             // txtProjectValue
             // 
-            this.txtProjectValue.Location = new System.Drawing.Point(217, 163);
+            this.txtProjectValue.Location = new System.Drawing.Point(216, 198);
             this.txtProjectValue.Name = "txtProjectValue";
             this.txtProjectValue.ReadOnly = true;
             this.txtProjectValue.Size = new System.Drawing.Size(137, 20);
@@ -948,7 +948,7 @@
             // 
             this.lblProjectValue.AutoSize = true;
             this.lblProjectValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectValue.Location = new System.Drawing.Point(51, 158);
+            this.lblProjectValue.Location = new System.Drawing.Point(50, 193);
             this.lblProjectValue.Name = "lblProjectValue";
             this.lblProjectValue.Size = new System.Drawing.Size(69, 25);
             this.lblProjectValue.TabIndex = 131;
@@ -958,7 +958,7 @@
             // 
             this.lblProjectDeadline.AutoSize = true;
             this.lblProjectDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectDeadline.Location = new System.Drawing.Point(51, 97);
+            this.lblProjectDeadline.Location = new System.Drawing.Point(50, 132);
             this.lblProjectDeadline.Name = "lblProjectDeadline";
             this.lblProjectDeadline.Size = new System.Drawing.Size(95, 25);
             this.lblProjectDeadline.TabIndex = 127;
@@ -989,7 +989,7 @@
             // 
             this.lblProjectName.AutoSize = true;
             this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectName.Location = new System.Drawing.Point(51, 67);
+            this.lblProjectName.Location = new System.Drawing.Point(50, 102);
             this.lblProjectName.Name = "lblProjectName";
             this.lblProjectName.Size = new System.Drawing.Size(70, 25);
             this.lblProjectName.TabIndex = 76;
@@ -997,7 +997,7 @@
             // 
             // txtProjectCompanyName
             // 
-            this.txtProjectCompanyName.Location = new System.Drawing.Point(217, 43);
+            this.txtProjectCompanyName.Location = new System.Drawing.Point(216, 78);
             this.txtProjectCompanyName.Name = "txtProjectCompanyName";
             this.txtProjectCompanyName.ReadOnly = true;
             this.txtProjectCompanyName.Size = new System.Drawing.Size(137, 20);

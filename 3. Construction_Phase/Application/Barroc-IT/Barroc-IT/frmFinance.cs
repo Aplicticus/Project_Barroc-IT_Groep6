@@ -38,6 +38,21 @@ namespace Barroc_IT
             tbContr.SelectedIndex = 1;
         }
 
+        private void btnEditFields_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAppointmentAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCusAddCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
