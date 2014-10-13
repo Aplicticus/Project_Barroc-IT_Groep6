@@ -114,9 +114,28 @@
             this.txtProjectCompanyName = new System.Windows.Forms.TextBox();
             this.lblSelectedProject = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dtpFinInvoiceSentDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpFinInvoiceExpDate = new System.Windows.Forms.DateTimePicker();
+            this.lblFinInvoiceSentDate = new System.Windows.Forms.Label();
+            this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
+            this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
+            this.lblFinInvoiceValue = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnViewInvoices = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnAppointmentAdd = new System.Windows.Forms.Button();
+            this.btnInvoicesBack = new System.Windows.Forms.Button();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -128,6 +147,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFinInvoiceAddValue)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // pWelcome
@@ -208,6 +230,7 @@
             this.tbContr.Controls.Add(this.tabPage2);
             this.tbContr.Controls.Add(this.tabPage4);
             this.tbContr.Controls.Add(this.tabPage5);
+            this.tbContr.Controls.Add(this.tabPage6);
             this.tbContr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbContr.Location = new System.Drawing.Point(0, 0);
             this.tbContr.Name = "tbContr";
@@ -795,6 +818,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.btnViewInvoices);
             this.tabPage4.Controls.Add(this.btnAddInvoice);
             this.tabPage4.Controls.Add(this.dtpDeadlineViewProject);
             this.tabPage4.Controls.Add(this.txtProjectName);
@@ -927,8 +951,14 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.textBox1);
-            this.tabPage5.Controls.Add(this.label1);
+            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.btnAppointmentAdd);
+            this.tabPage5.Controls.Add(this.dtpFinInvoiceSentDate);
+            this.tabPage5.Controls.Add(this.dtpFinInvoiceExpDate);
+            this.tabPage5.Controls.Add(this.lblFinInvoiceSentDate);
+            this.tabPage5.Controls.Add(this.lblFinInvoiceExpDate);
+            this.tabPage5.Controls.Add(this.numFinInvoiceAddValue);
+            this.tabPage5.Controls.Add(this.lblFinInvoiceValue);
             this.tabPage5.Controls.Add(this.label2);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
@@ -936,25 +966,73 @@
             this.tabPage5.Size = new System.Drawing.Size(759, 574);
             this.tabPage5.TabIndex = 6;
             this.tabPage5.Text = "addInvoice";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // dtpFinInvoiceSentDate
             // 
-            this.textBox1.Location = new System.Drawing.Point(459, 300);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(137, 20);
-            this.textBox1.TabIndex = 101;
+            this.dtpFinInvoiceSentDate.Enabled = false;
+            this.dtpFinInvoiceSentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFinInvoiceSentDate.Location = new System.Drawing.Point(387, 158);
+            this.dtpFinInvoiceSentDate.Name = "dtpFinInvoiceSentDate";
+            this.dtpFinInvoiceSentDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpFinInvoiceSentDate.TabIndex = 160;
             // 
-            // label1
+            // dtpFinInvoiceExpDate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(234, 294);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 25);
-            this.label1.TabIndex = 100;
-            this.label1.Text = "Account Number:";
+            this.dtpFinInvoiceExpDate.Enabled = false;
+            this.dtpFinInvoiceExpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFinInvoiceExpDate.Location = new System.Drawing.Point(387, 122);
+            this.dtpFinInvoiceExpDate.Name = "dtpFinInvoiceExpDate";
+            this.dtpFinInvoiceExpDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpFinInvoiceExpDate.TabIndex = 159;
+            // 
+            // lblFinInvoiceSentDate
+            // 
+            this.lblFinInvoiceSentDate.AutoSize = true;
+            this.lblFinInvoiceSentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinInvoiceSentDate.Location = new System.Drawing.Point(188, 153);
+            this.lblFinInvoiceSentDate.Name = "lblFinInvoiceSentDate";
+            this.lblFinInvoiceSentDate.Size = new System.Drawing.Size(172, 25);
+            this.lblFinInvoiceSentDate.TabIndex = 141;
+            this.lblFinInvoiceSentDate.Text = "Invoice Sent Date:";
+            // 
+            // lblFinInvoiceExpDate
+            // 
+            this.lblFinInvoiceExpDate.AutoSize = true;
+            this.lblFinInvoiceExpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinInvoiceExpDate.Location = new System.Drawing.Point(188, 117);
+            this.lblFinInvoiceExpDate.Name = "lblFinInvoiceExpDate";
+            this.lblFinInvoiceExpDate.Size = new System.Drawing.Size(186, 25);
+            this.lblFinInvoiceExpDate.TabIndex = 140;
+            this.lblFinInvoiceExpDate.Text = "Invoice Expire Date:";
+            // 
+            // numFinInvoiceAddValue
+            // 
+            this.numFinInvoiceAddValue.DecimalPlaces = 2;
+            this.numFinInvoiceAddValue.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numFinInvoiceAddValue.Location = new System.Drawing.Point(387, 85);
+            this.numFinInvoiceAddValue.Maximum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            0});
+            this.numFinInvoiceAddValue.Name = "numFinInvoiceAddValue";
+            this.numFinInvoiceAddValue.Size = new System.Drawing.Size(137, 20);
+            this.numFinInvoiceAddValue.TabIndex = 139;
+            this.numFinInvoiceAddValue.ThousandsSeparator = true;
+            // 
+            // lblFinInvoiceValue
+            // 
+            this.lblFinInvoiceValue.AutoSize = true;
+            this.lblFinInvoiceValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinInvoiceValue.Location = new System.Drawing.Point(188, 78);
+            this.lblFinInvoiceValue.Name = "lblFinInvoiceValue";
+            this.lblFinInvoiceValue.Size = new System.Drawing.Size(136, 25);
+            this.lblFinInvoiceValue.TabIndex = 100;
+            this.lblFinInvoiceValue.Text = "Invoice Value:";
             // 
             // label2
             // 
@@ -965,6 +1043,171 @@
             this.label2.Size = new System.Drawing.Size(167, 31);
             this.label2.TabIndex = 99;
             this.label2.Text = "Add Invoice";
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage6.Controls.Add(this.btnInvoicesBack);
+            this.tabPage6.Controls.Add(this.textBox2);
+            this.tabPage6.Controls.Add(this.label7);
+            this.tabPage6.Controls.Add(this.label6);
+            this.tabPage6.Controls.Add(this.textBox1);
+            this.tabPage6.Controls.Add(this.dateTimePicker1);
+            this.tabPage6.Controls.Add(this.dateTimePicker2);
+            this.tabPage6.Controls.Add(this.label1);
+            this.tabPage6.Controls.Add(this.label3);
+            this.tabPage6.Controls.Add(this.numericUpDown1);
+            this.tabPage6.Controls.Add(this.label4);
+            this.tabPage6.Controls.Add(this.label5);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(759, 574);
+            this.tabPage6.TabIndex = 7;
+            this.tabPage6.Text = "selectedInvoice";
+            // 
+            // btnViewInvoices
+            // 
+            this.btnViewInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewInvoices.Location = new System.Drawing.Point(237, 511);
+            this.btnViewInvoices.Name = "btnViewInvoices";
+            this.btnViewInvoices.Size = new System.Drawing.Size(165, 43);
+            this.btnViewInvoices.TabIndex = 150;
+            this.btnViewInvoices.Text = "View Invoices";
+            this.btnViewInvoices.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(423, 251);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(137, 20);
+            this.dateTimePicker1.TabIndex = 167;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Enabled = false;
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(423, 215);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(137, 20);
+            this.dateTimePicker2.TabIndex = 166;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(224, 246);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(172, 25);
+            this.label1.TabIndex = 165;
+            this.label1.Text = "Invoice Sent Date:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(224, 210);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(186, 25);
+            this.label3.TabIndex = 164;
+            this.label3.Text = "Invoice Expire Date:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown1.Location = new System.Drawing.Point(423, 178);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(137, 20);
+            this.numericUpDown1.TabIndex = 163;
+            this.numericUpDown1.ThousandsSeparator = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(224, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(136, 25);
+            this.label4.TabIndex = 162;
+            this.label4.Text = "Invoice Value:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(315, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 31);
+            this.label5.TabIndex = 161;
+            this.label5.Text = "Invoices";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(224, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(160, 25);
+            this.label6.TabIndex = 169;
+            this.label6.Text = "Company Name:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(423, 105);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(137, 20);
+            this.textBox1.TabIndex = 168;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(423, 136);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(137, 20);
+            this.textBox2.TabIndex = 173;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(224, 136);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 25);
+            this.label7.TabIndex = 172;
+            this.label7.Text = "Subject:";
+            // 
+            // btnAppointmentAdd
+            // 
+            this.btnAppointmentAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppointmentAdd.Location = new System.Drawing.Point(48, 511);
+            this.btnAppointmentAdd.Name = "btnAppointmentAdd";
+            this.btnAppointmentAdd.Size = new System.Drawing.Size(195, 43);
+            this.btnAppointmentAdd.TabIndex = 161;
+            this.btnAppointmentAdd.Text = "Add Invoice";
+            this.btnAppointmentAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnInvoicesBack
+            // 
+            this.btnInvoicesBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInvoicesBack.Location = new System.Drawing.Point(49, 511);
+            this.btnInvoicesBack.Name = "btnInvoicesBack";
+            this.btnInvoicesBack.Size = new System.Drawing.Size(195, 43);
+            this.btnInvoicesBack.TabIndex = 174;
+            this.btnInvoicesBack.Text = "Back";
+            this.btnInvoicesBack.UseVisualStyleBackColor = true;
             // 
             // frmFinance
             // 
@@ -995,6 +1238,10 @@
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFinInvoiceAddValue)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1087,8 +1334,27 @@
         private System.Windows.Forms.Label lblSelectedProject;
         private System.Windows.Forms.Button btnAddInvoice;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFinInvoiceValue;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblFinInvoiceSentDate;
+        private System.Windows.Forms.Label lblFinInvoiceExpDate;
+        private System.Windows.Forms.NumericUpDown numFinInvoiceAddValue;
+        private System.Windows.Forms.DateTimePicker dtpFinInvoiceSentDate;
+        private System.Windows.Forms.DateTimePicker dtpFinInvoiceExpDate;
+        private System.Windows.Forms.Button btnViewInvoices;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnAppointmentAdd;
+        private System.Windows.Forms.Button btnInvoicesBack;
     }
 }
