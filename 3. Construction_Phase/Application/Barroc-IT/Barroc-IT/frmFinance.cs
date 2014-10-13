@@ -7,12 +7,37 @@ namespace Barroc_IT
     {
         private DatabaseHandler handler;
         private frmLogin loginForm;
-       
+
+        //private int selectedCustomer = 0;
+        //private bool closing = false;
         public frmFinance(DatabaseHandler handler, frmLogin loginForm)
         {
             InitializeComponent();
             this.handler = handler;
             this.loginForm = loginForm;
         }
+
+        
+
+       
+
+        private void CloseToLogin()
+        {
+            //closing = true;
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            CloseToLogin();
+        }
+
+        private void btnFinanceSelectCustomer_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 1;
+        }
+
+
     }
 }
