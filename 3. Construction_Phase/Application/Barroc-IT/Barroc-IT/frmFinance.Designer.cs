@@ -148,6 +148,8 @@
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAddInvoiceBack = new System.Windows.Forms.Button();
+            this.btnProject = new System.Windows.Forms.Button();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -857,6 +859,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.btnProject);
             this.tabPage5.Controls.Add(this.btnViewInvoices);
             this.tabPage5.Controls.Add(this.btnAddInvoice);
             this.tabPage5.Controls.Add(this.dtpDeadlineViewProject);
@@ -1246,6 +1249,7 @@
             // tabPage8
             // 
             this.tabPage8.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage8.Controls.Add(this.btnAddInvoiceBack);
             this.tabPage8.Controls.Add(this.btnCreateInvoice);
             this.tabPage8.Controls.Add(this.dtpFinInvoiceSentDate);
             this.tabPage8.Controls.Add(this.dtpFinInvoiceExpDate);
@@ -1348,6 +1352,27 @@
             this.label2.Size = new System.Drawing.Size(167, 31);
             this.label2.TabIndex = 161;
             this.label2.Text = "Add Invoice";
+            // 
+            // btnAddInvoiceBack
+            // 
+            this.btnAddInvoiceBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddInvoiceBack.Location = new System.Drawing.Point(210, 511);
+            this.btnAddInvoiceBack.Name = "btnAddInvoiceBack";
+            this.btnAddInvoiceBack.Size = new System.Drawing.Size(167, 43);
+            this.btnAddInvoiceBack.TabIndex = 186;
+            this.btnAddInvoiceBack.Text = "Back";
+            this.btnAddInvoiceBack.UseVisualStyleBackColor = true;
+            this.btnAddInvoiceBack.Click += new System.EventHandler(this.btnAddInvoiceBack_Click);
+            // 
+            // btnProject
+            // 
+            this.btnProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProject.Location = new System.Drawing.Point(452, 511);
+            this.btnProject.Name = "btnProject";
+            this.btnProject.Size = new System.Drawing.Size(154, 43);
+            this.btnProject.TabIndex = 186;
+            this.btnProject.Text = "Back";
+            this.btnProject.UseVisualStyleBackColor = true;
             // 
             // frmFinance
             // 
@@ -1511,5 +1536,7 @@
         private System.Windows.Forms.Label lblFinInvoiceValue;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCreateInvoice;
+        private System.Windows.Forms.Button btnAddInvoiceBack;
+        private System.Windows.Forms.Button btnProject;
     }
 }
