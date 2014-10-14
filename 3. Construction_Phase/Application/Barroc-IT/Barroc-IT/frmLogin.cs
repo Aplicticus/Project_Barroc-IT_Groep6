@@ -8,7 +8,6 @@ namespace Barroc_IT
     public partial class frmLogin : Form
     {
         private DatabaseHandler handler;
-       
         
         public frmLogin()
         {
@@ -17,7 +16,7 @@ namespace Barroc_IT
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            handler = new DatabaseHandler();            
+            handler = new DatabaseHandler();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

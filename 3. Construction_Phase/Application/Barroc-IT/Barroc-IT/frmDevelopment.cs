@@ -18,6 +18,7 @@ namespace Barroc_IT
         private DatabaseHandler handler;
         private frmLogin loginForm;
         
+        
         private int selectedCustomer;
         private int selectedProject;
         private bool closing = false;
@@ -27,10 +28,8 @@ namespace Barroc_IT
         {
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
-
             this.handler = handler;
-            this.loginForm = loginForm;
-            
+            this.loginForm = loginForm;  
         }      
 
         #region "Events"
