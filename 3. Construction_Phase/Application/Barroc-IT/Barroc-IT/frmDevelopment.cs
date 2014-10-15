@@ -194,25 +194,11 @@ namespace Barroc_IT
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 
-                DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer);
+                DataTable projectDetails = dthandler.LoadProjects(selectedCustomer);
                 DataTable projectCustomerDetails = dthandler.LoadCustomers(selectedCustomer);
 
-                foreach (DataRow dr in projectDetails.Rows)
-                {                    
-                    DateTime projectDeadline = new DateTime();
-                    projectDeadline = DateTime.Parse(dr["DEADLINE"].ToString());
-
-                    txtProjectName.Text = dr["NAME"].ToString();
-                    dtpDeadlineViewProject.Value = projectDeadline;
-                    txtProjectSubject.Text = dr["SUBJECT"].ToString();
-                    txtProjectValue.Text = dr["VALUE"].ToString();
-                }
-
-                foreach (DataRow drCus in projectCustomerDetails.Rows)
-                {
-                    txtProjectCompanyName.Text = drCus["COMPANYNAME"].ToString();
-                }
-                tbContr.SelectedIndex = 4;
+                LoadProjectDetails(projectDetails, projectCustomerDetails);
+                tbContr.SelectedIndex = 4;                
             }
         }
 
@@ -227,8 +213,6 @@ namespace Barroc_IT
         #endregion
 
         #region "Customer Methods"
-        
-       
         private void LoadCustomerDetails(DataTable CusTable, DataTable ApoTable)
         {
             DataRow CusRow = CusTable.Rows[0];
@@ -278,10 +262,22 @@ namespace Barroc_IT
         }
         #endregion
 
-        #region "Project Methods"
-       
+        #region "Project Methods"     
+ 
+        private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
+        {
+            DataRow ProRow = CusTable.Rows[0];
 
-        
+            DateTime projectDeadline = new DateTime();
+            projectDeadline = DateTime.Parse(ProRow["DEADLINE"].ToString());
+            txtProjectName.Text = ProRow["NAME"].ToString();
+            dtpDeadlineViewProject.Value = projectDeadline;
+            txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
+            txtProjectValue.Text = ProRow["VALUE"].ToString();
+
+            DataRow CusRow = ProTable.Rows[0];
+            txtProjectCompanyName.Text = CusRow["COMPANYNAME"].ToString();           
+        }
 
         private bool AddProject()
         {

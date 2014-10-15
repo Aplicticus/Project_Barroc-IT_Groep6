@@ -74,6 +74,7 @@ namespace Barroc_IT
             return DT;
         }
 
+        // Search
         public DataTable SearchText(Choice choice, string searchString)
         {
             string selectedChoice = "";
