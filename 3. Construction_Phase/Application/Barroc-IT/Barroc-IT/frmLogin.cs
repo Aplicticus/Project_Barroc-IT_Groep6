@@ -8,7 +8,7 @@ namespace Barroc_IT
     public partial class frmLogin : Form
     {
         private DatabaseHandler handler;
-        
+        private DataTableHandler dthandler;
         public frmLogin()
         {
             InitializeComponent();
@@ -17,6 +17,7 @@ namespace Barroc_IT
         private void Form1_Load(object sender, EventArgs e)
         {
             handler = new DatabaseHandler();
+            dthandler = new DataTableHandler();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace Barroc_IT
                                 break;
                             case "development":
                                 this.Hide();
-                                frmDevelopment formDevelopment = new frmDevelopment(handler, this);
+                                frmDevelopment formDevelopment = new frmDevelopment(handler, this, dthandler);
                                 formDevelopment.Show();
                                 break;
                             default:
