@@ -17,20 +17,19 @@ namespace Barroc_IT
         // Variables
         private DatabaseHandler handler;
         private frmLogin loginForm;
-        
+        private DataTableHandler dthandler;
         private int selectedCustomer;
-        private int selectedProject;
+        private int selectedProject;        
         private bool closing = false;
 
         // Form Constructor
-        public frmDevelopment(DatabaseHandler handler, frmLogin loginForm)
+        public frmDevelopment(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler)
         {
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
-
             this.handler = handler;
             this.loginForm = loginForm;
-            
+            this.dthandler = dthandler;
         }      
 
         #region "Events"
@@ -38,7 +37,7 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 1;
             dgvCustomers.Rows.Clear();
-            DataTable customers = LoadCustomers();
+            DataTable customers = dthandler.LoadCustomers();
 
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
@@ -58,7 +57,7 @@ namespace Barroc_IT
 
         private void btnAddProjectCustomer_Click(object sender, EventArgs e)
         {
-            DataTable dtCustomerResult = LoadCustomers(selectedCustomer);
+            DataTable dtCustomerResult = dthandler.LoadCustomers(selectedCustomer);
 
             foreach (DataRow dr in dtCustomerResult.Rows)
             {
@@ -82,7 +81,7 @@ namespace Barroc_IT
             else if (btnEditProject.Text == "Save Changes")
             {
                 UpdateProject(selectedProject);
-                LoadProjectDetails(selectedProject);
+                dthandler.LoadProjects(selectedProject);
 
                 txtProjectName.ReadOnly = true;
                 txtProjectSubject.ReadOnly = true;
@@ -96,7 +95,7 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 3;
             dgvProjects.Rows.Clear();
-            DataTable projects = LoadProjects(selectedCustomer);
+            DataTable projects = dthandler.LoadProjects(selectedCustomer);
 
             AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
         }
@@ -122,12 +121,12 @@ namespace Barroc_IT
                         break;
                 }
 
-                DataTable resultOfSearch = SearchText(selectedItem, txtCustomerSearch.Text);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
                 AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
             else
             {
-                DataTable customers = LoadCustomers();
+                DataTable customers = dthandler.LoadCustomers();
                 AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
             }
         }
@@ -181,10 +180,12 @@ namespace Barroc_IT
             if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
             {
                 selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
-                DataTable customerDetails = LoadCustomers(selectedCustomer);
+                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
+                DataTable appointmentDetails = dthandler.LoadAppointments(selectedCustomer);
 
-                LoadCustomerDetails(customerDetails);
-                LoadAppointmentDetails(selectedCustomer);
+                // need to be checked!
+
+                LoadCustomerDetails(customerDetails, appointmentDetails);
                 tbContr.SelectedIndex = 2;
             }
         }
@@ -194,25 +195,13 @@ namespace Barroc_IT
             if (e.ColumnIndex == dgvProjects.Columns["cProjectViewButton"].Index)
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
-                //LoadAppointmentDetails();
-                DataTable projectDetails = LoadProjectDetails(selectedCustomer);
-                DataTable projectCustomerDetails = LoadCustomers(selectedCustomer);
+                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
+                DataTable projectDetails = dthandler.LoadProjects(selectedCustomer);
 
-                foreach (DataRow dr in projectDetails.Rows)
-                {                    
-                    DateTime projectDeadline = new DateTime();
-                    projectDeadline = DateTime.Parse(dr["DEADLINE"].ToString());
+                // need to be checked!
 
-                    txtProjectName.Text = dr["NAME"].ToString();
-                    dtpDeadlineViewProject.Value = projectDeadline;
-                    txtProjectSubject.Text = dr["SUBJECT"].ToString();
-                    txtProjectValue.Text = dr["VALUE"].ToString();
-                }
-                foreach (DataRow drCus in projectCustomerDetails.Rows)
-                {
-                    txtProjectCompanyName.Text = drCus["COMPANYNAME"].ToString();
-                }
-                tbContr.SelectedIndex = 4;
+                LoadProjectDetails(customerDetails, projectDetails);
+                tbContr.SelectedIndex = 4;                
             }
         }
 
@@ -227,43 +216,27 @@ namespace Barroc_IT
         #endregion
 
         #region "Customer Methods"
-        private DataTable LoadCustomers()
+        private void LoadCustomerDetails(DataTable CusTable, DataTable ApoTable)
         {
-            string sqlQuery = "SELECT * FROM tbl_Customers";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
+            DataRow CusRow = CusTable.Rows[0];
 
-            return DT;
-        }
+            txtCompanyName.Text = CusRow["COMPANYNAME"].ToString();
+            txtAddress1.Text = CusRow["ADDRESS1"].ToString();
+            txtPostalCode1.Text = CusRow["POSTALCODE1"].ToString();
+            txtPhoneNumber1.Text = CusRow["PHONE_NR1"].ToString();
+            txtFaxNumber.Text = CusRow["FAXNUMBER"].ToString();
+            txtEmail.Text = CusRow["EMAIL"].ToString();
+            txtContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
 
-        private DataTable LoadCustomers(int customerID)
-        {
-            string sqlQueryCustomer = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID ='" + customerID + "'";
-            SqlDataAdapter daCustomer = new SqlDataAdapter(sqlQueryCustomer, handler.GetConnection());
-            DataSet dSetCustomer = new DataSet();
-            daCustomer.Fill(dSetCustomer);
-            DataTable DT = dSetCustomer.Tables[0];
+            txtApplications.Text = CusRow["APPLICATIONS"].ToString();
+            txtMaintenance.Text = CusRow["MAINT_CONTR"].ToString();
+            txtOpenProject.Text = CusRow["OPEN_PROJ"].ToString();
+            txtHardware.Text = CusRow["HARDWARE"].ToString();
+            txtSoftware.Text = CusRow["SOFTWARE"].ToString();
 
-            return DT;
-        }
-        private void LoadCustomerDetails(DataTable table)
-        {
-            DataRow row = table.Rows[0];
+            DataRow ApoRow = ApoTable.Rows[0];
 
-            txtCompanyName.Text = row["COMPANYNAME"].ToString();
-            txtAddress1.Text = row["ADDRESS1"].ToString();
-            txtPostalCode1.Text = row["POSTALCODE1"].ToString();
-            txtPhoneNumber1.Text = row["PHONE_NR1"].ToString();
-            txtFaxNumber.Text = row["FAXNUMBER"].ToString();
-            txtEmail.Text = row["EMAIL"].ToString();
-            txtContactPerson.Text = row["CONTACTPERSON"].ToString();
-
-            txtMaintenance.Text = row["MAINT_CONTR"].ToString();
-            txtOpenProject.Text = row["OPEN_PROJ"].ToString();
-            txtHardware.Text = row["HARDWARE"].ToString();
-            txtSoftware.Text = row["SOFTWARE"].ToString();
+            txtInternalContact.Text = ApoRow["INT_CONTACT"].ToString();
         }
 
         private bool UpdateCustomer(int customerID)
@@ -292,29 +265,21 @@ namespace Barroc_IT
         }
         #endregion
 
-        #region "Project Methods"
-        private DataTable LoadProjects(int customerID)
+        #region "Project Methods"     
+ 
+        private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
         {
-            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + customerID + "'";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
+            DataRow CusRow = CusTable.Rows[0];
 
-            return DT;
-        }
+            txtProjectCompanyName.Text = CusRow["COMPANYNAME"].ToString();
 
-        private DataTable LoadProjectDetails(int projectID)
-        {
-            string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + selectedProject + "'";
-
-            SqlDataAdapter daProject = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
-            DataSet dsProject = new DataSet();
-
-            daProject.Fill(dsProject);
-            DataTable dtProject = dsProject.Tables[0];
-
-            return dtProject;
+            DataRow ProRow = ProTable.Rows[0];
+            DateTime projectDeadline = new DateTime();
+            projectDeadline = DateTime.Parse(ProRow["DEADLINE"].ToString());
+            txtProjectName.Text = ProRow["NAME"].ToString();
+            dtpDeadlineViewProject.Value = projectDeadline;
+            txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
+            txtProjectValue.Text = ProRow["VALUE"].ToString();
         }
 
         private bool AddProject()
@@ -369,25 +334,10 @@ namespace Barroc_IT
         #endregion
 
         #region "Appointment Methods"
-        private DataTable LoadAppointments(int customerID)
-        {
-            string sqlQuery = "SELECT * FROM tbl_Appointments WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
-
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-            DataSet DS = new DataSet();
-
-            DA.Fill(DS);
-
-            DataTable DT = DS.Tables[0];
-
-            return DT;
-        }
+       
         private void LoadAppointmentDetails(int customerID)
-        {
-            dtpDevAppointment.Text = "";
-            txtInternalContact.Text = "";
-
-            DataTable dtAppointmentResults = LoadAppointments(customerID);
+        {    
+            DataTable dtAppointmentResults = dthandler.LoadAppointments(customerID);
             foreach (DataRow DR in dtAppointmentResults.Rows)
             {
                 DateTime projectAppointment = new DateTime();
@@ -430,35 +380,6 @@ namespace Barroc_IT
             {
                 dataGridView.Rows.Add(dr.ItemArray);
             }
-        }
-
-        private DataTable SearchText(Choice choice, string searchString)
-        {
-            string selectedChoice = "";
-            switch (choice)
-            {
-                case Choice.Company:
-                    selectedChoice = "COMPANYNAME";
-                    break;
-                case Choice.Email:
-                    selectedChoice = "EMAIL";
-                    break;
-                case Choice.Initials:
-                    selectedChoice = "INITIALS";
-                    break;
-                default:
-                    selectedChoice = "";
-                    break;
-            }
-
-            string sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice + " LIKE '%" + searchString + "%'";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-            
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-
-            DataTable DT = DS.Tables[0];
-            return DT;
         }
 
         private void CloseToLogin()

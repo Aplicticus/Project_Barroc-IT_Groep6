@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTableHandler.cs" />
     <Compile Include="frmDevelopment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +96,12 @@
     <Compile Include="TablessControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Temp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Temp.Designer.cs">
+      <DependentUpon>Temp.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDevelopment.resx">
       <DependentUpon>frmDevelopment.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +126,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Temp.resx">
+      <DependentUpon>Temp.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
