@@ -62,7 +62,7 @@ namespace Barroc_IT
                                 break;
                             case "finance":
                                 this.Hide();
-                                frmFinance formFinance = new frmFinance(handler, this);
+                                frmFinance formFinance = new frmFinance(handler, this, dthandler);
                                 formFinance.Show();
                                 break;
                             case "development":

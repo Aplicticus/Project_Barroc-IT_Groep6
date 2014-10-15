@@ -99,7 +99,6 @@ namespace Barroc_IT
             DataTable appointments = dthandler.LoadAppointments(selectedCustomer);
 
             AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
-            
         }
 
         private void btnCustomerSearch_Click(object sender, EventArgs e)
@@ -122,7 +121,6 @@ namespace Barroc_IT
                         selectedItem = Choice.Company;
                         break;
                 }
-
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
                 AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
@@ -185,8 +183,6 @@ namespace Barroc_IT
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
                 DataTable appointmentDetails = dthandler.LoadAppointments(selectedCustomer);
 
-                // need to be checked!
-
                 LoadCustomerDetails(customerDetails, appointmentDetails);
                 tbContr.SelectedIndex = 2;
             }
@@ -237,6 +233,9 @@ namespace Barroc_IT
             DataRow ApoRow = ApoTable.Rows[0];
 
             txtInternalContact.Text = ApoRow["INT_CONTACT"].ToString();
+            DateTime devAppointment = new DateTime();
+            devAppointment = DateTime.Parse(ApoRow["APPOIN_DATE"].ToString());
+            dtpDevAppointment.Value = devAppointment;
         }
 
         private bool UpdateCustomer(int customerID)
