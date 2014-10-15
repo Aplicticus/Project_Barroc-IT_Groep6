@@ -10,14 +10,22 @@ namespace Barroc_IT
 {
     public class DataTableHandler
     {
-        SqlConnection sqlconn = new SqlConnection();
-        DatabaseHandler handler = new DatabaseHandler();        
+        DatabaseHandler handler;       
         //private int selectedProject = 0;
-        //private int selectedCustomer = 0;
+        private int selectedCustomer;
         public DataTableHandler()
         {
-
+            handler = new DatabaseHandler();
+            selectedCustomer = 0;
         }
+
+        public DataTableHandler(DatabaseHandler handler, int selectedCustomer)
+        {
+            this.selectedCustomer = selectedCustomer;
+            this.handler = handler;
+        }
+
+
 
         // Customers
         public DataTable LoadCustomers()
@@ -43,7 +51,7 @@ namespace Barroc_IT
         // Projects
         public DataTable LoadProjects(int customerID)
         {
-            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + customerID + "'";
+            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + customerID +"'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
@@ -51,17 +59,15 @@ namespace Barroc_IT
             return DT;
         }
 
-        //public DataTable LoadProjectDetails(int customerID)
-        //{
-        //    string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + customerID + "'";
-        //    SqlDataAdapter daProject = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
-        //    DataSet dsProject = new DataSet();
-
-        //    daProject.Fill(dsProject);
-        //    DataTable dtProject = dsProject.Tables[0];
-
-        //    return dtProject;
-        //}
+        public DataTable LoadProjectDetails(int projectID, int customerID)
+        {
+            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + projectID + "' AND CUSTOMER_ID='"+ customerID +"'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+            return DT;
+        }
 
         // Appointments
         public DataTable LoadAppointments(int customerID)
@@ -73,6 +79,17 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
+
+        public DataTable LoadAppointmentDetails(int appointmentID, int customerID)
+        {
+            string sqlQuery = "SELECT * FROM tbl_Appointments WHERE APPOINTMENT_ID ='" + appointmentID + "' AND CUSTOMER_ID='" + customerID + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+            return DT;
+        }
+
 
         // Search
         public DataTable SearchText(Choice choice, string searchString)
