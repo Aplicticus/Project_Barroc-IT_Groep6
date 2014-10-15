@@ -113,5 +113,10 @@ namespace Barroc_IT
             txtSoftware.Text = row["SOFTWARE"].ToString();
         }
         #endregion
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
+        }
     }
 }

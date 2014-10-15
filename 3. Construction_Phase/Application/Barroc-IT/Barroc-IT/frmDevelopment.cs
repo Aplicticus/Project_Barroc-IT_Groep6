@@ -390,24 +390,9 @@ namespace Barroc_IT
             this.Close();
         }
 
-        private void btnListCustomerBack_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            tbContr.SelectedIndex = 0;
-        }
-
-        private void btnListProjectBack_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 2;
-        }
-
-        private void btnSelectedProjectBack_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 3;
-        }
-
-        private void btnSelectedCustomerBack_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 1;
+            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
     }
 }
