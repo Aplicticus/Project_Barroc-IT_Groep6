@@ -96,8 +96,10 @@ namespace Barroc_IT
             tbContr.SelectedIndex = 3;
             dgvProjects.Rows.Clear();
             DataTable projects = dthandler.LoadProjects(selectedCustomer);
+            DataTable appointments = dthandler.LoadAppointments(selectedCustomer);
 
             AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
+            
         }
 
         private void btnCustomerSearch_Click(object sender, EventArgs e)
@@ -179,7 +181,7 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
             {
-                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());               
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
                 DataTable appointmentDetails = dthandler.LoadAppointments(selectedCustomer);
 
@@ -196,10 +198,8 @@ namespace Barroc_IT
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-                DataTable projectDetails = dthandler.LoadProjects(selectedCustomer);
-
-                // need to be checked!
-
+                DataTable projectDetails = dthandler.LoadProjectDetails(selectedProject, selectedCustomer);
+                
                 LoadProjectDetails(customerDetails, projectDetails);
                 tbContr.SelectedIndex = 4;                
             }

@@ -139,7 +139,7 @@
             this.txtApoAddCompanyName = new System.Windows.Forms.TextBox();
             this.btnAppointmentAdd = new System.Windows.Forms.Button();
             this.lblAddAppointment = new System.Windows.Forms.Label();
-            this.tabpage7 = new System.Windows.Forms.TabPage();
+            this.lbl = new System.Windows.Forms.TabPage();
             this.cbCusProspect = new System.Windows.Forms.ComboBox();
             this.cbCusCreditworthy = new System.Windows.Forms.ComboBox();
             this.btnCusAddCustomer = new System.Windows.Forms.Button();
@@ -186,6 +186,8 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
+            this.lblCusSaleInternalContactperson = new System.Windows.Forms.Label();
+            this.txtCusSaleInternalContactperson = new System.Windows.Forms.TextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -198,7 +200,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
-            this.tabpage7.SuspendLayout();
+            this.lbl.SuspendLayout();
             this.SuspendLayout();
             // 
             // pWelcome
@@ -292,7 +294,7 @@
             this.tbContr.Controls.Add(this.tabPage4);
             this.tbContr.Controls.Add(this.tabPage5);
             this.tbContr.Controls.Add(this.tabPage6);
-            this.tbContr.Controls.Add(this.tabpage7);
+            this.tbContr.Controls.Add(this.lbl);
             this.tbContr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbContr.Location = new System.Drawing.Point(0, 0);
             this.tbContr.Name = "tbContr";
@@ -1273,61 +1275,63 @@
             this.lblAddAppointment.TabIndex = 23;
             this.lblAddAppointment.Text = "Add Appointment";
             // 
-            // tabpage7
+            // lbl
             // 
-            this.tabpage7.BackColor = System.Drawing.SystemColors.Control;
-            this.tabpage7.Controls.Add(this.cbCusProspect);
-            this.tabpage7.Controls.Add(this.cbCusCreditworthy);
-            this.tabpage7.Controls.Add(this.btnCusAddCustomer);
-            this.tabpage7.Controls.Add(this.txtCusPhoneNumber2);
-            this.tabpage7.Controls.Add(this.txtCusPostalCode2);
-            this.tabpage7.Controls.Add(this.txtCusResidence2);
-            this.tabpage7.Controls.Add(this.lblCusResidence2);
-            this.tabpage7.Controls.Add(this.lblCusPhoneNumber2);
-            this.tabpage7.Controls.Add(this.lblCusPostalCode2);
-            this.tabpage7.Controls.Add(this.txtCusSalePercentage);
-            this.tabpage7.Controls.Add(this.lblCusSalePercentage);
-            this.tabpage7.Controls.Add(this.txtCusLastContactDate);
-            this.tabpage7.Controls.Add(this.textBox3);
-            this.tabpage7.Controls.Add(this.txtCusOfferNumbers);
-            this.tabpage7.Controls.Add(this.lblCusFaxNumber);
-            this.tabpage7.Controls.Add(this.lblCusProspect);
-            this.tabpage7.Controls.Add(this.lblCusLastContactDate);
-            this.tabpage7.Controls.Add(this.label5);
-            this.tabpage7.Controls.Add(this.lblCusOfferNumbers);
-            this.tabpage7.Controls.Add(this.txtCusFaxNumber);
-            this.tabpage7.Controls.Add(this.txtCusAddress2);
-            this.tabpage7.Controls.Add(this.lblCusEmail);
-            this.tabpage7.Controls.Add(this.lblCusAddress2);
-            this.tabpage7.Controls.Add(this.txtCusEmail);
-            this.tabpage7.Controls.Add(this.lblCusCreditworthy);
-            this.tabpage7.Controls.Add(this.txtCusNextAction);
-            this.tabpage7.Controls.Add(this.txtCusOfferStatus);
-            this.tabpage7.Controls.Add(this.txtCusInitials);
-            this.tabpage7.Controls.Add(this.lblCusContactperson);
-            this.tabpage7.Controls.Add(this.txtCusDateOfAction);
-            this.tabpage7.Controls.Add(this.lblCusDateOfAction);
-            this.tabpage7.Controls.Add(this.lblCusNextAction);
-            this.tabpage7.Controls.Add(this.lblCusOfferStatus);
-            this.tabpage7.Controls.Add(this.lblCusInitials);
-            this.tabpage7.Controls.Add(this.txtCusContactperson);
-            this.tabpage7.Controls.Add(this.txtCusPhoneNumber1);
-            this.tabpage7.Controls.Add(this.txtCusPostalCode1);
-            this.tabpage7.Controls.Add(this.txtCusAddress1);
-            this.tabpage7.Controls.Add(this.lblCusCompanyName);
-            this.tabpage7.Controls.Add(this.txtCusResidence1);
-            this.tabpage7.Controls.Add(this.lblCusResidence1);
-            this.tabpage7.Controls.Add(this.lblCusPhoneNumber1);
-            this.tabpage7.Controls.Add(this.lblCusPostalCode1);
-            this.tabpage7.Controls.Add(this.lblCusAddress1);
-            this.tabpage7.Controls.Add(this.txtCusCompanyName);
-            this.tabpage7.Controls.Add(this.lblAddCustomer);
-            this.tabpage7.Location = new System.Drawing.Point(4, 22);
-            this.tabpage7.Name = "tabpage7";
-            this.tabpage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage7.Size = new System.Drawing.Size(759, 574);
-            this.tabpage7.TabIndex = 7;
-            this.tabpage7.Text = "addCustomer";
+            this.lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl.Controls.Add(this.txtCusSaleInternalContactperson);
+            this.lbl.Controls.Add(this.lblCusSaleInternalContactperson);
+            this.lbl.Controls.Add(this.cbCusProspect);
+            this.lbl.Controls.Add(this.cbCusCreditworthy);
+            this.lbl.Controls.Add(this.btnCusAddCustomer);
+            this.lbl.Controls.Add(this.txtCusPhoneNumber2);
+            this.lbl.Controls.Add(this.txtCusPostalCode2);
+            this.lbl.Controls.Add(this.txtCusResidence2);
+            this.lbl.Controls.Add(this.lblCusResidence2);
+            this.lbl.Controls.Add(this.lblCusPhoneNumber2);
+            this.lbl.Controls.Add(this.lblCusPostalCode2);
+            this.lbl.Controls.Add(this.txtCusSalePercentage);
+            this.lbl.Controls.Add(this.lblCusSalePercentage);
+            this.lbl.Controls.Add(this.txtCusLastContactDate);
+            this.lbl.Controls.Add(this.textBox3);
+            this.lbl.Controls.Add(this.txtCusOfferNumbers);
+            this.lbl.Controls.Add(this.lblCusFaxNumber);
+            this.lbl.Controls.Add(this.lblCusProspect);
+            this.lbl.Controls.Add(this.lblCusLastContactDate);
+            this.lbl.Controls.Add(this.label5);
+            this.lbl.Controls.Add(this.lblCusOfferNumbers);
+            this.lbl.Controls.Add(this.txtCusFaxNumber);
+            this.lbl.Controls.Add(this.txtCusAddress2);
+            this.lbl.Controls.Add(this.lblCusEmail);
+            this.lbl.Controls.Add(this.lblCusAddress2);
+            this.lbl.Controls.Add(this.txtCusEmail);
+            this.lbl.Controls.Add(this.lblCusCreditworthy);
+            this.lbl.Controls.Add(this.txtCusNextAction);
+            this.lbl.Controls.Add(this.txtCusOfferStatus);
+            this.lbl.Controls.Add(this.txtCusInitials);
+            this.lbl.Controls.Add(this.lblCusContactperson);
+            this.lbl.Controls.Add(this.txtCusDateOfAction);
+            this.lbl.Controls.Add(this.lblCusDateOfAction);
+            this.lbl.Controls.Add(this.lblCusNextAction);
+            this.lbl.Controls.Add(this.lblCusOfferStatus);
+            this.lbl.Controls.Add(this.lblCusInitials);
+            this.lbl.Controls.Add(this.txtCusContactperson);
+            this.lbl.Controls.Add(this.txtCusPhoneNumber1);
+            this.lbl.Controls.Add(this.txtCusPostalCode1);
+            this.lbl.Controls.Add(this.txtCusAddress1);
+            this.lbl.Controls.Add(this.lblCusCompanyName);
+            this.lbl.Controls.Add(this.txtCusResidence1);
+            this.lbl.Controls.Add(this.lblCusResidence1);
+            this.lbl.Controls.Add(this.lblCusPhoneNumber1);
+            this.lbl.Controls.Add(this.lblCusPostalCode1);
+            this.lbl.Controls.Add(this.lblCusAddress1);
+            this.lbl.Controls.Add(this.txtCusCompanyName);
+            this.lbl.Controls.Add(this.lblAddCustomer);
+            this.lbl.Location = new System.Drawing.Point(4, 22);
+            this.lbl.Name = "lbl";
+            this.lbl.Padding = new System.Windows.Forms.Padding(3);
+            this.lbl.Size = new System.Drawing.Size(759, 574);
+            this.lbl.TabIndex = 7;
+            this.lbl.Text = "addCustomer";
             // 
             // cbCusProspect
             // 
@@ -1741,6 +1745,25 @@
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
             // 
+            // lblCusSaleInternalContactperson
+            // 
+            this.lblCusSaleInternalContactperson.AutoSize = true;
+            this.lblCusSaleInternalContactperson.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusSaleInternalContactperson.Location = new System.Drawing.Point(388, 402);
+            this.lblCusSaleInternalContactperson.Name = "lblCusSaleInternalContactperson";
+            this.lblCusSaleInternalContactperson.Size = new System.Drawing.Size(146, 25);
+            this.lblCusSaleInternalContactperson.TabIndex = 193;
+            this.lblCusSaleInternalContactperson.Text = "Contactperson:";
+            // 
+            // txtCusSaleInternalContactperson
+            // 
+            this.txtCusSaleInternalContactperson.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusSaleInternalContactperson.Location = new System.Drawing.Point(556, 406);
+            this.txtCusSaleInternalContactperson.Name = "txtCusSaleInternalContactperson";
+            this.txtCusSaleInternalContactperson.ReadOnly = true;
+            this.txtCusSaleInternalContactperson.Size = new System.Drawing.Size(137, 20);
+            this.txtCusSaleInternalContactperson.TabIndex = 194;
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1772,8 +1795,8 @@
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
-            this.tabpage7.ResumeLayout(false);
-            this.tabpage7.PerformLayout();
+            this.lbl.ResumeLayout(false);
+            this.lbl.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1863,7 +1886,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cApppointmentSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;
-        private System.Windows.Forms.TabPage tabpage7;
+        private System.Windows.Forms.TabPage lbl;
         private System.Windows.Forms.TextBox txtCusAddress1;
         private System.Windows.Forms.Label lblCusCompanyName;
         private System.Windows.Forms.TextBox txtCusResidence1;
@@ -1938,5 +1961,7 @@
         private System.Windows.Forms.TextBox txtApoAddSubject;
         private System.Windows.Forms.Label lblApoAddCompanyName;
         private System.Windows.Forms.TextBox txtApoAddCompanyName;
+        private System.Windows.Forms.TextBox txtCusSaleInternalContactperson;
+        private System.Windows.Forms.Label lblCusSaleInternalContactperson;
     }
 }
