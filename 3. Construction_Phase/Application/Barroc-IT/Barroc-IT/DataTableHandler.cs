@@ -10,13 +10,17 @@ namespace Barroc_IT
 {
     public class DataTableHandler
     {
-        SqlConnection sqlconn = new SqlConnection();
-        DatabaseHandler handler = new DatabaseHandler();        
+        DatabaseHandler handler;        
         //private int selectedProject = 0;
         //private int selectedCustomer = 0;
         public DataTableHandler()
         {
+            this.handler = new DatabaseHandler();
+        }
 
+        public DataTableHandler(DatabaseHandler handler)
+        {
+            this.handler = handler;
         }
 
         // Customers
