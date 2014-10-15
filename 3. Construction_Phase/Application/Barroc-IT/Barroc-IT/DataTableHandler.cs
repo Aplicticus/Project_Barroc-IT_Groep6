@@ -12,7 +12,7 @@ namespace Barroc_IT
     {
         SqlConnection sqlconn = new SqlConnection();
         DatabaseHandler handler = new DatabaseHandler();        
-        private int selectedProject = 0;
+        //private int selectedProject = 0;
         //private int selectedCustomer = 0;
         public DataTableHandler()
         {
@@ -51,17 +51,17 @@ namespace Barroc_IT
             return DT;
         }
 
-        public DataTable LoadProjectDetails(int projectID)
-        {
-            string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + selectedProject + "'";
-            SqlDataAdapter daProject = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
-            DataSet dsProject = new DataSet();
+        //public DataTable LoadProjectDetails(int customerID)
+        //{
+        //    string sqlQueryPro = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + customerID + "'";
+        //    SqlDataAdapter daProject = new SqlDataAdapter(sqlQueryPro, handler.GetConnection());
+        //    DataSet dsProject = new DataSet();
 
-            daProject.Fill(dsProject);
-            DataTable dtProject = dsProject.Tables[0];
+        //    daProject.Fill(dsProject);
+        //    DataTable dtProject = dsProject.Tables[0];
 
-            return dtProject;
-        }
+        //    return dtProject;
+        //}
 
         // Appointments
         public DataTable LoadAppointments(int customerID)
