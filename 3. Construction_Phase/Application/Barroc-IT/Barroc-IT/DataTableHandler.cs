@@ -69,6 +69,19 @@ namespace Barroc_IT
             return DT;
         }
 
+        // Invoices
+        public DataTable LoadInvoices(int projectID)
+        {
+            string sqlQuery = "SELECT * FROM tbl_Invoices WHERE PROJECT_ID ='" + projectID + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+            return DT;
+        }
+
+       
+
         // Appointments
         public DataTable LoadAppointments(int customerID)
         {

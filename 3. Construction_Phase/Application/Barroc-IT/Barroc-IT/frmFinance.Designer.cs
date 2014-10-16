@@ -101,6 +101,13 @@
             this.btnProjectSearch = new System.Windows.Forms.Button();
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
+            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.finProCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnProjectBack = new System.Windows.Forms.Button();
             this.btnViewInvoices = new System.Windows.Forms.Button();
@@ -121,25 +128,19 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvInvoices = new System.Windows.Forms.DataGridView();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnInvoicesBack = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
+            this.txtInvoiceSubject = new System.Windows.Forms.TextBox();
+            this.lblInvoiceInvoiceSubject = new System.Windows.Forms.Label();
+            this.lblInvoiceInvoiceCompanyName = new System.Windows.Forms.Label();
+            this.txtInvoiceCompanyName = new System.Windows.Forms.TextBox();
+            this.dtptxtInvoiceInvoiceSendDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpInvoiceInvoiceExpireDate = new System.Windows.Forms.DateTimePicker();
+            this.lblInvoiceInvoiceSendDate = new System.Windows.Forms.Label();
+            this.lblInvoiceInvoiceExpireDate = new System.Windows.Forms.Label();
+            this.nudInvoiceInvoiceValue = new System.Windows.Forms.NumericUpDown();
+            this.lblInvoiceInvoiceValue = new System.Windows.Forms.Label();
             this.lblInvoice = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.btnAddInvoiceBack = new System.Windows.Forms.Button();
@@ -151,13 +152,13 @@
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.finProCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.finInvProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -170,9 +171,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).BeginInit();
             this.tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInvoiceInvoiceValue)).BeginInit();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFinInvoiceAddValue)).BeginInit();
             this.SuspendLayout();
@@ -896,6 +897,47 @@
             this.dgvProjects.TabIndex = 31;
             this.dgvProjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjects_CellContentClick);
             // 
+            // finProView
+            // 
+            this.finProView.HeaderText = "View";
+            this.finProView.Name = "finProView";
+            // 
+            // finProCustomerID
+            // 
+            this.finProCustomerID.HeaderText = "CustomerID";
+            this.finProCustomerID.Name = "finProCustomerID";
+            this.finProCustomerID.Visible = false;
+            // 
+            // finProCompanyName
+            // 
+            this.finProCompanyName.HeaderText = "CompanyName";
+            this.finProCompanyName.Name = "finProCompanyName";
+            this.finProCompanyName.ReadOnly = true;
+            // 
+            // finProName
+            // 
+            this.finProName.HeaderText = "Project Name";
+            this.finProName.Name = "finProName";
+            this.finProName.ReadOnly = true;
+            // 
+            // finProDeadline
+            // 
+            this.finProDeadline.HeaderText = "Deadline";
+            this.finProDeadline.Name = "finProDeadline";
+            this.finProDeadline.ReadOnly = true;
+            // 
+            // finProSubject
+            // 
+            this.finProSubject.HeaderText = "Subject";
+            this.finProSubject.Name = "finProSubject";
+            this.finProSubject.ReadOnly = true;
+            // 
+            // finProValue
+            // 
+            this.finProValue.HeaderText = "Value";
+            this.finProValue.Name = "finProValue";
+            this.finProValue.ReadOnly = true;
+            // 
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
@@ -939,6 +981,7 @@
             this.btnViewInvoices.TabIndex = 161;
             this.btnViewInvoices.Text = "View Invoices";
             this.btnViewInvoices.UseVisualStyleBackColor = true;
+            this.btnViewInvoices.Click += new System.EventHandler(this.btnViewInvoices_Click);
             // 
             // btnAddInvoice
             // 
@@ -1036,7 +1079,7 @@
             // 
             // txtProjectCompanyName
             // 
-            this.txtProjectCompanyName.Location = new System.Drawing.Point(372, 75);
+            this.txtProjectCompanyName.Location = new System.Drawing.Point(376, 75);
             this.txtProjectCompanyName.Name = "txtProjectCompanyName";
             this.txtProjectCompanyName.ReadOnly = true;
             this.txtProjectCompanyName.Size = new System.Drawing.Size(137, 20);
@@ -1059,7 +1102,7 @@
             this.tabPage6.Controls.Add(this.comboBox1);
             this.tabPage6.Controls.Add(this.button1);
             this.tabPage6.Controls.Add(this.textBox1);
-            this.tabPage6.Controls.Add(this.dataGridView1);
+            this.tabPage6.Controls.Add(this.dgvInvoices);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
@@ -1107,74 +1150,41 @@
             this.textBox1.Size = new System.Drawing.Size(119, 20);
             this.textBox1.TabIndex = 32;
             // 
-            // dataGridView1
+            // dgvInvoices
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvInvoices.AllowUserToAddRows = false;
+            this.dgvInvoices.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.finInvView,
+            this.finInvProjectID,
             this.finInvCompanyName,
             this.finInvSubject,
             this.finInvValue,
             this.finInvExpDate,
             this.InvoiceSendDate});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 8);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(753, 563);
-            this.dataGridView1.TabIndex = 31;
-            // 
-            // finInvView
-            // 
-            this.finInvView.HeaderText = "View";
-            this.finInvView.Name = "finInvView";
-            // 
-            // finInvCompanyName
-            // 
-            this.finInvCompanyName.HeaderText = "CompanyName";
-            this.finInvCompanyName.Name = "finInvCompanyName";
-            this.finInvCompanyName.ReadOnly = true;
-            // 
-            // finInvSubject
-            // 
-            this.finInvSubject.HeaderText = "Subject";
-            this.finInvSubject.Name = "finInvSubject";
-            this.finInvSubject.ReadOnly = true;
-            // 
-            // finInvValue
-            // 
-            this.finInvValue.HeaderText = "Value";
-            this.finInvValue.Name = "finInvValue";
-            this.finInvValue.ReadOnly = true;
-            // 
-            // finInvExpDate
-            // 
-            this.finInvExpDate.HeaderText = "Expire Date";
-            this.finInvExpDate.Name = "finInvExpDate";
-            this.finInvExpDate.ReadOnly = true;
-            // 
-            // InvoiceSendDate
-            // 
-            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
-            this.InvoiceSendDate.Name = "InvoiceSendDate";
-            this.InvoiceSendDate.ReadOnly = true;
+            this.dgvInvoices.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvInvoices.Location = new System.Drawing.Point(3, 8);
+            this.dgvInvoices.Name = "dgvInvoices";
+            this.dgvInvoices.RowHeadersVisible = false;
+            this.dgvInvoices.Size = new System.Drawing.Size(753, 563);
+            this.dgvInvoices.TabIndex = 31;
+            this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
             // 
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage7.Controls.Add(this.btnInvoicesBack);
-            this.tabPage7.Controls.Add(this.textBox2);
-            this.tabPage7.Controls.Add(this.label7);
-            this.tabPage7.Controls.Add(this.label6);
-            this.tabPage7.Controls.Add(this.textBox3);
-            this.tabPage7.Controls.Add(this.dateTimePicker1);
-            this.tabPage7.Controls.Add(this.dateTimePicker2);
-            this.tabPage7.Controls.Add(this.label1);
-            this.tabPage7.Controls.Add(this.label3);
-            this.tabPage7.Controls.Add(this.numericUpDown1);
-            this.tabPage7.Controls.Add(this.label4);
+            this.tabPage7.Controls.Add(this.txtInvoiceSubject);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSubject);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceCompanyName);
+            this.tabPage7.Controls.Add(this.txtInvoiceCompanyName);
+            this.tabPage7.Controls.Add(this.dtptxtInvoiceInvoiceSendDate);
+            this.tabPage7.Controls.Add(this.dtpInvoiceInvoiceExpireDate);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSendDate);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceExpireDate);
+            this.tabPage7.Controls.Add(this.nudInvoiceInvoiceValue);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceValue);
             this.tabPage7.Controls.Add(this.lblInvoice);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
@@ -1194,108 +1204,108 @@
             this.btnInvoicesBack.UseVisualStyleBackColor = true;
             this.btnInvoicesBack.Click += new System.EventHandler(this.btnInvoicesBack_Click);
             // 
-            // textBox2
+            // txtInvoiceSubject
             // 
-            this.textBox2.Location = new System.Drawing.Point(387, 105);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(137, 20);
-            this.textBox2.TabIndex = 184;
+            this.txtInvoiceSubject.Location = new System.Drawing.Point(387, 105);
+            this.txtInvoiceSubject.Name = "txtInvoiceSubject";
+            this.txtInvoiceSubject.ReadOnly = true;
+            this.txtInvoiceSubject.Size = new System.Drawing.Size(137, 20);
+            this.txtInvoiceSubject.TabIndex = 184;
             // 
-            // label7
+            // lblInvoiceInvoiceSubject
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(188, 105);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 25);
-            this.label7.TabIndex = 183;
-            this.label7.Text = "Subject:";
+            this.lblInvoiceInvoiceSubject.AutoSize = true;
+            this.lblInvoiceInvoiceSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceSubject.Location = new System.Drawing.Point(188, 105);
+            this.lblInvoiceInvoiceSubject.Name = "lblInvoiceInvoiceSubject";
+            this.lblInvoiceInvoiceSubject.Size = new System.Drawing.Size(84, 25);
+            this.lblInvoiceInvoiceSubject.TabIndex = 183;
+            this.lblInvoiceInvoiceSubject.Text = "Subject:";
             // 
-            // label6
+            // lblInvoiceInvoiceCompanyName
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(188, 69);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(160, 25);
-            this.label6.TabIndex = 182;
-            this.label6.Text = "Company Name:";
+            this.lblInvoiceInvoiceCompanyName.AutoSize = true;
+            this.lblInvoiceInvoiceCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceCompanyName.Location = new System.Drawing.Point(188, 69);
+            this.lblInvoiceInvoiceCompanyName.Name = "lblInvoiceInvoiceCompanyName";
+            this.lblInvoiceInvoiceCompanyName.Size = new System.Drawing.Size(160, 25);
+            this.lblInvoiceInvoiceCompanyName.TabIndex = 182;
+            this.lblInvoiceInvoiceCompanyName.Text = "Company Name:";
             // 
-            // textBox3
+            // txtInvoiceCompanyName
             // 
-            this.textBox3.Location = new System.Drawing.Point(387, 74);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(137, 20);
-            this.textBox3.TabIndex = 181;
+            this.txtInvoiceCompanyName.Location = new System.Drawing.Point(387, 74);
+            this.txtInvoiceCompanyName.Name = "txtInvoiceCompanyName";
+            this.txtInvoiceCompanyName.ReadOnly = true;
+            this.txtInvoiceCompanyName.Size = new System.Drawing.Size(137, 20);
+            this.txtInvoiceCompanyName.TabIndex = 181;
             // 
-            // dateTimePicker1
+            // dtptxtInvoiceInvoiceSendDate
             // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(387, 220);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(137, 20);
-            this.dateTimePicker1.TabIndex = 180;
+            this.dtptxtInvoiceInvoiceSendDate.Enabled = false;
+            this.dtptxtInvoiceInvoiceSendDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtptxtInvoiceInvoiceSendDate.Location = new System.Drawing.Point(387, 220);
+            this.dtptxtInvoiceInvoiceSendDate.Name = "dtptxtInvoiceInvoiceSendDate";
+            this.dtptxtInvoiceInvoiceSendDate.Size = new System.Drawing.Size(137, 20);
+            this.dtptxtInvoiceInvoiceSendDate.TabIndex = 180;
             // 
-            // dateTimePicker2
+            // dtpInvoiceInvoiceExpireDate
             // 
-            this.dateTimePicker2.Enabled = false;
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(387, 184);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(137, 20);
-            this.dateTimePicker2.TabIndex = 179;
+            this.dtpInvoiceInvoiceExpireDate.Enabled = false;
+            this.dtpInvoiceInvoiceExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInvoiceInvoiceExpireDate.Location = new System.Drawing.Point(387, 184);
+            this.dtpInvoiceInvoiceExpireDate.Name = "dtpInvoiceInvoiceExpireDate";
+            this.dtpInvoiceInvoiceExpireDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpInvoiceInvoiceExpireDate.TabIndex = 179;
             // 
-            // label1
+            // lblInvoiceInvoiceSendDate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(188, 215);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 25);
-            this.label1.TabIndex = 178;
-            this.label1.Text = "Invoice Sent Date:";
+            this.lblInvoiceInvoiceSendDate.AutoSize = true;
+            this.lblInvoiceInvoiceSendDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceSendDate.Location = new System.Drawing.Point(188, 215);
+            this.lblInvoiceInvoiceSendDate.Name = "lblInvoiceInvoiceSendDate";
+            this.lblInvoiceInvoiceSendDate.Size = new System.Drawing.Size(178, 25);
+            this.lblInvoiceInvoiceSendDate.TabIndex = 178;
+            this.lblInvoiceInvoiceSendDate.Text = "Invoice Send Date:";
             // 
-            // label3
+            // lblInvoiceInvoiceExpireDate
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(188, 179);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 25);
-            this.label3.TabIndex = 177;
-            this.label3.Text = "Invoice Expire Date:";
+            this.lblInvoiceInvoiceExpireDate.AutoSize = true;
+            this.lblInvoiceInvoiceExpireDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceExpireDate.Location = new System.Drawing.Point(188, 179);
+            this.lblInvoiceInvoiceExpireDate.Name = "lblInvoiceInvoiceExpireDate";
+            this.lblInvoiceInvoiceExpireDate.Size = new System.Drawing.Size(186, 25);
+            this.lblInvoiceInvoiceExpireDate.TabIndex = 177;
+            this.lblInvoiceInvoiceExpireDate.Text = "Invoice Expire Date:";
             // 
-            // numericUpDown1
+            // nudInvoiceInvoiceValue
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.nudInvoiceInvoiceValue.DecimalPlaces = 2;
+            this.nudInvoiceInvoiceValue.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(387, 147);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nudInvoiceInvoiceValue.Location = new System.Drawing.Point(387, 147);
+            this.nudInvoiceInvoiceValue.Maximum = new decimal(new int[] {
             -1593835521,
             466537709,
             54210,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(137, 20);
-            this.numericUpDown1.TabIndex = 176;
-            this.numericUpDown1.ThousandsSeparator = true;
+            this.nudInvoiceInvoiceValue.Name = "nudInvoiceInvoiceValue";
+            this.nudInvoiceInvoiceValue.Size = new System.Drawing.Size(137, 20);
+            this.nudInvoiceInvoiceValue.TabIndex = 176;
+            this.nudInvoiceInvoiceValue.ThousandsSeparator = true;
             // 
-            // label4
+            // lblInvoiceInvoiceValue
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(188, 140);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 25);
-            this.label4.TabIndex = 175;
-            this.label4.Text = "Invoice Value:";
+            this.lblInvoiceInvoiceValue.AutoSize = true;
+            this.lblInvoiceInvoiceValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceValue.Location = new System.Drawing.Point(188, 140);
+            this.lblInvoiceInvoiceValue.Name = "lblInvoiceInvoiceValue";
+            this.lblInvoiceInvoiceValue.Size = new System.Drawing.Size(136, 25);
+            this.lblInvoiceInvoiceValue.TabIndex = 175;
+            this.lblInvoiceInvoiceValue.Text = "Invoice Value:";
             // 
             // lblInvoice
             // 
@@ -1425,46 +1435,46 @@
             this.label2.TabIndex = 161;
             this.label2.Text = "Add Invoice";
             // 
-            // finProView
+            // finInvView
             // 
-            this.finProView.HeaderText = "View";
-            this.finProView.Name = "finProView";
+            this.finInvView.HeaderText = "View";
+            this.finInvView.Name = "finInvView";
             // 
-            // finProCustomerID
+            // finInvProjectID
             // 
-            this.finProCustomerID.HeaderText = "CustomerID";
-            this.finProCustomerID.Name = "finProCustomerID";
-            this.finProCustomerID.Visible = false;
+            this.finInvProjectID.HeaderText = "finInvProjectID";
+            this.finInvProjectID.Name = "finInvProjectID";
+            this.finInvProjectID.Visible = false;
             // 
-            // finProCompanyName
+            // finInvCompanyName
             // 
-            this.finProCompanyName.HeaderText = "CompanyName";
-            this.finProCompanyName.Name = "finProCompanyName";
-            this.finProCompanyName.ReadOnly = true;
+            this.finInvCompanyName.HeaderText = "CompanyName";
+            this.finInvCompanyName.Name = "finInvCompanyName";
+            this.finInvCompanyName.ReadOnly = true;
             // 
-            // finProName
+            // finInvSubject
             // 
-            this.finProName.HeaderText = "Project Name";
-            this.finProName.Name = "finProName";
-            this.finProName.ReadOnly = true;
+            this.finInvSubject.HeaderText = "Subject";
+            this.finInvSubject.Name = "finInvSubject";
+            this.finInvSubject.ReadOnly = true;
             // 
-            // finProDeadline
+            // finInvValue
             // 
-            this.finProDeadline.HeaderText = "Deadline";
-            this.finProDeadline.Name = "finProDeadline";
-            this.finProDeadline.ReadOnly = true;
+            this.finInvValue.HeaderText = "Value";
+            this.finInvValue.Name = "finInvValue";
+            this.finInvValue.ReadOnly = true;
             // 
-            // finProSubject
+            // finInvExpDate
             // 
-            this.finProSubject.HeaderText = "Subject";
-            this.finProSubject.Name = "finProSubject";
-            this.finProSubject.ReadOnly = true;
+            this.finInvExpDate.HeaderText = "Expire Date";
+            this.finInvExpDate.Name = "finInvExpDate";
+            this.finInvExpDate.ReadOnly = true;
             // 
-            // finProValue
+            // InvoiceSendDate
             // 
-            this.finProValue.HeaderText = "Value";
-            this.finProValue.Name = "finProValue";
-            this.finProValue.ReadOnly = true;
+            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
+            this.InvoiceSendDate.Name = "InvoiceSendDate";
+            this.InvoiceSendDate.ReadOnly = true;
             // 
             // frmFinance
             // 
@@ -1497,10 +1507,10 @@
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInvoiceInvoiceValue)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFinInvoiceAddValue)).EndInit();
@@ -1581,25 +1591,19 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewButtonColumn finInvView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finInvCompanyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finInvSubject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finInvValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finInvExpDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSendDate;
+        private System.Windows.Forms.DataGridView dgvInvoices;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Label lblInvoice;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtInvoiceSubject;
+        private System.Windows.Forms.Label lblInvoiceInvoiceSubject;
+        private System.Windows.Forms.Label lblInvoiceInvoiceCompanyName;
+        private System.Windows.Forms.TextBox txtInvoiceCompanyName;
+        private System.Windows.Forms.DateTimePicker dtptxtInvoiceInvoiceSendDate;
+        private System.Windows.Forms.DateTimePicker dtpInvoiceInvoiceExpireDate;
+        private System.Windows.Forms.Label lblInvoiceInvoiceSendDate;
+        private System.Windows.Forms.Label lblInvoiceInvoiceExpireDate;
+        private System.Windows.Forms.NumericUpDown nudInvoiceInvoiceValue;
+        private System.Windows.Forms.Label lblInvoiceInvoiceValue;
         private System.Windows.Forms.Button btnInvoicesBack;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.DateTimePicker dtpFinInvoiceSentDate;
@@ -1640,5 +1644,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finProDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProValue;
+        private System.Windows.Forms.DataGridViewButtonColumn finInvView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvProjectID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvSubject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvExpDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSendDate;
     }
 }

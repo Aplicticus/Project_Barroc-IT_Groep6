@@ -10,8 +10,9 @@ namespace Barroc_IT
         private DatabaseHandler handler;
         private frmLogin loginForm;
         private DataTableHandler dthandler;
-        private int selectedProject = 0;
+        private int selectedProject;
         private int selectedCustomer;
+        private int selectedInvoice = 0;
 
         //private int selectedCustomer = 0;
         private bool closing = false;
@@ -48,6 +49,30 @@ namespace Barroc_IT
 
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
+
+        private void btnViewProjects_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 3;
+            dgvProjects.Rows.Clear();
+            DataTable projects = dthandler.LoadProjects(selectedCustomer);
+
+            AddItemsToDataGridView(projects, dgvProjects, "finProView");
+
+
+        }
+
+        private void btnViewInvoices_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 5;
+            dgvProjects.Rows.Clear();
+            DataTable invoices = dthandler.LoadInvoices(selectedProject);
+
+            AddItemsToDataGridView(invoices, dgvInvoices, "finInvView");
+        }
+
+
+
+
 
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -86,6 +111,8 @@ namespace Barroc_IT
 
         }
 
+
+
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvProjects.Columns["finProView"].Index)
@@ -98,6 +125,21 @@ namespace Barroc_IT
                 tbContr.SelectedIndex = 4;
             }
         }
+
+        private void dgvInvoices_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvInvoices.Columns["finInvView"].Index)
+            {
+                selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["finInvProjectID"].Value.ToString());
+                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
+                DataTable projectDetails = dthandler.LoadProjects(selectedCustomer);
+                DataTable invoiceDetails = dthandler.LoadInvoices(selectedProject);
+
+                LoadInvoiceDetails(customerDetails, projectDetails, invoiceDetails);
+                tbContr.SelectedIndex = 6;
+            }
+        }
+
 
         private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
         {
@@ -113,8 +155,34 @@ namespace Barroc_IT
             dtpDeadlineViewProject.Value = projectDeadline;
             txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
             txtProjectValue.Text = ProRow["VALUE"].ToString();
+
+            
         }
 
+        private void LoadInvoiceDetails(DataTable CusTable, DataTable ProTable, DataTable InvTable)
+        {
+            DataRow CusRow = CusTable.Rows[0];
+
+            txtInvoiceCompanyName.Text = CusRow["COMPANYNAME"].ToString();
+
+            DataRow ProRow = ProTable.Rows[0];
+
+            txtInvoiceSubject.Text = ProRow["SUBJECT"].ToString();
+            decimal nudInvoiceValue = decimal.Parse(ProRow["VALUE"].ToString());
+            nudInvoiceInvoiceValue.Value = nudInvoiceValue;
+
+         
+
+            DataRow InvRow = InvTable.Rows[0];
+
+            DateTime InvoiceExpireDate = new DateTime();
+            InvoiceExpireDate = DateTime.Parse(InvRow["INVOICE_END_DATE"].ToString());
+            dtpFinInvoiceExpDate.Value = InvoiceExpireDate;
+
+            DateTime InvoiceSendDate = new DateTime();
+            InvoiceSendDate = DateTime.Parse(InvRow["INVOICE_SEND"].ToString());
+            dtptxtInvoiceInvoiceSendDate.Value = InvoiceSendDate;
+        }
 
         private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -153,16 +221,7 @@ namespace Barroc_IT
 
         }
 
-        private void btnViewProjects_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 3;
-            dgvProjects.Rows.Clear();
-            DataTable projects = dthandler.LoadProjects(selectedCustomer);
-
-            AddItemsToDataGridView(projects, dgvProjects, "finProView");
-
-
-        }
+       
 
         private void btnInvoicesBack_Click(object sender, EventArgs e)
         {
@@ -229,5 +288,7 @@ namespace Barroc_IT
                 dataGridView.Rows.Add(dr.ItemArray);
             }
         }
+
+       
     }
 }
