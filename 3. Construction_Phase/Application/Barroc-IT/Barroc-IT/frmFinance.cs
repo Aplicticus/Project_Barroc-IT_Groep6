@@ -78,16 +78,15 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvCustomers.Columns["finCusView"].Index)
             {
-                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
-                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-                DataTable appointmentDetails = dthandler.LoadAppointments(selectedCustomer);
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());                
+                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);                
 
-                LoadCustomerDetails(customerDetails, appointmentDetails);
+                LoadCustomerDetails(customerDetails);
                 tbContr.SelectedIndex = 2;
             }
         }
 
-        private void LoadCustomerDetails(DataTable CusTable, DataTable ApoTable)
+        private void LoadCustomerDetails(DataTable CusTable)
         {
             DataRow CusRow = CusTable.Rows[0];
 
@@ -98,17 +97,17 @@ namespace Barroc_IT
             txtFaxNumber.Text = CusRow["FAXNUMBER"].ToString();
             txtEmail.Text = CusRow["EMAIL"].ToString();
             txtContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
-
             txtFinAccountID.Text = CusRow["ACC_ID"].ToString();
-            txtFinBalance.Text = CusRow["BALANCE"].ToString();            
-            //txtFinInvoices.Text =  ( Add Count of invoices from current project/Customer )
-            //txtFinSales.Text = ( add count of sales from current project / cutomer)
+            txtFinBalance.Text = CusRow["BALANCE"].ToString();
             txtFinLimit.Text = CusRow["LIMIT"].ToString();
             txtFinLegderID.Text = CusRow["LEDGER_ID"].ToString();
             txtFinBTWCode.Text = CusRow["BTW_CODE"].ToString();
             cbFinBKR.Text = CusRow["BKR"].ToString();
-            
+                       
 
+            //txtFinInvoices.Text =  ( Add Count of invoices from current project/Customer )
+            
+            //txtFinSales.Text = ( add count of sales from current project / cutomer)
         }
 
 
