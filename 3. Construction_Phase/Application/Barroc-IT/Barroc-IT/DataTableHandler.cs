@@ -70,16 +70,41 @@ namespace Barroc_IT
         }
 
         // Invoices
+        //public DataTable LoadInvoices(int projectID)
+        //{
+        //    string sqlQuery = "SELECT * FROM tbl_Invoices WHERE PROJECT_ID ='" + projectID + "'";
+        //    SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
+        //    DataSet DS = new DataSet();
+        //    DA.Fill(DS);
+        //    DataTable DT = DS.Tables[0];
+        //    return DT;
+        //}
+
+
         public DataTable LoadInvoices(int projectID)
         {
-            string sqlQuery = "SELECT * FROM tbl_Invoices WHERE PROJECT_ID ='" + projectID + "'";
+
+            // SELECT With INNER JOIN
+            string sqlQuery;
+            sqlQuery = "SELECT tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, tbl_Invoices.INVOICE_SEND FROM tbl_Customers FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID WHERE tbl_Projects.PROJECT_ID='"+ projectID +"'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
             return DT;
-        }
 
+            /*
+             *  string SQL;
+            SQL = "SELECT * FROM Customers ";
+
+            // Adapter, Set, Table, Rows
+            SqlDataAdapter DA = new SqlDataAdapter(SQL, Conn);
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+             * 
+             * */
+        }
         
        
 
