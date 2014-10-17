@@ -129,6 +129,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgvInvoices = new System.Windows.Forms.DataGridView();
+            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.finProProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnInvoicesBack = new System.Windows.Forms.Button();
             this.txtInvoiceSubject = new System.Windows.Forms.TextBox();
@@ -152,13 +159,6 @@
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.finProProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1171,6 +1171,47 @@
             this.dgvInvoices.TabIndex = 31;
             this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
             // 
+            // finInvView
+            // 
+            this.finInvView.HeaderText = "View";
+            this.finInvView.Name = "finInvView";
+            // 
+            // finProProjectID
+            // 
+            this.finProProjectID.HeaderText = "finProProjectID";
+            this.finProProjectID.Name = "finProProjectID";
+            this.finProProjectID.Visible = false;
+            // 
+            // finInvCompanyName
+            // 
+            this.finInvCompanyName.HeaderText = "CompanyName";
+            this.finInvCompanyName.Name = "finInvCompanyName";
+            this.finInvCompanyName.ReadOnly = true;
+            // 
+            // finInvSubject
+            // 
+            this.finInvSubject.HeaderText = "Subject";
+            this.finInvSubject.Name = "finInvSubject";
+            this.finInvSubject.ReadOnly = true;
+            // 
+            // finInvValue
+            // 
+            this.finInvValue.HeaderText = "Value";
+            this.finInvValue.Name = "finInvValue";
+            this.finInvValue.ReadOnly = true;
+            // 
+            // finInvExpDate
+            // 
+            this.finInvExpDate.HeaderText = "Expire Date";
+            this.finInvExpDate.Name = "finInvExpDate";
+            this.finInvExpDate.ReadOnly = true;
+            // 
+            // InvoiceSendDate
+            // 
+            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
+            this.InvoiceSendDate.Name = "InvoiceSendDate";
+            this.InvoiceSendDate.ReadOnly = true;
+            // 
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
@@ -1293,6 +1334,7 @@
             54210,
             0});
             this.nudInvoiceInvoiceValue.Name = "nudInvoiceInvoiceValue";
+            this.nudInvoiceInvoiceValue.ReadOnly = true;
             this.nudInvoiceInvoiceValue.Size = new System.Drawing.Size(137, 20);
             this.nudInvoiceInvoiceValue.TabIndex = 176;
             this.nudInvoiceInvoiceValue.ThousandsSeparator = true;
@@ -1360,7 +1402,6 @@
             // 
             // dtpFinInvoiceSentDate
             // 
-            this.dtpFinInvoiceSentDate.Enabled = false;
             this.dtpFinInvoiceSentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFinInvoiceSentDate.Location = new System.Drawing.Point(404, 149);
             this.dtpFinInvoiceSentDate.Name = "dtpFinInvoiceSentDate";
@@ -1369,7 +1410,6 @@
             // 
             // dtpFinInvoiceExpDate
             // 
-            this.dtpFinInvoiceExpDate.Enabled = false;
             this.dtpFinInvoiceExpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFinInvoiceExpDate.Location = new System.Drawing.Point(404, 113);
             this.dtpFinInvoiceExpDate.Name = "dtpFinInvoiceExpDate";
@@ -1434,47 +1474,6 @@
             this.label2.Size = new System.Drawing.Size(167, 31);
             this.label2.TabIndex = 161;
             this.label2.Text = "Add Invoice";
-            // 
-            // finInvView
-            // 
-            this.finInvView.HeaderText = "View";
-            this.finInvView.Name = "finInvView";
-            // 
-            // finProProjectID
-            // 
-            this.finProProjectID.HeaderText = "finProProjectID";
-            this.finProProjectID.Name = "finProProjectID";
-            this.finProProjectID.Visible = false;
-            // 
-            // finInvCompanyName
-            // 
-            this.finInvCompanyName.HeaderText = "CompanyName";
-            this.finInvCompanyName.Name = "finInvCompanyName";
-            this.finInvCompanyName.ReadOnly = true;
-            // 
-            // finInvSubject
-            // 
-            this.finInvSubject.HeaderText = "Subject";
-            this.finInvSubject.Name = "finInvSubject";
-            this.finInvSubject.ReadOnly = true;
-            // 
-            // finInvValue
-            // 
-            this.finInvValue.HeaderText = "Value";
-            this.finInvValue.Name = "finInvValue";
-            this.finInvValue.ReadOnly = true;
-            // 
-            // finInvExpDate
-            // 
-            this.finInvExpDate.HeaderText = "Expire Date";
-            this.finInvExpDate.Name = "finInvExpDate";
-            this.finInvExpDate.ReadOnly = true;
-            // 
-            // InvoiceSendDate
-            // 
-            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
-            this.InvoiceSendDate.Name = "InvoiceSendDate";
-            this.InvoiceSendDate.ReadOnly = true;
             // 
             // frmFinance
             // 
