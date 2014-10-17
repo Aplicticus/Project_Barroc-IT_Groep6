@@ -168,10 +168,12 @@ namespace Barroc_IT
             DataRow ProRow = ProTable.Rows[0];
 
             txtInvoiceSubject.Text = ProRow["SUBJECT"].ToString();
-            decimal nudInvoiceValue = decimal.Parse(ProRow["VALUE"].ToString());
-            nudInvoiceInvoiceValue.Value = nudInvoiceValue;
+            
 
             DataRow InvRow = InvTable.Rows[0];
+
+            decimal nudInvoiceValue = decimal.Parse(InvRow["INVOICE_VALUE"].ToString());
+            nudInvoiceInvoiceValue.Value = nudInvoiceValue;
 
             DateTime InvoiceExpireDate = new DateTime();
             InvoiceExpireDate = DateTime.Parse(InvRow["INVOICE_END_DATE"].ToString());
