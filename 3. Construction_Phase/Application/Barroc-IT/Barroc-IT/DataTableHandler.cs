@@ -84,9 +84,9 @@ namespace Barroc_IT
         public DataTable LoadInvoices(int projectID)
         {
 
-            // SELECT With INNER JOIN
+            // SELECT With OUTER JOIN
             string sqlQuery;
-            sqlQuery = "SELECT tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, tbl_Invoices.INVOICE_SEND FROM tbl_Customers FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID WHERE tbl_Projects.PROJECT_ID='"+ projectID +"'";
+            sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, tbl_Invoices.INVOICE_SEND FROM tbl_Customers FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID WHERE tbl_Projects.PROJECT_ID='"+ projectID +"'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);

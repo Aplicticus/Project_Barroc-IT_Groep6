@@ -12,9 +12,8 @@ namespace Barroc_IT
         private DataTableHandler dthandler;
         private int selectedProject;
         private int selectedCustomer;
-        private int selectedInvoice = 0;
+        private int selectedInvoice;
 
-        //private int selectedCustomer = 0;
         private bool closing = false;
         public frmFinance(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler)
         {
@@ -129,7 +128,7 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvInvoices.Columns["finInvView"].Index)
             {
-                selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["finInvProjectID"].Value.ToString());
+                selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["finProProjectID"].Value.ToString());
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
                 DataTable projectDetails = dthandler.LoadProjects(selectedCustomer);
                 DataTable invoiceDetails = dthandler.LoadInvoices(selectedProject);

@@ -153,6 +153,7 @@
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.finProProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1156,6 +1157,7 @@
             this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.finInvView,
+            this.finProProjectID,
             this.finInvCompanyName,
             this.finInvSubject,
             this.finInvValue,
@@ -1438,6 +1440,12 @@
             this.finInvView.HeaderText = "View";
             this.finInvView.Name = "finInvView";
             // 
+            // finProProjectID
+            // 
+            this.finProProjectID.HeaderText = "finProProjectID";
+            this.finProProjectID.Name = "finProProjectID";
+            this.finProProjectID.Visible = false;
+            // 
             // finInvCompanyName
             // 
             this.finInvCompanyName.HeaderText = "CompanyName";
@@ -1637,6 +1645,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProValue;
         private System.Windows.Forms.DataGridViewButtonColumn finInvView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvCompanyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvValue;
