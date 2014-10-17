@@ -175,11 +175,11 @@ namespace Barroc_IT
 
             DateTime InvoiceExpireDate = new DateTime();
             InvoiceExpireDate = DateTime.Parse(InvRow["INVOICE_END_DATE"].ToString());
-            dtpFinInvoiceExpDate.Value = InvoiceExpireDate;
+            dtpSelectedInvoiceExpireDate.Value = InvoiceExpireDate;
 
             DateTime InvoiceSendDate = new DateTime();
             InvoiceSendDate = DateTime.Parse(InvRow["INVOICE_SEND"].ToString());
-            dtptxtInvoiceInvoiceSendDate.Value = InvoiceSendDate;
+            dtpSelectedInvoiceSendDate.Value = InvoiceSendDate;
         }
         private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
         {

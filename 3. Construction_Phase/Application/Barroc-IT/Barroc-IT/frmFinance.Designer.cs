@@ -132,14 +132,21 @@
             this.btnInvoiceSearch = new System.Windows.Forms.Button();
             this.txtSearchInvoice = new System.Windows.Forms.TextBox();
             this.dgvInvoices = new System.Windows.Forms.DataGridView();
+            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnInvoicesBack = new System.Windows.Forms.Button();
             this.txtInvoiceSubject = new System.Windows.Forms.TextBox();
             this.lblInvoiceInvoiceSubject = new System.Windows.Forms.Label();
             this.lblInvoiceInvoiceCompanyName = new System.Windows.Forms.Label();
             this.txtInvoiceCompanyName = new System.Windows.Forms.TextBox();
-            this.dtptxtInvoiceInvoiceSendDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpInvoiceInvoiceExpireDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpSelectedInvoiceSendDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpSelectedInvoiceExpireDate = new System.Windows.Forms.DateTimePicker();
             this.lblInvoiceInvoiceSendDate = new System.Windows.Forms.Label();
             this.lblInvoiceInvoiceExpireDate = new System.Windows.Forms.Label();
             this.nudInvoiceInvoiceValue = new System.Windows.Forms.NumericUpDown();
@@ -154,14 +161,6 @@
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
-
-            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblAddInvoice = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
@@ -1212,6 +1211,47 @@
             this.dgvInvoices.TabIndex = 31;
             this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
             // 
+            // finInvView
+            // 
+            this.finInvView.HeaderText = "View";
+            this.finInvView.Name = "finInvView";
+            // 
+            // cInvoiceID
+            // 
+            this.cInvoiceID.HeaderText = "cInvoiceID";
+            this.cInvoiceID.Name = "cInvoiceID";
+            this.cInvoiceID.Visible = false;
+            // 
+            // finInvCompanyName
+            // 
+            this.finInvCompanyName.HeaderText = "CompanyName";
+            this.finInvCompanyName.Name = "finInvCompanyName";
+            this.finInvCompanyName.ReadOnly = true;
+            // 
+            // finInvSubject
+            // 
+            this.finInvSubject.HeaderText = "Subject";
+            this.finInvSubject.Name = "finInvSubject";
+            this.finInvSubject.ReadOnly = true;
+            // 
+            // finInvValue
+            // 
+            this.finInvValue.HeaderText = "Value";
+            this.finInvValue.Name = "finInvValue";
+            this.finInvValue.ReadOnly = true;
+            // 
+            // finInvExpDate
+            // 
+            this.finInvExpDate.HeaderText = "Expire Date";
+            this.finInvExpDate.Name = "finInvExpDate";
+            this.finInvExpDate.ReadOnly = true;
+            // 
+            // InvoiceSendDate
+            // 
+            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
+            this.InvoiceSendDate.Name = "InvoiceSendDate";
+            this.InvoiceSendDate.ReadOnly = true;
+            // 
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
@@ -1220,8 +1260,8 @@
             this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSubject);
             this.tabPage7.Controls.Add(this.lblInvoiceInvoiceCompanyName);
             this.tabPage7.Controls.Add(this.txtInvoiceCompanyName);
-            this.tabPage7.Controls.Add(this.dtptxtInvoiceInvoiceSendDate);
-            this.tabPage7.Controls.Add(this.dtpInvoiceInvoiceExpireDate);
+            this.tabPage7.Controls.Add(this.dtpSelectedInvoiceSendDate);
+            this.tabPage7.Controls.Add(this.dtpSelectedInvoiceExpireDate);
             this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSendDate);
             this.tabPage7.Controls.Add(this.lblInvoiceInvoiceExpireDate);
             this.tabPage7.Controls.Add(this.nudInvoiceInvoiceValue);
@@ -1281,23 +1321,23 @@
             this.txtInvoiceCompanyName.Size = new System.Drawing.Size(137, 20);
             this.txtInvoiceCompanyName.TabIndex = 181;
             // 
-            // dtptxtInvoiceInvoiceSendDate
+            // dtpSelectedInvoiceSendDate
             // 
-            this.dtptxtInvoiceInvoiceSendDate.Enabled = false;
-            this.dtptxtInvoiceInvoiceSendDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtptxtInvoiceInvoiceSendDate.Location = new System.Drawing.Point(220, 174);
-            this.dtptxtInvoiceInvoiceSendDate.Name = "dtptxtInvoiceInvoiceSendDate";
-            this.dtptxtInvoiceInvoiceSendDate.Size = new System.Drawing.Size(137, 20);
-            this.dtptxtInvoiceInvoiceSendDate.TabIndex = 180;
+            this.dtpSelectedInvoiceSendDate.Enabled = false;
+            this.dtpSelectedInvoiceSendDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelectedInvoiceSendDate.Location = new System.Drawing.Point(220, 174);
+            this.dtpSelectedInvoiceSendDate.Name = "dtpSelectedInvoiceSendDate";
+            this.dtpSelectedInvoiceSendDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpSelectedInvoiceSendDate.TabIndex = 180;
             // 
-            // dtpInvoiceInvoiceExpireDate
+            // dtpSelectedInvoiceExpireDate
             // 
-            this.dtpInvoiceInvoiceExpireDate.Enabled = false;
-            this.dtpInvoiceInvoiceExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInvoiceInvoiceExpireDate.Location = new System.Drawing.Point(220, 144);
-            this.dtpInvoiceInvoiceExpireDate.Name = "dtpInvoiceInvoiceExpireDate";
-            this.dtpInvoiceInvoiceExpireDate.Size = new System.Drawing.Size(137, 20);
-            this.dtpInvoiceInvoiceExpireDate.TabIndex = 179;
+            this.dtpSelectedInvoiceExpireDate.Enabled = false;
+            this.dtpSelectedInvoiceExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelectedInvoiceExpireDate.Location = new System.Drawing.Point(220, 144);
+            this.dtpSelectedInvoiceExpireDate.Name = "dtpSelectedInvoiceExpireDate";
+            this.dtpSelectedInvoiceExpireDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpSelectedInvoiceExpireDate.TabIndex = 179;
             // 
             // lblInvoiceInvoiceSendDate
             // 
@@ -1483,47 +1523,6 @@
             this.lblAddInvoice.TabIndex = 161;
             this.lblAddInvoice.Text = "Add Invoice";
             // 
-            // finInvView
-            // 
-            this.finInvView.HeaderText = "View";
-            this.finInvView.Name = "finInvView";
-            // 
-            // cInvoiceID
-            // 
-            this.cInvoiceID.HeaderText = "cInvoiceID";
-            this.cInvoiceID.Name = "cInvoiceID";
-            this.cInvoiceID.Visible = false;
-            // 
-            // finInvCompanyName
-            // 
-            this.finInvCompanyName.HeaderText = "CompanyName";
-            this.finInvCompanyName.Name = "finInvCompanyName";
-            this.finInvCompanyName.ReadOnly = true;
-            // 
-            // finInvSubject
-            // 
-            this.finInvSubject.HeaderText = "Subject";
-            this.finInvSubject.Name = "finInvSubject";
-            this.finInvSubject.ReadOnly = true;
-            // 
-            // finInvValue
-            // 
-            this.finInvValue.HeaderText = "Value";
-            this.finInvValue.Name = "finInvValue";
-            this.finInvValue.ReadOnly = true;
-            // 
-            // finInvExpDate
-            // 
-            this.finInvExpDate.HeaderText = "Expire Date";
-            this.finInvExpDate.Name = "finInvExpDate";
-            this.finInvExpDate.ReadOnly = true;
-            // 
-            // InvoiceSendDate
-            // 
-            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
-            this.InvoiceSendDate.Name = "InvoiceSendDate";
-            this.InvoiceSendDate.ReadOnly = true;
-            // 
             // frmFinance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1649,8 +1648,8 @@
         private System.Windows.Forms.Label lblInvoiceInvoiceSubject;
         private System.Windows.Forms.Label lblInvoiceInvoiceCompanyName;
         private System.Windows.Forms.TextBox txtInvoiceCompanyName;
-        private System.Windows.Forms.DateTimePicker dtptxtInvoiceInvoiceSendDate;
-        private System.Windows.Forms.DateTimePicker dtpInvoiceInvoiceExpireDate;
+        private System.Windows.Forms.DateTimePicker dtpSelectedInvoiceSendDate;
+        private System.Windows.Forms.DateTimePicker dtpSelectedInvoiceExpireDate;
         private System.Windows.Forms.Label lblInvoiceInvoiceSendDate;
         private System.Windows.Forms.Label lblInvoiceInvoiceExpireDate;
         private System.Windows.Forms.NumericUpDown nudInvoiceInvoiceValue;
