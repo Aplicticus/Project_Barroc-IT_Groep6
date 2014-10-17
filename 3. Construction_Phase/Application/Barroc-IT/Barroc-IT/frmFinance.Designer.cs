@@ -149,7 +149,7 @@
             this.dtpSelectedInvoiceExpireDate = new System.Windows.Forms.DateTimePicker();
             this.lblInvoiceInvoiceSendDate = new System.Windows.Forms.Label();
             this.lblInvoiceInvoiceExpireDate = new System.Windows.Forms.Label();
-            this.nudInvoiceInvoiceValue = new System.Windows.Forms.NumericUpDown();
+            this.nudSelectedInvoiceValue = new System.Windows.Forms.NumericUpDown();
             this.lblInvoiceInvoiceValue = new System.Windows.Forms.Label();
             this.lblInvoice = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
@@ -176,7 +176,7 @@
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).BeginInit();
             this.tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInvoiceInvoiceValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSelectedInvoiceValue)).BeginInit();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFinInvoiceAddValue)).BeginInit();
             this.SuspendLayout();
@@ -1264,7 +1264,7 @@
             this.tabPage7.Controls.Add(this.dtpSelectedInvoiceExpireDate);
             this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSendDate);
             this.tabPage7.Controls.Add(this.lblInvoiceInvoiceExpireDate);
-            this.tabPage7.Controls.Add(this.nudInvoiceInvoiceValue);
+            this.tabPage7.Controls.Add(this.nudSelectedInvoiceValue);
             this.tabPage7.Controls.Add(this.lblInvoiceInvoiceValue);
             this.tabPage7.Controls.Add(this.lblInvoice);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
@@ -1359,31 +1359,31 @@
             this.lblInvoiceInvoiceExpireDate.TabIndex = 177;
             this.lblInvoiceInvoiceExpireDate.Text = "Invoice Expire Date:";
             // 
-            // nudInvoiceInvoiceValue
+            // nudSelectedInvoiceValue
             // 
-            this.nudInvoiceInvoiceValue.DecimalPlaces = 2;
-            this.nudInvoiceInvoiceValue.Enabled = false;
-            this.nudInvoiceInvoiceValue.Increment = new decimal(new int[] {
+            this.nudSelectedInvoiceValue.DecimalPlaces = 2;
+            this.nudSelectedInvoiceValue.Enabled = false;
+            this.nudSelectedInvoiceValue.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.nudInvoiceInvoiceValue.Location = new System.Drawing.Point(220, 114);
-            this.nudInvoiceInvoiceValue.Maximum = new decimal(new int[] {
+            this.nudSelectedInvoiceValue.Location = new System.Drawing.Point(220, 114);
+            this.nudSelectedInvoiceValue.Maximum = new decimal(new int[] {
             -1593835521,
             466537709,
             54210,
             0});
-            this.nudInvoiceInvoiceValue.Minimum = new decimal(new int[] {
+            this.nudSelectedInvoiceValue.Minimum = new decimal(new int[] {
             -1593835521,
             466537709,
             54210,
             -2147483648});
-            this.nudInvoiceInvoiceValue.Name = "nudInvoiceInvoiceValue";
-            this.nudInvoiceInvoiceValue.ReadOnly = true;
-            this.nudInvoiceInvoiceValue.Size = new System.Drawing.Size(137, 20);
-            this.nudInvoiceInvoiceValue.TabIndex = 176;
-            this.nudInvoiceInvoiceValue.ThousandsSeparator = true;
+            this.nudSelectedInvoiceValue.Name = "nudSelectedInvoiceValue";
+            this.nudSelectedInvoiceValue.ReadOnly = true;
+            this.nudSelectedInvoiceValue.Size = new System.Drawing.Size(137, 20);
+            this.nudSelectedInvoiceValue.TabIndex = 176;
+            this.nudSelectedInvoiceValue.ThousandsSeparator = true;
             // 
             // lblInvoiceInvoiceValue
             // 
@@ -1560,7 +1560,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoices)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInvoiceInvoiceValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSelectedInvoiceValue)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFinInvoiceAddValue)).EndInit();
@@ -1652,7 +1652,7 @@
         private System.Windows.Forms.DateTimePicker dtpSelectedInvoiceExpireDate;
         private System.Windows.Forms.Label lblInvoiceInvoiceSendDate;
         private System.Windows.Forms.Label lblInvoiceInvoiceExpireDate;
-        private System.Windows.Forms.NumericUpDown nudInvoiceInvoiceValue;
+        private System.Windows.Forms.NumericUpDown nudSelectedInvoiceValue;
         private System.Windows.Forms.Label lblInvoiceInvoiceValue;
         private System.Windows.Forms.Button btnInvoicesBack;
         private System.Windows.Forms.TabPage tabPage8;

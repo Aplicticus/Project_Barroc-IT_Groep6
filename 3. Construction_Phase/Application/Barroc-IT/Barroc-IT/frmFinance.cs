@@ -133,13 +133,16 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvInvoices.Columns["finInvView"].Index)
             {
+                
+                
                 selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["cInvoiceID"].Value.ToString());
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
                 DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
-                DataTable invoiceDetails = dthandler.LoadInvoiceDetails(selectedCustomer, selectedProject, selectedInvoice);
-
+                DataTable invoiceDetails = dthandler.LoadInvoiceDetails(selectedProject);
+                
+                
                 LoadInvoiceDetails(customerDetails, projectDetails, invoiceDetails);
-                tbContr.SelectedIndex = 6;
+                tbContr.SelectedIndex = 6;               
             }
         }
         private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
@@ -163,17 +166,18 @@ namespace Barroc_IT
         {
             DataRow CusRow = CusTable.Rows[0];
 
+           
             txtInvoiceCompanyName.Text = CusRow["COMPANYNAME"].ToString();
 
             DataRow ProRow = ProTable.Rows[0];
 
-            txtInvoiceSubject.Text = ProRow["SUBJECT"].ToString();
             
+            txtInvoiceSubject.Text = ProRow["SUBJECT"].ToString();
 
             DataRow InvRow = InvTable.Rows[0];
 
             decimal nudInvoiceValue = decimal.Parse(InvRow["INVOICE_VALUE"].ToString());
-            nudInvoiceInvoiceValue.Value = nudInvoiceValue;
+            nudSelectedInvoiceValue.Value = nudInvoiceValue;
 
             DateTime InvoiceExpireDate = new DateTime();
             InvoiceExpireDate = DateTime.Parse(InvRow["INVOICE_END_DATE"].ToString());
