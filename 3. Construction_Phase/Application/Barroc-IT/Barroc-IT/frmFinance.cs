@@ -44,7 +44,7 @@ namespace Barroc_IT
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
-            LoadProjects();            
+            LoadProjects();
         }
         private void btnViewInvoices_Click(object sender, EventArgs e)
         {
@@ -63,7 +63,7 @@ namespace Barroc_IT
                 cbFinBKR.Enabled = true;
 
                 btnEditFields.Text = "Save Changes";
-        }
+            }
             else if (btnEditFields.Text == "Save Changes")
             {
                 // Update query to SQL for update fin details of the customer
@@ -76,13 +76,8 @@ namespace Barroc_IT
                 cbFinBKR.Enabled = false;
                 btnEditFields.Text = "Edit Fields";
             }
-
-
         }
-        private void btnInvoicesBack_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 5;
-        }
+
         private void btnAddInvoice_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 7;
@@ -100,18 +95,14 @@ namespace Barroc_IT
                 MessageBox.Show("There is a problem with adding a invoice!");
             }
         }
-        private void btnAddInvoiceBack_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 4;
-        }
 
         // Datagridview CellContentClicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvCustomers.Columns["finCusView"].Index)
             {
-                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());                
-                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);                
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
 
                 LoadCustomerDetails(customerDetails);
                 tbContr.SelectedIndex = 2;
@@ -157,7 +148,7 @@ namespace Barroc_IT
             txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
             txtProjectValue.Text = ProRow["VALUE"].ToString();
 
-            
+
         }
         private void LoadInvoiceDetails(DataTable CusTable, DataTable ProTable, DataTable InvTable)
         {
@@ -168,7 +159,7 @@ namespace Barroc_IT
             DataRow ProRow = ProTable.Rows[0];
 
             txtInvoiceSubject.Text = ProRow["SUBJECT"].ToString();
-            
+
 
             DataRow InvRow = InvTable.Rows[0];
 
@@ -226,6 +217,7 @@ namespace Barroc_IT
             dataGridView.Rows.Clear();
             table.Columns.Add(idColumnName);
             table.Columns[idColumnName].SetOrdinal(0);
+
             foreach (DataRow dr in table.Rows)
             {
                 dataGridView.Rows.Add(dr.ItemArray);
@@ -270,7 +262,7 @@ namespace Barroc_IT
 
 
             //txtFinInvoices.Text =  ( Add Count of invoices from current project/Customer )
-       
+
             //txtFinSales.Text = ( add count of sales from current project / cutomer)
         }
 
