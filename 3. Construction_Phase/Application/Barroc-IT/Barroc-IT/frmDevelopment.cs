@@ -193,7 +193,7 @@ namespace Barroc_IT
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-                DataTable projectDetails = dthandler.LoadProjectDetails(selectedProject, selectedCustomer);
+                DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
                 
                 LoadProjectDetails(customerDetails, projectDetails);
                 tbContr.SelectedIndex = 4;                

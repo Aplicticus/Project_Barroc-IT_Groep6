@@ -49,20 +49,17 @@ namespace Barroc_IT
         }
 
         // Projects
+       
+
         public DataTable LoadProjects(int customerID)
         {
-            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID ='" + customerID +"'";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
-            return DT;
-        }
-
-        public DataTable LoadProjectDetails(int projectID, int customerID)
-        {
-            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + projectID + "' AND CUSTOMER_ID ='"+ customerID +"'";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
+            string sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
+            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='"+ customerID +"'";
+                 
+            
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
@@ -70,43 +67,44 @@ namespace Barroc_IT
         }
 
         // Invoices
-        //public DataTable LoadInvoices(int projectID)
-        //{
-        //    string sqlQuery = "SELECT * FROM tbl_Invoices WHERE PROJECT_ID ='" + projectID + "'";
-        //    SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
-        //    DataSet DS = new DataSet();
-        //    DA.Fill(DS);
-        //    DataTable DT = DS.Tables[0];
-        //    return DT;
-        //}
-
-
         public DataTable LoadInvoices(int projectID)
-        {
-
-            // SELECT With OUTER JOIN
-            string sqlQuery;
-            sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, tbl_Invoices.INVOICE_SEND FROM tbl_Customers FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID WHERE tbl_Projects.PROJECT_ID='"+ projectID +"'";
+        {                      
+            string sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, " +
+            "tbl_Invoices.INVOICE_END_DATE, tbl_Invoices.INVOICE_SEND FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID WHERE tbl_Projects.PROJECT_ID='" + projectID + "'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
             return DT;
+        }
 
-            /*
-             *  string SQL;
-            SQL = "SELECT * FROM Customers ";
-
-            // Adapter, Set, Table, Rows
-            SqlDataAdapter DA = new SqlDataAdapter(SQL, Conn);
+        
+        public DataTable LoadInvoiceDetails(int customerID, int projectID, int invoiceID)
+        {
+            string sqlQueryProjects = "SELECT tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, "+
+            "tbl_Invoices.INVOICE_SEND, tbl_Invoices.INVOICE_END_DATE FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='"+ customerID +"' AND tbl_Projects.PROJECT_ID='"+ projectID +"' AND tbl_Invoices.PROJECT_ID='"+ invoiceID +"'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
-             * 
-             * */
+            return DT;
         }
-        
-       
+
+
+        public DataTable LoadProjectDetails(int customerID, int projectID)
+        {
+            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID='" + customerID + "' AND PROJECT_ID='" + projectID + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+            return DT;
+        }
 
         // Appointments
         public DataTable LoadAppointments(int customerID)

@@ -44,10 +44,7 @@ namespace Barroc_IT
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
-            dgvProjects.Rows.Clear();
-            DataTable projects = dthandler.LoadProjects(selectedCustomer);
-
-            AddItemsToDataGridView(projects, dgvProjects, "finProView");
+            LoadProjects();            
         }
         private void btnViewInvoices_Click(object sender, EventArgs e)
         {
@@ -124,9 +121,9 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvProjects.Columns["finProView"].Index)
             {
-                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["finProCustomerID"].Value.ToString());
+                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-                DataTable projectDetails = dthandler.LoadProjectDetails(selectedProject, selectedCustomer);
+                DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
 
                 LoadProjectDetails(customerDetails, projectDetails);
                 tbContr.SelectedIndex = 4;
@@ -136,10 +133,10 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvInvoices.Columns["finInvView"].Index)
             {
-                selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["finProProjectID"].Value.ToString());
+                selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["cInvoiceID"].Value.ToString());
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-                DataTable projectDetails = dthandler.LoadProjects(selectedCustomer);
-                DataTable invoiceDetails = dthandler.LoadInvoices(selectedProject);
+                DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
+                DataTable invoiceDetails = dthandler.LoadInvoiceDetails(selectedCustomer, selectedProject, selectedInvoice);
 
                 LoadInvoiceDetails(customerDetails, projectDetails, invoiceDetails);
                 tbContr.SelectedIndex = 6;
@@ -173,8 +170,6 @@ namespace Barroc_IT
             txtInvoiceSubject.Text = ProRow["SUBJECT"].ToString();
             decimal nudInvoiceValue = decimal.Parse(ProRow["VALUE"].ToString());
             nudInvoiceInvoiceValue.Value = nudInvoiceValue;
-
-         
 
             DataRow InvRow = InvTable.Rows[0];
 
@@ -230,10 +225,15 @@ namespace Barroc_IT
         }
         private void LoadInvoices()
         {
-            dgvProjects.Rows.Clear();
+            dgvInvoices.Rows.Clear();
             DataTable invoices = dthandler.LoadInvoices(selectedProject);
-
             AddItemsToDataGridView(invoices, dgvInvoices, "finInvView");
+        }
+        private void LoadProjects()
+        {
+            dgvProjects.Rows.Clear();
+            DataTable projects = dthandler.LoadProjects(selectedCustomer);
+            AddItemsToDataGridView(projects, dgvProjects, "finProView");
         }
         private void CloseToLogin()
         {
