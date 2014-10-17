@@ -1427,7 +1427,7 @@
             // btnAddInvoiceCancel
             // 
             this.btnAddInvoiceCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(669, 554);
+            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(679, 554);
             this.btnAddInvoiceCancel.Name = "btnAddInvoiceCancel";
             this.btnAddInvoiceCancel.Size = new System.Drawing.Size(84, 43);
             this.btnAddInvoiceCancel.TabIndex = 186;
