@@ -114,6 +114,7 @@ namespace Barroc_IT
         {
             txtUsername.Clear();
             txtPassword.Clear();
+            txtUsername.Select();
         }
     }
 }
