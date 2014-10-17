@@ -76,13 +76,8 @@ namespace Barroc_IT
                 cbFinBKR.Enabled = false;
                 btnEditFields.Text = "Edit Fields";
             }
-
-
         }
-        private void btnInvoicesBack_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 5;
-        }
+
         private void btnAddInvoice_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 7;
@@ -99,10 +94,6 @@ namespace Barroc_IT
             {
                 MessageBox.Show("There is a problem with adding a invoice!");
             }
-        }
-        private void btnAddInvoiceBack_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 4;
         }
 
         // Datagridview CellContentClicks
@@ -140,9 +131,9 @@ namespace Barroc_IT
                 DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
                 DataTable invoiceDetails = dthandler.LoadInvoiceDetails(selectedProject);
                 
-                
+
                 LoadInvoiceDetails(customerDetails, projectDetails, invoiceDetails);
-                tbContr.SelectedIndex = 6;               
+                tbContr.SelectedIndex = 6;
             }
         }
         private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
@@ -173,7 +164,7 @@ namespace Barroc_IT
 
             
             txtInvoiceSubject.Text = ProRow["SUBJECT"].ToString();
-
+            
             DataRow InvRow = InvTable.Rows[0];
 
             decimal nudInvoiceValue = decimal.Parse(InvRow["INVOICE_VALUE"].ToString());
@@ -230,6 +221,7 @@ namespace Barroc_IT
             dataGridView.Rows.Clear();
             table.Columns.Add(idColumnName);
             table.Columns[idColumnName].SetOrdinal(0);
+
             foreach (DataRow dr in table.Rows)
             {
                 dataGridView.Rows.Add(dr.ItemArray);

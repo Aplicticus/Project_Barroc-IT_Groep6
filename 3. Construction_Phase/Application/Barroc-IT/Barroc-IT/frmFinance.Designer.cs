@@ -1283,7 +1283,7 @@
             this.btnInvoicesBack.TabIndex = 185;
             this.btnInvoicesBack.Text = "Back";
             this.btnInvoicesBack.UseVisualStyleBackColor = true;
-            this.btnInvoicesBack.Click += new System.EventHandler(this.btnInvoicesBack_Click);
+            this.btnInvoicesBack.Click += new System.EventHandler(this.btnBackClick);
             // 
             // txtInvoiceSubject
             // 
