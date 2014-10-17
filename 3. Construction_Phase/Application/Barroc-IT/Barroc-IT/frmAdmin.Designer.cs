@@ -37,7 +37,6 @@
             this.btnAdminRegister = new System.Windows.Forms.Button();
             this.btnAdminHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblAdminHome = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.dEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dActivate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -548,11 +548,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pButtons);
             this.Controls.Add(this.pWelcome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin_Panel";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);
             this.pWelcome.ResumeLayout(false);

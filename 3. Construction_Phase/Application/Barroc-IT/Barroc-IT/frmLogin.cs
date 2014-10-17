@@ -9,6 +9,7 @@ namespace Barroc_IT
     {
         private DatabaseHandler handler;
         private DataTableHandler dthandler;
+
         public frmLogin()
         {
             InitializeComponent();

@@ -268,7 +268,7 @@ namespace Barroc_IT
             }
         }
 
-        private void btnAddInvoiceBack_Click(object sender, EventArgs e)
+        private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 4;
         }
@@ -287,6 +287,10 @@ namespace Barroc_IT
             }
         }
 
+        private void btnBackClick(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
+        }
        
     }
 }
