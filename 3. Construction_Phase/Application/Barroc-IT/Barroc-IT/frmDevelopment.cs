@@ -392,5 +392,10 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
+
+        private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 2;
+        }
     }
 }

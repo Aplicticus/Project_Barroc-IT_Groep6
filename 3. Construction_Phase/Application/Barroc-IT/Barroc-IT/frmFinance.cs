@@ -63,7 +63,7 @@ namespace Barroc_IT
                 cbFinBKR.Enabled = true;
 
                 btnEditFields.Text = "Save Changes";
-            }
+        }
             else if (btnEditFields.Text == "Save Changes")
             {
                 // Update query to SQL for update fin details of the customer
@@ -104,19 +104,19 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 4;
         }
-                
+
         // Datagridview CellContentClicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvCustomers.Columns["finCusView"].Index)
             {
-                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
-                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());                
+                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);                
 
                 LoadCustomerDetails(customerDetails);
                 tbContr.SelectedIndex = 2;
             }
-        }        
+        }
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvProjects.Columns["finProView"].Index)
@@ -188,7 +188,7 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }
-        
+
         // Methods
         private bool AddInvoice()
         {
@@ -212,7 +212,13 @@ namespace Barroc_IT
             {
                 return false;
             }
-        }        
+        }
+
+        private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 4;
+        }
+
         private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
             dataGridView.Rows.Clear();
@@ -262,8 +268,13 @@ namespace Barroc_IT
 
 
             //txtFinInvoices.Text =  ( Add Count of invoices from current project/Customer )
-
+       
             //txtFinSales.Text = ( add count of sales from current project / cutomer)
+        }
+
+        private void btnBackClick(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
     }
 }
