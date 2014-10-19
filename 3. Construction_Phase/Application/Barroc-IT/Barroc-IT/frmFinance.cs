@@ -123,18 +123,12 @@ namespace Barroc_IT
         private void dgvInvoices_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvInvoices.Columns["finInvView"].Index)
-            {
-                
-                
-                selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["cInvoiceID"].Value.ToString());
-                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-                DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
-                DataTable invoiceDetails = dthandler.LoadInvoiceDetails(selectedProject);
-                
-
-                LoadInvoiceDetails(customerDetails, projectDetails, invoiceDetails);
+            {        
+                selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["cInvoiceID"].Value.ToString());                
+                DataTable invoiceDetails = dthandler.LoadInvoiceDetails(selectedCustomer, selectedProject, selectedInvoice);
+                LoadInvoiceDetails(invoiceDetails);
                 tbContr.SelectedIndex = 6;
-            }
+            }   
         }
         private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
         {
@@ -153,19 +147,12 @@ namespace Barroc_IT
 
             
         }
-        private void LoadInvoiceDetails(DataTable CusTable, DataTable ProTable, DataTable InvTable)
+        private void LoadInvoiceDetails(DataTable InvTable)
         {
-            DataRow CusRow = CusTable.Rows[0];
-
-           
-            txtInvoiceCompanyName.Text = CusRow["COMPANYNAME"].ToString();
-
-            DataRow ProRow = ProTable.Rows[0];
-
-            
-            txtInvoiceSubject.Text = ProRow["SUBJECT"].ToString();
-            
             DataRow InvRow = InvTable.Rows[0];
+            txtInvoiceCompanyName.Text = InvRow["COMPANYNAME"].ToString();
+
+            txtInvoiceSubject.Text = InvRow["SUBJECT"].ToString();
 
             decimal nudInvoiceValue = decimal.Parse(InvRow["INVOICE_VALUE"].ToString());
             nudSelectedInvoiceValue.Value = nudInvoiceValue;
@@ -210,12 +197,10 @@ namespace Barroc_IT
                 return false;
             }
         }
-
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 4;
         }
-
         private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
             dataGridView.Rows.Clear();
@@ -269,7 +254,6 @@ namespace Barroc_IT
        
             //txtFinSales.Text = ( add count of sales from current project / cutomer)
         }
-
         private void btnBackClick(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = tbContr.SelectedIndex - 1;

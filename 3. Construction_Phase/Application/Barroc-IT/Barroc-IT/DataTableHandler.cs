@@ -25,8 +25,6 @@ namespace Barroc_IT
             this.handler = handler;
         }
 
-
-
         // Customers
         public DataTable LoadCustomers()
         {
@@ -37,7 +35,6 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
-
         public DataTable LoadCustomers(int customerID)
         { 
             string sqlQueryCustomer = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID ='" + customerID + "'";
@@ -47,10 +44,7 @@ namespace Barroc_IT
             DataTable DT = dSetCustomer.Tables[0];
             return DT;
         }
-
         // Projects
-       
-
         public DataTable LoadProjects(int customerID)
         {
             string sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
@@ -65,11 +59,10 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
-
         // Invoices
         public DataTable LoadInvoices(int projectID)
-        {                      
-            string sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, " +
+        {
+            string sqlQuery = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +            
             "tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
             "tbl_Invoices.INVOICE_SEND FROM tbl_Customers " +
             "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
@@ -81,27 +74,16 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
-
-        
-        //public DataTable LoadInvoiceDetails(int customerID, int projectID, int invoiceID)
-        //{
-        //    string sqlQueryProjects = "SELECT tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, "+
-        //    "tbl_Invoices.INVOICE_SEND, tbl_Invoices.INVOICE_END_DATE FROM tbl_Customers " +
-        //    "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-        //    "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +            
-        //    "WHERE tbl_Customers.CUSTOMER_ID='"+ customerID +
-        //    "' AND tbl_Projects.PROJECT_ID='"+ projectID +"' AND tbl_Invoices.INVOICE_ID='"+ invoiceID +"'";
-        //    SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
-        //    DataSet DS = new DataSet();
-        //    DA.Fill(DS);
-        //    DataTable DT = DS.Tables[0];
-        //    return DT;
-        //}
-
-        public DataTable LoadInvoiceDetails(int projectID)
+        public DataTable LoadInvoiceDetails(int customerID, int projectID, int invoiceID)
         {
-            string sqlQueryProjects = "SELECT * FROM tbl_Invoices WHERE PROJECT_ID='" + projectID +"'";
-            SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
+
+
+            string sql = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, " +
+            "tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, tbl_Invoices.INVOICE_SEND FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +            
+            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='" + projectID + "' AND tbl_Invoices.INVOICE_ID ='" + invoiceID + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
             DataTable DT = DS.Tables[0];
@@ -116,7 +98,6 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
-
         // Appointments
         public DataTable LoadAppointments(int customerID)
         {
@@ -127,7 +108,6 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
-
         public DataTable LoadAppointmentDetails(int appointmentID, int customerID)
         {
             string sqlQuery = "SELECT * FROM tbl_Appointments WHERE APPOINTMENT_ID ='" + appointmentID + "' AND CUSTOMER_ID='" + customerID + "'";
@@ -137,8 +117,6 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
-
-
         // Search
         public DataTable SearchText(Choice choice, string searchString)
         {
@@ -168,8 +146,5 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
-
-
-
     }
 }
