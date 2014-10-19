@@ -37,9 +37,8 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 1;
             dgvCustomers.Rows.Clear();
-            DataTable customers = dthandler.LoadCustomers();
-
-            AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
+            DataTable customers = dthandler.LoadCustomers();                       
+            AddItemsToDataGridView(customers, dgvCustomers, "cProjectID"); 
         }
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
@@ -66,8 +65,8 @@ namespace Barroc_IT
         }
             else if (btnEditFields.Text == "Save Changes")
             {
-                // Update query to SQL for update fin details of the customer
-
+                UpdateCustomer(selectedCustomer);
+                dthandler.LoadCustomers(selectedCustomer);                
                 txtFinAccountID.ReadOnly = true;
                 txtFinBalance.ReadOnly = true;
                 txtFinLimit.ReadOnly = true;
@@ -75,9 +74,10 @@ namespace Barroc_IT
                 txtFinBTWCode.ReadOnly = true;
                 cbFinBKR.Enabled = false;
                 btnEditFields.Text = "Edit Fields";
+
+
             }
         }
-
         private void btnAddInvoice_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 7;
@@ -103,7 +103,6 @@ namespace Barroc_IT
             {
                 selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());                
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);                
-
                 LoadCustomerDetails(customerDetails);
                 tbContr.SelectedIndex = 2;
             }
@@ -113,10 +112,9 @@ namespace Barroc_IT
             if (e.ColumnIndex == dgvProjects.Columns["finProView"].Index)
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
-                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
+                //DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
                 DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
-
-                LoadProjectDetails(customerDetails, projectDetails);
+                LoadProjectDetails(projectDetails);
                 tbContr.SelectedIndex = 4;
             }
         }
@@ -129,51 +127,10 @@ namespace Barroc_IT
                 LoadInvoiceDetails(invoiceDetails);
                 tbContr.SelectedIndex = 6;
             }   
-        }
-        private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
-        {
-            DataRow CusRow = CusTable.Rows[0];
-
-            txtProjectCompanyName.Text = CusRow["COMPANYNAME"].ToString();
-
-            DataRow ProRow = ProTable.Rows[0];
-
-            DateTime projectDeadline = new DateTime();
-            projectDeadline = DateTime.Parse(ProRow["DEADLINE"].ToString());
-            txtProjectName.Text = ProRow["NAME"].ToString();
-            dtpDeadlineViewProject.Value = projectDeadline;
-            txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
-            txtProjectValue.Text = ProRow["VALUE"].ToString();
-
-            
-        }
-        private void LoadInvoiceDetails(DataTable InvTable)
-        {
-            DataRow InvRow = InvTable.Rows[0];
-            txtInvoiceCompanyName.Text = InvRow["COMPANYNAME"].ToString();
-
-            txtInvoiceSubject.Text = InvRow["SUBJECT"].ToString();
-
-            decimal nudInvoiceValue = decimal.Parse(InvRow["INVOICE_VALUE"].ToString());
-            nudSelectedInvoiceValue.Value = nudInvoiceValue;
-
-            DateTime InvoiceExpireDate = new DateTime();
-            InvoiceExpireDate = DateTime.Parse(InvRow["INVOICE_END_DATE"].ToString());
-            dtpSelectedInvoiceExpireDate.Value = InvoiceExpireDate;
-
-            DateTime InvoiceSendDate = new DateTime();
-            InvoiceSendDate = DateTime.Parse(InvRow["INVOICE_SEND"].ToString());
-            dtpSelectedInvoiceSendDate.Value = InvoiceSendDate;
-        }
-        private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!closing)
-            {
-                CloseToLogin();
-            }
-        }
-
+        }                
+       
         // Methods
+        
         private bool AddInvoice()
         {
             string sqlQuery = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
@@ -231,6 +188,36 @@ namespace Barroc_IT
             loginForm.Show();
             this.Close();
         }
+        private bool UpdateCustomer(int customerID)
+        {
+            // Have to convert Boolean of cbFinBKR to 0 or 1 to update...
+
+            string sqlQuery = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+
+            cmd.Parameters.Add(new SqlParameter("AccountID", txtFinAccountID.Text));
+            cmd.Parameters.Add(new SqlParameter("Balance", txtFinBalance.Text));
+            cmd.Parameters.Add(new SqlParameter("Limit", txtFinLimit.Text));
+            cmd.Parameters.Add(new SqlParameter("LedgerID", txtFinLegderID.Text));
+            cmd.Parameters.Add(new SqlParameter("BTWcode", txtFinBTWCode.Text));
+            cmd.Parameters.Add(new SqlParameter("Bkr", cbFinBKR.Text));
+            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
+
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        // Load Details
         private void LoadCustomerDetails(DataTable CusTable)
         {
             DataRow CusRow = CusTable.Rows[0];
@@ -254,9 +241,46 @@ namespace Barroc_IT
        
             //txtFinSales.Text = ( add count of sales from current project / cutomer)
         }
+        private void LoadProjectDetails(DataTable DT)
+        {
+            DataRow DR = DT.Rows[0];
+            txtProjectCompanyName.Text = DR["COMPANYNAME"].ToString();
+            DateTime projectDeadline = new DateTime();
+            projectDeadline = DateTime.Parse(DR["DEADLINE"].ToString());
+            txtProjectName.Text = DR["NAME"].ToString();
+            dtpDeadlineViewProject.Value = projectDeadline;
+            txtProjectSubject.Text = DR["SUBJECT"].ToString();
+            txtProjectValue.Text = DR["VALUE"].ToString();
+        }
+        private void LoadInvoiceDetails(DataTable InvTable)
+        {
+            DataRow InvRow = InvTable.Rows[0];
+            txtInvoiceCompanyName.Text = InvRow["COMPANYNAME"].ToString();
+            txtInvoiceSubject.Text = InvRow["SUBJECT"].ToString();
+            decimal nudInvoiceValue = decimal.Parse(InvRow["INVOICE_VALUE"].ToString());
+            nudSelectedInvoiceValue.Value = nudInvoiceValue;
+            DateTime InvoiceExpireDate = new DateTime();
+            InvoiceExpireDate = DateTime.Parse(InvRow["INVOICE_END_DATE"].ToString());
+            dtpSelectedInvoiceExpireDate.Value = InvoiceExpireDate;
+            DateTime InvoiceSendDate = new DateTime();
+            InvoiceSendDate = DateTime.Parse(InvRow["INVOICE_SEND"].ToString());
+            dtpSelectedInvoiceSendDate.Value = InvoiceSendDate;
+        }
+
+        // Back button
         private void btnBackClick(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
+
+        // Form Closing method
+        private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closing)
+            {
+                CloseToLogin();
+            }
+        }
+
     }
 }

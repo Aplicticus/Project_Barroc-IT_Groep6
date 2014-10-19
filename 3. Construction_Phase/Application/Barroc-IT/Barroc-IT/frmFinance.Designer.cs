@@ -562,7 +562,6 @@
             this.cbFinBKR.Name = "cbFinBKR";
             this.cbFinBKR.Size = new System.Drawing.Size(137, 21);
             this.cbFinBKR.TabIndex = 224;
-            this.cbFinBKR.Text = "Yes";
             // 
             // lblFinBKR
             // 
@@ -1448,7 +1447,6 @@
             // 
             // dtpFinInvoiceSentDate
             // 
-            this.dtpFinInvoiceSentDate.Enabled = false;
             this.dtpFinInvoiceSentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFinInvoiceSentDate.Location = new System.Drawing.Point(250, 102);
             this.dtpFinInvoiceSentDate.Name = "dtpFinInvoiceSentDate";
@@ -1457,7 +1455,6 @@
             // 
             // dtpFinInvoiceExpDate
             // 
-            this.dtpFinInvoiceExpDate.Enabled = false;
             this.dtpFinInvoiceExpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFinInvoiceExpDate.Location = new System.Drawing.Point(250, 73);
             this.dtpFinInvoiceExpDate.Name = "dtpFinInvoiceExpDate";

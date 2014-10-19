@@ -76,10 +76,7 @@ namespace Barroc_IT
         }
         public DataTable LoadInvoiceDetails(int customerID, int projectID, int invoiceID)
         {
-
-
-            string sql = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, tbl_Projects.SUBJECT, " +
-            "tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, tbl_Invoices.INVOICE_SEND FROM tbl_Customers " +
+            string sql = "SELECT * FROM tbl_Customers " +            
             "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +            
             "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='" + projectID + "' AND tbl_Invoices.INVOICE_ID ='" + invoiceID + "'";
@@ -91,7 +88,9 @@ namespace Barroc_IT
         }
         public DataTable LoadProjectDetails(int customerID, int projectID)
         {
-            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE CUSTOMER_ID='" + customerID + "' AND PROJECT_ID='" + projectID + "'";
+            string sqlQueryProjects = "SELECT * FROM tbl_Customers " + 
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='" + projectID + "'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
