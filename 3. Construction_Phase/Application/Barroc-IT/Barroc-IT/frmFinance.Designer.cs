@@ -160,16 +160,8 @@
             this.lblFinInvoiceSentDate = new System.Windows.Forms.Label();
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
-            this.lblFinInvoiceValue = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.finProCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFinInvoiceValue = new System.Windows.Forms.Label();  
+            this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();            
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -1424,7 +1416,7 @@
             this.tabPage8.Controls.Add(this.lblFinInvoiceExpDate);
             this.tabPage8.Controls.Add(this.numFinInvoiceAddValue);
             this.tabPage8.Controls.Add(this.lblFinInvoiceValue);
-            this.tabPage8.Controls.Add(this.lblAddInvoice);
+            //this.tabPage8.Controls.Add(this.lblAddInvoice);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
@@ -1517,17 +1509,7 @@
             this.lblFinInvoiceValue.Name = "lblFinInvoiceValue";
             this.lblFinInvoiceValue.Size = new System.Drawing.Size(136, 25);
             this.lblFinInvoiceValue.TabIndex = 162;
-            this.lblFinInvoiceValue.Text = "Invoice Value:";
-            // 
-            // lblAddInvoice
-            // 
-            this.lblAddInvoice.AutoSize = true;
-            this.lblAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddInvoice.Location = new System.Drawing.Point(302, 3);
-            this.lblAddInvoice.Name = "lblAddInvoice";
-            this.lblAddInvoice.Size = new System.Drawing.Size(167, 31);
-            this.lblAddInvoice.TabIndex = 161;
-            this.lblAddInvoice.Text = "Add Invoice";
+            this.lblFinInvoiceValue.Text = "Invoice Value:";                        
             // 
             // frmFinance
             // 
@@ -1667,8 +1649,7 @@
         private System.Windows.Forms.Label lblFinInvoiceSentDate;
         private System.Windows.Forms.Label lblFinInvoiceExpDate;
         private System.Windows.Forms.NumericUpDown numFinInvoiceAddValue;
-        private System.Windows.Forms.Label lblFinInvoiceValue;
-        private System.Windows.Forms.Label lblAddInvoice;
+        private System.Windows.Forms.Label lblFinInvoiceValue;        
         private System.Windows.Forms.Button btnCreateInvoice;
         private System.Windows.Forms.Button btnAddInvoiceCancel;
         private System.Windows.Forms.Button btnProjectBack;

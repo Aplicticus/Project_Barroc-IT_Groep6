@@ -43,28 +43,13 @@ namespace Barroc_IT
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
-            LoadProjects();            
-            }
+            LoadProjects();              
+        }
         private void btnViewInvoices_Click(object sender, EventArgs e)
-            {
-                // Code for view projects
-
-                tbContr.SelectedIndex = 4;
-            }
-        }
-
-        
-
-       
-
-        private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!closing)
-            {
-                CloseToLogin();
-            }
+            tbContr.SelectedIndex = 5;
+            LoadInvoices();            
         }
-
         private void btnEditFields_Click(object sender, EventArgs e)
         {
             if (btnEditFields.Text == "Edit Fields")
@@ -81,7 +66,7 @@ namespace Barroc_IT
             else if (btnEditFields.Text == "Save Changes")
             {
                 UpdateCustomer(selectedCustomer);
-                dthandler.LoadCustomers(selectedCustomer);                
+                dthandler.LoadCustomers(selectedCustomer);
                 txtFinAccountID.ReadOnly = true;
                 txtFinBalance.ReadOnly = true;
                 txtFinLimit.ReadOnly = true;
@@ -89,20 +74,10 @@ namespace Barroc_IT
                 txtFinBTWCode.ReadOnly = true;
                 cbFinBKR.Enabled = false;
                 btnEditFields.Text = "Edit Fields";
-
-
+            }
         }
 
-        private void btnViewProjects_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 3;
-            dgvProjects.Rows.Clear();
-            DataTable projects = dthandler.LoadProjects(selectedCustomer);
-
-            AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
-
-
-        }
+       
         private void btnAddInvoice_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 7;
@@ -298,7 +273,7 @@ namespace Barroc_IT
             tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
 
-        // Form Closing method
+         //Form Closing method
         private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!closing)
@@ -306,6 +281,5 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }
-
     }
 }
