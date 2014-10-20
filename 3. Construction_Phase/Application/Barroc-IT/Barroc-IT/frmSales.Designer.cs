@@ -114,14 +114,10 @@
             this.lblApoContactperson = new System.Windows.Forms.Label();
             this.lblApoInternalContact = new System.Windows.Forms.Label();
             this.lblApoSubject = new System.Windows.Forms.Label();
-            this.lblApoFaxNumber = new System.Windows.Forms.Label();
             this.txtApoInternalContact = new System.Windows.Forms.TextBox();
             this.txtApoSubject = new System.Windows.Forms.TextBox();
-            this.lblApoEmail = new System.Windows.Forms.Label();
             this.txtApoPhoneNumber = new System.Windows.Forms.TextBox();
-            this.txtApoEmail = new System.Windows.Forms.TextBox();
             this.lblApoAppointmentDate = new System.Windows.Forms.Label();
-            this.txtApoFaxNumber = new System.Windows.Forms.TextBox();
             this.lblApoPhoneNumber = new System.Windows.Forms.Label();
             this.txtApoPostalCode = new System.Windows.Forms.TextBox();
             this.lblApoPostalCode = new System.Windows.Forms.Label();
@@ -133,6 +129,7 @@
             this.btnEditAppointment = new System.Windows.Forms.Button();
             this.lblSelectedAppointment = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnAddInvoiceCancel = new System.Windows.Forms.Button();
             this.dtpApoAddAppointmentDate = new System.Windows.Forms.DateTimePicker();
             this.lblApoAddAppointmentDate = new System.Windows.Forms.Label();
             this.lblApoAddInternalContact = new System.Windows.Forms.Label();
@@ -211,9 +208,9 @@
             // 
             this.pWelcome.BackColor = System.Drawing.SystemColors.Control;
             this.pWelcome.Controls.Add(this.lblSalesPanel);
-            this.pWelcome.Location = new System.Drawing.Point(12, 12);
+            this.pWelcome.Location = new System.Drawing.Point(0, 0);
             this.pWelcome.Name = "pWelcome";
-            this.pWelcome.Size = new System.Drawing.Size(984, 100);
+            this.pWelcome.Size = new System.Drawing.Size(1008, 112);
             this.pWelcome.TabIndex = 0;
             // 
             // lblSalesPanel
@@ -234,15 +231,15 @@
             this.pButtons.Controls.Add(this.btnSalesSelectCustomer);
             this.pButtons.Controls.Add(this.btnSalesAddCustomer);
             this.pButtons.Controls.Add(this.btnSalesHome);
-            this.pButtons.Location = new System.Drawing.Point(12, 118);
+            this.pButtons.Location = new System.Drawing.Point(0, 118);
             this.pButtons.Name = "pButtons";
-            this.pButtons.Size = new System.Drawing.Size(211, 600);
+            this.pButtons.Size = new System.Drawing.Size(223, 612);
             this.pButtons.TabIndex = 1;
             // 
             // btnLogout
             // 
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(24, 533);
+            this.btnLogout.Location = new System.Drawing.Point(24, 556);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(165, 43);
             this.btnLogout.TabIndex = 4;
@@ -321,7 +318,7 @@
             // 
             this.lblHome.AutoSize = true;
             this.lblHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHome.Location = new System.Drawing.Point(326, 39);
+            this.lblHome.Location = new System.Drawing.Point(332, 14);
             this.lblHome.Name = "lblHome";
             this.lblHome.Size = new System.Drawing.Size(90, 31);
             this.lblHome.TabIndex = 32;
@@ -355,7 +352,7 @@
             // btnListCustomerBack
             // 
             this.btnListCustomerBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListCustomerBack.Location = new System.Drawing.Point(678, 510);
+            this.btnListCustomerBack.Location = new System.Drawing.Point(679, 554);
             this.btnListCustomerBack.Name = "btnListCustomerBack";
             this.btnListCustomerBack.Size = new System.Drawing.Size(84, 43);
             this.btnListCustomerBack.TabIndex = 28;
@@ -418,7 +415,7 @@
             this.dgvUserInfo.MultiSelect = false;
             this.dgvUserInfo.Name = "dgvUserInfo";
             this.dgvUserInfo.RowHeadersVisible = false;
-            this.dgvUserInfo.Size = new System.Drawing.Size(771, 465);
+            this.dgvUserInfo.Size = new System.Drawing.Size(771, 506);
             this.dgvUserInfo.TabIndex = 23;
             this.dgvUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
             // 
@@ -548,7 +545,7 @@
             // btnSelectedCustomerBack
             // 
             this.btnSelectedCustomerBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectedCustomerBack.Location = new System.Drawing.Point(679, 510);
+            this.btnSelectedCustomerBack.Location = new System.Drawing.Point(679, 554);
             this.btnSelectedCustomerBack.Name = "btnSelectedCustomerBack";
             this.btnSelectedCustomerBack.Size = new System.Drawing.Size(84, 43);
             this.btnSelectedCustomerBack.TabIndex = 140;
@@ -559,7 +556,7 @@
             // btnAddProject
             // 
             this.btnAddProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProject.Location = new System.Drawing.Point(203, 510);
+            this.btnAddProject.Location = new System.Drawing.Point(203, 554);
             this.btnAddProject.Name = "btnAddProject";
             this.btnAddProject.Size = new System.Drawing.Size(165, 43);
             this.btnAddProject.TabIndex = 127;
@@ -569,7 +566,7 @@
             // btnViewProjects
             // 
             this.btnViewProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewProjects.Location = new System.Drawing.Point(374, 510);
+            this.btnViewProjects.Location = new System.Drawing.Point(374, 554);
             this.btnViewProjects.Name = "btnViewProjects";
             this.btnViewProjects.Size = new System.Drawing.Size(165, 43);
             this.btnViewProjects.TabIndex = 126;
@@ -579,7 +576,7 @@
             // btnEditFields
             // 
             this.btnEditFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditFields.Location = new System.Drawing.Point(32, 510);
+            this.btnEditFields.Location = new System.Drawing.Point(32, 554);
             this.btnEditFields.Name = "btnEditFields";
             this.btnEditFields.Size = new System.Drawing.Size(165, 43);
             this.btnEditFields.TabIndex = 6;
@@ -588,7 +585,7 @@
             // 
             // txtContactPerson
             // 
-            this.txtContactPerson.Location = new System.Drawing.Point(226, 227);
+            this.txtContactPerson.Location = new System.Drawing.Point(203, 234);
             this.txtContactPerson.Name = "txtContactPerson";
             this.txtContactPerson.ReadOnly = true;
             this.txtContactPerson.Size = new System.Drawing.Size(137, 20);
@@ -598,7 +595,7 @@
             // 
             this.lblContactperson.AutoSize = true;
             this.lblContactperson.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContactperson.Location = new System.Drawing.Point(51, 221);
+            this.lblContactperson.Location = new System.Drawing.Point(28, 230);
             this.lblContactperson.Name = "lblContactperson";
             this.lblContactperson.Size = new System.Drawing.Size(146, 25);
             this.lblContactperson.TabIndex = 124;
@@ -608,7 +605,7 @@
             // 
             this.lblSoftware.AutoSize = true;
             this.lblSoftware.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoftware.Location = new System.Drawing.Point(369, 161);
+            this.lblSoftware.Location = new System.Drawing.Point(379, 170);
             this.lblSoftware.Name = "lblSoftware";
             this.lblSoftware.Size = new System.Drawing.Size(95, 25);
             this.lblSoftware.TabIndex = 123;
@@ -618,7 +615,7 @@
             // 
             this.lblAppointmentCount.AutoSize = true;
             this.lblAppointmentCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppointmentCount.Location = new System.Drawing.Point(369, 191);
+            this.lblAppointmentCount.Location = new System.Drawing.Point(379, 200);
             this.lblAppointmentCount.Name = "lblAppointmentCount";
             this.lblAppointmentCount.Size = new System.Drawing.Size(128, 25);
             this.lblAppointmentCount.TabIndex = 122;
@@ -628,7 +625,7 @@
             // 
             this.lblInternalContact.AutoSize = true;
             this.lblInternalContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInternalContact.Location = new System.Drawing.Point(369, 221);
+            this.lblInternalContact.Location = new System.Drawing.Point(379, 230);
             this.lblInternalContact.Name = "lblInternalContact";
             this.lblInternalContact.Size = new System.Drawing.Size(222, 25);
             this.lblInternalContact.TabIndex = 121;
@@ -638,7 +635,7 @@
             // 
             this.lblHardware.AutoSize = true;
             this.lblHardware.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHardware.Location = new System.Drawing.Point(369, 131);
+            this.lblHardware.Location = new System.Drawing.Point(379, 140);
             this.lblHardware.Name = "lblHardware";
             this.lblHardware.Size = new System.Drawing.Size(102, 25);
             this.lblHardware.TabIndex = 120;
@@ -648,7 +645,7 @@
             // 
             this.lblApplications.AutoSize = true;
             this.lblApplications.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApplications.Location = new System.Drawing.Point(369, 102);
+            this.lblApplications.Location = new System.Drawing.Point(379, 110);
             this.lblApplications.Name = "lblApplications";
             this.lblApplications.Size = new System.Drawing.Size(124, 25);
             this.lblApplications.TabIndex = 119;
@@ -658,7 +655,7 @@
             // 
             this.lblOpenProject.AutoSize = true;
             this.lblOpenProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpenProject.Location = new System.Drawing.Point(369, 72);
+            this.lblOpenProject.Location = new System.Drawing.Point(379, 80);
             this.lblOpenProject.Name = "lblOpenProject";
             this.lblOpenProject.Size = new System.Drawing.Size(132, 25);
             this.lblOpenProject.TabIndex = 118;
@@ -666,7 +663,7 @@
             // 
             // txtHardware
             // 
-            this.txtHardware.Location = new System.Drawing.Point(594, 137);
+            this.txtHardware.Location = new System.Drawing.Point(604, 144);
             this.txtHardware.Name = "txtHardware";
             this.txtHardware.ReadOnly = true;
             this.txtHardware.Size = new System.Drawing.Size(137, 20);
@@ -674,7 +671,7 @@
             // 
             // txtInternalContact
             // 
-            this.txtInternalContact.Location = new System.Drawing.Point(594, 227);
+            this.txtInternalContact.Location = new System.Drawing.Point(604, 234);
             this.txtInternalContact.Name = "txtInternalContact";
             this.txtInternalContact.ReadOnly = true;
             this.txtInternalContact.Size = new System.Drawing.Size(137, 20);
@@ -682,7 +679,7 @@
             // 
             // txtAppointments
             // 
-            this.txtAppointments.Location = new System.Drawing.Point(594, 197);
+            this.txtAppointments.Location = new System.Drawing.Point(604, 204);
             this.txtAppointments.Name = "txtAppointments";
             this.txtAppointments.ReadOnly = true;
             this.txtAppointments.Size = new System.Drawing.Size(137, 20);
@@ -692,7 +689,7 @@
             // 
             this.lblFax.AutoSize = true;
             this.lblFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFax.Location = new System.Drawing.Point(51, 161);
+            this.lblFax.Location = new System.Drawing.Point(28, 170);
             this.lblFax.Name = "lblFax";
             this.lblFax.Size = new System.Drawing.Size(130, 25);
             this.lblFax.TabIndex = 107;
@@ -700,7 +697,7 @@
             // 
             // txtSoftware
             // 
-            this.txtSoftware.Location = new System.Drawing.Point(594, 167);
+            this.txtSoftware.Location = new System.Drawing.Point(604, 174);
             this.txtSoftware.Name = "txtSoftware";
             this.txtSoftware.ReadOnly = true;
             this.txtSoftware.Size = new System.Drawing.Size(137, 20);
@@ -708,7 +705,7 @@
             // 
             // txtApplications
             // 
-            this.txtApplications.Location = new System.Drawing.Point(594, 108);
+            this.txtApplications.Location = new System.Drawing.Point(604, 114);
             this.txtApplications.Name = "txtApplications";
             this.txtApplications.ReadOnly = true;
             this.txtApplications.Size = new System.Drawing.Size(137, 20);
@@ -716,7 +713,7 @@
             // 
             // txtOpenProject
             // 
-            this.txtOpenProject.Location = new System.Drawing.Point(594, 78);
+            this.txtOpenProject.Location = new System.Drawing.Point(604, 84);
             this.txtOpenProject.Name = "txtOpenProject";
             this.txtOpenProject.ReadOnly = true;
             this.txtOpenProject.Size = new System.Drawing.Size(137, 20);
@@ -726,7 +723,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(51, 191);
+            this.lblEmail.Location = new System.Drawing.Point(28, 199);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(73, 25);
             this.lblEmail.TabIndex = 99;
@@ -734,7 +731,7 @@
             // 
             // txtMaintenance
             // 
-            this.txtMaintenance.Location = new System.Drawing.Point(594, 48);
+            this.txtMaintenance.Location = new System.Drawing.Point(604, 54);
             this.txtMaintenance.Name = "txtMaintenance";
             this.txtMaintenance.ReadOnly = true;
             this.txtMaintenance.Size = new System.Drawing.Size(137, 20);
@@ -742,7 +739,7 @@
             // 
             // txtPhoneNumber1
             // 
-            this.txtPhoneNumber1.Location = new System.Drawing.Point(226, 137);
+            this.txtPhoneNumber1.Location = new System.Drawing.Point(203, 144);
             this.txtPhoneNumber1.Name = "txtPhoneNumber1";
             this.txtPhoneNumber1.ReadOnly = true;
             this.txtPhoneNumber1.Size = new System.Drawing.Size(137, 20);
@@ -750,7 +747,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(226, 197);
+            this.txtEmail.Location = new System.Drawing.Point(203, 204);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(137, 20);
@@ -760,7 +757,7 @@
             // 
             this.lblMaintenance.AutoSize = true;
             this.lblMaintenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaintenance.Location = new System.Drawing.Point(369, 42);
+            this.lblMaintenance.Location = new System.Drawing.Point(379, 50);
             this.lblMaintenance.Name = "lblMaintenance";
             this.lblMaintenance.Size = new System.Drawing.Size(210, 25);
             this.lblMaintenance.TabIndex = 85;
@@ -768,7 +765,7 @@
             // 
             // txtFaxNumber
             // 
-            this.txtFaxNumber.Location = new System.Drawing.Point(226, 167);
+            this.txtFaxNumber.Location = new System.Drawing.Point(203, 174);
             this.txtFaxNumber.Name = "txtFaxNumber";
             this.txtFaxNumber.ReadOnly = true;
             this.txtFaxNumber.Size = new System.Drawing.Size(137, 20);
@@ -778,7 +775,7 @@
             // 
             this.lblPhoneNumber1.AutoSize = true;
             this.lblPhoneNumber1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber1.Location = new System.Drawing.Point(51, 131);
+            this.lblPhoneNumber1.Location = new System.Drawing.Point(28, 140);
             this.lblPhoneNumber1.Name = "lblPhoneNumber1";
             this.lblPhoneNumber1.Size = new System.Drawing.Size(149, 25);
             this.lblPhoneNumber1.TabIndex = 83;
@@ -786,7 +783,7 @@
             // 
             // txtPostalCode1
             // 
-            this.txtPostalCode1.Location = new System.Drawing.Point(226, 108);
+            this.txtPostalCode1.Location = new System.Drawing.Point(203, 114);
             this.txtPostalCode1.Name = "txtPostalCode1";
             this.txtPostalCode1.ReadOnly = true;
             this.txtPostalCode1.Size = new System.Drawing.Size(137, 20);
@@ -796,7 +793,7 @@
             // 
             this.lblPostalCode1.AutoSize = true;
             this.lblPostalCode1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPostalCode1.Location = new System.Drawing.Point(51, 102);
+            this.lblPostalCode1.Location = new System.Drawing.Point(28, 110);
             this.lblPostalCode1.Name = "lblPostalCode1";
             this.lblPostalCode1.Size = new System.Drawing.Size(125, 25);
             this.lblPostalCode1.TabIndex = 80;
@@ -804,7 +801,7 @@
             // 
             // txtAddress1
             // 
-            this.txtAddress1.Location = new System.Drawing.Point(226, 78);
+            this.txtAddress1.Location = new System.Drawing.Point(203, 84);
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.ReadOnly = true;
             this.txtAddress1.Size = new System.Drawing.Size(137, 20);
@@ -814,7 +811,7 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(51, 72);
+            this.lblAddress.Location = new System.Drawing.Point(28, 80);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(91, 25);
             this.lblAddress.TabIndex = 78;
@@ -824,7 +821,7 @@
             // 
             this.lblCompanyName.AutoSize = true;
             this.lblCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompanyName.Location = new System.Drawing.Point(51, 43);
+            this.lblCompanyName.Location = new System.Drawing.Point(28, 50);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Size = new System.Drawing.Size(160, 25);
             this.lblCompanyName.TabIndex = 76;
@@ -832,7 +829,7 @@
             // 
             // txtCompanyName
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(226, 48);
+            this.txtCompanyName.Location = new System.Drawing.Point(203, 54);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(137, 20);
@@ -842,7 +839,7 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(315, 3);
+            this.lblCustomer.Location = new System.Drawing.Point(316, 3);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(140, 31);
             this.lblCustomer.TabIndex = 23;
@@ -866,7 +863,7 @@
             // btnListAppointmentsBack
             // 
             this.btnListAppointmentsBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListAppointmentsBack.Location = new System.Drawing.Point(678, 510);
+            this.btnListAppointmentsBack.Location = new System.Drawing.Point(679, 554);
             this.btnListAppointmentsBack.Name = "btnListAppointmentsBack";
             this.btnListAppointmentsBack.Size = new System.Drawing.Size(84, 43);
             this.btnListAppointmentsBack.TabIndex = 29;
@@ -908,7 +905,8 @@
             // 
             this.dgvAppointments.AllowUserToAddRows = false;
             this.dgvAppointments.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppointments.ColumnHeadersHeight = 34;
+            this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cProjectViewButton,
             this.cProjectCustomerID,
@@ -918,7 +916,7 @@
             this.dgvAppointments.Location = new System.Drawing.Point(0, 39);
             this.dgvAppointments.Name = "dgvAppointments";
             this.dgvAppointments.RowHeadersVisible = false;
-            this.dgvAppointments.Size = new System.Drawing.Size(771, 465);
+            this.dgvAppointments.Size = new System.Drawing.Size(771, 506);
             this.dgvAppointments.TabIndex = 23;
             // 
             // cProjectViewButton
@@ -965,14 +963,10 @@
             this.tabPage5.Controls.Add(this.lblApoContactperson);
             this.tabPage5.Controls.Add(this.lblApoInternalContact);
             this.tabPage5.Controls.Add(this.lblApoSubject);
-            this.tabPage5.Controls.Add(this.lblApoFaxNumber);
             this.tabPage5.Controls.Add(this.txtApoInternalContact);
             this.tabPage5.Controls.Add(this.txtApoSubject);
-            this.tabPage5.Controls.Add(this.lblApoEmail);
             this.tabPage5.Controls.Add(this.txtApoPhoneNumber);
-            this.tabPage5.Controls.Add(this.txtApoEmail);
             this.tabPage5.Controls.Add(this.lblApoAppointmentDate);
-            this.tabPage5.Controls.Add(this.txtApoFaxNumber);
             this.tabPage5.Controls.Add(this.lblApoPhoneNumber);
             this.tabPage5.Controls.Add(this.txtApoPostalCode);
             this.tabPage5.Controls.Add(this.lblApoPostalCode);
@@ -993,7 +987,7 @@
             // btnSelectedAppointmentBack
             // 
             this.btnSelectedAppointmentBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectedAppointmentBack.Location = new System.Drawing.Point(679, 510);
+            this.btnSelectedAppointmentBack.Location = new System.Drawing.Point(679, 554);
             this.btnSelectedAppointmentBack.Name = "btnSelectedAppointmentBack";
             this.btnSelectedAppointmentBack.Size = new System.Drawing.Size(84, 43);
             this.btnSelectedAppointmentBack.TabIndex = 157;
@@ -1005,14 +999,14 @@
             // 
             this.dtpAppointmentDate.Enabled = false;
             this.dtpAppointmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpAppointmentDate.Location = new System.Drawing.Point(222, 202);
+            this.dtpAppointmentDate.Location = new System.Drawing.Point(260, 260);
             this.dtpAppointmentDate.Name = "dtpAppointmentDate";
             this.dtpAppointmentDate.Size = new System.Drawing.Size(137, 20);
             this.dtpAppointmentDate.TabIndex = 156;
             // 
             // txtApoContactperson
             // 
-            this.txtApoContactperson.Location = new System.Drawing.Point(577, 147);
+            this.txtApoContactperson.Location = new System.Drawing.Point(260, 170);
             this.txtApoContactperson.Name = "txtApoContactperson";
             this.txtApoContactperson.ReadOnly = true;
             this.txtApoContactperson.Size = new System.Drawing.Size(137, 20);
@@ -1022,7 +1016,7 @@
             // 
             this.lblApoContactperson.AutoSize = true;
             this.lblApoContactperson.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoContactperson.Location = new System.Drawing.Point(402, 141);
+            this.lblApoContactperson.Location = new System.Drawing.Point(28, 170);
             this.lblApoContactperson.Name = "lblApoContactperson";
             this.lblApoContactperson.Size = new System.Drawing.Size(146, 25);
             this.lblApoContactperson.TabIndex = 154;
@@ -1032,35 +1026,25 @@
             // 
             this.lblApoInternalContact.AutoSize = true;
             this.lblApoInternalContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoInternalContact.Location = new System.Drawing.Point(402, 170);
+            this.lblApoInternalContact.Location = new System.Drawing.Point(28, 200);
             this.lblApoInternalContact.Name = "lblApoInternalContact";
-            this.lblApoInternalContact.Size = new System.Drawing.Size(155, 25);
+            this.lblApoInternalContact.Size = new System.Drawing.Size(222, 25);
             this.lblApoInternalContact.TabIndex = 149;
-            this.lblApoInternalContact.Text = "Internal Contact:";
+            this.lblApoInternalContact.Text = "Internal Contact Person:";
             // 
             // lblApoSubject
             // 
             this.lblApoSubject.AutoSize = true;
             this.lblApoSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoSubject.Location = new System.Drawing.Point(402, 199);
+            this.lblApoSubject.Location = new System.Drawing.Point(28, 230);
             this.lblApoSubject.Name = "lblApoSubject";
             this.lblApoSubject.Size = new System.Drawing.Size(84, 25);
             this.lblApoSubject.TabIndex = 148;
             this.lblApoSubject.Text = "Subject:";
             // 
-            // lblApoFaxNumber
-            // 
-            this.lblApoFaxNumber.AutoSize = true;
-            this.lblApoFaxNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoFaxNumber.Location = new System.Drawing.Point(402, 81);
-            this.lblApoFaxNumber.Name = "lblApoFaxNumber";
-            this.lblApoFaxNumber.Size = new System.Drawing.Size(125, 25);
-            this.lblApoFaxNumber.TabIndex = 144;
-            this.lblApoFaxNumber.Text = "Fax Number:";
-            // 
             // txtApoInternalContact
             // 
-            this.txtApoInternalContact.Location = new System.Drawing.Point(577, 176);
+            this.txtApoInternalContact.Location = new System.Drawing.Point(260, 200);
             this.txtApoInternalContact.Name = "txtApoInternalContact";
             this.txtApoInternalContact.ReadOnly = true;
             this.txtApoInternalContact.Size = new System.Drawing.Size(137, 20);
@@ -1068,61 +1052,35 @@
             // 
             // txtApoSubject
             // 
-            this.txtApoSubject.Location = new System.Drawing.Point(577, 202);
+            this.txtApoSubject.Location = new System.Drawing.Point(260, 230);
             this.txtApoSubject.Name = "txtApoSubject";
             this.txtApoSubject.ReadOnly = true;
             this.txtApoSubject.Size = new System.Drawing.Size(137, 20);
             this.txtApoSubject.TabIndex = 141;
             // 
-            // lblApoEmail
-            // 
-            this.lblApoEmail.AutoSize = true;
-            this.lblApoEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoEmail.Location = new System.Drawing.Point(402, 111);
-            this.lblApoEmail.Name = "lblApoEmail";
-            this.lblApoEmail.Size = new System.Drawing.Size(73, 25);
-            this.lblApoEmail.TabIndex = 140;
-            this.lblApoEmail.Text = "E-mail:";
-            // 
             // txtApoPhoneNumber
             // 
-            this.txtApoPhoneNumber.Location = new System.Drawing.Point(222, 176);
+            this.txtApoPhoneNumber.Location = new System.Drawing.Point(260, 140);
             this.txtApoPhoneNumber.Name = "txtApoPhoneNumber";
             this.txtApoPhoneNumber.ReadOnly = true;
             this.txtApoPhoneNumber.Size = new System.Drawing.Size(137, 20);
             this.txtApoPhoneNumber.TabIndex = 138;
             // 
-            // txtApoEmail
-            // 
-            this.txtApoEmail.Location = new System.Drawing.Point(577, 117);
-            this.txtApoEmail.Name = "txtApoEmail";
-            this.txtApoEmail.ReadOnly = true;
-            this.txtApoEmail.Size = new System.Drawing.Size(137, 20);
-            this.txtApoEmail.TabIndex = 137;
-            // 
             // lblApoAppointmentDate
             // 
             this.lblApoAppointmentDate.AutoSize = true;
             this.lblApoAppointmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoAppointmentDate.Location = new System.Drawing.Point(47, 199);
+            this.lblApoAppointmentDate.Location = new System.Drawing.Point(28, 260);
             this.lblApoAppointmentDate.Name = "lblApoAppointmentDate";
             this.lblApoAppointmentDate.Size = new System.Drawing.Size(174, 25);
             this.lblApoAppointmentDate.TabIndex = 136;
             this.lblApoAppointmentDate.Text = "Appointment Date:";
             // 
-            // txtApoFaxNumber
-            // 
-            this.txtApoFaxNumber.Location = new System.Drawing.Point(577, 87);
-            this.txtApoFaxNumber.Name = "txtApoFaxNumber";
-            this.txtApoFaxNumber.ReadOnly = true;
-            this.txtApoFaxNumber.Size = new System.Drawing.Size(137, 20);
-            this.txtApoFaxNumber.TabIndex = 135;
-            // 
             // lblApoPhoneNumber
             // 
             this.lblApoPhoneNumber.AutoSize = true;
             this.lblApoPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoPhoneNumber.Location = new System.Drawing.Point(47, 170);
+            this.lblApoPhoneNumber.Location = new System.Drawing.Point(28, 140);
             this.lblApoPhoneNumber.Name = "lblApoPhoneNumber";
             this.lblApoPhoneNumber.Size = new System.Drawing.Size(149, 25);
             this.lblApoPhoneNumber.TabIndex = 134;
@@ -1130,7 +1088,7 @@
             // 
             // txtApoPostalCode
             // 
-            this.txtApoPostalCode.Location = new System.Drawing.Point(222, 147);
+            this.txtApoPostalCode.Location = new System.Drawing.Point(260, 110);
             this.txtApoPostalCode.Name = "txtApoPostalCode";
             this.txtApoPostalCode.ReadOnly = true;
             this.txtApoPostalCode.Size = new System.Drawing.Size(137, 20);
@@ -1140,7 +1098,7 @@
             // 
             this.lblApoPostalCode.AutoSize = true;
             this.lblApoPostalCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoPostalCode.Location = new System.Drawing.Point(47, 141);
+            this.lblApoPostalCode.Location = new System.Drawing.Point(28, 110);
             this.lblApoPostalCode.Name = "lblApoPostalCode";
             this.lblApoPostalCode.Size = new System.Drawing.Size(125, 25);
             this.lblApoPostalCode.TabIndex = 132;
@@ -1148,7 +1106,7 @@
             // 
             // txtApoAddress
             // 
-            this.txtApoAddress.Location = new System.Drawing.Point(222, 117);
+            this.txtApoAddress.Location = new System.Drawing.Point(260, 84);
             this.txtApoAddress.Name = "txtApoAddress";
             this.txtApoAddress.ReadOnly = true;
             this.txtApoAddress.Size = new System.Drawing.Size(137, 20);
@@ -1158,7 +1116,7 @@
             // 
             this.lblApoAddress.AutoSize = true;
             this.lblApoAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoAddress.Location = new System.Drawing.Point(47, 111);
+            this.lblApoAddress.Location = new System.Drawing.Point(28, 80);
             this.lblApoAddress.Name = "lblApoAddress";
             this.lblApoAddress.Size = new System.Drawing.Size(91, 25);
             this.lblApoAddress.TabIndex = 130;
@@ -1168,7 +1126,7 @@
             // 
             this.lblApoCompanyName.AutoSize = true;
             this.lblApoCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApoCompanyName.Location = new System.Drawing.Point(47, 82);
+            this.lblApoCompanyName.Location = new System.Drawing.Point(28, 50);
             this.lblApoCompanyName.Name = "lblApoCompanyName";
             this.lblApoCompanyName.Size = new System.Drawing.Size(160, 25);
             this.lblApoCompanyName.TabIndex = 129;
@@ -1176,7 +1134,7 @@
             // 
             // txtApoCompanyName
             // 
-            this.txtApoCompanyName.Location = new System.Drawing.Point(222, 87);
+            this.txtApoCompanyName.Location = new System.Drawing.Point(260, 54);
             this.txtApoCompanyName.Name = "txtApoCompanyName";
             this.txtApoCompanyName.ReadOnly = true;
             this.txtApoCompanyName.Size = new System.Drawing.Size(137, 20);
@@ -1185,7 +1143,7 @@
             // btnArchiveAppointment
             // 
             this.btnArchiveAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveAppointment.Location = new System.Drawing.Point(203, 510);
+            this.btnArchiveAppointment.Location = new System.Drawing.Point(203, 554);
             this.btnArchiveAppointment.Name = "btnArchiveAppointment";
             this.btnArchiveAppointment.Size = new System.Drawing.Size(195, 43);
             this.btnArchiveAppointment.TabIndex = 126;
@@ -1195,7 +1153,7 @@
             // btnEditAppointment
             // 
             this.btnEditAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditAppointment.Location = new System.Drawing.Point(32, 510);
+            this.btnEditAppointment.Location = new System.Drawing.Point(32, 554);
             this.btnEditAppointment.Name = "btnEditAppointment";
             this.btnEditAppointment.Size = new System.Drawing.Size(165, 43);
             this.btnEditAppointment.TabIndex = 6;
@@ -1206,7 +1164,7 @@
             // 
             this.lblSelectedAppointment.AutoSize = true;
             this.lblSelectedAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedAppointment.Location = new System.Drawing.Point(271, 11);
+            this.lblSelectedAppointment.Location = new System.Drawing.Point(279, 11);
             this.lblSelectedAppointment.Name = "lblSelectedAppointment";
             this.lblSelectedAppointment.Size = new System.Drawing.Size(177, 31);
             this.lblSelectedAppointment.TabIndex = 23;
@@ -1215,6 +1173,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage6.Controls.Add(this.btnAddInvoiceCancel);
             this.tabPage6.Controls.Add(this.dtpApoAddAppointmentDate);
             this.tabPage6.Controls.Add(this.lblApoAddAppointmentDate);
             this.tabPage6.Controls.Add(this.lblApoAddInternalContact);
@@ -1231,6 +1190,16 @@
             this.tabPage6.Size = new System.Drawing.Size(771, 586);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "addAppointment";
+            // 
+            // btnAddInvoiceCancel
+            // 
+            this.btnAddInvoiceCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(669, 554);
+            this.btnAddInvoiceCancel.Name = "btnAddInvoiceCancel";
+            this.btnAddInvoiceCancel.Size = new System.Drawing.Size(84, 43);
+            this.btnAddInvoiceCancel.TabIndex = 187;
+            this.btnAddInvoiceCancel.Text = "Cancel";
+            this.btnAddInvoiceCancel.UseVisualStyleBackColor = true;
             // 
             // dtpApoAddAppointmentDate
             // 
@@ -1308,7 +1277,7 @@
             // btnAppointmentAdd
             // 
             this.btnAppointmentAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAppointmentAdd.Location = new System.Drawing.Point(32, 510);
+            this.btnAppointmentAdd.Location = new System.Drawing.Point(32, 554);
             this.btnAppointmentAdd.Name = "btnAppointmentAdd";
             this.btnAppointmentAdd.Size = new System.Drawing.Size(195, 43);
             this.btnAppointmentAdd.TabIndex = 6;
@@ -1818,10 +1787,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pButtons);
             this.Controls.Add(this.pWelcome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmSales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales";
@@ -1984,14 +1956,10 @@
         private System.Windows.Forms.Label lblApoContactperson;
         private System.Windows.Forms.Label lblApoInternalContact;
         private System.Windows.Forms.Label lblApoSubject;
-        private System.Windows.Forms.Label lblApoFaxNumber;
         private System.Windows.Forms.TextBox txtApoInternalContact;
         private System.Windows.Forms.TextBox txtApoSubject;
-        private System.Windows.Forms.Label lblApoEmail;
         private System.Windows.Forms.TextBox txtApoPhoneNumber;
-        private System.Windows.Forms.TextBox txtApoEmail;
         private System.Windows.Forms.Label lblApoAppointmentDate;
-        private System.Windows.Forms.TextBox txtApoFaxNumber;
         private System.Windows.Forms.Label lblApoPhoneNumber;
         private System.Windows.Forms.TextBox txtApoPostalCode;
         private System.Windows.Forms.Label lblApoPostalCode;
@@ -2017,5 +1985,6 @@
         private System.Windows.Forms.Button btnSelectedCustomerBack;
         private System.Windows.Forms.Button btnListAppointmentsBack;
         private System.Windows.Forms.Button btnSelectedAppointmentBack;
+        private System.Windows.Forms.Button btnAddInvoiceCancel;
     }
 }

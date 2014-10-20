@@ -9,6 +9,7 @@ namespace Barroc_IT
     {
         private DatabaseHandler handler;
         private DataTableHandler dthandler;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -113,6 +114,7 @@ namespace Barroc_IT
         {
             txtUsername.Clear();
             txtPassword.Clear();
+            txtUsername.Select();
         }
     }
 }
