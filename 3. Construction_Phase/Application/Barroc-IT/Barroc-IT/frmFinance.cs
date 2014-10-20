@@ -47,15 +47,31 @@ namespace Barroc_IT
             }
         private void btnViewInvoices_Click(object sender, EventArgs e)
             {
-                // Code for view projects
+                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["finProCustomerID"].Value.ToString());
+                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
+                DataTable projectDetails = dthandler.LoadProjectDetails(selectedProject, selectedCustomer);
 
+                LoadProjectDetails(customerDetails, projectDetails);
                 tbContr.SelectedIndex = 4;
             }
         }
 
-        
+        private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
+        {
+            DataRow CusRow = CusTable.Rows[0];
 
-       
+            txtProjectCompanyName.Text = CusRow["COMPANYNAME"].ToString();
+
+            DataRow ProRow = ProTable.Rows[0];
+
+            DateTime projectDeadline = new DateTime();
+            projectDeadline = DateTime.Parse(ProRow["DEADLINE"].ToString());
+            txtProjectName.Text = ProRow["NAME"].ToString();
+            dtpDeadlineViewProject.Value = projectDeadline;
+            txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
+            txtProjectValue.Text = ProRow["VALUE"].ToString();
+        }
+
 
         private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -99,7 +115,7 @@ namespace Barroc_IT
             dgvProjects.Rows.Clear();
             DataTable projects = dthandler.LoadProjects(selectedCustomer);
 
-            AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
+            AddItemsToDataGridView(projects, dgvProjects, "finProView");
 
 
         }

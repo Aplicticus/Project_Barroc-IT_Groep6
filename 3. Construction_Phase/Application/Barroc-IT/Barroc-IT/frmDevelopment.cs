@@ -95,8 +95,7 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 3;
             dgvProjects.Rows.Clear();
-            DataTable projects = dthandler.LoadProjects(selectedCustomer);
-            DataTable appointments = dthandler.LoadAppointments(selectedCustomer);
+            DataTable projects = dthandler.LoadProjects(selectedCustomer);            
 
             AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
         }
