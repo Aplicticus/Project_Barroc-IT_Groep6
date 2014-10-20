@@ -61,7 +61,7 @@ namespace Barroc_IT
 
         public DataTable LoadProjectDetails(int projectID, int customerID)
         {
-            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + projectID + "' AND CUSTOMER_ID='"+ customerID +"'";
+            string sqlQueryProjects = "SELECT * FROM tbl_Projects WHERE PROJECT_ID ='" + projectID + "' AND CUSTOMER_ID ='"+ customerID +"'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQueryProjects, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
