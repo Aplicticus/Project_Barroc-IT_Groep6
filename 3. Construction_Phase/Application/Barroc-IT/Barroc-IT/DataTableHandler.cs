@@ -60,6 +60,19 @@ namespace Barroc_IT
             return DT;
         }
         // Invoices
+        public DataTable CountInvoices(int customerID)
+        {
+            string sql = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+            return DT;
+        }
+
         public DataTable LoadInvoices(int projectID)
         {
             string sqlQuery = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +            

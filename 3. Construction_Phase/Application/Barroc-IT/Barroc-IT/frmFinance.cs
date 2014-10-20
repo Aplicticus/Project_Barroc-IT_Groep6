@@ -115,8 +115,9 @@ namespace Barroc_IT
             if (e.ColumnIndex == dgvCustomers.Columns["finCusView"].Index)
             {
                 selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());                
-                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);                
-                LoadCustomerDetails(customerDetails);
+                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
+                DataTable invoiceCount = dthandler.CountInvoices(selectedCustomer);
+                LoadCustomerDetails(customerDetails, invoiceCount);
                 tbContr.SelectedIndex = 2;
                 BKRRecover();
             }
@@ -240,7 +241,7 @@ namespace Barroc_IT
         }
 
         // Load Details
-        private void LoadCustomerDetails(DataTable CusTable)
+        private void LoadCustomerDetails(DataTable CusTable, DataTable InvCount)
         {
             DataRow CusRow = CusTable.Rows[0];
 
@@ -259,7 +260,8 @@ namespace Barroc_IT
             cbFinBKR.Text = CusRow["BKR"].ToString();
 
 
-            //txtFinInvoices.Text =  ( Add Count of invoices from current project/Customer )
+            DataRow InvRow = InvCount.Rows[0];
+            txtFinInvoices.Text = InvRow[0].ToString();
        
             //txtFinSales.Text = ( add count of sales from current project / cutomer)
         }
