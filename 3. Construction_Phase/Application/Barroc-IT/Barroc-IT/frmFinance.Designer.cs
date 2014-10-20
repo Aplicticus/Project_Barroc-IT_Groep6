@@ -165,6 +165,7 @@
             this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.finProCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -919,6 +920,7 @@
             this.finProView,
             this.cProjectID,
             this.finProCompanyName,
+            this.ProjectID,
             this.finProName,
             this.finProDeadline,
             this.finProSubject,
@@ -1694,6 +1696,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn finProView;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProName;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
