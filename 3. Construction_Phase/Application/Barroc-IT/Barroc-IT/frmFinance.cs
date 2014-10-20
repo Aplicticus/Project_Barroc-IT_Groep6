@@ -117,7 +117,8 @@ namespace Barroc_IT
                 selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());                
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
                 DataTable invoiceCount = dthandler.CountInvoices(selectedCustomer);
-                LoadCustomerDetails(customerDetails, invoiceCount);
+                DataTable salesCount = dthandler.CountSales(selectedCustomer);
+                LoadCustomerDetails(customerDetails, invoiceCount, salesCount);
                 tbContr.SelectedIndex = 2;
                 BKRRecover();
             }
@@ -241,7 +242,7 @@ namespace Barroc_IT
         }
 
         // Load Details
-        private void LoadCustomerDetails(DataTable CusTable, DataTable InvCount)
+        private void LoadCustomerDetails(DataTable CusTable, DataTable InvCount, DataTable SalCount)
         {
             DataRow CusRow = CusTable.Rows[0];
 
@@ -262,8 +263,10 @@ namespace Barroc_IT
 
             DataRow InvRow = InvCount.Rows[0];
             txtFinInvoices.Text = InvRow[0].ToString();
-       
-            //txtFinSales.Text = ( add count of sales from current project / cutomer)
+
+            DataRow InvVal = SalCount.Rows[0];
+            txtFinSales.Text = InvVal[0].ToString();
+            
         }
         private void LoadProjectDetails(DataTable DT)
         {

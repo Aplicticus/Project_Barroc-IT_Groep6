@@ -59,6 +59,21 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
+
+        public DataTable CountSales(int customerID)
+        {
+            // Column in DB VALUE of tbl_Projects != the count of Invoice_Value from tbl_Invoices
+            string sql = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+            return DT;
+        }
+
         // Invoices
         public DataTable CountInvoices(int customerID)
         {
