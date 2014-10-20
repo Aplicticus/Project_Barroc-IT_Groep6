@@ -106,6 +106,7 @@
             this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -160,8 +161,7 @@
             this.lblFinInvoiceSentDate = new System.Windows.Forms.Label();
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
-            this.lblFinInvoiceValue = new System.Windows.Forms.Label();  
-            this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();            
+            this.lblFinInvoiceValue = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -941,6 +941,10 @@
             this.finProCompanyName.Name = "finProCompanyName";
             this.finProCompanyName.ReadOnly = true;
             // 
+            // ProjectID
+            // 
+            this.ProjectID.Name = "ProjectID";
+            // 
             // finProName
             // 
             this.finProName.HeaderText = "Project Name";
@@ -1416,7 +1420,6 @@
             this.tabPage8.Controls.Add(this.lblFinInvoiceExpDate);
             this.tabPage8.Controls.Add(this.numFinInvoiceAddValue);
             this.tabPage8.Controls.Add(this.lblFinInvoiceValue);
-            //this.tabPage8.Controls.Add(this.lblAddInvoice);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
@@ -1509,7 +1512,7 @@
             this.lblFinInvoiceValue.Name = "lblFinInvoiceValue";
             this.lblFinInvoiceValue.Size = new System.Drawing.Size(136, 25);
             this.lblFinInvoiceValue.TabIndex = 162;
-            this.lblFinInvoiceValue.Text = "Invoice Value:";                        
+            this.lblFinInvoiceValue.Text = "Invoice Value:";
             // 
             // frmFinance
             // 

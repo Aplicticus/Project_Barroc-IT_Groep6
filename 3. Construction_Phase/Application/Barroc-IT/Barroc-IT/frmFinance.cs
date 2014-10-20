@@ -39,6 +39,7 @@ namespace Barroc_IT
             dgvCustomers.Rows.Clear();
             DataTable customers = dthandler.LoadCustomers();
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
+            
         }
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
@@ -60,7 +61,6 @@ namespace Barroc_IT
                 txtFinLegderID.ReadOnly = false;
                 txtFinBTWCode.ReadOnly = false;
                 cbFinBKR.Enabled = true;
-
                 btnEditFields.Text = "Save Changes";
             }
             else if (btnEditFields.Text == "Save Changes")
@@ -73,8 +73,21 @@ namespace Barroc_IT
                 txtFinLegderID.ReadOnly = true;
                 txtFinBTWCode.ReadOnly = true;
                 cbFinBKR.Enabled = false;
-                btnEditFields.Text = "Edit Fields";
+                BKRRecover();
             }
+        }
+
+        private void BKRRecover()
+        {
+            if (cbFinBKR.Text == "True" || cbFinBKR.Text == "1")
+            {
+                cbFinBKR.Text = "Yes";
+            }
+            else if (cbFinBKR.Text == "False" || cbFinBKR.Text == "0")
+            {
+                cbFinBKR.Text = "No";
+            }
+            btnEditFields.Text = "Edit Fields";
         }
 
        
@@ -105,14 +118,14 @@ namespace Barroc_IT
                 DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);                
                 LoadCustomerDetails(customerDetails);
                 tbContr.SelectedIndex = 2;
+                BKRRecover();
             }
         }
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvProjects.Columns["finProView"].Index)
             {
-                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
-                //DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
+                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());                
                 DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
                 LoadProjectDetails(projectDetails);
                 tbContr.SelectedIndex = 4;
@@ -195,6 +208,15 @@ namespace Barroc_IT
             string sqlQuery = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
 
+            if (cbFinBKR.Text == "Yes")
+            {
+                cbFinBKR.Text = "1";
+            }
+            else if (cbFinBKR.Text == "No")
+            {
+                cbFinBKR.Text = "0";
+            }
+
             cmd.Parameters.Add(new SqlParameter("AccountID", txtFinAccountID.Text));
             cmd.Parameters.Add(new SqlParameter("Balance", txtFinBalance.Text));
             cmd.Parameters.Add(new SqlParameter("Limit", txtFinLimit.Text));
@@ -209,12 +231,12 @@ namespace Barroc_IT
 
             if (rowsAffected > 0)
             {
-                return true;
+                return true;                
             }
             else
             {
                 return false;
-            }
+            }           
         }
 
         // Load Details
