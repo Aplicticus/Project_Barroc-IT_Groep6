@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 
 namespace Barroc_IT
 {
     public class DataTableHandler
     {
-        DatabaseHandler handler;       
-        //private int selectedProject = 0;
-        private int selectedCustomer;
+        DatabaseHandler handler; 
         public DataTableHandler()
         {
-            handler = new DatabaseHandler();
-            selectedCustomer = 0;
+            handler = new DatabaseHandler();            
         }
 
-        public DataTableHandler(DatabaseHandler handler, int selectedCustomer)
-        {
-            this.selectedCustomer = selectedCustomer;
+        public DataTableHandler(DatabaseHandler handler)
+        {            
             this.handler = handler;
         }
 
@@ -48,11 +39,9 @@ namespace Barroc_IT
         public DataTable LoadProjects(int customerID)
         {
             string sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " +
+            "tbl_Projects.SUBJECT FROM tbl_Customers " +
             "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
             "WHERE tbl_Customers.CUSTOMER_ID='"+ customerID +"'";
-                 
-            
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
@@ -81,6 +70,16 @@ namespace Barroc_IT
             "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
             "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
+            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+            return DT;
+        }
+        public DataTable CountAmountOfInvoices(int projectID)
+        {
+            string sql = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices "+
+            "WHERE tbl_Invoices.PROJECT_ID='" + projectID + "'";
             SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);

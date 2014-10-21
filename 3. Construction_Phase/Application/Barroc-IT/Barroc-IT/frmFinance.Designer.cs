@@ -106,11 +106,9 @@
             this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnProjectBack = new System.Windows.Forms.Button();
             this.btnViewInvoices = new System.Windows.Forms.Button();
@@ -912,11 +910,9 @@
             this.finProView,
             this.cProjectID,
             this.finProCompanyName,
-            this.ProjectID,
             this.finProName,
             this.finProDeadline,
-            this.finProSubject,
-            this.finProValue});
+            this.finProSubject});
             this.dgvProjects.Location = new System.Drawing.Point(0, 39);
             this.dgvProjects.Name = "dgvProjects";
             this.dgvProjects.RowHeadersVisible = false;
@@ -941,10 +937,6 @@
             this.finProCompanyName.Name = "finProCompanyName";
             this.finProCompanyName.ReadOnly = true;
             // 
-            // ProjectID
-            // 
-            this.ProjectID.Name = "ProjectID";
-            // 
             // finProName
             // 
             this.finProName.HeaderText = "Project Name";
@@ -962,12 +954,6 @@
             this.finProSubject.HeaderText = "Subject";
             this.finProSubject.Name = "finProSubject";
             this.finProSubject.ReadOnly = true;
-            // 
-            // finProValue
-            // 
-            this.finProValue.HeaderText = "Value";
-            this.finProValue.Name = "finProValue";
-            this.finProValue.ReadOnly = true;
             // 
             // tabPage5
             // 
@@ -1030,14 +1016,14 @@
             // 
             this.dtpDeadlineViewProject.Enabled = false;
             this.dtpDeadlineViewProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(203, 114);
+            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(214, 114);
             this.dtpDeadlineViewProject.Name = "dtpDeadlineViewProject";
             this.dtpDeadlineViewProject.Size = new System.Drawing.Size(137, 20);
             this.dtpDeadlineViewProject.TabIndex = 159;
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(203, 84);
+            this.txtProjectName.Location = new System.Drawing.Point(214, 84);
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.ReadOnly = true;
             this.txtProjectName.Size = new System.Drawing.Size(137, 20);
@@ -1055,7 +1041,7 @@
             // 
             // txtProjectSubject
             // 
-            this.txtProjectSubject.Location = new System.Drawing.Point(203, 144);
+            this.txtProjectSubject.Location = new System.Drawing.Point(214, 144);
             this.txtProjectSubject.Name = "txtProjectSubject";
             this.txtProjectSubject.ReadOnly = true;
             this.txtProjectSubject.Size = new System.Drawing.Size(137, 20);
@@ -1073,7 +1059,7 @@
             // 
             // txtProjectValue
             // 
-            this.txtProjectValue.Location = new System.Drawing.Point(203, 174);
+            this.txtProjectValue.Location = new System.Drawing.Point(214, 174);
             this.txtProjectValue.Name = "txtProjectValue";
             this.txtProjectValue.ReadOnly = true;
             this.txtProjectValue.Size = new System.Drawing.Size(137, 20);
@@ -1085,9 +1071,9 @@
             this.lblProjectValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectValue.Location = new System.Drawing.Point(28, 170);
             this.lblProjectValue.Name = "lblProjectValue";
-            this.lblProjectValue.Size = new System.Drawing.Size(69, 25);
+            this.lblProjectValue.Size = new System.Drawing.Size(174, 25);
             this.lblProjectValue.TabIndex = 153;
-            this.lblProjectValue.Text = "Value:";
+            this.lblProjectValue.Text = "Total Projectvalue:";
             // 
             // lblProjectDeadline
             // 
@@ -1111,7 +1097,7 @@
             // 
             // txtProjectCompanyName
             // 
-            this.txtProjectCompanyName.Location = new System.Drawing.Point(203, 54);
+            this.txtProjectCompanyName.Location = new System.Drawing.Point(214, 54);
             this.txtProjectCompanyName.Name = "txtProjectCompanyName";
             this.txtProjectCompanyName.ReadOnly = true;
             this.txtProjectCompanyName.Size = new System.Drawing.Size(137, 20);
@@ -1677,14 +1663,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finCusPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn finCusFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn finCusEmail;
-        private System.Windows.Forms.DataGridViewButtonColumn finProView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProCompanyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProjectID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProDeadline;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProValue;
         private System.Windows.Forms.DataGridViewButtonColumn finInvView;
         private System.Windows.Forms.DataGridViewTextBoxColumn cInvoiceID;
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvCompanyName;
@@ -1695,5 +1673,11 @@
         private System.Windows.Forms.Label lblCustomers;
         private System.Windows.Forms.Label lblProjects;
         private System.Windows.Forms.Label lblListInvoices;
+        private System.Windows.Forms.DataGridViewButtonColumn finProView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProDeadline;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
     }
 }
