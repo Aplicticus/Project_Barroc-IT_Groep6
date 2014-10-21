@@ -82,13 +82,13 @@ namespace Barroc_IT
             if (AddInvoice() == true)
             {
                 tbContr.SelectedIndex = 5;
-                LoadInvoices();
+                LoadInvoices();                
                 MessageBox.Show("Invoice succesfully added!");
             }
             else
             {
                 MessageBox.Show("There is a problem with adding a invoice!");
-            }
+            }            
         }
 
         // Datagridview CellContentClicks
@@ -186,7 +186,8 @@ namespace Barroc_IT
             DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
             DataTable invoiceCount = dthandler.CountInvoices(selectedCustomer);
             DataTable salesCount = dthandler.CountSales(selectedCustomer);
-            LoadCustomerDetails(customerDetails, invoiceCount, salesCount);            
+            DataTable projectCount = dthandler.CountProjects(selectedCustomer);
+            LoadCustomerDetails(customerDetails, invoiceCount, projectCount, salesCount);            
             BKRRecover();
         }
         private void ReloadProjects()
@@ -260,10 +261,9 @@ namespace Barroc_IT
         }
 
         // Load Details
-        private void LoadCustomerDetails(DataTable CusTable, DataTable InvCount, DataTable SalCount)
+        private void LoadCustomerDetails(DataTable CusTable, DataTable InvCount, DataTable ProCount, DataTable SalCount)
         {
             DataRow CusRow = CusTable.Rows[0];
-
             txtCompanyName.Text = CusRow["COMPANYNAME"].ToString();
             txtAddress1.Text = CusRow["ADDRESS1"].ToString();
             txtPostalCode1.Text = CusRow["POSTALCODE1"].ToString();
@@ -277,14 +277,12 @@ namespace Barroc_IT
             txtFinLegderID.Text = CusRow["LEDGER_ID"].ToString();
             txtFinBTWCode.Text = CusRow["BTW_CODE"].ToString();
             cbFinBKR.Text = CusRow["BKR"].ToString();
-
-
             DataRow InvRow = InvCount.Rows[0];
             txtFinInvoices.Text = InvRow[0].ToString();
-
+            DataRow ProRow = ProCount.Rows[0];
+            txtFinProjects.Text = ProRow[0].ToString();
             DataRow InvVal = SalCount.Rows[0];
             txtFinSales.Text = InvVal[0].ToString();
-            
         }
         private void LoadProjectDetails(DataTable DT, DataTable DTVal)
         {
@@ -298,6 +296,15 @@ namespace Barroc_IT
 
             DataRow DRVal = DTVal.Rows[0];
             txtProjectValue.Text = DRVal[0].ToString();
+
+            if (txtProjectValue.Text == "")
+            {
+                btnViewInvoices.Visible = false;
+            }
+            else if (txtProjectValue.Text != "")
+            {
+                btnViewInvoices.Visible = true;
+            }
         }
         private void LoadInvoiceDetails(DataTable InvTable)
         {
@@ -319,12 +326,10 @@ namespace Barroc_IT
         {
             LoadCustomers();
             LoadProjects();
-            LoadInvoices();
-            ReloadCustomers();
-            ReloadProjects();
-            ReloadInvoices();
+            LoadInvoices();            
             tbContr.SelectedIndex = tbContr.SelectedIndex - 1;            
         }
+
          //Form Closing method
         private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
         {
