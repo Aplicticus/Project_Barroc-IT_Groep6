@@ -62,6 +62,8 @@
             this.finCusFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finCusEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtFinProjects = new System.Windows.Forms.TextBox();
+            this.lblFinProjects = new System.Windows.Forms.Label();
             this.btnCustomerBack = new System.Windows.Forms.Button();
             this.btnViewProjects = new System.Windows.Forms.Button();
             this.btnEditFields = new System.Windows.Forms.Button();
@@ -160,8 +162,6 @@
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
-            this.lblFinProjects = new System.Windows.Forms.Label();
-            this.txtFinProjects = new System.Windows.Forms.TextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -520,6 +520,24 @@
             this.tabPage3.TabIndex = 10;
             this.tabPage3.Text = "selectedCustomer";
             // 
+            // txtFinProjects
+            // 
+            this.txtFinProjects.Location = new System.Drawing.Point(228, 300);
+            this.txtFinProjects.Name = "txtFinProjects";
+            this.txtFinProjects.ReadOnly = true;
+            this.txtFinProjects.Size = new System.Drawing.Size(137, 20);
+            this.txtFinProjects.TabIndex = 229;
+            // 
+            // lblFinProjects
+            // 
+            this.lblFinProjects.AutoSize = true;
+            this.lblFinProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinProjects.Location = new System.Drawing.Point(29, 294);
+            this.lblFinProjects.Name = "lblFinProjects";
+            this.lblFinProjects.Size = new System.Drawing.Size(188, 25);
+            this.lblFinProjects.TabIndex = 228;
+            this.lblFinProjects.Text = "Number Of Projects:";
+            // 
             // btnCustomerBack
             // 
             this.btnCustomerBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -569,7 +587,7 @@
             // 
             this.lblFinBKR.AutoSize = true;
             this.lblFinBKR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinBKR.Location = new System.Drawing.Point(379, 228);
+            this.lblFinBKR.Location = new System.Drawing.Point(398, 228);
             this.lblFinBKR.Name = "lblFinBKR";
             this.lblFinBKR.Size = new System.Drawing.Size(58, 25);
             this.lblFinBKR.TabIndex = 223;
@@ -577,7 +595,7 @@
             // 
             // txtContactPerson
             // 
-            this.txtContactPerson.Location = new System.Drawing.Point(203, 234);
+            this.txtContactPerson.Location = new System.Drawing.Point(228, 234);
             this.txtContactPerson.Name = "txtContactPerson";
             this.txtContactPerson.ReadOnly = true;
             this.txtContactPerson.Size = new System.Drawing.Size(137, 20);
@@ -597,7 +615,7 @@
             // 
             this.lblFinLimit.AutoSize = true;
             this.lblFinLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinLimit.Location = new System.Drawing.Point(379, 138);
+            this.lblFinLimit.Location = new System.Drawing.Point(398, 138);
             this.lblFinLimit.Name = "lblFinLimit";
             this.lblFinLimit.Size = new System.Drawing.Size(58, 25);
             this.lblFinLimit.TabIndex = 220;
@@ -607,7 +625,7 @@
             // 
             this.lblFinLegderID.AutoSize = true;
             this.lblFinLegderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinLegderID.Location = new System.Drawing.Point(379, 168);
+            this.lblFinLegderID.Location = new System.Drawing.Point(398, 168);
             this.lblFinLegderID.Name = "lblFinLegderID";
             this.lblFinLegderID.Size = new System.Drawing.Size(153, 25);
             this.lblFinLegderID.TabIndex = 219;
@@ -617,7 +635,7 @@
             // 
             this.lblFinBTWCode.AutoSize = true;
             this.lblFinBTWCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinBTWCode.Location = new System.Drawing.Point(379, 198);
+            this.lblFinBTWCode.Location = new System.Drawing.Point(398, 198);
             this.lblFinBTWCode.Name = "lblFinBTWCode";
             this.lblFinBTWCode.Size = new System.Drawing.Size(117, 25);
             this.lblFinBTWCode.TabIndex = 218;
@@ -627,7 +645,7 @@
             // 
             this.lblFinSales.AutoSize = true;
             this.lblFinSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinSales.Location = new System.Drawing.Point(379, 110);
+            this.lblFinSales.Location = new System.Drawing.Point(398, 110);
             this.lblFinSales.Name = "lblFinSales";
             this.lblFinSales.Size = new System.Drawing.Size(68, 25);
             this.lblFinSales.TabIndex = 217;
@@ -639,15 +657,15 @@
             this.lblFinInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFinInvoices.Location = new System.Drawing.Point(29, 260);
             this.lblFinInvoices.Name = "lblFinInvoices";
-            this.lblFinInvoices.Size = new System.Drawing.Size(90, 25);
+            this.lblFinInvoices.Size = new System.Drawing.Size(190, 25);
             this.lblFinInvoices.TabIndex = 216;
-            this.lblFinInvoices.Text = "Invoices:";
+            this.lblFinInvoices.Text = "Number Of Invoices:";
             // 
             // lblFinBalance
             // 
             this.lblFinBalance.AutoSize = true;
             this.lblFinBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinBalance.Location = new System.Drawing.Point(379, 80);
+            this.lblFinBalance.Location = new System.Drawing.Point(398, 80);
             this.lblFinBalance.Name = "lblFinBalance";
             this.lblFinBalance.Size = new System.Drawing.Size(89, 25);
             this.lblFinBalance.TabIndex = 215;
@@ -697,7 +715,7 @@
             // 
             // txtFinInvoices
             // 
-            this.txtFinInvoices.Location = new System.Drawing.Point(203, 265);
+            this.txtFinInvoices.Location = new System.Drawing.Point(228, 265);
             this.txtFinInvoices.Name = "txtFinInvoices";
             this.txtFinInvoices.ReadOnly = true;
             this.txtFinInvoices.Size = new System.Drawing.Size(137, 20);
@@ -731,7 +749,7 @@
             // 
             // txtPhoneNumber1
             // 
-            this.txtPhoneNumber1.Location = new System.Drawing.Point(203, 144);
+            this.txtPhoneNumber1.Location = new System.Drawing.Point(228, 144);
             this.txtPhoneNumber1.Name = "txtPhoneNumber1";
             this.txtPhoneNumber1.ReadOnly = true;
             this.txtPhoneNumber1.Size = new System.Drawing.Size(137, 20);
@@ -739,7 +757,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(203, 204);
+            this.txtEmail.Location = new System.Drawing.Point(228, 204);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(137, 20);
@@ -749,7 +767,7 @@
             // 
             this.lblFinAccountID.AutoSize = true;
             this.lblFinAccountID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinAccountID.Location = new System.Drawing.Point(379, 50);
+            this.lblFinAccountID.Location = new System.Drawing.Point(398, 50);
             this.lblFinAccountID.Name = "lblFinAccountID";
             this.lblFinAccountID.Size = new System.Drawing.Size(164, 25);
             this.lblFinAccountID.TabIndex = 203;
@@ -757,7 +775,7 @@
             // 
             // txtFaxNumber
             // 
-            this.txtFaxNumber.Location = new System.Drawing.Point(203, 174);
+            this.txtFaxNumber.Location = new System.Drawing.Point(228, 174);
             this.txtFaxNumber.Name = "txtFaxNumber";
             this.txtFaxNumber.ReadOnly = true;
             this.txtFaxNumber.Size = new System.Drawing.Size(137, 20);
@@ -775,7 +793,7 @@
             // 
             // txtPostalCode1
             // 
-            this.txtPostalCode1.Location = new System.Drawing.Point(203, 114);
+            this.txtPostalCode1.Location = new System.Drawing.Point(228, 114);
             this.txtPostalCode1.Name = "txtPostalCode1";
             this.txtPostalCode1.ReadOnly = true;
             this.txtPostalCode1.Size = new System.Drawing.Size(137, 20);
@@ -793,7 +811,7 @@
             // 
             // txtAddress1
             // 
-            this.txtAddress1.Location = new System.Drawing.Point(203, 84);
+            this.txtAddress1.Location = new System.Drawing.Point(228, 84);
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.ReadOnly = true;
             this.txtAddress1.Size = new System.Drawing.Size(137, 20);
@@ -821,7 +839,7 @@
             // 
             // txtCompanyName
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(203, 54);
+            this.txtCompanyName.Location = new System.Drawing.Point(228, 54);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(137, 20);
@@ -1503,24 +1521,6 @@
             this.lblFinInvoiceValue.Size = new System.Drawing.Size(136, 25);
             this.lblFinInvoiceValue.TabIndex = 162;
             this.lblFinInvoiceValue.Text = "Invoice Value:";
-            // 
-            // lblFinProjects
-            // 
-            this.lblFinProjects.AutoSize = true;
-            this.lblFinProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinProjects.Location = new System.Drawing.Point(29, 294);
-            this.lblFinProjects.Name = "lblFinProjects";
-            this.lblFinProjects.Size = new System.Drawing.Size(88, 25);
-            this.lblFinProjects.TabIndex = 228;
-            this.lblFinProjects.Text = "Projects:";
-            // 
-            // txtFinProjects
-            // 
-            this.txtFinProjects.Location = new System.Drawing.Point(203, 300);
-            this.txtFinProjects.Name = "txtFinProjects";
-            this.txtFinProjects.ReadOnly = true;
-            this.txtFinProjects.Size = new System.Drawing.Size(137, 20);
-            this.txtFinProjects.TabIndex = 229;
             // 
             // frmFinance
             // 

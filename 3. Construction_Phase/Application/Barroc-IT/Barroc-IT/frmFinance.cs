@@ -144,14 +144,12 @@ namespace Barroc_IT
         // Methods       
         private bool AddInvoice()
         {
-            string sqlQuery = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
+            string sqlQuery = sqlhandler.SetQuery("addInvoice");
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-
             cmd.Parameters.Add(new SqlParameter("@SelectedProject", selectedProject));
             cmd.Parameters.Add(new SqlParameter("@InvoiceVal", numFinInvoiceAddValue.Value));
             cmd.Parameters.Add(new SqlParameter("@InvoiceEndDate", dtpFinInvoiceExpDate.Value));
             cmd.Parameters.Add(new SqlParameter("@InvoiceSend", dtpFinInvoiceSentDate.Value));
-
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();

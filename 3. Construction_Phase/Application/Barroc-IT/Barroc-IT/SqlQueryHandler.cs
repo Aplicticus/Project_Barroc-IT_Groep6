@@ -12,7 +12,6 @@ namespace Barroc_IT
         {
 
         }
-
         public string GetQuery(string sqlQuery)
         {
             string loadCustomers = "SELECT * FROM tbl_Customers";
@@ -114,6 +113,21 @@ namespace Barroc_IT
             switch (sqlQuery)
             {
                 case "loadInvoiceDetails":
+                    return sqlQueryStrings[0].ToString();
+            }
+            return sqlQuery;
+        }
+
+        public string SetQuery(string sqlQuery)
+        {
+            string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) " +
+            "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
+
+            string[] sqlQueryStrings = { "" + addInvoice + "" };
+
+            switch(sqlQuery)
+            {
+                case "addInvoice":
                     return sqlQueryStrings[0].ToString();
             }
             return sqlQuery;
