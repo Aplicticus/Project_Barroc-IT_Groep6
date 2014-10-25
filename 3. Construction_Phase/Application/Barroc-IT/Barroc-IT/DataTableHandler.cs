@@ -73,18 +73,18 @@ namespace Barroc_IT
 
 
         // Search
-        public DataTable SearchText(Choice choice, string searchString)
+        public DataTable SearchText(Choise choice, string searchString)
         {
             string selectedChoice = "";
             switch (choice)
             {
-                case Choice.Company:
+                case Choise.Company:
                     selectedChoice = "COMPANYNAME";
                     break;
-                case Choice.Email:
+                case Choise.Email:
                     selectedChoice = "EMAIL";
                     break;
-                case Choice.Initials:
+                case Choise.Initials:
                     selectedChoice = "INITIALS";
                     break;
                 default:

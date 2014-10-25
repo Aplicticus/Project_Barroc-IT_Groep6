@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Barroc_IT
 {
-    public enum Choice
+    public enum Choise
     {
         Company = 0,
         Email = 1,
@@ -116,20 +116,20 @@ namespace Barroc_IT
         {
             if (txtCustomerSearch.Text.Length > 0)
             {
-                Choice selectedItem;
+                Choise selectedItem;
                 switch(cBoxCustomerSearch.SelectedItem.ToString())
                 {
                     case "Company Name":
-                        selectedItem = Choice.Company;
+                        selectedItem = Choise.Company;
                         break;
                     case "E-Mail":
-                        selectedItem = Choice.Email;
+                        selectedItem = Choise.Email;
                         break;
                     case "Initials":
-                        selectedItem = Choice.Initials;
+                        selectedItem = Choise.Initials;
                         break;
                     default:
-                        selectedItem = Choice.Company;
+                        selectedItem = Choise.Company;
                         break;
                 }
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);

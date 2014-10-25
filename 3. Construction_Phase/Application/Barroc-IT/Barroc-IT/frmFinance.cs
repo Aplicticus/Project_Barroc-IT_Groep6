@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Barroc_IT
-{
+{    
     public partial class frmFinance : Form
     {
         // Properties
@@ -24,6 +24,7 @@ namespace Barroc_IT
             this.loginForm = loginForm;
             this.dthandler = dthandler;
             this.sqlhandler = sqlhandler;
+            cBoxCustomerSearch.SelectedIndex = 0;
         }
         // Click Events
         private void btnLogout_Click(object sender, EventArgs e)
@@ -92,6 +93,10 @@ namespace Barroc_IT
                 MessageBox.Show("There is a problem with adding a invoice!");
             }            
         }
+        private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 4;
+        }
 
         // Datagridview CellContentClicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -153,20 +158,15 @@ namespace Barroc_IT
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
-
-            if (rowsAffected > 0)
-            {
-                return true;
+            if (rowsAffected > 0) 
+            { 
+                return true; 
             }
-            else
+            else 
             {
                 return false;
-            }
-        }
-        private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 4;
-        }
+            }            
+        }       
         private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
             dataGridView.Rows.Clear();
@@ -260,7 +260,7 @@ namespace Barroc_IT
         {
             // Have to convert Boolean of cbFinBKR to 0 or 1 to update...
 
-            string sqlQuery = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
+            string sqlQuery = sqlhandler.UpdateQuery("updateFinCustomersInfo");
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             if (cbFinBKR.Text == "Yes")
             {
@@ -323,7 +323,6 @@ namespace Barroc_IT
             txtProjectName.Text = DR["NAME"].ToString();
             dtpDeadlineViewProject.Value = projectDeadline;
             txtProjectSubject.Text = DR["SUBJECT"].ToString();
-
             DataRow DRVal = DTVal.Rows[0];
             txtProjectValue.Text = DRVal[0].ToString();
         }
@@ -348,8 +347,7 @@ namespace Barroc_IT
             LoadCustomers();
             LoadProjects();
             LoadInvoices();            
-            tbContr.SelectedIndex = tbContr.SelectedIndex - 1; 
-           
+            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;            
         }
 
          //Form Closing method
@@ -360,5 +358,32 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }        
-    }
+
+        // Search function
+        private void btnCustomerSearch_Click(object sender, EventArgs e)
+        {
+            if (txtCustomerSearch.Text.Length > 0)
+            {
+                Choise selectedItem;
+                switch (cBoxCustomerSearch.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = Choise.Company;
+                        break;
+                    case "E-Mail":
+                        selectedItem = Choise.Email;
+                        break;
+                    case "Initials":
+                        selectedItem = Choise.Initials;
+                        break;
+                    default:
+                        selectedItem = Choise.Company;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
+
+                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
+            }
+        }
+      }
 }

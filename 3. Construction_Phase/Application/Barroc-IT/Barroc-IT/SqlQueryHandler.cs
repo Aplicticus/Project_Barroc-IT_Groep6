@@ -12,6 +12,8 @@ namespace Barroc_IT
         {
 
         }
+
+        // Read Querys
         public string GetQuery(string sqlQuery)
         {
             string loadCustomers = "SELECT * FROM tbl_Customers";
@@ -118,6 +120,7 @@ namespace Barroc_IT
             return sqlQuery;
         }
 
+        // Insert Querys
         public string SetQuery(string sqlQuery)
         {
             string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) " +
@@ -131,6 +134,22 @@ namespace Barroc_IT
                     return sqlQueryStrings[0].ToString();
             }
             return sqlQuery;
+        }
+
+        // Update Querys
+        public string UpdateQuery(string sqlQuery)
+        {
+            string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, " +
+            "LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
+            
+            string[] sqlQueryStrings = { "" + updateFinCustomersInfo + "" };
+
+            switch(sqlQuery)
+            {
+                case "updateFinCustomersInfo":
+                    return sqlQueryStrings[0].ToString();
+            }
+            return sqlQuery;            
         }
     }
 }

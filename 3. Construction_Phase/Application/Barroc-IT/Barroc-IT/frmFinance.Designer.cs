@@ -357,9 +357,10 @@
             this.btnCustomerSearch.Location = new System.Drawing.Point(687, 10);
             this.btnCustomerSearch.Name = "btnCustomerSearch";
             this.btnCustomerSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnCustomerSearch.TabIndex = 32;
+            this.btnCustomerSearch.TabIndex = 25;
             this.btnCustomerSearch.Text = "Search";
             this.btnCustomerSearch.UseVisualStyleBackColor = true;
+            this.btnCustomerSearch.Click += new System.EventHandler(this.btnCustomerSearch_Click);
             // 
             // txtCustomerSearch
             // 
