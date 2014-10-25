@@ -64,7 +64,7 @@ namespace Barroc_IT
             else if (btnEditFields.Text == "Save Changes")
             {
                 UpdateCustomer(selectedCustomer);
-                string sql = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID";
+                string sql = sqlhandler.GetQuery("loadCustomerDetails", selectedCustomer);
                 DataTable customerDetails = dthandler.SqlQueryToDataTable(sql, selectedCustomer);                 
                 txtFinAccountID.ReadOnly = true;
                 txtFinBalance.ReadOnly = true;
@@ -208,47 +208,28 @@ namespace Barroc_IT
         // First Loads / Reloads
         private void ReloadCustomers()
         {
-            string sqlCustomers = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID='" + selectedCustomer + "'";
+            string sqlCustomers = sqlhandler.GetQuery("loadCustomerDetails", selectedCustomer);
             DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomers, selectedCustomer);
-
-            string sqlInvoice = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "'";
+            string sqlInvoice = sqlhandler.GetQuery("countInvoices", selectedCustomer);
             DataTable invoiceCount = dthandler.SqlQueryToDataTable(sqlInvoice, selectedCustomer);
-            string sqlSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "'";
+            string sqlSales = sqlhandler.GetQuery("countSales", selectedCustomer);
             DataTable salesCount = dthandler.SqlQueryToDataTable(sqlSales, selectedCustomer);
-            string sqlProject = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "'";
+            string sqlProject = sqlhandler.GetQuery("countProjects", selectedCustomer);
             DataTable projectCount = dthandler.SqlQueryToDataTable(sqlProject, selectedCustomer);
             LoadCustomerDetails(customerDetails, invoiceCount, projectCount, salesCount);            
             BKRRecover();
         }
         private void ReloadProjects()
         {
-            string sqlProject = "SELECT * FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "' AND tbl_Projects.PROJECT_ID='" + selectedProject + "'";
-
+            string sqlProject = sqlhandler.GetQuery("loadProjectDetails", selectedCustomer, selectedProject);
             DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject, selectedCustomer, selectedProject);
-
-            string sql = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices " +
-            "WHERE tbl_Invoices.PROJECT_ID='" + selectedProject + "'";
-            DataTable valueDetails = dthandler.SqlQueryToDataTable(sql, selectedProject);
+            string sqlValues = sqlhandler.GetQuery("countValues", selectedCustomer);
+            DataTable valueDetails = dthandler.SqlQueryToDataTable(sqlValues, selectedProject);
             LoadProjectDetails(projectDetails, valueDetails);
-
-            
         }
         private void ReloadInvoices()
         {
-            string sql = "SELECT * FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "' AND tbl_Projects.PROJECT_ID='" + selectedProject + "' AND tbl_Invoices.INVOICE_ID ='" + selectedInvoice + "'";
+            string sql = sqlhandler.GetQuery("loadInvoiceDetails", selectedCustomer, selectedProject, selectedInvoice);
             DataTable invoiceDetails = dthandler.SqlQueryToDataTable(sql, selectedCustomer, selectedProject, selectedInvoice);
             LoadInvoiceDetails(invoiceDetails);            
         }
