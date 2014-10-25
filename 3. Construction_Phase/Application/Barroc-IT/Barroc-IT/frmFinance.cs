@@ -11,17 +11,19 @@ namespace Barroc_IT
         private DatabaseHandler handler;
         private frmLogin loginForm;
         private DataTableHandler dthandler;
+        private SqlQueryHandler sqlhandler;
         private int selectedProject;
         private int selectedCustomer;
         private int selectedInvoice;
         private bool closing = false;
         // Form Load
-        public frmFinance(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler)
+        public frmFinance(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
             InitializeComponent();
             this.handler = handler;
             this.loginForm = loginForm;
             this.dthandler = dthandler;
+            this.sqlhandler = sqlhandler;
         }
         // Click Events
         private void btnLogout_Click(object sender, EventArgs e)
@@ -35,8 +37,7 @@ namespace Barroc_IT
         private void btnFinanceSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
-            LoadCustomers();
-            
+            LoadCustomers();                    
         }
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
@@ -63,7 +64,8 @@ namespace Barroc_IT
             else if (btnEditFields.Text == "Save Changes")
             {
                 UpdateCustomer(selectedCustomer);
-                dthandler.LoadCustomers(selectedCustomer);
+                string sql = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID";
+                DataTable customerDetails = dthandler.SqlQueryToDataTable(sql, selectedCustomer);                 
                 txtFinAccountID.ReadOnly = true;
                 txtFinBalance.ReadOnly = true;
                 txtFinLimit.ReadOnly = true;
@@ -99,6 +101,15 @@ namespace Barroc_IT
                 selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
                 ReloadCustomers();
                 tbContr.SelectedIndex = 2;
+                int temp = 0;
+                if (txtFinProjects.Text != temp.ToString())
+                {
+                    btnViewProjects.Enabled = true;
+                }
+                else
+                {
+                    btnViewProjects.Enabled = false;
+                }   
             }           
         }
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -108,6 +119,16 @@ namespace Barroc_IT
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 ReloadProjects();
                 tbContr.SelectedIndex = 4;
+
+                string temp = "";
+                if (txtProjectValue.Text != temp)
+                {
+                    btnViewInvoices.Enabled = true;
+                }
+                else
+                {
+                    btnViewInvoices.Enabled = false;
+                }
             }
         }
         private void dgvInvoices_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -164,41 +185,71 @@ namespace Barroc_IT
         private void LoadCustomers()
         {
             dgvCustomers.Rows.Clear();
-            DataTable customers = dthandler.LoadCustomers();
+
+            string selectCustomers = sqlhandler.GetQuery("loadCustomers");
+            DataTable customers = dthandler.SqlQueryToDataTable(selectCustomers);
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
         private void LoadProjects()
         {
             dgvProjects.Rows.Clear();
-            DataTable projects = dthandler.LoadProjects(selectedCustomer);
+            string sql = sqlhandler.GetQuery("loadProjects", selectedCustomer);
+            DataTable projects = dthandler.SqlQueryToDataTableProject(sql, selectedCustomer);
             AddItemsToDataGridView(projects, dgvProjects, "finProView");
         }
         private void LoadInvoices()
         {
             dgvInvoices.Rows.Clear();
-            DataTable invoices = dthandler.LoadInvoices(selectedProject);
+            string sql = sqlhandler.GetQuery("loadInvoices", selectedProject);
+            DataTable invoices = dthandler.SqlQueryToDataTable(sql, selectedProject);
             AddItemsToDataGridView(invoices, dgvInvoices, "finInvView");
         }
 
         // First Loads / Reloads
         private void ReloadCustomers()
         {
-            DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-            DataTable invoiceCount = dthandler.CountInvoices(selectedCustomer);
-            DataTable salesCount = dthandler.CountSales(selectedCustomer);
-            DataTable projectCount = dthandler.CountProjects(selectedCustomer);
+            string sqlCustomers = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID='" + selectedCustomer + "'";
+            DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomers, selectedCustomer);
+
+            string sqlInvoice = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "'";
+            DataTable invoiceCount = dthandler.SqlQueryToDataTable(sqlInvoice, selectedCustomer);
+            string sqlSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "'";
+            DataTable salesCount = dthandler.SqlQueryToDataTable(sqlSales, selectedCustomer);
+            string sqlProject = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "'";
+            DataTable projectCount = dthandler.SqlQueryToDataTable(sqlProject, selectedCustomer);
             LoadCustomerDetails(customerDetails, invoiceCount, projectCount, salesCount);            
             BKRRecover();
         }
         private void ReloadProjects()
         {
-            DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
-            DataTable valueDetails = dthandler.CountAmountOfInvoices(selectedProject);
-            LoadProjectDetails(projectDetails, valueDetails);            
+            string sqlProject = "SELECT * FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "' AND tbl_Projects.PROJECT_ID='" + selectedProject + "'";
+
+            DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject, selectedCustomer, selectedProject);
+
+            string sql = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices " +
+            "WHERE tbl_Invoices.PROJECT_ID='" + selectedProject + "'";
+            DataTable valueDetails = dthandler.SqlQueryToDataTable(sql, selectedProject);
+            LoadProjectDetails(projectDetails, valueDetails);
+
+            
         }
         private void ReloadInvoices()
         {
-            DataTable invoiceDetails = dthandler.LoadInvoiceDetails(selectedCustomer, selectedProject, selectedInvoice);
+            string sql = "SELECT * FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "' AND tbl_Projects.PROJECT_ID='" + selectedProject + "' AND tbl_Invoices.INVOICE_ID ='" + selectedInvoice + "'";
+            DataTable invoiceDetails = dthandler.SqlQueryToDataTable(sql, selectedCustomer, selectedProject, selectedInvoice);
             LoadInvoiceDetails(invoiceDetails);            
         }
 
@@ -296,15 +347,6 @@ namespace Barroc_IT
 
             DataRow DRVal = DTVal.Rows[0];
             txtProjectValue.Text = DRVal[0].ToString();
-
-            if (txtProjectValue.Text == "")
-            {
-                btnViewInvoices.Visible = false;
-            }
-            else if (txtProjectValue.Text != "")
-            {
-                btnViewInvoices.Visible = true;
-            }
         }
         private void LoadInvoiceDetails(DataTable InvTable)
         {
@@ -327,7 +369,8 @@ namespace Barroc_IT
             LoadCustomers();
             LoadProjects();
             LoadInvoices();            
-            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;            
+            tbContr.SelectedIndex = tbContr.SelectedIndex - 1; 
+           
         }
 
          //Form Closing method

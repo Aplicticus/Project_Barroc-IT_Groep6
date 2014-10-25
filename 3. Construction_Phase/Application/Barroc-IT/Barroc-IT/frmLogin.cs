@@ -9,6 +9,7 @@ namespace Barroc_IT
     {
         private DatabaseHandler handler;
         private DataTableHandler dthandler;
+        private SqlQueryHandler sqlhandler;
 
         public frmLogin()
         {
@@ -19,6 +20,7 @@ namespace Barroc_IT
         {
             handler = new DatabaseHandler();
             dthandler = new DataTableHandler();
+            sqlhandler = new SqlQueryHandler();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -63,7 +65,7 @@ namespace Barroc_IT
                                 break;
                             case "finance":
                                 this.Hide();
-                                frmFinance formFinance = new frmFinance(handler, this, dthandler);
+                                frmFinance formFinance = new frmFinance(handler, this, dthandler, sqlhandler);
                                 formFinance.Show();
                                 break;
                             case "development":

@@ -37,7 +37,8 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 1;
             dgvCustomers.Rows.Clear();
-            DataTable customers = dthandler.LoadCustomers();
+            string selectCustomers = "SELECT * FROM tbl_Customers";
+            DataTable customers = dthandler.SqlQueryToDataTable(selectCustomers);
 
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
@@ -57,7 +58,8 @@ namespace Barroc_IT
 
         private void btnAddProjectCustomer_Click(object sender, EventArgs e)
         {
-            DataTable dtCustomerResult = dthandler.LoadCustomers(selectedCustomer);
+            string sql = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID";
+            DataTable dtCustomerResult = dthandler.SqlQueryToDataTable(sql, selectedCustomer);
 
             foreach (DataRow dr in dtCustomerResult.Rows)
             {
@@ -81,8 +83,11 @@ namespace Barroc_IT
             else if (btnEditProject.Text == "Save Changes")
             {
                 UpdateProject(selectedProject);
-                dthandler.LoadProjects(selectedProject);
-
+                string sql = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
+                "tbl_Projects.SUBJECT FROM tbl_Customers " +
+                "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+                "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "'";
+                dthandler.SqlQueryToDataTableProject(sql, selectedCustomer);
                 txtProjectName.ReadOnly = true;
                 txtProjectSubject.ReadOnly = true;
                 txtProjectValue.ReadOnly = true;
@@ -95,8 +100,14 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 3;
             dgvProjects.Rows.Clear();
-            DataTable projects = dthandler.LoadProjects(selectedCustomer);
-            DataTable appointments = dthandler.LoadAppointments(selectedCustomer);
+            string sqlProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
+            "tbl_Projects.SUBJECT FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "'";
+            DataTable projects = dthandler.SqlQueryToDataTableProject(sqlProjects, selectedProject);
+
+            string sqlAppointments = "SELECT * FROM tbl_Appointments WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
+            DataTable appointments = dthandler.SqlQueryToDataTable(sqlAppointments, selectedCustomer);
 
             AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
         }
@@ -126,7 +137,8 @@ namespace Barroc_IT
             }
             else
             {
-                DataTable customers = dthandler.LoadCustomers();
+                string selectCustomers = "SELECT * FROM tbl_Customers";
+                DataTable customers = dthandler.SqlQueryToDataTable(selectCustomers);                
                 AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
             }
         }
@@ -179,9 +191,13 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
             {
-                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());               
-                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-                DataTable appointmentDetails = dthandler.LoadAppointments(selectedCustomer);
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+
+                string sqlCustomer = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID";
+                DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomer, selectedCustomer);
+
+                string sqlAppointments = "SELECT * FROM tbl_Appointments WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
+                DataTable appointmentDetails = dthandler.SqlQueryToDataTable(sqlAppointments, selectedCustomer);
 
                 LoadCustomerDetails(customerDetails, appointmentDetails);
                 tbContr.SelectedIndex = 2;
@@ -193,8 +209,13 @@ namespace Barroc_IT
             if (e.ColumnIndex == dgvProjects.Columns["cProjectViewButton"].Index)
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
-                DataTable customerDetails = dthandler.LoadCustomers(selectedCustomer);
-                DataTable projectDetails = dthandler.LoadProjectDetails(selectedCustomer, selectedProject);
+                string sqlCustomer = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID";
+                DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomer, selectedCustomer);
+
+                string sqlProject = "SELECT * FROM tbl_Customers " +
+                "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+                "WHERE tbl_Customers.CUSTOMER_ID='" + selectedCustomer + "' AND tbl_Projects.PROJECT_ID='" + selectedProject + "'";
+                DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject, selectedCustomer, selectedProject);
                 
                 LoadProjectDetails(customerDetails, projectDetails);
                 tbContr.SelectedIndex = 4;                
@@ -335,8 +356,9 @@ namespace Barroc_IT
         #region "Appointment Methods"
        
         private void LoadAppointmentDetails(int customerID)
-        {    
-            DataTable dtAppointmentResults = dthandler.LoadAppointments(customerID);
+        {
+            string sql = "SELECT * FROM tbl_Appointments WHERE CUSTOMER_ID ='" + selectedCustomer + "'";
+            DataTable dtAppointmentResults = dthandler.SqlQueryToDataTable(sql, selectedCustomer);
             foreach (DataRow DR in dtAppointmentResults.Rows)
             {
                 DateTime projectAppointment = new DateTime();
