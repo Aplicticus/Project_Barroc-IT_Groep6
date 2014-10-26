@@ -5,6 +5,8 @@ using System.Windows.Forms;
 
 namespace Barroc_IT
 {    
+
+
     public partial class frmFinance : Form
     {
         // Properties
@@ -25,6 +27,7 @@ namespace Barroc_IT
             this.dthandler = dthandler;
             this.sqlhandler = sqlhandler;
             cBoxCustomerSearch.SelectedIndex = 0;
+            cBoxProjectSearch.SelectedIndex = 0;
         }
         // Click Events
         private void btnLogout_Click(object sender, EventArgs e)
@@ -364,20 +367,20 @@ namespace Barroc_IT
         {
             if (txtCustomerSearch.Text.Length > 0)
             {
-                Choise selectedItem;
+                Choice selectedItem;
                 switch (cBoxCustomerSearch.SelectedItem.ToString())
                 {
                     case "Company Name":
-                        selectedItem = Choise.Company;
+                        selectedItem = Choice.CompanyName;
                         break;
                     case "E-Mail":
-                        selectedItem = Choise.Email;
+                        selectedItem = Choice.Email;
                         break;
                     case "Initials":
-                        selectedItem = Choise.Initials;
+                        selectedItem = Choice.Initials;
                         break;
                     default:
-                        selectedItem = Choise.Company;
+                        selectedItem = Choice.CompanyName;
                         break;
                 }
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
@@ -385,5 +388,37 @@ namespace Barroc_IT
                 AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
         }
+
+        private void btnProjectSearch_Click(object sender, EventArgs e)
+        {
+            // Check the search function... not 100% working
+            if (cBoxProjectSearch.Text.Length > 0)
+            {
+                Choice selectedItem;
+                switch (cBoxProjectSearch.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = Choice.CompanyName;
+                        break;
+                    case "Project Name":
+                        selectedItem = Choice.ProjectName;
+                        break;
+                    case "Deadline":
+                        selectedItem = Choice.Deadline;
+                        break;
+                    case "Subject":
+                        selectedItem = Choice.Subject;
+                        break;
+                    default:
+                        selectedItem = Choice.CompanyName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
+
+                AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
+            }
+        }
+
+
       }
 }

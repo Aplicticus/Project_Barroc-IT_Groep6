@@ -3,6 +3,15 @@ using System.Data.SqlClient;
 
 namespace Barroc_IT
 {
+    public enum Choice
+    {
+        CompanyName = 0,
+        Email = 1,
+        Initials = 2,
+        Deadline = 3,        
+        Subject = 4,
+        ProjectName = 5
+    }
     public class DataTableHandler
     {
         DatabaseHandler handler; 
@@ -73,26 +82,36 @@ namespace Barroc_IT
 
 
         // Search
-        public DataTable SearchText(Choise choice, string searchString)
+        public DataTable SearchText(Choice choice, string searchString)
         {
             string selectedChoice = "";
             switch (choice)
             {
-                case Choise.Company:
+                case Choice.CompanyName:
                     selectedChoice = "COMPANYNAME";
                     break;
-                case Choise.Email:
+                case Choice.Email:
                     selectedChoice = "EMAIL";
                     break;
-                case Choise.Initials:
+                case Choice.Initials:
                     selectedChoice = "INITIALS";
+                    break;
+                case Choice.Deadline:
+                    selectedChoice = "DEADLINE";
+                    break;
+                case Choice.ProjectName:
+                    selectedChoice = "NAME";
+                    break;
+                case Choice.Subject:
+                    selectedChoice = "SUBJECT";
                     break;
                 default:
                     selectedChoice = "";
                     break;
             }
 
-            string sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice + " LIKE '%" + searchString + "%'";
+            string sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, tbl_Projects.SUBJECT FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID WHERE " + selectedChoice + " LIKE '%" + searchString + "%'";
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
 
             DataSet DS = new DataSet();

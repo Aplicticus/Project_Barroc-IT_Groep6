@@ -899,8 +899,9 @@
             this.cBoxProjectSearch.FormattingEnabled = true;
             this.cBoxProjectSearch.Items.AddRange(new object[] {
             "Company Name",
-            "E-Mail",
-            "Initials"});
+            "Deadline",
+            "Project Name",
+            "Subject"});
             this.cBoxProjectSearch.Location = new System.Drawing.Point(437, 11);
             this.cBoxProjectSearch.Name = "cBoxProjectSearch";
             this.cBoxProjectSearch.Size = new System.Drawing.Size(121, 21);
@@ -915,6 +916,7 @@
             this.btnProjectSearch.TabIndex = 33;
             this.btnProjectSearch.Text = "Search";
             this.btnProjectSearch.UseVisualStyleBackColor = true;
+            this.btnProjectSearch.Click += new System.EventHandler(this.btnProjectSearch_Click);
             // 
             // txtProjectSearch
             // 
