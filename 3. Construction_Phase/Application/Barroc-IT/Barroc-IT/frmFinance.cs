@@ -18,6 +18,7 @@ namespace Barroc_IT
         private int selectedCustomer;
         private int selectedInvoice;
         private bool closing = false;
+
         // Form Load
         public frmFinance(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
@@ -29,6 +30,7 @@ namespace Barroc_IT
             cBoxCustomerSearch.SelectedIndex = 0;
             cBoxProjectSearch.SelectedIndex = 0;
         }
+
         // Click Events
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -100,6 +102,42 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 4;
         }
+        private void btnCustomerSearch_Click(object sender, EventArgs e)
+        {
+            if (txtCustomerSearch.Text.Length > 0)
+            {
+                Choice selectedItem;
+                switch (cBoxCustomerSearch.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = Choice.CompanyName;
+                        break;
+                    case "E-Mail":
+                        selectedItem = Choice.Email;
+                        break;
+                    case "Initials":
+                        selectedItem = Choice.Initials;
+                        break;
+                    default:
+                        selectedItem = Choice.CompanyName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
+
+                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
+            }
+        }
+        private void btnProjectSearch_Click(object sender, EventArgs e)
+        {
+            // Add search function for projects 
+        }
+        private void btnBackClick(object sender, EventArgs e)
+        {
+            LoadCustomers();
+            LoadProjects();
+            LoadInvoices();
+            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
+        }
 
         // Datagridview CellContentClicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -127,7 +165,6 @@ namespace Barroc_IT
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 ReloadProjects();
                 tbContr.SelectedIndex = 4;
-
                 string temp = "";
                 if (txtProjectValue.Text != temp)
                 {
@@ -344,16 +381,7 @@ namespace Barroc_IT
             dtpSelectedInvoiceSendDate.Value = InvoiceSendDate;
         }
 
-        // Back button
-        private void btnBackClick(object sender, EventArgs e)
-        {
-            LoadCustomers();
-            LoadProjects();
-            LoadInvoices();            
-            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;            
-        }
-
-         //Form Closing method
+        //Form Closing method
         private void frmFinance_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!closing)
@@ -361,64 +389,5 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }        
-
-        // Search function
-        private void btnCustomerSearch_Click(object sender, EventArgs e)
-        {
-            if (txtCustomerSearch.Text.Length > 0)
-            {
-                Choice selectedItem;
-                switch (cBoxCustomerSearch.SelectedItem.ToString())
-                {
-                    case "Company Name":
-                        selectedItem = Choice.CompanyName;
-                        break;
-                    case "E-Mail":
-                        selectedItem = Choice.Email;
-                        break;
-                    case "Initials":
-                        selectedItem = Choice.Initials;
-                        break;
-                    default:
-                        selectedItem = Choice.CompanyName;
-                        break;
-                }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
-
-                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
-            }
-        }
-
-        private void btnProjectSearch_Click(object sender, EventArgs e)
-        {
-            // Check the search function... not 100% working
-            if (cBoxProjectSearch.Text.Length > 0)
-            {
-                Choice selectedItem;
-                switch (cBoxProjectSearch.SelectedItem.ToString())
-                {
-                    case "Company Name":
-                        selectedItem = Choice.CompanyName;
-                        break;
-                    case "Project Name":
-                        selectedItem = Choice.ProjectName;
-                        break;
-                    case "Deadline":
-                        selectedItem = Choice.Deadline;
-                        break;
-                    case "Subject":
-                        selectedItem = Choice.Subject;
-                        break;
-                    default:
-                        selectedItem = Choice.CompanyName;
-                        break;
-                }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
-
-                AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
-            }
-        }
-
-
       }
 }

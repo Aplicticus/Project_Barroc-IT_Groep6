@@ -24,11 +24,7 @@ namespace Barroc_IT
             switch(sqlQuery)
             {
                 case "loadCustomers":
-                    return sqlQueryStrings[0].ToString();                    
-                case "selectProject":
-                    return sqlQueryStrings[1].ToString();   
-                //case "":
-                //    return sqlQueryStrings[2].ToString();
+                    return sqlQueryStrings[0].ToString();
             }
             return sqlQuery;
         }
@@ -37,7 +33,7 @@ namespace Barroc_IT
             string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID='" + customerID + "'";
 
             string loadProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-            "tbl_Projects.SUBJECT FROM tbl_Customers " +
+            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " +
             "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
 
@@ -48,6 +44,10 @@ namespace Barroc_IT
             "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
             "WHERE tbl_Projects.PROJECT_ID='" + customerID + "'";
 
+            string loadAppointments = "SELECT * FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Appointments ON tbl_Customers.CUSTOMER_ID=tbl_Appointments.CUSTOMER_ID " +
+            "WHERE tbl_Appointments.CUSTOMER_ID='" + customerID + "'";
+            
             string countInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers " +
             "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
             "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
@@ -66,7 +66,7 @@ namespace Barroc_IT
             "WHERE tbl_Invoices.PROJECT_ID='" + customerID + "'";
 
 
-            string[] sqlQueryStrings = { "" + loadProjects + "", "" + loadInvoices + "", "" + loadCustomerDetails + "", "" + countInvoices + "", "" + countSales + "", "" + countProjects + "", "" + countValues  + "" };
+            string[] sqlQueryStrings = { "" + loadProjects + "", "" + loadInvoices + "", "" + loadCustomerDetails + "", "" + countInvoices + "", "" + countSales + "", "" + countProjects + "", "" + countValues + "", "" + loadAppointments + ""};
 
             switch(sqlQuery)
             {
@@ -84,6 +84,8 @@ namespace Barroc_IT
                     return sqlQueryStrings[5].ToString();
                 case "countValues":
                     return sqlQueryStrings[6].ToString();
+                case "loadAppointments":
+                    return sqlQueryStrings[7].ToString();
             }
             return sqlQuery;
         }
@@ -125,13 +127,18 @@ namespace Barroc_IT
         {
             string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) " +
             "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
+            string addProject = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) " +
+            "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
+           
 
-            string[] sqlQueryStrings = { "" + addInvoice + "" };
+            string[] sqlQueryStrings = { "" + addInvoice + "", ""+ addProject +""};
 
             switch(sqlQuery)
             {
                 case "addInvoice":
                     return sqlQueryStrings[0].ToString();
+                case "addProject":
+                    return sqlQueryStrings[1].ToString();
             }
             return sqlQuery;
         }
@@ -141,15 +148,54 @@ namespace Barroc_IT
         {
             string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, " +
             "LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
-            
-            string[] sqlQueryStrings = { "" + updateFinCustomersInfo + "" };
+
+            string[] sqlQueryStrings = { "" + updateFinCustomersInfo + ""};
 
             switch(sqlQuery)
             {
                 case "updateFinCustomersInfo":
-                    return sqlQueryStrings[0].ToString();
+                    return sqlQueryStrings[0].ToString();                
             }
             return sqlQuery;            
+        }
+        public string UpdateQuery(string sqlQuery, int customerID)
+        {
+            string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
+            "tbl_Projects.SUBJECT FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
+            string updateDevCustomerInfo = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, " +
+            "OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@customerID";
+            string updateDevAppointmentInfo = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact " +
+            "WHERE CUSTOMER_ID=@customerID";
+
+            string[] sqlQueryStrings = { "" + updateFinProjectInfo + "", "" + updateDevCustomerInfo + "", "" + updateDevAppointmentInfo + "" };
+
+            switch (sqlQuery)
+            {
+                case "updateFinProjectInfo":
+                    return sqlQueryStrings[0].ToString();
+                case "updateDevCustomerInfo":
+                    return sqlQueryStrings[1].ToString();
+                case "updateDevAppointmentInfo":
+                    return sqlQueryStrings[2].ToString();
+            }
+            return sqlQuery;
+        }
+
+        public string UpdateQueryProject(string sqlQuery, int projectID)
+        {
+            string updateDevProjectInfo = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, " +
+           "SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@ProjectID";
+
+            string[] sqlQueryStrings = { "" + updateDevProjectInfo + ""};
+
+            switch (sqlQuery)
+            {
+                case "updateDevProjectInfo":
+                    return sqlQueryStrings[0].ToString();
+            }
+            return sqlQuery;
         }
     }
 }

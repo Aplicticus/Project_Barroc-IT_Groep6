@@ -70,7 +70,7 @@ namespace Barroc_IT
                                 break;
                             case "development":
                                 this.Hide();
-                                frmDevelopment formDevelopment = new frmDevelopment(handler, this, dthandler);
+                                frmDevelopment formDevelopment = new frmDevelopment(handler, this, dthandler, sqlhandler);
                                 formDevelopment.Show();
                                 break;
                             default:
