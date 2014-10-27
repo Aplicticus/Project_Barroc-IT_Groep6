@@ -9,7 +9,7 @@ namespace Barroc_IT
 
     public partial class frmFinance : Form
     {
-        // Properties
+        // Properties, Instances
         private DatabaseHandler handler;
         private frmLogin loginForm;
         private DataTableHandler dthandler;
