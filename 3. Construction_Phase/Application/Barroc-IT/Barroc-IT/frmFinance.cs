@@ -189,7 +189,7 @@ namespace Barroc_IT
         // Methods       
         private bool AddInvoice()
         {
-            string sqlQuery = sqlhandler.SetQuery("addInvoice");
+            string sqlQuery = sqlhandler.GetQuery("addInvoice");
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("@SelectedProject", selectedProject));
             cmd.Parameters.Add(new SqlParameter("@InvoiceVal", numFinInvoiceAddValue.Value));
@@ -300,7 +300,7 @@ namespace Barroc_IT
         {
             // Have to convert Boolean of cbFinBKR to 0 or 1 to update...
 
-            string sqlQuery = sqlhandler.UpdateQuery("updateFinCustomersInfo");
+            string sqlQuery = sqlhandler.GetQuery("updateFinCustomersInfo");
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             if (cbFinBKR.Text == "Yes")
             {

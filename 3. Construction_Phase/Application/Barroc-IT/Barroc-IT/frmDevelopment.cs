@@ -70,7 +70,7 @@ namespace Barroc_IT
             else if (btnEditProject.Text == "Save Changes")
             {
                 UpdateProject(selectedProject);
-                string sql = sqlhandler.UpdateQuery("updateFinProjectInfo", selectedCustomer);
+                string sql = sqlhandler.GetQuery("updateFinProjectInfo", selectedCustomer);
                 dthandler.SqlQueryToDataTableProject(sql, selectedCustomer);
                 txtProjectName.ReadOnly = true;
                 txtProjectSubject.ReadOnly = true;
@@ -260,7 +260,7 @@ namespace Barroc_IT
         // Updaters / Editers
         private bool UpdateCustomer(int customerID)
         {
-            string sqlQueryCustomers = sqlhandler.UpdateQuery("updateDevCustomerInfo", selectedCustomer);
+            string sqlQueryCustomers = sqlhandler.GetQuery("updateDevCustomerInfo", selectedCustomer);
             SqlCommand cmd = new SqlCommand(sqlQueryCustomers, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("MaintenanceContract", txtMaintenance.Text));
             cmd.Parameters.Add(new SqlParameter("OpenProjects", txtOpenProject.Text));
@@ -281,7 +281,7 @@ namespace Barroc_IT
         }
         private bool UpdateProject(int projectID)
         {
-            string sqlQuery = sqlhandler.UpdateQueryProject("updateDevProjectInfo", selectedProject);
+            string sqlQuery = sqlhandler.GetQuery("updateDevProjectInfo", selectedProject);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
             cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineViewProject.Value.Date));
@@ -303,7 +303,7 @@ namespace Barroc_IT
         }
         private bool UpdateAppointment(int customerID)
         {
-            string sqlQuery = sqlhandler.UpdateQuery("updateDevAppointmentInfo", selectedCustomer);
+            string sqlQuery = sqlhandler.GetQuery("updateDevAppointmentInfo", selectedCustomer);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("InternalContact", txtInternalContact.Text));
             cmd.Parameters.Add(new SqlParameter("customerID", customerID));
@@ -324,7 +324,7 @@ namespace Barroc_IT
         // Inserts
         private bool AddProject()
         {
-            string sqlQuery = sqlhandler.SetQuery("addProject");
+            string sqlQuery = sqlhandler.GetQuery("addProject");
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("@SelectedCustomer", selectedCustomer));
             cmd.Parameters.Add(new SqlParameter("@Name", txtProjectAddName.Text));

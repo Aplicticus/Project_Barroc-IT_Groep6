@@ -77,7 +77,7 @@ namespace Barroc_IT
         // Methods
         private bool AddUser()
         {
-            string sql = sqlhandler.SetQuery("addUser");
+            string sql = sqlhandler.GetQuery("addUser");
             SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("@UserName", txtAdminUsername.Text));
             cmd.Parameters.Add(new SqlParameter("@Password", txtAdminPassword.Text));
