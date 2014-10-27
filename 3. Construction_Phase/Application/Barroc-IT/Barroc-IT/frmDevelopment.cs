@@ -13,7 +13,7 @@ namespace Barroc_IT
         private DataTableHandler dthandler;
         private SqlQueryHandler sqlhandler;
         private int selectedCustomer;
-        private int selectedProject;
+        private int selectedProject;        
         private bool closing = false;
 
         // Form Constructor
@@ -26,7 +26,7 @@ namespace Barroc_IT
             this.loginForm = loginForm;
             this.dthandler = dthandler;
             this.sqlhandler = sqlhandler;
-        }
+        }      
 
         // Click Events
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace Barroc_IT
         }
         private void btnViewProjects_Click(object sender, EventArgs e)
         {
-            tbContr.SelectedIndex = 3;
+            tbContr.SelectedIndex = 3;           
             LoadProjects();
         }
         private void btnCustomerSearch_Click(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 2;
         }
-
+        
         // Cell Content Clicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -188,7 +188,7 @@ namespace Barroc_IT
                 else
                 {
                     btnViewProjects.Enabled = false;
-                }
+                } 
             }
         }
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -198,11 +198,10 @@ namespace Barroc_IT
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 string sqlCustomer = sqlhandler.GetQuery("loadCustomers");
                 DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomer, selectedCustomer);
-                string sqlProject = sqlhandler.GetQuery("loadProjects", selectedProject);
-                DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject, selectedCustomer, selectedProject);
-
+                string sqlProject = sqlhandler.GetQuery("loadProjectDetails", selectedCustomer, selectedProject);
+                DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject, selectedProject);                
                 LoadProjectDetails(customerDetails, projectDetails);
-                tbContr.SelectedIndex = 4;
+                tbContr.SelectedIndex = 4;                
             }
         }
 
@@ -251,12 +250,12 @@ namespace Barroc_IT
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
         private void LoadProjects()
-        {
+        {    
             dgvProjects.Rows.Clear();
             string sql = sqlhandler.GetQuery("loadProjects", selectedCustomer);
             DataTable projects = dthandler.SqlQueryToDataTableProject(sql, selectedCustomer);
-            AddItemsToDataGridView(projects, dgvProjects, "finProView");
-        }
+            AddItemsToDataGridView(projects, dgvProjects, "finProView");        
+        }       
 
         // Updaters / Editers
         private bool UpdateCustomer(int customerID)
@@ -344,7 +343,7 @@ namespace Barroc_IT
                 return false;
             }
         }
-
+       
         // Methods
         private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
@@ -354,7 +353,7 @@ namespace Barroc_IT
             foreach (DataRow dr in table.Rows)
             {
                 dataGridView.Rows.Add(dr.ItemArray);
-            }
+            }            
         }
 
         // Form closing
@@ -374,7 +373,7 @@ namespace Barroc_IT
             loginForm.ClearTextBoxes();
             loginForm.Show();
             this.Close();
-        }
+        }        
 
         private void btnProjectSearch_Click(object sender, EventArgs e)
         {
