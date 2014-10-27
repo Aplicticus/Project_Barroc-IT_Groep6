@@ -55,7 +55,7 @@ namespace Barroc_IT
                         {
                             case "administrator":
                                 this.Hide();
-                                frmAdmin formAdmin = new frmAdmin(handler);
+                                frmAdmin formAdmin = new frmAdmin(handler, this, dthandler, sqlhandler);
                                 formAdmin.Show();
                                 break;
                             case "sales":

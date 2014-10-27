@@ -16,15 +16,20 @@ namespace Barroc_IT
         // Read Querys
         public string GetQuery(string sqlQuery)
         {
+            // Sql Querys
             string loadCustomers = "SELECT * FROM tbl_Customers";
-            
-            
-            string[] sqlQueryStrings = { ""+ loadCustomers +""};
-                       
+            string loadUsers = "SELECT tbl_Users.USER_NAME, tbl_Users.DEPARTMENT FROM tbl_Users";
+
+            // Array
+            string[] sqlQueryStrings = { "" + loadCustomers + "", "" + loadUsers + "" };
+                
+            // Return Strings
             switch(sqlQuery)
             {
                 case "loadCustomers":
                     return sqlQueryStrings[0].ToString();
+                case "loadUsers":
+                    return sqlQueryStrings[1].ToString();
             }
             return sqlQuery;
         }
@@ -66,7 +71,11 @@ namespace Barroc_IT
             "WHERE tbl_Invoices.PROJECT_ID='" + customerID + "'";
 
 
-            string[] sqlQueryStrings = { "" + loadProjects + "", "" + loadInvoices + "", "" + loadCustomerDetails + "", "" + countInvoices + "", "" + countSales + "", "" + countProjects + "", "" + countValues + "", "" + loadAppointments + ""};
+            string[] sqlQueryStrings = { "" + loadProjects + "", "" 
+            + loadInvoices + "", "" + loadCustomerDetails + "", "" 
+            + countInvoices + "", "" + countSales + "", "" 
+            + countProjects + "", "" + countValues + "", "" 
+            + loadAppointments + ""};
 
             switch(sqlQuery)
             {
@@ -129,9 +138,10 @@ namespace Barroc_IT
             "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
             string addProject = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) " +
             "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
-           
+            string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT) " +
+            "VALUES (@Username, @Password, @Department)";
 
-            string[] sqlQueryStrings = { "" + addInvoice + "", ""+ addProject +""};
+            string[] sqlQueryStrings = { "" + addInvoice + "", ""+ addProject +"", ""+ addUser +""};
 
             switch(sqlQuery)
             {
@@ -139,6 +149,8 @@ namespace Barroc_IT
                     return sqlQueryStrings[0].ToString();
                 case "addProject":
                     return sqlQueryStrings[1].ToString();
+                case "addUser":
+                    return sqlQueryStrings[2].ToString();
             }
             return sqlQuery;
         }
