@@ -122,7 +122,7 @@ namespace Barroc_IT
                         selectedItem = Choice.CompanyName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer, true);
 
                 AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }

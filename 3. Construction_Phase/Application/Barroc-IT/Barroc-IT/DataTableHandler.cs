@@ -7,7 +7,9 @@ namespace Barroc_IT
     {
         CompanyName = 0,
         Email = 1,
-        Initials = 2        
+        Initials = 2,
+        ProjectName= 3,
+        ProjectSubject = 4
     }
     public class DataTableHandler
     {
@@ -73,7 +75,7 @@ namespace Barroc_IT
         }
 
         // Search
-        public DataTable SearchText(Choice choice, string searchString)
+        public DataTable SearchText(Choice choice, string searchString, int customerID, bool customer)
         {
             string selectedChoice = "";
             switch (choice)
@@ -86,13 +88,24 @@ namespace Barroc_IT
                     break;
                 case Choice.Initials:
                     selectedChoice = "INITIALS";
-                    break;                
+                    break;
                 default:
                     selectedChoice = "";
                     break;
             }
 
-            string sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice + " LIKE '%" + searchString + "%'";
+            string sqlQuery = "";
+
+            if (customer)
+            {
+                sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice + " LIKE '%" + searchString + "%'";
+            }
+            else
+            {
+                SqlQueryHandler queryHandler = new SqlQueryHandler();
+                sqlQuery = queryHandler.GetQuery("loadProjectsSearch", customerID, choice, searchString);
+            }
+
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);
