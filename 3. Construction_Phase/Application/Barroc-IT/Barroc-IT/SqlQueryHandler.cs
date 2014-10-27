@@ -232,7 +232,7 @@
         /// <param name="choice">The selected search.</param>
         /// <param name="searchText">The text to search for.</param>
         /// <returns>A query for searching text.</returns>
-        public string GetQuery(string sqlQuery, int customerID, Choice choice, string searchText)
+        public string GetQuery(string sqlQuery, int customerID, SearchChoice choice, string searchText)
         {
             string query = "";   
             
@@ -243,10 +243,10 @@
             string selectedChoice = "";
             switch (choice)
             {
-                case Choice.ProjectName:
+                case SearchChoice.ProjectName:
                     selectedChoice = "NAME";
                     break;
-                case Choice.ProjectSubject:
+                case SearchChoice.ProjectSubject:
                     selectedChoice = "SUBJECT";
                     break;
                 default:

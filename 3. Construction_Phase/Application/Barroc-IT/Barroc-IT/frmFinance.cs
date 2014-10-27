@@ -106,20 +106,20 @@ namespace Barroc_IT
         {
             if (txtCustomerSearch.Text.Length > 0)
             {
-                Choice selectedItem;
+                SearchChoice selectedItem;
                 switch (cBoxCustomerSearch.SelectedItem.ToString())
                 {
                     case "Company Name":
-                        selectedItem = Choice.CompanyName;
+                        selectedItem = SearchChoice.CompanyName;
                         break;
                     case "E-Mail":
-                        selectedItem = Choice.Email;
+                        selectedItem = SearchChoice.Email;
                         break;
                     case "Initials":
-                        selectedItem = Choice.Initials;
+                        selectedItem = SearchChoice.Initials;
                         break;
                     default:
-                        selectedItem = Choice.CompanyName;
+                        selectedItem = SearchChoice.CompanyName;
                         break;
                 }
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer, true);
