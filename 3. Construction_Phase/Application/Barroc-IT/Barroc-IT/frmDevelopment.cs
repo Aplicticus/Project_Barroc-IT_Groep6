@@ -197,9 +197,8 @@ namespace Barroc_IT
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 string sqlCustomer = sqlhandler.GetQuery("loadCustomers");
                 DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomer, selectedCustomer);
-                string sqlProject = sqlhandler.GetQuery("loadProjects", selectedProject);
-                DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject, selectedCustomer, selectedProject);
-                
+                string sqlProject = sqlhandler.GetQuery("loadProjectDetails", selectedCustomer, selectedProject);
+                DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject, selectedProject);                
                 LoadProjectDetails(customerDetails, projectDetails);
                 tbContr.SelectedIndex = 4;                
             }

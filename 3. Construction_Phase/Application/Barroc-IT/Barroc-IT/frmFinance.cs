@@ -258,7 +258,7 @@ namespace Barroc_IT
             BKRRecover();
         }
         private void ReloadProjects()
-        {
+        {            
             string sqlProject = sqlhandler.GetQuery("loadProjectDetails", selectedCustomer, selectedProject);
             DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject, selectedCustomer, selectedProject);
             string sqlValues = sqlhandler.GetQuery("countValues", selectedCustomer);
