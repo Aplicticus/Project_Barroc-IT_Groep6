@@ -13,14 +13,22 @@
 
         }
 
-        /// <summary>
-        /// The method returns the wanted query.
-        /// </summary>
-        /// <param name="sqlQuery">This is the query you want</param>
-        /// <returns>The wanted query.</returns>
-        /// 
+        string loadCustomers = "SELECT * FROM tbl_Customers";
+        string loadUsers = "SELECT tbl_Users.USER_NAME, tbl_Users.DEPARTMENT FROM tbl_Users";
 
+        //Insert querys
+        string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) " +
+        "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
+        string addProject = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) " +
+        "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
+        string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT) " +
+        "VALUES (@Username, @Password, @Department)";
 
+        //update querys
+        string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, " +
+        "LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
+        string updateDevProjectInfo = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, " +
+       "SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@ProjectID";
 
         // Default OuterJoins
         string OuterJoinProCus =
@@ -30,9 +38,28 @@
         string OuterJoinApoCus =
         "FULL OUTER JOIN tbl_Appointments ON tbl_Customers.CUSTOMER_ID=tbl_Appointments.CUSTOMER_ID ";
 
-        // Default Select Customer
+        string loadInvoiceDetails = "SELECT * FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID AND tbl_Invoices.INVOICE_ID = @invoiceID";
+        string loadProjectDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
 
+        string countInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
+        string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID=@customerID";
 
+        string loadProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
+        "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
+        "tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
+        "tbl_Invoices.INVOICE_SEND FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
+        string loadAppointments = "SELECT * FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
+        string countSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices WHERE tbl_Invoices.PROJECT_ID=@customerID";
+
+        //Update Querys
+        string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, tbl_Projects.SUBJECT FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string updateDevCustomerInfo = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, " +
+        "OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@customerID";
+        string updateDevAppointmentInfo = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact " +
+        "WHERE CUSTOMER_ID=@customerID";
 
         public string GetQuery(string sqlQuery)
         {
@@ -40,22 +67,7 @@
             string query = "";
 
             // Select querys
-            string loadCustomers = "SELECT * FROM tbl_Customers";
-            string loadUsers = "SELECT tbl_Users.USER_NAME, tbl_Users.DEPARTMENT FROM tbl_Users";
 
-            //Insert querys
-            string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) " +
-            "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
-            string addProject = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) " +
-            "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
-            string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT) " +
-            "VALUES (@Username, @Password, @Department)";
-
-            //update querys
-            string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, " +
-            "LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
-            string updateDevProjectInfo = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, " +
-           "SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@ProjectID";
 
             switch (sqlQuery)
             {
@@ -116,7 +128,7 @@
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
             string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices " +
             "WHERE tbl_Invoices.PROJECT_ID='" + customerID + "'";
-            
+
             //Update Querys
             string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
             "tbl_Projects.SUBJECT FROM tbl_Customers " + OuterJoinProCus +
@@ -136,7 +148,7 @@
                     break;
                 case "loadCustomerDetails":
                     query = loadCustomerDetails;
-                    break;                
+                    break;
                 case "countSales":
                     query = countSales;
                     break;
@@ -211,6 +223,8 @@
         {
             string query = "";
 
+
+            ///////\NOG TE DOEN :)
             string loadInvoiceDetails = "SELECT * FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='"
             + projectID + "' AND tbl_Invoices.INVOICE_ID ='" + invoiceID + "'";
@@ -226,45 +240,6 @@
             }
 
             return query;
-        }
-
-        /// <summary>
-        /// This method returns a query for searching a project in a database.
-        /// </summary>
-        /// <param name="sqlQuery">The query you want</param>
-        /// <param name="customerID">The current selected customer.</param>
-        /// <param name="choice">The selected search.</param>
-        /// <param name="searchText">The text to search for.</param>
-        /// <returns>A query for searching text.</returns>
-        public string GetQuery(string sqlQuery, int customerID, SearchChoice choice, string searchText)
-        {
-            string query = "";   
-            
-            string loadProjectsSearch = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " + OuterJoinProCus +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.";
-            string selectedChoice = "";
-            switch (choice)
-            {
-                case SearchChoice.ProjectName:
-                    selectedChoice = "NAME";
-                    break;
-                case SearchChoice.ProjectSubject:
-                    selectedChoice = "SUBJECT";
-                    break;
-                default:
-                    selectedChoice = "NAME";
-                    break;
-            }
-
-            if (sqlQuery == "loadProjectsSearch")
-            {
-                loadProjectsSearch += selectedChoice + " LIKE '%" + searchText + "%'";
-                query = loadProjectsSearch;
-            }
-
-            return query;
-            
         }
     }
 }
