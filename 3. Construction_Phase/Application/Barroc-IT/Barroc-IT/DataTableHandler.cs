@@ -5,59 +5,24 @@ namespace Barroc_IT
 {
     public class DataTableHandler
     {
-        DatabaseHandler handler; 
+        private DatabaseHandler handler;
+
         public DataTableHandler()
         {
             handler = new DatabaseHandler();            
         }
+
         public DataTableHandler(DatabaseHandler handler)
         {            
             this.handler = handler;
         }
 
-        // DataTables
+        /// <summary>
+        /// Executes a query with the entered sql
+        /// </summary>
+        /// <param name="sql">The query to execute</param>
+        /// <returns>DataTable result from query</returns>
         public DataTable SqlQueryToDataTable(string sql)
-        {
-            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
-            return DT;
-        }
-        public DataTable SqlQueryToDataTable(string sql, int customerID)
-        {
-            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
-            return DT;
-        }      
-        public DataTable SqlQueryToDataTable(string sql, int customerID, int projectID)
-        {
-            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
-            return DT;
-        }
-        public DataTable SqlQueryToDataTable(string sql, int customerID, int projectID, int invoiceID)
-        {
-            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
-            return DT;
-        }
-        
-        public DataTable SqlQueryToDataTableProject(string sql, int projectID)
-        {
-            SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-            DataTable DT = DS.Tables[0];
-            return DT;
-        }
-        public DataTable SqlQueryToDataTableAppointment(string sql, int customerID)
         {
             SqlDataAdapter DA = new SqlDataAdapter(sql, handler.GetConnection());
             DataSet DS = new DataSet();
