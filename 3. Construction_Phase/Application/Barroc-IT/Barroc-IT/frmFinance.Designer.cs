@@ -75,14 +75,12 @@
             this.lblFinLegderID = new System.Windows.Forms.Label();
             this.lblFinBTWCode = new System.Windows.Forms.Label();
             this.lblFinSales = new System.Windows.Forms.Label();
-            this.lblFinInvoices = new System.Windows.Forms.Label();
             this.lblFinBalance = new System.Windows.Forms.Label();
             this.txtFinSales = new System.Windows.Forms.TextBox();
             this.txtFinBTWCode = new System.Windows.Forms.TextBox();
             this.txtFinLegderID = new System.Windows.Forms.TextBox();
             this.lblFax = new System.Windows.Forms.Label();
             this.txtFinLimit = new System.Windows.Forms.TextBox();
-            this.txtFinInvoices = new System.Windows.Forms.TextBox();
             this.txtFinBalance = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtFinAccountID = new System.Windows.Forms.TextBox();
@@ -120,7 +118,7 @@
             this.lblProjectCompanyName = new System.Windows.Forms.Label();
             this.txtProjectSubject = new System.Windows.Forms.TextBox();
             this.lblProjectSubject = new System.Windows.Forms.Label();
-            this.txtProjectValue = new System.Windows.Forms.TextBox();
+            this.txtProjectInvoices = new System.Windows.Forms.TextBox();
             this.lblProjectValue = new System.Windows.Forms.Label();
             this.lblProjectDeadline = new System.Windows.Forms.Label();
             this.lblProjectName = new System.Windows.Forms.Label();
@@ -491,14 +489,12 @@
             this.tabPage3.Controls.Add(this.lblFinLegderID);
             this.tabPage3.Controls.Add(this.lblFinBTWCode);
             this.tabPage3.Controls.Add(this.lblFinSales);
-            this.tabPage3.Controls.Add(this.lblFinInvoices);
             this.tabPage3.Controls.Add(this.lblFinBalance);
             this.tabPage3.Controls.Add(this.txtFinSales);
             this.tabPage3.Controls.Add(this.txtFinBTWCode);
             this.tabPage3.Controls.Add(this.txtFinLegderID);
             this.tabPage3.Controls.Add(this.lblFax);
             this.tabPage3.Controls.Add(this.txtFinLimit);
-            this.tabPage3.Controls.Add(this.txtFinInvoices);
             this.tabPage3.Controls.Add(this.txtFinBalance);
             this.tabPage3.Controls.Add(this.lblEmail);
             this.tabPage3.Controls.Add(this.txtFinAccountID);
@@ -523,7 +519,7 @@
             // 
             // txtFinProjects
             // 
-            this.txtFinProjects.Location = new System.Drawing.Point(228, 300);
+            this.txtFinProjects.Location = new System.Drawing.Point(226, 264);
             this.txtFinProjects.Name = "txtFinProjects";
             this.txtFinProjects.ReadOnly = true;
             this.txtFinProjects.Size = new System.Drawing.Size(137, 20);
@@ -533,7 +529,7 @@
             // 
             this.lblFinProjects.AutoSize = true;
             this.lblFinProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinProjects.Location = new System.Drawing.Point(29, 294);
+            this.lblFinProjects.Location = new System.Drawing.Point(27, 258);
             this.lblFinProjects.Name = "lblFinProjects";
             this.lblFinProjects.Size = new System.Drawing.Size(188, 25);
             this.lblFinProjects.TabIndex = 228;
@@ -652,16 +648,6 @@
             this.lblFinSales.TabIndex = 217;
             this.lblFinSales.Text = "Sales:";
             // 
-            // lblFinInvoices
-            // 
-            this.lblFinInvoices.AutoSize = true;
-            this.lblFinInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinInvoices.Location = new System.Drawing.Point(29, 260);
-            this.lblFinInvoices.Name = "lblFinInvoices";
-            this.lblFinInvoices.Size = new System.Drawing.Size(190, 25);
-            this.lblFinInvoices.TabIndex = 216;
-            this.lblFinInvoices.Text = "Number Of Invoices:";
-            // 
             // lblFinBalance
             // 
             this.lblFinBalance.AutoSize = true;
@@ -713,14 +699,6 @@
             this.txtFinLimit.ReadOnly = true;
             this.txtFinLimit.Size = new System.Drawing.Size(137, 20);
             this.txtFinLimit.TabIndex = 210;
-            // 
-            // txtFinInvoices
-            // 
-            this.txtFinInvoices.Location = new System.Drawing.Point(228, 265);
-            this.txtFinInvoices.Name = "txtFinInvoices";
-            this.txtFinInvoices.ReadOnly = true;
-            this.txtFinInvoices.Size = new System.Drawing.Size(137, 20);
-            this.txtFinInvoices.TabIndex = 209;
             // 
             // txtFinBalance
             // 
@@ -991,7 +969,7 @@
             this.tabPage5.Controls.Add(this.lblProjectCompanyName);
             this.tabPage5.Controls.Add(this.txtProjectSubject);
             this.tabPage5.Controls.Add(this.lblProjectSubject);
-            this.tabPage5.Controls.Add(this.txtProjectValue);
+            this.tabPage5.Controls.Add(this.txtProjectInvoices);
             this.tabPage5.Controls.Add(this.lblProjectValue);
             this.tabPage5.Controls.Add(this.lblProjectDeadline);
             this.tabPage5.Controls.Add(this.lblProjectName);
@@ -1082,13 +1060,13 @@
             this.lblProjectSubject.TabIndex = 155;
             this.lblProjectSubject.Text = "Subject:";
             // 
-            // txtProjectValue
+            // txtProjectInvoices
             // 
-            this.txtProjectValue.Location = new System.Drawing.Point(214, 174);
-            this.txtProjectValue.Name = "txtProjectValue";
-            this.txtProjectValue.ReadOnly = true;
-            this.txtProjectValue.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectValue.TabIndex = 154;
+            this.txtProjectInvoices.Location = new System.Drawing.Point(214, 174);
+            this.txtProjectInvoices.Name = "txtProjectInvoices";
+            this.txtProjectInvoices.ReadOnly = true;
+            this.txtProjectInvoices.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectInvoices.TabIndex = 154;
             // 
             // lblProjectValue
             // 
@@ -1096,9 +1074,9 @@
             this.lblProjectValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectValue.Location = new System.Drawing.Point(28, 170);
             this.lblProjectValue.Name = "lblProjectValue";
-            this.lblProjectValue.Size = new System.Drawing.Size(174, 25);
+            this.lblProjectValue.Size = new System.Drawing.Size(190, 25);
             this.lblProjectValue.TabIndex = 153;
-            this.lblProjectValue.Text = "Total Projectvalue:";
+            this.lblProjectValue.Text = "Number Of Invoices:";
             // 
             // lblProjectDeadline
             // 
@@ -1595,14 +1573,12 @@
         private System.Windows.Forms.Label lblFinLegderID;
         private System.Windows.Forms.Label lblFinBTWCode;
         private System.Windows.Forms.Label lblFinSales;
-        private System.Windows.Forms.Label lblFinInvoices;
         private System.Windows.Forms.Label lblFinBalance;
         private System.Windows.Forms.TextBox txtFinSales;
         private System.Windows.Forms.TextBox txtFinBTWCode;
         private System.Windows.Forms.TextBox txtFinLegderID;
         private System.Windows.Forms.Label lblFax;
         private System.Windows.Forms.TextBox txtFinLimit;
-        private System.Windows.Forms.TextBox txtFinInvoices;
         private System.Windows.Forms.TextBox txtFinBalance;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtFinAccountID;
@@ -1631,7 +1607,7 @@
         private System.Windows.Forms.Label lblProjectCompanyName;
         private System.Windows.Forms.TextBox txtProjectSubject;
         private System.Windows.Forms.Label lblProjectSubject;
-        private System.Windows.Forms.TextBox txtProjectValue;
+        private System.Windows.Forms.TextBox txtProjectInvoices;
         private System.Windows.Forms.Label lblProjectValue;
         private System.Windows.Forms.Label lblProjectDeadline;
         private System.Windows.Forms.Label lblProjectName;
@@ -1698,13 +1674,13 @@
         private System.Windows.Forms.Label lblCustomers;
         private System.Windows.Forms.Label lblProjects;
         private System.Windows.Forms.Label lblListInvoices;
+        private System.Windows.Forms.TextBox txtFinProjects;
+        private System.Windows.Forms.Label lblFinProjects;
         private System.Windows.Forms.DataGridViewButtonColumn finProView;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProCompanyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProName;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
-        private System.Windows.Forms.TextBox txtFinProjects;
-        private System.Windows.Forms.Label lblFinProjects;
     }
 }
