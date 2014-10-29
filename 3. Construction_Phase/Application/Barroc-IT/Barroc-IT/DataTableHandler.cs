@@ -17,6 +17,11 @@ namespace Barroc_IT
             this.handler = handler;
         }
 
+        /// <summary>
+        /// Executes a sql query.
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns>A DataTable result from the executed query.</returns>
         public DataTable ExecuteQuery(string sql)
         {
             SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
@@ -28,11 +33,11 @@ namespace Barroc_IT
         }
 
         /// <summary>
-        /// Executes a sql query with parameter
+        /// Executes a sql query with parameters.
         /// </summary>
-        /// <param name="sql"></param>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
+        /// <param name="sql">The query to execute.</param>
+        /// <param name="parameters">The parameters to add into the query.</param>
+        /// <returns>A DataTable result from the executed query.</returns>
         public DataTable ExecuteQuery(string sql, SqlParameter[] parameters)
         {
             SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
@@ -48,7 +53,14 @@ namespace Barroc_IT
             return DT;
         }
 
-        // Search
+        /// <summary>
+        /// Searches for a SearchChoice in the database.
+        /// The table is automatticly determined by the SearchChoice.
+        /// </summary>
+        /// <param name="choice">The UserSelected Choice to search for.</param>
+        /// <param name="searchString">The text to search for.</param>
+        /// <param name="customerID">The customer id.</param>
+        /// <returns></returns>
         public DataTable SearchText(SearchChoice choice, string searchString, int customerID)
         {
             bool customer = false;
