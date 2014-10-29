@@ -179,11 +179,11 @@ namespace Barroc_IT
 
                 string sqlAppointments = sqlhandler.GetQuery(Query.loadAppointments);
                 SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
-                DataTable appointmentDetails = dthandler.ExecuteQuery(sqlAppointments);
+                DataTable appointmentDetails = dthandler.ExecuteQuery(sqlAppointments, collection);
 
                 string sqlCountProjects = sqlhandler.GetQuery(Query.countProjects);
                 collection = new SqlParameter[]{ new SqlParameter("customerID", selectedCustomer) };
-                DataTable projectCount = dthandler.ExecuteQuery(sqlCountProjects);
+                DataTable projectCount = dthandler.ExecuteQuery(sqlCountProjects, collection);
                 LoadCustomerDetails(customerDetails, appointmentDetails, projectCount);
 
                 tbContr.SelectedIndex = 2;
@@ -265,7 +265,7 @@ namespace Barroc_IT
             string sql = sqlhandler.GetQuery(Query.loadProjects);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
 
-            DataTable projects = dthandler.ExecuteQuery(sql);
+            DataTable projects = dthandler.ExecuteQuery(sql, collection);
             AddItemsToDataGridView(projects, dgvProjects, "finProView");        
         }       
 
