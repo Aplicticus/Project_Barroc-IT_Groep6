@@ -70,7 +70,7 @@ namespace Barroc_IT
             dgvAdminUserInfo.Rows.Clear();
 
             string selectUsers = sqlhandler.GetQuery("loadUsers");
-            DataTable customers = dthandler.SqlQueryToDataTable(selectUsers);
+            DataTable customers = dthandler.ExecuteQuery(selectUsers);
             AddItemsToDataGridView(customers, dgvAdminUserInfo, "cUserID");
         }
 

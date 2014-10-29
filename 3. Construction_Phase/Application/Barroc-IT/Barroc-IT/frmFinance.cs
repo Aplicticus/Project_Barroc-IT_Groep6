@@ -71,7 +71,7 @@ namespace Barroc_IT
             {
                 UpdateCustomer(selectedCustomer);
                 string sql = sqlhandler.GetQuery("loadCustomerDetails", selectedCustomer);
-                DataTable customerDetails = dthandler.SqlQueryToDataTable(sql);                 
+                DataTable customerDetails = dthandler.ExecuteQuery(sql);                 
                 txtFinAccountID.ReadOnly = true;
                 txtFinBalance.ReadOnly = true;
                 txtFinLimit.ReadOnly = true;
@@ -225,21 +225,21 @@ namespace Barroc_IT
             dgvCustomers.Rows.Clear();
 
             string selectCustomers = sqlhandler.GetQuery("loadCustomers");
-            DataTable customers = dthandler.SqlQueryToDataTable(selectCustomers);
+            DataTable customers = dthandler.ExecuteQuery(selectCustomers);
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
         private void LoadProjects()
         {
             dgvProjects.Rows.Clear();
             string sql = sqlhandler.GetQuery("loadProjects", selectedCustomer);
-            DataTable projects = dthandler.SqlQueryToDataTable(sql);
+            DataTable projects = dthandler.ExecuteQuery(sql);
             AddItemsToDataGridView(projects, dgvProjects, "finProView");
         }
         private void LoadInvoices()
         {
             dgvInvoices.Rows.Clear();
             string sql = sqlhandler.GetQuery("loadInvoices", selectedProject);
-            DataTable invoices = dthandler.SqlQueryToDataTable(sql);
+            DataTable invoices = dthandler.ExecuteQuery(sql);
             AddItemsToDataGridView(invoices, dgvInvoices, "finInvView");
         }
 
@@ -247,28 +247,28 @@ namespace Barroc_IT
         private void ReloadCustomers()
         {
             string sqlCustomers = sqlhandler.GetQuery("loadCustomerDetails", selectedCustomer);
-            DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomers);
+            DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers);
             string sqlInvoice = sqlhandler.GetQuery("countInvoices", selectedCustomer);
-            DataTable invoiceCount = dthandler.SqlQueryToDataTable(sqlInvoice);
+            DataTable invoiceCount = dthandler.ExecuteQuery(sqlInvoice);
             string sqlSales = sqlhandler.GetQuery("countSales", selectedCustomer);
-            DataTable salesCount = dthandler.SqlQueryToDataTable(sqlSales);
+            DataTable salesCount = dthandler.ExecuteQuery(sqlSales);
             string sqlProject = sqlhandler.GetQuery("countProjects", selectedCustomer);
-            DataTable projectCount = dthandler.SqlQueryToDataTable(sqlProject);
+            DataTable projectCount = dthandler.ExecuteQuery(sqlProject);
             LoadCustomerDetails(customerDetails, invoiceCount, projectCount, salesCount);            
             BKRRecover();
         }
         private void ReloadProjects()
         {            
             string sqlProject = sqlhandler.GetQuery("loadProjectDetails", selectedCustomer, selectedProject);
-            DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject);
+            DataTable projectDetails = dthandler.ExecuteQuery(sqlProject);
             string sqlValues = sqlhandler.GetQuery("countValues", selectedCustomer);
-            DataTable valueDetails = dthandler.SqlQueryToDataTable(sqlValues);
+            DataTable valueDetails = dthandler.ExecuteQuery(sqlValues);
             LoadProjectDetails(projectDetails, valueDetails);
         }
         private void ReloadInvoices()
         {
             string sql = sqlhandler.GetQuery("loadInvoiceDetails", selectedCustomer, selectedProject, selectedInvoice);
-            DataTable invoiceDetails = dthandler.SqlQueryToDataTable(sql);
+            DataTable invoiceDetails = dthandler.ExecuteQuery(sql);
             LoadInvoiceDetails(invoiceDetails);            
         }
 

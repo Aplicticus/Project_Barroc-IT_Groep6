@@ -50,7 +50,7 @@ namespace Barroc_IT
         private void btnAddProjectCustomer_Click(object sender, EventArgs e)
         {          
             string loadCustomerDetails = sqlhandler.GetQuery("loadCustomerDetails", selectedCustomer);
-            DataTable dtCustomerResult = dthandler.SqlQueryToDataTable(loadCustomerDetails);
+            DataTable dtCustomerResult = dthandler.ExecuteQuery(loadCustomerDetails);
             foreach (DataRow dr in dtCustomerResult.Rows)
             {
                 txtProjectAddCompanyName.Text = dr["COMPANYNAME"].ToString();
@@ -72,7 +72,7 @@ namespace Barroc_IT
             {
                 UpdateProject(selectedProject);
                 string sql = sqlhandler.GetQuery("updateFinProjectInfo", selectedCustomer);
-                dthandler.SqlQueryToDataTable(sql);
+                dthandler.ExecuteQuery(sql);
                 txtProjectName.ReadOnly = true;
                 txtProjectSubject.ReadOnly = true;
                 txtProjectValue.ReadOnly = true;
@@ -104,13 +104,13 @@ namespace Barroc_IT
                         selectedItem = SearchChoice.CompanyName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer, true);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
                 AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
             else
             {
                 string selectCustomers = "SELECT * FROM tbl_Customers";
-                DataTable customers = dthandler.SqlQueryToDataTable(selectCustomers);
+                DataTable customers = dthandler.ExecuteQuery(selectCustomers);
                 AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
             }
         }
@@ -173,11 +173,11 @@ namespace Barroc_IT
             {
                 selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
                 string sqlCustomer = sqlhandler.GetQuery("loadCustomers");
-                DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomer);
+                DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomer);
                 string sqlAppointments = sqlhandler.GetQuery("loadAppointments", selectedCustomer);
-                DataTable appointmentDetails = dthandler.SqlQueryToDataTable(sqlAppointments);
+                DataTable appointmentDetails = dthandler.ExecuteQuery(sqlAppointments);
                 string sqlCountProjects = sqlhandler.GetQuery("countProjects", selectedCustomer);
-                DataTable projectCount = dthandler.SqlQueryToDataTable(sqlCountProjects);
+                DataTable projectCount = dthandler.ExecuteQuery(sqlCountProjects);
                 LoadCustomerDetails(customerDetails, appointmentDetails, projectCount);
                 tbContr.SelectedIndex = 2;
                 int temp = 0;
@@ -197,9 +197,9 @@ namespace Barroc_IT
             {
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 string sqlCustomer = sqlhandler.GetQuery("loadCustomers");
-                DataTable customerDetails = dthandler.SqlQueryToDataTable(sqlCustomer);
+                DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomer);
                 string sqlProject = sqlhandler.GetQuery("loadProjectDetails", selectedCustomer, selectedProject);
-                DataTable projectDetails = dthandler.SqlQueryToDataTable(sqlProject);                
+                DataTable projectDetails = dthandler.ExecuteQuery(sqlProject);                
                 LoadProjectDetails(customerDetails, projectDetails);
                 tbContr.SelectedIndex = 4;                
             }
@@ -246,14 +246,14 @@ namespace Barroc_IT
             dgvCustomers.Rows.Clear();
 
             string selectCustomers = sqlhandler.GetQuery("loadCustomers");
-            DataTable customers = dthandler.SqlQueryToDataTable(selectCustomers);
+            DataTable customers = dthandler.ExecuteQuery(selectCustomers);
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
         private void LoadProjects()
         {    
             dgvProjects.Rows.Clear();
             string sql = sqlhandler.GetQuery("loadProjects", selectedCustomer);
-            DataTable projects = dthandler.SqlQueryToDataTable(sql);
+            DataTable projects = dthandler.ExecuteQuery(sql);
             AddItemsToDataGridView(projects, dgvProjects, "finProView");        
         }       
 
@@ -392,13 +392,13 @@ namespace Barroc_IT
                         selectedItem = SearchChoice.ProjectName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtProjectSearch.Text, selectedCustomer, false);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtProjectSearch.Text, selectedCustomer);
                 AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
             }
             else
             {
                 string selectCustomers = sqlhandler.GetQuery("loadProjects", selectedCustomer);
-                DataTable customers = dthandler.SqlQueryToDataTable(selectCustomers);
+                DataTable customers = dthandler.ExecuteQuery(selectCustomers);
                 AddItemsToDataGridView(customers, dgvProjects, "cProjectID");
             }
         }
