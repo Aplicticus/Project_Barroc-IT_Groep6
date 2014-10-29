@@ -33,7 +33,7 @@ namespace Barroc_IT
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public DataTable ExecuteQuery(string sql, SqlParameterCollection parameters)
+        public DataTable ExecuteQuery(string sql, SqlParameter[] parameters)
         {
             SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
             foreach (SqlParameter parameter in parameters)
