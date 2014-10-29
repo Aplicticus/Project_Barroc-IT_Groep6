@@ -3,12 +3,6 @@ using System.Data.SqlClient;
 
 namespace Barroc_IT
 {
-    public enum Choice
-    {
-        CompanyName = 0,
-        Email = 1,
-        Initials = 2        
-    }
     public class DataTableHandler
     {
         DatabaseHandler handler; 
@@ -73,26 +67,37 @@ namespace Barroc_IT
         }
 
         // Search
-        public DataTable SearchText(Choice choice, string searchString)
+        public DataTable SearchText(SearchChoice choice, string searchString, int customerID, bool customer)
         {
             string selectedChoice = "";
             switch (choice)
             {
-                case Choice.CompanyName:
+                case SearchChoice.CompanyName:
                     selectedChoice = "COMPANYNAME";
                     break;
-                case Choice.Email:
+                case SearchChoice.Email:
                     selectedChoice = "EMAIL";
                     break;
-                case Choice.Initials:
+                case SearchChoice.Initials:
                     selectedChoice = "INITIALS";
-                    break;                
+                    break;
                 default:
                     selectedChoice = "";
                     break;
             }
 
-            string sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice + " LIKE '%" + searchString + "%'";
+            string sqlQuery = "";
+
+            if (customer)
+            {
+                sqlQuery = "SELECT * FROM tbl_Customers WHERE " + selectedChoice + " LIKE '%" + searchString + "%'";
+            }
+            else
+            {
+                SqlQueryHandler queryHandler = new SqlQueryHandler();
+                sqlQuery = queryHandler.GetQuery("loadProjectsSearch", customerID, choice, searchString);
+            }
+
             SqlDataAdapter DA = new SqlDataAdapter(sqlQuery, handler.GetConnection());
             DataSet DS = new DataSet();
             DA.Fill(DS);

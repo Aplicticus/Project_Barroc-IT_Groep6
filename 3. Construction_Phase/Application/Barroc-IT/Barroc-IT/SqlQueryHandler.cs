@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Barroc_IT
+﻿namespace Barroc_IT
 {
+    /// <summary>
+    /// Class for getting the correct query.
+    /// </summary>
     public class SqlQueryHandler
     {
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public SqlQueryHandler()
         {
 
         }
 
+        /// <summary>
+        /// The method returns the wanted query.
+        /// </summary>
+        /// <param name="sqlQuery">This is the query you want</param>
+        /// <returns>The wanted query.</returns>
         public string GetQuery(string sqlQuery)
         {
             // Default
@@ -65,6 +70,13 @@ namespace Barroc_IT
             }
             return query;
         }
+
+        /// <summary>
+        /// The method returns the wanted query with a customer id inserted.
+        /// </summary>
+        /// <param name="sqlQuery">This is the query you want</param>
+        /// <param name="customerID">The current selected customer</param>
+        /// <returns>The query with customerid inserted.</returns>
         public string GetQuery(string sqlQuery, int customerID)
         {
             // Default
@@ -152,6 +164,14 @@ namespace Barroc_IT
 
             return query;
         }
+
+        /// <summary>
+        /// This method returns the query with a customer id and project id inserted.
+        /// </summary>
+        /// <param name="sqlQuery">The query you want.</param>
+        /// <param name="customerID">The current selected customer.</param>
+        /// <param name="projectID">The current selected project.</param>
+        /// <returns>The final query with customerid and projectid inserted.</returns>
         public string GetQuery(string sqlQuery, int customerID, int projectID)
         {
             string query = "";
@@ -172,6 +192,15 @@ namespace Barroc_IT
 
             return query;
         }
+
+        /// <summary>
+        /// This method returns the query with a customer, project, invoice id inserted.
+        /// </summary>
+        /// <param name="sqlQuery">The query you want</param>
+        /// <param name="customerID">The current selected customer.</param>
+        /// <param name="projectID">The current selected project</param>
+        /// <param name="invoiceID">The current selected invoice</param>
+        /// <returns>The final query with customerid, projectid and invoiceid inserted.</returns>
         public string GetQuery(string sqlQuery, int customerID, int projectID, int invoiceID)
         {
             string query = "";
@@ -195,5 +224,44 @@ namespace Barroc_IT
             return query;
         }
 
+        /// <summary>
+        /// This method returns a query for searching a project in a database.
+        /// </summary>
+        /// <param name="sqlQuery">The query you want</param>
+        /// <param name="customerID">The current selected customer.</param>
+        /// <param name="choice">The selected search.</param>
+        /// <param name="searchText">The text to search for.</param>
+        /// <returns>A query for searching text.</returns>
+        public string GetQuery(string sqlQuery, int customerID, SearchChoice choice, string searchText)
+        {
+            string query = "";   
+            
+            string loadProjectsSearch = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
+            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " +
+            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.";
+            string selectedChoice = "";
+            switch (choice)
+            {
+                case SearchChoice.ProjectName:
+                    selectedChoice = "NAME";
+                    break;
+                case SearchChoice.ProjectSubject:
+                    selectedChoice = "SUBJECT";
+                    break;
+                default:
+                    selectedChoice = "NAME";
+                    break;
+            }
+
+            if (sqlQuery == "loadProjectsSearch")
+            {
+                loadProjectsSearch += selectedChoice + " LIKE '%" + searchText + "%'";
+                query = loadProjectsSearch;
+            }
+
+            return query;
+            
+        }
     }
 }

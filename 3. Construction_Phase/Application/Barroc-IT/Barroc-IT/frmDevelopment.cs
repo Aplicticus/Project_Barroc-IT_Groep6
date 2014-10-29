@@ -21,6 +21,7 @@ namespace Barroc_IT
         {
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
+            cBoxProjectSearch.SelectedIndex = 0;
             this.handler = handler;
             this.loginForm = loginForm;
             this.dthandler = dthandler;
@@ -87,23 +88,23 @@ namespace Barroc_IT
         {
             if (txtCustomerSearch.Text.Length > 0)
             {
-                Choice selectedItem;
+                SearchChoice selectedItem;
                 switch (cBoxCustomerSearch.SelectedItem.ToString())
                 {
                     case "Company Name":
-                        selectedItem = Choice.CompanyName;
+                        selectedItem = SearchChoice.CompanyName;
                         break;
                     case "E-Mail":
-                        selectedItem = Choice.Email;
+                        selectedItem = SearchChoice.Email;
                         break;
                     case "Initials":
-                        selectedItem = Choice.Initials;
+                        selectedItem = SearchChoice.Initials;
                         break;
                     default:
-                        selectedItem = Choice.CompanyName;
+                        selectedItem = SearchChoice.CompanyName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer, true);
                 AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
             else
@@ -373,5 +374,33 @@ namespace Barroc_IT
             loginForm.Show();
             this.Close();
         }        
+
+        private void btnProjectSearch_Click(object sender, EventArgs e)
+        {
+            if (txtProjectSearch.Text.Length > 0)
+            {
+                SearchChoice selectedItem;
+                switch (cBoxProjectSearch.SelectedItem.ToString())
+                {
+                    case "Project Name":
+                        selectedItem = SearchChoice.ProjectName;
+                        break;
+                    case "Subject":
+                        selectedItem = SearchChoice.ProjectSubject;
+                        break;
+                    default:
+                        selectedItem = SearchChoice.ProjectName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtProjectSearch.Text, selectedCustomer, false);
+                AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
+            }
+            else
+            {
+                string selectCustomers = sqlhandler.GetQuery("loadProjects", selectedCustomer);
+                DataTable customers = dthandler.SqlQueryToDataTable(selectCustomers);
+                AddItemsToDataGridView(customers, dgvProjects, "cProjectID");
+            }
+        }
     }
 }
