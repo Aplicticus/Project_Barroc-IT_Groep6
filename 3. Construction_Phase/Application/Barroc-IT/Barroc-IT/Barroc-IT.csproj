@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Choice.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="DataTableHandler.cs" />
     <Compile Include="frmDevelopment.cs">
       <SubType>Form</SubType>
