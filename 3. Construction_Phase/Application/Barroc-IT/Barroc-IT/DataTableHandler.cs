@@ -17,6 +17,16 @@ namespace Barroc_IT
             this.handler = handler;
         }
 
+        public DataTable ExecuteQuery(string sql)
+        {
+            SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
+            SqlDataAdapter DA = new SqlDataAdapter(cmd);
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+            DataTable DT = DS.Tables[0];
+            return DT;
+        }
+
         /// <summary>
         /// Executes a sql query with parameter
         /// </summary>

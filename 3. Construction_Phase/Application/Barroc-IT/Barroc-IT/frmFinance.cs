@@ -189,7 +189,7 @@ namespace Barroc_IT
         // Methods       
         private bool AddInvoice()
         {
-            string sqlQuery = sqlhandler.GetQuery("addInvoice");
+            string sqlQuery = sqlhandler.GetQuery(Query.addInvoice);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("@SelectedProject", selectedProject));
             cmd.Parameters.Add(new SqlParameter("@InvoiceVal", numFinInvoiceAddValue.Value));
@@ -223,7 +223,7 @@ namespace Barroc_IT
         private void LoadCustomers()
         {
             dgvCustomers.Rows.Clear();
-            string selectCustomers = sqlhandler.GetQuery("loadCustomers");
+            string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
             DataTable customers = dthandler.ExecuteQuery(selectCustomers);
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
