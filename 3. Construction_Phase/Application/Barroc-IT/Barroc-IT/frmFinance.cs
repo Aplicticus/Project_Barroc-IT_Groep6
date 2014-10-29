@@ -122,7 +122,7 @@ namespace Barroc_IT
                         selectedItem = SearchChoice.CompanyName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer, true);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
 
                 AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
@@ -232,14 +232,15 @@ namespace Barroc_IT
             dgvProjects.Rows.Clear();
             string sql = sqlhandler.GetQuery(Query.loadProjects);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };  
-            DataTable projects = dthandler.ExecuteQuery(sql);
+            DataTable projects = dthandler.ExecuteQuery(sql, collection);
             AddItemsToDataGridView(projects, dgvProjects, "finProView");
         }
         private void LoadInvoices()
         {
             dgvInvoices.Rows.Clear();
             string sql = sqlhandler.GetQuery(Query.loadInvoices);
-            DataTable invoices = dthandler.ExecuteQuery(sql);
+            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject) };  
+            DataTable invoices = dthandler.ExecuteQuery(sql, collection);
             AddItemsToDataGridView(invoices, dgvInvoices, "finInvView");
         }
 
@@ -247,28 +248,40 @@ namespace Barroc_IT
         private void ReloadCustomers()
         {
             string sqlCustomers = sqlhandler.GetQuery(Query.loadCustomerDetails);
-            DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers);
+            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) }; 
+            DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
+
             string sqlInvoice = sqlhandler.GetQuery(Query.countInvoices);
-            DataTable invoiceCount = dthandler.ExecuteQuery(sqlInvoice);
+            collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject) };
+            DataTable invoiceCount = dthandler.ExecuteQuery(sqlInvoice, collection);
+
             string sqlSales = sqlhandler.GetQuery(Query.countSales);
-            DataTable salesCount = dthandler.ExecuteQuery(sqlSales);
+            collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
+            DataTable salesCount = dthandler.ExecuteQuery(sqlSales, collection);
+
             string sqlProject = sqlhandler.GetQuery(Query.countProjects);
-            DataTable projectCount = dthandler.ExecuteQuery(sqlProject);
+            collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
+            DataTable projectCount = dthandler.ExecuteQuery(sqlProject, collection);
+
             LoadCustomerDetails(customerDetails, invoiceCount, projectCount, salesCount);            
             BKRRecover();
         }
         private void ReloadProjects()
         {            
             string sqlProject = sqlhandler.GetQuery(Query.loadProjectDetails);
-            DataTable projectDetails = dthandler.ExecuteQuery(sqlProject);
+            SqlParameter[] collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject) };           
+            DataTable projectDetails = dthandler.ExecuteQuery(sqlProject, collection);
+
             string sqlValues = sqlhandler.GetQuery(Query.countInvoices);
-            DataTable valueDetails = dthandler.ExecuteQuery(sqlValues);
+            collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject) };
+            DataTable valueDetails = dthandler.ExecuteQuery(sqlValues, collection);
             LoadProjectDetails(projectDetails, valueDetails);
         }
         private void ReloadInvoices()
         {
             string sql = sqlhandler.GetQuery(Query.loadInvoiceDetails);
-            DataTable invoiceDetails = dthandler.ExecuteQuery(sql);
+            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject), new SqlParameter("invoiceID", selectedInvoice) };
+            DataTable invoiceDetails = dthandler.ExecuteQuery(sql, collection);
             LoadInvoiceDetails(invoiceDetails);            
         }
 
