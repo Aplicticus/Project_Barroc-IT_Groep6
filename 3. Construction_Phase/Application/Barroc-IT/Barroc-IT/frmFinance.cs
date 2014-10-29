@@ -165,8 +165,8 @@ namespace Barroc_IT
                 selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                 ReloadProjects();
                 tbContr.SelectedIndex = 4;
-                string temp = "";
-                if (txtProjectValue.Text != temp)
+                int temp = 0;
+                if (txtProjectInvoices.Text != temp.ToString())
                 {
                     btnViewInvoices.Enabled = true;
                 }
@@ -223,7 +223,6 @@ namespace Barroc_IT
         private void LoadCustomers()
         {
             dgvCustomers.Rows.Clear();
-
             string selectCustomers = sqlhandler.GetQuery("loadCustomers");
             DataTable customers = dthandler.ExecuteQuery(selectCustomers);
             AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
@@ -261,7 +260,7 @@ namespace Barroc_IT
         {            
             string sqlProject = sqlhandler.GetQuery("loadProjectDetails", selectedCustomer, selectedProject);
             DataTable projectDetails = dthandler.ExecuteQuery(sqlProject);
-            string sqlValues = sqlhandler.GetQuery("countValues", selectedCustomer);
+            string sqlValues = sqlhandler.GetQuery("countInvoices", selectedCustomer);
             DataTable valueDetails = dthandler.ExecuteQuery(sqlValues);
             LoadProjectDetails(projectDetails, valueDetails);
         }
@@ -348,7 +347,6 @@ namespace Barroc_IT
             txtFinBTWCode.Text = CusRow["BTW_CODE"].ToString();
             cbFinBKR.Text = CusRow["BKR"].ToString();
             DataRow InvRow = InvCount.Rows[0];
-            txtFinInvoices.Text = InvRow[0].ToString();
             DataRow ProRow = ProCount.Rows[0];
             txtFinProjects.Text = ProRow[0].ToString();
             DataRow InvVal = SalCount.Rows[0];
@@ -364,7 +362,7 @@ namespace Barroc_IT
             dtpDeadlineViewProject.Value = projectDeadline;
             txtProjectSubject.Text = DR["SUBJECT"].ToString();
             DataRow DRVal = DTVal.Rows[0];
-            txtProjectValue.Text = DRVal[0].ToString();
+            txtProjectInvoices.Text = DRVal[0].ToString();
         }
         private void LoadInvoiceDetails(DataTable InvTable)
         {

@@ -18,6 +18,22 @@
         /// </summary>
         /// <param name="sqlQuery">This is the query you want</param>
         /// <returns>The wanted query.</returns>
+        /// 
+
+
+
+        // Default OuterJoins
+        string OuterJoinProCus =
+        "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID ";
+        string OuterJoinInvPro =
+        "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID ";
+        string OuterJoinApoCus =
+        "FULL OUTER JOIN tbl_Appointments ON tbl_Customers.CUSTOMER_ID=tbl_Appointments.CUSTOMER_ID ";
+
+        // Default Select Customer
+
+
+
         public string GetQuery(string sqlQuery)
         {
             // Default
@@ -86,36 +102,24 @@
             string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID='" + customerID + "'";
 
             string loadProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " + OuterJoinProCus +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
             string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
             "tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
-            "tbl_Invoices.INVOICE_SEND FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            "tbl_Invoices.INVOICE_SEND FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
             "WHERE tbl_Projects.PROJECT_ID='" + customerID + "'";
-            string loadAppointments = "SELECT * FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Appointments ON tbl_Customers.CUSTOMER_ID=tbl_Appointments.CUSTOMER_ID " +
+            string loadAppointments = "SELECT * FROM tbl_Customers " + OuterJoinApoCus +
             "WHERE tbl_Appointments.CUSTOMER_ID='" + customerID + "'";
-            string countInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            string countSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
-            string countSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
-            string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers " + OuterJoinProCus +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
             string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices " +
             "WHERE tbl_Invoices.PROJECT_ID='" + customerID + "'";
             
             //Update Querys
             string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-            "tbl_Projects.SUBJECT FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "tbl_Projects.SUBJECT FROM tbl_Customers " + OuterJoinProCus +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
             string updateDevCustomerInfo = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, " +
             "OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@customerID";
@@ -132,10 +136,7 @@
                     break;
                 case "loadCustomerDetails":
                     query = loadCustomerDetails;
-                    break;
-                case "countInvoices":
-                    query = countInvoices;
-                    break;
+                    break;                
                 case "countSales":
                     query = countSales;
                     break;
@@ -176,14 +177,19 @@
         {
             string query = "";
 
-            string loadProjectDetails = "SELECT * FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            string loadProjectDetails = "SELECT * FROM tbl_Customers " + OuterJoinProCus +
+            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='" + projectID + "'";
+
+            string countInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='" + projectID + "'";
 
             switch (sqlQuery)
             {
                 case "loadProjectDetails":
                     query = loadProjectDetails;
+                    break;
+                case "countInvoices":
+                    query = countInvoices;
                     break;
                 default:
                     query = "";
@@ -205,9 +211,7 @@
         {
             string query = "";
 
-            string loadInvoiceDetails = "SELECT * FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
-            "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID " +
+            string loadInvoiceDetails = "SELECT * FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='"
             + projectID + "' AND tbl_Invoices.INVOICE_ID ='" + invoiceID + "'";
 
@@ -237,8 +241,7 @@
             string query = "";   
             
             string loadProjectsSearch = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " +
-            "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID " +
+            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " + OuterJoinProCus +
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.";
             string selectedChoice = "";
             switch (choice)
