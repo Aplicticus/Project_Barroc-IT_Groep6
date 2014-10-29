@@ -70,7 +70,7 @@ namespace Barroc_IT
             else if (btnEditFields.Text == "Save Changes")
             {
                 UpdateCustomer(selectedCustomer);
-                string sql = sqlhandler.GetQuery("loadCustomerDetails", selectedCustomer);
+                string sql = sqlhandler.GetQuery(Query.loadCustomerDetails);
                 DataTable customerDetails = dthandler.ExecuteQuery(sql);                 
                 txtFinAccountID.ReadOnly = true;
                 txtFinBalance.ReadOnly = true;
@@ -230,14 +230,15 @@ namespace Barroc_IT
         private void LoadProjects()
         {
             dgvProjects.Rows.Clear();
-            string sql = sqlhandler.GetQuery("loadProjects", selectedCustomer);
+            string sql = sqlhandler.GetQuery(Query.loadProjects);
+            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };  
             DataTable projects = dthandler.ExecuteQuery(sql);
             AddItemsToDataGridView(projects, dgvProjects, "finProView");
         }
         private void LoadInvoices()
         {
             dgvInvoices.Rows.Clear();
-            string sql = sqlhandler.GetQuery("loadInvoices", selectedProject);
+            string sql = sqlhandler.GetQuery(Query.loadInvoices);
             DataTable invoices = dthandler.ExecuteQuery(sql);
             AddItemsToDataGridView(invoices, dgvInvoices, "finInvView");
         }
@@ -245,28 +246,28 @@ namespace Barroc_IT
         // First Loads / Reloads
         private void ReloadCustomers()
         {
-            string sqlCustomers = sqlhandler.GetQuery("loadCustomerDetails", selectedCustomer);
+            string sqlCustomers = sqlhandler.GetQuery(Query.loadCustomerDetails);
             DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers);
-            string sqlInvoice = sqlhandler.GetQuery("countInvoices", selectedCustomer);
+            string sqlInvoice = sqlhandler.GetQuery(Query.countInvoices);
             DataTable invoiceCount = dthandler.ExecuteQuery(sqlInvoice);
-            string sqlSales = sqlhandler.GetQuery("countSales", selectedCustomer);
+            string sqlSales = sqlhandler.GetQuery(Query.countSales);
             DataTable salesCount = dthandler.ExecuteQuery(sqlSales);
-            string sqlProject = sqlhandler.GetQuery("countProjects", selectedCustomer);
+            string sqlProject = sqlhandler.GetQuery(Query.countProjects);
             DataTable projectCount = dthandler.ExecuteQuery(sqlProject);
             LoadCustomerDetails(customerDetails, invoiceCount, projectCount, salesCount);            
             BKRRecover();
         }
         private void ReloadProjects()
         {            
-            string sqlProject = sqlhandler.GetQuery("loadProjectDetails", selectedCustomer, selectedProject);
+            string sqlProject = sqlhandler.GetQuery(Query.loadProjectDetails);
             DataTable projectDetails = dthandler.ExecuteQuery(sqlProject);
-            string sqlValues = sqlhandler.GetQuery("countInvoices", selectedCustomer);
+            string sqlValues = sqlhandler.GetQuery(Query.countInvoices);
             DataTable valueDetails = dthandler.ExecuteQuery(sqlValues);
             LoadProjectDetails(projectDetails, valueDetails);
         }
         private void ReloadInvoices()
         {
-            string sql = sqlhandler.GetQuery("loadInvoiceDetails", selectedCustomer, selectedProject, selectedInvoice);
+            string sql = sqlhandler.GetQuery(Query.loadInvoiceDetails);
             DataTable invoiceDetails = dthandler.ExecuteQuery(sql);
             LoadInvoiceDetails(invoiceDetails);            
         }
@@ -299,7 +300,7 @@ namespace Barroc_IT
         {
             // Have to convert Boolean of cbFinBKR to 0 or 1 to update...
 
-            string sqlQuery = sqlhandler.GetQuery("updateFinCustomersInfo");
+            string sqlQuery = sqlhandler.GetQuery(Query.updateFinCustomersInfo);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             if (cbFinBKR.Text == "Yes")
             {

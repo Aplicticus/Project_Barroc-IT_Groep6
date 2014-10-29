@@ -69,7 +69,7 @@ namespace Barroc_IT
         {
             dgvAdminUserInfo.Rows.Clear();
 
-            string selectUsers = sqlhandler.GetQuery("loadUsers");
+            string selectUsers = sqlhandler.GetQuery(Query.loadUsers);
             DataTable customers = dthandler.ExecuteQuery(selectUsers);
             AddItemsToDataGridView(customers, dgvAdminUserInfo, "cUserID");
         }
@@ -77,7 +77,7 @@ namespace Barroc_IT
         // Methods
         private bool AddUser()
         {
-            string sql = sqlhandler.GetQuery("addUser");
+            string sql = sqlhandler.GetQuery(Query.addUser);
             SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("@UserName", txtAdminUsername.Text));
             cmd.Parameters.Add(new SqlParameter("@Password", txtAdminPassword.Text));
