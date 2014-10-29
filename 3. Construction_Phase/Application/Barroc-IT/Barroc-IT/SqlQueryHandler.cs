@@ -61,184 +61,86 @@
         string updateDevAppointmentInfo = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact " +
         "WHERE CUSTOMER_ID=@customerID";
 
-        public string GetQuery(string sqlQuery)
+        public string GetQuery(Query query)
         {
             // Default
-            string query = "";
-
-            // Select querys
-
-
-            switch (sqlQuery)
+            string sqlQuery = "";
+            switch (query)
             {
-                case "loadCustomers":
-                    query = loadCustomers;
+                case Query.loadCustomers:
+                    sqlQuery = loadCustomers;
                     break;
-                case "loadUsers":
-                    query = loadUsers;
+                case Query.loadUsers:
+                    sqlQuery = loadUsers;
                     break;
-                case "addInvoice":
-                    query = addInvoice;
+                case Query.addInvoice:
+                    sqlQuery = addInvoice;
                     break;
-                case "addProject":
-                    query = addProject;
+                case Query.addProject:
+                    sqlQuery = addProject;
                     break;
-                case "addUser":
-                    query = addUser;
+                case Query.addUser:
+                    sqlQuery = addUser;
                     break;
-                case "updateFinCustomersInfo":
-                    query = updateFinCustomersInfo;
+                case Query.updateFinCustomersInfo:
+                    sqlQuery = updateFinCustomersInfo;
                     break;
-                case "updateDevProjectInfo":
-                    query = updateDevProjectInfo;
+                case Query.updateDevProjectInfo:
+                    sqlQuery = updateDevProjectInfo;
+                    break;
+                case Query.loadProjects:
+                    sqlQuery = loadProjects;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
+                    break;
+                case Query.loadInvoices:
+                    sqlQuery = loadInvoices;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;
+                case Query.loadCustomerDetails:
+                    sqlQuery = loadCustomerDetails;
+                    break;
+                case Query.countSales:
+                    sqlQuery = countSales;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;
+                case Query.countProjects:
+                    sqlQuery = countProjects;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
+                    break;
+                case Query.countValues:
+                    sqlQuery = countValues;
+                    break;
+                case Query.loadAppointments:
+                    sqlQuery = loadAppointments;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinApoCus);
+                    break;
+                case Query.updateFinProjectInfo:
+                    sqlQuery = updateFinProjectInfo;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
+                    break;
+                case Query.updateDevCustomerInfo:
+                    sqlQuery = updateDevCustomerInfo;
+                    break;
+                case Query.updateDevAppointmentInfo:
+                    sqlQuery = updateDevAppointmentInfo;
+                    break;
+                case Query.loadProjectDetails:
+                    sqlQuery = loadProjectDetails;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
+                    break;
+                case Query.countInvoices:
+                    sqlQuery = countInvoices;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;
+                case Query.loadInvoiceDetails:
+                    sqlQuery = loadInvoiceDetails;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
                     break;
                 default:
-                    query = "";
+                    sqlQuery = "";
                     break;
             }
-            return query;
-        }
-
-        /// <summary>
-        /// The method returns the wanted query with a customer id inserted.
-        /// </summary>
-        /// <param name="sqlQuery">This is the query you want</param>
-        /// <param name="customerID">The current selected customer</param>
-        /// <returns>The query with customerid inserted.</returns>
-        public string GetQuery(string sqlQuery, int customerID)
-        {
-            // Default
-            string query = "";
-
-            //Select querys
-            string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID='" + customerID + "'";
-
-            string loadProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-            "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " + OuterJoinProCus +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
-            string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
-            "tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
-            "tbl_Invoices.INVOICE_SEND FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
-            "WHERE tbl_Projects.PROJECT_ID='" + customerID + "'";
-            string loadAppointments = "SELECT * FROM tbl_Customers " + OuterJoinApoCus +
-            "WHERE tbl_Appointments.CUSTOMER_ID='" + customerID + "'";
-            string countSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
-            string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers " + OuterJoinProCus +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
-            string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices " +
-            "WHERE tbl_Invoices.PROJECT_ID='" + customerID + "'";
-            
-            //Update Querys
-            string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-            "tbl_Projects.SUBJECT FROM tbl_Customers " + OuterJoinProCus +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
-            string updateDevCustomerInfo = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, " +
-            "OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@customerID";
-            string updateDevAppointmentInfo = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact " +
-            "WHERE CUSTOMER_ID=@customerID";
-
-            switch (sqlQuery)
-            {
-                case "loadProjects":
-                    query = loadProjects;
-                    break;
-                case "loadInvoices":
-                    query = loadInvoices;
-                    break;
-                case "loadCustomerDetails":
-                    query = loadCustomerDetails;
-                    break;                
-                case "countSales":
-                    query = countSales;
-                    break;
-                case "countProjects":
-                    query = countProjects;
-                    break;
-                case "countValues":
-                    query = countValues;
-                    break;
-                case "loadAppointments":
-                    query = loadAppointments;
-                    break;
-                case "updateFinProjectInfo":
-                    query = updateFinProjectInfo;
-                    break;
-                case "updateDevCustomerInfo":
-                    query = updateDevCustomerInfo;
-                    break;
-                case "updateDevAppointmentInfo":
-                    query = updateDevAppointmentInfo;
-                    break;
-                default:
-                    query = "";
-                    break;
-            }
-
-            return query;
-        }
-
-        /// <summary>
-        /// This method returns the query with a customer id and project id inserted.
-        /// </summary>
-        /// <param name="sqlQuery">The query you want.</param>
-        /// <param name="customerID">The current selected customer.</param>
-        /// <param name="projectID">The current selected project.</param>
-        /// <returns>The final query with customerid and projectid inserted.</returns>
-        public string GetQuery(string sqlQuery, int customerID, int projectID)
-        {
-            string query = "";
-
-            string loadProjectDetails = "SELECT * FROM tbl_Customers " + OuterJoinProCus +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='" + projectID + "'";
-
-            string countInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='" + projectID + "'";
-
-            switch (sqlQuery)
-            {
-                case "loadProjectDetails":
-                    query = loadProjectDetails;
-                    break;
-                case "countInvoices":
-                    query = countInvoices;
-                    break;
-                default:
-                    query = "";
-                    break;
-            }
-
-            return query;
-        }
-
-        /// <summary>
-        /// This method returns the query with a customer, project, invoice id inserted.
-        /// </summary>
-        /// <param name="sqlQuery">The query you want</param>
-        /// <param name="customerID">The current selected customer.</param>
-        /// <param name="projectID">The current selected project</param>
-        /// <param name="invoiceID">The current selected invoice</param>
-        /// <returns>The final query with customerid, projectid and invoiceid inserted.</returns>
-        public string GetQuery(string sqlQuery, int customerID, int projectID, int invoiceID)
-        {
-            string query = "";
-
-
-            ///////\NOG TE DOEN :)
-            string loadInvoiceDetails = "SELECT * FROM tbl_Customers " + OuterJoinProCus + OuterJoinInvPro +
-            "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "' AND tbl_Projects.PROJECT_ID='"
-            + projectID + "' AND tbl_Invoices.INVOICE_ID ='" + invoiceID + "'";
-
-            switch (sqlQuery)
-            {
-                case "loadInvoiceDetails":
-                    query = loadInvoiceDetails;
-                    break;
-                default:
-                    query = "";
-                    break;
-            }
-
-            return query;
+            return sqlQuery;
         }
     }
+}
