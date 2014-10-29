@@ -12,7 +12,7 @@
         ProjectSubject
     }
 
-    public enum Querys
+    public enum Query
     {
         loadCustomers,
         loadUsers,

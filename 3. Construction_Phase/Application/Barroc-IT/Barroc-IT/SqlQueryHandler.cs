@@ -128,7 +128,7 @@
             "WHERE tbl_Customers.CUSTOMER_ID='" + customerID + "'";
             string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices " +
             "WHERE tbl_Invoices.PROJECT_ID='" + customerID + "'";
-            
+
             //Update Querys
             string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
             "tbl_Projects.SUBJECT FROM tbl_Customers " + OuterJoinProCus +
@@ -148,7 +148,7 @@
                     break;
                 case "loadCustomerDetails":
                     query = loadCustomerDetails;
-                    break;                
+                    break;
                 case "countSales":
                     query = countSales;
                     break;
@@ -242,3 +242,4 @@
             return query;
         }
     }
+}
