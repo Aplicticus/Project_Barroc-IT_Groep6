@@ -48,7 +48,7 @@ namespace Barroc_IT
             }
         }
         private void btnAddProjectCustomer_Click(object sender, EventArgs e)
-        {
+        {          
             string loadCustomerDetails = sqlhandler.GetQuery("loadCustomerDetails", selectedCustomer);
             DataTable dtCustomerResult = dthandler.SqlQueryToDataTable(loadCustomerDetails);
             foreach (DataRow dr in dtCustomerResult.Rows)
