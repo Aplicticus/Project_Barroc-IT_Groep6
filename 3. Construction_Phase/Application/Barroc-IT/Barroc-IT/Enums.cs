@@ -14,6 +14,7 @@
 
     public enum Query
     {
+        addCustomer,
         loadCustomers,
         loadUsers,
         addInvoice,

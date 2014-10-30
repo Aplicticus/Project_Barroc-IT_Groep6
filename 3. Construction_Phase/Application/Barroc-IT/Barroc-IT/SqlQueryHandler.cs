@@ -23,6 +23,10 @@
         "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
         string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT) " +
         "VALUES (@Username, @Password, @Department)";
+        string addCustomer = "INSERT INTO tbl_Customers (COMPANYNAME, ADDRESS1, POSTALCODE1, RESIDENCE1, ADDRESS2, " +
+        "POSTALCODE2, RESIDENCE2, CONTACTPERSON, INITIALS, PHONE_NR1, PHONE_NR2, FAXNUMBER, EMAIL, PROSPECT) " + 
+        "VALUES (@CompanyName, @Address1, @PostalCode1, @Residence1, @Address2, @PostalCode2, @Residence2, @ContactPerson, " +
+        "@Initials, @PhoneNr1, @PhoneNr2, @FaxNumber, @Email, @Prospect)";
 
         //update querys
         string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, " +
@@ -72,6 +76,9 @@
                     break;
                 case Query.loadUsers:
                     sqlQuery = loadUsers;
+                    break;
+                case Query.addCustomer:
+                    sqlQuery = addCustomer;
                     break;
                 case Query.addInvoice:
                     sqlQuery = addInvoice;
