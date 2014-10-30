@@ -63,6 +63,7 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dtpCusSalesNextAction = new System.Windows.Forms.DateTimePicker();
             this.dtpCusSalesLastContactDate = new System.Windows.Forms.DateTimePicker();
             this.cBoxCusProspect = new System.Windows.Forms.ComboBox();
             this.lblCreditworthy = new System.Windows.Forms.Label();
@@ -85,7 +86,6 @@
             this.txtCusNumberOfOffers = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtCusAppointment = new System.Windows.Forms.TextBox();
-            this.txtCusPhoneNumber1 = new System.Windows.Forms.TextBox();
             this.txtCusEmail = new System.Windows.Forms.TextBox();
             this.lblAppointments = new System.Windows.Forms.Label();
             this.txtCusFaxNumber = new System.Windows.Forms.TextBox();
@@ -173,7 +173,7 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
-            this.dtpCusSalesNextAction = new System.Windows.Forms.DateTimePicker();
+            this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -496,6 +496,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
             this.tabPage3.Controls.Add(this.dtpCusSalesNextAction);
             this.tabPage3.Controls.Add(this.dtpCusSalesLastContactDate);
             this.tabPage3.Controls.Add(this.cBoxCusProspect);
@@ -519,7 +520,6 @@
             this.tabPage3.Controls.Add(this.txtCusNumberOfOffers);
             this.tabPage3.Controls.Add(this.lblEmail);
             this.tabPage3.Controls.Add(this.txtCusAppointment);
-            this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
             this.tabPage3.Controls.Add(this.txtCusEmail);
             this.tabPage3.Controls.Add(this.lblAppointments);
             this.tabPage3.Controls.Add(this.txtCusFaxNumber);
@@ -537,6 +537,15 @@
             this.tabPage3.Size = new System.Drawing.Size(771, 586);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
+            // 
+            // dtpCusSalesNextAction
+            // 
+            this.dtpCusSalesNextAction.Enabled = false;
+            this.dtpCusSalesNextAction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpCusSalesNextAction.Location = new System.Drawing.Point(620, 201);
+            this.dtpCusSalesNextAction.Name = "dtpCusSalesNextAction";
+            this.dtpCusSalesNextAction.Size = new System.Drawing.Size(137, 20);
+            this.dtpCusSalesNextAction.TabIndex = 227;
             // 
             // dtpCusSalesLastContactDate
             // 
@@ -769,14 +778,6 @@
             this.txtCusAppointment.ReadOnly = true;
             this.txtCusAppointment.Size = new System.Drawing.Size(137, 20);
             this.txtCusAppointment.TabIndex = 98;
-            // 
-            // txtCusPhoneNumber1
-            // 
-            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(203, 144);
-            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
-            this.txtCusPhoneNumber1.ReadOnly = true;
-            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
-            this.txtCusPhoneNumber1.TabIndex = 97;
             // 
             // txtCusEmail
             // 
@@ -1643,14 +1644,14 @@
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
             // 
-            // dtpCusSalesNextAction
+            // txtCusPhoneNumber1
             // 
-            this.dtpCusSalesNextAction.Enabled = false;
-            this.dtpCusSalesNextAction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpCusSalesNextAction.Location = new System.Drawing.Point(620, 201);
-            this.dtpCusSalesNextAction.Name = "dtpCusSalesNextAction";
-            this.dtpCusSalesNextAction.Size = new System.Drawing.Size(137, 20);
-            this.dtpCusSalesNextAction.TabIndex = 227;
+            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(203, 145);
+            this.txtCusPhoneNumber1.Mask = "000-0000000";
+            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
+            this.txtCusPhoneNumber1.PromptChar = '0';
+            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPhoneNumber1.TabIndex = 228;
             // 
             // frmSales
             // 
@@ -1729,7 +1730,6 @@
         private System.Windows.Forms.TextBox txtCusNumberOfOffers;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtCusAppointment;
-        private System.Windows.Forms.TextBox txtCusPhoneNumber1;
         private System.Windows.Forms.TextBox txtCusEmail;
         private System.Windows.Forms.Label lblAppointments;
         private System.Windows.Forms.TextBox txtCusFaxNumber;
@@ -1841,5 +1841,6 @@
         private System.Windows.Forms.ComboBox cBoxCusProspect;
         private System.Windows.Forms.DateTimePicker dtpCusSalesLastContactDate;
         private System.Windows.Forms.DateTimePicker dtpCusSalesNextAction;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
     }
 }
