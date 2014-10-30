@@ -1651,6 +1651,7 @@
             this.dtpCusSalesNextAction.Name = "dtpCusSalesNextAction";
             this.dtpCusSalesNextAction.Size = new System.Drawing.Size(137, 20);
             this.dtpCusSalesNextAction.TabIndex = 227;
+            this.dtpCusSalesNextAction.Value = new System.DateTime(2014, 10, 1, 0, 0, 0, 0);
             // 
             // frmSales
             // 
