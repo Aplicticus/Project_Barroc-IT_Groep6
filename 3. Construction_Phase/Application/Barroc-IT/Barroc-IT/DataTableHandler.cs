@@ -60,7 +60,7 @@ namespace Barroc_IT
         /// <param name="choice">The UserSelected Choice to search for.</param>
         /// <param name="searchString">The text to search for.</param>
         /// <param name="customerID">The customer id.</param>
-        /// <returns></returns>
+        /// <returns><The DataTable result from the search./returns>
         public DataTable SearchText(SearchChoice choice, string searchString, int customerID)
         {
             bool customer = false;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Barroc_IT
@@ -82,7 +83,7 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
             {
-                selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());                
+                selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cViewButton"].Value.ToString());
                 tbContr.SelectedIndex = 2;
             }
         }
@@ -106,7 +107,7 @@ namespace Barroc_IT
                 dataGridView.Rows.Add(dr.ItemArray);
             }
         }
-        
+
         // Close To Login
         private void CloseToLogin()
         {
@@ -125,21 +126,5 @@ namespace Barroc_IT
                 closing = true;
             }
         }
-
-        
-
-        
-
-       
-
-       
-
-       
-
-        
-
-       
-
-       
     }
 }

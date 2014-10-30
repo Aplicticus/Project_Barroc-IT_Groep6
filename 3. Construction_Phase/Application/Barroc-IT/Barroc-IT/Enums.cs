@@ -33,9 +33,7 @@
         updateDevAppointmentInfo,
         loadProjectDetails,
         countInvoices,
-        loadInvoiceDetails,
-
-
+        loadInvoiceDetails
     }
 
 }
