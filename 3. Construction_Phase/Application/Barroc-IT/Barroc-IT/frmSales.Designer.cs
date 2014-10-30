@@ -1652,6 +1652,13 @@
             this.txtCusPhoneNumber1.PromptChar = '0';
             this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
             this.txtCusPhoneNumber1.TabIndex = 228;
+            this.dtpCusSalesNextAction.Enabled = false;
+            this.dtpCusSalesNextAction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpCusSalesNextAction.Location = new System.Drawing.Point(620, 201);
+            this.dtpCusSalesNextAction.Name = "dtpCusSalesNextAction";
+            this.dtpCusSalesNextAction.Size = new System.Drawing.Size(137, 20);
+            this.dtpCusSalesNextAction.TabIndex = 227;
+            this.dtpCusSalesNextAction.Value = new System.DateTime(2014, 10, 1, 0, 0, 0, 0);
             // 
             // frmSales
             // 
