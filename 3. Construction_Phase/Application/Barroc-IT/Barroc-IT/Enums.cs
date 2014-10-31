@@ -28,18 +28,13 @@
         countSales,
         countProjects,
         countValues,
-        countAppointments,
-        countOffers,
         loadAppointments,
         updateFinProjectInfo,
         updateDevCustomerInfo,
         updateDevAppointmentInfo,
-        updateSalCustomerInfo,
         loadProjectDetails,
         countInvoices,
-        loadAppointmentDetails,
         loadInvoiceDetails
-
     }
 
 }
