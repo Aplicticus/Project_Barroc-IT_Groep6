@@ -28,12 +28,7 @@
         "VALUES (@CompanyName, @Address1, @PostalCode1, @Residence1, @Address2, @PostalCode2, @Residence2, @ContactPerson, " +
         "@Initials, @PhoneNr1, @PhoneNr2, @FaxNumber, @Email, @Prospect)";
 
-        //update querys
-        string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, " +
-        "LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
-        string updateDevProjectInfo = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, " +
-       "SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@ProjectID";
-
+       
         // Default OuterJoins
         string OuterJoinProCus =
         "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID ";
@@ -44,6 +39,7 @@
 
         string loadInvoiceDetails = "SELECT * FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID AND tbl_Invoices.INVOICE_ID = @invoiceID";
         string loadProjectDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
+        string loadAppointmentDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Appointments.APPOINTMENT_ID=@appointmentID";
 
         string countInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
         string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID=@customerID";
@@ -53,16 +49,33 @@
         string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
         "tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
         "tbl_Invoices.INVOICE_SEND FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
+        //string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.CUSTOMER_ID, " +
+        //"tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT "+
+        //"FROM tbl_Customers {2}WHERE tbl_Customers.CUSTOMER_ID=@CustomerID";
+
         string loadAppointments = "SELECT * FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
         string countSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices WHERE tbl_Invoices.PROJECT_ID=@customerID";
+        string countAppointments = "SELECT COUNT (APPOINTMENT_ID) FROM tbl_Customers {0} WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string countOffers = "SELECT COUNT (OFFER_NUMBERS) FROM tbl_Customers WHERE tbl_Customers.CUSTOMER_ID=@customerID";
 
-        //Update Querys
-        string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, tbl_Projects.SUBJECT FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        //Update Querys        
+        string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, " +
+        "LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@CustomerID";
+        string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, " +
+        "tbl_Projects.DEADLINE, tbl_Projects.SUBJECT FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string updateDevCustomerInfo = "UPDATE tbl_Customers SET MAINT_CONTR=@MaintenanceContract, " +
         "OPEN_PROJ=@OpenProjects, HARDWARE=@Hardware, SOFTWARE=@Software WHERE CUSTOMER_ID=@customerID";
+        string updateDevProjectInfo = "UPDATE tbl_Projects SET NAME=@ProjectName, DEADLINE=@Deadline, " +
+        "SUBJECT=@Subject, VALUE=@Value WHERE PROJECT_ID=@ProjectID";
         string updateDevAppointmentInfo = "UPDATE tbl_Appointments SET INT_CONTACT=@InternalContact " +
+        "WHERE CUSTOMER_ID=@customerID";
+        string updateSalCustomerInfo = "UPDATE tbl_Customers SET COMPANYNAME=@CompanyName, ADDRESS1=@Address1, " +
+        "POSTALCODE1=@PostalCode1, RESIDENCE1=@Residence1, PHONE_NR1=@PhoneNumber1, ADDRESS2=@Address2, " +
+        "POSTALCODE2=@PostalCode2, RESIDENCE2=@Residence2, PHONE_NR2=@PhoneNumber2, CONTACTPERSON=@ContactPerson, " +
+        "INITIALS=@Initials, OFFER_STAT=@OfferStatus, FAXNUMBER=@FaxNumber, EMAIL=@Email, PROSPECT=@Prospect, " +
+        "DATE_OF_ACTION=@DateOfAction, LAST_CONTACT_DATE=@LastContactDate, NEXT_ACTION=@NextAction " +
         "WHERE CUSTOMER_ID=@customerID";
 
         public string GetQuery(Query query)
@@ -77,6 +90,34 @@
                 case Query.loadUsers:
                     sqlQuery = loadUsers;
                     break;
+                case Query.loadProjects:
+                    sqlQuery = loadProjects;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
+                    break;
+                case Query.loadInvoices:
+                    sqlQuery = loadInvoices;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;
+                case Query.loadCustomerDetails:
+                    sqlQuery = loadCustomerDetails;
+                    break;
+                case Query.loadAppointmentDetails:
+                    sqlQuery = loadAppointmentDetails;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinApoCus);
+                    break;
+                case Query.loadAppointments:
+                    sqlQuery = loadAppointments;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinApoCus);
+                    break;
+                case Query.loadProjectDetails:
+                    sqlQuery = loadProjectDetails;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
+                    break;
+                case Query.loadInvoiceDetails:
+                    sqlQuery = loadInvoiceDetails;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;
+
                 case Query.addCustomer:
                     sqlQuery = addCustomer;
                     break;
@@ -89,37 +130,15 @@
                 case Query.addUser:
                     sqlQuery = addUser;
                     break;
+
                 case Query.updateFinCustomersInfo:
                     sqlQuery = updateFinCustomersInfo;
                     break;
                 case Query.updateDevProjectInfo:
                     sqlQuery = updateDevProjectInfo;
                     break;
-                case Query.loadProjects:
-                    sqlQuery = loadProjects;
-                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
-                    break;
-                case Query.loadInvoices:
-                    sqlQuery = loadInvoices;
-                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
-                    break;
-                case Query.loadCustomerDetails:
-                    sqlQuery = loadCustomerDetails;
-                    break;
-                case Query.countSales:
-                    sqlQuery = countSales;
-                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
-                    break;                
-                case Query.countProjects:
-                    sqlQuery = countProjects;
-                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
-                    break;
-                case Query.countValues:
-                    sqlQuery = countValues;
-                    break;
-                case Query.loadAppointments:
-                    sqlQuery = loadAppointments;
-                    sqlQuery = string.Format(sqlQuery, OuterJoinApoCus);
+                case Query.updateSalCustomerInfo:
+                    sqlQuery = updateSalCustomerInfo;
                     break;
                 case Query.updateFinProjectInfo:
                     sqlQuery = updateFinProjectInfo;
@@ -131,18 +150,31 @@
                 case Query.updateDevAppointmentInfo:
                     sqlQuery = updateDevAppointmentInfo;
                     break;
-                case Query.loadProjectDetails:
-                    sqlQuery = loadProjectDetails;
+
+                
+                case Query.countSales:
+                    sqlQuery = countSales;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;                
+                case Query.countProjects:
+                    sqlQuery = countProjects;
                     sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
+                    break;
+                case Query.countValues:
+                    sqlQuery = countValues;
+                    break;
+                case Query.countAppointments:
+                    sqlQuery = countAppointments;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinApoCus);
+                    break;                
+                case Query.countOffers:
+                    sqlQuery = countOffers;
                     break;
                 case Query.countInvoices:
                     sqlQuery = countInvoices;
                     sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
                     break;
-                case Query.loadInvoiceDetails:
-                    sqlQuery = loadInvoiceDetails;
-                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
-                    break;
+                
                 default:
                     sqlQuery = "";
                     break;

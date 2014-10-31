@@ -79,6 +79,7 @@ namespace Barroc_IT
                 txtFinBTWCode.ReadOnly = true;
                 cbFinBKR.Enabled = false;
                 BKRRecover();
+                btnEditFields.Text = "Edit Fields";
             }
         }        
         private void btnAddInvoice_Click(object sender, EventArgs e)
@@ -304,8 +305,7 @@ namespace Barroc_IT
             else if (cbFinBKR.Text == "False" || cbFinBKR.Text == "0")
             {
                 cbFinBKR.Text = "No";
-            }
-            btnEditFields.Text = "Edit Fields";
+            }            
         }
 
         // Updaters / Editers
