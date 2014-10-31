@@ -9,7 +9,9 @@
         Email,
         Initials,
         ProjectName,
-        ProjectSubject
+        ProjectSubject,
+        AppointmentCompanyName,
+        AppointmentSubject
     }
 
     public enum Query

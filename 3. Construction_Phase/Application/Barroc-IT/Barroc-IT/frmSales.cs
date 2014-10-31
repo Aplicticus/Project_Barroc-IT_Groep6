@@ -76,7 +76,7 @@ namespace Barroc_IT
         {
             addCustomer();
             tbContr.SelectedIndex = 1;
-            dgvUserInfo.Rows.Clear();
+            dgvCustomers.Rows.Clear();
             LoadCustomers();
         }
         private void btnEditCustomerFields_Click(object sender, EventArgs e)
@@ -150,10 +150,10 @@ namespace Barroc_IT
         // Loads
         private void LoadCustomers()
         {
-            dgvUserInfo.Rows.Clear();
+            dgvCustomers.Rows.Clear();
             string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
             DataTable customers = dthandler.ExecuteQuery(selectCustomers);
-            AddItemsToDataGridView(customers, dgvUserInfo, "cCustomerID");
+            AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
         }
         private void LoadAppointments()
         {
@@ -211,15 +211,33 @@ namespace Barroc_IT
         }
         private void btnAppointmentSearch_Click(object sender, EventArgs e)
         {
+            if (txtAppointmentSearch.Text.Length > 0)
+            {
+                SearchChoice selectedItem;
+                switch (cBoxAppointmentSearch.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = SearchChoice.AppointmentCompanyName;
+                        break;
+                    case "Subject":
+                        selectedItem = SearchChoice.AppointmentSubject;
+                        break;
+                    default:
+                        selectedItem = SearchChoice.AppointmentCompanyName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtAppointmentSearch.Text, selectedCustomer);
 
+                AddItemsToDataGridView(resultOfSearch, dgvAppointments, "cAppointmentID");
+            }
         }
 
         // Cell Content Clicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvUserInfo.Columns["cViewButton"].Index)
+            if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
             {
-                selectedCustomer = int.Parse(dgvUserInfo.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
                 ReloadCustomers();
                 tbContr.SelectedIndex = 2;
                 int temp = 0;
@@ -415,6 +433,32 @@ namespace Barroc_IT
             {
                 CloseToLogin();
                 closing = true;
+            }
+        }
+
+        private void btnCustomerSearch_Click(object sender, EventArgs e)
+        {
+            if (txtCustomerSearch.Text.Length > 0)
+            {
+                SearchChoice selectedItem;
+                switch (cBoxCustomerSearch.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = SearchChoice.CompanyName;
+                        break;
+                    case "E-Mail":
+                        selectedItem = SearchChoice.Email;
+                        break;
+                    case "Initials":
+                        selectedItem = SearchChoice.Initials;
+                        break;
+                    default:
+                        selectedItem = SearchChoice.CompanyName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
+
+                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
         }
 
