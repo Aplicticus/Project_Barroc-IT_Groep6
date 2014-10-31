@@ -55,6 +55,7 @@ namespace Barroc_IT
         private void btnViewAppointments_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
+            LoadAppointments();
         }
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
