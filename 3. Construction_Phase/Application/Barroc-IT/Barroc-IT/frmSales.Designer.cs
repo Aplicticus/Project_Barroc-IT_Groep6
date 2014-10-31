@@ -37,7 +37,6 @@
             this.btnSalesAddCustomer = new System.Windows.Forms.Button();
             this.btnSalesHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblHome = new System.Windows.Forms.Label();
@@ -65,6 +64,8 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtCusInitals = new System.Windows.Forms.TextBox();
+            this.lblCusInitials = new System.Windows.Forms.Label();
             this.txtCusResidence2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCusPhoneNumber2 = new System.Windows.Forms.TextBox();
@@ -185,8 +186,7 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
-            this.txtCusInitals = new System.Windows.Forms.TextBox();
-            this.lblCusInitials = new System.Windows.Forms.Label();
+            this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -286,14 +286,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(779, 612);
             this.panel1.TabIndex = 2;
-            // 
-            // tTipPostalCode
-            // 
-            this.tTipPostalCode.AutoPopDelay = 5000;
-            this.tTipPostalCode.InitialDelay = 500;
-            this.tTipPostalCode.ReshowDelay = 1;
-            this.tTipPostalCode.ShowAlways = true;
-            this.tTipPostalCode.ToolTipTitle = "Postal Code";
             // 
             // tbContr
             // 
@@ -570,6 +562,24 @@
             this.tabPage3.Size = new System.Drawing.Size(771, 586);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
+            // 
+            // txtCusInitals
+            // 
+            this.txtCusInitals.Location = new System.Drawing.Point(272, 204);
+            this.txtCusInitals.Name = "txtCusInitals";
+            this.txtCusInitals.ReadOnly = true;
+            this.txtCusInitals.Size = new System.Drawing.Size(137, 20);
+            this.txtCusInitals.TabIndex = 240;
+            // 
+            // lblCusInitials
+            // 
+            this.lblCusInitials.AutoSize = true;
+            this.lblCusInitials.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusInitials.Location = new System.Drawing.Point(28, 197);
+            this.lblCusInitials.Name = "lblCusInitials";
+            this.lblCusInitials.Size = new System.Drawing.Size(72, 25);
+            this.lblCusInitials.TabIndex = 239;
+            this.lblCusInitials.Text = "Initials:";
             // 
             // txtCusResidence2
             // 
@@ -1767,23 +1777,12 @@
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
             // 
-            // txtCusInitals
+            // tTipPostalCode
             // 
-            this.txtCusInitals.Location = new System.Drawing.Point(272, 204);
-            this.txtCusInitals.Name = "txtCusInitals";
-            this.txtCusInitals.ReadOnly = true;
-            this.txtCusInitals.Size = new System.Drawing.Size(137, 20);
-            this.txtCusInitals.TabIndex = 240;
-            // 
-            // lblCusInitials
-            // 
-            this.lblCusInitials.AutoSize = true;
-            this.lblCusInitials.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCusInitials.Location = new System.Drawing.Point(28, 197);
-            this.lblCusInitials.Name = "lblCusInitials";
-            this.lblCusInitials.Size = new System.Drawing.Size(72, 25);
-            this.lblCusInitials.TabIndex = 239;
-            this.lblCusInitials.Text = "Initials:";
+            this.tTipPostalCode.AutoPopDelay = 5000;
+            this.tTipPostalCode.InitialDelay = 500;
+            this.tTipPostalCode.ReshowDelay = 1;
+            this.tTipPostalCode.ToolTipTitle = "Postal Code";
             // 
             // frmSales
             // 

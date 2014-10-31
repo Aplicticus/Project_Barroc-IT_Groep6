@@ -104,7 +104,6 @@ namespace Barroc_IT
                 sqlQuery = string.Format(sqlQuery, selectedChoice);
 
                 cmd.CommandText = sqlQuery;
-                cmd.Parameters.AddWithValue("choice", "COMPANYNAME");
                 cmd.Parameters.AddWithValue("searchString", "%" + searchString + "%");
             }
             else
