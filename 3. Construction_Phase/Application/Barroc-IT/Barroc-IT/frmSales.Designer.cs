@@ -138,6 +138,7 @@
             this.btnAppointmentAdd = new System.Windows.Forms.Button();
             this.lblAddAppointment = new System.Windows.Forms.Label();
             this.lbl = new System.Windows.Forms.TabPage();
+            this.lblCusAddInitials = new System.Windows.Forms.Label();
             this.cbCusAddProspect = new System.Windows.Forms.ComboBox();
             this.btnCusAddCustomer = new System.Windows.Forms.Button();
             this.txtCusAddPhoneNumber2 = new System.Windows.Forms.TextBox();
@@ -701,9 +702,9 @@
             // btnSelectedCustomerBack
             // 
             this.btnSelectedCustomerBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectedCustomerBack.Location = new System.Drawing.Point(679, 554);
+            this.btnSelectedCustomerBack.Location = new System.Drawing.Point(679, 537);
             this.btnSelectedCustomerBack.Name = "btnSelectedCustomerBack";
-            this.btnSelectedCustomerBack.Size = new System.Drawing.Size(84, 43);
+            this.btnSelectedCustomerBack.Size = new System.Drawing.Size(84, 60);
             this.btnSelectedCustomerBack.TabIndex = 140;
             this.btnSelectedCustomerBack.Text = "Back";
             this.btnSelectedCustomerBack.UseVisualStyleBackColor = true;
@@ -712,9 +713,9 @@
             // btnAddAppointment
             // 
             this.btnAddAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddAppointment.Location = new System.Drawing.Point(203, 554);
+            this.btnAddAppointment.Location = new System.Drawing.Point(309, 537);
             this.btnAddAppointment.Name = "btnAddAppointment";
-            this.btnAddAppointment.Size = new System.Drawing.Size(171, 43);
+            this.btnAddAppointment.Size = new System.Drawing.Size(131, 60);
             this.btnAddAppointment.TabIndex = 127;
             this.btnAddAppointment.Text = "Add Appointment";
             this.btnAddAppointment.UseVisualStyleBackColor = true;
@@ -723,9 +724,9 @@
             // btnViewAppointment
             // 
             this.btnViewAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewAppointment.Location = new System.Drawing.Point(380, 554);
+            this.btnViewAppointment.Location = new System.Drawing.Point(540, 537);
             this.btnViewAppointment.Name = "btnViewAppointment";
-            this.btnViewAppointment.Size = new System.Drawing.Size(190, 43);
+            this.btnViewAppointment.Size = new System.Drawing.Size(133, 60);
             this.btnViewAppointment.TabIndex = 126;
             this.btnViewAppointment.Text = "View Appointments";
             this.btnViewAppointment.UseVisualStyleBackColor = true;
@@ -734,9 +735,9 @@
             // btnEditCustomerFields
             // 
             this.btnEditCustomerFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditCustomerFields.Location = new System.Drawing.Point(32, 554);
+            this.btnEditCustomerFields.Location = new System.Drawing.Point(446, 537);
             this.btnEditCustomerFields.Name = "btnEditCustomerFields";
-            this.btnEditCustomerFields.Size = new System.Drawing.Size(165, 43);
+            this.btnEditCustomerFields.Size = new System.Drawing.Size(90, 60);
             this.btnEditCustomerFields.TabIndex = 6;
             this.btnEditCustomerFields.Text = "Edit Fields";
             this.btnEditCustomerFields.UseVisualStyleBackColor = true;
@@ -1076,7 +1077,7 @@
             this.btnSelectedAppointmentBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectedAppointmentBack.Location = new System.Drawing.Point(679, 554);
             this.btnSelectedAppointmentBack.Name = "btnSelectedAppointmentBack";
-            this.btnSelectedAppointmentBack.Size = new System.Drawing.Size(84, 43);
+            this.btnSelectedAppointmentBack.Size = new System.Drawing.Size(84, 60);
             this.btnSelectedAppointmentBack.TabIndex = 157;
             this.btnSelectedAppointmentBack.Text = "Back";
             this.btnSelectedAppointmentBack.UseVisualStyleBackColor = true;
@@ -1386,6 +1387,7 @@
             // lbl
             // 
             this.lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl.Controls.Add(this.lblCusAddInitials);
             this.lbl.Controls.Add(this.cbCusAddProspect);
             this.lbl.Controls.Add(this.btnCusAddCustomer);
             this.lbl.Controls.Add(this.txtCusAddPhoneNumber2);
@@ -1422,6 +1424,16 @@
             this.lbl.TabIndex = 7;
             this.lbl.Text = "addCustomer";
             // 
+            // lblCusAddInitials
+            // 
+            this.lblCusAddInitials.AutoSize = true;
+            this.lblCusAddInitials.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusAddInitials.Location = new System.Drawing.Point(51, 100);
+            this.lblCusAddInitials.Name = "lblCusAddInitials";
+            this.lblCusAddInitials.Size = new System.Drawing.Size(72, 25);
+            this.lblCusAddInitials.TabIndex = 193;
+            this.lblCusAddInitials.Text = "Initials:";
+            // 
             // cbCusAddProspect
             // 
             this.cbCusAddProspect.FormattingEnabled = true;
@@ -1451,7 +1463,6 @@
             this.txtCusAddPhoneNumber2.Name = "txtCusAddPhoneNumber2";
             this.txtCusAddPhoneNumber2.Size = new System.Drawing.Size(137, 20);
             this.txtCusAddPhoneNumber2.TabIndex = 189;
-            this.txtCusAddPhoneNumber2.Text = "(Optional)";
             // 
             // txtCusAddPostalCode2
             // 
@@ -1459,7 +1470,6 @@
             this.txtCusAddPostalCode2.Name = "txtCusAddPostalCode2";
             this.txtCusAddPostalCode2.Size = new System.Drawing.Size(137, 20);
             this.txtCusAddPostalCode2.TabIndex = 188;
-            this.txtCusAddPostalCode2.Text = "(Optional)";
             // 
             // txtCusAddResidence2
             // 
@@ -1467,7 +1477,6 @@
             this.txtCusAddResidence2.Name = "txtCusAddResidence2";
             this.txtCusAddResidence2.Size = new System.Drawing.Size(137, 20);
             this.txtCusAddResidence2.TabIndex = 187;
-            this.txtCusAddResidence2.Text = "(Optional)";
             // 
             // lblCusResidence2
             // 
@@ -1533,7 +1542,6 @@
             this.txtCusAddAddress2.Name = "txtCusAddAddress2";
             this.txtCusAddAddress2.Size = new System.Drawing.Size(137, 20);
             this.txtCusAddAddress2.TabIndex = 169;
-            this.txtCusAddAddress2.Text = "(Optional)";
             // 
             // lblCusEmail
             // 
@@ -2000,5 +2008,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cApppointmentSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber2;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
+        private System.Windows.Forms.Label lblCusAddInitials;
     }
 }
