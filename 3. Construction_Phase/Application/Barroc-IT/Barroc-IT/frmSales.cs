@@ -166,52 +166,47 @@ namespace Barroc_IT
         // Methods  
         private bool addCustomer()
         {
-#if DEBUG
-            string regex = @"\b[1-9][0-9]{3}\b\b\s[A-Z]{2}\b";
-            Regex regEx = new Regex(regex);
-            if (regEx.IsMatch(txtCusAddPostalCode1.Text))
+//#if DEBUG
+//            string regex = @"\b[1-9][0-9]{3}\b\b\s[A-Z]{2}\b";
+//            Regex regEx = new Regex(regex);
+//            if (regEx.IsMatch(txtCusAddPostalCode1.Text))
+//            {
+//                MessageBox.Show("MATCH");
+//            }
+//            else
+//            {
+//                MessageBox.Show("No Match");
+//            }
+//            return true;
+//#endif
+            string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("@CompanyName", txtCusAddCompanyName.Text));
+            cmd.Parameters.Add(new SqlParameter("@Address1", txtCusAddAddress1.Text));
+            cmd.Parameters.Add(new SqlParameter("@PostalCode1", txtCusAddPostalCode1.Text));
+            cmd.Parameters.Add(new SqlParameter("@Residence1", txtCusAddResidence1.Text));
+            cmd.Parameters.Add(new SqlParameter("@Address2", txtCusAddAddress2.Text));
+            cmd.Parameters.Add(new SqlParameter("@PostalCode2", txtCusAddPostalCode2.Text));
+            cmd.Parameters.Add(new SqlParameter("@Residence2", txtCusAddResidence2.Text));
+            cmd.Parameters.Add(new SqlParameter("@ContactPerson", txtCusAddContactperson.Text));
+            cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
+            cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
+            cmd.Parameters.Add(new SqlParameter("@PhoneNr2", txtCusAddPhoneNumber2.Text));
+            cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
+            cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
+            cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex.ToString()));
+
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
             {
-                MessageBox.Show("MATCH");
+                return true;
             }
             else
             {
-                MessageBox.Show("No Match");
+                return false;
             }
-            return true;
-#endif
-
-
-
-
-
-            //string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
-            //SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-            //cmd.Parameters.Add(new SqlParameter("@CompanyName", txtCusAddCompanyName.Text));
-            //cmd.Parameters.Add(new SqlParameter("@Address1", txtCusAddAddress1.Text));
-            //cmd.Parameters.Add(new SqlParameter("@PostalCode1", txtCusAddPostalCode1.Text));
-            //cmd.Parameters.Add(new SqlParameter("@Residence1", txtCusAddResidence1.Text));
-            //cmd.Parameters.Add(new SqlParameter("@Address2", txtCusAddAddress2.Text));
-            //cmd.Parameters.Add(new SqlParameter("@PostalCode2", txtCusAddPostalCode2.Text));
-            //cmd.Parameters.Add(new SqlParameter("@Residence2", txtCusAddResidence2.Text));
-            //cmd.Parameters.Add(new SqlParameter("@ContactPerson", txtCusAddContactperson.Text));
-            //cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
-            //cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
-            //cmd.Parameters.Add(new SqlParameter("@PhoneNr2", txtCusAddPhoneNumber2.Text));
-            //cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
-            //cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
-            //cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex.ToString()));
-
-            //cmd.Connection.Open();
-            //int rowsAffected = cmd.ExecuteNonQuery();
-            //cmd.Connection.Close();
-            //if (rowsAffected > 0)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
         }
         private void btnAppointmentSearch_Click(object sender, EventArgs e)
         {
