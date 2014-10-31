@@ -71,11 +71,11 @@ namespace Barroc_IT
         private void btnCusAddCustomer_Click(object sender, EventArgs e)
         {
             addCustomer();
-            //tbContr.SelectedIndex = 1;
+            tbContr.SelectedIndex = 1;
             dgvUserInfo.Rows.Clear();
             LoadCustomers();
         }
-       /* private void btnEditFields_Click(object sender, EventArgs e)
+       private void btnEditFields_Click(object sender, EventArgs e)
         {
             if (btnEditCustomerFields.Text == "Edit Fields")
             {
@@ -85,7 +85,7 @@ namespace Barroc_IT
                 txtCusAddress1.ReadOnly = false;
                 txtCusPostalCode1.ReadOnly = false;
                 txtCusResidence1.ReadOnly = false;
-                //txtCusPhoneNumber1.ReadOnly = false;
+                txtCusPhoneNumber1.ReadOnly = false;
 
                 txtCusAddress2.ReadOnly = false;
                 txtCusPostalCode2.ReadOnly = false;
@@ -143,7 +143,7 @@ namespace Barroc_IT
             }
 
         }
-        * */
+        
 
 
         // Loads
@@ -260,22 +260,22 @@ namespace Barroc_IT
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
             DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
 
-           // string sqlAppointments = sqlhandler.GetQuery(Query.countAppointments);
+            string sqlAppointments = sqlhandler.GetQuery(Query.countAppointments);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
-          //  DataTable countAppointments = dthandler.ExecuteQuery(sqlAppointments, collection);
+            DataTable countAppointments = dthandler.ExecuteQuery(sqlAppointments, collection);
 
-          //  string sqlOffers = sqlhandler.GetQuery(Query.countOffers);
+            string sqlOffers = sqlhandler.GetQuery(Query.countOffers);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
-          //  DataTable countOffers = dthandler.ExecuteQuery(sqlOffers, collection);
+            DataTable countOffers = dthandler.ExecuteQuery(sqlOffers, collection);
 
-           // LoadCustomerDetails(customerDetails, countAppointments, countOffers);
+            LoadCustomerDetails(customerDetails, countAppointments, countOffers);
         }
         private void ReloadAppointments()
         {
-           // string sqlCustomers = sqlhandler.GetQuery(Query.loadAppointmentDetails);
+            string sqlCustomers = sqlhandler.GetQuery(Query.loadAppointmentDetails);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("appointmentID", selectedAppoinment) };
-          //  DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
-            //LoadAppointmentDetails(customerDetails);
+            DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
+            LoadAppointmentDetails(customerDetails);
         }
 
         // Load Details
@@ -285,8 +285,12 @@ namespace Barroc_IT
             txtCusCompanyName.Text = CusRow["COMPANYNAME"].ToString();
             txtCusAddress1.Text = CusRow["ADDRESS1"].ToString();
             txtCusPostalCode1.Text = CusRow["POSTALCODE1"].ToString();
-            //txtCusResidence1.Text = CusRow["RESIDENCE1"].ToString();
+            txtCusResidence1.Text = CusRow["RESIDENCE1"].ToString();
             txtCusPhoneNumber1.Text = CusRow["PHONE_NR1"].ToString();
+            txtCusAddress2.Text = CusRow["ADDRESS2"].ToString();
+            txtCusPostalCode2.Text = CusRow["POSTALCODE2"].ToString();
+            txtCusResidence2.Text = CusRow["RESIDENCE2"].ToString();
+            txtCusInitals.Text = CusRow["NEXT_ACTION"].ToString();
             txtCusFaxNumber.Text = CusRow["FAXNUMBER"].ToString();
             txtCusEmail.Text = CusRow["EMAIL"].ToString();
             txtCusContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
@@ -341,6 +345,46 @@ namespace Barroc_IT
 
         }
 
+        // Updaters / Editers
+        private bool UpdateCustomer(int customerID)
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.updateSalCustomerInfo);
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+
+            cmd.Parameters.Add(new SqlParameter("CompanyName", txtCusCompanyName.Text));
+            cmd.Parameters.Add(new SqlParameter("Address1", txtCusAddress1.Text));
+            cmd.Parameters.Add(new SqlParameter("PostalCode1", txtCusPostalCode1.Text));
+            cmd.Parameters.Add(new SqlParameter("Residence1", txtCusResidence1.Text));
+            cmd.Parameters.Add(new SqlParameter("PhoneNumber1", txtCusPhoneNumber1.Text));
+            cmd.Parameters.Add(new SqlParameter("Address2", txtCusAddress2.Text));
+            cmd.Parameters.Add(new SqlParameter("PostalCode2", txtCusPostalCode2.Text));
+            cmd.Parameters.Add(new SqlParameter("Residence2", txtCusResidence2.Text));
+            cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusPhoneNumber2.Text));
+            cmd.Parameters.Add(new SqlParameter("ContactPerson", txtCusContactPerson.Text));
+            //cmd.Parameters.Add(new SqlParameter("Initials", txtCusInitials.Text));
+            cmd.Parameters.Add(new SqlParameter("OfferStatus", txtCusOfferStatus.Text));
+            cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusFaxNumber.Text));
+            cmd.Parameters.Add(new SqlParameter("Email", txtCusEmail.Text));
+            cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.SelectedIndex.ToString()));
+            cmd.Parameters.Add(new SqlParameter("DateOfAction", dtpCusSalesDateOfAction.Value));
+            cmd.Parameters.Add(new SqlParameter("LastContactDate", dtpCusSalesLastContactDate.Value));
+            cmd.Parameters.Add(new SqlParameter("NextAction", dtpCusSalesNextAction.Value));
+            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
+
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
         // Methods
         private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
@@ -373,3 +417,4 @@ namespace Barroc_IT
         }
     }
 }
+
