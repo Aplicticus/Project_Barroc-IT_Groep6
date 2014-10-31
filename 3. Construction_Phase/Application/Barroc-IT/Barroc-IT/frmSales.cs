@@ -76,7 +76,7 @@ namespace Barroc_IT
             dgvUserInfo.Rows.Clear();
             LoadCustomers();
         }
-       private void btnEditFields_Click(object sender, EventArgs e)
+        private void btnEditCustomerFields_Click(object sender, EventArgs e)
         {
             if (btnEditCustomerFields.Text == "Edit Fields")
             {
@@ -106,7 +106,7 @@ namespace Barroc_IT
                 btnEditCustomerFields.Text = "Save Changes";
             }
             else if (btnEditCustomerFields.Text == "Save Changes")
-            {                
+            {
                 if (UpdateCustomer(selectedCustomer) == true)
                 {
                     MessageBox.Show("Customer succesfully modified!");
@@ -142,11 +142,8 @@ namespace Barroc_IT
                 nudCusSalePercentage.Enabled = false;
                 btnEditCustomerFields.Text = "Edit Fields";
             }
-
         }
         
-
-
         // Loads
         private void LoadCustomers()
         {
@@ -240,7 +237,7 @@ namespace Barroc_IT
             if (e.ColumnIndex == dgvAppointments.Columns["cAppointmentViewButton"].Index)
             {
                 selectedAppoinment = int.Parse(dgvAppointments.Rows[e.RowIndex].Cells["cAppointmentID"].Value.ToString());
-                ReloadAppointments();                
+                ReloadAppointments();
                 tbContr.SelectedIndex = 4;
                 int temp = 0;
                 if (txtCusAppointment.Text != temp.ToString())
@@ -288,10 +285,11 @@ namespace Barroc_IT
             txtCusPostalCode1.Text = CusRow["POSTALCODE1"].ToString();
             txtCusResidence1.Text = CusRow["RESIDENCE1"].ToString();
             txtCusPhoneNumber1.Text = CusRow["PHONE_NR1"].ToString();
-            txtCusAddress2.Text = CusRow["ADDRESS2"].ToString();
+            txtCusAddress2.Text = CusRow["ADDRESS2"].ToString();            
             txtCusPostalCode2.Text = CusRow["POSTALCODE2"].ToString();
             txtCusResidence2.Text = CusRow["RESIDENCE2"].ToString();
-            txtCusInitals.Text = CusRow["NEXT_ACTION"].ToString();
+            txtCusPhoneNumber2.Text = CusRow["PHONE_NR2"].ToString();
+            txtCusInitials.Text = CusRow["INITIALS"].ToString();            
             txtCusFaxNumber.Text = CusRow["FAXNUMBER"].ToString();
             txtCusEmail.Text = CusRow["EMAIL"].ToString();
             txtCusContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
@@ -362,7 +360,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("Residence2", txtCusResidence2.Text));
             cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusPhoneNumber2.Text));
             cmd.Parameters.Add(new SqlParameter("ContactPerson", txtCusContactPerson.Text));
-            //cmd.Parameters.Add(new SqlParameter("Initials", txtCusInitials.Text));
+            cmd.Parameters.Add(new SqlParameter("Initials", txtCusInitials.Text));
             cmd.Parameters.Add(new SqlParameter("OfferStatus", txtCusOfferStatus.Text));
             cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusFaxNumber.Text));
             cmd.Parameters.Add(new SqlParameter("Email", txtCusEmail.Text));
@@ -416,6 +414,8 @@ namespace Barroc_IT
                 closing = true;
             }
         }
+
+       
     }
 }
 
