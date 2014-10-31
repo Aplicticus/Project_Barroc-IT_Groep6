@@ -42,18 +42,19 @@
             this.lblAdminHome = new System.Windows.Forms.Label();
             this.lblAdminWelcome = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cBoxAdminDepartment = new System.Windows.Forms.ComboBox();
-            this.txtAdminRepeatPassword = new System.Windows.Forms.TextBox();
-            this.lblAdminRepeatPassword = new System.Windows.Forms.Label();
-            this.txtAdminPassword = new System.Windows.Forms.TextBox();
-            this.lblAdminPassword = new System.Windows.Forms.Label();
-            this.txtAdminUsername = new System.Windows.Forms.TextBox();
-            this.lblAdminUsername = new System.Windows.Forms.Label();
-            this.lblAdminDepartment = new System.Windows.Forms.Label();
+            this.btnAddUser = new System.Windows.Forms.Button();
+            this.btnAddUserBack = new System.Windows.Forms.Button();
+            this.cBoxAddDepartment = new System.Windows.Forms.ComboBox();
+            this.txtAddRepeatPassword = new System.Windows.Forms.TextBox();
+            this.lblAddRepeatPassword = new System.Windows.Forms.Label();
+            this.txtAddPassword = new System.Windows.Forms.TextBox();
+            this.lblAddPassword = new System.Windows.Forms.Label();
+            this.txtAddUserName = new System.Windows.Forms.TextBox();
+            this.lblAddUserName = new System.Windows.Forms.Label();
+            this.lblAddDepartment = new System.Windows.Forms.Label();
             this.lblAdminRegister = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnProjectViewBack = new System.Windows.Forms.Button();
+            this.btnUserInfoBack = new System.Windows.Forms.Button();
             this.dgvAdminUserInfo = new System.Windows.Forms.DataGridView();
             this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +63,7 @@
             this.cDeactivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblUserInfo = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDeactivatedBack = new System.Windows.Forms.Button();
             this.lblDeactivatedUsers = new System.Windows.Forms.Label();
             this.DGVDeactivatedUsers = new System.Windows.Forms.DataGridView();
             this.dUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -227,15 +228,16 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.cBoxAdminDepartment);
-            this.tabPage2.Controls.Add(this.txtAdminRepeatPassword);
-            this.tabPage2.Controls.Add(this.lblAdminRepeatPassword);
-            this.tabPage2.Controls.Add(this.txtAdminPassword);
-            this.tabPage2.Controls.Add(this.lblAdminPassword);
-            this.tabPage2.Controls.Add(this.txtAdminUsername);
-            this.tabPage2.Controls.Add(this.lblAdminUsername);
-            this.tabPage2.Controls.Add(this.lblAdminDepartment);
+            this.tabPage2.Controls.Add(this.btnAddUser);
+            this.tabPage2.Controls.Add(this.btnAddUserBack);
+            this.tabPage2.Controls.Add(this.cBoxAddDepartment);
+            this.tabPage2.Controls.Add(this.txtAddRepeatPassword);
+            this.tabPage2.Controls.Add(this.lblAddRepeatPassword);
+            this.tabPage2.Controls.Add(this.txtAddPassword);
+            this.tabPage2.Controls.Add(this.lblAddPassword);
+            this.tabPage2.Controls.Add(this.txtAddUserName);
+            this.tabPage2.Controls.Add(this.lblAddUserName);
+            this.tabPage2.Controls.Add(this.lblAddDepartment);
             this.tabPage2.Controls.Add(this.lblAdminRegister);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -244,91 +246,103 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "addUser";
             // 
-            // button1
+            // btnAddUser
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(672, 541);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 60);
-            this.button1.TabIndex = 189;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddUser.Location = new System.Drawing.Point(582, 541);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(84, 60);
+            this.btnAddUser.TabIndex = 190;
+            this.btnAddUser.Text = "Add User";
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
-            // cBoxAdminDepartment
+            // btnAddUserBack
             // 
-            this.cBoxAdminDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxAdminDepartment.FormattingEnabled = true;
-            this.cBoxAdminDepartment.Items.AddRange(new object[] {
+            this.btnAddUserBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddUserBack.Location = new System.Drawing.Point(672, 541);
+            this.btnAddUserBack.Name = "btnAddUserBack";
+            this.btnAddUserBack.Size = new System.Drawing.Size(84, 60);
+            this.btnAddUserBack.TabIndex = 189;
+            this.btnAddUserBack.Text = "Back";
+            this.btnAddUserBack.UseVisualStyleBackColor = true;
+            this.btnAddUserBack.Click += new System.EventHandler(this.btnAddUserBack_Click);
+            // 
+            // cBoxAddDepartment
+            // 
+            this.cBoxAddDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxAddDepartment.FormattingEnabled = true;
+            this.cBoxAddDepartment.Items.AddRange(new object[] {
             "Administrator",
             "Development",
             "Finance",
             "Sales"});
-            this.cBoxAdminDepartment.Location = new System.Drawing.Point(423, 213);
-            this.cBoxAdminDepartment.Name = "cBoxAdminDepartment";
-            this.cBoxAdminDepartment.Size = new System.Drawing.Size(137, 21);
-            this.cBoxAdminDepartment.Sorted = true;
-            this.cBoxAdminDepartment.TabIndex = 35;
+            this.cBoxAddDepartment.Location = new System.Drawing.Point(423, 213);
+            this.cBoxAddDepartment.Name = "cBoxAddDepartment";
+            this.cBoxAddDepartment.Size = new System.Drawing.Size(137, 21);
+            this.cBoxAddDepartment.Sorted = true;
+            this.cBoxAddDepartment.TabIndex = 35;
             // 
-            // txtAdminRepeatPassword
+            // txtAddRepeatPassword
             // 
-            this.txtAdminRepeatPassword.Location = new System.Drawing.Point(423, 173);
-            this.txtAdminRepeatPassword.Name = "txtAdminRepeatPassword";
-            this.txtAdminRepeatPassword.Size = new System.Drawing.Size(137, 20);
-            this.txtAdminRepeatPassword.TabIndex = 31;
+            this.txtAddRepeatPassword.Location = new System.Drawing.Point(423, 173);
+            this.txtAddRepeatPassword.Name = "txtAddRepeatPassword";
+            this.txtAddRepeatPassword.Size = new System.Drawing.Size(137, 20);
+            this.txtAddRepeatPassword.TabIndex = 31;
             // 
-            // lblAdminRepeatPassword
+            // lblAddRepeatPassword
             // 
-            this.lblAdminRepeatPassword.AutoSize = true;
-            this.lblAdminRepeatPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminRepeatPassword.Location = new System.Drawing.Point(215, 167);
-            this.lblAdminRepeatPassword.Name = "lblAdminRepeatPassword";
-            this.lblAdminRepeatPassword.Size = new System.Drawing.Size(171, 25);
-            this.lblAdminRepeatPassword.TabIndex = 30;
-            this.lblAdminRepeatPassword.Text = "Repeat Password:";
+            this.lblAddRepeatPassword.AutoSize = true;
+            this.lblAddRepeatPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddRepeatPassword.Location = new System.Drawing.Point(215, 167);
+            this.lblAddRepeatPassword.Name = "lblAddRepeatPassword";
+            this.lblAddRepeatPassword.Size = new System.Drawing.Size(171, 25);
+            this.lblAddRepeatPassword.TabIndex = 30;
+            this.lblAddRepeatPassword.Text = "Repeat Password:";
             // 
-            // txtAdminPassword
+            // txtAddPassword
             // 
-            this.txtAdminPassword.Location = new System.Drawing.Point(423, 136);
-            this.txtAdminPassword.Name = "txtAdminPassword";
-            this.txtAdminPassword.Size = new System.Drawing.Size(137, 20);
-            this.txtAdminPassword.TabIndex = 29;
+            this.txtAddPassword.Location = new System.Drawing.Point(423, 136);
+            this.txtAddPassword.Name = "txtAddPassword";
+            this.txtAddPassword.Size = new System.Drawing.Size(137, 20);
+            this.txtAddPassword.TabIndex = 29;
             // 
-            // lblAdminPassword
+            // lblAddPassword
             // 
-            this.lblAdminPassword.AutoSize = true;
-            this.lblAdminPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminPassword.Location = new System.Drawing.Point(215, 130);
-            this.lblAdminPassword.Name = "lblAdminPassword";
-            this.lblAdminPassword.Size = new System.Drawing.Size(104, 25);
-            this.lblAdminPassword.TabIndex = 28;
-            this.lblAdminPassword.Text = "Password:";
+            this.lblAddPassword.AutoSize = true;
+            this.lblAddPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddPassword.Location = new System.Drawing.Point(215, 130);
+            this.lblAddPassword.Name = "lblAddPassword";
+            this.lblAddPassword.Size = new System.Drawing.Size(104, 25);
+            this.lblAddPassword.TabIndex = 28;
+            this.lblAddPassword.Text = "Password:";
             // 
-            // txtAdminUsername
+            // txtAddUserName
             // 
-            this.txtAdminUsername.Location = new System.Drawing.Point(423, 97);
-            this.txtAdminUsername.Name = "txtAdminUsername";
-            this.txtAdminUsername.Size = new System.Drawing.Size(137, 20);
-            this.txtAdminUsername.TabIndex = 27;
+            this.txtAddUserName.Location = new System.Drawing.Point(423, 97);
+            this.txtAddUserName.Name = "txtAddUserName";
+            this.txtAddUserName.Size = new System.Drawing.Size(137, 20);
+            this.txtAddUserName.TabIndex = 27;
             // 
-            // lblAdminUsername
+            // lblAddUserName
             // 
-            this.lblAdminUsername.AutoSize = true;
-            this.lblAdminUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminUsername.Location = new System.Drawing.Point(215, 91);
-            this.lblAdminUsername.Name = "lblAdminUsername";
-            this.lblAdminUsername.Size = new System.Drawing.Size(108, 25);
-            this.lblAdminUsername.TabIndex = 26;
-            this.lblAdminUsername.Text = "Username:";
+            this.lblAddUserName.AutoSize = true;
+            this.lblAddUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddUserName.Location = new System.Drawing.Point(215, 91);
+            this.lblAddUserName.Name = "lblAddUserName";
+            this.lblAddUserName.Size = new System.Drawing.Size(108, 25);
+            this.lblAddUserName.TabIndex = 26;
+            this.lblAddUserName.Text = "Username:";
             // 
-            // lblAdminDepartment
+            // lblAddDepartment
             // 
-            this.lblAdminDepartment.AutoSize = true;
-            this.lblAdminDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminDepartment.Location = new System.Drawing.Point(215, 207);
-            this.lblAdminDepartment.Name = "lblAdminDepartment";
-            this.lblAdminDepartment.Size = new System.Drawing.Size(119, 25);
-            this.lblAdminDepartment.TabIndex = 24;
-            this.lblAdminDepartment.Text = "Department:";
+            this.lblAddDepartment.AutoSize = true;
+            this.lblAddDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddDepartment.Location = new System.Drawing.Point(215, 207);
+            this.lblAddDepartment.Name = "lblAddDepartment";
+            this.lblAddDepartment.Size = new System.Drawing.Size(119, 25);
+            this.lblAddDepartment.TabIndex = 24;
+            this.lblAddDepartment.Text = "Department:";
             // 
             // lblAdminRegister
             // 
@@ -343,7 +357,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.btnProjectViewBack);
+            this.tabPage3.Controls.Add(this.btnUserInfoBack);
             this.tabPage3.Controls.Add(this.dgvAdminUserInfo);
             this.tabPage3.Controls.Add(this.lblUserInfo);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -353,15 +367,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "userInfo";
             // 
-            // btnProjectViewBack
+            // btnUserInfoBack
             // 
-            this.btnProjectViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectViewBack.Location = new System.Drawing.Point(669, 538);
-            this.btnProjectViewBack.Name = "btnProjectViewBack";
-            this.btnProjectViewBack.Size = new System.Drawing.Size(84, 60);
-            this.btnProjectViewBack.TabIndex = 188;
-            this.btnProjectViewBack.Text = "Back";
-            this.btnProjectViewBack.UseVisualStyleBackColor = true;
+            this.btnUserInfoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserInfoBack.Location = new System.Drawing.Point(669, 538);
+            this.btnUserInfoBack.Name = "btnUserInfoBack";
+            this.btnUserInfoBack.Size = new System.Drawing.Size(84, 60);
+            this.btnUserInfoBack.TabIndex = 188;
+            this.btnUserInfoBack.Text = "Back";
+            this.btnUserInfoBack.UseVisualStyleBackColor = true;
+            this.btnUserInfoBack.Click += new System.EventHandler(this.btnUserInfoBack_Click);
             // 
             // dgvAdminUserInfo
             // 
@@ -419,7 +434,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.btnDeactivatedBack);
             this.tabPage4.Controls.Add(this.lblDeactivatedUsers);
             this.tabPage4.Controls.Add(this.DGVDeactivatedUsers);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -429,15 +444,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "deactivatedUsers";
             // 
-            // button2
+            // btnDeactivatedBack
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(668, 540);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 60);
-            this.button2.TabIndex = 189;
-            this.button2.Text = "Back";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDeactivatedBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeactivatedBack.Location = new System.Drawing.Point(668, 540);
+            this.btnDeactivatedBack.Name = "btnDeactivatedBack";
+            this.btnDeactivatedBack.Size = new System.Drawing.Size(84, 60);
+            this.btnDeactivatedBack.TabIndex = 189;
+            this.btnDeactivatedBack.Text = "Back";
+            this.btnDeactivatedBack.UseVisualStyleBackColor = true;
+            this.btnDeactivatedBack.Click += new System.EventHandler(this.btnDeactivatedBack_Click);
             // 
             // lblDeactivatedUsers
             // 
@@ -537,20 +553,20 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label lblAdminWelcome;
-        private System.Windows.Forms.TextBox txtAdminRepeatPassword;
-        private System.Windows.Forms.Label lblAdminRepeatPassword;
-        private System.Windows.Forms.TextBox txtAdminPassword;
-        private System.Windows.Forms.Label lblAdminPassword;
-        private System.Windows.Forms.TextBox txtAdminUsername;
-        private System.Windows.Forms.Label lblAdminUsername;
-        private System.Windows.Forms.Label lblAdminDepartment;
+        private System.Windows.Forms.TextBox txtAddRepeatPassword;
+        private System.Windows.Forms.Label lblAddRepeatPassword;
+        private System.Windows.Forms.TextBox txtAddPassword;
+        private System.Windows.Forms.Label lblAddPassword;
+        private System.Windows.Forms.TextBox txtAddUserName;
+        private System.Windows.Forms.Label lblAddUserName;
+        private System.Windows.Forms.Label lblAddDepartment;
         private System.Windows.Forms.Label lblAdminRegister;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label lblAdminHome;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.DataGridView DGVDeactivatedUsers;
         private System.Windows.Forms.Label lblDeactivatedUsers;
-        private System.Windows.Forms.ComboBox cBoxAdminDepartment;
+        private System.Windows.Forms.ComboBox cBoxAddDepartment;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView dgvAdminUserInfo;
         private System.Windows.Forms.Label lblUserInfo;
@@ -564,8 +580,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cDepartment;
         private System.Windows.Forms.DataGridViewTextBoxColumn cLastLogin;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDeactivated;
-        private System.Windows.Forms.Button btnProjectViewBack;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnUserInfoBack;
+        private System.Windows.Forms.Button btnAddUserBack;
+        private System.Windows.Forms.Button btnDeactivatedBack;
+        private System.Windows.Forms.Button btnAddUser;
     }
 }
