@@ -66,11 +66,16 @@ namespace Barroc_IT
         }
         private void btnAppointmentAdd_Click(object sender, EventArgs e)
         {
-
+            tbContr.SelectedIndex = 2;
         }
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void btnAddCustomerCancel_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 0;
         }
         private void btnCusAddCustomer_Click(object sender, EventArgs e)
         {
@@ -417,6 +422,7 @@ namespace Barroc_IT
                 closing = true;
             }
         }
+
 
        
     }

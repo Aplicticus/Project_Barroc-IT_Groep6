@@ -41,7 +41,7 @@
             // 
             this.lblBaroc.AutoSize = true;
             this.lblBaroc.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBaroc.Location = new System.Drawing.Point(415, 122);
+            this.lblBaroc.Location = new System.Drawing.Point(451, 176);
             this.lblBaroc.Margin = new System.Windows.Forms.Padding(0);
             this.lblBaroc.Name = "lblBaroc";
             this.lblBaroc.Size = new System.Drawing.Size(139, 36);
@@ -52,7 +52,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(316, 215);
+            this.lblUsername.Location = new System.Drawing.Point(380, 266);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(119, 26);
             this.lblUsername.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(316, 273);
+            this.lblPassword.Location = new System.Drawing.Point(380, 324);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(114, 26);
             this.lblPassword.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(477, 221);
+            this.txtUsername.Location = new System.Drawing.Point(541, 272);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(132, 20);
             this.txtUsername.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(477, 279);
+            this.txtPassword.Location = new System.Drawing.Point(541, 330);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(132, 20);
@@ -87,7 +87,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(321, 341);
+            this.btnLogin.Location = new System.Drawing.Point(385, 392);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(109, 23);
             this.btnLogin.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(500, 341);
+            this.btnExit.Location = new System.Drawing.Point(564, 392);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(109, 23);
             this.btnExit.TabIndex = 6;

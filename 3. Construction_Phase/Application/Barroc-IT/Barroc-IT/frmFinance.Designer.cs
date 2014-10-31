@@ -46,6 +46,21 @@
             this.btnCustomerSearch = new System.Windows.Forms.Button();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
+            this.finCusView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtFinProjects = new System.Windows.Forms.TextBox();
             this.lblFinProjects = new System.Windows.Forms.Label();
@@ -88,6 +103,12 @@
             this.btnProjectSearch = new System.Windows.Forms.Button();
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
+            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnProjectBack = new System.Windows.Forms.Button();
             this.btnViewInvoices = new System.Windows.Forms.Button();
@@ -110,6 +131,13 @@
             this.btnInvoiceSearch = new System.Windows.Forms.Button();
             this.txtSearchInvoice = new System.Windows.Forms.TextBox();
             this.dgvInvoices = new System.Windows.Forms.DataGridView();
+            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnInvoicesBack = new System.Windows.Forms.Button();
             this.txtInvoiceSubject = new System.Windows.Forms.TextBox();
@@ -132,34 +160,6 @@
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
-            this.finCusView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -328,9 +328,9 @@
             // btnCustomerViewBack
             // 
             this.btnCustomerViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomerViewBack.Location = new System.Drawing.Point(679, 554);
+            this.btnCustomerViewBack.Location = new System.Drawing.Point(684, 551);
             this.btnCustomerViewBack.Name = "btnCustomerViewBack";
-            this.btnCustomerViewBack.Size = new System.Drawing.Size(84, 43);
+            this.btnCustomerViewBack.Size = new System.Drawing.Size(84, 60);
             this.btnCustomerViewBack.TabIndex = 188;
             this.btnCustomerViewBack.Text = "Back";
             this.btnCustomerViewBack.UseVisualStyleBackColor = true;
@@ -397,6 +397,84 @@
             this.dgvCustomers.TabIndex = 30;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
             // 
+            // finCusView
+            // 
+            this.finCusView.HeaderText = "View";
+            this.finCusView.Name = "finCusView";
+            this.finCusView.Text = "Open";
+            this.finCusView.UseColumnTextForButtonValue = true;
+            // 
+            // cCustomerID
+            // 
+            this.cCustomerID.HeaderText = "CustomerID";
+            this.cCustomerID.Name = "cCustomerID";
+            this.cCustomerID.Visible = false;
+            // 
+            // finCusCompanyName
+            // 
+            this.finCusCompanyName.HeaderText = "Company Name";
+            this.finCusCompanyName.Name = "finCusCompanyName";
+            // 
+            // finCusAddress1
+            // 
+            this.finCusAddress1.HeaderText = "Address 1";
+            this.finCusAddress1.Name = "finCusAddress1";
+            // 
+            // finCusPostalCode1
+            // 
+            this.finCusPostalCode1.HeaderText = "Postal Code 1";
+            this.finCusPostalCode1.Name = "finCusPostalCode1";
+            // 
+            // finCusResidence1
+            // 
+            this.finCusResidence1.HeaderText = "Residence 1";
+            this.finCusResidence1.Name = "finCusResidence1";
+            // 
+            // finCusAddress2
+            // 
+            this.finCusAddress2.HeaderText = "Address 2";
+            this.finCusAddress2.Name = "finCusAddress2";
+            // 
+            // finCusPostalCode2
+            // 
+            this.finCusPostalCode2.HeaderText = "Postal Code 2";
+            this.finCusPostalCode2.Name = "finCusPostalCode2";
+            // 
+            // finCusResidence2
+            // 
+            this.finCusResidence2.HeaderText = "Residence 2";
+            this.finCusResidence2.Name = "finCusResidence2";
+            // 
+            // finCusContactPerson
+            // 
+            this.finCusContactPerson.HeaderText = "Contactperson";
+            this.finCusContactPerson.Name = "finCusContactPerson";
+            // 
+            // finCusInitials
+            // 
+            this.finCusInitials.HeaderText = "Initials";
+            this.finCusInitials.Name = "finCusInitials";
+            // 
+            // finCusPhoneNumber1
+            // 
+            this.finCusPhoneNumber1.HeaderText = "Phone Number 1";
+            this.finCusPhoneNumber1.Name = "finCusPhoneNumber1";
+            // 
+            // finCusPhoneNumber2
+            // 
+            this.finCusPhoneNumber2.HeaderText = "Phone Number 2";
+            this.finCusPhoneNumber2.Name = "finCusPhoneNumber2";
+            // 
+            // finCusFaxNumber
+            // 
+            this.finCusFaxNumber.HeaderText = "Fax Number";
+            this.finCusFaxNumber.Name = "finCusFaxNumber";
+            // 
+            // finCusEmail
+            // 
+            this.finCusEmail.HeaderText = "E-Mail";
+            this.finCusEmail.Name = "finCusEmail";
+            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
@@ -462,9 +540,9 @@
             // btnCustomerBack
             // 
             this.btnCustomerBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomerBack.Location = new System.Drawing.Point(679, 554);
+            this.btnCustomerBack.Location = new System.Drawing.Point(683, 551);
             this.btnCustomerBack.Name = "btnCustomerBack";
-            this.btnCustomerBack.Size = new System.Drawing.Size(84, 43);
+            this.btnCustomerBack.Size = new System.Drawing.Size(84, 60);
             this.btnCustomerBack.TabIndex = 227;
             this.btnCustomerBack.Text = "Back";
             this.btnCustomerBack.UseVisualStyleBackColor = true;
@@ -473,9 +551,9 @@
             // btnViewProjects
             // 
             this.btnViewProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewProjects.Location = new System.Drawing.Point(203, 554);
+            this.btnViewProjects.Location = new System.Drawing.Point(585, 551);
             this.btnViewProjects.Name = "btnViewProjects";
-            this.btnViewProjects.Size = new System.Drawing.Size(165, 43);
+            this.btnViewProjects.Size = new System.Drawing.Size(92, 60);
             this.btnViewProjects.TabIndex = 226;
             this.btnViewProjects.Text = "View Projects";
             this.btnViewProjects.UseVisualStyleBackColor = true;
@@ -484,9 +562,9 @@
             // btnEditFields
             // 
             this.btnEditFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditFields.Location = new System.Drawing.Point(32, 554);
+            this.btnEditFields.Location = new System.Drawing.Point(503, 551);
             this.btnEditFields.Name = "btnEditFields";
-            this.btnEditFields.Size = new System.Drawing.Size(165, 43);
+            this.btnEditFields.Size = new System.Drawing.Size(76, 60);
             this.btnEditFields.TabIndex = 225;
             this.btnEditFields.Text = "Edit Fields";
             this.btnEditFields.UseVisualStyleBackColor = true;
@@ -787,9 +865,9 @@
             // btnProjectViewBack
             // 
             this.btnProjectViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectViewBack.Location = new System.Drawing.Point(679, 554);
+            this.btnProjectViewBack.Location = new System.Drawing.Point(684, 560);
             this.btnProjectViewBack.Name = "btnProjectViewBack";
-            this.btnProjectViewBack.Size = new System.Drawing.Size(84, 43);
+            this.btnProjectViewBack.Size = new System.Drawing.Size(84, 60);
             this.btnProjectViewBack.TabIndex = 187;
             this.btnProjectViewBack.Text = "Back";
             this.btnProjectViewBack.UseVisualStyleBackColor = true;
@@ -847,6 +925,43 @@
             this.dgvProjects.TabIndex = 31;
             this.dgvProjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjects_CellContentClick);
             // 
+            // finProView
+            // 
+            this.finProView.HeaderText = "View";
+            this.finProView.Name = "finProView";
+            this.finProView.Text = "Open";
+            this.finProView.UseColumnTextForButtonValue = true;
+            // 
+            // cProjectID
+            // 
+            this.cProjectID.HeaderText = "ProjectID";
+            this.cProjectID.Name = "cProjectID";
+            this.cProjectID.Visible = false;
+            // 
+            // finProCompanyName
+            // 
+            this.finProCompanyName.HeaderText = "CompanyName";
+            this.finProCompanyName.Name = "finProCompanyName";
+            this.finProCompanyName.ReadOnly = true;
+            // 
+            // finProName
+            // 
+            this.finProName.HeaderText = "Project Name";
+            this.finProName.Name = "finProName";
+            this.finProName.ReadOnly = true;
+            // 
+            // finProDeadline
+            // 
+            this.finProDeadline.HeaderText = "Deadline";
+            this.finProDeadline.Name = "finProDeadline";
+            this.finProDeadline.ReadOnly = true;
+            // 
+            // finProSubject
+            // 
+            this.finProSubject.HeaderText = "Subject";
+            this.finProSubject.Name = "finProSubject";
+            this.finProSubject.ReadOnly = true;
+            // 
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
@@ -874,9 +989,9 @@
             // btnProjectBack
             // 
             this.btnProjectBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectBack.Location = new System.Drawing.Point(679, 554);
+            this.btnProjectBack.Location = new System.Drawing.Point(684, 554);
             this.btnProjectBack.Name = "btnProjectBack";
-            this.btnProjectBack.Size = new System.Drawing.Size(84, 43);
+            this.btnProjectBack.Size = new System.Drawing.Size(84, 60);
             this.btnProjectBack.TabIndex = 186;
             this.btnProjectBack.Text = "Back";
             this.btnProjectBack.UseVisualStyleBackColor = true;
@@ -885,9 +1000,9 @@
             // btnViewInvoices
             // 
             this.btnViewInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewInvoices.Location = new System.Drawing.Point(203, 554);
+            this.btnViewInvoices.Location = new System.Drawing.Point(585, 554);
             this.btnViewInvoices.Name = "btnViewInvoices";
-            this.btnViewInvoices.Size = new System.Drawing.Size(165, 43);
+            this.btnViewInvoices.Size = new System.Drawing.Size(93, 60);
             this.btnViewInvoices.TabIndex = 161;
             this.btnViewInvoices.Text = "View Invoices";
             this.btnViewInvoices.UseVisualStyleBackColor = true;
@@ -896,9 +1011,9 @@
             // btnAddInvoice
             // 
             this.btnAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInvoice.Location = new System.Drawing.Point(32, 554);
+            this.btnAddInvoice.Location = new System.Drawing.Point(497, 554);
             this.btnAddInvoice.Name = "btnAddInvoice";
-            this.btnAddInvoice.Size = new System.Drawing.Size(165, 43);
+            this.btnAddInvoice.Size = new System.Drawing.Size(82, 60);
             this.btnAddInvoice.TabIndex = 160;
             this.btnAddInvoice.Text = "Add Invoice";
             this.btnAddInvoice.UseVisualStyleBackColor = true;
@@ -1036,7 +1151,7 @@
             this.btnInvoiceViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInvoiceViewBack.Location = new System.Drawing.Point(679, 554);
             this.btnInvoiceViewBack.Name = "btnInvoiceViewBack";
-            this.btnInvoiceViewBack.Size = new System.Drawing.Size(84, 43);
+            this.btnInvoiceViewBack.Size = new System.Drawing.Size(84, 60);
             this.btnInvoiceViewBack.TabIndex = 186;
             this.btnInvoiceViewBack.Text = "Back";
             this.btnInvoiceViewBack.UseVisualStyleBackColor = true;
@@ -1093,6 +1208,49 @@
             this.dgvInvoices.TabIndex = 31;
             this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
             // 
+            // finInvView
+            // 
+            this.finInvView.HeaderText = "View";
+            this.finInvView.Name = "finInvView";
+            this.finInvView.Text = "Open";
+            this.finInvView.UseColumnTextForButtonValue = true;
+            // 
+            // cInvoiceID
+            // 
+            this.cInvoiceID.HeaderText = "cInvoiceID";
+            this.cInvoiceID.Name = "cInvoiceID";
+            this.cInvoiceID.Visible = false;
+            // 
+            // finInvCompanyName
+            // 
+            this.finInvCompanyName.HeaderText = "CompanyName";
+            this.finInvCompanyName.Name = "finInvCompanyName";
+            this.finInvCompanyName.ReadOnly = true;
+            // 
+            // finInvSubject
+            // 
+            this.finInvSubject.HeaderText = "Subject";
+            this.finInvSubject.Name = "finInvSubject";
+            this.finInvSubject.ReadOnly = true;
+            // 
+            // finInvValue
+            // 
+            this.finInvValue.HeaderText = "Value";
+            this.finInvValue.Name = "finInvValue";
+            this.finInvValue.ReadOnly = true;
+            // 
+            // finInvExpDate
+            // 
+            this.finInvExpDate.HeaderText = "Expire Date";
+            this.finInvExpDate.Name = "finInvExpDate";
+            this.finInvExpDate.ReadOnly = true;
+            // 
+            // InvoiceSendDate
+            // 
+            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
+            this.InvoiceSendDate.Name = "InvoiceSendDate";
+            this.InvoiceSendDate.ReadOnly = true;
+            // 
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
@@ -1118,9 +1276,9 @@
             // btnInvoicesBack
             // 
             this.btnInvoicesBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoicesBack.Location = new System.Drawing.Point(679, 554);
+            this.btnInvoicesBack.Location = new System.Drawing.Point(684, 551);
             this.btnInvoicesBack.Name = "btnInvoicesBack";
-            this.btnInvoicesBack.Size = new System.Drawing.Size(84, 43);
+            this.btnInvoicesBack.Size = new System.Drawing.Size(84, 60);
             this.btnInvoicesBack.TabIndex = 185;
             this.btnInvoicesBack.Text = "Back";
             this.btnInvoicesBack.UseVisualStyleBackColor = true;
@@ -1267,9 +1425,9 @@
             // btnAddInvoiceCancel
             // 
             this.btnAddInvoiceCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(679, 554);
+            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(684, 554);
             this.btnAddInvoiceCancel.Name = "btnAddInvoiceCancel";
-            this.btnAddInvoiceCancel.Size = new System.Drawing.Size(84, 43);
+            this.btnAddInvoiceCancel.Size = new System.Drawing.Size(84, 60);
             this.btnAddInvoiceCancel.TabIndex = 186;
             this.btnAddInvoiceCancel.Text = "Cancel";
             this.btnAddInvoiceCancel.UseVisualStyleBackColor = true;
@@ -1278,9 +1436,9 @@
             // btnCreateInvoice
             // 
             this.btnCreateInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateInvoice.Location = new System.Drawing.Point(32, 554);
+            this.btnCreateInvoice.Location = new System.Drawing.Point(594, 554);
             this.btnCreateInvoice.Name = "btnCreateInvoice";
-            this.btnCreateInvoice.Size = new System.Drawing.Size(165, 43);
+            this.btnCreateInvoice.Size = new System.Drawing.Size(84, 60);
             this.btnCreateInvoice.TabIndex = 168;
             this.btnCreateInvoice.Text = "Add Invoice";
             this.btnCreateInvoice.UseVisualStyleBackColor = true;
@@ -1350,164 +1508,6 @@
             this.lblFinInvoiceValue.Size = new System.Drawing.Size(136, 25);
             this.lblFinInvoiceValue.TabIndex = 162;
             this.lblFinInvoiceValue.Text = "Invoice Value:";
-            // 
-            // finCusView
-            // 
-            this.finCusView.HeaderText = "View";
-            this.finCusView.Name = "finCusView";
-            this.finCusView.Text = "Open";
-            this.finCusView.UseColumnTextForButtonValue = true;
-            // 
-            // cCustomerID
-            // 
-            this.cCustomerID.HeaderText = "CustomerID";
-            this.cCustomerID.Name = "cCustomerID";
-            this.cCustomerID.Visible = false;
-            // 
-            // finCusCompanyName
-            // 
-            this.finCusCompanyName.HeaderText = "Company Name";
-            this.finCusCompanyName.Name = "finCusCompanyName";
-            // 
-            // finCusAddress1
-            // 
-            this.finCusAddress1.HeaderText = "Address 1";
-            this.finCusAddress1.Name = "finCusAddress1";
-            // 
-            // finCusPostalCode1
-            // 
-            this.finCusPostalCode1.HeaderText = "Postal Code 1";
-            this.finCusPostalCode1.Name = "finCusPostalCode1";
-            // 
-            // finCusResidence1
-            // 
-            this.finCusResidence1.HeaderText = "Residence 1";
-            this.finCusResidence1.Name = "finCusResidence1";
-            // 
-            // finCusAddress2
-            // 
-            this.finCusAddress2.HeaderText = "Address 2";
-            this.finCusAddress2.Name = "finCusAddress2";
-            // 
-            // finCusPostalCode2
-            // 
-            this.finCusPostalCode2.HeaderText = "Postal Code 2";
-            this.finCusPostalCode2.Name = "finCusPostalCode2";
-            // 
-            // finCusResidence2
-            // 
-            this.finCusResidence2.HeaderText = "Residence 2";
-            this.finCusResidence2.Name = "finCusResidence2";
-            // 
-            // finCusContactPerson
-            // 
-            this.finCusContactPerson.HeaderText = "Contactperson";
-            this.finCusContactPerson.Name = "finCusContactPerson";
-            // 
-            // finCusInitials
-            // 
-            this.finCusInitials.HeaderText = "Initials";
-            this.finCusInitials.Name = "finCusInitials";
-            // 
-            // finCusPhoneNumber1
-            // 
-            this.finCusPhoneNumber1.HeaderText = "Phone Number 1";
-            this.finCusPhoneNumber1.Name = "finCusPhoneNumber1";
-            // 
-            // finCusPhoneNumber2
-            // 
-            this.finCusPhoneNumber2.HeaderText = "Phone Number 2";
-            this.finCusPhoneNumber2.Name = "finCusPhoneNumber2";
-            // 
-            // finCusFaxNumber
-            // 
-            this.finCusFaxNumber.HeaderText = "Fax Number";
-            this.finCusFaxNumber.Name = "finCusFaxNumber";
-            // 
-            // finCusEmail
-            // 
-            this.finCusEmail.HeaderText = "E-Mail";
-            this.finCusEmail.Name = "finCusEmail";
-            // 
-            // finProView
-            // 
-            this.finProView.HeaderText = "View";
-            this.finProView.Name = "finProView";
-            this.finProView.Text = "Open";
-            this.finProView.UseColumnTextForButtonValue = true;
-            // 
-            // cProjectID
-            // 
-            this.cProjectID.HeaderText = "ProjectID";
-            this.cProjectID.Name = "cProjectID";
-            this.cProjectID.Visible = false;
-            // 
-            // finProCompanyName
-            // 
-            this.finProCompanyName.HeaderText = "CompanyName";
-            this.finProCompanyName.Name = "finProCompanyName";
-            this.finProCompanyName.ReadOnly = true;
-            // 
-            // finProName
-            // 
-            this.finProName.HeaderText = "Project Name";
-            this.finProName.Name = "finProName";
-            this.finProName.ReadOnly = true;
-            // 
-            // finProDeadline
-            // 
-            this.finProDeadline.HeaderText = "Deadline";
-            this.finProDeadline.Name = "finProDeadline";
-            this.finProDeadline.ReadOnly = true;
-            // 
-            // finProSubject
-            // 
-            this.finProSubject.HeaderText = "Subject";
-            this.finProSubject.Name = "finProSubject";
-            this.finProSubject.ReadOnly = true;
-            // 
-            // finInvView
-            // 
-            this.finInvView.HeaderText = "View";
-            this.finInvView.Name = "finInvView";
-            this.finInvView.Text = "Open";
-            this.finInvView.UseColumnTextForButtonValue = true;
-            // 
-            // cInvoiceID
-            // 
-            this.cInvoiceID.HeaderText = "cInvoiceID";
-            this.cInvoiceID.Name = "cInvoiceID";
-            this.cInvoiceID.Visible = false;
-            // 
-            // finInvCompanyName
-            // 
-            this.finInvCompanyName.HeaderText = "CompanyName";
-            this.finInvCompanyName.Name = "finInvCompanyName";
-            this.finInvCompanyName.ReadOnly = true;
-            // 
-            // finInvSubject
-            // 
-            this.finInvSubject.HeaderText = "Subject";
-            this.finInvSubject.Name = "finInvSubject";
-            this.finInvSubject.ReadOnly = true;
-            // 
-            // finInvValue
-            // 
-            this.finInvValue.HeaderText = "Value";
-            this.finInvValue.Name = "finInvValue";
-            this.finInvValue.ReadOnly = true;
-            // 
-            // finInvExpDate
-            // 
-            this.finInvExpDate.HeaderText = "Expire Date";
-            this.finInvExpDate.Name = "finInvExpDate";
-            this.finInvExpDate.ReadOnly = true;
-            // 
-            // InvoiceSendDate
-            // 
-            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
-            this.InvoiceSendDate.Name = "InvoiceSendDate";
-            this.InvoiceSendDate.ReadOnly = true;
             // 
             // frmFinance
             // 
