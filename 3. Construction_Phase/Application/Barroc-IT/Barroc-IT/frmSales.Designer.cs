@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblSalesPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
@@ -36,6 +37,7 @@
             this.btnSalesAddCustomer = new System.Windows.Forms.Button();
             this.btnSalesHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblHome = new System.Windows.Forms.Label();
@@ -284,6 +286,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(779, 612);
             this.panel1.TabIndex = 2;
+            // 
+            // tTipPostalCode
+            // 
+            this.tTipPostalCode.AutoPopDelay = 5000;
+            this.tTipPostalCode.InitialDelay = 500;
+            this.tTipPostalCode.ReshowDelay = 1;
+            this.tTipPostalCode.ShowAlways = true;
+            this.tTipPostalCode.ToolTipTitle = "Postal Code";
             // 
             // tbContr
             // 
@@ -1672,6 +1682,8 @@
             this.txtCusAddPostalCode1.Name = "txtCusAddPostalCode1";
             this.txtCusAddPostalCode1.Size = new System.Drawing.Size(137, 20);
             this.txtCusAddPostalCode1.TabIndex = 148;
+            this.tTipPostalCode.SetToolTip(this.txtCusAddPostalCode1, "The postal code needs to be entered this way:\r\n1234 AB\r\nMake sure there is a spac" +
+        "e between the numbers and letters.\r\nThe letters need to be in capitals.");
             // 
             // txtCusAddAddress1
             // 
@@ -1885,7 +1897,7 @@
         private System.Windows.Forms.TextBox txtCusAddCompanyName;
         private System.Windows.Forms.Label lblAddCustomer;
         private System.Windows.Forms.TextBox txtCusAddInitials;
-        private System.Windows.Forms.Label lblCusContactperson;        
+        private System.Windows.Forms.Label lblCusContactperson;
         private System.Windows.Forms.TextBox txtCusAddContactperson;
         private System.Windows.Forms.TextBox txtCusAddPhoneNumber1;
         private System.Windows.Forms.TextBox txtCusAddPostalCode1;
@@ -1973,5 +1985,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCusInitals;
         private System.Windows.Forms.Label lblCusInitials;
+        private System.Windows.Forms.ToolTip tTipPostalCode;
     }
 }
