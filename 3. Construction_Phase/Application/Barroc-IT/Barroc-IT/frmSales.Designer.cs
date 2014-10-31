@@ -64,11 +64,10 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txtCusInitals = new System.Windows.Forms.TextBox();
+            this.txtCusInitials = new System.Windows.Forms.TextBox();
             this.lblCusInitials = new System.Windows.Forms.Label();
             this.txtCusResidence2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCusPhoneNumber2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCusPostalCode2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,7 +75,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtCusResidence1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCusPhoneNumber1 = new System.Windows.Forms.TextBox();
             this.dtpCusSalesNextAction = new System.Windows.Forms.DateTimePicker();
             this.dtpCusSalesLastContactDate = new System.Windows.Forms.DateTimePicker();
             this.cBoxCusProspect = new System.Windows.Forms.ComboBox();
@@ -118,7 +116,8 @@
             this.txtAppointmentSearch = new System.Windows.Forms.TextBox();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
             this.cAppointmentViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cApppointmentSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAppointmentInternalContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -186,6 +185,8 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
+            this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtCusPhoneNumber2 = new System.Windows.Forms.MaskedTextBox();
             this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
@@ -509,11 +510,12 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.txtCusInitals);
+            this.tabPage3.Controls.Add(this.txtCusPhoneNumber2);
+            this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
+            this.tabPage3.Controls.Add(this.txtCusInitials);
             this.tabPage3.Controls.Add(this.lblCusInitials);
             this.tabPage3.Controls.Add(this.txtCusResidence2);
             this.tabPage3.Controls.Add(this.label2);
-            this.tabPage3.Controls.Add(this.txtCusPhoneNumber2);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.txtCusPostalCode2);
             this.tabPage3.Controls.Add(this.label4);
@@ -521,7 +523,6 @@
             this.tabPage3.Controls.Add(this.label5);
             this.tabPage3.Controls.Add(this.txtCusResidence1);
             this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
             this.tabPage3.Controls.Add(this.dtpCusSalesNextAction);
             this.tabPage3.Controls.Add(this.dtpCusSalesLastContactDate);
             this.tabPage3.Controls.Add(this.cBoxCusProspect);
@@ -563,13 +564,13 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
             // 
-            // txtCusInitals
+            // txtCusInitials
             // 
-            this.txtCusInitals.Location = new System.Drawing.Point(272, 204);
-            this.txtCusInitals.Name = "txtCusInitals";
-            this.txtCusInitals.ReadOnly = true;
-            this.txtCusInitals.Size = new System.Drawing.Size(137, 20);
-            this.txtCusInitals.TabIndex = 240;
+            this.txtCusInitials.Location = new System.Drawing.Point(272, 204);
+            this.txtCusInitials.Name = "txtCusInitials";
+            this.txtCusInitials.ReadOnly = true;
+            this.txtCusInitials.Size = new System.Drawing.Size(137, 20);
+            this.txtCusInitials.TabIndex = 240;
             // 
             // lblCusInitials
             // 
@@ -598,14 +599,6 @@
             this.label2.Size = new System.Drawing.Size(121, 25);
             this.label2.TabIndex = 237;
             this.label2.Text = "Residence2:";
-            // 
-            // txtCusPhoneNumber2
-            // 
-            this.txtCusPhoneNumber2.Location = new System.Drawing.Point(616, 174);
-            this.txtCusPhoneNumber2.Name = "txtCusPhoneNumber2";
-            this.txtCusPhoneNumber2.ReadOnly = true;
-            this.txtCusPhoneNumber2.Size = new System.Drawing.Size(137, 20);
-            this.txtCusPhoneNumber2.TabIndex = 236;
             // 
             // label3
             // 
@@ -670,14 +663,6 @@
             this.label1.Size = new System.Drawing.Size(121, 25);
             this.label1.TabIndex = 229;
             this.label1.Text = "Residence1:";
-            // 
-            // txtCusPhoneNumber1
-            // 
-            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(272, 175);
-            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
-            this.txtCusPhoneNumber1.ReadOnly = true;
-            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
-            this.txtCusPhoneNumber1.TabIndex = 228;
             // 
             // dtpCusSalesNextAction
             // 
@@ -808,6 +793,7 @@
             this.btnEditCustomerFields.TabIndex = 6;
             this.btnEditCustomerFields.Text = "Edit Fields";
             this.btnEditCustomerFields.UseVisualStyleBackColor = true;
+            this.btnEditCustomerFields.Click += new System.EventHandler(this.btnEditCustomerFields_Click);
             // 
             // txtCusContactPerson
             // 
@@ -1086,7 +1072,8 @@
             this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cAppointmentViewButton,
-            this.cProjectCustomerID,
+            this.cAppointmentID,
+            this.cAppointmentCompanyName,
             this.cAppointmentDate,
             this.cApppointmentSubject,
             this.cAppointmentInternalContact});
@@ -1102,10 +1089,17 @@
             this.cAppointmentViewButton.HeaderText = "View";
             this.cAppointmentViewButton.Name = "cAppointmentViewButton";
             // 
-            // cProjectCustomerID
+            // cAppointmentID
             // 
-            this.cProjectCustomerID.HeaderText = "CustomerID";
-            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            this.cAppointmentID.HeaderText = "cAppointmentID";
+            this.cAppointmentID.Name = "cAppointmentID";
+            this.cAppointmentID.Visible = false;
+            // 
+            // cAppointmentCompanyName
+            // 
+            this.cAppointmentCompanyName.HeaderText = "CompanyName";
+            this.cAppointmentCompanyName.Name = "cAppointmentCompanyName";
+            this.cAppointmentCompanyName.ReadOnly = true;
             // 
             // cAppointmentDate
             // 
@@ -1778,7 +1772,21 @@
             this.lblAddCustomer.Text = "Add Customer";
             // 
             // tTipPostalCode
+            // txtCusPhoneNumber1
             // 
+            this.txtCusPhoneNumber1.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(271, 172);
+            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
+            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(138, 20);
+            this.txtCusPhoneNumber1.TabIndex = 241;
+            // 
+            // txtCusPhoneNumber2
+            // 
+            this.txtCusPhoneNumber2.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCusPhoneNumber2.Location = new System.Drawing.Point(616, 172);
+            this.txtCusPhoneNumber2.Name = "txtCusPhoneNumber2";
+            this.txtCusPhoneNumber2.Size = new System.Drawing.Size(138, 20);
+            this.txtCusPhoneNumber2.TabIndex = 242;
             this.tTipPostalCode.AutoPopDelay = 5000;
             this.tTipPostalCode.InitialDelay = 500;
             this.tTipPostalCode.ReshowDelay = 1;
@@ -1948,11 +1956,6 @@
         private System.Windows.Forms.Label lblSalePercentage;
         private System.Windows.Forms.Label lblCreditworthy;
         private System.Windows.Forms.NumericUpDown nudCusSalePercentage;
-        private System.Windows.Forms.DataGridViewButtonColumn cAppointmentViewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cApppointmentSubject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;
         private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
@@ -1971,19 +1974,25 @@
         private System.Windows.Forms.ComboBox cBoxCusProspect;
         private System.Windows.Forms.DateTimePicker dtpCusSalesLastContactDate;
         private System.Windows.Forms.DateTimePicker dtpCusSalesNextAction;
-        private System.Windows.Forms.TextBox txtCusPhoneNumber1;
         private System.Windows.Forms.TextBox txtCusResidence1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCusResidence2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCusPhoneNumber2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCusPostalCode2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCusAddress2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCusInitals;
+        private System.Windows.Forms.TextBox txtCusInitials;
         private System.Windows.Forms.Label lblCusInitials;
         private System.Windows.Forms.ToolTip tTipPostalCode;
+        private System.Windows.Forms.DataGridViewButtonColumn cAppointmentViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cApppointmentSubject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber2;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
     }
 }

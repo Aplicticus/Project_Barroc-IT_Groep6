@@ -49,10 +49,7 @@
         string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
         "tbl_Projects.SUBJECT, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
         "tbl_Invoices.INVOICE_SEND FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
-        //string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.CUSTOMER_ID, " +
-        //"tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT "+
-        //"FROM tbl_Customers {2}WHERE tbl_Customers.CUSTOMER_ID=@CustomerID";
-
+        
         string loadAppointments = "SELECT * FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
         string countSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
