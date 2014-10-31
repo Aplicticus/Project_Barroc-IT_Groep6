@@ -38,7 +38,6 @@
             this.btnSalesAddCustomer = new System.Windows.Forms.Button();
             this.btnSalesHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblHome = new System.Windows.Forms.Label();
@@ -48,7 +47,6 @@
             this.cBoxCustomerSearch = new System.Windows.Forms.ComboBox();
             this.btnCustomerSearch = new System.Windows.Forms.Button();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
-            this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -148,7 +146,7 @@
             this.btnEditAppointmentFields = new System.Windows.Forms.Button();
             this.lblSelectedAppointment = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.btnAddInvoiceCancel = new System.Windows.Forms.Button();
+            this.btnAddAppoinmentCancel = new System.Windows.Forms.Button();
             this.dtpApoAddAppointmentDate = new System.Windows.Forms.DateTimePicker();
             this.lblApoAddAppointmentDate = new System.Windows.Forms.Label();
             this.lblApoAddInternalContact = new System.Windows.Forms.Label();
@@ -191,6 +189,8 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
+            this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
+            this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -290,13 +290,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(779, 612);
             this.panel1.TabIndex = 2;
-            // 
-            // tTipPostalCode
-            // 
-            this.tTipPostalCode.AutoPopDelay = 5000;
-            this.tTipPostalCode.InitialDelay = 500;
-            this.tTipPostalCode.ReshowDelay = 1;
-            this.tTipPostalCode.ToolTipTitle = "Postal Code";
             // 
             // tbContr
             // 
@@ -526,6 +519,84 @@
             this.cEmail.HeaderText = "E-Mail";
             this.cEmail.Name = "cEmail";
             this.cEmail.ReadOnly = true;
+            // 
+            // cViewButton
+            // 
+            this.cViewButton.HeaderText = "View";
+            this.cViewButton.Name = "cViewButton";
+            this.cViewButton.Text = "Open";
+            this.cViewButton.UseColumnTextForButtonValue = true;
+            // 
+            // cCustomerID
+            // 
+            this.cCustomerID.HeaderText = "CustomerID";
+            this.cCustomerID.Name = "cCustomerID";
+            this.cCustomerID.Visible = false;
+            // 
+            // cCompanyName
+            // 
+            this.cCompanyName.HeaderText = "Company Name";
+            this.cCompanyName.Name = "cCompanyName";
+            // 
+            // cAddress1
+            // 
+            this.cAddress1.HeaderText = "Address 1";
+            this.cAddress1.Name = "cAddress1";
+            // 
+            // cPostalCode1
+            // 
+            this.cPostalCode1.HeaderText = "Postal Code 1";
+            this.cPostalCode1.Name = "cPostalCode1";
+            // 
+            // cResidence1
+            // 
+            this.cResidence1.HeaderText = "Residence 1";
+            this.cResidence1.Name = "cResidence1";
+            // 
+            // cAddress2
+            // 
+            this.cAddress2.HeaderText = "Address 2";
+            this.cAddress2.Name = "cAddress2";
+            // 
+            // cPostalCode2
+            // 
+            this.cPostalCode2.HeaderText = "Postal Code 2";
+            this.cPostalCode2.Name = "cPostalCode2";
+            // 
+            // cResidence2
+            // 
+            this.cResidence2.HeaderText = "Residence 2";
+            this.cResidence2.Name = "cResidence2";
+            // 
+            // cContactPerson
+            // 
+            this.cContactPerson.HeaderText = "Contactperson";
+            this.cContactPerson.Name = "cContactPerson";
+            // 
+            // cInitials
+            // 
+            this.cInitials.HeaderText = "Initials";
+            this.cInitials.Name = "cInitials";
+            // 
+            // cPhoneNumber1
+            // 
+            this.cPhoneNumber1.HeaderText = "Phone Number 1";
+            this.cPhoneNumber1.Name = "cPhoneNumber1";
+            // 
+            // cPhoneNumber2
+            // 
+            this.cPhoneNumber2.HeaderText = "Phone Number 2";
+            this.cPhoneNumber2.Name = "cPhoneNumber2";
+            // 
+            // cFaxNumber
+            // 
+            this.cFaxNumber.HeaderText = "Fax Number";
+            this.cFaxNumber.Name = "cFaxNumber";
+            // 
+            // cEmail
+            // 
+            this.cEmail.HeaderText = "E-Mail";
+            this.cEmail.Name = "cEmail";
             // 
             // lblCustomers
             // 
@@ -1136,7 +1207,6 @@
             // 
             this.cAppointmentViewButton.HeaderText = "View";
             this.cAppointmentViewButton.Name = "cAppointmentViewButton";
-            this.cAppointmentViewButton.ReadOnly = true;
             this.cAppointmentViewButton.Text = "Open";
             this.cAppointmentViewButton.UseColumnTextForButtonValue = true;
             // 
@@ -1144,7 +1214,6 @@
             // 
             this.cAppointmentID.HeaderText = "cAppointmentID";
             this.cAppointmentID.Name = "cAppointmentID";
-            this.cAppointmentID.ReadOnly = true;
             this.cAppointmentID.Visible = false;
             // 
             // cAppointmentCompanyName
@@ -1155,24 +1224,18 @@
             // 
             // cAppointmentDate
             // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.cAppointmentDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.cAppointmentDate.HeaderText = "Appointment Date";
             this.cAppointmentDate.Name = "cAppointmentDate";
-            this.cAppointmentDate.ReadOnly = true;
             // 
             // cApppointmentSubject
             // 
             this.cApppointmentSubject.HeaderText = "Subject";
             this.cApppointmentSubject.Name = "cApppointmentSubject";
-            this.cApppointmentSubject.ReadOnly = true;
             // 
             // cAppointmentInternalContact
             // 
             this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
             this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
-            this.cAppointmentInternalContact.ReadOnly = true;
             // 
             // lblListAppointments
             // 
@@ -1403,7 +1466,7 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage6.Controls.Add(this.btnAddInvoiceCancel);
+            this.tabPage6.Controls.Add(this.btnAddAppoinmentCancel);
             this.tabPage6.Controls.Add(this.dtpApoAddAppointmentDate);
             this.tabPage6.Controls.Add(this.lblApoAddAppointmentDate);
             this.tabPage6.Controls.Add(this.lblApoAddInternalContact);
@@ -1421,20 +1484,19 @@
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "addAppointment";
             // 
-            // btnAddInvoiceCancel
+            // btnAddAppoinmentCancel
             // 
-            this.btnAddInvoiceCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(677, 525);
-            this.btnAddInvoiceCancel.Name = "btnAddInvoiceCancel";
-            this.btnAddInvoiceCancel.Size = new System.Drawing.Size(84, 60);
-            this.btnAddInvoiceCancel.TabIndex = 187;
-            this.btnAddInvoiceCancel.Text = "Cancel";
-            this.btnAddInvoiceCancel.UseVisualStyleBackColor = true;
-            this.btnAddInvoiceCancel.Click += new System.EventHandler(this.btnAddInvoiceCancel_Click);
+            this.btnAddAppoinmentCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddAppoinmentCancel.Location = new System.Drawing.Point(677, 525);
+            this.btnAddAppoinmentCancel.Name = "btnAddAppoinmentCancel";
+            this.btnAddAppoinmentCancel.Size = new System.Drawing.Size(84, 60);
+            this.btnAddAppoinmentCancel.TabIndex = 187;
+            this.btnAddAppoinmentCancel.Text = "Cancel";
+            this.btnAddAppoinmentCancel.UseVisualStyleBackColor = true;
+            this.btnAddAppoinmentCancel.Click += new System.EventHandler(this.btnAddInvoiceCancel_Click);
             // 
             // dtpApoAddAppointmentDate
             // 
-            this.dtpApoAddAppointmentDate.Enabled = false;
             this.dtpApoAddAppointmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpApoAddAppointmentDate.Location = new System.Drawing.Point(414, 185);
             this.dtpApoAddAppointmentDate.Name = "dtpApoAddAppointmentDate";
@@ -1475,7 +1537,6 @@
             // 
             this.txtApoAddInternalContact.Location = new System.Drawing.Point(414, 133);
             this.txtApoAddInternalContact.Name = "txtApoAddInternalContact";
-            this.txtApoAddInternalContact.ReadOnly = true;
             this.txtApoAddInternalContact.Size = new System.Drawing.Size(137, 20);
             this.txtApoAddInternalContact.TabIndex = 151;
             // 
@@ -1483,7 +1544,6 @@
             // 
             this.txtApoAddSubject.Location = new System.Drawing.Point(414, 159);
             this.txtApoAddSubject.Name = "txtApoAddSubject";
-            this.txtApoAddSubject.ReadOnly = true;
             this.txtApoAddSubject.Size = new System.Drawing.Size(137, 20);
             this.txtApoAddSubject.TabIndex = 150;
             // 
@@ -1501,7 +1561,6 @@
             // 
             this.txtApoAddCompanyName.Location = new System.Drawing.Point(414, 105);
             this.txtApoAddCompanyName.Name = "txtApoAddCompanyName";
-            this.txtApoAddCompanyName.ReadOnly = true;
             this.txtApoAddCompanyName.Size = new System.Drawing.Size(137, 20);
             this.txtApoAddCompanyName.TabIndex = 130;
             // 
@@ -1576,6 +1635,7 @@
             this.btnAddCustomerCancel.TabIndex = 194;
             this.btnAddCustomerCancel.Text = "Cancel";
             this.btnAddCustomerCancel.UseVisualStyleBackColor = true;
+            this.btnAddCustomerCancel.Click += new System.EventHandler(this.btnAddCustomerCancel_Click);
             // 
             // lblCusAddInitials
             // 
@@ -1847,6 +1907,13 @@
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
             // 
+            // tTipPostalCode
+            // 
+            this.tTipPostalCode.AutoPopDelay = 5000;
+            this.tTipPostalCode.InitialDelay = 500;
+            this.tTipPostalCode.ReshowDelay = 1;
+            this.tTipPostalCode.ToolTipTitle = "Postal Code";
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2006,7 +2073,7 @@
         private System.Windows.Forms.Button btnSelectedCustomerBack;
         private System.Windows.Forms.Button btnListAppointmentsBack;
         private System.Windows.Forms.Button btnSelectedAppointmentBack;
-        private System.Windows.Forms.Button btnAddInvoiceCancel;
+        private System.Windows.Forms.Button btnAddAppoinmentCancel;
         private System.Windows.Forms.DateTimePicker dtpCusSalesDateOfAction;
         private System.Windows.Forms.Label lblSalePercentage;
         private System.Windows.Forms.Label lblCreditworthy;
@@ -2042,7 +2109,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;      
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.Label lblCusAddInitials;
         private System.Windows.Forms.Button btnAddCustomerCancel;
         private System.Windows.Forms.DataGridViewButtonColumn cAppointmentViewButton;

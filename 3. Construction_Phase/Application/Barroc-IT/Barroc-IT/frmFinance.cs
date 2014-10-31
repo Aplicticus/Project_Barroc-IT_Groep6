@@ -29,6 +29,7 @@ namespace Barroc_IT
             this.sqlhandler = sqlhandler;
             cBoxCustomerSearch.SelectedIndex = 0;
             cBoxProjectSearch.SelectedIndex = 0;
+            cBoxSearchInvoice.SelectedIndex = 0;
         }
 
         // Click Events

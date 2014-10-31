@@ -293,9 +293,9 @@
             // btnListCustomerBack
             // 
             this.btnListCustomerBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListCustomerBack.Location = new System.Drawing.Point(679, 554);
+            this.btnListCustomerBack.Location = new System.Drawing.Point(684, 551);
             this.btnListCustomerBack.Name = "btnListCustomerBack";
-            this.btnListCustomerBack.Size = new System.Drawing.Size(84, 43);
+            this.btnListCustomerBack.Size = new System.Drawing.Size(84, 60);
             this.btnListCustomerBack.TabIndex = 27;
             this.btnListCustomerBack.Text = "Back";
             this.btnListCustomerBack.UseVisualStyleBackColor = true;
@@ -548,9 +548,9 @@
             // btnSelectedCustomerBack
             // 
             this.btnSelectedCustomerBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectedCustomerBack.Location = new System.Drawing.Point(679, 554);
+            this.btnSelectedCustomerBack.Location = new System.Drawing.Point(684, 551);
             this.btnSelectedCustomerBack.Name = "btnSelectedCustomerBack";
-            this.btnSelectedCustomerBack.Size = new System.Drawing.Size(84, 43);
+            this.btnSelectedCustomerBack.Size = new System.Drawing.Size(84, 60);
             this.btnSelectedCustomerBack.TabIndex = 139;
             this.btnSelectedCustomerBack.Text = "Back";
             this.btnSelectedCustomerBack.UseVisualStyleBackColor = true;
@@ -568,9 +568,9 @@
             // btnAddProjectCustomer
             // 
             this.btnAddProjectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProjectCustomer.Location = new System.Drawing.Point(203, 554);
+            this.btnAddProjectCustomer.Location = new System.Drawing.Point(500, 550);
             this.btnAddProjectCustomer.Name = "btnAddProjectCustomer";
-            this.btnAddProjectCustomer.Size = new System.Drawing.Size(165, 43);
+            this.btnAddProjectCustomer.Size = new System.Drawing.Size(81, 60);
             this.btnAddProjectCustomer.TabIndex = 127;
             this.btnAddProjectCustomer.Text = "Add Project";
             this.btnAddProjectCustomer.UseVisualStyleBackColor = true;
@@ -579,9 +579,9 @@
             // btnViewProjects
             // 
             this.btnViewProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewProjects.Location = new System.Drawing.Point(374, 554);
+            this.btnViewProjects.Location = new System.Drawing.Point(587, 550);
             this.btnViewProjects.Name = "btnViewProjects";
-            this.btnViewProjects.Size = new System.Drawing.Size(165, 43);
+            this.btnViewProjects.Size = new System.Drawing.Size(91, 60);
             this.btnViewProjects.TabIndex = 126;
             this.btnViewProjects.Text = "View Projects";
             this.btnViewProjects.UseVisualStyleBackColor = true;
@@ -590,9 +590,9 @@
             // btnEditFields
             // 
             this.btnEditFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditFields.Location = new System.Drawing.Point(32, 554);
+            this.btnEditFields.Location = new System.Drawing.Point(416, 551);
             this.btnEditFields.Name = "btnEditFields";
-            this.btnEditFields.Size = new System.Drawing.Size(165, 43);
+            this.btnEditFields.Size = new System.Drawing.Size(78, 60);
             this.btnEditFields.TabIndex = 6;
             this.btnEditFields.Text = "Edit Fields";
             this.btnEditFields.UseVisualStyleBackColor = true;
@@ -870,9 +870,9 @@
             // btnListProjectBack
             // 
             this.btnListProjectBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListProjectBack.Location = new System.Drawing.Point(679, 554);
+            this.btnListProjectBack.Location = new System.Drawing.Point(684, 551);
             this.btnListProjectBack.Name = "btnListProjectBack";
-            this.btnListProjectBack.Size = new System.Drawing.Size(84, 43);
+            this.btnListProjectBack.Size = new System.Drawing.Size(84, 60);
             this.btnListProjectBack.TabIndex = 28;
             this.btnListProjectBack.Text = "Back";
             this.btnListProjectBack.UseVisualStyleBackColor = true;
@@ -965,7 +965,6 @@
             // cProjectDeadline
             // 
             dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
             this.cProjectDeadline.DefaultCellStyle = dataGridViewCellStyle2;
             this.cProjectDeadline.HeaderText = "Deadline";
             this.cProjectDeadline.Name = "cProjectDeadline";
@@ -1023,9 +1022,9 @@
             // btnSelectedProjectBack
             // 
             this.btnSelectedProjectBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectedProjectBack.Location = new System.Drawing.Point(678, 554);
+            this.btnSelectedProjectBack.Location = new System.Drawing.Point(684, 554);
             this.btnSelectedProjectBack.Name = "btnSelectedProjectBack";
-            this.btnSelectedProjectBack.Size = new System.Drawing.Size(84, 43);
+            this.btnSelectedProjectBack.Size = new System.Drawing.Size(84, 60);
             this.btnSelectedProjectBack.TabIndex = 138;
             this.btnSelectedProjectBack.Text = "Back";
             this.btnSelectedProjectBack.UseVisualStyleBackColor = true;
@@ -1107,9 +1106,9 @@
             // btnArchiveProject
             // 
             this.btnArchiveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveProject.Location = new System.Drawing.Point(203, 554);
+            this.btnArchiveProject.Location = new System.Drawing.Point(596, 554);
             this.btnArchiveProject.Name = "btnArchiveProject";
-            this.btnArchiveProject.Size = new System.Drawing.Size(165, 43);
+            this.btnArchiveProject.Size = new System.Drawing.Size(82, 60);
             this.btnArchiveProject.TabIndex = 126;
             this.btnArchiveProject.Text = "Delete Project";
             this.btnArchiveProject.UseVisualStyleBackColor = true;
@@ -1117,9 +1116,9 @@
             // btnEditProject
             // 
             this.btnEditProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProject.Location = new System.Drawing.Point(32, 554);
+            this.btnEditProject.Location = new System.Drawing.Point(517, 554);
             this.btnEditProject.Name = "btnEditProject";
-            this.btnEditProject.Size = new System.Drawing.Size(165, 43);
+            this.btnEditProject.Size = new System.Drawing.Size(73, 60);
             this.btnEditProject.TabIndex = 6;
             this.btnEditProject.Text = "Edit Fields";
             this.btnEditProject.UseVisualStyleBackColor = true;
@@ -1179,9 +1178,9 @@
             // btnAddInvoiceCancel
             // 
             this.btnAddInvoiceCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(669, 554);
+            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(683, 554);
             this.btnAddInvoiceCancel.Name = "btnAddInvoiceCancel";
-            this.btnAddInvoiceCancel.Size = new System.Drawing.Size(84, 43);
+            this.btnAddInvoiceCancel.Size = new System.Drawing.Size(82, 60);
             this.btnAddInvoiceCancel.TabIndex = 187;
             this.btnAddInvoiceCancel.Text = "Cancel";
             this.btnAddInvoiceCancel.UseVisualStyleBackColor = true;
@@ -1271,9 +1270,9 @@
             // btnCreateProject
             // 
             this.btnCreateProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateProject.Location = new System.Drawing.Point(32, 554);
+            this.btnCreateProject.Location = new System.Drawing.Point(595, 554);
             this.btnCreateProject.Name = "btnCreateProject";
-            this.btnCreateProject.Size = new System.Drawing.Size(165, 43);
+            this.btnCreateProject.Size = new System.Drawing.Size(82, 60);
             this.btnCreateProject.TabIndex = 6;
             this.btnCreateProject.Text = "Add Project";
             this.btnCreateProject.UseVisualStyleBackColor = true;
