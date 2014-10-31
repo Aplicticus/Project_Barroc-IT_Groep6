@@ -2019,9 +2019,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentCompanyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cApppointmentSubject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;
-        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber2;
-        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;      
         private System.Windows.Forms.Label lblCusAddInitials;
         private System.Windows.Forms.Button btnAddCustomerCancel;
     }
