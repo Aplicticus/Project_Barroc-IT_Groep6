@@ -20,7 +20,7 @@ namespace Barroc_IT
             this.loginForm = loginForm;
             this.dthandler = dthandler;
             this.sqlhandler = sqlhandler;
-            cBoxAdminDepartment.SelectedIndex = 0;
+            cBoxAddDepartment.SelectedIndex = 0;
         }
         
         // Click events
@@ -63,7 +63,32 @@ namespace Barroc_IT
                 MessageBox.Show("There is a problem with adding a User!");
             }             
         }
-
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            if (AddUser() == true)
+            {
+                tbContr.SelectedIndex = 5;
+                LoadUsers();
+                MessageBox.Show("User succesfully added!");
+            }
+            else
+            {
+                MessageBox.Show("There is a problem with adding a User!");
+            }   
+        }
+        private void btnDeactivatedBack_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 0;
+        }
+        private void btnUserInfoBack_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 0;
+        }
+        private void btnAddUserBack_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 0;
+        }
+        
         // Loads
         private void LoadUsers()
         {
@@ -79,9 +104,9 @@ namespace Barroc_IT
         {
             string sql = sqlhandler.GetQuery(Query.addUser);
             SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
-            cmd.Parameters.Add(new SqlParameter("@UserName", txtAdminUsername.Text));
-            cmd.Parameters.Add(new SqlParameter("@Password", txtAdminPassword.Text));
-            cmd.Parameters.Add(new SqlParameter("@Department", cBoxAdminDepartment.SelectedItem.ToString()));
+            cmd.Parameters.Add(new SqlParameter("@UserName", txtAddUserName.Text));
+            cmd.Parameters.Add(new SqlParameter("@Password", txtAddPassword.Text));
+            cmd.Parameters.Add(new SqlParameter("@Department", cBoxAddDepartment.SelectedItem.ToString()));
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
