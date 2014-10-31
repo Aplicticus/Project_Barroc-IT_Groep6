@@ -14,6 +14,7 @@ namespace Barroc_IT
         private DataTableHandler dthandler;
 
         private int selectedCustomer = 0;
+        private int selectedAppoinment = 0;
         private bool closing = false;
         public frmSales(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
@@ -73,7 +74,7 @@ namespace Barroc_IT
             dgvUserInfo.Rows.Clear();
             LoadCustomers(); 
         }
-        private void btnEditFields_Click(object sender, EventArgs e)
+       /* private void btnEditFields_Click(object sender, EventArgs e)
         {
             if (btnEditCustomerFields.Text == "Edit Fields")
             {
@@ -141,6 +142,7 @@ namespace Barroc_IT
             }
 
         }
+        * */
 
 
         // Loads
@@ -192,12 +194,6 @@ namespace Barroc_IT
                 return false;
             }           
         }
-
-
-        private void btnEditFields_Click(object sender, EventArgs e)
-        {
-
-            }
         private void btnAppointmentSearch_Click(object sender, EventArgs e)
         {
 
@@ -250,22 +246,22 @@ namespace Barroc_IT
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
             DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
 
-            string sqlAppointments = sqlhandler.GetQuery(Query.countAppointments);
+           // string sqlAppointments = sqlhandler.GetQuery(Query.countAppointments);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
-            DataTable countAppointments = dthandler.ExecuteQuery(sqlAppointments, collection);
+          //  DataTable countAppointments = dthandler.ExecuteQuery(sqlAppointments, collection);
 
-            string sqlOffers = sqlhandler.GetQuery(Query.countOffers);
+          //  string sqlOffers = sqlhandler.GetQuery(Query.countOffers);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
-            DataTable countOffers = dthandler.ExecuteQuery(sqlOffers, collection);
+          //  DataTable countOffers = dthandler.ExecuteQuery(sqlOffers, collection);
 
-            LoadCustomerDetails(customerDetails, countAppointments, countOffers);
+           // LoadCustomerDetails(customerDetails, countAppointments, countOffers);
         }
         private void ReloadAppointments()
         {
-            string sqlCustomers = sqlhandler.GetQuery(Query.loadAppointmentDetails);
+           // string sqlCustomers = sqlhandler.GetQuery(Query.loadAppointmentDetails);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("appointmentID", selectedAppoinment) };
-            DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
-            LoadAppointmentDetails(customerDetails);
+          //  DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
+            //LoadAppointmentDetails(customerDetails);
         }
 
         // Load Details
@@ -275,7 +271,7 @@ namespace Barroc_IT
             txtCusCompanyName.Text = CusRow["COMPANYNAME"].ToString();
             txtCusAddress1.Text = CusRow["ADDRESS1"].ToString();
             txtCusPostalCode1.Text = CusRow["POSTALCODE1"].ToString();
-            txtCusResidence1.Text = CusRow["RESIDENCE1"].ToString();
+            //txtCusResidence1.Text = CusRow["RESIDENCE1"].ToString();
             txtCusPhoneNumber1.Text = CusRow["PHONE_NR1"].ToString();
             txtCusFaxNumber.Text = CusRow["FAXNUMBER"].ToString();
             txtCusEmail.Text = CusRow["EMAIL"].ToString();
