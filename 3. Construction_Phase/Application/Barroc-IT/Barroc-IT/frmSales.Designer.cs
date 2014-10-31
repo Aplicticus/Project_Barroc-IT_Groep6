@@ -174,7 +174,7 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
-            this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
+            //this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -497,7 +497,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
+            //this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
             this.tabPage3.Controls.Add(this.dtpCusSalesNextAction);
             this.tabPage3.Controls.Add(this.dtpCusSalesLastContactDate);
             this.tabPage3.Controls.Add(this.cBoxCusProspect);
@@ -785,11 +785,11 @@
             // 
             // txtCusPhoneNumber1
             // 
-            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(268, 173);
-            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
-            this.txtCusPhoneNumber1.ReadOnly = true;
-            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
-            this.txtCusPhoneNumber1.TabIndex = 97;
+            //this.txtCusPhoneNumber1.Location = new System.Drawing.Point(268, 173);
+            //this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
+            //this.txtCusPhoneNumber1.ReadOnly = true;
+            //this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
+            //this.txtCusPhoneNumber1.TabIndex = 97;
             // 
             // txtCusEmail
             // 
@@ -1768,12 +1768,12 @@
             // 
             // label6
             // 
-            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(203, 145);
-            this.txtCusPhoneNumber1.Mask = "000-0000000";
-            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
-            this.txtCusPhoneNumber1.PromptChar = '0';
-            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
-            this.txtCusPhoneNumber1.TabIndex = 228;
+            //this.txtCusPhoneNumber1.Location = new System.Drawing.Point(203, 145);
+            //this.txtCusPhoneNumber1.Mask = "000-0000000";
+            //this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
+            //this.txtCusPhoneNumber1.PromptChar = '0';
+            //this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
+            //this.txtCusPhoneNumber1.TabIndex = 228;
             this.dtpCusSalesNextAction.Enabled = false;
             this.dtpCusSalesNextAction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpCusSalesNextAction.Location = new System.Drawing.Point(620, 201);

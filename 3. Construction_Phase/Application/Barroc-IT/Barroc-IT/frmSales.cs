@@ -85,7 +85,7 @@ namespace Barroc_IT
                 txtCusAddress1.ReadOnly = false;
                 txtCusPostalCode1.ReadOnly = false;
                 txtCusResidence1.ReadOnly = false;
-                txtCusPhoneNumber1.ReadOnly = false;
+                //txtCusPhoneNumber1.ReadOnly = false;
 
                 txtCusAddress2.ReadOnly = false;
                 txtCusPostalCode2.ReadOnly = false;
