@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Barroc_IT
@@ -28,7 +29,7 @@ namespace Barroc_IT
         private void btnSalesSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
-            LoadCustomers();  
+            LoadCustomers();
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -69,9 +70,9 @@ namespace Barroc_IT
         private void btnCusAddCustomer_Click(object sender, EventArgs e)
         {
             addCustomer();
-            tbContr.SelectedIndex = 1;
+            //tbContr.SelectedIndex = 1;
             dgvUserInfo.Rows.Clear();
-            LoadCustomers(); 
+            LoadCustomers();
         }
 
         // Loads
@@ -85,34 +86,52 @@ namespace Barroc_IT
 
         private bool addCustomer()
         {
-            string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
-            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());            
-            cmd.Parameters.Add(new SqlParameter("@CompanyName", txtCusAddCompanyName.Text));
-            cmd.Parameters.Add(new SqlParameter("@Address1", txtCusAddAddress1.Text));
-            cmd.Parameters.Add(new SqlParameter("@PostalCode1", txtCusAddPostalCode1.Text));
-            cmd.Parameters.Add(new SqlParameter("@Residence1", txtCusAddResidence1.Text));
-            cmd.Parameters.Add(new SqlParameter("@Address2", txtCusAddAddress2.Text));
-            cmd.Parameters.Add(new SqlParameter("@PostalCode2", txtCusAddPostalCode2.Text));
-            cmd.Parameters.Add(new SqlParameter("@Residence2", txtCusAddResidence2.Text));
-            cmd.Parameters.Add(new SqlParameter("@ContactPerson", txtCusAddContactperson .Text));
-            cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
-            cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
-            cmd.Parameters.Add(new SqlParameter("@PhoneNr2", txtCusAddPhoneNumber2.Text));
-            cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
-            cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
-            cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex.ToString()));
-                       
-            cmd.Connection.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
-            if (rowsAffected > 0)
+#if DEBUG
+            string regex = @"\b[1-9][0-9]{3}\b\b\s[A-Z]{2}\b";
+            Regex regEx = new Regex(regex);
+            if (regEx.IsMatch(txtCusAddPostalCode1.Text))
             {
-                return true;
+                MessageBox.Show("MATCH");
             }
             else
             {
-                return false;
-            }           
+                MessageBox.Show("No Match");
+            }
+            return true;
+#endif
+
+
+
+
+
+            //string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
+            //SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            //cmd.Parameters.Add(new SqlParameter("@CompanyName", txtCusAddCompanyName.Text));
+            //cmd.Parameters.Add(new SqlParameter("@Address1", txtCusAddAddress1.Text));
+            //cmd.Parameters.Add(new SqlParameter("@PostalCode1", txtCusAddPostalCode1.Text));
+            //cmd.Parameters.Add(new SqlParameter("@Residence1", txtCusAddResidence1.Text));
+            //cmd.Parameters.Add(new SqlParameter("@Address2", txtCusAddAddress2.Text));
+            //cmd.Parameters.Add(new SqlParameter("@PostalCode2", txtCusAddPostalCode2.Text));
+            //cmd.Parameters.Add(new SqlParameter("@Residence2", txtCusAddResidence2.Text));
+            //cmd.Parameters.Add(new SqlParameter("@ContactPerson", txtCusAddContactperson.Text));
+            //cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
+            //cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
+            //cmd.Parameters.Add(new SqlParameter("@PhoneNr2", txtCusAddPhoneNumber2.Text));
+            //cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
+            //cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
+            //cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex.ToString()));
+
+            //cmd.Connection.Open();
+            //int rowsAffected = cmd.ExecuteNonQuery();
+            //cmd.Connection.Close();
+            //if (rowsAffected > 0)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
         }
 
 
@@ -177,7 +196,7 @@ namespace Barroc_IT
             else if (cBoxCusProspect.Text == "False" || cBoxCusProspect.Text == "0")
             {
                 cBoxCusProspect.Text = "No";
-        }
+            }
 
             if (txtCusOfferStatus.Text == "True" || txtCusOfferStatus.Text == "1")
             {
@@ -187,7 +206,7 @@ namespace Barroc_IT
             {
                 txtCusOfferStatus.Text = "No";
             }
-           
+
         }
 
         private void dgvAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -210,7 +229,7 @@ namespace Barroc_IT
                 dataGridView.Rows.Add(dr.ItemArray);
             }
         }
-        
+
         // Close To Login
         private void CloseToLogin()
         {

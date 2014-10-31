@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblSalesPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
@@ -36,6 +37,7 @@
             this.btnSalesAddCustomer = new System.Windows.Forms.Button();
             this.btnSalesHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblHome = new System.Windows.Forms.Label();
@@ -63,6 +65,7 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
             this.dtpCusSalesNextAction = new System.Windows.Forms.DateTimePicker();
             this.dtpCusSalesLastContactDate = new System.Windows.Forms.DateTimePicker();
             this.cBoxCusProspect = new System.Windows.Forms.ComboBox();
@@ -173,7 +176,6 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
-            this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -273,6 +275,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(779, 612);
             this.panel1.TabIndex = 2;
+            // 
+            // tTipPostalCode
+            // 
+            this.tTipPostalCode.AutoPopDelay = 5000;
+            this.tTipPostalCode.InitialDelay = 500;
+            this.tTipPostalCode.IsBalloon = true;
+            this.tTipPostalCode.ReshowDelay = 10;
+            this.tTipPostalCode.ToolTipTitle = "Postal Code";
             // 
             // tbContr
             // 
@@ -538,6 +548,15 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
             // 
+            // txtCusPhoneNumber1
+            // 
+            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(203, 145);
+            this.txtCusPhoneNumber1.Mask = "000-0000000";
+            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
+            this.txtCusPhoneNumber1.PromptChar = '0';
+            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPhoneNumber1.TabIndex = 228;
+            // 
             // dtpCusSalesNextAction
             // 
             this.dtpCusSalesNextAction.Enabled = false;
@@ -546,6 +565,7 @@
             this.dtpCusSalesNextAction.Name = "dtpCusSalesNextAction";
             this.dtpCusSalesNextAction.Size = new System.Drawing.Size(137, 20);
             this.dtpCusSalesNextAction.TabIndex = 227;
+            this.dtpCusSalesNextAction.Value = new System.DateTime(2014, 10, 1, 0, 0, 0, 0);
             // 
             // dtpCusSalesLastContactDate
             // 
@@ -1561,6 +1581,8 @@
             this.txtCusAddPostalCode1.Name = "txtCusAddPostalCode1";
             this.txtCusAddPostalCode1.Size = new System.Drawing.Size(137, 20);
             this.txtCusAddPostalCode1.TabIndex = 148;
+            this.tTipPostalCode.SetToolTip(this.txtCusAddPostalCode1, "The postal code needs to be entered this way:\r\n1111 AB\r\nMake sure there is a spac" +
+        "e between the digits and letters.\r\nAnd that the letters are capitals.");
             // 
             // txtCusAddAddress1
             // 
@@ -1643,22 +1665,6 @@
             this.lblAddCustomer.Size = new System.Drawing.Size(199, 31);
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
-            // 
-            // txtCusPhoneNumber1
-            // 
-            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(203, 145);
-            this.txtCusPhoneNumber1.Mask = "000-0000000";
-            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
-            this.txtCusPhoneNumber1.PromptChar = '0';
-            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
-            this.txtCusPhoneNumber1.TabIndex = 228;
-            this.dtpCusSalesNextAction.Enabled = false;
-            this.dtpCusSalesNextAction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpCusSalesNextAction.Location = new System.Drawing.Point(620, 201);
-            this.dtpCusSalesNextAction.Name = "dtpCusSalesNextAction";
-            this.dtpCusSalesNextAction.Size = new System.Drawing.Size(137, 20);
-            this.dtpCusSalesNextAction.TabIndex = 227;
-            this.dtpCusSalesNextAction.Value = new System.DateTime(2014, 10, 1, 0, 0, 0, 0);
             // 
             // frmSales
             // 
@@ -1849,5 +1855,6 @@
         private System.Windows.Forms.DateTimePicker dtpCusSalesLastContactDate;
         private System.Windows.Forms.DateTimePicker dtpCusSalesNextAction;
         private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
+        private System.Windows.Forms.ToolTip tTipPostalCode;
     }
 }
