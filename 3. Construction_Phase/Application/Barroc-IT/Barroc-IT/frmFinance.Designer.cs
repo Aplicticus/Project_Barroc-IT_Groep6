@@ -46,21 +46,6 @@
             this.btnCustomerSearch = new System.Windows.Forms.Button();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.finCusView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finCusEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtFinProjects = new System.Windows.Forms.TextBox();
             this.lblFinProjects = new System.Windows.Forms.Label();
@@ -103,12 +88,6 @@
             this.btnProjectSearch = new System.Windows.Forms.Button();
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
-            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnProjectBack = new System.Windows.Forms.Button();
             this.btnViewInvoices = new System.Windows.Forms.Button();
@@ -131,13 +110,6 @@
             this.btnInvoiceSearch = new System.Windows.Forms.Button();
             this.txtSearchInvoice = new System.Windows.Forms.TextBox();
             this.dgvInvoices = new System.Windows.Forms.DataGridView();
-            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnInvoicesBack = new System.Windows.Forms.Button();
             this.txtInvoiceSubject = new System.Windows.Forms.TextBox();
@@ -160,6 +132,34 @@
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
+            this.finCusView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finCusEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -396,82 +396,6 @@
             this.dgvCustomers.Size = new System.Drawing.Size(771, 506);
             this.dgvCustomers.TabIndex = 30;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
-            // 
-            // finCusView
-            // 
-            this.finCusView.HeaderText = "View";
-            this.finCusView.Name = "finCusView";
-            // 
-            // cCustomerID
-            // 
-            this.cCustomerID.HeaderText = "CustomerID";
-            this.cCustomerID.Name = "cCustomerID";
-            this.cCustomerID.Visible = false;
-            // 
-            // finCusCompanyName
-            // 
-            this.finCusCompanyName.HeaderText = "Company Name";
-            this.finCusCompanyName.Name = "finCusCompanyName";
-            // 
-            // finCusAddress1
-            // 
-            this.finCusAddress1.HeaderText = "Address 1";
-            this.finCusAddress1.Name = "finCusAddress1";
-            // 
-            // finCusPostalCode1
-            // 
-            this.finCusPostalCode1.HeaderText = "Postal Code 1";
-            this.finCusPostalCode1.Name = "finCusPostalCode1";
-            // 
-            // finCusResidence1
-            // 
-            this.finCusResidence1.HeaderText = "Residence 1";
-            this.finCusResidence1.Name = "finCusResidence1";
-            // 
-            // finCusAddress2
-            // 
-            this.finCusAddress2.HeaderText = "Address 2";
-            this.finCusAddress2.Name = "finCusAddress2";
-            // 
-            // finCusPostalCode2
-            // 
-            this.finCusPostalCode2.HeaderText = "Postal Code 2";
-            this.finCusPostalCode2.Name = "finCusPostalCode2";
-            // 
-            // finCusResidence2
-            // 
-            this.finCusResidence2.HeaderText = "Residence 2";
-            this.finCusResidence2.Name = "finCusResidence2";
-            // 
-            // finCusContactPerson
-            // 
-            this.finCusContactPerson.HeaderText = "Contactperson";
-            this.finCusContactPerson.Name = "finCusContactPerson";
-            // 
-            // finCusInitials
-            // 
-            this.finCusInitials.HeaderText = "Initials";
-            this.finCusInitials.Name = "finCusInitials";
-            // 
-            // finCusPhoneNumber1
-            // 
-            this.finCusPhoneNumber1.HeaderText = "Phone Number 1";
-            this.finCusPhoneNumber1.Name = "finCusPhoneNumber1";
-            // 
-            // finCusPhoneNumber2
-            // 
-            this.finCusPhoneNumber2.HeaderText = "Phone Number 2";
-            this.finCusPhoneNumber2.Name = "finCusPhoneNumber2";
-            // 
-            // finCusFaxNumber
-            // 
-            this.finCusFaxNumber.HeaderText = "Fax Number";
-            this.finCusFaxNumber.Name = "finCusFaxNumber";
-            // 
-            // finCusEmail
-            // 
-            this.finCusEmail.HeaderText = "E-Mail";
-            this.finCusEmail.Name = "finCusEmail";
             // 
             // tabPage3
             // 
@@ -923,41 +847,6 @@
             this.dgvProjects.TabIndex = 31;
             this.dgvProjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjects_CellContentClick);
             // 
-            // finProView
-            // 
-            this.finProView.HeaderText = "View";
-            this.finProView.Name = "finProView";
-            // 
-            // cProjectID
-            // 
-            this.cProjectID.HeaderText = "ProjectID";
-            this.cProjectID.Name = "cProjectID";
-            this.cProjectID.Visible = false;
-            // 
-            // finProCompanyName
-            // 
-            this.finProCompanyName.HeaderText = "CompanyName";
-            this.finProCompanyName.Name = "finProCompanyName";
-            this.finProCompanyName.ReadOnly = true;
-            // 
-            // finProName
-            // 
-            this.finProName.HeaderText = "Project Name";
-            this.finProName.Name = "finProName";
-            this.finProName.ReadOnly = true;
-            // 
-            // finProDeadline
-            // 
-            this.finProDeadline.HeaderText = "Deadline";
-            this.finProDeadline.Name = "finProDeadline";
-            this.finProDeadline.ReadOnly = true;
-            // 
-            // finProSubject
-            // 
-            this.finProSubject.HeaderText = "Subject";
-            this.finProSubject.Name = "finProSubject";
-            this.finProSubject.ReadOnly = true;
-            // 
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
@@ -1203,47 +1092,6 @@
             this.dgvInvoices.Size = new System.Drawing.Size(771, 506);
             this.dgvInvoices.TabIndex = 31;
             this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
-            // 
-            // finInvView
-            // 
-            this.finInvView.HeaderText = "View";
-            this.finInvView.Name = "finInvView";
-            // 
-            // cInvoiceID
-            // 
-            this.cInvoiceID.HeaderText = "cInvoiceID";
-            this.cInvoiceID.Name = "cInvoiceID";
-            this.cInvoiceID.Visible = false;
-            // 
-            // finInvCompanyName
-            // 
-            this.finInvCompanyName.HeaderText = "CompanyName";
-            this.finInvCompanyName.Name = "finInvCompanyName";
-            this.finInvCompanyName.ReadOnly = true;
-            // 
-            // finInvSubject
-            // 
-            this.finInvSubject.HeaderText = "Subject";
-            this.finInvSubject.Name = "finInvSubject";
-            this.finInvSubject.ReadOnly = true;
-            // 
-            // finInvValue
-            // 
-            this.finInvValue.HeaderText = "Value";
-            this.finInvValue.Name = "finInvValue";
-            this.finInvValue.ReadOnly = true;
-            // 
-            // finInvExpDate
-            // 
-            this.finInvExpDate.HeaderText = "Expire Date";
-            this.finInvExpDate.Name = "finInvExpDate";
-            this.finInvExpDate.ReadOnly = true;
-            // 
-            // InvoiceSendDate
-            // 
-            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
-            this.InvoiceSendDate.Name = "InvoiceSendDate";
-            this.InvoiceSendDate.ReadOnly = true;
             // 
             // tabPage7
             // 
@@ -1503,6 +1351,164 @@
             this.lblFinInvoiceValue.TabIndex = 162;
             this.lblFinInvoiceValue.Text = "Invoice Value:";
             // 
+            // finCusView
+            // 
+            this.finCusView.HeaderText = "View";
+            this.finCusView.Name = "finCusView";
+            this.finCusView.Text = "Open";
+            this.finCusView.UseColumnTextForButtonValue = true;
+            // 
+            // cCustomerID
+            // 
+            this.cCustomerID.HeaderText = "CustomerID";
+            this.cCustomerID.Name = "cCustomerID";
+            this.cCustomerID.Visible = false;
+            // 
+            // finCusCompanyName
+            // 
+            this.finCusCompanyName.HeaderText = "Company Name";
+            this.finCusCompanyName.Name = "finCusCompanyName";
+            // 
+            // finCusAddress1
+            // 
+            this.finCusAddress1.HeaderText = "Address 1";
+            this.finCusAddress1.Name = "finCusAddress1";
+            // 
+            // finCusPostalCode1
+            // 
+            this.finCusPostalCode1.HeaderText = "Postal Code 1";
+            this.finCusPostalCode1.Name = "finCusPostalCode1";
+            // 
+            // finCusResidence1
+            // 
+            this.finCusResidence1.HeaderText = "Residence 1";
+            this.finCusResidence1.Name = "finCusResidence1";
+            // 
+            // finCusAddress2
+            // 
+            this.finCusAddress2.HeaderText = "Address 2";
+            this.finCusAddress2.Name = "finCusAddress2";
+            // 
+            // finCusPostalCode2
+            // 
+            this.finCusPostalCode2.HeaderText = "Postal Code 2";
+            this.finCusPostalCode2.Name = "finCusPostalCode2";
+            // 
+            // finCusResidence2
+            // 
+            this.finCusResidence2.HeaderText = "Residence 2";
+            this.finCusResidence2.Name = "finCusResidence2";
+            // 
+            // finCusContactPerson
+            // 
+            this.finCusContactPerson.HeaderText = "Contactperson";
+            this.finCusContactPerson.Name = "finCusContactPerson";
+            // 
+            // finCusInitials
+            // 
+            this.finCusInitials.HeaderText = "Initials";
+            this.finCusInitials.Name = "finCusInitials";
+            // 
+            // finCusPhoneNumber1
+            // 
+            this.finCusPhoneNumber1.HeaderText = "Phone Number 1";
+            this.finCusPhoneNumber1.Name = "finCusPhoneNumber1";
+            // 
+            // finCusPhoneNumber2
+            // 
+            this.finCusPhoneNumber2.HeaderText = "Phone Number 2";
+            this.finCusPhoneNumber2.Name = "finCusPhoneNumber2";
+            // 
+            // finCusFaxNumber
+            // 
+            this.finCusFaxNumber.HeaderText = "Fax Number";
+            this.finCusFaxNumber.Name = "finCusFaxNumber";
+            // 
+            // finCusEmail
+            // 
+            this.finCusEmail.HeaderText = "E-Mail";
+            this.finCusEmail.Name = "finCusEmail";
+            // 
+            // finProView
+            // 
+            this.finProView.HeaderText = "View";
+            this.finProView.Name = "finProView";
+            this.finProView.Text = "Open";
+            this.finProView.UseColumnTextForButtonValue = true;
+            // 
+            // cProjectID
+            // 
+            this.cProjectID.HeaderText = "ProjectID";
+            this.cProjectID.Name = "cProjectID";
+            this.cProjectID.Visible = false;
+            // 
+            // finProCompanyName
+            // 
+            this.finProCompanyName.HeaderText = "CompanyName";
+            this.finProCompanyName.Name = "finProCompanyName";
+            this.finProCompanyName.ReadOnly = true;
+            // 
+            // finProName
+            // 
+            this.finProName.HeaderText = "Project Name";
+            this.finProName.Name = "finProName";
+            this.finProName.ReadOnly = true;
+            // 
+            // finProDeadline
+            // 
+            this.finProDeadline.HeaderText = "Deadline";
+            this.finProDeadline.Name = "finProDeadline";
+            this.finProDeadline.ReadOnly = true;
+            // 
+            // finProSubject
+            // 
+            this.finProSubject.HeaderText = "Subject";
+            this.finProSubject.Name = "finProSubject";
+            this.finProSubject.ReadOnly = true;
+            // 
+            // finInvView
+            // 
+            this.finInvView.HeaderText = "View";
+            this.finInvView.Name = "finInvView";
+            this.finInvView.Text = "Open";
+            this.finInvView.UseColumnTextForButtonValue = true;
+            // 
+            // cInvoiceID
+            // 
+            this.cInvoiceID.HeaderText = "cInvoiceID";
+            this.cInvoiceID.Name = "cInvoiceID";
+            this.cInvoiceID.Visible = false;
+            // 
+            // finInvCompanyName
+            // 
+            this.finInvCompanyName.HeaderText = "CompanyName";
+            this.finInvCompanyName.Name = "finInvCompanyName";
+            this.finInvCompanyName.ReadOnly = true;
+            // 
+            // finInvSubject
+            // 
+            this.finInvSubject.HeaderText = "Subject";
+            this.finInvSubject.Name = "finInvSubject";
+            this.finInvSubject.ReadOnly = true;
+            // 
+            // finInvValue
+            // 
+            this.finInvValue.HeaderText = "Value";
+            this.finInvValue.Name = "finInvValue";
+            this.finInvValue.ReadOnly = true;
+            // 
+            // finInvExpDate
+            // 
+            this.finInvExpDate.HeaderText = "Expire Date";
+            this.finInvExpDate.Name = "finInvExpDate";
+            this.finInvExpDate.ReadOnly = true;
+            // 
+            // InvoiceSendDate
+            // 
+            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
+            this.InvoiceSendDate.Name = "InvoiceSendDate";
+            this.InvoiceSendDate.ReadOnly = true;
+            // 
             // frmFinance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1649,6 +1655,11 @@
         private System.Windows.Forms.Button btnProjectViewBack;
         private System.Windows.Forms.Button btnCustomerViewBack;
         private System.Windows.Forms.Button btnCustomerBack;
+        private System.Windows.Forms.Label lblCustomers;
+        private System.Windows.Forms.Label lblProjects;
+        private System.Windows.Forms.Label lblListInvoices;
+        private System.Windows.Forms.TextBox txtFinProjects;
+        private System.Windows.Forms.Label lblFinProjects;
         private System.Windows.Forms.DataGridViewButtonColumn finCusView;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn finCusCompanyName;
@@ -1664,6 +1675,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finCusPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn finCusFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn finCusEmail;
+        private System.Windows.Forms.DataGridViewButtonColumn finProView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProDeadline;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
         private System.Windows.Forms.DataGridViewButtonColumn finInvView;
         private System.Windows.Forms.DataGridViewTextBoxColumn cInvoiceID;
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvCompanyName;
@@ -1671,16 +1688,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvExpDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSendDate;
-        private System.Windows.Forms.Label lblCustomers;
-        private System.Windows.Forms.Label lblProjects;
-        private System.Windows.Forms.Label lblListInvoices;
-        private System.Windows.Forms.TextBox txtFinProjects;
-        private System.Windows.Forms.Label lblFinProjects;
-        private System.Windows.Forms.DataGridViewButtonColumn finProView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProCompanyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProDeadline;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
     }
 }

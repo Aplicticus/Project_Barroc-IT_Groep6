@@ -20,6 +20,9 @@ namespace Barroc_IT
         public frmSales(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
             InitializeComponent();
+            cBoxAppointmentSearch.SelectedIndex = 0;
+            cBoxCustomerSearch.SelectedIndex = 0;
+
             this.handler = handler;
             this.loginForm = loginForm;
             this.dthandler = dthandler;

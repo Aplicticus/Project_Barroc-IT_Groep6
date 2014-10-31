@@ -45,21 +45,6 @@
             this.btnCustomerSearch = new System.Windows.Forms.Button();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtDevProjects = new System.Windows.Forms.TextBox();
@@ -103,13 +88,6 @@
             this.btnProjectSearch = new System.Windows.Forms.Button();
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
-            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblProjects = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnSelectedProjectBack = new System.Windows.Forms.Button();
@@ -140,6 +118,28 @@
             this.lblAddProjectName = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
+            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -361,97 +361,6 @@
             this.dgvCustomers.TabIndex = 23;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
             // 
-            // cViewButton
-            // 
-            this.cViewButton.Frozen = true;
-            this.cViewButton.HeaderText = "View";
-            this.cViewButton.Name = "cViewButton";
-            this.cViewButton.Width = 36;
-            // 
-            // cCustomerID
-            // 
-            this.cCustomerID.HeaderText = "CustomerID";
-            this.cCustomerID.Name = "cCustomerID";
-            this.cCustomerID.Visible = false;
-            // 
-            // cCompanyName
-            // 
-            this.cCompanyName.HeaderText = "Company Name";
-            this.cCompanyName.Name = "cCompanyName";
-            this.cCompanyName.Width = 98;
-            // 
-            // cAddress1
-            // 
-            this.cAddress1.HeaderText = "Address 1";
-            this.cAddress1.Name = "cAddress1";
-            this.cAddress1.Width = 73;
-            // 
-            // cPostalCode1
-            // 
-            this.cPostalCode1.HeaderText = "Postal Code 1";
-            this.cPostalCode1.Name = "cPostalCode1";
-            this.cPostalCode1.Width = 82;
-            // 
-            // cResidence1
-            // 
-            this.cResidence1.HeaderText = "Residence 1";
-            this.cResidence1.Name = "cResidence1";
-            this.cResidence1.Width = 85;
-            // 
-            // cAddress2
-            // 
-            this.cAddress2.HeaderText = "Address 2";
-            this.cAddress2.Name = "cAddress2";
-            this.cAddress2.Width = 73;
-            // 
-            // cPostalCode2
-            // 
-            this.cPostalCode2.HeaderText = "Postal Code 2";
-            this.cPostalCode2.Name = "cPostalCode2";
-            this.cPostalCode2.Width = 82;
-            // 
-            // cResidence2
-            // 
-            this.cResidence2.HeaderText = "Residence 2";
-            this.cResidence2.Name = "cResidence2";
-            this.cResidence2.Width = 85;
-            // 
-            // cContactPerson
-            // 
-            this.cContactPerson.HeaderText = "Contactperson";
-            this.cContactPerson.Name = "cContactPerson";
-            this.cContactPerson.Width = 101;
-            // 
-            // cInitials
-            // 
-            this.cInitials.HeaderText = "Initials";
-            this.cInitials.Name = "cInitials";
-            this.cInitials.Width = 61;
-            // 
-            // cPhoneNumber1
-            // 
-            this.cPhoneNumber1.HeaderText = "Phone Number 1";
-            this.cPhoneNumber1.Name = "cPhoneNumber1";
-            this.cPhoneNumber1.Width = 95;
-            // 
-            // cPhoneNumber2
-            // 
-            this.cPhoneNumber2.HeaderText = "Phone Number 2";
-            this.cPhoneNumber2.Name = "cPhoneNumber2";
-            this.cPhoneNumber2.Width = 95;
-            // 
-            // cFaxNumber
-            // 
-            this.cFaxNumber.HeaderText = "Fax Number";
-            this.cFaxNumber.Name = "cFaxNumber";
-            this.cFaxNumber.Width = 82;
-            // 
-            // cEmail
-            // 
-            this.cEmail.HeaderText = "E-Mail";
-            this.cEmail.Name = "cEmail";
-            this.cEmail.Width = 61;
-            // 
             // lblCustomers
             // 
             this.lblCustomers.AutoSize = true;
@@ -542,7 +451,7 @@
             this.dtpDevAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDevAppointment.Location = new System.Drawing.Point(618, 204);
             this.dtpDevAppointment.Name = "dtpDevAppointment";
-            this.dtpDevAppointment.Size = new System.Drawing.Size(133, 20);
+            this.dtpDevAppointment.Size = new System.Drawing.Size(137, 20);
             this.dtpDevAppointment.TabIndex = 138;
             // 
             // btnAddProjectCustomer
@@ -909,48 +818,6 @@
             this.dgvProjects.TabIndex = 23;
             this.dgvProjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjects_CellContentClick);
             // 
-            // cProjectViewButton
-            // 
-            this.cProjectViewButton.HeaderText = "View";
-            this.cProjectViewButton.Name = "cProjectViewButton";
-            this.cProjectViewButton.Width = 128;
-            // 
-            // cProjectID
-            // 
-            this.cProjectID.HeaderText = "ProjectID";
-            this.cProjectID.Name = "cProjectID";
-            this.cProjectID.Visible = false;
-            // 
-            // cProjectCustomerID
-            // 
-            this.cProjectCustomerID.HeaderText = "Company Name";
-            this.cProjectCustomerID.Name = "cProjectCustomerID";
-            this.cProjectCustomerID.Width = 128;
-            // 
-            // cProjectName
-            // 
-            this.cProjectName.HeaderText = "Project Name";
-            this.cProjectName.Name = "cProjectName";
-            this.cProjectName.Width = 128;
-            // 
-            // cProjectDeadline
-            // 
-            this.cProjectDeadline.HeaderText = "Deadline";
-            this.cProjectDeadline.Name = "cProjectDeadline";
-            this.cProjectDeadline.Width = 128;
-            // 
-            // cProjectSubject
-            // 
-            this.cProjectSubject.HeaderText = "Subject";
-            this.cProjectSubject.Name = "cProjectSubject";
-            this.cProjectSubject.Width = 128;
-            // 
-            // cProjectValue
-            // 
-            this.cProjectValue.HeaderText = "Value";
-            this.cProjectValue.Name = "cProjectValue";
-            this.cProjectValue.Width = 128;
-            // 
             // lblProjects
             // 
             this.lblProjects.AutoSize = true;
@@ -1272,6 +1139,143 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Add Project";
             // 
+            // cViewButton
+            // 
+            this.cViewButton.Frozen = true;
+            this.cViewButton.HeaderText = "View";
+            this.cViewButton.Name = "cViewButton";
+            this.cViewButton.Text = "Open";
+            this.cViewButton.UseColumnTextForButtonValue = true;
+            this.cViewButton.Width = 36;
+            // 
+            // cCustomerID
+            // 
+            this.cCustomerID.HeaderText = "CustomerID";
+            this.cCustomerID.Name = "cCustomerID";
+            this.cCustomerID.Visible = false;
+            // 
+            // cCompanyName
+            // 
+            this.cCompanyName.HeaderText = "Company Name";
+            this.cCompanyName.Name = "cCompanyName";
+            this.cCompanyName.Width = 98;
+            // 
+            // cAddress1
+            // 
+            this.cAddress1.HeaderText = "Address 1";
+            this.cAddress1.Name = "cAddress1";
+            this.cAddress1.Width = 73;
+            // 
+            // cPostalCode1
+            // 
+            this.cPostalCode1.HeaderText = "Postal Code 1";
+            this.cPostalCode1.Name = "cPostalCode1";
+            this.cPostalCode1.Width = 82;
+            // 
+            // cResidence1
+            // 
+            this.cResidence1.HeaderText = "Residence 1";
+            this.cResidence1.Name = "cResidence1";
+            this.cResidence1.Width = 85;
+            // 
+            // cAddress2
+            // 
+            this.cAddress2.HeaderText = "Address 2";
+            this.cAddress2.Name = "cAddress2";
+            this.cAddress2.Width = 73;
+            // 
+            // cPostalCode2
+            // 
+            this.cPostalCode2.HeaderText = "Postal Code 2";
+            this.cPostalCode2.Name = "cPostalCode2";
+            this.cPostalCode2.Width = 82;
+            // 
+            // cResidence2
+            // 
+            this.cResidence2.HeaderText = "Residence 2";
+            this.cResidence2.Name = "cResidence2";
+            this.cResidence2.Width = 85;
+            // 
+            // cContactPerson
+            // 
+            this.cContactPerson.HeaderText = "Contactperson";
+            this.cContactPerson.Name = "cContactPerson";
+            this.cContactPerson.Width = 101;
+            // 
+            // cInitials
+            // 
+            this.cInitials.HeaderText = "Initials";
+            this.cInitials.Name = "cInitials";
+            this.cInitials.Width = 61;
+            // 
+            // cPhoneNumber1
+            // 
+            this.cPhoneNumber1.HeaderText = "Phone Number 1";
+            this.cPhoneNumber1.Name = "cPhoneNumber1";
+            this.cPhoneNumber1.Width = 95;
+            // 
+            // cPhoneNumber2
+            // 
+            this.cPhoneNumber2.HeaderText = "Phone Number 2";
+            this.cPhoneNumber2.Name = "cPhoneNumber2";
+            this.cPhoneNumber2.Width = 95;
+            // 
+            // cFaxNumber
+            // 
+            this.cFaxNumber.HeaderText = "Fax Number";
+            this.cFaxNumber.Name = "cFaxNumber";
+            this.cFaxNumber.Width = 82;
+            // 
+            // cEmail
+            // 
+            this.cEmail.HeaderText = "E-Mail";
+            this.cEmail.Name = "cEmail";
+            this.cEmail.Width = 61;
+            // 
+            // cProjectViewButton
+            // 
+            this.cProjectViewButton.HeaderText = "View";
+            this.cProjectViewButton.Name = "cProjectViewButton";
+            this.cProjectViewButton.Text = "Opem";
+            this.cProjectViewButton.UseColumnTextForButtonValue = true;
+            this.cProjectViewButton.Width = 128;
+            // 
+            // cProjectID
+            // 
+            this.cProjectID.HeaderText = "ProjectID";
+            this.cProjectID.Name = "cProjectID";
+            this.cProjectID.Visible = false;
+            // 
+            // cProjectCustomerID
+            // 
+            this.cProjectCustomerID.HeaderText = "Company Name";
+            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            this.cProjectCustomerID.Width = 128;
+            // 
+            // cProjectName
+            // 
+            this.cProjectName.HeaderText = "Project Name";
+            this.cProjectName.Name = "cProjectName";
+            this.cProjectName.Width = 128;
+            // 
+            // cProjectDeadline
+            // 
+            this.cProjectDeadline.HeaderText = "Deadline";
+            this.cProjectDeadline.Name = "cProjectDeadline";
+            this.cProjectDeadline.Width = 128;
+            // 
+            // cProjectSubject
+            // 
+            this.cProjectSubject.HeaderText = "Subject";
+            this.cProjectSubject.Name = "cProjectSubject";
+            this.cProjectSubject.Width = 128;
+            // 
+            // cProjectValue
+            // 
+            this.cProjectValue.HeaderText = "Value";
+            this.cProjectValue.Name = "cProjectValue";
+            this.cProjectValue.Width = 128;
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1329,21 +1333,6 @@
         private System.Windows.Forms.Button btnCustomerSearch;
         private System.Windows.Forms.TextBox txtCustomerSearch;
         private System.Windows.Forms.DataGridView dgvCustomers;
-        private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.Label lblCustomers;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnSelectedCustomerBack;
@@ -1418,6 +1407,21 @@
         private System.Windows.Forms.Button btnAddInvoiceCancel;
         private System.Windows.Forms.TextBox txtDevProjects;
         private System.Windows.Forms.Label lblDevProjects;
+        private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
