@@ -86,7 +86,6 @@
             this.txtCusNumberOfOffers = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtCusAppointment = new System.Windows.Forms.TextBox();
-            this.txtCusPhoneNumber1 = new System.Windows.Forms.TextBox();
             this.txtCusEmail = new System.Windows.Forms.TextBox();
             this.lblAppointments = new System.Windows.Forms.Label();
             this.txtCusFaxNumber = new System.Windows.Forms.TextBox();
@@ -175,18 +174,7 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
-            this.lblResidence = new System.Windows.Forms.Label();
-            this.txtCusResidence1 = new System.Windows.Forms.TextBox();
-            this.txtCusPhoneNumber2 = new System.Windows.Forms.TextBox();
-            this.txtCusPostalCode2 = new System.Windows.Forms.TextBox();
-            this.txtCusResidence2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCusAddress2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtCusInitials = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -509,18 +497,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.txtCusInitials);
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.txtCusPhoneNumber2);
-            this.tabPage3.Controls.Add(this.txtCusPostalCode2);
-            this.tabPage3.Controls.Add(this.txtCusResidence2);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.label2);
-            this.tabPage3.Controls.Add(this.label3);
-            this.tabPage3.Controls.Add(this.txtCusAddress2);
-            this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.txtCusResidence1);
-            this.tabPage3.Controls.Add(this.lblResidence);
+            this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
             this.tabPage3.Controls.Add(this.dtpCusSalesNextAction);
             this.tabPage3.Controls.Add(this.dtpCusSalesLastContactDate);
             this.tabPage3.Controls.Add(this.cBoxCusProspect);
@@ -544,7 +521,6 @@
             this.tabPage3.Controls.Add(this.txtCusNumberOfOffers);
             this.tabPage3.Controls.Add(this.lblEmail);
             this.tabPage3.Controls.Add(this.txtCusAppointment);
-            this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
             this.tabPage3.Controls.Add(this.txtCusEmail);
             this.tabPage3.Controls.Add(this.lblAppointments);
             this.tabPage3.Controls.Add(this.txtCusFaxNumber);
@@ -567,11 +543,10 @@
             // 
             this.dtpCusSalesNextAction.Enabled = false;
             this.dtpCusSalesNextAction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpCusSalesNextAction.Location = new System.Drawing.Point(622, 296);
+            this.dtpCusSalesNextAction.Location = new System.Drawing.Point(620, 201);
             this.dtpCusSalesNextAction.Name = "dtpCusSalesNextAction";
             this.dtpCusSalesNextAction.Size = new System.Drawing.Size(137, 20);
             this.dtpCusSalesNextAction.TabIndex = 227;
-            this.dtpCusSalesNextAction.Value = new System.DateTime(2014, 10, 1, 0, 0, 0, 0);
             // 
             // dtpCusSalesLastContactDate
             // 
@@ -1793,13 +1768,19 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(28, 203);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 25);
-            this.label6.TabIndex = 239;
-            this.label6.Text = "Initials:";
+            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(203, 145);
+            this.txtCusPhoneNumber1.Mask = "000-0000000";
+            this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
+            this.txtCusPhoneNumber1.PromptChar = '0';
+            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPhoneNumber1.TabIndex = 228;
+            this.dtpCusSalesNextAction.Enabled = false;
+            this.dtpCusSalesNextAction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpCusSalesNextAction.Location = new System.Drawing.Point(620, 201);
+            this.dtpCusSalesNextAction.Name = "dtpCusSalesNextAction";
+            this.dtpCusSalesNextAction.Size = new System.Drawing.Size(137, 20);
+            this.dtpCusSalesNextAction.TabIndex = 227;
+            this.dtpCusSalesNextAction.Value = new System.DateTime(2014, 10, 1, 0, 0, 0, 0);
             // 
             // frmSales
             // 
@@ -1878,7 +1859,6 @@
         private System.Windows.Forms.TextBox txtCusNumberOfOffers;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtCusAppointment;
-        private System.Windows.Forms.TextBox txtCusPhoneNumber1;
         private System.Windows.Forms.TextBox txtCusEmail;
         private System.Windows.Forms.Label lblAppointments;
         private System.Windows.Forms.TextBox txtCusFaxNumber;
