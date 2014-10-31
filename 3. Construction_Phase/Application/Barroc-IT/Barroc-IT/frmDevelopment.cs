@@ -22,6 +22,7 @@ namespace Barroc_IT
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
             cBoxProjectSearch.SelectedIndex = 0;
+
             this.handler = handler;
             this.loginForm = loginForm;
             this.dthandler = dthandler;

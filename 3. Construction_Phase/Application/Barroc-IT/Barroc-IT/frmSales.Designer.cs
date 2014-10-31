@@ -48,21 +48,6 @@
             this.btnCustomerSearch = new System.Windows.Forms.Button();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.dgvUserInfo = new System.Windows.Forms.DataGridView();
-            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtCusPhoneNumber2 = new System.Windows.Forms.MaskedTextBox();
@@ -118,12 +103,6 @@
             this.btnAppointmentSearch = new System.Windows.Forms.Button();
             this.txtAppointmentSearch = new System.Windows.Forms.TextBox();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
-            this.cAppointmentViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAppointmentCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cApppointmentSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAppointmentInternalContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblListAppointments = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnSelectedAppointmentBack = new System.Windows.Forms.Button();
@@ -190,6 +169,27 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
+            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cApppointmentSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentInternalContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -429,82 +429,6 @@
             this.dgvUserInfo.Size = new System.Drawing.Size(771, 506);
             this.dgvUserInfo.TabIndex = 23;
             this.dgvUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
-            // 
-            // cViewButton
-            // 
-            this.cViewButton.HeaderText = "View";
-            this.cViewButton.Name = "cViewButton";
-            // 
-            // cCustomerID
-            // 
-            this.cCustomerID.HeaderText = "CustomerID";
-            this.cCustomerID.Name = "cCustomerID";
-            this.cCustomerID.Visible = false;
-            // 
-            // cCompanyName
-            // 
-            this.cCompanyName.HeaderText = "Company Name";
-            this.cCompanyName.Name = "cCompanyName";
-            // 
-            // cAddress1
-            // 
-            this.cAddress1.HeaderText = "Address 1";
-            this.cAddress1.Name = "cAddress1";
-            // 
-            // cPostalCode1
-            // 
-            this.cPostalCode1.HeaderText = "Postal Code 1";
-            this.cPostalCode1.Name = "cPostalCode1";
-            // 
-            // cResidence1
-            // 
-            this.cResidence1.HeaderText = "Residence 1";
-            this.cResidence1.Name = "cResidence1";
-            // 
-            // cAddress2
-            // 
-            this.cAddress2.HeaderText = "Address 2";
-            this.cAddress2.Name = "cAddress2";
-            // 
-            // cPostalCode2
-            // 
-            this.cPostalCode2.HeaderText = "Postal Code 2";
-            this.cPostalCode2.Name = "cPostalCode2";
-            // 
-            // cResidence2
-            // 
-            this.cResidence2.HeaderText = "Residence 2";
-            this.cResidence2.Name = "cResidence2";
-            // 
-            // cContactPerson
-            // 
-            this.cContactPerson.HeaderText = "Contactperson";
-            this.cContactPerson.Name = "cContactPerson";
-            // 
-            // cInitials
-            // 
-            this.cInitials.HeaderText = "Initials";
-            this.cInitials.Name = "cInitials";
-            // 
-            // cPhoneNumber1
-            // 
-            this.cPhoneNumber1.HeaderText = "Phone Number 1";
-            this.cPhoneNumber1.Name = "cPhoneNumber1";
-            // 
-            // cPhoneNumber2
-            // 
-            this.cPhoneNumber2.HeaderText = "Phone Number 2";
-            this.cPhoneNumber2.Name = "cPhoneNumber2";
-            // 
-            // cFaxNumber
-            // 
-            this.cFaxNumber.HeaderText = "Fax Number";
-            this.cFaxNumber.Name = "cFaxNumber";
-            // 
-            // cEmail
-            // 
-            this.cEmail.HeaderText = "E-Mail";
-            this.cEmail.Name = "cEmail";
             // 
             // lblCustomers
             // 
@@ -1108,38 +1032,6 @@
             this.dgvAppointments.Size = new System.Drawing.Size(771, 506);
             this.dgvAppointments.TabIndex = 23;
             this.dgvAppointments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppointments_CellContentClick);
-            // 
-            // cAppointmentViewButton
-            // 
-            this.cAppointmentViewButton.HeaderText = "View";
-            this.cAppointmentViewButton.Name = "cAppointmentViewButton";
-            // 
-            // cAppointmentID
-            // 
-            this.cAppointmentID.HeaderText = "cAppointmentID";
-            this.cAppointmentID.Name = "cAppointmentID";
-            this.cAppointmentID.Visible = false;
-            // 
-            // cAppointmentCompanyName
-            // 
-            this.cAppointmentCompanyName.HeaderText = "CompanyName";
-            this.cAppointmentCompanyName.Name = "cAppointmentCompanyName";
-            this.cAppointmentCompanyName.ReadOnly = true;
-            // 
-            // cAppointmentDate
-            // 
-            this.cAppointmentDate.HeaderText = "Appointment Date";
-            this.cAppointmentDate.Name = "cAppointmentDate";
-            // 
-            // cApppointmentSubject
-            // 
-            this.cApppointmentSubject.HeaderText = "Subject";
-            this.cApppointmentSubject.Name = "cApppointmentSubject";
-            // 
-            // cAppointmentInternalContact
-            // 
-            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
-            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
             // 
             // lblListAppointments
             // 
@@ -1814,6 +1706,118 @@
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
             // 
+            // cViewButton
+            // 
+            this.cViewButton.HeaderText = "View";
+            this.cViewButton.Name = "cViewButton";
+            this.cViewButton.Text = "Open";
+            this.cViewButton.UseColumnTextForButtonValue = true;
+            // 
+            // cCustomerID
+            // 
+            this.cCustomerID.HeaderText = "CustomerID";
+            this.cCustomerID.Name = "cCustomerID";
+            this.cCustomerID.Visible = false;
+            // 
+            // cCompanyName
+            // 
+            this.cCompanyName.HeaderText = "Company Name";
+            this.cCompanyName.Name = "cCompanyName";
+            // 
+            // cAddress1
+            // 
+            this.cAddress1.HeaderText = "Address 1";
+            this.cAddress1.Name = "cAddress1";
+            // 
+            // cPostalCode1
+            // 
+            this.cPostalCode1.HeaderText = "Postal Code 1";
+            this.cPostalCode1.Name = "cPostalCode1";
+            // 
+            // cResidence1
+            // 
+            this.cResidence1.HeaderText = "Residence 1";
+            this.cResidence1.Name = "cResidence1";
+            // 
+            // cAddress2
+            // 
+            this.cAddress2.HeaderText = "Address 2";
+            this.cAddress2.Name = "cAddress2";
+            // 
+            // cPostalCode2
+            // 
+            this.cPostalCode2.HeaderText = "Postal Code 2";
+            this.cPostalCode2.Name = "cPostalCode2";
+            // 
+            // cResidence2
+            // 
+            this.cResidence2.HeaderText = "Residence 2";
+            this.cResidence2.Name = "cResidence2";
+            // 
+            // cContactPerson
+            // 
+            this.cContactPerson.HeaderText = "Contactperson";
+            this.cContactPerson.Name = "cContactPerson";
+            // 
+            // cInitials
+            // 
+            this.cInitials.HeaderText = "Initials";
+            this.cInitials.Name = "cInitials";
+            // 
+            // cPhoneNumber1
+            // 
+            this.cPhoneNumber1.HeaderText = "Phone Number 1";
+            this.cPhoneNumber1.Name = "cPhoneNumber1";
+            // 
+            // cPhoneNumber2
+            // 
+            this.cPhoneNumber2.HeaderText = "Phone Number 2";
+            this.cPhoneNumber2.Name = "cPhoneNumber2";
+            // 
+            // cFaxNumber
+            // 
+            this.cFaxNumber.HeaderText = "Fax Number";
+            this.cFaxNumber.Name = "cFaxNumber";
+            // 
+            // cEmail
+            // 
+            this.cEmail.HeaderText = "E-Mail";
+            this.cEmail.Name = "cEmail";
+            // 
+            // cAppointmentViewButton
+            // 
+            this.cAppointmentViewButton.HeaderText = "View";
+            this.cAppointmentViewButton.Name = "cAppointmentViewButton";
+            this.cAppointmentViewButton.Text = "Open";
+            this.cAppointmentViewButton.UseColumnTextForButtonValue = true;
+            // 
+            // cAppointmentID
+            // 
+            this.cAppointmentID.HeaderText = "cAppointmentID";
+            this.cAppointmentID.Name = "cAppointmentID";
+            this.cAppointmentID.Visible = false;
+            // 
+            // cAppointmentCompanyName
+            // 
+            this.cAppointmentCompanyName.HeaderText = "CompanyName";
+            this.cAppointmentCompanyName.Name = "cAppointmentCompanyName";
+            this.cAppointmentCompanyName.ReadOnly = true;
+            // 
+            // cAppointmentDate
+            // 
+            this.cAppointmentDate.HeaderText = "Appointment Date";
+            this.cAppointmentDate.Name = "cAppointmentDate";
+            // 
+            // cApppointmentSubject
+            // 
+            this.cApppointmentSubject.HeaderText = "Subject";
+            this.cApppointmentSubject.Name = "cApppointmentSubject";
+            // 
+            // cAppointmentInternalContact
+            // 
+            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
+            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1978,21 +1982,6 @@
         private System.Windows.Forms.Label lblSalePercentage;
         private System.Windows.Forms.Label lblCreditworthy;
         private System.Windows.Forms.NumericUpDown nudCusSalePercentage;
-        private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.ComboBox cBoxCusProspect;
         private System.Windows.Forms.DateTimePicker dtpCusSalesLastContactDate;
         private System.Windows.Forms.DateTimePicker dtpCusSalesNextAction;
@@ -2008,6 +1997,23 @@
         private System.Windows.Forms.TextBox txtCusInitials;
         private System.Windows.Forms.Label lblCusInitials;
         private System.Windows.Forms.ToolTip tTipPostalCode;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber2;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
+        private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddress2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPostalCode2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cResidence2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cContactPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cInitials;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.DataGridViewButtonColumn cAppointmentViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentCompanyName;
