@@ -13,8 +13,7 @@ namespace Barroc_IT
         private SqlQueryHandler sqlhandler;
         private DataTableHandler dthandler;
 
-        private int selectedCustomer;
-        private int selectedAppoinment;
+        private int selectedCustomer = 0;
         private bool closing = false;
         public frmSales(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
@@ -54,7 +53,6 @@ namespace Barroc_IT
         private void btnViewAppointments_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
-            LoadAppointments();
         }
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
@@ -195,45 +193,11 @@ namespace Barroc_IT
             }           
         }
 
-        // Updaters / Editers  
-        private bool UpdateCustomer(int customerID)
+
+        private void btnEditFields_Click(object sender, EventArgs e)
         {
-            string sqlQuery = sqlhandler.GetQuery(Query.updateSalCustomerInfo);
-            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
 
-            cmd.Parameters.Add(new SqlParameter("CompanyName", txtCusCompanyName.Text));
-            cmd.Parameters.Add(new SqlParameter("Address1", txtCusAddress1.Text));
-            cmd.Parameters.Add(new SqlParameter("PostalCode1", txtCusPostalCode1.Text));
-            cmd.Parameters.Add(new SqlParameter("Residence1", txtCusResidence1.Text));
-            cmd.Parameters.Add(new SqlParameter("PhoneNumber1", txtCusPhoneNumber1.Text));
-            cmd.Parameters.Add(new SqlParameter("Address2", txtCusAddress2.Text));
-            cmd.Parameters.Add(new SqlParameter("PostalCode2", txtCusPostalCode2.Text));
-            cmd.Parameters.Add(new SqlParameter("Residence2", txtCusResidence2.Text));
-            cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusPhoneNumber2.Text));
-            cmd.Parameters.Add(new SqlParameter("ContactPerson", txtCusContactPerson.Text));
-            cmd.Parameters.Add(new SqlParameter("Initials", txtCusInitials.Text));
-            cmd.Parameters.Add(new SqlParameter("OfferStatus", txtCusOfferStatus.Text));            
-            cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusFaxNumber.Text));
-            cmd.Parameters.Add(new SqlParameter("Email", txtCusEmail.Text));
-            cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.SelectedIndex.ToString()));
-            cmd.Parameters.Add(new SqlParameter("DateOfAction", dtpCusSalesDateOfAction.Value));
-            cmd.Parameters.Add(new SqlParameter("LastContactDate", dtpCusSalesLastContactDate.Value));
-            cmd.Parameters.Add(new SqlParameter("NextAction", dtpCusSalesNextAction.Value));
-            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
-
-            cmd.Connection.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
-            if (rowsAffected > 0)
-            {
-                return true;
             }
-            else
-            {
-                return false;
-            }
-        }
-
         private void btnAppointmentSearch_Click(object sender, EventArgs e)
         {
 
