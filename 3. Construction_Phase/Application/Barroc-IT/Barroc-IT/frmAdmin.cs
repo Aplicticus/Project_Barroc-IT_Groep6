@@ -154,17 +154,39 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvAdminUserInfo.Columns["cDeactivate"].Index)
             {
-                selectedUser = int.Parse(dgvAdminUserInfo.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());                
-                UpdateUser(selectedUser);
-                LoadUsers();                
+                selectedUser = int.Parse(dgvAdminUserInfo.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
+                if (UpdateUser(selectedUser) == true)
+                {                    
+                    LoadUsers();
+                    MessageBox.Show("User succesfully deactivated!");
+                }
+                else
+                {
+                    MessageBox.Show("There is a problem with deactivating a user!");
+                }  
             }
         }
 
         private bool UpdateUser(int userID)
         {
+            string loadDeactivated = sqlhandler.GetQuery(Query.loadUsers);
+            DataTable DT = dthandler.ExecuteQuery(loadDeactivated);
+            DataRow DR = DT.Rows[0];
+            bool activateUser = Convert.ToBoolean(DR["DEACTIVATED"].ToString());
+           
+            if (activateUser == true)
+            {
+                activateUser = false;
+            }
+            else if (activateUser == false)
+            {
+                activateUser = true;
+            }
+
+
             string sqlQuery = sqlhandler.GetQuery(Query.updateAdmActivate);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());            
-            //cmd.Parameters.Add(new SqlParameter("Deactivated", ));          Add Boolean to change  
+            cmd.Parameters.Add(new SqlParameter("Deactivated", activateUser));
             cmd.Parameters.Add(new SqlParameter("userID", userID));
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
