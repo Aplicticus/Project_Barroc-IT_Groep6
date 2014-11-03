@@ -46,10 +46,16 @@ namespace Barroc_IT
                 handler.CloseConnection();
                 foreach (DataRow dRow in dTable.Rows)
                 {
-                    if (username.ToLower() == dRow["USER_NAME"].ToString().ToLower() && password.ToLower() == dRow["PASSWORD"].ToString().ToLower())
+                    bool deactivated = Convert.ToBoolean(dRow["DEACTIVATED"].ToString());
+                    if (username.ToLower() == dRow["USER_NAME"].ToString().ToLower() && 
+                        password.ToLower() == dRow["PASSWORD"].ToString().ToLower() &&
+                        deactivated == false)
                     {
                         loggedIn = true;
                         department = dRow["DEPARTMENT"].ToString().ToLower();
+                        DateTime lastlogin = DateTime.Now;
+                        int selectedUser = int.Parse(dRow["USER_ID"].ToString());
+                        SetLastLogin(lastlogin, selectedUser, username);
 
                         switch (department)
                         {
@@ -84,11 +90,23 @@ namespace Barroc_IT
 
             if (!loggedIn)
             {
-                MessageBox.Show("Incorrect username, password!");
+                MessageBox.Show("Incorrect username, password or a disabled useraccount!");
                 ClearTextBoxes();
             }
         }
 
+        private void SetLastLogin(DateTime lastlogin, int userID, string username)
+        {
+            string sql = sqlhandler.GetQuery(Query.updateLastLogin);
+            SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("Last_Login", lastlogin));
+            cmd.Parameters.Add(new SqlParameter("userID", userID));
+            cmd.Parameters.Add(new SqlParameter("User_Name", username));
+
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             ExitProgram();

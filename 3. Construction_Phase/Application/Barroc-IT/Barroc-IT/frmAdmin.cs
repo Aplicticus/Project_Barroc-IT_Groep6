@@ -34,15 +34,23 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 0;
         }
-        private void btnUserInfo_Click(object sender, EventArgs e)
+        private void btnUserInformation_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 4;
+            dgvUserInfo.ReadOnly = true;
+            LoadUsers();
+        }
+        private void btnActivatedUsers_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 2;
-            LoadUsers(); 
+            dgvActivatedUsers.ReadOnly = true;
+            LoadActivatedUsers();            
         }
         private void btnDeactivatedUsers_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
-            DGVDeactivatedUsers.ReadOnly = true;
+            dgvDeactivatedUsers.ReadOnly = true;
+            LoadDeactivatedUsers();
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -90,14 +98,29 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 0;
         }
+      
         
         // Loads
         private void LoadUsers()
         {
-            dgvAdminUserInfo.Rows.Clear();
+            dgvActivatedUsers.Rows.Clear();
             string selectUsers = sqlhandler.GetQuery(Query.loadUsers);
-            DataTable customers = dthandler.ExecuteQuery(selectUsers);
-            AddItemsToDataGridView(customers, dgvAdminUserInfo, "cUserID");
+            DataTable allUsers = dthandler.ExecuteQuery(selectUsers);
+            AddItemsToDataGridView(allUsers, dgvUserInfo, "uUserID");
+        }
+        private void LoadDeactivatedUsers()
+        {
+            dgvDeactivatedUsers.Rows.Clear();
+            string selectDeactivatedUsers = sqlhandler.GetQuery(Query.LoadDeactivatedUsers);
+            DataTable deactivatedUsers = dthandler.ExecuteQuery(selectDeactivatedUsers);
+            AddItemsToDataGridView(deactivatedUsers, dgvDeactivatedUsers, "dUserID");
+        }
+        private void LoadActivatedUsers()
+        {
+            dgvDeactivatedUsers.Rows.Clear();
+            string selectActivatedUsers = sqlhandler.GetQuery(Query.LoadActivatedUsers);
+            DataTable activatedUsers = dthandler.ExecuteQuery(selectActivatedUsers);
+            AddItemsToDataGridView(activatedUsers, dgvActivatedUsers, "xUserID");
         }
 
         // Methods
@@ -153,13 +176,13 @@ namespace Barroc_IT
         // Cell Content Click
         private void dgvAdminUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvAdminUserInfo.Columns["cDeactivate"].Index)
+            if (e.ColumnIndex == dgvActivatedUsers.Columns["cActivateDeactivate"].Index)
             {
-                selectedUser = int.Parse(dgvAdminUserInfo.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
-                selectedDeactivated = bool.Parse(dgvAdminUserInfo.Rows[e.RowIndex].Cells["cActivated"].Value.ToString());
+                selectedUser = int.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
+                selectedDeactivated = bool.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
                 if (UpdateUser(selectedUser, selectedDeactivated) == true)
                 {
-                    LoadUsers();
+                    LoadActivatedUsers();
                     MessageBox.Show("User succesfully deactivated!");
                 }
                 else
@@ -168,7 +191,25 @@ namespace Barroc_IT
                 }  
             }
         }
+        private void dgvDeactivatedUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvDeactivatedUsers.Columns["xActivatedDeactivated"].Index)
+            {
+                selectedUser = int.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xUserID"].Value.ToString());
+                selectedDeactivated = bool.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xDeactivated"].Value.ToString());
+                if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                {
+                    LoadDeactivatedUsers();
+                    MessageBox.Show("User succesfully activated!");
+                }
+                else
+                {
+                    MessageBox.Show("There is a problem with deactivating a user!");
+                }
+            }
+        }
 
+        // Updaters / Editers
         private bool UpdateUser(int userID, bool deactivatedID)
         {
             deactivatedID = !deactivatedID;
@@ -190,5 +231,9 @@ namespace Barroc_IT
                 return false;
             }            
         }
+
+       
+
+       
     }
 }

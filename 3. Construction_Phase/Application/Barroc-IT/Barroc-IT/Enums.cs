@@ -17,31 +17,37 @@
     public enum Query
     {
         addCustomer,
-        loadCustomers,
-        loadUsers,
         addInvoice,
         addProject,
         addUser,
-        updateFinCustomersInfo,
-        updateDevProjectInfo,
-        updateAdmActivate,
+
+        loadCustomers,
+        loadUsers,
         loadProjects,
         loadInvoices,
+        loadAppointments,
         loadCustomerDetails,
+        LoadDeactivatedUsers,
+        loadProjectDetails,
+        loadAppointmentDetails,
+        loadInvoiceDetails,
+        LoadActivatedUsers,
+
         countSales,
         countProjects,
         countValues,
         countAppointments,
         countOffers,
-        loadAppointments,
+        countInvoices,
+        
         updateFinProjectInfo,
         updateDevCustomerInfo,
         updateDevAppointmentInfo,
         updateSalCustomerInfo,
-        loadProjectDetails,
-        countInvoices,
-        loadAppointmentDetails,
-        loadInvoiceDetails
+        updateFinCustomersInfo,
+        updateDevProjectInfo,
+        updateLastLogin,
+        updateAdmActivate
     }
 
 }

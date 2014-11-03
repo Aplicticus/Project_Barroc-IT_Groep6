@@ -12,9 +12,29 @@
         {
 
         }
+        // Default OuterJoins
+        string OuterJoinProCus =
+        "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID ";
+        string OuterJoinInvPro =
+        "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID ";
+        string OuterJoinApoCus =
+        "FULL OUTER JOIN tbl_Appointments ON tbl_Customers.CUSTOMER_ID=tbl_Appointments.CUSTOMER_ID ";
 
+        // Load Querys
         string loadCustomers = "SELECT * FROM tbl_Customers";
-        string loadUsers = "SELECT tbl_Users.USER_ID, tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED FROM tbl_Users";
+        string loadUsers = "SELECT tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED, tbl_Users.LAST_LOGIN FROM tbl_Users";
+        string LoadDeactivatedUsers = "SELECT tbl_Users.USER_ID, tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED, tbl_Users.LAST_LOGIN FROM tbl_Users WHERE tbl_Users.DEACTIVATED='true'";
+        string LoadActivatedUsers = "SELECT tbl_Users.USER_ID, tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED, tbl_Users.LAST_LOGIN FROM tbl_Users WHERE tbl_Users.DEACTIVATED='false'";
+        string loadInvoiceDetails = "SELECT * FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID AND tbl_Invoices.INVOICE_ID = @invoiceID";
+        string loadProjectDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
+        string loadAppointmentDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Appointments.APPOINTMENT_ID=@appointmentID";
+        string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID=@customerID";
+        string loadProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
+        "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
+        "tbl_Projects.NAME, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
+        "tbl_Invoices.INVOICE_SEND FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
+        string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.COMPANYNAME, tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
 
         //Insert querys
         string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) " +
@@ -27,30 +47,9 @@
         "POSTALCODE2, RESIDENCE2, CONTACTPERSON, INITIALS, PHONE_NR1, PHONE_NR2, FAXNUMBER, EMAIL, PROSPECT) " +
         "VALUES (@CompanyName, @Address1, @PostalCode1, @Residence1, @Address2, @PostalCode2, @Residence2, @ContactPerson, " +
         "@Initials, @PhoneNr1, @PhoneNr2, @FaxNumber, @Email, @Prospect)";
-
-
-        // Default OuterJoins
-        string OuterJoinProCus =
-        "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID ";
-        string OuterJoinInvPro =
-        "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID ";
-        string OuterJoinApoCus =
-        "FULL OUTER JOIN tbl_Appointments ON tbl_Customers.CUSTOMER_ID=tbl_Appointments.CUSTOMER_ID ";
-
-        string loadInvoiceDetails = "SELECT * FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID AND tbl_Invoices.INVOICE_ID = @invoiceID";
-        string loadProjectDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
-        string loadAppointmentDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Appointments.APPOINTMENT_ID=@appointmentID";
-
+        
+        // Count Querys
         string countInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
-        string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID=@customerID";
-
-        string loadProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-        "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
-        string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
-        "tbl_Projects.NAME, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
-        "tbl_Invoices.INVOICE_SEND FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
-
-        string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.COMPANYNAME, tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
         string countSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices WHERE tbl_Invoices.PROJECT_ID=@customerID";
@@ -75,8 +74,8 @@
         "DATE_OF_ACTION=@DateOfAction, LAST_CONTACT_DATE=@LastContactDate, NEXT_ACTION=@NextAction " +
         "WHERE CUSTOMER_ID=@customerID";
         string updateAdmActivate = "UPDATE tbl_Users SET DEACTIVATED=@Deactivated WHERE USER_ID=@userID";
+        string updateLastLogin = "UPDATE tbl_Users SET LAST_LOGIN=@Last_Login WHERE USER_ID=@userID AND USER_NAME=@User_Name";
        
-
         public string GetQuery(Query query)
         {
             // Default
@@ -116,6 +115,12 @@
                     sqlQuery = loadInvoiceDetails;
                     sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
                     break;
+                case Query.LoadDeactivatedUsers:
+                    sqlQuery = LoadDeactivatedUsers;
+                    break;
+                case Query.LoadActivatedUsers:
+                    sqlQuery = LoadActivatedUsers;
+                    break;
 
                 case Query.addCustomer:
                     sqlQuery = addCustomer;
@@ -151,6 +156,9 @@
                     break;
                 case Query.updateAdmActivate:
                     sqlQuery = updateAdmActivate;
+                    break;
+                case Query.updateLastLogin:
+                    sqlQuery = updateLastLogin;
                     break;
 
                 case Query.countSales:
