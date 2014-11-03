@@ -10,6 +10,7 @@ namespace Barroc_IT
     {
         // Properties, Instances
         private DatabaseHandler handler;
+
         private frmLogin loginForm;
         private SqlQueryHandler sqlhandler;
         private DataTableHandler dthandler;
@@ -17,6 +18,7 @@ namespace Barroc_IT
         private int selectedCustomer = 0;
         private int selectedAppoinment = 0;
         private bool closing = false;
+
         public frmSales(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
             InitializeComponent();
@@ -35,18 +37,22 @@ namespace Barroc_IT
             tbContr.SelectedIndex = 1;
             LoadCustomers();
         }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
+
         private void btnSalesHome_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 0;
         }
+
         private void btnSalesAddCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 6;
         }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             DialogResult confirmationLogout = MessageBox.Show("Are you sure you want to log out?", "Confirm log out", MessageBoxButtons.YesNo);
@@ -55,33 +61,37 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }
+
         private void btnViewAppointments_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
             LoadAppointments();
         }
+
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 5;
         }
+
         private void btnAppointmentAdd_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 2;
         }
+
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnAddCustomerCancel_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 0;
         }
+
         private void btnCusAddCustomer_Click(object sender, EventArgs e)
         {
             bool everythingCorrect = true;
 
-            TextBox[] firstTextBoxes = { txtCusAddCompanyName, txtCusAddInitials, txtCusAddContactperson, txtCusAddAddress1, txtCusAddResidence1, txtCusAddFaxNumber, txtCusAddEmail };
+            TextBox[] firstTextBoxes = { txtCusAddCompanyName, txtCusAddInitials, txtCusAddContactperson, txtCusAddAddress1, txtCusAddResidence1, txtCusAddEmail };
             if (!CheckTextBoxes(firstTextBoxes))
             {
                 MessageBox.Show("Please check all the neccesary fields.");
@@ -95,21 +105,35 @@ namespace Barroc_IT
                         string phoneNumber2Text = txtCusAddPhoneNumber2.Text.Replace(" ", "");
                         if (phoneNumber2Text.Length > 2)
                         {
-                            if (txtCusAddPostalCode2.TextLength > 0)
+                            if (txtCusAddPhoneNumber2.MaskFull)
                             {
-                                if (!CheckPostalCode(txtCusAddPostalCode2))
+                                string faxNumberText = txtCusAddFaxNumber.Text.Replace(" ", "");
+                                if (faxNumberText.Length > 2)
                                 {
-                                    everythingCorrect = false;
-                                    MessageBox.Show("Please check the second postal code.");
+                                    if (txtCusAddFaxNumber.MaskFull)
+                                    {
+                                        if (txtCusAddPostalCode2.TextLength > 0)
+                                        {
+                                            if (!CheckPostalCode(txtCusAddPostalCode2))
+                                            {
+                                                everythingCorrect = false;
+                                                MessageBox.Show("Please check the second postal code.");
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        everythingCorrect = false;
+                                        MessageBox.Show("Please check the fax number.");
+                                    }
                                 }
                             }
+                            else
+                            {
+                                everythingCorrect = false;
+                                MessageBox.Show("Please check the second phone number.");
+                            }
                         }
-                        else
-                        {
-                            everythingCorrect = false;
-                            MessageBox.Show("Please check the second phone number");
-                        }
-
 
                         if (everythingCorrect)
                         {
@@ -139,6 +163,7 @@ namespace Barroc_IT
                 }
             }
         }
+
         private void btnEditCustomerFields_Click(object sender, EventArgs e)
         {
             if (btnEditCustomerFields.Text == "Edit Fields")
@@ -215,6 +240,7 @@ namespace Barroc_IT
             DataTable customers = dthandler.ExecuteQuery(selectCustomers);
             AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
         }
+
         private void LoadAppointments()
         {
             dgvAppointments.Rows.Clear();
@@ -224,10 +250,25 @@ namespace Barroc_IT
             AddItemsToDataGridView(appointments, dgvAppointments, "cAppointmentID");
         }
 
-        // Methods  
+        // Methods
         private bool addCustomer()
         {
             string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
+
+            string faxNumberText = txtCusAddFaxNumber.Text.Replace(" ", "");
+
+            if (faxNumberText.Length < 2)
+            {
+                faxNumberText = "";
+            }
+
+            string phoneNumber2Text = txtCusAddPhoneNumber2.Text.Replace(" ", "");
+            if (phoneNumber2Text.Length < 2)
+            {
+                phoneNumber2Text = "";
+            }
+
+
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("@CompanyName", txtCusAddCompanyName.Text));
             cmd.Parameters.Add(new SqlParameter("@Address1", txtCusAddAddress1.Text));
@@ -239,8 +280,8 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@ContactPerson", txtCusAddContactperson.Text));
             cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
             cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
-            cmd.Parameters.Add(new SqlParameter("@PhoneNr2", txtCusAddPhoneNumber2.Text));
-            cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
+            cmd.Parameters.Add(new SqlParameter("@PhoneNr2", phoneNumber2Text));
+            cmd.Parameters.Add(new SqlParameter("@FaxNumber", faxNumberText));
             cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
             cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex));
 
@@ -256,6 +297,7 @@ namespace Barroc_IT
                 return false;
             }
         }
+
         private void btnAppointmentSearch_Click(object sender, EventArgs e)
         {
             if (txtAppointmentSearch.Text.Length > 0)
@@ -266,9 +308,11 @@ namespace Barroc_IT
                     case "Company Name":
                         selectedItem = SearchChoice.AppointmentCompanyName;
                         break;
+
                     case "Subject":
                         selectedItem = SearchChoice.AppointmentSubject;
                         break;
+
                     default:
                         selectedItem = SearchChoice.AppointmentCompanyName;
                         break;
@@ -296,10 +340,9 @@ namespace Barroc_IT
                 {
                     btnViewAppointment.Enabled = false;
                 }
-
-
             }
         }
+
         private void dgvAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvAppointments.Columns["cAppointmentViewButton"].Index)
@@ -336,6 +379,7 @@ namespace Barroc_IT
 
             LoadCustomerDetails(customerDetails, countAppointments, countOffers);
         }
+
         private void ReloadAppointments()
         {
             string sqlCustomers = sqlhandler.GetQuery(Query.loadAppointmentDetails);
@@ -375,6 +419,7 @@ namespace Barroc_IT
             txtCusAppointment.Text = ApoRow[0].ToString();
             RecoverComboBoxFields();
         }
+
         private void LoadAppointmentDetails(DataTable CusDet)
         {
             DataRow DRCusDet = CusDet.Rows[0];
@@ -409,13 +454,13 @@ namespace Barroc_IT
             {
                 txtCusOfferStatus.Text = "No";
             }
-
         }
 
         // Updaters / Editers
         private bool UpdateCustomer(int customerID)
         {
             string sqlQuery = sqlhandler.GetQuery(Query.updateSalCustomerInfo);
+
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
 
             cmd.Parameters.Add(new SqlParameter("CompanyName", txtCusCompanyName.Text));
@@ -426,11 +471,11 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("Address2", txtCusAddress2.Text));
             cmd.Parameters.Add(new SqlParameter("PostalCode2", txtCusPostalCode2.Text));
             cmd.Parameters.Add(new SqlParameter("Residence2", txtCusResidence2.Text));
-            cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusPhoneNumber2.Text));
+            cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusAddPhoneNumber2.Text));
             cmd.Parameters.Add(new SqlParameter("ContactPerson", txtCusContactPerson.Text));
             cmd.Parameters.Add(new SqlParameter("Initials", txtCusInitials.Text));
             cmd.Parameters.Add(new SqlParameter("OfferStatus", txtCusOfferStatus.Text));
-            cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusFaxNumber.Text));
+            cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusAddFaxNumber.Text));
             cmd.Parameters.Add(new SqlParameter("Email", txtCusEmail.Text));
             cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.SelectedIndex.ToString()));
             cmd.Parameters.Add(new SqlParameter("DateOfAction", dtpCusSalesDateOfAction.Value));
@@ -492,12 +537,15 @@ namespace Barroc_IT
                     case "Company Name":
                         selectedItem = SearchChoice.CompanyName;
                         break;
+
                     case "E-Mail":
                         selectedItem = SearchChoice.Email;
                         break;
+
                     case "Initials":
                         selectedItem = SearchChoice.Initials;
                         break;
+
                     default:
                         selectedItem = SearchChoice.CompanyName;
                         break;
@@ -542,4 +590,3 @@ namespace Barroc_IT
         }
     }
 }
-

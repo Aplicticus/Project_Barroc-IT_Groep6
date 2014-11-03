@@ -171,7 +171,6 @@
             this.lblCusPostalCode2 = new System.Windows.Forms.Label();
             this.lblCusFaxNumber = new System.Windows.Forms.Label();
             this.lblCusProspect = new System.Windows.Forms.Label();
-            this.txtCusAddFaxNumber = new System.Windows.Forms.TextBox();
             this.txtCusAddAddress2 = new System.Windows.Forms.TextBox();
             this.lblCusEmail = new System.Windows.Forms.Label();
             this.lblCusAddress2 = new System.Windows.Forms.Label();
@@ -190,6 +189,7 @@
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
             this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
+            this.txtCusAddFaxNumber = new System.Windows.Forms.MaskedTextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1514,6 +1514,7 @@
             // lbl
             // 
             this.lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl.Controls.Add(this.txtCusAddFaxNumber);
             this.lbl.Controls.Add(this.txtCusAddPhoneNumber2);
             this.lbl.Controls.Add(this.txtCusAddPhoneNumber1);
             this.lbl.Controls.Add(this.btnAddCustomerCancel);
@@ -1527,7 +1528,6 @@
             this.lbl.Controls.Add(this.lblCusPostalCode2);
             this.lbl.Controls.Add(this.lblCusFaxNumber);
             this.lbl.Controls.Add(this.lblCusProspect);
-            this.lbl.Controls.Add(this.txtCusAddFaxNumber);
             this.lbl.Controls.Add(this.txtCusAddAddress2);
             this.lbl.Controls.Add(this.lblCusEmail);
             this.lbl.Controls.Add(this.lblCusAddress2);
@@ -1675,14 +1675,6 @@
             this.lblCusProspect.Size = new System.Drawing.Size(95, 25);
             this.lblCusProspect.TabIndex = 176;
             this.lblCusProspect.Text = "Prospect:";
-            // 
-            // txtCusAddFaxNumber
-            // 
-            this.txtCusAddFaxNumber.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCusAddFaxNumber.Location = new System.Drawing.Point(574, 105);
-            this.txtCusAddFaxNumber.Name = "txtCusAddFaxNumber";
-            this.txtCusAddFaxNumber.Size = new System.Drawing.Size(137, 20);
-            this.txtCusAddFaxNumber.TabIndex = 172;
             // 
             // txtCusAddAddress2
             // 
@@ -1842,6 +1834,14 @@
             this.tTipPostalCode.ReshowDelay = 1;
             this.tTipPostalCode.ToolTipTitle = "Postal Code";
             // 
+            // txtCusAddFaxNumber
+            // 
+            this.txtCusAddFaxNumber.Location = new System.Drawing.Point(574, 105);
+            this.txtCusAddFaxNumber.Mask = "000-0000000";
+            this.txtCusAddFaxNumber.Name = "txtCusAddFaxNumber";
+            this.txtCusAddFaxNumber.Size = new System.Drawing.Size(137, 20);
+            this.txtCusAddFaxNumber.TabIndex = 197;
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1984,7 +1984,6 @@
         private System.Windows.Forms.Label lblApoAddress;
         private System.Windows.Forms.Label lblApoCompanyName;
         private System.Windows.Forms.TextBox txtApoCompanyName;
-        private System.Windows.Forms.TextBox txtCusAddFaxNumber;
         private System.Windows.Forms.ComboBox cbCusAddProspect;
         private System.Windows.Forms.DateTimePicker dtpAppointmentDate;
         private System.Windows.Forms.DateTimePicker dtpApoAddAppointmentDate;
@@ -2046,5 +2045,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cAppointmentInternalContact;
         private System.Windows.Forms.MaskedTextBox txtCusAddPhoneNumber2;
         private System.Windows.Forms.MaskedTextBox txtCusAddPhoneNumber1;
+        private System.Windows.Forms.MaskedTextBox txtCusAddFaxNumber;
     }
 }
