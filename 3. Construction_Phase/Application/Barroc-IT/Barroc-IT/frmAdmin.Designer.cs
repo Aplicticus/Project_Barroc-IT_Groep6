@@ -37,7 +37,6 @@
             this.btnAdminAddUser = new System.Windows.Forms.Button();
             this.btnAdminHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblAdminHome = new System.Windows.Forms.Label();
@@ -56,12 +55,6 @@
             this.lblAdminRegister = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvAdminUserInfo = new System.Windows.Forms.DataGridView();
-            this.cDeactivate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUserInfoBack = new System.Windows.Forms.Button();
             this.lblUserInfo = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -73,6 +66,13 @@
             this.dDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dActivate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.cDeactivate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -391,47 +391,6 @@
             this.dgvAdminUserInfo.TabIndex = 189;
             this.dgvAdminUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdminUserInfo_CellContentClick);
             // 
-            // cDeactivate
-            // 
-            this.cDeactivate.Frozen = true;
-            this.cDeactivate.HeaderText = "Activate/Deactivate";
-            this.cDeactivate.Name = "cDeactivate";
-            this.cDeactivate.ReadOnly = true;
-            this.cDeactivate.Text = "";
-            this.cDeactivate.UseColumnTextForButtonValue = true;
-            this.cDeactivate.Width = 120;
-            // 
-            // cUserID
-            // 
-            this.cUserID.HeaderText = "UserID";
-            this.cUserID.Name = "cUserID";
-            this.cUserID.ReadOnly = true;
-            this.cUserID.Visible = false;
-            // 
-            // cUsername
-            // 
-            this.cUsername.HeaderText = "Username";
-            this.cUsername.Name = "cUsername";
-            this.cUsername.ReadOnly = true;
-            // 
-            // cDepartment
-            // 
-            this.cDepartment.HeaderText = "Department";
-            this.cDepartment.Name = "cDepartment";
-            this.cDepartment.ReadOnly = true;
-            // 
-            // cActivated
-            // 
-            this.cActivated.HeaderText = "Activated";
-            this.cActivated.Name = "cActivated";
-            this.cActivated.ReadOnly = true;
-            // 
-            // cLastLogin
-            // 
-            this.cLastLogin.HeaderText = "Last Login";
-            this.cLastLogin.Name = "cLastLogin";
-            this.cLastLogin.ReadOnly = true;
-            // 
             // btnUserInfoBack
             // 
             this.btnUserInfoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -526,6 +485,48 @@
             // 
             this.dActivate.HeaderText = "Activate";
             this.dActivate.Name = "dActivate";
+            // 
+            // cDeactivate
+            // 
+            this.cDeactivate.Frozen = true;
+            this.cDeactivate.HeaderText = "Activate/Deactivate";
+            this.cDeactivate.Name = "cDeactivate";
+            this.cDeactivate.ReadOnly = true;
+            this.cDeactivate.Text = "";
+            this.cDeactivate.UseColumnTextForButtonValue = true;
+            this.cDeactivate.Width = 120;
+            // 
+            // cUserID
+            // 
+            this.cUserID.HeaderText = "UserID";
+            this.cUserID.Name = "cUserID";
+            this.cUserID.ReadOnly = true;
+            this.cUserID.Visible = false;
+            // 
+            // cUsername
+            // 
+            this.cUsername.HeaderText = "Username";
+            this.cUsername.Name = "cUsername";
+            this.cUsername.ReadOnly = true;
+            // 
+            // cDepartment
+            // 
+            this.cDepartment.HeaderText = "Department";
+            this.cDepartment.Name = "cDepartment";
+            this.cDepartment.ReadOnly = true;
+            // 
+            // cActivated
+            // 
+            this.cActivated.HeaderText = "Activated";
+            this.cActivated.Name = "cActivated";
+            this.cActivated.ReadOnly = true;
+            this.cActivated.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // cLastLogin
+            // 
+            this.cLastLogin.HeaderText = "Last Login";
+            this.cLastLogin.Name = "cLastLogin";
+            this.cLastLogin.ReadOnly = true;
             // 
             // frmAdmin
             // 
