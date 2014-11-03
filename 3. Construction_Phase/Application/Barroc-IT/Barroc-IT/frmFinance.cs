@@ -324,7 +324,7 @@ namespace Barroc_IT
             }
             cmd.Parameters.Add(new SqlParameter("AccountID", txtFinAccountID.Text));
             cmd.Parameters.Add(new SqlParameter("Balance", txtFinBalance.Text));
-            cmd.Parameters.Add(new SqlParameter("Limit", txtFinLimit.Text));
+            cmd.Parameters.Add(new SqlParameter("Limit", decimal.Parse(txtFinLimit.Text)));
             cmd.Parameters.Add(new SqlParameter("LedgerID", txtFinLegderID.Text));
             cmd.Parameters.Add(new SqlParameter("BTWcode", txtFinBTWCode.Text));
             cmd.Parameters.Add(new SqlParameter("Bkr", cbFinBKR.Text));
