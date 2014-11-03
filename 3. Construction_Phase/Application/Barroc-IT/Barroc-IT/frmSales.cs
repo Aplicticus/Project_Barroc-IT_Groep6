@@ -79,10 +79,49 @@ namespace Barroc_IT
         }
         private void btnCusAddCustomer_Click(object sender, EventArgs e)
         {
-            addCustomer();
-            tbContr.SelectedIndex = 1;
-            dgvCustomers.Rows.Clear();
-            LoadCustomers();
+            TextBox[] textBoxes = { txtCusAddCompanyName, txtCusAddInitials, txtCusAddContactperson, txtCusAddAddress1, txtCusAddResidence1, txtCusAddFaxNumber, txtCusAddEmail };
+            if (!CheckTextBoxes(textBoxes))
+            {
+                MessageBox.Show("Please check all the neccesary fields.");
+            }
+            else
+            {
+                if (txtCusAddPhoneNumber1.MaskFull)
+                {
+
+
+                    if (CheckPostalCode(txtCusAddPostalCode1))
+                    {
+                        if (txtCusAddPostalCode2.TextLength > 0)
+                        {
+                            if (!CheckPostalCode(txtCusAddPostalCode2))
+                            {
+                                MessageBox.Show("Please check the second postal code.");
+                            }
+                        }
+
+                        if (addCustomer())
+                        {
+                            MessageBox.Show("Customer succesfully added.");
+                            tbContr.SelectedIndex = 1;
+                            dgvCustomers.Rows.Clear();
+                            LoadCustomers();
+                        }
+                        else
+                        {
+                            MessageBox.Show("The customer could not be added, please try again!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please check the first postal code.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please check the first phone number.");
+                }
+            }
         }
         private void btnEditCustomerFields_Click(object sender, EventArgs e)
         {
@@ -151,7 +190,7 @@ namespace Barroc_IT
                 btnEditCustomerFields.Text = "Edit Fields";
             }
         }
-        
+
         // Loads
         private void LoadCustomers()
         {
@@ -172,19 +211,6 @@ namespace Barroc_IT
         // Methods  
         private bool addCustomer()
         {
-//#if DEBUG
-//            string regex = @"\b[1-9][0-9]{3}\b\b\s[A-Z]{2}\b";
-//            Regex regEx = new Regex(regex);
-//            if (regEx.IsMatch(txtCusAddPostalCode1.Text))
-//            {
-//                MessageBox.Show("MATCH");
-//            }
-//            else
-//            {
-//                MessageBox.Show("No Match");
-//            }
-//            return true;
-//#endif
             string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("@CompanyName", txtCusAddCompanyName.Text));
@@ -198,9 +224,10 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
             cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
             cmd.Parameters.Add(new SqlParameter("@PhoneNr2", txtCusAddPhoneNumber2.Text));
-            cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
+            cmd.Parameters.Add(new SqlParameter("@FaxNumber", 1));
+            //cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
             cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
-            cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex.ToString()));
+            cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex));
 
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
@@ -234,7 +261,7 @@ namespace Barroc_IT
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtAppointmentSearch.Text, selectedCustomer);
 
                 AddItemsToDataGridView(resultOfSearch, dgvAppointments, "cAppointmentID");
-        }
+            }
         }
 
         // Cell Content Clicks
@@ -253,7 +280,7 @@ namespace Barroc_IT
                 else
                 {
                     btnViewAppointment.Enabled = false;
-                }   
+                }
 
 
             }
@@ -311,11 +338,11 @@ namespace Barroc_IT
             txtCusPostalCode1.Text = CusRow["POSTALCODE1"].ToString();
             txtCusResidence1.Text = CusRow["RESIDENCE1"].ToString();
             txtCusPhoneNumber1.Text = CusRow["PHONE_NR1"].ToString();
-            txtCusAddress2.Text = CusRow["ADDRESS2"].ToString();            
+            txtCusAddress2.Text = CusRow["ADDRESS2"].ToString();
             txtCusPostalCode2.Text = CusRow["POSTALCODE2"].ToString();
             txtCusResidence2.Text = CusRow["RESIDENCE2"].ToString();
             txtCusPhoneNumber2.Text = CusRow["PHONE_NR2"].ToString();
-            txtCusInitials.Text = CusRow["INITIALS"].ToString();            
+            txtCusInitials.Text = CusRow["INITIALS"].ToString();
             txtCusFaxNumber.Text = CusRow["FAXNUMBER"].ToString();
             txtCusEmail.Text = CusRow["EMAIL"].ToString();
             txtCusContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
@@ -409,7 +436,6 @@ namespace Barroc_IT
             }
         }
 
-
         // Methods
         private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
@@ -467,8 +493,39 @@ namespace Barroc_IT
             }
         }
 
-       
-       
+
+        private bool CheckTextBoxes(TextBox[] textBoxes)
+        {
+            bool textLengthCorrect = false;
+            foreach (TextBox txt in textBoxes)
+            {
+                if (txt.TextLength > 0)
+                {
+                    textLengthCorrect = true;
+                }
+                else
+                {
+                    textLengthCorrect = false;
+                    break;
+                }
+            }
+
+            return textLengthCorrect;
+        }
+
+        private bool CheckPostalCode(TextBox postalCode)
+        {
+            string regex = @"\b[1-9][0-9]{3}\b\b\s[A-Z]{2}\b";
+            Regex regEx = new Regex(regex);
+            if (regEx.IsMatch(postalCode.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
 
