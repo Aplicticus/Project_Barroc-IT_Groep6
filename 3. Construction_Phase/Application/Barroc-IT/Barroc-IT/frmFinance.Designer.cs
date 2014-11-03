@@ -107,6 +107,10 @@
             this.dgvProjects = new System.Windows.Forms.DataGridView();
             this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnProjectBack = new System.Windows.Forms.Button();
             this.btnViewInvoices = new System.Windows.Forms.Button();
@@ -158,10 +162,6 @@
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
-            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -951,6 +951,7 @@
             // 
             this.finProView.HeaderText = "View";
             this.finProView.Name = "finProView";
+            this.finProView.ReadOnly = true;
             this.finProView.Text = "Open";
             this.finProView.UseColumnTextForButtonValue = true;
             // 
@@ -958,11 +959,12 @@
             // 
             this.cProjectID.HeaderText = "ProjectID";
             this.cProjectID.Name = "cProjectID";
+            this.cProjectID.ReadOnly = true;
             this.cProjectID.Visible = false;
             // 
             // finProCompanyName
             // 
-            this.finProCompanyName.HeaderText = "CompanyName";
+            this.finProCompanyName.HeaderText = "Company Name";
             this.finProCompanyName.Name = "finProCompanyName";
             this.finProCompanyName.ReadOnly = true;
             // 
@@ -1237,6 +1239,7 @@
             // 
             this.finInvView.HeaderText = "View";
             this.finInvView.Name = "finInvView";
+            this.finInvView.ReadOnly = true;
             this.finInvView.Text = "Open";
             this.finInvView.UseColumnTextForButtonValue = true;
             // 
@@ -1244,17 +1247,18 @@
             // 
             this.cInvoiceID.HeaderText = "cInvoiceID";
             this.cInvoiceID.Name = "cInvoiceID";
+            this.cInvoiceID.ReadOnly = true;
             this.cInvoiceID.Visible = false;
             // 
             // finInvCompanyName
             // 
-            this.finInvCompanyName.HeaderText = "CompanyName";
+            this.finInvCompanyName.HeaderText = "Company Name";
             this.finInvCompanyName.Name = "finInvCompanyName";
             this.finInvCompanyName.ReadOnly = true;
             // 
             // finInvSubject
             // 
-            this.finInvSubject.HeaderText = "Subject";
+            this.finInvSubject.HeaderText = "Project Name";
             this.finInvSubject.Name = "finInvSubject";
             this.finInvSubject.ReadOnly = true;
             // 
@@ -1266,12 +1270,18 @@
             // 
             // finInvExpDate
             // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.finInvExpDate.HeaderText = "Expire Date";
             this.finInvExpDate.Name = "finInvExpDate";
             this.finInvExpDate.ReadOnly = true;
             // 
             // InvoiceSendDate
             // 
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.InvoiceSendDate.HeaderText = "Invoice Send Date";
             this.InvoiceSendDate.Name = "InvoiceSendDate";
             this.InvoiceSendDate.ReadOnly = true;
@@ -1533,96 +1543,6 @@
             this.lblFinInvoiceValue.Size = new System.Drawing.Size(136, 25);
             this.lblFinInvoiceValue.TabIndex = 162;
             this.lblFinInvoiceValue.Text = "Invoice Value:";
-            // 
-            // finInvView
-            // 
-            this.finInvView.HeaderText = "View";
-            this.finInvView.Name = "finInvView";
-            this.finInvView.ReadOnly = true;
-            this.finInvView.Text = "Open";
-            this.finInvView.UseColumnTextForButtonValue = true;
-            // 
-            // cInvoiceID
-            // 
-            this.cInvoiceID.HeaderText = "cInvoiceID";
-            this.cInvoiceID.Name = "cInvoiceID";
-            this.cInvoiceID.ReadOnly = true;
-            this.cInvoiceID.Visible = false;
-            // 
-            // finInvCompanyName
-            // 
-            this.finInvCompanyName.HeaderText = "Company Name";
-            this.finInvCompanyName.Name = "finInvCompanyName";
-            this.finInvCompanyName.ReadOnly = true;
-            // 
-            // finInvSubject
-            // 
-            this.finInvSubject.HeaderText = "Project Name";
-            this.finInvSubject.Name = "finInvSubject";
-            this.finInvSubject.ReadOnly = true;
-            // 
-            // finInvValue
-            // 
-            this.finInvValue.HeaderText = "Value";
-            this.finInvValue.Name = "finInvValue";
-            this.finInvValue.ReadOnly = true;
-            // 
-            // finInvExpDate
-            // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.finInvExpDate.HeaderText = "Expire Date";
-            this.finInvExpDate.Name = "finInvExpDate";
-            this.finInvExpDate.ReadOnly = true;
-            // 
-            // InvoiceSendDate
-            // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
-            this.InvoiceSendDate.Name = "InvoiceSendDate";
-            this.InvoiceSendDate.ReadOnly = true;
-            // 
-            // finProView
-            // 
-            this.finProView.HeaderText = "View";
-            this.finProView.Name = "finProView";
-            this.finProView.ReadOnly = true;
-            this.finProView.Text = "Open";
-            this.finProView.UseColumnTextForButtonValue = true;
-            // 
-            // cProjectID
-            // 
-            this.cProjectID.HeaderText = "ProjectID";
-            this.cProjectID.Name = "cProjectID";
-            this.cProjectID.ReadOnly = true;
-            this.cProjectID.Visible = false;
-            // 
-            // finProCompanyName
-            // 
-            this.finProCompanyName.HeaderText = "Company Name";
-            this.finProCompanyName.Name = "finProCompanyName";
-            this.finProCompanyName.ReadOnly = true;
-            // 
-            // finProName
-            // 
-            this.finProName.HeaderText = "Project Name";
-            this.finProName.Name = "finProName";
-            this.finProName.ReadOnly = true;
-            // 
-            // finProDeadline
-            // 
-            this.finProDeadline.HeaderText = "Deadline";
-            this.finProDeadline.Name = "finProDeadline";
-            this.finProDeadline.ReadOnly = true;
-            // 
-            // finProSubject
-            // 
-            this.finProSubject.HeaderText = "Subject";
-            this.finProSubject.Name = "finProSubject";
-            this.finProSubject.ReadOnly = true;
             // 
             // frmFinance
             // 
