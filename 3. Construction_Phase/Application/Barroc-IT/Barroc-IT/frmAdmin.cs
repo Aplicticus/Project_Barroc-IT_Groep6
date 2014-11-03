@@ -147,6 +147,12 @@ namespace Barroc_IT
             {
                 CloseToLogin();
             }
+        }
+
+        // Cell Content Click
+        private void dgvAdminUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }        
     }
 }
