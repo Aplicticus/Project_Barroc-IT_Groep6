@@ -70,9 +70,7 @@ namespace Barroc_IT
             }
             else if (btnEditFields.Text == "Save Changes")
             {
-                UpdateCustomer(selectedCustomer);
-                string sql = sqlhandler.GetQuery(Query.loadCustomerDetails);
-                DataTable customerDetails = dthandler.ExecuteQuery(sql);                 
+                UpdateCustomer(selectedCustomer);                               
                 txtFinAccountID.ReadOnly = true;
                 txtFinBalance.ReadOnly = true;
                 txtFinLimit.ReadOnly = true;

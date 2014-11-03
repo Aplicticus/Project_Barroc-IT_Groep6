@@ -38,7 +38,6 @@
             this.btnAdminAddUser = new System.Windows.Forms.Button();
             this.btnAdminHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblAdminHome = new System.Windows.Forms.Label();
@@ -57,7 +56,13 @@
             this.lblAdminRegister = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvActivatedUsers = new System.Windows.Forms.DataGridView();
-            this.btnUserInfoBack = new System.Windows.Forms.Button();
+            this.cActivateDeactivate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDeactivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnActivatedUsersBack = new System.Windows.Forms.Button();
             this.lblUserInfo = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvDeactivatedUsers = new System.Windows.Forms.DataGridView();
@@ -67,7 +72,7 @@
             this.xDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDeactivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xLastlogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDeactivatedBack = new System.Windows.Forms.Button();
+            this.btnDeactivatedUsersBack = new System.Windows.Forms.Button();
             this.lblDeactivatedUsers = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dgvUserInfo = new System.Windows.Forms.DataGridView();
@@ -77,12 +82,8 @@
             this.uDeactivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblAdminUserInfo = new System.Windows.Forms.Label();
-            this.cActivateDeactivate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDeactivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.btnUserInfoBack = new System.Windows.Forms.Button();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -292,7 +293,7 @@
             this.btnAddUserBack.TabIndex = 189;
             this.btnAddUserBack.Text = "Back";
             this.btnAddUserBack.UseVisualStyleBackColor = true;
-            this.btnAddUserBack.Click += new System.EventHandler(this.btnAddUserBack_Click);
+            this.btnAddUserBack.Click += new System.EventHandler(this.btnBackToHome_Click);
             // 
             // cBoxAddDepartment
             // 
@@ -384,7 +385,7 @@
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.dgvActivatedUsers);
-            this.tabPage3.Controls.Add(this.btnUserInfoBack);
+            this.tabPage3.Controls.Add(this.btnActivatedUsersBack);
             this.tabPage3.Controls.Add(this.lblUserInfo);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -416,16 +417,58 @@
             this.dgvActivatedUsers.TabIndex = 189;
             this.dgvActivatedUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdminUserInfo_CellContentClick);
             // 
-            // btnUserInfoBack
+            // cActivateDeactivate
             // 
-            this.btnUserInfoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserInfoBack.Location = new System.Drawing.Point(669, 538);
-            this.btnUserInfoBack.Name = "btnUserInfoBack";
-            this.btnUserInfoBack.Size = new System.Drawing.Size(84, 60);
-            this.btnUserInfoBack.TabIndex = 188;
-            this.btnUserInfoBack.Text = "Back";
-            this.btnUserInfoBack.UseVisualStyleBackColor = true;
-            this.btnUserInfoBack.Click += new System.EventHandler(this.btnUserInfoBack_Click);
+            this.cActivateDeactivate.Frozen = true;
+            this.cActivateDeactivate.HeaderText = "Activate/Deactivate";
+            this.cActivateDeactivate.Name = "cActivateDeactivate";
+            this.cActivateDeactivate.ReadOnly = true;
+            this.cActivateDeactivate.Text = "";
+            this.cActivateDeactivate.UseColumnTextForButtonValue = true;
+            this.cActivateDeactivate.Width = 120;
+            // 
+            // cUserID
+            // 
+            this.cUserID.HeaderText = "UserID";
+            this.cUserID.Name = "cUserID";
+            this.cUserID.ReadOnly = true;
+            this.cUserID.Visible = false;
+            // 
+            // cUsername
+            // 
+            this.cUsername.HeaderText = "Username";
+            this.cUsername.Name = "cUsername";
+            this.cUsername.ReadOnly = true;
+            // 
+            // cDepartment
+            // 
+            this.cDepartment.HeaderText = "Department";
+            this.cDepartment.Name = "cDepartment";
+            this.cDepartment.ReadOnly = true;
+            // 
+            // cDeactivated
+            // 
+            this.cDeactivated.HeaderText = "Deactivated";
+            this.cDeactivated.Name = "cDeactivated";
+            this.cDeactivated.ReadOnly = true;
+            this.cDeactivated.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // cLastLogin
+            // 
+            this.cLastLogin.HeaderText = "Last Login";
+            this.cLastLogin.Name = "cLastLogin";
+            this.cLastLogin.ReadOnly = true;
+            // 
+            // btnActivatedUsersBack
+            // 
+            this.btnActivatedUsersBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActivatedUsersBack.Location = new System.Drawing.Point(669, 538);
+            this.btnActivatedUsersBack.Name = "btnActivatedUsersBack";
+            this.btnActivatedUsersBack.Size = new System.Drawing.Size(84, 60);
+            this.btnActivatedUsersBack.TabIndex = 188;
+            this.btnActivatedUsersBack.Text = "Back";
+            this.btnActivatedUsersBack.UseVisualStyleBackColor = true;
+            this.btnActivatedUsersBack.Click += new System.EventHandler(this.btnBackToHome_Click);
             // 
             // lblUserInfo
             // 
@@ -441,7 +484,7 @@
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage4.Controls.Add(this.dgvDeactivatedUsers);
-            this.tabPage4.Controls.Add(this.btnDeactivatedBack);
+            this.tabPage4.Controls.Add(this.btnDeactivatedUsersBack);
             this.tabPage4.Controls.Add(this.lblDeactivatedUsers);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -515,16 +558,16 @@
             this.xLastlogin.Name = "xLastlogin";
             this.xLastlogin.ReadOnly = true;
             // 
-            // btnDeactivatedBack
+            // btnDeactivatedUsersBack
             // 
-            this.btnDeactivatedBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeactivatedBack.Location = new System.Drawing.Point(668, 540);
-            this.btnDeactivatedBack.Name = "btnDeactivatedBack";
-            this.btnDeactivatedBack.Size = new System.Drawing.Size(84, 60);
-            this.btnDeactivatedBack.TabIndex = 189;
-            this.btnDeactivatedBack.Text = "Back";
-            this.btnDeactivatedBack.UseVisualStyleBackColor = true;
-            this.btnDeactivatedBack.Click += new System.EventHandler(this.btnDeactivatedBack_Click);
+            this.btnDeactivatedUsersBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeactivatedUsersBack.Location = new System.Drawing.Point(668, 540);
+            this.btnDeactivatedUsersBack.Name = "btnDeactivatedUsersBack";
+            this.btnDeactivatedUsersBack.Size = new System.Drawing.Size(84, 60);
+            this.btnDeactivatedUsersBack.TabIndex = 189;
+            this.btnDeactivatedUsersBack.Text = "Back";
+            this.btnDeactivatedUsersBack.UseVisualStyleBackColor = true;
+            this.btnDeactivatedUsersBack.Click += new System.EventHandler(this.btnBackToHome_Click);
             // 
             // lblDeactivatedUsers
             // 
@@ -539,6 +582,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.btnUserInfoBack);
             this.tabPage5.Controls.Add(this.dgvUserInfo);
             this.tabPage5.Controls.Add(this.lblAdminUserInfo);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
@@ -611,47 +655,16 @@
             this.lblAdminUserInfo.TabIndex = 24;
             this.lblAdminUserInfo.Text = "User Information";
             // 
-            // cActivateDeactivate
+            // btnUserInfoBack
             // 
-            this.cActivateDeactivate.Frozen = true;
-            this.cActivateDeactivate.HeaderText = "Activate/Deactivate";
-            this.cActivateDeactivate.Name = "cActivateDeactivate";
-            this.cActivateDeactivate.ReadOnly = true;
-            this.cActivateDeactivate.Text = "";
-            this.cActivateDeactivate.UseColumnTextForButtonValue = true;
-            this.cActivateDeactivate.Width = 120;
-            // 
-            // cUserID
-            // 
-            this.cUserID.HeaderText = "UserID";
-            this.cUserID.Name = "cUserID";
-            this.cUserID.ReadOnly = true;
-            this.cUserID.Visible = false;
-            // 
-            // cUsername
-            // 
-            this.cUsername.HeaderText = "Username";
-            this.cUsername.Name = "cUsername";
-            this.cUsername.ReadOnly = true;
-            // 
-            // cDepartment
-            // 
-            this.cDepartment.HeaderText = "Department";
-            this.cDepartment.Name = "cDepartment";
-            this.cDepartment.ReadOnly = true;
-            // 
-            // cDeactivated
-            // 
-            this.cDeactivated.HeaderText = "Deactivated";
-            this.cDeactivated.Name = "cDeactivated";
-            this.cDeactivated.ReadOnly = true;
-            this.cDeactivated.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // cLastLogin
-            // 
-            this.cLastLogin.HeaderText = "Last Login";
-            this.cLastLogin.Name = "cLastLogin";
-            this.cLastLogin.ReadOnly = true;
+            this.btnUserInfoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserInfoBack.Location = new System.Drawing.Point(667, 513);
+            this.btnUserInfoBack.Name = "btnUserInfoBack";
+            this.btnUserInfoBack.Size = new System.Drawing.Size(84, 60);
+            this.btnUserInfoBack.TabIndex = 192;
+            this.btnUserInfoBack.Text = "Back";
+            this.btnUserInfoBack.UseVisualStyleBackColor = true;
+            this.btnUserInfoBack.Click += new System.EventHandler(this.btnBackToHome_Click);
             // 
             // frmAdmin
             // 
@@ -719,9 +732,9 @@
         private System.Windows.Forms.ComboBox cBoxAddDepartment;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label lblUserInfo;
-        private System.Windows.Forms.Button btnUserInfoBack;
+        private System.Windows.Forms.Button btnActivatedUsersBack;
         private System.Windows.Forms.Button btnAddUserBack;
-        private System.Windows.Forms.Button btnDeactivatedBack;
+        private System.Windows.Forms.Button btnDeactivatedUsersBack;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.DataGridView dgvActivatedUsers;
         private System.Windows.Forms.DataGridView dgvDeactivatedUsers;
@@ -746,5 +759,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cDepartment;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDeactivated;
         private System.Windows.Forms.DataGridViewTextBoxColumn cLastLogin;
+        private System.Windows.Forms.Button btnUserInfoBack;
     }
 }

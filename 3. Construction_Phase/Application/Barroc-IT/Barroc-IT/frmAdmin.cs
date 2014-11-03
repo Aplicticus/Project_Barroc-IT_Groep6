@@ -7,7 +7,6 @@ namespace Barroc_IT
 {
     public partial class frmAdmin : Form
     {
-
         private DatabaseHandler handler;
         private DataTableHandler dthandler;
         private SqlQueryHandler sqlhandler;
@@ -86,20 +85,47 @@ namespace Barroc_IT
                 MessageBox.Show("There is a problem with adding a User!");
             }   
         }
-        private void btnDeactivatedBack_Click(object sender, EventArgs e)
+        private void btnBackToHome_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 0;
         }
-        private void btnUserInfoBack_Click(object sender, EventArgs e)
+
+        // Cell Content Click
+        private void dgvAdminUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            tbContr.SelectedIndex = 0;
+            if (e.ColumnIndex == dgvActivatedUsers.Columns["cActivateDeactivate"].Index)
+            {
+                selectedUser = int.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
+                selectedDeactivated = bool.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
+                if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                {
+                    LoadActivatedUsers();
+                    MessageBox.Show("User succesfully deactivated!");
+                }
+                else
+                {
+                    MessageBox.Show("There is a problem with deactivating a user!");
+                }
+            }
         }
-        private void btnAddUserBack_Click(object sender, EventArgs e)
+        private void dgvDeactivatedUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            tbContr.SelectedIndex = 0;
+            if (e.ColumnIndex == dgvDeactivatedUsers.Columns["xActivatedDeactivated"].Index)
+            {
+                selectedUser = int.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xUserID"].Value.ToString());
+                selectedDeactivated = bool.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xDeactivated"].Value.ToString());
+                if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                {
+                    LoadDeactivatedUsers();
+                    MessageBox.Show("User succesfully activated!");
+                }
+                else
+                {
+                    MessageBox.Show("There is a problem with deactivating a user!");
+                }
+            }
         }
-      
-        
+
         // Loads
         private void LoadUsers()
         {
@@ -155,6 +181,29 @@ namespace Barroc_IT
             }
         }
 
+        // Updaters / Editers
+        private bool UpdateUser(int userID, bool deactivatedID)
+        {
+            deactivatedID = !deactivatedID;
+            string sqlQuery = sqlhandler.GetQuery(Query.updateAdmActivate);
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("Deactivated", deactivatedID));
+            cmd.Parameters.Add(new SqlParameter("userID", userID));
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+               
         // Go to Login
         private void CloseToLogin()
         {
@@ -172,67 +221,8 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }
-
-        // Cell Content Click
-        private void dgvAdminUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvActivatedUsers.Columns["cActivateDeactivate"].Index)
-            {
-                selectedUser = int.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
-                selectedDeactivated = bool.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
-                if (UpdateUser(selectedUser, selectedDeactivated) == true)
-                {
-                    LoadActivatedUsers();
-                    MessageBox.Show("User succesfully deactivated!");
-                }
-                else
-                {
-                    MessageBox.Show("There is a problem with deactivating a user!");
-                }  
-            }
-        }
-        private void dgvDeactivatedUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvDeactivatedUsers.Columns["xActivatedDeactivated"].Index)
-            {
-                selectedUser = int.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xUserID"].Value.ToString());
-                selectedDeactivated = bool.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xDeactivated"].Value.ToString());
-                if (UpdateUser(selectedUser, selectedDeactivated) == true)
-                {
-                    LoadDeactivatedUsers();
-                    MessageBox.Show("User succesfully activated!");
-                }
-                else
-                {
-                    MessageBox.Show("There is a problem with deactivating a user!");
-                }
-            }
-        }
-
-        // Updaters / Editers
-        private bool UpdateUser(int userID, bool deactivatedID)
-        {
-            deactivatedID = !deactivatedID;
-            string sqlQuery = sqlhandler.GetQuery(Query.updateAdmActivate);
-            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());            
-            cmd.Parameters.Add(new SqlParameter("Deactivated", deactivatedID));
-            cmd.Parameters.Add(new SqlParameter("userID", userID));
-            cmd.Connection.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
-            
-
-            if (rowsAffected > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }            
-        }
-
-       
+                
+        
 
        
     }
