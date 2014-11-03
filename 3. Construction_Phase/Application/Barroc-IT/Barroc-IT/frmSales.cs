@@ -80,6 +80,7 @@ namespace Barroc_IT
 
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
+            tbContr.SelectedIndex = 2;
         }
 
         private void btnAddCustomerCancel_Click(object sender, EventArgs e)
@@ -298,14 +299,22 @@ namespace Barroc_IT
 
         //RecoverComboBoxFields
         private void RecoverComboBoxFields()
-        {
+        {   
             if (cBoxCusProspect.Text == "True" || cBoxCusProspect.Text == "1")
             {
                 cBoxCusProspect.Text = "Yes";
             }
+            else if (cBoxCusProspect.Text == "Yes")
+            {
+                cBoxCusProspect.Text = "True";
+            }                
             else if (cBoxCusProspect.Text == "False" || cBoxCusProspect.Text == "0")
             {
                 cBoxCusProspect.Text = "No";
+            }
+            else if(cBoxCusProspect.Text == "No")
+            {
+                cBoxCusProspect.Text = "False";
             }
 
             if (txtCusOfferStatus.Text == "True" || txtCusOfferStatus.Text == "1")
@@ -419,10 +428,9 @@ namespace Barroc_IT
         // Updaters / Editers
         private bool UpdateCustomer(int customerID)
         {
+            RecoverComboBoxFields();
             string sqlQuery = sqlhandler.GetQuery(Query.updateSalCustomerInfo);
-
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-
             cmd.Parameters.Add(new SqlParameter("CompanyName", txtCusCompanyName.Text));
             cmd.Parameters.Add(new SqlParameter("Address1", txtCusAddress1.Text));
             cmd.Parameters.Add(new SqlParameter("PostalCode1", txtCusPostalCode1.Text));

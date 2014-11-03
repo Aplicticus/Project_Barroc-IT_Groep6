@@ -158,6 +158,7 @@
             this.btnAppointmentAdd = new System.Windows.Forms.Button();
             this.lblAddAppointment = new System.Windows.Forms.Label();
             this.lbl = new System.Windows.Forms.TabPage();
+            this.txtCusAddFaxNumber = new System.Windows.Forms.MaskedTextBox();
             this.txtCusAddPhoneNumber2 = new System.Windows.Forms.MaskedTextBox();
             this.txtCusAddPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
             this.btnAddCustomerCancel = new System.Windows.Forms.Button();
@@ -189,7 +190,6 @@
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
             this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
-            this.txtCusAddFaxNumber = new System.Windows.Forms.MaskedTextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1552,6 +1552,14 @@
             this.lbl.TabIndex = 7;
             this.lbl.Text = "addCustomer";
             // 
+            // txtCusAddFaxNumber
+            // 
+            this.txtCusAddFaxNumber.Location = new System.Drawing.Point(574, 105);
+            this.txtCusAddFaxNumber.Mask = "000-0000000";
+            this.txtCusAddFaxNumber.Name = "txtCusAddFaxNumber";
+            this.txtCusAddFaxNumber.Size = new System.Drawing.Size(137, 20);
+            this.txtCusAddFaxNumber.TabIndex = 197;
+            // 
             // txtCusAddPhoneNumber2
             // 
             this.txtCusAddPhoneNumber2.Location = new System.Drawing.Point(574, 255);
@@ -1833,14 +1841,6 @@
             this.tTipPostalCode.InitialDelay = 500;
             this.tTipPostalCode.ReshowDelay = 1;
             this.tTipPostalCode.ToolTipTitle = "Postal Code";
-            // 
-            // txtCusAddFaxNumber
-            // 
-            this.txtCusAddFaxNumber.Location = new System.Drawing.Point(574, 105);
-            this.txtCusAddFaxNumber.Mask = "000-0000000";
-            this.txtCusAddFaxNumber.Name = "txtCusAddFaxNumber";
-            this.txtCusAddFaxNumber.Size = new System.Drawing.Size(137, 20);
-            this.txtCusAddFaxNumber.TabIndex = 197;
             // 
             // frmSales
             // 
