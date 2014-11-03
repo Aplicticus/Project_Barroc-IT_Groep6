@@ -232,72 +232,6 @@ namespace Barroc_IT
             }
         }
 
-        // Loads
-        private void LoadCustomers()
-        {
-            dgvCustomers.Rows.Clear();
-            string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
-            DataTable customers = dthandler.ExecuteQuery(selectCustomers);
-            AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
-        }
-
-        private void LoadAppointments()
-        {
-            dgvAppointments.Rows.Clear();
-            string selectAppointments = sqlhandler.GetQuery(Query.loadAppointments);
-            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
-            DataTable appointments = dthandler.ExecuteQuery(selectAppointments, collection);
-            AddItemsToDataGridView(appointments, dgvAppointments, "cAppointmentID");
-        }
-
-        // Methods
-        private bool addCustomer()
-        {
-            string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
-
-            string faxNumberText = txtCusAddFaxNumber.Text.Replace(" ", "");
-
-            if (faxNumberText.Length < 2)
-            {
-                faxNumberText = "";
-            }
-
-            string phoneNumber2Text = txtCusAddPhoneNumber2.Text.Replace(" ", "");
-            if (phoneNumber2Text.Length < 2)
-            {
-                phoneNumber2Text = "";
-            }
-
-
-            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-            cmd.Parameters.Add(new SqlParameter("@CompanyName", txtCusAddCompanyName.Text));
-            cmd.Parameters.Add(new SqlParameter("@Address1", txtCusAddAddress1.Text));
-            cmd.Parameters.Add(new SqlParameter("@PostalCode1", txtCusAddPostalCode1.Text));
-            cmd.Parameters.Add(new SqlParameter("@Residence1", txtCusAddResidence1.Text));
-            cmd.Parameters.Add(new SqlParameter("@Address2", txtCusAddAddress2.Text));
-            cmd.Parameters.Add(new SqlParameter("@PostalCode2", txtCusAddPostalCode2.Text));
-            cmd.Parameters.Add(new SqlParameter("@Residence2", txtCusAddResidence2.Text));
-            cmd.Parameters.Add(new SqlParameter("@ContactPerson", txtCusAddContactperson.Text));
-            cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
-            cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
-            cmd.Parameters.Add(new SqlParameter("@PhoneNr2", phoneNumber2Text));
-            cmd.Parameters.Add(new SqlParameter("@FaxNumber", faxNumberText));
-            cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
-            cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex));
-
-            cmd.Connection.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
-            if (rowsAffected > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private void btnAppointmentSearch_Click(object sender, EventArgs e)
         {
             if (txtAppointmentSearch.Text.Length > 0)
@@ -360,6 +294,184 @@ namespace Barroc_IT
                     btnViewAppointment.Enabled = false;
                 }
             }
+        }
+
+        //RecoverComboBoxFields
+        private void RecoverComboBoxFields()
+        {
+            if (cBoxCusProspect.Text == "True" || cBoxCusProspect.Text == "1")
+            {
+                cBoxCusProspect.Text = "Yes";
+            }
+            else if (cBoxCusProspect.Text == "False" || cBoxCusProspect.Text == "0")
+            {
+                cBoxCusProspect.Text = "No";
+            }
+
+            if (txtCusOfferStatus.Text == "True" || txtCusOfferStatus.Text == "1")
+            {
+                txtCusOfferStatus.Text = "Yes";
+            }
+            else
+            {
+                txtCusOfferStatus.Text = "No";
+            }
+        }
+
+        // Form Closing
+        private void frmSales_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closing)
+            {
+                CloseToLogin();
+                closing = true;
+            }
+        }
+
+        private void btnCustomerSearch_Click(object sender, EventArgs e)
+        {
+            if (txtCustomerSearch.Text.Length > 0)
+            {
+                SearchChoice selectedItem;
+                switch (cBoxCustomerSearch.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = SearchChoice.CompanyName;
+                        break;
+
+                    case "E-Mail":
+                        selectedItem = SearchChoice.Email;
+                        break;
+
+                    case "Initials":
+                        selectedItem = SearchChoice.Initials;
+                        break;
+
+                    default:
+                        selectedItem = SearchChoice.CompanyName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
+
+                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
+            }
+        }
+
+        // Methods
+        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
+        {
+            dataGridView.Rows.Clear();
+            table.Columns.Add(idColumnName);
+            table.Columns[idColumnName].SetOrdinal(0);
+            foreach (DataRow dr in table.Rows)
+            {
+                dataGridView.Rows.Add(dr.ItemArray);
+            }
+        }
+
+        // Methods
+        private bool addCustomer()
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
+
+            string faxNumberText = txtCusAddFaxNumber.Text.Replace(" ", "");
+
+            if (faxNumberText.Length < 2)
+            {
+                faxNumberText = "";
+            }
+
+            string phoneNumber2Text = txtCusAddPhoneNumber2.Text.Replace(" ", "");
+            if (phoneNumber2Text.Length < 2)
+            {
+                phoneNumber2Text = "";
+            }
+
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("@CompanyName", txtCusAddCompanyName.Text));
+            cmd.Parameters.Add(new SqlParameter("@Address1", txtCusAddAddress1.Text));
+            cmd.Parameters.Add(new SqlParameter("@PostalCode1", txtCusAddPostalCode1.Text));
+            cmd.Parameters.Add(new SqlParameter("@Residence1", txtCusAddResidence1.Text));
+            cmd.Parameters.Add(new SqlParameter("@Address2", txtCusAddAddress2.Text));
+            cmd.Parameters.Add(new SqlParameter("@PostalCode2", txtCusAddPostalCode2.Text));
+            cmd.Parameters.Add(new SqlParameter("@Residence2", txtCusAddResidence2.Text));
+            cmd.Parameters.Add(new SqlParameter("@ContactPerson", txtCusAddContactperson.Text));
+            cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
+            cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
+            cmd.Parameters.Add(new SqlParameter("@PhoneNr2", phoneNumber2Text));
+            cmd.Parameters.Add(new SqlParameter("@FaxNumber", faxNumberText));
+            cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
+            cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex));
+
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        // Updaters / Editers
+        private bool UpdateCustomer(int customerID)
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.updateSalCustomerInfo);
+
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+
+            cmd.Parameters.Add(new SqlParameter("CompanyName", txtCusCompanyName.Text));
+            cmd.Parameters.Add(new SqlParameter("Address1", txtCusAddress1.Text));
+            cmd.Parameters.Add(new SqlParameter("PostalCode1", txtCusPostalCode1.Text));
+            cmd.Parameters.Add(new SqlParameter("Residence1", txtCusResidence1.Text));
+            cmd.Parameters.Add(new SqlParameter("PhoneNumber1", txtCusPhoneNumber1.Text));
+            cmd.Parameters.Add(new SqlParameter("Address2", txtCusAddress2.Text));
+            cmd.Parameters.Add(new SqlParameter("PostalCode2", txtCusPostalCode2.Text));
+            cmd.Parameters.Add(new SqlParameter("Residence2", txtCusResidence2.Text));
+            cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusAddPhoneNumber2.Text));
+            cmd.Parameters.Add(new SqlParameter("ContactPerson", txtCusContactPerson.Text));
+            cmd.Parameters.Add(new SqlParameter("Initials", txtCusInitials.Text));
+            cmd.Parameters.Add(new SqlParameter("OfferStatus", txtCusOfferStatus.Text));
+            cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusAddFaxNumber.Text));
+            cmd.Parameters.Add(new SqlParameter("Email", txtCusEmail.Text));
+            cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.SelectedIndex.ToString()));
+            cmd.Parameters.Add(new SqlParameter("DateOfAction", dtpCusSalesDateOfAction.Value));
+            cmd.Parameters.Add(new SqlParameter("LastContactDate", dtpCusSalesLastContactDate.Value));
+            cmd.Parameters.Add(new SqlParameter("NextAction", dtpCusSalesNextAction.Value));
+            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
+
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        // Loads
+        private void LoadCustomers()
+        {
+            dgvCustomers.Rows.Clear();
+            string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
+            DataTable customers = dthandler.ExecuteQuery(selectCustomers);
+            AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
+        }
+
+        private void LoadAppointments()
+        {
+            dgvAppointments.Rows.Clear();
+            string selectAppointments = sqlhandler.GetQuery(Query.loadAppointments);
+            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
+            DataTable appointments = dthandler.ExecuteQuery(selectAppointments, collection);
+            AddItemsToDataGridView(appointments, dgvAppointments, "cAppointmentID");
         }
 
         // Reloads
@@ -434,128 +546,6 @@ namespace Barroc_IT
             dtpAppointmentDate.Value = appointmentDate;
         }
 
-        //RecoverComboBoxFields
-        private void RecoverComboBoxFields()
-        {
-            if (cBoxCusProspect.Text == "True" || cBoxCusProspect.Text == "1")
-            {
-                cBoxCusProspect.Text = "Yes";
-            }
-            else if (cBoxCusProspect.Text == "False" || cBoxCusProspect.Text == "0")
-            {
-                cBoxCusProspect.Text = "No";
-            }
-
-            if (txtCusOfferStatus.Text == "True" || txtCusOfferStatus.Text == "1")
-            {
-                txtCusOfferStatus.Text = "Yes";
-            }
-            else
-            {
-                txtCusOfferStatus.Text = "No";
-            }
-        }
-
-        // Updaters / Editers
-        private bool UpdateCustomer(int customerID)
-        {
-            string sqlQuery = sqlhandler.GetQuery(Query.updateSalCustomerInfo);
-
-            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-
-            cmd.Parameters.Add(new SqlParameter("CompanyName", txtCusCompanyName.Text));
-            cmd.Parameters.Add(new SqlParameter("Address1", txtCusAddress1.Text));
-            cmd.Parameters.Add(new SqlParameter("PostalCode1", txtCusPostalCode1.Text));
-            cmd.Parameters.Add(new SqlParameter("Residence1", txtCusResidence1.Text));
-            cmd.Parameters.Add(new SqlParameter("PhoneNumber1", txtCusPhoneNumber1.Text));
-            cmd.Parameters.Add(new SqlParameter("Address2", txtCusAddress2.Text));
-            cmd.Parameters.Add(new SqlParameter("PostalCode2", txtCusPostalCode2.Text));
-            cmd.Parameters.Add(new SqlParameter("Residence2", txtCusResidence2.Text));
-            cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusAddPhoneNumber2.Text));
-            cmd.Parameters.Add(new SqlParameter("ContactPerson", txtCusContactPerson.Text));
-            cmd.Parameters.Add(new SqlParameter("Initials", txtCusInitials.Text));
-            cmd.Parameters.Add(new SqlParameter("OfferStatus", txtCusOfferStatus.Text));
-            cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusAddFaxNumber.Text));
-            cmd.Parameters.Add(new SqlParameter("Email", txtCusEmail.Text));
-            cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.SelectedIndex.ToString()));
-            cmd.Parameters.Add(new SqlParameter("DateOfAction", dtpCusSalesDateOfAction.Value));
-            cmd.Parameters.Add(new SqlParameter("LastContactDate", dtpCusSalesLastContactDate.Value));
-            cmd.Parameters.Add(new SqlParameter("NextAction", dtpCusSalesNextAction.Value));
-            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
-
-            cmd.Connection.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
-            if (rowsAffected > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        // Methods
-        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
-        {
-            dataGridView.Rows.Clear();
-            table.Columns.Add(idColumnName);
-            table.Columns[idColumnName].SetOrdinal(0);
-            foreach (DataRow dr in table.Rows)
-            {
-                dataGridView.Rows.Add(dr.ItemArray);
-            }
-        }
-
-        // Close To Login
-        private void CloseToLogin()
-        {
-            closing = true;
-            loginForm.ClearTextBoxes();
-            loginForm.Show();
-            this.Close();
-        }
-
-        // Form Closing
-        private void frmSales_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!closing)
-            {
-                CloseToLogin();
-                closing = true;
-            }
-        }
-
-        private void btnCustomerSearch_Click(object sender, EventArgs e)
-        {
-            if (txtCustomerSearch.Text.Length > 0)
-            {
-                SearchChoice selectedItem;
-                switch (cBoxCustomerSearch.SelectedItem.ToString())
-                {
-                    case "Company Name":
-                        selectedItem = SearchChoice.CompanyName;
-                        break;
-
-                    case "E-Mail":
-                        selectedItem = SearchChoice.Email;
-                        break;
-
-                    case "Initials":
-                        selectedItem = SearchChoice.Initials;
-                        break;
-
-                    default:
-                        selectedItem = SearchChoice.CompanyName;
-                        break;
-                }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
-
-                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
-            }
-        }
-
         private bool CheckTextBoxes(TextBox[] textBoxes)
         {
             bool textLengthCorrect = false;
@@ -587,6 +577,15 @@ namespace Barroc_IT
             {
                 return false;
             }
+        }
+
+        // Close To Login
+        private void CloseToLogin()
+        {
+            closing = true;
+            loginForm.ClearTextBoxes();
+            loginForm.Show();
+            this.Close();
         }
     }
 }
