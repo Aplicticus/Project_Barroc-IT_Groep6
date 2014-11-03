@@ -79,8 +79,10 @@ namespace Barroc_IT
         }
         private void btnCusAddCustomer_Click(object sender, EventArgs e)
         {
-            TextBox[] textBoxes = { txtCusAddCompanyName, txtCusAddInitials, txtCusAddContactperson, txtCusAddAddress1, txtCusAddResidence1, txtCusAddFaxNumber, txtCusAddEmail };
-            if (!CheckTextBoxes(textBoxes))
+            bool everythingCorrect = true;
+
+            TextBox[] firstTextBoxes = { txtCusAddCompanyName, txtCusAddInitials, txtCusAddContactperson, txtCusAddAddress1, txtCusAddResidence1, txtCusAddFaxNumber, txtCusAddEmail };
+            if (!CheckTextBoxes(firstTextBoxes))
             {
                 MessageBox.Show("Please check all the neccesary fields.");
             }
@@ -88,37 +90,51 @@ namespace Barroc_IT
             {
                 if (txtCusAddPhoneNumber1.MaskFull)
                 {
-
-
                     if (CheckPostalCode(txtCusAddPostalCode1))
                     {
-                        if (txtCusAddPostalCode2.TextLength > 0)
+                        string phoneNumber2Text = txtCusAddPhoneNumber2.Text.Replace(" ", "");
+                        if (phoneNumber2Text.Length > 2)
                         {
-                            if (!CheckPostalCode(txtCusAddPostalCode2))
+                            if (txtCusAddPostalCode2.TextLength > 0)
                             {
-                                MessageBox.Show("Please check the second postal code.");
+                                if (!CheckPostalCode(txtCusAddPostalCode2))
+                                {
+                                    everythingCorrect = false;
+                                    MessageBox.Show("Please check the second postal code.");
+                                }
                             }
-                        }
-
-                        if (addCustomer())
-                        {
-                            MessageBox.Show("Customer succesfully added.");
-                            tbContr.SelectedIndex = 1;
-                            dgvCustomers.Rows.Clear();
-                            LoadCustomers();
                         }
                         else
                         {
-                            MessageBox.Show("The customer could not be added, please try again!");
+                            everythingCorrect = false;
+                            MessageBox.Show("Please check the second phone number");
+                        }
+
+
+                        if (everythingCorrect)
+                        {
+                            if (addCustomer())
+                            {
+                                MessageBox.Show("Customer succesfully added.");
+                                tbContr.SelectedIndex = 1;
+                                dgvCustomers.Rows.Clear();
+                                LoadCustomers();
+                            }
+                            else
+                            {
+                                MessageBox.Show("The customer could not be added, please try again!");
+                            }
                         }
                     }
                     else
                     {
+                        everythingCorrect = false;
                         MessageBox.Show("Please check the first postal code.");
                     }
                 }
                 else
                 {
+                    everythingCorrect = false;
                     MessageBox.Show("Please check the first phone number.");
                 }
             }
@@ -224,8 +240,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@Initials", txtCusAddInitials.Text));
             cmd.Parameters.Add(new SqlParameter("@PhoneNr1", txtCusAddPhoneNumber1.Text));
             cmd.Parameters.Add(new SqlParameter("@PhoneNr2", txtCusAddPhoneNumber2.Text));
-            cmd.Parameters.Add(new SqlParameter("@FaxNumber", 1));
-            //cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
+            cmd.Parameters.Add(new SqlParameter("@FaxNumber", txtCusAddFaxNumber.Text));
             cmd.Parameters.Add(new SqlParameter("@Email", txtCusAddEmail.Text));
             cmd.Parameters.Add(new SqlParameter("@Prospect", cbCusAddProspect.SelectedIndex));
 
@@ -492,7 +507,6 @@ namespace Barroc_IT
                 AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
         }
-
 
         private bool CheckTextBoxes(TextBox[] textBoxes)
         {
