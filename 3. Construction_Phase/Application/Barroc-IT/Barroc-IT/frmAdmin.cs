@@ -173,15 +173,11 @@ namespace Barroc_IT
             DataTable DT = dthandler.ExecuteQuery(loadDeactivated);
             DataRow DR = DT.Rows[0];
             bool activateUser = Convert.ToBoolean(DR["DEACTIVATED"].ToString());
-           
-            if (activateUser == true)
-            {
-                activateUser = false;
-            }
-            else if (activateUser == false)
-            {
-                activateUser = true;
-            }
+
+
+            
+               activateUser = !activateUser;
+               
 
 
             string sqlQuery = sqlhandler.GetQuery(Query.updateAdmActivate);
