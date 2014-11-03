@@ -153,7 +153,6 @@
                     sqlQuery = updateAdmActivate;
                     break;
 
-
                 case Query.countSales:
                     sqlQuery = countSales;
                     sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
