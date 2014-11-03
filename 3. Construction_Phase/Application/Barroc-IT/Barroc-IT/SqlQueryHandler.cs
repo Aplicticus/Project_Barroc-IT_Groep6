@@ -14,7 +14,7 @@
         }
 
         string loadCustomers = "SELECT * FROM tbl_Customers";
-        string loadUsers = "SELECT tbl_Users.USER_NAME, tbl_Users.DEPARTMENT FROM tbl_Users";
+        string loadUsers = "SELECT tbl_Users.USER_ID, tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED FROM tbl_Users";
 
         //Insert querys
         string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) " +
@@ -74,6 +74,8 @@
         "INITIALS=@Initials, OFFER_STAT=@OfferStatus, FAXNUMBER=@FaxNumber, EMAIL=@Email, PROSPECT=@Prospect, " +
         "DATE_OF_ACTION=@DateOfAction, LAST_CONTACT_DATE=@LastContactDate, NEXT_ACTION=@NextAction " +
         "WHERE CUSTOMER_ID=@customerID";
+        string updateAdmActivate = "UPDATE tbl_Users SET DEACTIVATED=@Deactivated WHERE USER_ID=@userID";
+       
 
         public string GetQuery(Query query)
         {
@@ -146,6 +148,9 @@
                     break;
                 case Query.updateDevAppointmentInfo:
                     sqlQuery = updateDevAppointmentInfo;
+                    break;
+                case Query.updateAdmActivate:
+                    sqlQuery = updateAdmActivate;
                     break;
 
 

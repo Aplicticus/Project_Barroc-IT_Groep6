@@ -24,6 +24,7 @@
         addUser,
         updateFinCustomersInfo,
         updateDevProjectInfo,
+        updateAdmActivate,
         loadProjects,
         loadInvoices,
         loadCustomerDetails,

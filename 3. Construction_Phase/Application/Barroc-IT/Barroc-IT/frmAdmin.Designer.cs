@@ -55,8 +55,14 @@
             this.lblAddDepartment = new System.Windows.Forms.Label();
             this.lblAdminRegister = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnUserInfoBack = new System.Windows.Forms.Button();
             this.dgvAdminUserInfo = new System.Windows.Forms.DataGridView();
+            this.cDeactivate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUserInfoBack = new System.Windows.Forms.Button();
             this.lblUserInfo = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btnDeactivatedBack = new System.Windows.Forms.Button();
@@ -67,11 +73,6 @@
             this.dDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dActivate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDeactivated = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -357,8 +358,8 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.btnUserInfoBack);
             this.tabPage3.Controls.Add(this.dgvAdminUserInfo);
+            this.tabPage3.Controls.Add(this.btnUserInfoBack);
             this.tabPage3.Controls.Add(this.lblUserInfo);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -366,6 +367,70 @@
             this.tabPage3.Size = new System.Drawing.Size(759, 574);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "userInfo";
+            // 
+            // dgvAdminUserInfo
+            // 
+            this.dgvAdminUserInfo.AllowUserToAddRows = false;
+            this.dgvAdminUserInfo.AllowUserToDeleteRows = false;
+            this.dgvAdminUserInfo.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvAdminUserInfo.ColumnHeadersHeight = 34;
+            this.dgvAdminUserInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvAdminUserInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cDeactivate,
+            this.cUserID,
+            this.cUsername,
+            this.cDepartment,
+            this.cActivated,
+            this.cLastLogin});
+            this.dgvAdminUserInfo.Location = new System.Drawing.Point(9, 34);
+            this.dgvAdminUserInfo.MultiSelect = false;
+            this.dgvAdminUserInfo.Name = "dgvAdminUserInfo";
+            this.dgvAdminUserInfo.ReadOnly = true;
+            this.dgvAdminUserInfo.RowHeadersVisible = false;
+            this.dgvAdminUserInfo.Size = new System.Drawing.Size(744, 506);
+            this.dgvAdminUserInfo.TabIndex = 189;
+            this.dgvAdminUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdminUserInfo_CellContentClick);
+            // 
+            // cDeactivate
+            // 
+            this.cDeactivate.Frozen = true;
+            this.cDeactivate.HeaderText = "Activate/Deactivate";
+            this.cDeactivate.Name = "cDeactivate";
+            this.cDeactivate.ReadOnly = true;
+            this.cDeactivate.Text = "";
+            this.cDeactivate.UseColumnTextForButtonValue = true;
+            this.cDeactivate.Width = 120;
+            // 
+            // cUserID
+            // 
+            this.cUserID.HeaderText = "UserID";
+            this.cUserID.Name = "cUserID";
+            this.cUserID.ReadOnly = true;
+            this.cUserID.Visible = false;
+            // 
+            // cUsername
+            // 
+            this.cUsername.HeaderText = "Username";
+            this.cUsername.Name = "cUsername";
+            this.cUsername.ReadOnly = true;
+            // 
+            // cDepartment
+            // 
+            this.cDepartment.HeaderText = "Department";
+            this.cDepartment.Name = "cDepartment";
+            this.cDepartment.ReadOnly = true;
+            // 
+            // cActivated
+            // 
+            this.cActivated.HeaderText = "Activated";
+            this.cActivated.Name = "cActivated";
+            this.cActivated.ReadOnly = true;
+            // 
+            // cLastLogin
+            // 
+            this.cLastLogin.HeaderText = "Last Login";
+            this.cLastLogin.Name = "cLastLogin";
+            this.cLastLogin.ReadOnly = true;
             // 
             // btnUserInfoBack
             // 
@@ -377,23 +442,6 @@
             this.btnUserInfoBack.Text = "Back";
             this.btnUserInfoBack.UseVisualStyleBackColor = true;
             this.btnUserInfoBack.Click += new System.EventHandler(this.btnUserInfoBack_Click);
-            // 
-            // dgvAdminUserInfo
-            // 
-            this.dgvAdminUserInfo.AllowUserToAddRows = false;
-            this.dgvAdminUserInfo.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvAdminUserInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdminUserInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cUserID,
-            this.cUsername,
-            this.cDepartment,
-            this.cLastLogin,
-            this.cDeactivated});
-            this.dgvAdminUserInfo.Location = new System.Drawing.Point(6, 94);
-            this.dgvAdminUserInfo.Name = "dgvAdminUserInfo";
-            this.dgvAdminUserInfo.Size = new System.Drawing.Size(747, 439);
-            this.dgvAdminUserInfo.TabIndex = 21;
-            this.dgvAdminUserInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdminUserInfo_CellContentClick);
             // 
             // lblUserInfo
             // 
@@ -479,36 +527,6 @@
             this.dActivate.HeaderText = "Activate";
             this.dActivate.Name = "dActivate";
             // 
-            // cUserID
-            // 
-            this.cUserID.HeaderText = "UserID";
-            this.cUserID.Name = "cUserID";
-            this.cUserID.Visible = false;
-            // 
-            // cUsername
-            // 
-            this.cUsername.HeaderText = "Username";
-            this.cUsername.Name = "cUsername";
-            // 
-            // cDepartment
-            // 
-            this.cDepartment.HeaderText = "Department";
-            this.cDepartment.Name = "cDepartment";
-            // 
-            // cLastLogin
-            // 
-            this.cLastLogin.HeaderText = "LastLogin";
-            this.cLastLogin.Name = "cLastLogin";
-            this.cLastLogin.ReadOnly = true;
-            // 
-            // cDeactivated
-            // 
-            this.cDeactivated.HeaderText = "Deactivated";
-            this.cDeactivated.Name = "cDeactivated";
-            this.cDeactivated.ReadOnly = true;
-            this.cDeactivated.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cDeactivated.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -572,7 +590,6 @@
         private System.Windows.Forms.Label lblDeactivatedUsers;
         private System.Windows.Forms.ComboBox cBoxAddDepartment;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView dgvAdminUserInfo;
         private System.Windows.Forms.Label lblUserInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dUserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dUsername;
@@ -583,10 +600,12 @@
         private System.Windows.Forms.Button btnAddUserBack;
         private System.Windows.Forms.Button btnDeactivatedBack;
         private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.DataGridView dgvAdminUserInfo;
+        private System.Windows.Forms.DataGridViewButtonColumn cDeactivate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cUserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cUsername;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDepartment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cActivated;
         private System.Windows.Forms.DataGridViewTextBoxColumn cLastLogin;
-        private System.Windows.Forms.DataGridViewButtonColumn cDeactivated;
     }
 }

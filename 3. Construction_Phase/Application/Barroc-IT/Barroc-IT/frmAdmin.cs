@@ -13,6 +13,7 @@ namespace Barroc_IT
         private SqlQueryHandler sqlhandler;
         private frmLogin loginForm;
         private bool closing = false;
+        private int selectedUser = 0;
         public frmAdmin(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
             InitializeComponent();
@@ -93,7 +94,6 @@ namespace Barroc_IT
         private void LoadUsers()
         {
             dgvAdminUserInfo.Rows.Clear();
-
             string selectUsers = sqlhandler.GetQuery(Query.loadUsers);
             DataTable customers = dthandler.ExecuteQuery(selectUsers);
             AddItemsToDataGridView(customers, dgvAdminUserInfo, "cUserID");
@@ -152,7 +152,33 @@ namespace Barroc_IT
         // Cell Content Click
         private void dgvAdminUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == dgvAdminUserInfo.Columns["cDeactivate"].Index)
+            {
+                selectedUser = int.Parse(dgvAdminUserInfo.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());                
+                UpdateUser(selectedUser);
+                LoadUsers();                
+            }
+        }
 
-        }        
+        private bool UpdateUser(int userID)
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.updateAdmActivate);
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());            
+            //cmd.Parameters.Add(new SqlParameter("Deactivated", ));          Add Boolean to change  
+            cmd.Parameters.Add(new SqlParameter("userID", userID));
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }            
+        }
     }
 }
