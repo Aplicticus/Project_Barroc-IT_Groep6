@@ -108,13 +108,13 @@ namespace Barroc_IT
                         break;
                 }
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
-                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
+                dthandler.AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
             else
             {
                 string selectCustomers = "SELECT * FROM tbl_Customers";
                 DataTable customers = dthandler.ExecuteQuery(selectCustomers);
-                AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
+                dthandler.AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
             }
         }
         private void btnLogout_Click(object sender, EventArgs e)
@@ -255,19 +255,17 @@ namespace Barroc_IT
         private void LoadCustomers()
         {
             dgvCustomers.Rows.Clear();
-
             string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
             DataTable customers = dthandler.ExecuteQuery(selectCustomers);
-            AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
+            dthandler.AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
         }
         private void LoadProjects()
         {    
             dgvProjects.Rows.Clear();
             string sql = sqlhandler.GetQuery(Query.loadProjects);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
-
             DataTable projects = dthandler.ExecuteQuery(sql, collection);
-            AddItemsToDataGridView(projects, dgvProjects, "finProView");        
+            dthandler.AddItemsToDataGridView(projects, dgvProjects, "finProView");        
         }       
 
         // Updaters / Editers
@@ -304,7 +302,6 @@ namespace Barroc_IT
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
-
             if (rowsAffected > 0)
             {
                 return true;
@@ -355,19 +352,7 @@ namespace Barroc_IT
             {
                 return false;
             }
-        }
-       
-        // Methods
-        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
-        {
-            dataGridView.Rows.Clear();
-            table.Columns.Add(idColumnName);
-            table.Columns[idColumnName].SetOrdinal(0);
-            foreach (DataRow dr in table.Rows)
-            {
-                dataGridView.Rows.Add(dr.ItemArray);
-            }            
-        }
+        }       
 
         // Form closing
         private void frmDevelopment_FormClosing(object sender, FormClosingEventArgs e)
@@ -406,14 +391,14 @@ namespace Barroc_IT
                         break;
                 }
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtProjectSearch.Text, selectedCustomer);
-                AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
+                dthandler.AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
             }
             else
             {
                 string selectCustomers = sqlhandler.GetQuery(Query.loadProjects);
                 SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
                 DataTable customers = dthandler.ExecuteQuery(selectCustomers, collection);
-                AddItemsToDataGridView(customers, dgvProjects, "cProjectID");
+                dthandler.AddItemsToDataGridView(customers, dgvProjects, "cProjectID");
             }
         }
     }

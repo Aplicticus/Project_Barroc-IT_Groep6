@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblFinancePanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
@@ -80,7 +80,7 @@
             this.lblFinBalance = new System.Windows.Forms.Label();
             this.txtFinSales = new System.Windows.Forms.TextBox();
             this.txtFinBTWCode = new System.Windows.Forms.TextBox();
-            this.txtFinLegderID = new System.Windows.Forms.TextBox();
+            this.txtFinLedgerID = new System.Windows.Forms.TextBox();
             this.lblFax = new System.Windows.Forms.Label();
             this.txtFinLimit = new System.Windows.Forms.TextBox();
             this.txtFinBalance = new System.Windows.Forms.TextBox();
@@ -513,7 +513,7 @@
             this.tabPage3.Controls.Add(this.lblFinBalance);
             this.tabPage3.Controls.Add(this.txtFinSales);
             this.tabPage3.Controls.Add(this.txtFinBTWCode);
-            this.tabPage3.Controls.Add(this.txtFinLegderID);
+            this.tabPage3.Controls.Add(this.txtFinLedgerID);
             this.tabPage3.Controls.Add(this.lblFax);
             this.tabPage3.Controls.Add(this.txtFinLimit);
             this.tabPage3.Controls.Add(this.txtFinBalance);
@@ -695,13 +695,13 @@
             this.txtFinBTWCode.Size = new System.Drawing.Size(137, 20);
             this.txtFinBTWCode.TabIndex = 213;
             // 
-            // txtFinLegderID
+            // txtFinLedgerID
             // 
-            this.txtFinLegderID.Location = new System.Drawing.Point(604, 172);
-            this.txtFinLegderID.Name = "txtFinLegderID";
-            this.txtFinLegderID.ReadOnly = true;
-            this.txtFinLegderID.Size = new System.Drawing.Size(137, 20);
-            this.txtFinLegderID.TabIndex = 212;
+            this.txtFinLedgerID.Location = new System.Drawing.Point(604, 172);
+            this.txtFinLedgerID.Name = "txtFinLedgerID";
+            this.txtFinLedgerID.ReadOnly = true;
+            this.txtFinLedgerID.Size = new System.Drawing.Size(137, 20);
+            this.txtFinLedgerID.TabIndex = 212;
             // 
             // lblFax
             // 
@@ -1270,18 +1270,18 @@
             // 
             // finInvExpDate
             // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle3;
             this.finInvExpDate.HeaderText = "Expire Date";
             this.finInvExpDate.Name = "finInvExpDate";
             this.finInvExpDate.ReadOnly = true;
             // 
             // InvoiceSendDate
             // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.InvoiceSendDate.HeaderText = "Invoice Send Date";
             this.InvoiceSendDate.Name = "InvoiceSendDate";
             this.InvoiceSendDate.ReadOnly = true;
@@ -1617,7 +1617,7 @@
         private System.Windows.Forms.Label lblFinBalance;
         private System.Windows.Forms.TextBox txtFinSales;
         private System.Windows.Forms.TextBox txtFinBTWCode;
-        private System.Windows.Forms.TextBox txtFinLegderID;
+        private System.Windows.Forms.TextBox txtFinLedgerID;
         private System.Windows.Forms.Label lblFax;
         private System.Windows.Forms.TextBox txtFinLimit;
         private System.Windows.Forms.TextBox txtFinBalance;

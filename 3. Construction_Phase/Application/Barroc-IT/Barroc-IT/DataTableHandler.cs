@@ -1,11 +1,12 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Barroc_IT
 {
     public class DataTableHandler
     {
-        private DatabaseHandler handler;
+        private DatabaseHandler handler;        
 
         public DataTableHandler()
         {
@@ -52,6 +53,19 @@ namespace Barroc_IT
             DataTable DT = DS.Tables[0];
             return DT;
         }
+
+        public void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
+        {
+            dataGridView.Rows.Clear();
+            table.Columns.Add(idColumnName);
+            table.Columns[idColumnName].SetOrdinal(0);
+
+            foreach (DataRow dr in table.Rows)
+            {
+                dataGridView.Rows.Add(dr.ItemArray);
+            }
+        }
+
 
         /// <summary>
         /// Searches for a SearchChoice in the database.

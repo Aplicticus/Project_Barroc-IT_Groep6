@@ -15,8 +15,8 @@ namespace Barroc_IT
         private SqlQueryHandler sqlhandler;
         private DataTableHandler dthandler;
 
-        private int selectedCustomer = 0;
-        private int selectedAppoinment = 0;
+        private int selectedCustomer;
+        private int selectedAppoinment;
         private bool closing = false;
 
         public frmSales(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
@@ -254,7 +254,7 @@ namespace Barroc_IT
                 }
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtAppointmentSearch.Text, selectedCustomer);
 
-                AddItemsToDataGridView(resultOfSearch, dgvAppointments, "cAppointmentID");
+                dthandler.AddItemsToDataGridView(resultOfSearch, dgvAppointments, "cAppointmentID");
             }
         }
 
@@ -362,19 +362,7 @@ namespace Barroc_IT
                 }
                 DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
 
-                AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
-            }
-        }
-
-        // Methods
-        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
-        {
-            dataGridView.Rows.Clear();
-            table.Columns.Add(idColumnName);
-            table.Columns[idColumnName].SetOrdinal(0);
-            foreach (DataRow dr in table.Rows)
-            {
-                dataGridView.Rows.Add(dr.ItemArray);
+                dthandler.AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
         }
 
@@ -470,7 +458,7 @@ namespace Barroc_IT
             dgvCustomers.Rows.Clear();
             string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
             DataTable customers = dthandler.ExecuteQuery(selectCustomers);
-            AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
+            dthandler.AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
         }
 
         private void LoadAppointments()
@@ -479,7 +467,7 @@ namespace Barroc_IT
             string selectAppointments = sqlhandler.GetQuery(Query.loadAppointments);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
             DataTable appointments = dthandler.ExecuteQuery(selectAppointments, collection);
-            AddItemsToDataGridView(appointments, dgvAppointments, "cAppointmentID");
+            dthandler.AddItemsToDataGridView(appointments, dgvAppointments, "cAppointmentID");
         }
 
         // Reloads

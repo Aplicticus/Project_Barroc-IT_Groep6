@@ -7,13 +7,17 @@ namespace Barroc_IT
 {
     public partial class frmAdmin : Form
     {
+        #region Properties
         private DatabaseHandler handler;
         private DataTableHandler dthandler;
         private SqlQueryHandler sqlhandler;
         private frmLogin loginForm;
         private bool closing = false;
-        private int selectedUser = 0;
+        private int selectedUser;
         private bool selectedDeactivated = false;
+        #endregion
+
+        #region Constructor
         public frmAdmin(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
             InitializeComponent();
@@ -23,8 +27,10 @@ namespace Barroc_IT
             this.sqlhandler = sqlhandler;
             cBoxAddDepartment.SelectedIndex = 0;
         }
-        
-        // Click events
+        #endregion
+
+        #region Click Events
+        // Button Click Events
         private void btnRegister_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
@@ -58,39 +64,44 @@ namespace Barroc_IT
             {
                 CloseToLogin();
             }            
-        }
-        private void btnAdminConfirmRegister_Click(object sender, EventArgs e)
-        {
-            if (AddUser() == true)
-            {                
-                tbContr.SelectedIndex = 2;
-                LoadUsers();
-                MessageBox.Show("User succesfully added!");
-            }
-            else
-            {
-                MessageBox.Show("There is a problem with adding a User!");
-            }             
-        }
+        }        
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            if (AddUser() == true)
+            string password = txtAddPassword.Text;
+            if (txtAddUserName.Text.Length > 0)
             {
-                tbContr.SelectedIndex = 5;
-                LoadUsers();
-                MessageBox.Show("User succesfully added!");
+                if (txtAddPassword.Text.Length > 0 && txtAddRepeatPassword.Text == password.ToString())
+                {
+                    if (AddUser() == true)
+                    {
+                        tbContr.SelectedIndex = 4;
+                        LoadUsers();
+                        MessageBox.Show("User succesfully added!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("There is a problem with creating a User!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Your password field is empty or your password is not equal to Repeat Password!");
+                }
             }
             else
             {
-                MessageBox.Show("There is a problem with adding a User!");
-            }   
+                MessageBox.Show("The username field is empty!, Please fill a username to create a user!");
+            }
+            txtAddUserName.Clear();
+            txtAddPassword.Clear();
+            txtAddRepeatPassword.Clear();
+            cBoxAddDepartment.ResetText();
         }
         private void btnBackToHome_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 0;
         }
-
-        // Cell Content Click
+        // Cell Content Clicks
         private void dgvAdminUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvActivatedUsers.Columns["cActivateDeactivate"].Index)
@@ -125,31 +136,33 @@ namespace Barroc_IT
                 }
             }
         }
+        #endregion
 
-        // Loads
+        #region Loaders
         private void LoadUsers()
         {
             dgvActivatedUsers.Rows.Clear();
             string selectUsers = sqlhandler.GetQuery(Query.loadUsers);
             DataTable allUsers = dthandler.ExecuteQuery(selectUsers);
-            AddItemsToDataGridView(allUsers, dgvUserInfo, "uUserID");
+            dthandler.AddItemsToDataGridView(allUsers, dgvUserInfo, "uUserID");
         }
         private void LoadDeactivatedUsers()
         {
             dgvDeactivatedUsers.Rows.Clear();
             string selectDeactivatedUsers = sqlhandler.GetQuery(Query.LoadDeactivatedUsers);
             DataTable deactivatedUsers = dthandler.ExecuteQuery(selectDeactivatedUsers);
-            AddItemsToDataGridView(deactivatedUsers, dgvDeactivatedUsers, "dUserID");
+            dthandler.AddItemsToDataGridView(deactivatedUsers, dgvDeactivatedUsers, "dUserID");
         }
         private void LoadActivatedUsers()
         {
             dgvDeactivatedUsers.Rows.Clear();
             string selectActivatedUsers = sqlhandler.GetQuery(Query.LoadActivatedUsers);
             DataTable activatedUsers = dthandler.ExecuteQuery(selectActivatedUsers);
-            AddItemsToDataGridView(activatedUsers, dgvActivatedUsers, "xUserID");
+            dthandler.AddItemsToDataGridView(activatedUsers, dgvActivatedUsers, "xUserID");
         }
+        #endregion
 
-        // Methods
+        #region Methods
         private bool AddUser()
         {
             string sql = sqlhandler.GetQuery(Query.addUser);
@@ -157,6 +170,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@UserName", txtAddUserName.Text));
             cmd.Parameters.Add(new SqlParameter("@Password", txtAddPassword.Text));
             cmd.Parameters.Add(new SqlParameter("@Department", cBoxAddDepartment.SelectedItem.ToString()));
+            cmd.Parameters.Add(new SqlParameter("@Deactivated", true));
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -169,19 +183,9 @@ namespace Barroc_IT
                 return false;
             }  
         }
-        private void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
-        {
-            dataGridView.Rows.Clear();
-            table.Columns.Add(idColumnName);
-            table.Columns[idColumnName].SetOrdinal(0);
+        #endregion
 
-            foreach (DataRow dr in table.Rows)
-            {
-                dataGridView.Rows.Add(dr.ItemArray);
-            }
-        }
-
-        // Updaters / Editers
+        #region Updaters / Editers
         private bool UpdateUser(int userID, bool deactivatedID)
         {
             deactivatedID = !deactivatedID;
@@ -192,8 +196,6 @@ namespace Barroc_IT
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
-
-
             if (rowsAffected > 0)
             {
                 return true;
@@ -203,8 +205,9 @@ namespace Barroc_IT
                 return false;
             }
         }
-               
-        // Go to Login
+        #endregion
+
+        #region GoToLogin
         private void CloseToLogin()
         {
             closing = true;
@@ -212,8 +215,9 @@ namespace Barroc_IT
             loginForm.Show();
             this.Close();
         }
+        #endregion
 
-        // Form Closing
+        #region Form Closing
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!closing)
@@ -221,9 +225,6 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }
-                
-        
-
-       
+        #endregion
     }
 }

@@ -75,6 +75,7 @@
             this.btnDeactivatedUsersBack = new System.Windows.Forms.Button();
             this.lblDeactivatedUsers = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnUserInfoBack = new System.Windows.Forms.Button();
             this.dgvUserInfo = new System.Windows.Forms.DataGridView();
             this.uUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,7 +84,6 @@
             this.uLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblAdminUserInfo = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.btnUserInfoBack = new System.Windows.Forms.Button();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -112,7 +112,7 @@
             this.lblAdminPanel.AutoSize = true;
             this.lblAdminPanel.BackColor = System.Drawing.SystemColors.Control;
             this.lblAdminPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminPanel.Location = new System.Drawing.Point(305, 30);
+            this.lblAdminPanel.Location = new System.Drawing.Point(369, 30);
             this.lblAdminPanel.Name = "lblAdminPanel";
             this.lblAdminPanel.Size = new System.Drawing.Size(314, 39);
             this.lblAdminPanel.TabIndex = 0;
@@ -592,6 +592,17 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "userInformation";
             // 
+            // btnUserInfoBack
+            // 
+            this.btnUserInfoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserInfoBack.Location = new System.Drawing.Point(667, 513);
+            this.btnUserInfoBack.Name = "btnUserInfoBack";
+            this.btnUserInfoBack.Size = new System.Drawing.Size(84, 60);
+            this.btnUserInfoBack.TabIndex = 192;
+            this.btnUserInfoBack.Text = "Back";
+            this.btnUserInfoBack.UseVisualStyleBackColor = true;
+            this.btnUserInfoBack.Click += new System.EventHandler(this.btnBackToHome_Click);
+            // 
             // dgvUserInfo
             // 
             this.dgvUserInfo.AllowUserToAddRows = false;
@@ -654,17 +665,6 @@
             this.lblAdminUserInfo.Size = new System.Drawing.Size(231, 31);
             this.lblAdminUserInfo.TabIndex = 24;
             this.lblAdminUserInfo.Text = "User Information";
-            // 
-            // btnUserInfoBack
-            // 
-            this.btnUserInfoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserInfoBack.Location = new System.Drawing.Point(667, 513);
-            this.btnUserInfoBack.Name = "btnUserInfoBack";
-            this.btnUserInfoBack.Size = new System.Drawing.Size(84, 60);
-            this.btnUserInfoBack.TabIndex = 192;
-            this.btnUserInfoBack.Text = "Back";
-            this.btnUserInfoBack.UseVisualStyleBackColor = true;
-            this.btnUserInfoBack.Click += new System.EventHandler(this.btnBackToHome_Click);
             // 
             // frmAdmin
             // 

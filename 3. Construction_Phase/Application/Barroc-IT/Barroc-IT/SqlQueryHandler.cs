@@ -41,8 +41,8 @@
         "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
         string addProject = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) " +
         "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
-        string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT) " +
-        "VALUES (@Username, @Password, @Department)";
+        string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT, DEACTIVATED) " +
+        "VALUES (@Username, @Password, @Department, @Deactivated)";
         string addCustomer = "INSERT INTO tbl_Customers (COMPANYNAME, ADDRESS1, POSTALCODE1, RESIDENCE1, ADDRESS2, " +
         "POSTALCODE2, RESIDENCE2, CONTACTPERSON, INITIALS, PHONE_NR1, PHONE_NR2, FAXNUMBER, EMAIL, PROSPECT) " +
         "VALUES (@CompanyName, @Address1, @PostalCode1, @Residence1, @Address2, @PostalCode2, @Residence2, @ContactPerson, " +
