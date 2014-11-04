@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblFinancePanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
@@ -37,6 +37,8 @@
             this.btnFinanceSelectCustomer = new System.Windows.Forms.Button();
             this.btnFinanceHome = new System.Windows.Forms.Button();
             this.pnlFinance = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblWelcome = new System.Windows.Forms.Label();
@@ -64,6 +66,7 @@
             this.finCusFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finCusEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.nudFinLimit = new System.Windows.Forms.NumericUpDown();
             this.txtFinProjects = new System.Windows.Forms.TextBox();
             this.lblFinProjects = new System.Windows.Forms.Label();
             this.btnCustomerBack = new System.Windows.Forms.Button();
@@ -82,8 +85,6 @@
             this.txtFinBTWCode = new System.Windows.Forms.TextBox();
             this.txtFinLedgerID = new System.Windows.Forms.TextBox();
             this.lblFax = new System.Windows.Forms.Label();
-            this.txtFinLimit = new System.Windows.Forms.TextBox();
-            this.txtFinBalance = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtFinAccountID = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber1 = new System.Windows.Forms.TextBox();
@@ -162,6 +163,7 @@
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
+            this.txtFinBalance = new System.Windows.Forms.TextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -170,6 +172,7 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFinLimit)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -185,6 +188,8 @@
             // 
             this.pWelcome.BackColor = System.Drawing.SystemColors.Control;
             this.pWelcome.Controls.Add(this.lblFinancePanel);
+            this.pWelcome.Controls.Add(this.textBox1);
+            this.pWelcome.Controls.Add(this.comboBox1);
             this.pWelcome.Location = new System.Drawing.Point(0, 0);
             this.pWelcome.Name = "pWelcome";
             this.pWelcome.Size = new System.Drawing.Size(1008, 112);
@@ -251,6 +256,26 @@
             this.pnlFinance.Name = "pnlFinance";
             this.pnlFinance.Size = new System.Drawing.Size(779, 612);
             this.pnlFinance.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(170, -156);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(137, 20);
+            this.textBox1.TabIndex = 208;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Enabled = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.comboBox1.Location = new System.Drawing.Point(170, -8);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(137, 21);
+            this.comboBox1.TabIndex = 224;
             // 
             // tbContr
             // 
@@ -497,6 +522,8 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.txtFinBalance);
+            this.tabPage3.Controls.Add(this.nudFinLimit);
             this.tabPage3.Controls.Add(this.txtFinProjects);
             this.tabPage3.Controls.Add(this.lblFinProjects);
             this.tabPage3.Controls.Add(this.btnCustomerBack);
@@ -515,8 +542,6 @@
             this.tabPage3.Controls.Add(this.txtFinBTWCode);
             this.tabPage3.Controls.Add(this.txtFinLedgerID);
             this.tabPage3.Controls.Add(this.lblFax);
-            this.tabPage3.Controls.Add(this.txtFinLimit);
-            this.tabPage3.Controls.Add(this.txtFinBalance);
             this.tabPage3.Controls.Add(this.lblEmail);
             this.tabPage3.Controls.Add(this.txtFinAccountID);
             this.tabPage3.Controls.Add(this.txtPhoneNumber1);
@@ -537,6 +562,32 @@
             this.tabPage3.Size = new System.Drawing.Size(771, 586);
             this.tabPage3.TabIndex = 10;
             this.tabPage3.Text = "selectedCustomer";
+            // 
+            // nudFinLimit
+            // 
+            this.nudFinLimit.DecimalPlaces = 2;
+            this.nudFinLimit.Enabled = false;
+            this.nudFinLimit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudFinLimit.Location = new System.Drawing.Point(604, 145);
+            this.nudFinLimit.Maximum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            0});
+            this.nudFinLimit.Minimum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            -2147483648});
+            this.nudFinLimit.Name = "nudFinLimit";
+            this.nudFinLimit.ReadOnly = true;
+            this.nudFinLimit.Size = new System.Drawing.Size(137, 20);
+            this.nudFinLimit.TabIndex = 231;
+            this.nudFinLimit.ThousandsSeparator = true;
             // 
             // txtFinProjects
             // 
@@ -697,7 +748,7 @@
             // 
             // txtFinLedgerID
             // 
-            this.txtFinLedgerID.Location = new System.Drawing.Point(604, 172);
+            this.txtFinLedgerID.Location = new System.Drawing.Point(604, 168);
             this.txtFinLedgerID.Name = "txtFinLedgerID";
             this.txtFinLedgerID.ReadOnly = true;
             this.txtFinLedgerID.Size = new System.Drawing.Size(137, 20);
@@ -712,22 +763,6 @@
             this.lblFax.Size = new System.Drawing.Size(130, 25);
             this.lblFax.TabIndex = 211;
             this.lblFax.Text = "Fax Number: ";
-            // 
-            // txtFinLimit
-            // 
-            this.txtFinLimit.Location = new System.Drawing.Point(604, 142);
-            this.txtFinLimit.Name = "txtFinLimit";
-            this.txtFinLimit.ReadOnly = true;
-            this.txtFinLimit.Size = new System.Drawing.Size(137, 20);
-            this.txtFinLimit.TabIndex = 210;
-            // 
-            // txtFinBalance
-            // 
-            this.txtFinBalance.Location = new System.Drawing.Point(604, 84);
-            this.txtFinBalance.Name = "txtFinBalance";
-            this.txtFinBalance.ReadOnly = true;
-            this.txtFinBalance.Size = new System.Drawing.Size(137, 20);
-            this.txtFinBalance.TabIndex = 208;
             // 
             // lblEmail
             // 
@@ -1270,18 +1305,18 @@
             // 
             // finInvExpDate
             // 
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.finInvExpDate.HeaderText = "Expire Date";
             this.finInvExpDate.Name = "finInvExpDate";
             this.finInvExpDate.ReadOnly = true;
             // 
             // InvoiceSendDate
             // 
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.InvoiceSendDate.HeaderText = "Invoice Send Date";
             this.InvoiceSendDate.Name = "InvoiceSendDate";
             this.InvoiceSendDate.ReadOnly = true;
@@ -1544,6 +1579,14 @@
             this.lblFinInvoiceValue.TabIndex = 162;
             this.lblFinInvoiceValue.Text = "Invoice Value:";
             // 
+            // txtFinBalance
+            // 
+            this.txtFinBalance.Location = new System.Drawing.Point(604, 84);
+            this.txtFinBalance.Name = "txtFinBalance";
+            this.txtFinBalance.ReadOnly = true;
+            this.txtFinBalance.Size = new System.Drawing.Size(137, 20);
+            this.txtFinBalance.TabIndex = 232;
+            // 
             // frmFinance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1571,6 +1614,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFinLimit)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).EndInit();
@@ -1619,8 +1663,6 @@
         private System.Windows.Forms.TextBox txtFinBTWCode;
         private System.Windows.Forms.TextBox txtFinLedgerID;
         private System.Windows.Forms.Label lblFax;
-        private System.Windows.Forms.TextBox txtFinLimit;
-        private System.Windows.Forms.TextBox txtFinBalance;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtFinAccountID;
         private System.Windows.Forms.TextBox txtPhoneNumber1;
@@ -1723,5 +1765,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn finInvExpDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSendDate;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.NumericUpDown nudFinLimit;
+        private System.Windows.Forms.TextBox txtFinBalance;
     }
 }

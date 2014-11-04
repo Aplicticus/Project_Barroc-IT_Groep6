@@ -60,9 +60,9 @@ namespace Barroc_IT
         {
             if (btnEditFields.Text == "Edit Fields")
             {
-                txtFinAccountID.ReadOnly = false;
-                txtFinBalance.ReadOnly = false;
-                txtFinLimit.ReadOnly = false;
+                txtFinAccountID.ReadOnly = false;                
+                nudFinLimit.Enabled = true;
+                nudFinLimit.ReadOnly = false;
                 txtFinLedgerID.ReadOnly = false;
                 txtFinBTWCode.ReadOnly = false;
                 cbFinBKR.Enabled = true;
@@ -72,39 +72,34 @@ namespace Barroc_IT
             {
                 if (txtFinAccountID.Text.Length > 0 && txtFinAccountID.Text.Length < 17)
                 {
-                    if (txtFinBalance.Text.Length > 0 && txtFinBalance.Text.Length < 10)
+                    if (nudFinLimit.Value > 0)
                     {
-                        if (txtFinLimit.Text.Length > 0 && txtFinLimit.Text.Length < 10)
+                        if (txtFinLedgerID.Text.Length > 0 && txtFinLedgerID.Text.Length < 10)
                         {
-                            if (txtFinLedgerID.Text.Length > 0 && txtFinLedgerID.Text.Length < 10)
+                            if (txtFinBTWCode.Text.Length > 0 && txtFinBTWCode.Text.Length < 10)
                             {
                                 SetBool();
                                 UpdateCustomer(selectedCustomer);
                             }
                             else
                             {
-
+                                MessageBox.Show("The BTWcode field is 0 or empty! Please fill in.");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("You have filled too many numbers or too many decimals!");
+                            MessageBox.Show("The ledgerID field is 0 or empty! Please fill in.");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("");
+                        MessageBox.Show("The amount of Limit is 0! Please fill in.");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("You have filled an incorrect Account Number!, Please check the input! ");
-                }
-
-                                            
-                txtFinAccountID.ReadOnly = true;
-                txtFinBalance.ReadOnly = true;
-                txtFinLimit.ReadOnly = true;
+                }                                  
+                                           
+                txtFinAccountID.ReadOnly = true;                
+                nudFinLimit.Enabled = false;
+                nudFinLimit.ReadOnly = true;
                 txtFinLedgerID.ReadOnly = true;
                 txtFinBTWCode.ReadOnly = true;
                 cbFinBKR.Enabled = false;
@@ -175,6 +170,7 @@ namespace Barroc_IT
             if (e.ColumnIndex == dgvCustomers.Columns["finCusView"].Index)
             {
                 selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                UpdateBalance();
                 ReloadCustomers();
                 tbContr.SelectedIndex = 2;
                 int temp = 0;
@@ -250,15 +246,16 @@ namespace Barroc_IT
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) }; 
             DataTable dtCustomers = dthandler.ExecuteQuery(sqlCustomers, collection);
             
-            string sqlSales = sqlhandler.GetQuery(Query.countSales);
-            collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
-            DataTable dtInvoicesCount = dthandler.ExecuteQuery(sqlSales, collection);
-
             string sqlProjects = sqlhandler.GetQuery(Query.countProjects);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
             DataTable dtProjectsCount = dthandler.ExecuteQuery(sqlProjects, collection);
 
-            LoadCustomerDetails(dtCustomers, dtProjectsCount, dtInvoicesCount);            
+            // Need: Change All invoices to paid invoices
+            string sqlInvoices = sqlhandler.GetQuery(Query.countAllInvoices);
+            collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer)};
+            DataTable dtPaidInvoicesCount = dthandler.ExecuteQuery(sqlInvoices, collection);  
+
+            LoadCustomerDetails(dtCustomers, dtProjectsCount, dtPaidInvoicesCount);            
             GetBool();
         }
         private void ReloadProjects()
@@ -267,7 +264,7 @@ namespace Barroc_IT
             SqlParameter[] collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject) };           
             DataTable projectDetails = dthandler.ExecuteQuery(sqlProject, collection);
 
-            string sqlValues = sqlhandler.GetQuery(Query.countInvoices);
+            string sqlValues = sqlhandler.GetQuery(Query.countOpenInvoices);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject) };
             DataTable valueDetails = dthandler.ExecuteQuery(sqlValues, collection);
             LoadProjectDetails(projectDetails, valueDetails);
@@ -330,13 +327,26 @@ namespace Barroc_IT
         #endregion
 
         #region Updaters / Editers
+        private void UpdateBalance()
+        {
+            string countInvoicesQuery = sqlhandler.GetQuery(Query.countInvoices);
+            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) }; 
+            DataTable dtCountInvoices = dthandler.ExecuteQuery(countInvoicesQuery, collection);
+            DataRow drCountInvoices = dtCountInvoices.Rows[0];
+            string sqlQuery = sqlhandler.GetQuery(Query.copyCountInvoicesToBalance);
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("Balance", drCountInvoices[0]));
+            cmd.Parameters.Add(new SqlParameter("customerID", selectedCustomer));
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
         private bool UpdateCustomer(int customerID)
         {
             string sqlQuery = sqlhandler.GetQuery(Query.updateFinCustomersInfo);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());            
-            cmd.Parameters.Add(new SqlParameter("AccountID", txtFinAccountID.Text));
-            cmd.Parameters.Add(new SqlParameter("Balance", decimal.Parse(txtFinBalance.Text)));
-            cmd.Parameters.Add(new SqlParameter("Limit", decimal.Parse(txtFinLimit.Text)));
+            cmd.Parameters.Add(new SqlParameter("AccountID", txtFinAccountID.Text));            
+            cmd.Parameters.Add(new SqlParameter("Limit", nudFinLimit.Value));
             cmd.Parameters.Add(new SqlParameter("LedgerID", txtFinLedgerID.Text));
             cmd.Parameters.Add(new SqlParameter("BTWcode", txtFinBTWCode.Text));
             cmd.Parameters.Add(new SqlParameter("Bkr", bool.Parse(cbFinBKR.Text)));
@@ -357,11 +367,11 @@ namespace Barroc_IT
 
         #region Load Details
         // Load Details
-        private void LoadCustomerDetails(DataTable dtCustomers, DataTable dtProjectsCount, DataTable dtInvoicesCount)
+        private void LoadCustomerDetails(DataTable dtCustomers, DataTable dtProjectsCount, DataTable dtSalesCount)
         {
             DataRow tbl_Customers_Rows = dtCustomers.Rows[0];
             DataRow tbl_Projects_Rows = dtProjectsCount.Rows[0];
-            DataRow tbl_Invoices_Rows_Count = dtInvoicesCount.Rows[0];
+            DataRow tbl_Invoices_Sales_Rows_Count = dtSalesCount.Rows[0];
             txtCompanyName.Text = tbl_Customers_Rows["COMPANYNAME"].ToString();
             txtAddress1.Text = tbl_Customers_Rows["ADDRESS1"].ToString();
             txtPostalCode1.Text = tbl_Customers_Rows["POSTALCODE1"].ToString();
@@ -371,12 +381,12 @@ namespace Barroc_IT
             txtContactPerson.Text = tbl_Customers_Rows["CONTACTPERSON"].ToString();
             txtFinAccountID.Text = tbl_Customers_Rows["ACC_ID"].ToString();
             txtFinBalance.Text = tbl_Customers_Rows["BALANCE"].ToString();
-            txtFinLimit.Text = tbl_Customers_Rows["LIMIT"].ToString();
+            nudFinLimit.Text = tbl_Customers_Rows["LIMIT"].ToString();
             txtFinLedgerID.Text = tbl_Customers_Rows["LEDGER_ID"].ToString();
             txtFinBTWCode.Text = tbl_Customers_Rows["BTW_CODE"].ToString();
             cbFinBKR.Text = tbl_Customers_Rows["BKR"].ToString();            
-            txtFinProjects.Text = tbl_Projects_Rows[0].ToString();            
-            txtFinSales.Text = tbl_Invoices_Rows_Count[0].ToString();
+            txtFinProjects.Text = tbl_Projects_Rows[0].ToString();
+            txtFinSales.Text = tbl_Invoices_Sales_Rows_Count[0].ToString();
         }
         private void LoadProjectDetails(DataTable dtCustomers, DataTable dtInvoicesCount)
         {

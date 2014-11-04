@@ -16,6 +16,8 @@
 
     public enum Query
     {
+        copyCountInvoicesToBalance,
+
         addCustomer,
         addInvoice,
         addProject,
@@ -33,12 +35,14 @@
         loadInvoiceDetails,
         LoadActivatedUsers,
 
-        countSales,
+        countInvoices,
+        countPaidInvoices,
+        countOpenInvoices,
+        countAllInvoices,
         countProjects,
         countValues,
         countAppointments,
-        countOffers,
-        countInvoices,
+        countOffers,        
         
         updateFinProjectInfo,
         updateDevCustomerInfo,

@@ -49,15 +49,17 @@
         "@Initials, @PhoneNr1, @PhoneNr2, @FaxNumber, @Email, @Prospect)";
         
         // Count Querys
-        string countInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
-        string countSales = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string countPaidInvoices = "";
+        string countOpenInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
+        string countAllInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string countInvoices = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices WHERE tbl_Invoices.PROJECT_ID=@customerID";
         string countAppointments = "SELECT COUNT (APPOINTMENT_ID) FROM tbl_Customers {0} WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countOffers = "SELECT COUNT (OFFER_NUMBERS) FROM tbl_Customers WHERE tbl_Customers.CUSTOMER_ID=@customerID";
 
         //Update Querys        
-        string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, BALANCE=@Balance, " +
+        string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, " +
         "LIMIT=@Limit, LEDGER_ID=@LedgerID, BTW_CODE=@BTWcode, BKR=@Bkr WHERE CUSTOMER_ID=@customerID";
         string updateFinProjectInfo = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, " +
         "tbl_Projects.DEADLINE, tbl_Projects.SUBJECT FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
@@ -75,13 +77,21 @@
         "WHERE CUSTOMER_ID=@customerID";
         string updateAdmActivate = "UPDATE tbl_Users SET DEACTIVATED=@Deactivated WHERE USER_ID=@userID";
         string updateLastLogin = "UPDATE tbl_Users SET LAST_LOGIN=@Last_Login WHERE USER_ID=@userID AND USER_NAME=@User_Name";
-       
+
+        
+        string copyCountInvoicesToBalance = "UPDATE tbl_Customers SET BALANCE=@Balance WHERE CUSTOMER_ID=@customerID";
+
+
         public string GetQuery(Query query)
         {
             // Default
             string sqlQuery = "";
             switch (query)
             {
+                case Query.copyCountInvoicesToBalance:
+                    sqlQuery = copyCountInvoicesToBalance;
+                    break;
+
                 case Query.loadCustomers:
                     sqlQuery = loadCustomers;
                     break;
@@ -161,8 +171,20 @@
                     sqlQuery = updateLastLogin;
                     break;
 
-                case Query.countSales:
-                    sqlQuery = countSales;
+                case Query.countInvoices:
+                    sqlQuery = countInvoices;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;
+                case Query.countOpenInvoices:
+                    sqlQuery = countOpenInvoices;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;
+                case Query.countPaidInvoices:
+                    sqlQuery = countPaidInvoices;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
+                    break;
+                case Query.countAllInvoices:
+                    sqlQuery = countAllInvoices;
                     sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
                     break;
                 case Query.countProjects:
@@ -179,10 +201,7 @@
                 case Query.countOffers:
                     sqlQuery = countOffers;
                     break;
-                case Query.countInvoices:
-                    sqlQuery = countInvoices;
-                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
-                    break;
+               
 
                 default:
                     sqlQuery = "";
