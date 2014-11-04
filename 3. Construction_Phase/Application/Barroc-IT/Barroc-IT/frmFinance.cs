@@ -71,45 +71,61 @@ namespace Barroc_IT
                 txtFinLedgerID.ReadOnly = false;
                 txtFinBTWCode.ReadOnly = false;
                 cbFinBKR.Enabled = true;
+                
                 btnEditFields.Text = "Save Changes";
             }
             else if (btnEditFields.Text == "Save Changes")
             {
+                int CheckForInt;
                 if (txtFinAccountID.Text.Length > 0 && txtFinAccountID.Text.Length < 17)
                 {
                     if (nudFinLimit.Value > 0)
-                    {
-                        if (txtFinLedgerID.Text.Length > 0 && txtFinLedgerID.Text.Length < 10)
-                        {
-                            if (txtFinBTWCode.Text.Length > 0 && txtFinBTWCode.Text.Length < 10)
+                    {                        
+                        if (txtFinLedgerID.Text.Length > 0 && txtFinLedgerID.Text.Length < 10 && int.TryParse(txtFinLedgerID.Text, out CheckForInt))
+                        {                            
+                            if (txtFinBTWCode.Text.Length > 0 && txtFinBTWCode.Text.Length < 10 && int.TryParse(txtFinBTWCode.Text, out CheckForInt))
                             {
-                                SetBool();
-                                UpdateCustomer(selectedCustomer);
+                                if (cbFinBKR.Text == "Yes" || cbFinBKR.Text == "No")
+                                {
+                                    SetBool();
+                                    UpdateCustomer(selectedCustomer);
+                                    txtFinAccountID.ReadOnly = true;
+                                    nudFinLimit.Enabled = false;
+                                    nudFinLimit.ReadOnly = true;
+                                    txtFinLedgerID.ReadOnly = true;
+                                    txtFinBTWCode.ReadOnly = true;
+                                    cbFinBKR.Enabled = false;
+                                    GetBool();
+                                    btnEditFields.Text = "Edit Fields";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("The BKR field can only have (Yes/No)");
+                                    cbFinBKR.ResetText();
+                                }                                
                             }
                             else
                             {
-                                MessageBox.Show("The BTWcode field is 0 or empty! Please fill in.");
+                                MessageBox.Show("The BTWcode field is empty or not a number! please enter numbers.");
+                                txtFinBTWCode.ResetText();
                             }
                         }
                         else
                         {
-                            MessageBox.Show("The ledgerID field is 0 or empty! Please fill in.");
+                            MessageBox.Show("The ledgerID field is empty or not a number! please enter numbers.");
+                            txtFinLedgerID.ResetText();
                         }
                     }
                     else
                     {
-                        MessageBox.Show("The amount of Limit is 0! Please fill in.");
+                        MessageBox.Show("The Limit field is empty or 0! please enter a value.");
+                        nudFinLimit.ResetText();
                     }
-                }                                  
-                                           
-                txtFinAccountID.ReadOnly = true;                
-                nudFinLimit.Enabled = false;
-                nudFinLimit.ReadOnly = true;
-                txtFinLedgerID.ReadOnly = true;
-                txtFinBTWCode.ReadOnly = true;
-                cbFinBKR.Enabled = false;
-                GetBool();
-                btnEditFields.Text = "Edit Fields";
+                }  
+                else
+                {
+                    MessageBox.Show("The Account Number field is empty or too long! please enter a correct account number.");
+                }
             }
         }        
         private void btnAddInvoice_Click(object sender, EventArgs e)
@@ -118,16 +134,27 @@ namespace Barroc_IT
         }
         private void btnCreateInvoice_Click(object sender, EventArgs e)
         {
-            if (AddInvoice() == true)
+            numFinInvoiceAddValue.ResetText();
+            if (numFinInvoiceAddValue.Value > 0)
             {
-                tbContr.SelectedIndex = 5;
-                LoadInvoices();                
-                MessageBox.Show("Invoice succesfully added!");
+                if (AddInvoice() == true)
+                {
+                    tbContr.SelectedIndex = 5;
+                    LoadInvoices();
+                    MessageBox.Show("Invoice succesfully added!");
+                }
+                else
+                {
+                    MessageBox.Show("There is a problem with adding a invoice!");
+                } 
             }
             else
             {
-                MessageBox.Show("There is a problem with adding a invoice!");
-            }            
+                MessageBox.Show("The Invoice Value field is empty or 0! please enter a value.");
+                numFinInvoiceAddValue.ResetText();
+            }
+
+                       
         }
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
