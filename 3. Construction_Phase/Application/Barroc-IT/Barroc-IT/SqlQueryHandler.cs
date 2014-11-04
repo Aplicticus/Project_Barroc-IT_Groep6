@@ -37,8 +37,8 @@
         string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.COMPANYNAME, tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
 
         //Insert querys
-        string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND) " +
-        "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend)";
+        string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND, PAID) " +
+        "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend, @Paid)";
         string addProject = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) " +
         "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
         string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT, DEACTIVATED) " +
@@ -77,7 +77,7 @@
         "WHERE CUSTOMER_ID=@customerID";
         string updateAdmActivate = "UPDATE tbl_Users SET DEACTIVATED=@Deactivated WHERE USER_ID=@userID";
         string updateLastLogin = "UPDATE tbl_Users SET LAST_LOGIN=@Last_Login WHERE USER_ID=@userID AND USER_NAME=@User_Name";
-
+        string updateFinPayment = "UPDATE tbl_Invoices SET PAID=@Paid WHERE PROJECT_ID=@projectID AND INVOICE_ID=@invoiceID";
         
         string copyCountInvoicesToBalance = "UPDATE tbl_Customers SET BALANCE=@Balance WHERE CUSTOMER_ID=@customerID";
 
@@ -169,6 +169,9 @@
                     break;
                 case Query.updateLastLogin:
                     sqlQuery = updateLastLogin;
+                    break;
+                case Query.updateFinPayment:
+                    sqlQuery = updateFinPayment;
                     break;
 
                 case Query.countInvoices:

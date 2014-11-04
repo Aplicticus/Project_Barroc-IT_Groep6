@@ -41,6 +41,11 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }
+        private void btnConfirmPayment_Click(object sender, EventArgs e)
+        {
+            UpdatePayment(selectedProject, selectedInvoice, true);
+            ReloadInvoices();
+        }
         private void btnFinanceSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
@@ -287,6 +292,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@InvoiceVal", numFinInvoiceAddValue.Value));
             cmd.Parameters.Add(new SqlParameter("@InvoiceEndDate", dtpFinInvoiceExpDate.Value));
             cmd.Parameters.Add(new SqlParameter("@InvoiceSend", dtpFinInvoiceSentDate.Value));
+            cmd.Parameters.Add(new SqlParameter("@Paid", false));
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -327,6 +333,25 @@ namespace Barroc_IT
         #endregion
 
         #region Updaters / Editers
+        private bool UpdatePayment(int projectID, int invoiceID, bool paid)
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.updateFinPayment);
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection()); 
+            cmd.Parameters.Add(new SqlParameter("projectID", projectID));
+            cmd.Parameters.Add(new SqlParameter("invoiceID", selectedInvoice));
+            cmd.Parameters.Add(new SqlParameter("Paid", paid));
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         private void UpdateBalance()
         {
             string countInvoicesQuery = sqlhandler.GetQuery(Query.countInvoices);
@@ -404,6 +429,7 @@ namespace Barroc_IT
             DataRow tbl_Invoice_Rows = dtInvoice.Rows[0];
             txtInvoiceCompanyName.Text = tbl_Invoice_Rows["COMPANYNAME"].ToString();
             txtInvoiceSubject.Text = tbl_Invoice_Rows["SUBJECT"].ToString();
+            txtInvoicePaid.Text = tbl_Invoice_Rows["PAID"].ToString();
             decimal nudInvoiceValue = decimal.Parse(tbl_Invoice_Rows["INVOICE_VALUE"].ToString());
             nudSelectedInvoiceValue.Value = nudInvoiceValue;
             DateTime InvoiceExpireDate = DateTime.Parse(tbl_Invoice_Rows["INVOICE_END_DATE"].ToString());           
@@ -433,5 +459,7 @@ namespace Barroc_IT
             }
         }
         #endregion
+
+        
     }
 }

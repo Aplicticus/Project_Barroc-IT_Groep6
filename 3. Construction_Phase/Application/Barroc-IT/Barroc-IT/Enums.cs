@@ -51,6 +51,7 @@
         updateFinCustomersInfo,
         updateDevProjectInfo,
         updateLastLogin,
+        updateFinPayment,
         updateAdmActivate
     }
 
