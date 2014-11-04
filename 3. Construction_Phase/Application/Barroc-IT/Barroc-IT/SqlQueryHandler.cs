@@ -49,7 +49,7 @@
         "@Initials, @PhoneNr1, @PhoneNr2, @FaxNumber, @Email, @Prospect)";
         
         // Count Querys
-        string countPaidInvoices = "";
+        string countPaidInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Invoices.PAID='True'";
         string countOpenInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
         string countAllInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countInvoices = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
@@ -77,8 +77,7 @@
         "WHERE CUSTOMER_ID=@customerID";
         string updateAdmActivate = "UPDATE tbl_Users SET DEACTIVATED=@Deactivated WHERE USER_ID=@userID";
         string updateLastLogin = "UPDATE tbl_Users SET LAST_LOGIN=@Last_Login WHERE USER_ID=@userID AND USER_NAME=@User_Name";
-        string updateFinPayment = "UPDATE tbl_Invoices SET PAID=@Paid WHERE PROJECT_ID=@projectID AND INVOICE_ID=@invoiceID";
-        
+        string updateFinPayment = "UPDATE tbl_Invoices SET PAID=@Paid WHERE PROJECT_ID=@projectID AND INVOICE_ID=@invoiceID";        
         string copyCountInvoicesToBalance = "UPDATE tbl_Customers SET BALANCE=@Balance WHERE CUSTOMER_ID=@customerID";
 
 

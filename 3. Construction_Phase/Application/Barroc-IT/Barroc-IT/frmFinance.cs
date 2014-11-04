@@ -254,9 +254,8 @@ namespace Barroc_IT
             string sqlProjects = sqlhandler.GetQuery(Query.countProjects);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
             DataTable dtProjectsCount = dthandler.ExecuteQuery(sqlProjects, collection);
-
-            // Need: Change All invoices to paid invoices
-            string sqlInvoices = sqlhandler.GetQuery(Query.countAllInvoices);
+                        
+            string sqlInvoices = sqlhandler.GetQuery(Query.countPaidInvoices);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer)};
             DataTable dtPaidInvoicesCount = dthandler.ExecuteQuery(sqlInvoices, collection);  
 
@@ -279,7 +278,8 @@ namespace Barroc_IT
             string sql = sqlhandler.GetQuery(Query.loadInvoiceDetails);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject), new SqlParameter("invoiceID", selectedInvoice) };
             DataTable invoiceDetails = dthandler.ExecuteQuery(sql, collection);
-            LoadInvoiceDetails(invoiceDetails);            
+            LoadInvoiceDetails(invoiceDetails);
+            GetBool();
         }
         #endregion
 
@@ -317,7 +317,15 @@ namespace Barroc_IT
             else if (cbFinBKR.Text == "False" || cbFinBKR.Text == "0")
             {
                 cbFinBKR.Text = "No";
-            }            
+            }
+            else if (txtInvoicePaid.Text == "True" || txtInvoicePaid.Text == "1")
+            {
+                txtInvoicePaid.Text = "Yes";
+            }
+            else if (txtInvoicePaid.Text == "False" || txtInvoicePaid.Text == "0")
+            {
+                txtInvoicePaid.Text = "No";
+            }
         }
         private void SetBool()
         {
