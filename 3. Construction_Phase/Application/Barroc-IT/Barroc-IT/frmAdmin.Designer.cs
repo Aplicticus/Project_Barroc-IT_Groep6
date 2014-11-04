@@ -63,7 +63,7 @@
             this.cDeactivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActivatedUsersBack = new System.Windows.Forms.Button();
-            this.lblUserInfo = new System.Windows.Forms.Label();
+            this.lblActivatedUsers = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvDeactivatedUsers = new System.Windows.Forms.DataGridView();
             this.xActivatedDeactivated = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -236,7 +236,7 @@
             // 
             this.lblAdminHome.AutoSize = true;
             this.lblAdminHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminHome.Location = new System.Drawing.Point(326, 39);
+            this.lblAdminHome.Location = new System.Drawing.Point(340, 23);
             this.lblAdminHome.Name = "lblAdminHome";
             this.lblAdminHome.Size = new System.Drawing.Size(90, 31);
             this.lblAdminHome.TabIndex = 32;
@@ -246,7 +246,7 @@
             // 
             this.lblAdminWelcome.AutoSize = true;
             this.lblAdminWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminWelcome.Location = new System.Drawing.Point(104, 126);
+            this.lblAdminWelcome.Location = new System.Drawing.Point(105, 100);
             this.lblAdminWelcome.Name = "lblAdminWelcome";
             this.lblAdminWelcome.Size = new System.Drawing.Size(264, 25);
             this.lblAdminWelcome.TabIndex = 31;
@@ -304,7 +304,7 @@
             "Development",
             "Finance",
             "Sales"});
-            this.cBoxAddDepartment.Location = new System.Drawing.Point(423, 213);
+            this.cBoxAddDepartment.Location = new System.Drawing.Point(402, 248);
             this.cBoxAddDepartment.Name = "cBoxAddDepartment";
             this.cBoxAddDepartment.Size = new System.Drawing.Size(137, 21);
             this.cBoxAddDepartment.Sorted = true;
@@ -312,7 +312,7 @@
             // 
             // txtAddRepeatPassword
             // 
-            this.txtAddRepeatPassword.Location = new System.Drawing.Point(423, 173);
+            this.txtAddRepeatPassword.Location = new System.Drawing.Point(402, 208);
             this.txtAddRepeatPassword.Name = "txtAddRepeatPassword";
             this.txtAddRepeatPassword.Size = new System.Drawing.Size(137, 20);
             this.txtAddRepeatPassword.TabIndex = 31;
@@ -321,7 +321,7 @@
             // 
             this.lblAddRepeatPassword.AutoSize = true;
             this.lblAddRepeatPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddRepeatPassword.Location = new System.Drawing.Point(215, 167);
+            this.lblAddRepeatPassword.Location = new System.Drawing.Point(194, 202);
             this.lblAddRepeatPassword.Name = "lblAddRepeatPassword";
             this.lblAddRepeatPassword.Size = new System.Drawing.Size(171, 25);
             this.lblAddRepeatPassword.TabIndex = 30;
@@ -329,7 +329,7 @@
             // 
             // txtAddPassword
             // 
-            this.txtAddPassword.Location = new System.Drawing.Point(423, 136);
+            this.txtAddPassword.Location = new System.Drawing.Point(402, 171);
             this.txtAddPassword.Name = "txtAddPassword";
             this.txtAddPassword.Size = new System.Drawing.Size(137, 20);
             this.txtAddPassword.TabIndex = 29;
@@ -338,7 +338,7 @@
             // 
             this.lblAddPassword.AutoSize = true;
             this.lblAddPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddPassword.Location = new System.Drawing.Point(215, 130);
+            this.lblAddPassword.Location = new System.Drawing.Point(194, 165);
             this.lblAddPassword.Name = "lblAddPassword";
             this.lblAddPassword.Size = new System.Drawing.Size(104, 25);
             this.lblAddPassword.TabIndex = 28;
@@ -346,7 +346,7 @@
             // 
             // txtAddUserName
             // 
-            this.txtAddUserName.Location = new System.Drawing.Point(423, 97);
+            this.txtAddUserName.Location = new System.Drawing.Point(402, 132);
             this.txtAddUserName.Name = "txtAddUserName";
             this.txtAddUserName.Size = new System.Drawing.Size(137, 20);
             this.txtAddUserName.TabIndex = 27;
@@ -355,7 +355,7 @@
             // 
             this.lblAddUserName.AutoSize = true;
             this.lblAddUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddUserName.Location = new System.Drawing.Point(215, 91);
+            this.lblAddUserName.Location = new System.Drawing.Point(194, 126);
             this.lblAddUserName.Name = "lblAddUserName";
             this.lblAddUserName.Size = new System.Drawing.Size(108, 25);
             this.lblAddUserName.TabIndex = 26;
@@ -365,7 +365,7 @@
             // 
             this.lblAddDepartment.AutoSize = true;
             this.lblAddDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddDepartment.Location = new System.Drawing.Point(215, 207);
+            this.lblAddDepartment.Location = new System.Drawing.Point(194, 242);
             this.lblAddDepartment.Name = "lblAddDepartment";
             this.lblAddDepartment.Size = new System.Drawing.Size(119, 25);
             this.lblAddDepartment.TabIndex = 24;
@@ -375,7 +375,7 @@
             // 
             this.lblAdminRegister.AutoSize = true;
             this.lblAdminRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminRegister.Location = new System.Drawing.Point(283, 14);
+            this.lblAdminRegister.Location = new System.Drawing.Point(249, 23);
             this.lblAdminRegister.Name = "lblAdminRegister";
             this.lblAdminRegister.Size = new System.Drawing.Size(194, 31);
             this.lblAdminRegister.TabIndex = 19;
@@ -386,7 +386,7 @@
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.dgvActivatedUsers);
             this.tabPage3.Controls.Add(this.btnActivatedUsersBack);
-            this.tabPage3.Controls.Add(this.lblUserInfo);
+            this.tabPage3.Controls.Add(this.lblActivatedUsers);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -408,12 +408,12 @@
             this.cDepartment,
             this.cDeactivated,
             this.cLastLogin});
-            this.dgvActivatedUsers.Location = new System.Drawing.Point(9, 34);
+            this.dgvActivatedUsers.Location = new System.Drawing.Point(9, 94);
             this.dgvActivatedUsers.MultiSelect = false;
             this.dgvActivatedUsers.Name = "dgvActivatedUsers";
             this.dgvActivatedUsers.ReadOnly = true;
             this.dgvActivatedUsers.RowHeadersVisible = false;
-            this.dgvActivatedUsers.Size = new System.Drawing.Size(744, 506);
+            this.dgvActivatedUsers.Size = new System.Drawing.Size(744, 398);
             this.dgvActivatedUsers.TabIndex = 189;
             this.dgvActivatedUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdminUserInfo_CellContentClick);
             // 
@@ -470,15 +470,15 @@
             this.btnActivatedUsersBack.UseVisualStyleBackColor = true;
             this.btnActivatedUsersBack.Click += new System.EventHandler(this.btnBackToHome_Click);
             // 
-            // lblUserInfo
+            // lblActivatedUsers
             // 
-            this.lblUserInfo.AutoSize = true;
-            this.lblUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserInfo.Location = new System.Drawing.Point(273, 60);
-            this.lblUserInfo.Name = "lblUserInfo";
-            this.lblUserInfo.Size = new System.Drawing.Size(231, 31);
-            this.lblUserInfo.TabIndex = 20;
-            this.lblUserInfo.Text = "User Information";
+            this.lblActivatedUsers.AutoSize = true;
+            this.lblActivatedUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActivatedUsers.Location = new System.Drawing.Point(249, 23);
+            this.lblActivatedUsers.Name = "lblActivatedUsers";
+            this.lblActivatedUsers.Size = new System.Drawing.Size(221, 31);
+            this.lblActivatedUsers.TabIndex = 20;
+            this.lblActivatedUsers.Text = "Activated Users";
             // 
             // tabPage4
             // 
@@ -616,7 +616,7 @@
             this.uDepartment,
             this.uDeactivated,
             this.uLastLogin});
-            this.dgvUserInfo.Location = new System.Drawing.Point(7, 67);
+            this.dgvUserInfo.Location = new System.Drawing.Point(9, 94);
             this.dgvUserInfo.MultiSelect = false;
             this.dgvUserInfo.Name = "dgvUserInfo";
             this.dgvUserInfo.ReadOnly = true;
@@ -660,7 +660,7 @@
             // 
             this.lblAdminUserInfo.AutoSize = true;
             this.lblAdminUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminUserInfo.Location = new System.Drawing.Point(253, 23);
+            this.lblAdminUserInfo.Location = new System.Drawing.Point(249, 23);
             this.lblAdminUserInfo.Name = "lblAdminUserInfo";
             this.lblAdminUserInfo.Size = new System.Drawing.Size(231, 31);
             this.lblAdminUserInfo.TabIndex = 24;
@@ -731,7 +731,7 @@
         private System.Windows.Forms.Label lblDeactivatedUsers;
         private System.Windows.Forms.ComboBox cBoxAddDepartment;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label lblUserInfo;
+        private System.Windows.Forms.Label lblActivatedUsers;
         private System.Windows.Forms.Button btnActivatedUsersBack;
         private System.Windows.Forms.Button btnAddUserBack;
         private System.Windows.Forms.Button btnDeactivatedUsersBack;
