@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblFinancePanel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pButtons = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnFinanceSelectCustomer = new System.Windows.Forms.Button();
@@ -193,7 +192,6 @@
             this.pWelcome.BackColor = System.Drawing.SystemColors.Control;
             this.pWelcome.Controls.Add(this.lblFinancePanel);
             this.pWelcome.Controls.Add(this.textBox1);
-            this.pWelcome.Controls.Add(this.comboBox1);
             this.pWelcome.Location = new System.Drawing.Point(0, 0);
             this.pWelcome.Name = "pWelcome";
             this.pWelcome.Size = new System.Drawing.Size(1008, 112);
@@ -217,18 +215,6 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(137, 20);
             this.textBox1.TabIndex = 208;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.comboBox1.Location = new System.Drawing.Point(170, -8);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(137, 21);
-            this.comboBox1.TabIndex = 224;
             // 
             // pButtons
             // 
@@ -1318,18 +1304,18 @@
             // 
             // finInvExpDate
             // 
-            dataGridViewCellStyle11.Format = "d";
-            dataGridViewCellStyle11.NullValue = null;
-            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle13.Format = "d";
+            dataGridViewCellStyle13.NullValue = null;
+            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle13;
             this.finInvExpDate.HeaderText = "Expire Date";
             this.finInvExpDate.Name = "finInvExpDate";
             this.finInvExpDate.ReadOnly = true;
             // 
             // InvoiceSendDate
             // 
-            dataGridViewCellStyle12.Format = "d";
-            dataGridViewCellStyle12.NullValue = null;
-            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle14.Format = "d";
+            dataGridViewCellStyle14.NullValue = null;
+            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle14;
             this.InvoiceSendDate.HeaderText = "Invoice Send Date";
             this.InvoiceSendDate.Name = "InvoiceSendDate";
             this.InvoiceSendDate.ReadOnly = true;
@@ -1807,7 +1793,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finProDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.NumericUpDown nudFinLimit;
         private System.Windows.Forms.TextBox txtFinBalance;
         private System.Windows.Forms.DataGridViewButtonColumn finInvView;
