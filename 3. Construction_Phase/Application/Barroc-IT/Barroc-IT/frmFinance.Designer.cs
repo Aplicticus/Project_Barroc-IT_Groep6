@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblFinancePanel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -133,14 +133,6 @@
             this.btnInvoiceSearch = new System.Windows.Forms.Button();
             this.txtSearchInvoice = new System.Windows.Forms.TextBox();
             this.dgvInvoices = new System.Windows.Forms.DataGridView();
-            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPayedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.txtInvoicePaid = new System.Windows.Forms.TextBox();
             this.lblInvoiceInvoicePaid = new System.Windows.Forms.Label();
@@ -175,6 +167,14 @@
             this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finProCompleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPayedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -1262,66 +1262,6 @@
             this.dgvInvoices.TabIndex = 31;
             this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
             // 
-            // finInvView
-            // 
-            this.finInvView.HeaderText = "View";
-            this.finInvView.Name = "finInvView";
-            this.finInvView.ReadOnly = true;
-            this.finInvView.Text = "Open";
-            this.finInvView.UseColumnTextForButtonValue = true;
-            // 
-            // cInvoiceID
-            // 
-            this.cInvoiceID.HeaderText = "cInvoiceID";
-            this.cInvoiceID.Name = "cInvoiceID";
-            this.cInvoiceID.ReadOnly = true;
-            this.cInvoiceID.Visible = false;
-            // 
-            // finInvCompanyName
-            // 
-            this.finInvCompanyName.HeaderText = "Company Name";
-            this.finInvCompanyName.Name = "finInvCompanyName";
-            this.finInvCompanyName.ReadOnly = true;
-            // 
-            // finInvSubject
-            // 
-            this.finInvSubject.HeaderText = "Project Name";
-            this.finInvSubject.Name = "finInvSubject";
-            this.finInvSubject.ReadOnly = true;
-            // 
-            // finInvValue
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.finInvValue.DefaultCellStyle = dataGridViewCellStyle3;
-            this.finInvValue.HeaderText = "Value";
-            this.finInvValue.Name = "finInvValue";
-            this.finInvValue.ReadOnly = true;
-            // 
-            // finInvExpDate
-            // 
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle4;
-            this.finInvExpDate.HeaderText = "Expire Date";
-            this.finInvExpDate.Name = "finInvExpDate";
-            this.finInvExpDate.ReadOnly = true;
-            // 
-            // InvoiceSendDate
-            // 
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle5;
-            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
-            this.InvoiceSendDate.Name = "InvoiceSendDate";
-            this.InvoiceSendDate.ReadOnly = true;
-            // 
-            // cPayedColumn
-            // 
-            this.cPayedColumn.HeaderText = "Payed";
-            this.cPayedColumn.Name = "cPayedColumn";
-            this.cPayedColumn.ReadOnly = true;
-            // 
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
@@ -1680,6 +1620,66 @@
             this.finProCompleted.Name = "finProCompleted";
             this.finProCompleted.ReadOnly = true;
             // 
+            // finInvView
+            // 
+            this.finInvView.HeaderText = "View";
+            this.finInvView.Name = "finInvView";
+            this.finInvView.ReadOnly = true;
+            this.finInvView.Text = "Open";
+            this.finInvView.UseColumnTextForButtonValue = true;
+            // 
+            // cInvoiceID
+            // 
+            this.cInvoiceID.HeaderText = "cInvoiceID";
+            this.cInvoiceID.Name = "cInvoiceID";
+            this.cInvoiceID.ReadOnly = true;
+            this.cInvoiceID.Visible = false;
+            // 
+            // finInvCompanyName
+            // 
+            this.finInvCompanyName.HeaderText = "Company Name";
+            this.finInvCompanyName.Name = "finInvCompanyName";
+            this.finInvCompanyName.ReadOnly = true;
+            // 
+            // finInvSubject
+            // 
+            this.finInvSubject.HeaderText = "Project Name";
+            this.finInvSubject.Name = "finInvSubject";
+            this.finInvSubject.ReadOnly = true;
+            // 
+            // finInvValue
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.finInvValue.DefaultCellStyle = dataGridViewCellStyle3;
+            this.finInvValue.HeaderText = "Value";
+            this.finInvValue.Name = "finInvValue";
+            this.finInvValue.ReadOnly = true;
+            // 
+            // finInvExpDate
+            // 
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle4;
+            this.finInvExpDate.HeaderText = "Expire Date";
+            this.finInvExpDate.Name = "finInvExpDate";
+            this.finInvExpDate.ReadOnly = true;
+            // 
+            // InvoiceSendDate
+            // 
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle5;
+            this.InvoiceSendDate.HeaderText = "Invoice Send Date";
+            this.InvoiceSendDate.Name = "InvoiceSendDate";
+            this.InvoiceSendDate.ReadOnly = true;
+            // 
+            // cPayedColumn
+            // 
+            this.cPayedColumn.HeaderText = "Paid";
+            this.cPayedColumn.Name = "cPayedColumn";
+            this.cPayedColumn.ReadOnly = true;
+            // 
             // frmFinance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1852,14 +1852,6 @@
         private System.Windows.Forms.TextBox txtInvoicePaid;
         private System.Windows.Forms.Label lblInvoiceInvoicePaid;
         private System.Windows.Forms.Label lblAddInvoice;
-        private System.Windows.Forms.DataGridViewButtonColumn finInvView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cInvoiceID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finInvCompanyName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finInvSubject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finInvValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finInvExpDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSendDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPayedColumn;
         private System.Windows.Forms.TextBox txtProjectSubject;
         private System.Windows.Forms.Label lblProjectSubject;
         private System.Windows.Forms.DataGridViewButtonColumn finProView;
@@ -1870,5 +1862,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finProSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn finProCompleted;
+        private System.Windows.Forms.DataGridViewButtonColumn finInvView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cInvoiceID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvSubject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finInvExpDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSendDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPayedColumn;
     }
 }
