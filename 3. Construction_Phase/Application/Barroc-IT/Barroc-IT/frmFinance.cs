@@ -29,6 +29,10 @@ namespace Barroc_IT
             cBoxCustomerSearch.SelectedIndex = 0;
             cBoxProjectSearch.SelectedIndex = 0;
             cBoxSearchInvoice.SelectedIndex = 0;
+            dtpFinInvoiceExpDate.MinDate = DateTime.Now.Date;
+            dtpFinInvoiceExpDate.Value = dtpFinInvoiceExpDate.MinDate;
+            dtpFinInvoiceSentDate.MinDate = DateTime.Now.Date; ;
+            dtpFinInvoiceSentDate.Value = dtpFinInvoiceSentDate.MinDate;
         }
         #endregion
 
