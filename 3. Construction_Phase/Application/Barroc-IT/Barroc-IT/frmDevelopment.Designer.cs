@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblSalesPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
@@ -104,22 +104,15 @@
             this.btnProjectSearch = new System.Windows.Forms.Button();
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
-            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblProjects = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.nudProjectValue = new System.Windows.Forms.NumericUpDown();
             this.btnSelectedProjectBack = new System.Windows.Forms.Button();
             this.dtpDeadlineViewProject = new System.Windows.Forms.DateTimePicker();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.lblProjectCompanyName = new System.Windows.Forms.Label();
             this.txtProjectSubject = new System.Windows.Forms.TextBox();
             this.lblProjectSubject = new System.Windows.Forms.Label();
-            this.txtProjectValue = new System.Windows.Forms.TextBox();
             this.lblProjectValue = new System.Windows.Forms.Label();
             this.lblProjectDeadline = new System.Windows.Forms.Label();
             this.btnArchiveProject = new System.Windows.Forms.Button();
@@ -141,6 +134,13 @@
             this.lblAddProjectName = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
+            this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -152,6 +152,7 @@
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudProjectValue)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numProjectAddValue)).BeginInit();
             this.SuspendLayout();
@@ -932,59 +933,6 @@
             this.dgvProjects.TabIndex = 23;
             this.dgvProjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjects_CellContentClick);
             // 
-            // cProjectViewButton
-            // 
-            this.cProjectViewButton.HeaderText = "View";
-            this.cProjectViewButton.Name = "cProjectViewButton";
-            this.cProjectViewButton.ReadOnly = true;
-            this.cProjectViewButton.Text = "Opem";
-            this.cProjectViewButton.UseColumnTextForButtonValue = true;
-            this.cProjectViewButton.Width = 128;
-            // 
-            // cProjectID
-            // 
-            this.cProjectID.HeaderText = "ProjectID";
-            this.cProjectID.Name = "cProjectID";
-            this.cProjectID.ReadOnly = true;
-            this.cProjectID.Visible = false;
-            // 
-            // cProjectCustomerID
-            // 
-            this.cProjectCustomerID.HeaderText = "Company Name";
-            this.cProjectCustomerID.Name = "cProjectCustomerID";
-            this.cProjectCustomerID.ReadOnly = true;
-            this.cProjectCustomerID.Width = 128;
-            // 
-            // cProjectName
-            // 
-            this.cProjectName.HeaderText = "Project Name";
-            this.cProjectName.Name = "cProjectName";
-            this.cProjectName.ReadOnly = true;
-            this.cProjectName.Width = 128;
-            // 
-            // cProjectDeadline
-            // 
-            dataGridViewCellStyle2.Format = "d";
-            this.cProjectDeadline.DefaultCellStyle = dataGridViewCellStyle2;
-            this.cProjectDeadline.HeaderText = "Deadline";
-            this.cProjectDeadline.Name = "cProjectDeadline";
-            this.cProjectDeadline.ReadOnly = true;
-            this.cProjectDeadline.Width = 128;
-            // 
-            // cProjectSubject
-            // 
-            this.cProjectSubject.HeaderText = "Subject";
-            this.cProjectSubject.Name = "cProjectSubject";
-            this.cProjectSubject.ReadOnly = true;
-            this.cProjectSubject.Width = 128;
-            // 
-            // cProjectValue
-            // 
-            this.cProjectValue.HeaderText = "Value";
-            this.cProjectValue.Name = "cProjectValue";
-            this.cProjectValue.ReadOnly = true;
-            this.cProjectValue.Width = 128;
-            // 
             // lblProjects
             // 
             this.lblProjects.AutoSize = true;
@@ -998,13 +946,13 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.nudProjectValue);
             this.tabPage5.Controls.Add(this.btnSelectedProjectBack);
             this.tabPage5.Controls.Add(this.dtpDeadlineViewProject);
             this.tabPage5.Controls.Add(this.txtProjectName);
             this.tabPage5.Controls.Add(this.lblProjectCompanyName);
             this.tabPage5.Controls.Add(this.txtProjectSubject);
             this.tabPage5.Controls.Add(this.lblProjectSubject);
-            this.tabPage5.Controls.Add(this.txtProjectValue);
             this.tabPage5.Controls.Add(this.lblProjectValue);
             this.tabPage5.Controls.Add(this.lblProjectDeadline);
             this.tabPage5.Controls.Add(this.btnArchiveProject);
@@ -1018,6 +966,25 @@
             this.tabPage5.Size = new System.Drawing.Size(771, 586);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "selectedproject";
+            // 
+            // nudProjectValue
+            // 
+            this.nudProjectValue.DecimalPlaces = 2;
+            this.nudProjectValue.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudProjectValue.Location = new System.Drawing.Point(203, 177);
+            this.nudProjectValue.Maximum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            0});
+            this.nudProjectValue.Name = "nudProjectValue";
+            this.nudProjectValue.Size = new System.Drawing.Size(137, 20);
+            this.nudProjectValue.TabIndex = 139;
+            this.nudProjectValue.ThousandsSeparator = true;
             // 
             // btnSelectedProjectBack
             // 
@@ -1075,14 +1042,6 @@
             this.lblProjectSubject.TabIndex = 133;
             this.lblProjectSubject.Text = "Subject:";
             // 
-            // txtProjectValue
-            // 
-            this.txtProjectValue.Location = new System.Drawing.Point(203, 174);
-            this.txtProjectValue.Name = "txtProjectValue";
-            this.txtProjectValue.ReadOnly = true;
-            this.txtProjectValue.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectValue.TabIndex = 132;
-            // 
             // lblProjectValue
             // 
             this.lblProjectValue.AutoSize = true;
@@ -1130,9 +1089,9 @@
             this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectName.Location = new System.Drawing.Point(28, 80);
             this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Size = new System.Drawing.Size(70, 25);
+            this.lblProjectName.Size = new System.Drawing.Size(135, 25);
             this.lblProjectName.TabIndex = 76;
-            this.lblProjectName.Text = "Name:";
+            this.lblProjectName.Text = "Project Name:";
             // 
             // txtProjectCompanyName
             // 
@@ -1306,6 +1265,59 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Add Project";
             // 
+            // cProjectViewButton
+            // 
+            this.cProjectViewButton.HeaderText = "View";
+            this.cProjectViewButton.Name = "cProjectViewButton";
+            this.cProjectViewButton.ReadOnly = true;
+            this.cProjectViewButton.Text = "Open";
+            this.cProjectViewButton.UseColumnTextForButtonValue = true;
+            this.cProjectViewButton.Width = 128;
+            // 
+            // cProjectID
+            // 
+            this.cProjectID.HeaderText = "ProjectID";
+            this.cProjectID.Name = "cProjectID";
+            this.cProjectID.ReadOnly = true;
+            this.cProjectID.Visible = false;
+            // 
+            // cProjectCustomerID
+            // 
+            this.cProjectCustomerID.HeaderText = "Company Name";
+            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            this.cProjectCustomerID.ReadOnly = true;
+            this.cProjectCustomerID.Width = 128;
+            // 
+            // cProjectName
+            // 
+            this.cProjectName.HeaderText = "Project Name";
+            this.cProjectName.Name = "cProjectName";
+            this.cProjectName.ReadOnly = true;
+            this.cProjectName.Width = 128;
+            // 
+            // cProjectDeadline
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            this.cProjectDeadline.DefaultCellStyle = dataGridViewCellStyle1;
+            this.cProjectDeadline.HeaderText = "Deadline";
+            this.cProjectDeadline.Name = "cProjectDeadline";
+            this.cProjectDeadline.ReadOnly = true;
+            this.cProjectDeadline.Width = 128;
+            // 
+            // cProjectSubject
+            // 
+            this.cProjectSubject.HeaderText = "Subject";
+            this.cProjectSubject.Name = "cProjectSubject";
+            this.cProjectSubject.ReadOnly = true;
+            this.cProjectSubject.Width = 128;
+            // 
+            // cProjectValue
+            // 
+            this.cProjectValue.HeaderText = "Value";
+            this.cProjectValue.Name = "cProjectValue";
+            this.cProjectValue.ReadOnly = true;
+            this.cProjectValue.Width = 128;
+            // 
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1338,6 +1350,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudProjectValue)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numProjectAddValue)).EndInit();
@@ -1412,7 +1425,6 @@
         private System.Windows.Forms.Label lblProjectCompanyName;
         private System.Windows.Forms.TextBox txtProjectSubject;
         private System.Windows.Forms.Label lblProjectSubject;
-        private System.Windows.Forms.TextBox txtProjectValue;
         private System.Windows.Forms.Label lblProjectValue;
         private System.Windows.Forms.Label lblProjectDeadline;
         private System.Windows.Forms.Button btnArchiveProject;
@@ -1452,6 +1464,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
+        private System.Windows.Forms.NumericUpDown nudProjectValue;
         private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
