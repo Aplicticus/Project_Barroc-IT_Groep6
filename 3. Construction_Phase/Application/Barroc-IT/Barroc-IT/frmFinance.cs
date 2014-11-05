@@ -269,6 +269,53 @@ namespace Barroc_IT
             DataTable invoices = dthandler.ExecuteQuery(sql, collection);
             dthandler.AddItemsToDataGridView(invoices, dgvInvoices, "finInvView");
         }
+        // Load Details
+        private void LoadCustomerDetails(DataTable dtCustomers, DataTable dtProjectsCount, DataTable dtSalesCount)
+        {
+            DataRow tbl_Customers_Rows = dtCustomers.Rows[0];
+            DataRow tbl_Projects_Rows = dtProjectsCount.Rows[0];
+            DataRow tbl_Invoices_Sales_Rows_Count = dtSalesCount.Rows[0];
+            txtCompanyName.Text = tbl_Customers_Rows["COMPANYNAME"].ToString();
+            txtAddress1.Text = tbl_Customers_Rows["ADDRESS1"].ToString();
+            txtPostalCode1.Text = tbl_Customers_Rows["POSTALCODE1"].ToString();
+            txtPhoneNumber1.Text = tbl_Customers_Rows["PHONE_NR1"].ToString();
+            txtFaxNumber.Text = tbl_Customers_Rows["FAXNUMBER"].ToString();
+            txtEmail.Text = tbl_Customers_Rows["EMAIL"].ToString();
+            txtContactPerson.Text = tbl_Customers_Rows["CONTACTPERSON"].ToString();
+            txtFinAccountID.Text = tbl_Customers_Rows["ACC_ID"].ToString();
+            txtFinBalance.Text = tbl_Customers_Rows["BALANCE"].ToString();
+            nudFinLimit.Text = tbl_Customers_Rows["LIMIT"].ToString();
+            txtFinLedgerID.Text = tbl_Customers_Rows["LEDGER_ID"].ToString();
+            txtFinBTWCode.Text = tbl_Customers_Rows["BTW_CODE"].ToString();
+            cbFinBKR.Text = tbl_Customers_Rows["BKR"].ToString();
+            txtFinProjects.Text = tbl_Projects_Rows[0].ToString();
+            txtFinSales.Text = tbl_Invoices_Sales_Rows_Count[0].ToString();
+        }
+        private void LoadProjectDetails(DataTable dtCustomers, DataTable dtInvoicesCount)
+        {
+            DataRow tbl_Customers_Rows = dtCustomers.Rows[0];
+            DataRow tbl_Invoices_Rows_Count = dtInvoicesCount.Rows[0];
+            txtProjectCompanyName.Text = tbl_Customers_Rows["COMPANYNAME"].ToString();
+            DateTime projectDeadline = DateTime.Parse(tbl_Customers_Rows["DEADLINE"].ToString());
+            txtProjectName.Text = tbl_Customers_Rows["NAME"].ToString();
+            dtpDeadlineViewProject.Value = projectDeadline;
+            txtProjectSubject.Text = tbl_Customers_Rows["SUBJECT"].ToString();
+            txtProjectInvoices.Text = tbl_Invoices_Rows_Count[0].ToString();
+        }
+        private void LoadInvoiceDetails(DataTable dtInvoice)
+        {
+            DataRow tbl_Invoice_Rows = dtInvoice.Rows[0];
+            txtInvoiceCompanyName.Text = tbl_Invoice_Rows["COMPANYNAME"].ToString();
+            txtInvoiceSubject.Text = tbl_Invoice_Rows["SUBJECT"].ToString();
+            txtInvoicePaid.Text = tbl_Invoice_Rows["PAID"].ToString();
+            decimal nudInvoiceValue = decimal.Parse(tbl_Invoice_Rows["INVOICE_VALUE"].ToString());
+            nudSelectedInvoiceValue.Value = nudInvoiceValue;
+            DateTime InvoiceExpireDate = DateTime.Parse(tbl_Invoice_Rows["INVOICE_END_DATE"].ToString());
+            dtpSelectedInvoiceExpireDate.Value = InvoiceExpireDate;
+            DateTime InvoiceSendDate = DateTime.Parse(tbl_Invoice_Rows["INVOICE_SEND"].ToString());
+            dtpSelectedInvoiceSendDate.Value = InvoiceSendDate;
+        }
+
         #endregion
 
         #region Reloads
@@ -422,55 +469,6 @@ namespace Barroc_IT
             {
                 return false;
             }
-        }
-        #endregion
-
-        #region Load Details
-        // Load Details
-        private void LoadCustomerDetails(DataTable dtCustomers, DataTable dtProjectsCount, DataTable dtSalesCount)
-        {
-            DataRow tbl_Customers_Rows = dtCustomers.Rows[0];
-            DataRow tbl_Projects_Rows = dtProjectsCount.Rows[0];
-            DataRow tbl_Invoices_Sales_Rows_Count = dtSalesCount.Rows[0];
-            txtCompanyName.Text = tbl_Customers_Rows["COMPANYNAME"].ToString();
-            txtAddress1.Text = tbl_Customers_Rows["ADDRESS1"].ToString();
-            txtPostalCode1.Text = tbl_Customers_Rows["POSTALCODE1"].ToString();
-            txtPhoneNumber1.Text = tbl_Customers_Rows["PHONE_NR1"].ToString();
-            txtFaxNumber.Text = tbl_Customers_Rows["FAXNUMBER"].ToString();
-            txtEmail.Text = tbl_Customers_Rows["EMAIL"].ToString();
-            txtContactPerson.Text = tbl_Customers_Rows["CONTACTPERSON"].ToString();
-            txtFinAccountID.Text = tbl_Customers_Rows["ACC_ID"].ToString();
-            txtFinBalance.Text = tbl_Customers_Rows["BALANCE"].ToString();
-            nudFinLimit.Text = tbl_Customers_Rows["LIMIT"].ToString();
-            txtFinLedgerID.Text = tbl_Customers_Rows["LEDGER_ID"].ToString();
-            txtFinBTWCode.Text = tbl_Customers_Rows["BTW_CODE"].ToString();
-            cbFinBKR.Text = tbl_Customers_Rows["BKR"].ToString();            
-            txtFinProjects.Text = tbl_Projects_Rows[0].ToString();
-            txtFinSales.Text = tbl_Invoices_Sales_Rows_Count[0].ToString();
-        }
-        private void LoadProjectDetails(DataTable dtCustomers, DataTable dtInvoicesCount)
-        {
-            DataRow tbl_Customers_Rows = dtCustomers.Rows[0];
-            DataRow tbl_Invoices_Rows_Count = dtInvoicesCount.Rows[0];
-            txtProjectCompanyName.Text = tbl_Customers_Rows["COMPANYNAME"].ToString();
-            DateTime projectDeadline = DateTime.Parse(tbl_Customers_Rows["DEADLINE"].ToString());            
-            txtProjectName.Text = tbl_Customers_Rows["NAME"].ToString();
-            dtpDeadlineViewProject.Value = projectDeadline;
-            txtProjectSubject.Text = tbl_Customers_Rows["SUBJECT"].ToString();
-            txtProjectInvoices.Text = tbl_Invoices_Rows_Count[0].ToString();
-        }
-        private void LoadInvoiceDetails(DataTable dtInvoice)
-        {
-            DataRow tbl_Invoice_Rows = dtInvoice.Rows[0];
-            txtInvoiceCompanyName.Text = tbl_Invoice_Rows["COMPANYNAME"].ToString();
-            txtInvoiceSubject.Text = tbl_Invoice_Rows["SUBJECT"].ToString();
-            txtInvoicePaid.Text = tbl_Invoice_Rows["PAID"].ToString();
-            decimal nudInvoiceValue = decimal.Parse(tbl_Invoice_Rows["INVOICE_VALUE"].ToString());
-            nudSelectedInvoiceValue.Value = nudInvoiceValue;
-            DateTime InvoiceExpireDate = DateTime.Parse(tbl_Invoice_Rows["INVOICE_END_DATE"].ToString());           
-            dtpSelectedInvoiceExpireDate.Value = InvoiceExpireDate;
-            DateTime InvoiceSendDate = DateTime.Parse(tbl_Invoice_Rows["INVOICE_SEND"].ToString());            
-            dtpSelectedInvoiceSendDate.Value = InvoiceSendDate;
         }
         #endregion
 
