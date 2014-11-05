@@ -14,7 +14,7 @@ namespace Barroc_IT
         private SqlQueryHandler sqlhandler;
         private DataTableHandler dthandler;
         private int selectedCustomer;
-        private int selectedAppoinment;
+        private int selectedAppointment;
         private bool closing = false;
         #endregion
 
@@ -256,7 +256,50 @@ namespace Barroc_IT
         }
         private void btnEditAppointmentFields_Click(object sender, EventArgs e)
         {
-
+            if (btnEditAppointmentFields.Text == "Edit Fields")
+            {
+                txtApoInternalContact.ReadOnly = false;
+                txtApoSubject.ReadOnly = false;
+                dtpAppointmentDate.Enabled = true;
+                btnEditAppointmentFields.Text = "Save Changes";
+            }
+            else if (btnEditAppointmentFields.Text == "Save Changes")
+            {
+                if (txtApoInternalContact.Text.Length > 0)
+                {
+                    if (txtApoSubject.Text.Length > 0)
+                    {
+                        if (dtpAppointmentDate.Value > dtpAppointmentDate.MinDate)
+                        {
+                            if (UpdateAppointment(selectedCustomer) == true)
+                            {
+                                MessageBox.Show("Appoinment succesfully modified!");
+                                ReloadCustomers();
+                            }
+                            else
+                            {
+                                MessageBox.Show("There is a problem with modifying the appointment!");
+                            }
+                            txtApoInternalContact.ReadOnly = true;
+                            txtApoSubject.ReadOnly = true;
+                            dtpAppointmentDate.Enabled = false;
+                            btnEditAppointmentFields.Text = "Edit Fields";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Filled date is incorrect. Please check the date.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("The Subject Field is empty! Please fill in.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The Internal Contact field is empty! Please fill in.");
+                }
+            }
         }
         private void btnCustomerSearch_Click(object sender, EventArgs e)
         {
@@ -286,6 +329,12 @@ namespace Barroc_IT
                 dthandler.AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
         }
+        private void btnArchiveAppointment_Click(object sender, EventArgs e)
+        {
+            UpdateAccomplish(selectedCustomer, selectedAppointment, true);
+            LoadAppointments();
+            tbContr.SelectedIndex = 3;
+        }
         // Cell Content Clicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -309,17 +358,18 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvAppointments.Columns["cAppointmentViewButton"].Index)
             {
-                selectedAppoinment = int.Parse(dgvAppointments.Rows[e.RowIndex].Cells["cAppointmentID"].Value.ToString());
+                selectedAppointment = int.Parse(dgvAppointments.Rows[e.RowIndex].Cells["cAppointmentID"].Value.ToString());
                 ReloadAppointments();
                 tbContr.SelectedIndex = 4;
-                int temp = 0;
-                if (txtCusAppointment.Text != temp.ToString())
+                if (txtApoAccomplished.Text == "True")
                 {
-                    btnViewAppointment.Enabled = true;
+                    btnEditAppointmentFields.Enabled = false;
+                    btnArchiveAppointment.Enabled = false;
                 }
                 else
                 {
-                    btnViewAppointment.Enabled = false;
+                    btnEditAppointmentFields.Enabled = true;
+                    btnArchiveAppointment.Enabled = true;
                 }
             }
         }
@@ -453,6 +503,46 @@ namespace Barroc_IT
                 return false;
             }
         }
+        private bool UpdateAppointment(int customerID)
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.updateAppointment);
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("Int_Contact", txtApoInternalContact.Text));
+            cmd.Parameters.Add(new SqlParameter("Subject", txtApoSubject.Text));
+            cmd.Parameters.Add(new SqlParameter("Appoin_Date", dtpAppointmentDate.Value));
+            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool UpdateAccomplish(int customerID, int appointmentID, bool accomplished)
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.updateAccomplish);
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("Accomplished", accomplished));
+            cmd.Parameters.Add(new SqlParameter("customerID", customerID));
+            cmd.Parameters.Add(new SqlParameter("appointmentID", appointmentID));
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
         #endregion
 
         #region Loaders
@@ -491,7 +581,7 @@ namespace Barroc_IT
         private void ReloadAppointments()
         {
             string sqlCustomers = sqlhandler.GetQuery(Query.loadAppointmentDetails);
-            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("appointmentID", selectedAppoinment) };
+            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("appointmentID", selectedAppointment) };
             DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
             LoadAppointmentDetails(customerDetails);
         }
@@ -566,6 +656,7 @@ namespace Barroc_IT
             txtApoSubject.Text = DRCusDet["SUBJECT"].ToString();
             DateTime appointmentDate = DateTime.Parse(DRCusDet["APPOIN_DATE"].ToString());
             dtpAppointmentDate.Value = appointmentDate;
+            txtApoAccomplished.Text = DRCusDet["ACCOMPLISHED"].ToString();
         }
         #endregion
 
@@ -630,5 +721,5 @@ namespace Barroc_IT
             this.Close();
         }
         #endregion       
-    }
+        }
 }
