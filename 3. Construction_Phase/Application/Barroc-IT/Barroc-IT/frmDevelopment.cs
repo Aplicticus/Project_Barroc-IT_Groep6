@@ -8,6 +8,10 @@ namespace Barroc_IT
     public partial class frmDevelopment : Form
     {
         // Add check functions
+        // 1: Add Project (done)
+        // 2: Update Project (done)
+        // 3: Update CustomerDevInfo 
+
         #region Properties
         private DatabaseHandler handler;
         private frmLogin loginForm;
@@ -39,15 +43,43 @@ namespace Barroc_IT
         }
         private void btnCreateProject_Click(object sender, EventArgs e)
         {
-            if (AddProject() == true)
+            if (txtProjectAddName.Text.Length > 0)
             {
-                MessageBox.Show("Project succesfully added!");
-                LoadProjects();
-                tbContr.SelectedIndex = 3;
+                if (dtProjectAddDeadline.Value > dtProjectAddDeadline.MinDate)
+                {
+                    if (txtProjectAddSubject.Text.Length > 0)
+                    {
+                        if(numProjectAddValue.Value > 0)
+                        {
+                            if (AddProject() == true)
+                            {
+                                MessageBox.Show("Project succesfully added!");
+                                LoadProjects();
+                                tbContr.SelectedIndex = 3;
+                            }
+                            else
+                            {
+                                MessageBox.Show("There is a problem with adding a project!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Value! Please check the value.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("The Subject field is empty! Please fill in.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The date is invalid. Please check the date.");
+                }
             }
             else
             {
-                MessageBox.Show("There is a problem with adding a project!");
+                MessageBox.Show("The Project Name field is empty! Please fill in.");
             }
         }
         private void btnAddProjectCustomer_Click(object sender, EventArgs e)
@@ -69,19 +101,48 @@ namespace Barroc_IT
                 txtProjectName.ReadOnly = false;
                 dtpDeadlineViewProject.Enabled = true;
                 txtProjectSubject.ReadOnly = false;
-                txtProjectValue.ReadOnly = false;
+                nudProjectValue.ReadOnly = false;
                 btnEditProject.Text = "Save Changes";
             }
             else if (btnEditProject.Text == "Save Changes")
             {
-                UpdateProject(selectedProject);
-                string sql = sqlhandler.GetQuery(Query.updateFinProjectInfo);
-                SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
-                dthandler.ExecuteQuery(sql, collection);
-                txtProjectName.ReadOnly = true;
-                txtProjectSubject.ReadOnly = true;
-                txtProjectValue.ReadOnly = true;
-                btnEditProject.Text = "Edit Fields";
+                if (txtProjectName.Text.Length > 0)
+                {
+                    if (dtProjectAddDeadline.Value > dtProjectAddDeadline.MinDate)
+                    {
+                        if (txtProjectSubject.Text.Length > 0)
+                        {
+                            if (nudProjectValue.Value > 0)
+                            {
+                                UpdateProject(selectedProject);
+                                txtProjectName.ReadOnly = true;
+                                txtProjectSubject.ReadOnly = true;
+                                nudProjectValue.ReadOnly = true;
+                                btnEditProject.Text = "Edit Fields";
+                            }
+                            else
+                            {
+                                MessageBox.Show("The Value field is empty or 0. Please fill in.");
+                                nudProjectValue.ResetText();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("The Subject field is empty! Please fill in.");
+                            txtProjectSubject.ResetText();
+                        }                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("The Date field is filled incorrect. Please check the date.");
+                        dtProjectAddDeadline.ResetText();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The Project Name field is empty! Please fill in.");
+                    txtProjectName.ResetText();
+                }                              
             }
         }
         private void btnViewProjects_Click(object sender, EventArgs e)
@@ -131,7 +192,6 @@ namespace Barroc_IT
         {
             if (btnEditFields.Text == "Edit Fields")
             {
-                //Change fields readonly so they can be edited
                 txtMaintenance.ReadOnly = false;
                 txtOpenProject.ReadOnly = false;
                 txtApplications.ReadOnly = false;
@@ -142,6 +202,9 @@ namespace Barroc_IT
             }
             else if (btnEditFields.Text == "Save Changes")
             {
+
+
+
                 if (UpdateCustomer(selectedCustomer) == true && UpdateAppointment(selectedCustomer))
                 {
                     MessageBox.Show("Succesfully saved changes!");
@@ -150,7 +213,6 @@ namespace Barroc_IT
                 {
                     MessageBox.Show("There was an error saving changes!");
                 }
-                //Set fields that could be changed to readOnly
                 txtMaintenance.ReadOnly = true;
                 txtOpenProject.ReadOnly = true;
                 txtApplications.ReadOnly = true;
@@ -295,7 +357,7 @@ namespace Barroc_IT
             txtProjectName.Text = ProRow["NAME"].ToString();
             dtpDeadlineViewProject.Value = projectDeadline;
             txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
-            txtProjectValue.Text = ProRow["VALUE"].ToString();
+            nudProjectValue.Text = ProRow["VALUE"].ToString();
         }
         #endregion
 
@@ -328,7 +390,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("ProjectName", txtProjectName.Text));
             cmd.Parameters.Add(new SqlParameter("Deadline", dtpDeadlineViewProject.Value.Date));
             cmd.Parameters.Add(new SqlParameter("Subject", txtProjectSubject.Text));
-            cmd.Parameters.Add(new SqlParameter("Value", txtProjectValue.Text));
+            cmd.Parameters.Add(new SqlParameter("Value", nudProjectValue.Value));
             cmd.Parameters.Add(new SqlParameter("ProjectID", projectID));
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
