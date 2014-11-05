@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblSalesPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
@@ -1885,6 +1886,48 @@
             this.txtApoAccomplished.ReadOnly = true;
             this.txtApoAccomplished.Size = new System.Drawing.Size(137, 20);
             this.txtApoAccomplished.TabIndex = 159;
+            // 
+            // cAppointmentViewButton
+            // 
+            this.cAppointmentViewButton.HeaderText = "View";
+            this.cAppointmentViewButton.Name = "cAppointmentViewButton";
+            this.cAppointmentViewButton.ReadOnly = true;
+            this.cAppointmentViewButton.Text = "Open";
+            this.cAppointmentViewButton.UseColumnTextForButtonValue = true;
+            // 
+            // cAppointmentID
+            // 
+            this.cAppointmentID.HeaderText = "cAppointmentID";
+            this.cAppointmentID.Name = "cAppointmentID";
+            this.cAppointmentID.ReadOnly = true;
+            this.cAppointmentID.Visible = false;
+            // 
+            // cAppointmentCompanyName
+            // 
+            this.cAppointmentCompanyName.HeaderText = "CompanyName";
+            this.cAppointmentCompanyName.Name = "cAppointmentCompanyName";
+            this.cAppointmentCompanyName.ReadOnly = true;
+            // 
+            // cAppointmentDate
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.cAppointmentDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.cAppointmentDate.HeaderText = "Appointment Date";
+            this.cAppointmentDate.Name = "cAppointmentDate";
+            this.cAppointmentDate.ReadOnly = true;
+            // 
+            // cApppointmentSubject
+            // 
+            this.cApppointmentSubject.HeaderText = "Subject";
+            this.cApppointmentSubject.Name = "cApppointmentSubject";
+            this.cApppointmentSubject.ReadOnly = true;
+            // 
+            // cAppointmentInternalContact
+            // 
+            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
+            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
+            this.cAppointmentInternalContact.ReadOnly = true;
             // 
             // frmSales
             // 
