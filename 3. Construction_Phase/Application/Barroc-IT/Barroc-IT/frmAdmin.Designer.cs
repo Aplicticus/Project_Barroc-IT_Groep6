@@ -314,6 +314,7 @@
             // 
             this.txtAddRepeatPassword.Location = new System.Drawing.Point(423, 173);
             this.txtAddRepeatPassword.Name = "txtAddRepeatPassword";
+            this.txtAddRepeatPassword.PasswordChar = '*';
             this.txtAddRepeatPassword.Size = new System.Drawing.Size(137, 20);
             this.txtAddRepeatPassword.TabIndex = 31;
             // 
@@ -331,6 +332,7 @@
             // 
             this.txtAddPassword.Location = new System.Drawing.Point(423, 136);
             this.txtAddPassword.Name = "txtAddPassword";
+            this.txtAddPassword.PasswordChar = '*';
             this.txtAddPassword.Size = new System.Drawing.Size(137, 20);
             this.txtAddPassword.TabIndex = 29;
             // 

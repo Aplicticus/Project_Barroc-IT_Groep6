@@ -78,7 +78,7 @@ namespace Barroc_IT
                         {
                             if (txtFinLedgerID.Text.Length > 0 && txtFinLedgerID.Text.Length < 10)
                             {
-                                SetBool();
+                                SetBKR();
                                 UpdateCustomer(selectedCustomer);
                             }
                             else
@@ -108,7 +108,7 @@ namespace Barroc_IT
                 txtFinLedgerID.ReadOnly = true;
                 txtFinBTWCode.ReadOnly = true;
                 cbFinBKR.Enabled = false;
-                GetBool();
+                GetBKR();
                 btnEditFields.Text = "Edit Fields";
             }
         }        
@@ -259,7 +259,7 @@ namespace Barroc_IT
             DataTable dtProjectsCount = dthandler.ExecuteQuery(sqlProjects, collection);
 
             LoadCustomerDetails(dtCustomers, dtProjectsCount, dtInvoicesCount);            
-            GetBool();
+            GetBKR();
         }
         private void ReloadProjects()
         {            
@@ -304,8 +304,8 @@ namespace Barroc_IT
         }
         #endregion
 
-        #region Get & Set Bool ( yes / no, true / false )
-        private void GetBool()
+        #region Get & Set BKR ( yes / no, true / false )
+        private void GetBKR()
         {
             if (cbFinBKR.Text == "True" || cbFinBKR.Text == "1")
             {
@@ -316,7 +316,7 @@ namespace Barroc_IT
                 cbFinBKR.Text = "No";
             }            
         }
-        private void SetBool()
+        private void SetBKR()
         {
             if (cbFinBKR.Text == "Yes")
             {
