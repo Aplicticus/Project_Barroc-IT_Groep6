@@ -180,7 +180,7 @@ namespace Barroc_IT
                         selectedItem = SearchChoice.CompanyName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer,0);
 
                 dthandler.AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
@@ -259,7 +259,7 @@ namespace Barroc_IT
             string sql = sqlhandler.GetQuery(Query.loadProjects);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };  
             DataTable projects = dthandler.ExecuteQuery(sql, collection);
-            dthandler.AddItemsToDataGridView(projects, dgvProjects, "finProView");
+            dthandler.AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
         }
         private void LoadInvoices()
         {
@@ -267,7 +267,7 @@ namespace Barroc_IT
             string sql = sqlhandler.GetQuery(Query.loadInvoices);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject) };  
             DataTable invoices = dthandler.ExecuteQuery(sql, collection);
-            dthandler.AddItemsToDataGridView(invoices, dgvInvoices, "finInvView");
+            dthandler.AddItemsToDataGridView(invoices, dgvInvoices, "cInvoiceID");
         }
         // Load Details
         private void LoadCustomerDetails(DataTable dtCustomers, DataTable dtProjectsCount, DataTable dtSalesCount)
@@ -300,6 +300,7 @@ namespace Barroc_IT
             txtProjectName.Text = tbl_Customers_Rows["NAME"].ToString();
             dtpDeadlineViewProject.Value = projectDeadline;
             txtProjectSubject.Text = tbl_Customers_Rows["SUBJECT"].ToString();
+            txtProjectValue.Text = tbl_Customers_Rows["VALUE"].ToString();
             txtProjectInvoices.Text = tbl_Invoices_Rows_Count[0].ToString();
         }
         private void LoadInvoiceDetails(DataTable dtInvoice)
@@ -492,5 +493,34 @@ namespace Barroc_IT
             }
         }
         #endregion
+
+        private void btnInvoiceSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearchInvoice.Text.Length > 0)
+            {
+                SearchChoice selectedItem;
+                switch (cBoxSearchInvoice.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = SearchChoice.InvoiceCompanyName;
+                        break;
+                    case "Project Name":
+                        selectedItem = SearchChoice.InvoiceProjectName;
+                        break;
+                    case "Value":
+                        selectedItem = SearchChoice.InvoiceValue;
+                        break;
+                    default:
+                        selectedItem = SearchChoice.InvoiceCompanyName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtSearchInvoice.Text, selectedCustomer, selectedProject);
+                dthandler.AddItemsToDataGridView(resultOfSearch, dgvInvoices, "cInvoiceID");
+            }
+            else
+            {
+                LoadInvoices();
+            }
+        }
     }
 }
