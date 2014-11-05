@@ -191,10 +191,7 @@ namespace Barroc_IT
         private void btnEditFields_Click(object sender, EventArgs e)
         {
             if (btnEditFields.Text == "Edit Fields")
-            {
-                txtMaintenance.ReadOnly = false;
-                txtOpenProject.ReadOnly = false;
-                txtApplications.ReadOnly = false;
+            {       
                 txtHardware.ReadOnly = false;
                 txtSoftware.ReadOnly = false;
                 txtInternalContact.ReadOnly = false;
@@ -212,10 +209,7 @@ namespace Barroc_IT
                 else
                 {
                     MessageBox.Show("There was an error saving changes!");
-                }
-                txtMaintenance.ReadOnly = true;
-                txtOpenProject.ReadOnly = true;
-                txtApplications.ReadOnly = true;
+                }     
                 txtHardware.ReadOnly = true;
                 txtSoftware.ReadOnly = true;
                 txtInternalContact.ReadOnly = true;
@@ -336,7 +330,7 @@ namespace Barroc_IT
             txtContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
             txtApplications.Text = CusRow["APPLICATIONS"].ToString();
             txtMaintenance.Text = CusRow["MAINT_CONTR"].ToString();
-            txtOpenProject.Text = CusRow["OPEN_PROJ"].ToString();
+            txtOpenProjects.Text = CusRow["OPEN_PROJ"].ToString();
             txtHardware.Text = CusRow["HARDWARE"].ToString();
             txtSoftware.Text = CusRow["SOFTWARE"].ToString();
             DataRow ApoRow = ApoTable.Rows[0];
@@ -366,8 +360,6 @@ namespace Barroc_IT
         {
             string sqlQueryCustomers = sqlhandler.GetQuery(Query.updateDevCustomerInfo);
             SqlCommand cmd = new SqlCommand(sqlQueryCustomers, handler.GetConnection());
-            cmd.Parameters.Add(new SqlParameter("MaintenanceContract", txtMaintenance.Text));
-            cmd.Parameters.Add(new SqlParameter("OpenProjects", txtOpenProject.Text));
             cmd.Parameters.Add(new SqlParameter("Hardware", txtHardware.Text));
             cmd.Parameters.Add(new SqlParameter("Software", txtSoftware.Text));
             cmd.Parameters.Add(new SqlParameter("customerID", customerID));
