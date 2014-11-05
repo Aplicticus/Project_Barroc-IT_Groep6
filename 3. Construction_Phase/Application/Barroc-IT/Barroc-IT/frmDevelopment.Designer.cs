@@ -134,6 +134,8 @@
             this.lblAddProjectName = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
+            this.lblCompleted = new System.Windows.Forms.Label();
+            this.txtCompleted = new System.Windows.Forms.TextBox();
             this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -141,6 +143,7 @@
             this.cProjectDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Completed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -913,6 +916,7 @@
             // 
             this.dgvProjects.AllowUserToAddRows = false;
             this.dgvProjects.AllowUserToDeleteRows = false;
+            this.dgvProjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProjects.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProjects.ColumnHeadersHeight = 34;
             this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -923,7 +927,8 @@
             this.cProjectName,
             this.cProjectDeadline,
             this.cProjectSubject,
-            this.cProjectValue});
+            this.cProjectValue,
+            this.Completed});
             this.dgvProjects.Location = new System.Drawing.Point(0, 39);
             this.dgvProjects.MultiSelect = false;
             this.dgvProjects.Name = "dgvProjects";
@@ -946,6 +951,8 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.txtCompleted);
+            this.tabPage5.Controls.Add(this.lblCompleted);
             this.tabPage5.Controls.Add(this.nudProjectValue);
             this.tabPage5.Controls.Add(this.btnSelectedProjectBack);
             this.tabPage5.Controls.Add(this.dtpDeadlineViewProject);
@@ -1065,17 +1072,18 @@
             // btnArchiveProject
             // 
             this.btnArchiveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveProject.Location = new System.Drawing.Point(596, 554);
+            this.btnArchiveProject.Location = new System.Drawing.Point(476, 554);
             this.btnArchiveProject.Name = "btnArchiveProject";
-            this.btnArchiveProject.Size = new System.Drawing.Size(82, 60);
+            this.btnArchiveProject.Size = new System.Drawing.Size(123, 60);
             this.btnArchiveProject.TabIndex = 126;
-            this.btnArchiveProject.Text = "Delete Project";
+            this.btnArchiveProject.Text = "Completed!";
             this.btnArchiveProject.UseVisualStyleBackColor = true;
+            this.btnArchiveProject.Click += new System.EventHandler(this.btnArchiveProject_Click);
             // 
             // btnEditProject
             // 
             this.btnEditProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProject.Location = new System.Drawing.Point(517, 554);
+            this.btnEditProject.Location = new System.Drawing.Point(605, 554);
             this.btnEditProject.Name = "btnEditProject";
             this.btnEditProject.Size = new System.Drawing.Size(73, 60);
             this.btnEditProject.TabIndex = 6;
@@ -1265,6 +1273,24 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Add Project";
             // 
+            // lblCompleted
+            // 
+            this.lblCompleted.AutoSize = true;
+            this.lblCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompleted.Location = new System.Drawing.Point(28, 200);
+            this.lblCompleted.Name = "lblCompleted";
+            this.lblCompleted.Size = new System.Drawing.Size(113, 25);
+            this.lblCompleted.TabIndex = 140;
+            this.lblCompleted.Text = "Completed:";
+            // 
+            // txtCompleted
+            // 
+            this.txtCompleted.Location = new System.Drawing.Point(203, 207);
+            this.txtCompleted.Name = "txtCompleted";
+            this.txtCompleted.ReadOnly = true;
+            this.txtCompleted.Size = new System.Drawing.Size(137, 20);
+            this.txtCompleted.TabIndex = 141;
+            // 
             // cProjectViewButton
             // 
             this.cProjectViewButton.HeaderText = "View";
@@ -1272,7 +1298,6 @@
             this.cProjectViewButton.ReadOnly = true;
             this.cProjectViewButton.Text = "Open";
             this.cProjectViewButton.UseColumnTextForButtonValue = true;
-            this.cProjectViewButton.Width = 128;
             // 
             // cProjectID
             // 
@@ -1286,14 +1311,12 @@
             this.cProjectCustomerID.HeaderText = "Company Name";
             this.cProjectCustomerID.Name = "cProjectCustomerID";
             this.cProjectCustomerID.ReadOnly = true;
-            this.cProjectCustomerID.Width = 128;
             // 
             // cProjectName
             // 
             this.cProjectName.HeaderText = "Project Name";
             this.cProjectName.Name = "cProjectName";
             this.cProjectName.ReadOnly = true;
-            this.cProjectName.Width = 128;
             // 
             // cProjectDeadline
             // 
@@ -1302,21 +1325,24 @@
             this.cProjectDeadline.HeaderText = "Deadline";
             this.cProjectDeadline.Name = "cProjectDeadline";
             this.cProjectDeadline.ReadOnly = true;
-            this.cProjectDeadline.Width = 128;
             // 
             // cProjectSubject
             // 
             this.cProjectSubject.HeaderText = "Subject";
             this.cProjectSubject.Name = "cProjectSubject";
             this.cProjectSubject.ReadOnly = true;
-            this.cProjectSubject.Width = 128;
             // 
             // cProjectValue
             // 
             this.cProjectValue.HeaderText = "Value";
             this.cProjectValue.Name = "cProjectValue";
             this.cProjectValue.ReadOnly = true;
-            this.cProjectValue.Width = 128;
+            // 
+            // Completed
+            // 
+            this.Completed.HeaderText = "Complete";
+            this.Completed.Name = "Completed";
+            this.Completed.ReadOnly = true;
             // 
             // frmDevelopment
             // 
@@ -1465,6 +1491,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.NumericUpDown nudProjectValue;
+        private System.Windows.Forms.TextBox txtCompleted;
+        private System.Windows.Forms.Label lblCompleted;
         private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
@@ -1472,5 +1500,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Completed;
     }
 }

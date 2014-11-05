@@ -95,7 +95,7 @@ namespace Barroc_IT
                                     txtFinLedgerID.ReadOnly = true;
                                     txtFinBTWCode.ReadOnly = true;
                                     cbFinBKR.Enabled = false;
-                                    GetBool();
+                                    GetBKR();
                                     btnEditFields.Text = "Edit Fields";
                             }
                             else
@@ -334,7 +334,7 @@ namespace Barroc_IT
             DataTable dtPaidInvoicesCount = dthandler.ExecuteQuery(sqlInvoices, collection);  
 
             LoadCustomerDetails(dtCustomers, dtProjectsCount, dtPaidInvoicesCount);            
-            GetBool();
+            GetBKR();
         }
         private void ReloadProjects()
         {            
@@ -353,7 +353,7 @@ namespace Barroc_IT
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject), new SqlParameter("invoiceID", selectedInvoice) };
             DataTable invoiceDetails = dthandler.ExecuteQuery(sql, collection);
             LoadInvoiceDetails(invoiceDetails);            
-            GetBool();
+            GetBKR();
         }
         #endregion
 
