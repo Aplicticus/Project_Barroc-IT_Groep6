@@ -7,7 +7,8 @@ namespace Barroc_IT
 {
     public partial class frmDevelopment : Form
     {
-        // Properties, Instances
+        // Add check functions
+        #region Properties
         private DatabaseHandler handler;
         private frmLogin loginForm;
         private DataTableHandler dthandler;
@@ -15,21 +16,22 @@ namespace Barroc_IT
         private int selectedCustomer;
         private int selectedProject;        
         private bool closing = false;
+        #endregion
 
-        // Form Constructor
+        #region Constructor
         public frmDevelopment(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
             InitializeComponent();
             cBoxCustomerSearch.SelectedIndex = 0;
             cBoxProjectSearch.SelectedIndex = 0;
-
             this.handler = handler;
             this.loginForm = loginForm;
             this.dthandler = dthandler;
             this.sqlhandler = sqlhandler;
-        }      
+        }
+        #endregion
 
-        // Click Events
+        #region Click Events
         private void btnDevSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
@@ -168,7 +170,34 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 2;
         }
-        
+        private void btnProjectSearch_Click(object sender, EventArgs e)
+        {
+            if (txtProjectSearch.Text.Length > 0)
+            {
+                SearchChoice selectedItem;
+                switch (cBoxProjectSearch.SelectedItem.ToString())
+                {
+                    case "Project Name":
+                        selectedItem = SearchChoice.ProjectName;
+                        break;
+                    case "Subject":
+                        selectedItem = SearchChoice.ProjectSubject;
+                        break;
+                    default:
+                        selectedItem = SearchChoice.ProjectName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtProjectSearch.Text, selectedCustomer);
+                dthandler.AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
+            }
+            else
+            {
+                string selectCustomers = sqlhandler.GetQuery(Query.loadProjects);
+                SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
+                DataTable customers = dthandler.ExecuteQuery(selectCustomers, collection);
+                dthandler.AddItemsToDataGridView(customers, dgvProjects, "cProjectID");
+            }
+        }        
         // Cell Content Clicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -215,8 +244,24 @@ namespace Barroc_IT
                 tbContr.SelectedIndex = 4;                
             }
         }
+        #endregion
 
-        // Loads
+        #region Loaders
+        private void LoadCustomers()
+        {
+            dgvCustomers.Rows.Clear();
+            string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
+            DataTable customers = dthandler.ExecuteQuery(selectCustomers);
+            dthandler.AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
+        }
+        private void LoadProjects()
+        {
+            dgvProjects.Rows.Clear();
+            string sql = sqlhandler.GetQuery(Query.loadProjects);
+            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
+            DataTable projects = dthandler.ExecuteQuery(sql, collection);
+            dthandler.AddItemsToDataGridView(projects, dgvProjects, "finProView");
+        }       
         private void LoadCustomerDetails(DataTable CusTable, DataTable ApoTable, DataTable CountProTable)
         {
             DataRow CusRow = CusTable.Rows[0];
@@ -252,23 +297,9 @@ namespace Barroc_IT
             txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
             txtProjectValue.Text = ProRow["VALUE"].ToString();
         }
-        private void LoadCustomers()
-        {
-            dgvCustomers.Rows.Clear();
-            string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
-            DataTable customers = dthandler.ExecuteQuery(selectCustomers);
-            dthandler.AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
-        }
-        private void LoadProjects()
-        {    
-            dgvProjects.Rows.Clear();
-            string sql = sqlhandler.GetQuery(Query.loadProjects);
-            SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
-            DataTable projects = dthandler.ExecuteQuery(sql, collection);
-            dthandler.AddItemsToDataGridView(projects, dgvProjects, "finProView");        
-        }       
+        #endregion
 
-        // Updaters / Editers
+        #region Updaters / Editers
         private bool UpdateCustomer(int customerID)
         {
             string sqlQueryCustomers = sqlhandler.GetQuery(Query.updateDevCustomerInfo);
@@ -330,8 +361,9 @@ namespace Barroc_IT
                 return false;
             }
         }
-
-        // Inserts
+        #endregion
+        
+        #region Methods
         private bool AddProject()
         {
             string sqlQuery = sqlhandler.GetQuery(Query.addProject);
@@ -352,9 +384,10 @@ namespace Barroc_IT
             {
                 return false;
             }
-        }       
-
-        // Form closing
+        }
+        #endregion
+        
+        #region Form closing
         private void frmDevelopment_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!closing)
@@ -363,43 +396,16 @@ namespace Barroc_IT
                 closing = true;
             }
         }
+        #endregion
 
-        // Close To Login
+        #region CloseToLogin
         private void CloseToLogin()
         {
             closing = true;
             loginForm.ClearTextBoxes();
             loginForm.Show();
             this.Close();
-        }        
-
-        private void btnProjectSearch_Click(object sender, EventArgs e)
-        {
-            if (txtProjectSearch.Text.Length > 0)
-            {
-                SearchChoice selectedItem;
-                switch (cBoxProjectSearch.SelectedItem.ToString())
-                {
-                    case "Project Name":
-                        selectedItem = SearchChoice.ProjectName;
-                        break;
-                    case "Subject":
-                        selectedItem = SearchChoice.ProjectSubject;
-                        break;
-                    default:
-                        selectedItem = SearchChoice.ProjectName;
-                        break;
-                }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtProjectSearch.Text, selectedCustomer);
-                dthandler.AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
-            }
-            else
-            {
-                string selectCustomers = sqlhandler.GetQuery(Query.loadProjects);
-                SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
-                DataTable customers = dthandler.ExecuteQuery(selectCustomers, collection);
-                dthandler.AddItemsToDataGridView(customers, dgvProjects, "cProjectID");
-            }
         }
+        #endregion
     }
 }
