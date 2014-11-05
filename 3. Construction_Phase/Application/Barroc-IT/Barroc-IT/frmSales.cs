@@ -260,7 +260,7 @@ namespace Barroc_IT
                         selectedItem = SearchChoice.AppointmentCompanyName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtAppointmentSearch.Text, selectedCustomer);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtAppointmentSearch.Text, selectedCustomer,0);
 
                 dthandler.AddItemsToDataGridView(resultOfSearch, dgvAppointments, "cAppointmentID");
             }
@@ -368,7 +368,7 @@ namespace Barroc_IT
                         selectedItem = SearchChoice.CompanyName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer,0);
 
                 dthandler.AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }

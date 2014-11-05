@@ -6,7 +6,7 @@ namespace Barroc_IT
 {
     public class DataTableHandler
     {
-        private DatabaseHandler handler;        
+        private DatabaseHandler handler;
 
         public DataTableHandler()
         {
@@ -74,12 +74,13 @@ namespace Barroc_IT
         /// <param name="choice">The UserSelected Choice to search for.</param>
         /// <param name="searchString">The text to search for.</param>
         /// <param name="customerID">The customer id.</param>
-        /// <returns><The DataTable result from the search./returns>
-        public DataTable SearchText(SearchChoice choice, string searchString, int customerID)
+        /// <returns>The DataTable result from the search.</returns>
+        public DataTable SearchText(SearchChoice choice, string searchString, int customerID, int projectID)
         {
             bool customer = false;
             bool project = false;
             bool appointment = false;
+            bool invoice = false;
             string selectedChoice = "";
 
             switch (choice)
@@ -118,11 +119,22 @@ namespace Barroc_IT
                     customer = false;
                     appointment = true;
                     break;
+                case SearchChoice.InvoiceCompanyName:
+                    selectedChoice = "tbl_Customers.COMPANYNAME";
+                    invoice = true;
+                    break;
+                case SearchChoice.InvoiceProjectName:
+                    selectedChoice = "tbl_Projects.NAME";
+                    invoice = true;
+                    break;
+                case SearchChoice.InvoiceValue:
+                    selectedChoice = "tbl_Invoices.INVOICE_VALUE";
+                    invoice = true;
+                    break;
                 default:
                     customer = true;
                     selectedChoice = "";
                     break;
-
             }
 
             string sqlQuery = "";
@@ -137,7 +149,7 @@ namespace Barroc_IT
                 cmd.CommandText = sqlQuery;
                 cmd.Parameters.AddWithValue("searchString", "%" + searchString + "%");
             }
-            else if(project)
+            else if (project)
             {
                 sqlQuery = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
             "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers " +
@@ -156,6 +168,19 @@ namespace Barroc_IT
 
                 cmd.CommandText = sqlQuery;
                 cmd.Parameters.AddWithValue("customerID", customerID);
+                cmd.Parameters.AddWithValue("searchString", "%" + searchString + "%");
+            }
+            else if (invoice)
+            {
+                string OuterJoinProCus = "FULL OUTER JOIN tbl_Projects ON tbl_Customers.CUSTOMER_ID=tbl_Projects.CUSTOMER_ID ";
+                string OuterJoinInvPro = "FULL OUTER JOIN tbl_Invoices ON tbl_Projects.PROJECT_ID=tbl_Invoices.PROJECT_ID ";
+
+                sqlQuery = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
+                    "tbl_Invoices.INVOICE_SEND, tbl_Invoices.PAID FROM tbl_Customers {0}{1} WHERE tbl_Projects.PROJECT_ID=@projectID AND {2} LIKE @searchString;";
+                sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro, selectedChoice);
+
+                cmd.CommandText = sqlQuery;
+                cmd.Parameters.AddWithValue("projectID", projectID);
                 cmd.Parameters.AddWithValue("searchString", "%" + searchString + "%");
             }
 

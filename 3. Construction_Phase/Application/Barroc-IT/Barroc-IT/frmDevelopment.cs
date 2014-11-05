@@ -173,7 +173,7 @@ namespace Barroc_IT
                         selectedItem = SearchChoice.CompanyName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer,0);
                 dthandler.AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
             }
             else
@@ -246,7 +246,7 @@ namespace Barroc_IT
                         selectedItem = SearchChoice.ProjectName;
                         break;
                 }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtProjectSearch.Text, selectedCustomer);
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtProjectSearch.Text, selectedCustomer,0);
                 dthandler.AddItemsToDataGridView(resultOfSearch, dgvProjects, "cProjectID");
             }
             else

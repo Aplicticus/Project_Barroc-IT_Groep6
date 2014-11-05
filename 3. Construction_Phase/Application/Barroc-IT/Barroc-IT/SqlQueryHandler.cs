@@ -33,7 +33,7 @@
         "tbl_Projects.SUBJECT, tbl_Projects.VALUE, tbl_Projects.COMPLETED FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
         "tbl_Projects.NAME, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
-        "tbl_Invoices.INVOICE_SEND FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
+        "tbl_Invoices.INVOICE_SEND, tbl_Invoices.PAID FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
         string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.COMPANYNAME, tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
 
         //Insert querys

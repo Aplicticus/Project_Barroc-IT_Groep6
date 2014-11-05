@@ -11,7 +11,10 @@
         ProjectName,
         ProjectSubject,
         AppointmentCompanyName,
-        AppointmentSubject
+        AppointmentSubject,
+        InvoiceCompanyName,
+        InvoiceProjectName,
+        InvoiceValue
     }
 
     public enum Query
