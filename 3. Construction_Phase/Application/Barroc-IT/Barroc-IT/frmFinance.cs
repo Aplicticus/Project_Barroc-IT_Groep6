@@ -494,7 +494,5 @@ namespace Barroc_IT
             }
         }
         #endregion
-
-        
     }
 }
