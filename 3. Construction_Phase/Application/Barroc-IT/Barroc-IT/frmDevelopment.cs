@@ -93,6 +93,9 @@ namespace Barroc_IT
                 break;
             }
             tbContr.SelectedIndex = 5;
+            txtProjectAddName.ResetText();
+            txtProjectAddSubject.ResetText();
+            nudProjectValue.ResetText();
         }
         private void btnEditProject_Click(object sender, EventArgs e)
         {
@@ -270,7 +273,16 @@ namespace Barroc_IT
                 string sqlCountProjects = sqlhandler.GetQuery(Query.countProjects);
                 collection = new SqlParameter[]{ new SqlParameter("customerID", selectedCustomer) };
                 DataTable projectCount = dthandler.ExecuteQuery(sqlCountProjects, collection);
-                LoadCustomerDetails(customerDetails, appointmentDetails, projectCount);
+
+                string sqlCountOpenProjects = sqlhandler.GetQuery(Query.countProjectsTable);
+                collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("Completed", false)};
+                DataTable countOpenProjectsTable = dthandler.ExecuteQuery(sqlCountOpenProjects, collection);
+
+                string sqlCountClosedProjects = sqlhandler.GetQuery(Query.countProjectsTable);
+                collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("Completed", true) };
+                DataTable countClosedProjectsTable = dthandler.ExecuteQuery(sqlCountClosedProjects, collection);
+
+                LoadCustomerDetails(customerDetails, appointmentDetails, projectCount, countOpenProjectsTable, countClosedProjectsTable);
 
                 tbContr.SelectedIndex = 2;
                 int temp = 0;
@@ -297,6 +309,16 @@ namespace Barroc_IT
 
                 DataTable projectDetails = dthandler.ExecuteQuery(sqlProject,collection);                
                 LoadProjectDetails(customerDetails, projectDetails);
+                if (txtProjectCompleted.Text == "True")
+                {
+                    btnArchiveProject.Enabled = false;
+                    btnEditProject.Enabled = false;
+                }
+                else
+                {
+                    btnArchiveProject.Enabled = true;
+                    btnEditProject.Enabled = true;
+                }
                 tbContr.SelectedIndex = 4;                
             }
         }
@@ -317,10 +339,14 @@ namespace Barroc_IT
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
             DataTable projects = dthandler.ExecuteQuery(sql, collection);
             dthandler.AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
-        }       
-        private void LoadCustomerDetails(DataTable CusTable, DataTable ApoTable, DataTable CountProTable)
+        }
+        private void LoadCustomerDetails(DataTable CusTable, DataTable ApoTable, DataTable CountProTable, DataTable CountOpenProjectsTable, DataTable CountClosedProjectsTable)
         {
             DataRow CusRow = CusTable.Rows[0];
+            DataRow ApoRow = ApoTable.Rows[0];
+            DataRow CountPro = CountProTable.Rows[0];
+            DataRow CountOpenProjectsRow = CountOpenProjectsTable.Rows[0];
+            DataRow CountClosedProjectsRow = CountClosedProjectsTable.Rows[0];
             txtCompanyName.Text = CusRow["COMPANYNAME"].ToString();
             txtAddress1.Text = CusRow["ADDRESS1"].ToString();
             txtPostalCode1.Text = CusRow["POSTALCODE1"].ToString();
@@ -329,17 +355,16 @@ namespace Barroc_IT
             txtEmail.Text = CusRow["EMAIL"].ToString();
             txtContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
             txtApplications.Text = CusRow["APPLICATIONS"].ToString();
-            txtMaintenance.Text = CusRow["MAINT_CONTR"].ToString();
-            txtOpenProjects.Text = CusRow["OPEN_PROJ"].ToString();
+            txtMaintenance.Text = CusRow["MAINT_CONTR"].ToString();            
             txtHardware.Text = CusRow["HARDWARE"].ToString();
-            txtSoftware.Text = CusRow["SOFTWARE"].ToString();
-            DataRow ApoRow = ApoTable.Rows[0];
+            txtSoftware.Text = CusRow["SOFTWARE"].ToString();            
             txtInternalContact.Text = ApoRow["INT_CONTACT"].ToString();
             DateTime devAppointment = new DateTime();
             devAppointment = DateTime.Parse(ApoRow["APPOIN_DATE"].ToString());
-            dtpDevAppointment.Value = devAppointment;
-            DataRow CountPro = CountProTable.Rows[0];
+            dtpDevAppointment.Value = devAppointment;            
             txtDevProjects.Text = CountPro[0].ToString();
+            txtOpenProjects.Text = CountOpenProjectsRow[0].ToString();
+            txtClosedProjects.Text = CountClosedProjectsRow[0].ToString();
         }
         private void LoadProjectDetails(DataTable CusTable, DataTable ProTable)
         {
@@ -352,6 +377,7 @@ namespace Barroc_IT
             dtpDeadlineViewProject.Value = projectDeadline;
             txtProjectSubject.Text = ProRow["SUBJECT"].ToString();
             nudProjectValue.Text = ProRow["VALUE"].ToString();
+            txtProjectCompleted.Text = ProRow["COMPLETED"].ToString();
         }
         #endregion
 

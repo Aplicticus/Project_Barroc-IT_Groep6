@@ -57,6 +57,7 @@
         string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices WHERE tbl_Invoices.PROJECT_ID=@customerID";
         string countAppointments = "SELECT COUNT (APPOINTMENT_ID) FROM tbl_Customers {0} WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string countOffers = "SELECT COUNT (OFFER_NUMBERS) FROM tbl_Customers WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string countProjectsTable = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.COMPLETED=@Completed";
 
         //Update Querys        
         string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, " +
@@ -202,6 +203,10 @@
                     break;
                 case Query.countOffers:
                     sqlQuery = countOffers;
+                    break;
+                case Query.countProjectsTable:
+                    sqlQuery = countProjectsTable;
+                    sqlQuery = string.Format(sqlQuery, OuterJoinProCus);
                     break;
 
                 case Query.archiveProject:

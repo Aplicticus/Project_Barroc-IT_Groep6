@@ -42,7 +42,8 @@
         countProjects,
         countValues,
         countAppointments,
-        countOffers,        
+        countOffers,    
+        countProjectsTable,
         
         updateFinProjectInfo,
         updateDevCustomerInfo,
