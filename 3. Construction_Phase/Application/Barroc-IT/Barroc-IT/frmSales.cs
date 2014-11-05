@@ -8,17 +8,17 @@ namespace Barroc_IT
 {
     public partial class frmSales : Form
     {
-        // Properties, Instances
+        #region Properties
         private DatabaseHandler handler;
-
         private frmLogin loginForm;
         private SqlQueryHandler sqlhandler;
         private DataTableHandler dthandler;
-
         private int selectedCustomer;
         private int selectedAppoinment;
         private bool closing = false;
+        #endregion
 
+        #region Constructor
         public frmSales(DatabaseHandler handler, frmLogin loginForm, DataTableHandler dthandler, SqlQueryHandler sqlhandler)
         {
             InitializeComponent();
@@ -30,29 +30,26 @@ namespace Barroc_IT
             this.dthandler = dthandler;
             this.sqlhandler = sqlhandler;
         }
-
-        // Click Events
+        #endregion
+        
+        #region Click Events
         private void btnSalesSelectCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
             LoadCustomers();
         }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
-
         private void btnSalesHome_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 0;
         }
-
         private void btnSalesAddCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 6;
         }
-
         private void btnLogout_Click(object sender, EventArgs e)
         {
             DialogResult confirmationLogout = MessageBox.Show("Are you sure you want to log out?", "Confirm log out", MessageBoxButtons.YesNo);
@@ -61,33 +58,27 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }
-
         private void btnViewAppointments_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 3;
             LoadAppointments();
         }
-
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 5;
         }
-
         private void btnAppointmentAdd_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 2;
         }
-
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 2;
         }
-
         private void btnAddCustomerCancel_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 0;
         }
-
         private void btnCusAddCustomer_Click(object sender, EventArgs e)
         {
             bool everythingCorrect = true;
@@ -172,7 +163,6 @@ namespace Barroc_IT
                 }
             }
         }
-
         private void btnEditCustomerFields_Click(object sender, EventArgs e)
         {
             if (btnEditCustomerFields.Text == "Edit Fields")
@@ -240,7 +230,6 @@ namespace Barroc_IT
                 btnEditCustomerFields.Text = "Edit Fields";
             }
         }
-
         private void btnAppointmentSearch_Click(object sender, EventArgs e)
         {
             if (txtAppointmentSearch.Text.Length > 0)
@@ -265,7 +254,38 @@ namespace Barroc_IT
                 dthandler.AddItemsToDataGridView(resultOfSearch, dgvAppointments, "cAppointmentID");
             }
         }
+        private void btnEditAppointmentFields_Click(object sender, EventArgs e)
+        {
 
+        }
+        private void btnCustomerSearch_Click(object sender, EventArgs e)
+        {
+            if (txtCustomerSearch.Text.Length > 0)
+            {
+                SearchChoice selectedItem;
+                switch (cBoxCustomerSearch.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = SearchChoice.CompanyName;
+                        break;
+
+                    case "E-Mail":
+                        selectedItem = SearchChoice.Email;
+                        break;
+
+                    case "Initials":
+                        selectedItem = SearchChoice.Initials;
+                        break;
+
+                    default:
+                        selectedItem = SearchChoice.CompanyName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer, 0);
+
+                dthandler.AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
+            }
+        }
         // Cell Content Clicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -285,7 +305,6 @@ namespace Barroc_IT
                 }
             }
         }
-
         private void dgvAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvAppointments.Columns["cAppointmentViewButton"].Index)
@@ -304,8 +323,9 @@ namespace Barroc_IT
                 }
             }
         }
+        #endregion
 
-        //RecoverComboBoxFields
+        #region Get & Set ComboBoxes
         private void RecoverComboBoxFields()
         {
             if (cBoxCusProspect.Text == "True" || cBoxCusProspect.Text == "1")
@@ -334,8 +354,9 @@ namespace Barroc_IT
                 txtCusOfferStatus.Text = "No";
             }
         }
+        #endregion
 
-        // Form Closing
+        #region Form Closing
         private void frmSales_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!closing)
@@ -344,37 +365,9 @@ namespace Barroc_IT
                 closing = true;
             }
         }
+        #endregion
 
-        private void btnCustomerSearch_Click(object sender, EventArgs e)
-        {
-            if (txtCustomerSearch.Text.Length > 0)
-            {
-                SearchChoice selectedItem;
-                switch (cBoxCustomerSearch.SelectedItem.ToString())
-                {
-                    case "Company Name":
-                        selectedItem = SearchChoice.CompanyName;
-                        break;
-
-                    case "E-Mail":
-                        selectedItem = SearchChoice.Email;
-                        break;
-
-                    case "Initials":
-                        selectedItem = SearchChoice.Initials;
-                        break;
-
-                    default:
-                        selectedItem = SearchChoice.CompanyName;
-                        break;
-                }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtCustomerSearch.Text, selectedCustomer,0);
-
-                dthandler.AddItemsToDataGridView(resultOfSearch, dgvCustomers, "cCustomerID");
-            }
-        }
-
-        // Methods
+        #region Methods
         private bool addCustomer()
         {
             string sqlQuery = sqlhandler.GetQuery(Query.addCustomer);
@@ -420,8 +413,9 @@ namespace Barroc_IT
                 return false;
             }
         }
+        #endregion
 
-        // Updaters / Editers
+        #region Updaters / Editers
         private bool UpdateCustomer(int customerID)
         {
             RecoverComboBoxFields();
@@ -459,8 +453,9 @@ namespace Barroc_IT
                 return false;
             }
         }
+        #endregion
 
-        // Loads
+        #region Loaders
         private void LoadCustomers()
         {
             dgvCustomers.Rows.Clear();
@@ -468,7 +463,6 @@ namespace Barroc_IT
             DataTable customers = dthandler.ExecuteQuery(selectCustomers);
             dthandler.AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
         }
-
         private void LoadAppointments()
         {
             dgvAppointments.Rows.Clear();
@@ -477,8 +471,7 @@ namespace Barroc_IT
             DataTable appointments = dthandler.ExecuteQuery(selectAppointments, collection);
             dthandler.AddItemsToDataGridView(appointments, dgvAppointments, "cAppointmentID");
         }
-
-        // Reloads
+        // Reloaders
         private void ReloadCustomers()
         {
             string sqlCustomers = sqlhandler.GetQuery(Query.loadCustomerDetails);
@@ -495,7 +488,6 @@ namespace Barroc_IT
 
             LoadCustomerDetails(customerDetails, countAppointments, countOffers);
         }
-
         private void ReloadAppointments()
         {
             string sqlCustomers = sqlhandler.GetQuery(Query.loadAppointmentDetails);
@@ -503,7 +495,6 @@ namespace Barroc_IT
             DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomers, collection);
             LoadAppointmentDetails(customerDetails);
         }
-
         // Load Details
         private void LoadCustomerDetails(DataTable CusTable, DataTable countApo, DataTable countOff)
         {
@@ -563,7 +554,6 @@ namespace Barroc_IT
             txtCusAppointment.Text = ApoRow[0].ToString();
             RecoverComboBoxFields();
         }
-
         private void LoadAppointmentDetails(DataTable CusDet)
         {
             DataRow DRCusDet = CusDet.Rows[0];
@@ -577,7 +567,9 @@ namespace Barroc_IT
             DateTime appointmentDate = DateTime.Parse(DRCusDet["APPOIN_DATE"].ToString());
             dtpAppointmentDate.Value = appointmentDate;
         }
+        #endregion
 
+        #region Checkers
         private bool CheckTextBoxes(TextBox[] textBoxes)
         {
             bool textLengthCorrect = false;
@@ -596,7 +588,6 @@ namespace Barroc_IT
 
             return textLengthCorrect;
         }
-
         private bool CheckPostalCode(TextBox postalCode)
         {
             string regex = @"\b[1-9][0-9]{3}\b\b\s[A-Z]{2}\b";
@@ -610,7 +601,6 @@ namespace Barroc_IT
                 return false;
             }
         }
-
         private bool CheckEmail(TextBox email)
         {
             bool match = false;
@@ -629,8 +619,9 @@ namespace Barroc_IT
 
             return match;
         }
+        #endregion
 
-        // Close To Login
+        #region CloseToLogin
         private void CloseToLogin()
         {
             closing = true;
@@ -638,5 +629,6 @@ namespace Barroc_IT
             loginForm.Show();
             this.Close();
         }
+        #endregion       
     }
 }
