@@ -52,7 +52,9 @@
         updateDevProjectInfo,
         updateLastLogin,
         updateFinPayment,
-        updateAdmActivate
+        updateAdmActivate,
+
+        archiveProject
     }
 
 }

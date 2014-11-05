@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblSalesPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
@@ -141,6 +141,9 @@
             this.lblAddProjectName = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
+            this.lblCompleted = new System.Windows.Forms.Label();
+            this.txtCompleted = new System.Windows.Forms.TextBox();
+            this.Completed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtClosedProjects = new System.Windows.Forms.TextBox();
             this.pWelcome.SuspendLayout();
@@ -917,6 +920,7 @@
             // 
             this.dgvProjects.AllowUserToAddRows = false;
             this.dgvProjects.AllowUserToDeleteRows = false;
+            this.dgvProjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProjects.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProjects.ColumnHeadersHeight = 34;
             this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -927,7 +931,8 @@
             this.cProjectName,
             this.cProjectDeadline,
             this.cProjectSubject,
-            this.cProjectValue});
+            this.cProjectValue,
+            this.Completed});
             this.dgvProjects.Location = new System.Drawing.Point(0, 39);
             this.dgvProjects.MultiSelect = false;
             this.dgvProjects.Name = "dgvProjects";
@@ -969,8 +974,8 @@
             // 
             // cProjectDeadline
             // 
-            dataGridViewCellStyle3.Format = "d";
-            this.cProjectDeadline.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "d";
+            this.cProjectDeadline.DefaultCellStyle = dataGridViewCellStyle1;
             this.cProjectDeadline.HeaderText = "Deadline";
             this.cProjectDeadline.Name = "cProjectDeadline";
             this.cProjectDeadline.ReadOnly = true;
@@ -1003,6 +1008,8 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.txtCompleted);
+            this.tabPage5.Controls.Add(this.lblCompleted);
             this.tabPage5.Controls.Add(this.nudProjectValue);
             this.tabPage5.Controls.Add(this.btnSelectedProjectBack);
             this.tabPage5.Controls.Add(this.dtpDeadlineViewProject);
@@ -1122,17 +1129,18 @@
             // btnArchiveProject
             // 
             this.btnArchiveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveProject.Location = new System.Drawing.Point(596, 554);
+            this.btnArchiveProject.Location = new System.Drawing.Point(476, 554);
             this.btnArchiveProject.Name = "btnArchiveProject";
-            this.btnArchiveProject.Size = new System.Drawing.Size(82, 60);
+            this.btnArchiveProject.Size = new System.Drawing.Size(123, 60);
             this.btnArchiveProject.TabIndex = 126;
-            this.btnArchiveProject.Text = "Delete Project";
+            this.btnArchiveProject.Text = "Completed!";
             this.btnArchiveProject.UseVisualStyleBackColor = true;
+            this.btnArchiveProject.Click += new System.EventHandler(this.btnArchiveProject_Click);
             // 
             // btnEditProject
             // 
             this.btnEditProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProject.Location = new System.Drawing.Point(517, 554);
+            this.btnEditProject.Location = new System.Drawing.Point(605, 554);
             this.btnEditProject.Name = "btnEditProject";
             this.btnEditProject.Size = new System.Drawing.Size(73, 60);
             this.btnEditProject.TabIndex = 6;
@@ -1322,6 +1330,25 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Add Project";
             // 
+            // lblCompleted
+            // 
+            this.lblCompleted.AutoSize = true;
+            this.lblCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompleted.Location = new System.Drawing.Point(28, 200);
+            this.lblCompleted.Name = "lblCompleted";
+            this.lblCompleted.Size = new System.Drawing.Size(113, 25);
+            this.lblCompleted.TabIndex = 140;
+            this.lblCompleted.Text = "Completed:";
+            // 
+            // txtCompleted
+            // 
+            this.txtCompleted.Location = new System.Drawing.Point(203, 207);
+            this.txtCompleted.Name = "txtCompleted";
+            this.txtCompleted.ReadOnly = true;
+            this.txtCompleted.Size = new System.Drawing.Size(137, 20);
+            this.txtCompleted.TabIndex = 141;
+            // 
+            // cProjectViewButton
             // label1
             // 
             this.label1.AutoSize = true;
@@ -1331,9 +1358,56 @@
             this.label1.Size = new System.Drawing.Size(155, 25);
             this.label1.TabIndex = 233;
             this.label1.Text = "Closed Projects:";
+            this.cProjectViewButton.HeaderText = "View";
+            this.cProjectViewButton.Name = "cProjectViewButton";
+            this.cProjectViewButton.ReadOnly = true;
+            this.cProjectViewButton.Text = "Open";
+            this.cProjectViewButton.UseColumnTextForButtonValue = true;
             // 
             // txtClosedProjects
             // 
+            this.cProjectID.HeaderText = "ProjectID";
+            this.cProjectID.Name = "cProjectID";
+            this.cProjectID.ReadOnly = true;
+            this.cProjectID.Visible = false;
+            // 
+            // cProjectCustomerID
+            // 
+            this.cProjectCustomerID.HeaderText = "Company Name";
+            this.cProjectCustomerID.Name = "cProjectCustomerID";
+            this.cProjectCustomerID.ReadOnly = true;
+            // 
+            // cProjectName
+            // 
+            this.cProjectName.HeaderText = "Project Name";
+            this.cProjectName.Name = "cProjectName";
+            this.cProjectName.ReadOnly = true;
+            // 
+            // cProjectDeadline
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            this.cProjectDeadline.DefaultCellStyle = dataGridViewCellStyle1;
+            this.cProjectDeadline.HeaderText = "Deadline";
+            this.cProjectDeadline.Name = "cProjectDeadline";
+            this.cProjectDeadline.ReadOnly = true;
+            // 
+            // cProjectSubject
+            // 
+            this.cProjectSubject.HeaderText = "Subject";
+            this.cProjectSubject.Name = "cProjectSubject";
+            this.cProjectSubject.ReadOnly = true;
+            // 
+            // cProjectValue
+            // 
+            this.cProjectValue.HeaderText = "Value";
+            this.cProjectValue.Name = "cProjectValue";
+            this.cProjectValue.ReadOnly = true;
+            // 
+            // Completed
+            // 
+            this.Completed.HeaderText = "Complete";
+            this.Completed.Name = "Completed";
+            this.Completed.ReadOnly = true;
             this.txtClosedProjects.Location = new System.Drawing.Point(618, 114);
             this.txtClosedProjects.Name = "txtClosedProjects";
             this.txtClosedProjects.ReadOnly = true;
@@ -1487,6 +1561,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.NumericUpDown nudProjectValue;
+        private System.Windows.Forms.TextBox txtCompleted;
+        private System.Windows.Forms.Label lblCompleted;
         private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
@@ -1494,6 +1570,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Completed;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtClosedProjects;
     }

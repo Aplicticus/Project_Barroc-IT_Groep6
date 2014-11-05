@@ -30,7 +30,7 @@
         string loadAppointmentDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Appointments.APPOINTMENT_ID=@appointmentID";
         string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID=@customerID";
         string loadProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-        "tbl_Projects.SUBJECT, tbl_Projects.VALUE FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        "tbl_Projects.SUBJECT, tbl_Projects.VALUE, tbl_Projects.COMPLETED FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
         string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
         "tbl_Projects.NAME, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
         "tbl_Invoices.INVOICE_SEND FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
@@ -39,8 +39,8 @@
         //Insert querys
         string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND, PAID) " +
         "VALUES (@SelectedProject, @InvoiceVal, @InvoiceEndDate, @InvoiceSend, @Paid)";
-        string addProject = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE) " +
-        "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value)";
+        string addProject = "INSERT INTO tbl_Projects (CUSTOMER_ID, NAME, DEADLINE, SUBJECT, VALUE, COMPLETED) " +
+        "VALUES (@SelectedCustomer, @Name, @Deadline, @Subject, @Value, @Completed)";
         string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT, DEACTIVATED) " +
         "VALUES (@Username, @Password, @Department, @Deactivated)";
         string addCustomer = "INSERT INTO tbl_Customers (COMPANYNAME, ADDRESS1, POSTALCODE1, RESIDENCE1, ADDRESS2, " +
@@ -79,6 +79,7 @@
         string updateFinPayment = "UPDATE tbl_Invoices SET PAID=@Paid WHERE PROJECT_ID=@projectID AND INVOICE_ID=@invoiceID";        
         string copyCountInvoicesToBalance = "UPDATE tbl_Customers SET BALANCE=@Balance WHERE CUSTOMER_ID=@customerID";
 
+        string archiveProject = "UPDATE tbl_Projects SET COMPLETED=@Completed WHERE PROJECT_ID = @projectID";
 
         public string GetQuery(Query query)
         {
@@ -202,7 +203,10 @@
                 case Query.countOffers:
                     sqlQuery = countOffers;
                     break;
-               
+
+                case Query.archiveProject:
+                    sqlQuery = archiveProject;
+                    break;
 
                 default:
                     sqlQuery = "";

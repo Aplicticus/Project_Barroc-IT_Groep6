@@ -308,7 +308,7 @@ namespace Barroc_IT
             dgvCustomers.Rows.Clear();
             string selectCustomers = sqlhandler.GetQuery(Query.loadCustomers);
             DataTable customers = dthandler.ExecuteQuery(selectCustomers);
-            dthandler.AddItemsToDataGridView(customers, dgvCustomers, "cProjectID");
+            dthandler.AddItemsToDataGridView(customers, dgvCustomers, "cCustomerID");
         }
         private void LoadProjects()
         {
@@ -316,7 +316,7 @@ namespace Barroc_IT
             string sql = sqlhandler.GetQuery(Query.loadProjects);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
             DataTable projects = dthandler.ExecuteQuery(sql, collection);
-            dthandler.AddItemsToDataGridView(projects, dgvProjects, "finProView");
+            dthandler.AddItemsToDataGridView(projects, dgvProjects, "cProjectID");
         }       
         private void LoadCustomerDetails(DataTable CusTable, DataTable ApoTable, DataTable CountProTable)
         {
@@ -427,6 +427,27 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@Deadline", dtProjectAddDeadline.Value));
             cmd.Parameters.Add(new SqlParameter("@Subject", txtProjectAddSubject.Text));
             cmd.Parameters.Add(new SqlParameter("@Value", numProjectAddValue.Value));
+            cmd.Parameters.Add(new SqlParameter("@Completed", false));
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool ArchiveProject(int projectID)
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.archiveProject);
+
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("@Completed", true));
+            cmd.Parameters.Add(new SqlParameter("@projectID", projectID));
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -461,5 +482,15 @@ namespace Barroc_IT
             this.Close();
         }
         #endregion
+
+        private void btnArchiveProject_Click(object sender, EventArgs e)
+        {
+            if (ArchiveProject(selectedProject))
+            {
+                MessageBox.Show("Project succesfully completed!");
+                tbContr.SelectedIndex = 3;
+                LoadProjects();
+            }
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace Barroc_IT
             this.sqlhandler = sqlhandler;
             cBoxCustomerSearch.SelectedIndex = 0;
             cBoxProjectSearch.SelectedIndex = 0;
-            cBoxSearchInvoice.SelectedIndex = 0;            
+            cBoxSearchInvoice.SelectedIndex = 0;
             dtpFinInvoiceExpDate.MinDate = DateTime.Now.Date;
             dtpFinInvoiceExpDate.Value = dtpFinInvoiceExpDate.MinDate;
             dtpFinInvoiceSentDate.MinDate = DateTime.Now.Date; ;
@@ -337,7 +337,7 @@ namespace Barroc_IT
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer)};
             DataTable dtPaidInvoicesCount = dthandler.ExecuteQuery(sqlInvoices, collection);  
 
-            LoadCustomerDetails(dtCustomers, dtProjectsCount, dtPaidInvoicesCount);
+            LoadCustomerDetails(dtCustomers, dtProjectsCount, dtPaidInvoicesCount);            
             GetBKR();
         }
         private void ReloadProjects()
@@ -356,7 +356,7 @@ namespace Barroc_IT
             string sql = sqlhandler.GetQuery(Query.loadInvoiceDetails);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject), new SqlParameter("invoiceID", selectedInvoice) };
             DataTable invoiceDetails = dthandler.ExecuteQuery(sql, collection);
-            LoadInvoiceDetails(invoiceDetails);
+            LoadInvoiceDetails(invoiceDetails);            
             GetBKR();
         }
         #endregion
