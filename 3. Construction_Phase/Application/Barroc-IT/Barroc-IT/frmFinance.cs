@@ -65,7 +65,7 @@ namespace Barroc_IT
         {
             if (btnEditFields.Text == "Edit Fields")
             {
-                txtFinAccountID.ReadOnly = false;                
+                txtFinAccountID.ReadOnly = false;
                 nudFinLimit.Enabled = true;
                 nudFinLimit.ReadOnly = false;
                 txtFinLedgerID.ReadOnly = false;
@@ -82,13 +82,13 @@ namespace Barroc_IT
                     if (nudFinLimit.Value > 0)
                     {                        
                         if (txtFinLedgerID.Text.Length > 0 && txtFinLedgerID.Text.Length < 10 && int.TryParse(txtFinLedgerID.Text, out CheckForInt))
-                        {                            
+                    {
                             if (txtFinBTWCode.Text.Length > 0 && txtFinBTWCode.Text.Length < 10 && int.TryParse(txtFinBTWCode.Text, out CheckForInt))
-                            {
+                        {
                                 if (cbFinBKR.Text == "Yes" || cbFinBKR.Text == "No")
-                                {
-                                    SetBool();
-                                    UpdateCustomer(selectedCustomer);
+                            {
+                                SetBKR();
+                                UpdateCustomer(selectedCustomer);
                                     txtFinAccountID.ReadOnly = true;
                                     nudFinLimit.Enabled = false;
                                     nudFinLimit.ReadOnly = true;
@@ -97,9 +97,9 @@ namespace Barroc_IT
                                     cbFinBKR.Enabled = false;
                                     GetBool();
                                     btnEditFields.Text = "Edit Fields";
-                                }
-                                else
-                                {
+                            }
+                            else
+                            {
                                     MessageBox.Show("The BKR field can only have (Yes/No)");
                                     cbFinBKR.ResetText();
                                 }                                
@@ -121,7 +121,7 @@ namespace Barroc_IT
                         MessageBox.Show("The Limit field is empty or 0! please enter a value.");
                         nudFinLimit.ResetText();
                     }
-                }  
+                }
                 else
                 {
                     MessageBox.Show("The Account Number field is empty or too long! please enter a correct account number.");
@@ -137,17 +137,17 @@ namespace Barroc_IT
             numFinInvoiceAddValue.ResetText();
             if (numFinInvoiceAddValue.Value > 0)
             {
-                if (AddInvoice() == true)
-                {
-                    tbContr.SelectedIndex = 5;
-                    LoadInvoices();
-                    MessageBox.Show("Invoice succesfully added!");
-                }
-                else
-                {
-                    MessageBox.Show("There is a problem with adding a invoice!");
-                } 
+            if (AddInvoice() == true)
+            {
+                tbContr.SelectedIndex = 5;
+                LoadInvoices();                
+                MessageBox.Show("Invoice succesfully added!");
             }
+            else
+            {
+                MessageBox.Show("There is a problem with adding a invoice!");
+            }            
+        }
             else
             {
                 MessageBox.Show("The Invoice Value field is empty or 0! please enter a value.");
@@ -328,7 +328,7 @@ namespace Barroc_IT
             string sqlProjects = sqlhandler.GetQuery(Query.countProjects);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
             DataTable dtProjectsCount = dthandler.ExecuteQuery(sqlProjects, collection);
-                        
+
             string sqlInvoices = sqlhandler.GetQuery(Query.countPaidInvoices);
             collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer)};
             DataTable dtPaidInvoicesCount = dthandler.ExecuteQuery(sqlInvoices, collection);  
@@ -352,7 +352,7 @@ namespace Barroc_IT
             string sql = sqlhandler.GetQuery(Query.loadInvoiceDetails);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject), new SqlParameter("invoiceID", selectedInvoice) };
             DataTable invoiceDetails = dthandler.ExecuteQuery(sql, collection);
-            LoadInvoiceDetails(invoiceDetails);
+            LoadInvoiceDetails(invoiceDetails);            
             GetBool();
         }
         #endregion
@@ -381,8 +381,8 @@ namespace Barroc_IT
         }
         #endregion
 
-        #region Get & Set Bool ( yes / no, true / false )
-        private void GetBool()
+        #region Get & Set BKR ( yes / no, true / false )
+        private void GetBKR()
         {
             if (cbFinBKR.Text == "True" || cbFinBKR.Text == "1")
             {
@@ -391,17 +391,17 @@ namespace Barroc_IT
             else if (cbFinBKR.Text == "False" || cbFinBKR.Text == "0")
             {
                 cbFinBKR.Text = "No";
-            }
+            }            
             else if (txtInvoicePaid.Text == "True" || txtInvoicePaid.Text == "1")
             {
                 txtInvoicePaid.Text = "Yes";
-            }
+        }
             else if (txtInvoicePaid.Text == "False" || txtInvoicePaid.Text == "0")
             {
                 txtInvoicePaid.Text = "No";
             }
         }
-        private void SetBool()
+        private void SetBKR()
         {
             if (cbFinBKR.Text == "Yes")
             {
@@ -452,7 +452,7 @@ namespace Barroc_IT
         {
             string sqlQuery = sqlhandler.GetQuery(Query.updateFinCustomersInfo);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());            
-            cmd.Parameters.Add(new SqlParameter("AccountID", txtFinAccountID.Text));            
+            cmd.Parameters.Add(new SqlParameter("AccountID", txtFinAccountID.Text));
             cmd.Parameters.Add(new SqlParameter("Limit", nudFinLimit.Value));
             cmd.Parameters.Add(new SqlParameter("LedgerID", txtFinLedgerID.Text));
             cmd.Parameters.Add(new SqlParameter("BTWcode", txtFinBTWCode.Text));

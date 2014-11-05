@@ -103,37 +103,45 @@ namespace Barroc_IT
                 {
                     if (CheckPostalCode(txtCusAddPostalCode1))
                     {
-                        string phoneNumber2Text = txtCusAddPhoneNumber2.Text.Replace(" ", "");
-                        if (phoneNumber2Text.Length > 2)
+                        if (CheckEmail(txtCusAddEmail))
                         {
-                            if (txtCusAddPhoneNumber2.MaskFull)
+                            string phoneNumber2Text = txtCusAddPhoneNumber2.Text.Replace(" ", "");
+                            if (phoneNumber2Text.Length > 2)
                             {
-                                string faxNumberText = txtCusAddFaxNumber.Text.Replace(" ", "");
-                                if (faxNumberText.Length > 2)
+                                if (txtCusAddPhoneNumber2.MaskFull)
                                 {
-                                    if (txtCusAddFaxNumber.MaskFull)
+                                    string faxNumberText = txtCusAddFaxNumber.Text.Replace(" ", "");
+                                    if (faxNumberText.Length > 2)
                                     {
-                                        if (txtCusAddPostalCode2.TextLength > 0)
+                                        if (txtCusAddFaxNumber.MaskFull)
                                         {
-                                            if (!CheckPostalCode(txtCusAddPostalCode2))
+                                            if (txtCusAddPostalCode2.TextLength > 0)
                                             {
-                                                everythingCorrect = false;
-                                                MessageBox.Show("Please check the second postal code.");
+                                                if (!CheckPostalCode(txtCusAddPostalCode2))
+                                                {
+                                                    everythingCorrect = false;
+                                                    MessageBox.Show("Please check the second postal code.");
+                                                }
                                             }
                                         }
-                                    }
-                                    else
-                                    {
-                                        everythingCorrect = false;
-                                        MessageBox.Show("Please check the fax number.");
+                                        else
+                                        {
+                                            everythingCorrect = false;
+                                            MessageBox.Show("Please check the fax number.");
+                                        }
                                     }
                                 }
+                                else
+                                {
+                                    everythingCorrect = false;
+                                    MessageBox.Show("Please check the second phone number.");
+                                }
                             }
-                            else
-                            {
-                                everythingCorrect = false;
-                                MessageBox.Show("Please check the second phone number.");
-                            }
+                        }
+                        else
+                        {
+                            everythingCorrect = false;
+                            MessageBox.Show("Please check the email address.");
                         }
 
                         if (everythingCorrect)
@@ -299,7 +307,7 @@ namespace Barroc_IT
 
         //RecoverComboBoxFields
         private void RecoverComboBoxFields()
-        {   
+        {
             if (cBoxCusProspect.Text == "True" || cBoxCusProspect.Text == "1")
             {
                 cBoxCusProspect.Text = "Yes";
@@ -307,12 +315,12 @@ namespace Barroc_IT
             else if (cBoxCusProspect.Text == "Yes")
             {
                 cBoxCusProspect.Text = "True";
-            }                
+            }
             else if (cBoxCusProspect.Text == "False" || cBoxCusProspect.Text == "0")
             {
                 cBoxCusProspect.Text = "No";
             }
-            else if(cBoxCusProspect.Text == "No")
+            else if (cBoxCusProspect.Text == "No")
             {
                 cBoxCusProspect.Text = "False";
             }
@@ -433,7 +441,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("OfferStatus", txtCusOfferStatus.Text));
             cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusAddFaxNumber.Text));
             cmd.Parameters.Add(new SqlParameter("Email", txtCusEmail.Text));
-            cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.SelectedIndex.ToString()));
+            cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.SelectedIndex));
             cmd.Parameters.Add(new SqlParameter("DateOfAction", dtpCusSalesDateOfAction.Value));
             cmd.Parameters.Add(new SqlParameter("LastContactDate", dtpCusSalesLastContactDate.Value));
             cmd.Parameters.Add(new SqlParameter("NextAction", dtpCusSalesNextAction.Value));
@@ -515,12 +523,40 @@ namespace Barroc_IT
             txtCusContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
             cBoxCusProspect.Text = CusRow["PROSPECT"].ToString();
             txtCusOfferStatus.Text = CusRow["OFFER_STAT"].ToString();
-            DateTime dateOfAction = DateTime.Parse(CusRow["DATE_OF_ACTION"].ToString());
-            dtpCusSalesDateOfAction.Value = dateOfAction;
-            DateTime lastContactDate = DateTime.Parse(CusRow["LAST_CONTACT_DATE"].ToString());
-            dtpCusSalesLastContactDate.Value = lastContactDate;
-            DateTime nextAction = DateTime.Parse(CusRow["NEXT_ACTION"].ToString());
-            dtpCusSalesNextAction.Value = nextAction;
+
+            string sDateOfAction = CusRow["DATE_OF_ACTION"].ToString();
+            if (sDateOfAction.Length > 0)
+            {
+                DateTime dateOfAction = DateTime.Parse(CusRow["DATE_OF_ACTION"].ToString());
+                dtpCusSalesDateOfAction.Value = dateOfAction;
+            }
+            else
+            {
+                dtpCusSalesDateOfAction.Value = dtpCusSalesDateOfAction.MinDate;
+            }
+
+            string sLastContactDate = CusRow["LAST_CONTACT_DATE"].ToString();
+            if (sLastContactDate.Length > 0)
+            {
+                DateTime lastContactDate = DateTime.Parse(CusRow["LAST_CONTACT_DATE"].ToString());
+                dtpCusSalesLastContactDate.Value = lastContactDate;
+            }
+            else
+            {
+                dtpCusSalesLastContactDate.Value = dtpCusSalesLastContactDate.MinDate;
+            }
+
+            string sNextActionDate = CusRow["NEXT_ACTION"].ToString();
+            if (sNextActionDate.Length > 0)
+            {
+                DateTime nextAction = DateTime.Parse(CusRow["NEXT_ACTION"].ToString());
+                dtpCusSalesNextAction.Value = nextAction;
+            }
+            else
+            {
+                dtpCusSalesNextAction.Value = dtpCusSalesNextAction.MinDate;
+            }
+
             DataRow countCus = countOff.Rows[0];
             txtCusNumberOfOffers.Text = countCus[0].ToString();
             DataRow ApoRow = countApo.Rows[0];
@@ -573,6 +609,25 @@ namespace Barroc_IT
             {
                 return false;
             }
+        }
+
+        private bool CheckEmail(TextBox email)
+        {
+            bool match = false;
+
+            string sRegex = @"\b\S+\b\b[@]\b\b\S+\b[.]\b\S+\b$";
+            Regex regex = new Regex(sRegex);
+
+            if (regex.IsMatch(email.Text))
+            {
+                match = true;
+            }
+            else
+            {
+                match = false;
+            }
+
+            return match;
         }
 
         // Close To Login
