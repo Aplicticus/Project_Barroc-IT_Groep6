@@ -136,6 +136,34 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 7;
         }
+        private void btnInvoiceSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearchInvoice.Text.Length > 0)
+            {
+                SearchChoice selectedItem;
+                switch (cBoxSearchInvoice.SelectedItem.ToString())
+                {
+                    case "Company Name":
+                        selectedItem = SearchChoice.InvoiceCompanyName;
+                        break;
+                    case "Project Name":
+                        selectedItem = SearchChoice.InvoiceProjectName;
+                        break;
+                    case "Value":
+                        selectedItem = SearchChoice.InvoiceValue;
+                        break;
+                    default:
+                        selectedItem = SearchChoice.InvoiceCompanyName;
+                        break;
+                }
+                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtSearchInvoice.Text, selectedCustomer, selectedProject);
+                dthandler.AddItemsToDataGridView(resultOfSearch, dgvInvoices, "cInvoiceID");
+            }
+            else
+            {
+                LoadInvoices();
+            }
+        }
         private void btnCreateInvoice_Click(object sender, EventArgs e)
         {
             numFinInvoiceAddValue.ResetText();
@@ -497,34 +525,5 @@ namespace Barroc_IT
             }
         }
         #endregion
-
-        private void btnInvoiceSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearchInvoice.Text.Length > 0)
-            {
-                SearchChoice selectedItem;
-                switch (cBoxSearchInvoice.SelectedItem.ToString())
-                {
-                    case "Company Name":
-                        selectedItem = SearchChoice.InvoiceCompanyName;
-                        break;
-                    case "Project Name":
-                        selectedItem = SearchChoice.InvoiceProjectName;
-                        break;
-                    case "Value":
-                        selectedItem = SearchChoice.InvoiceValue;
-                        break;
-                    default:
-                        selectedItem = SearchChoice.InvoiceCompanyName;
-                        break;
-                }
-                DataTable resultOfSearch = dthandler.SearchText(selectedItem, txtSearchInvoice.Text, selectedCustomer, selectedProject);
-                dthandler.AddItemsToDataGridView(resultOfSearch, dgvInvoices, "cInvoiceID");
-            }
-            else
-            {
-                LoadInvoices();
-            }
-        }
     }
 }
