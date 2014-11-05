@@ -1379,6 +1379,7 @@
             this.btnEditAppointmentFields.TabIndex = 6;
             this.btnEditAppointmentFields.Text = "Edit Fields";
             this.btnEditAppointmentFields.UseVisualStyleBackColor = true;
+            this.btnEditAppointmentFields.Click += new System.EventHandler(this.btnEditAppointmentFields_Click);
             // 
             // lblSelectedAppointment
             // 
