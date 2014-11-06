@@ -269,11 +269,12 @@ namespace Barroc_IT
                     if (e.RowIndex >= 0)
                     {
                         selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
-                        string sqlCustomer = sqlhandler.GetQuery(Query.loadCustomers);
-                        DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomer);
+                        string sqlCustomer = sqlhandler.GetQuery(Query.loadCustomerDetails);
+                        SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
+                        DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomer, collection);
 
                         string sqlAppointments = sqlhandler.GetQuery(Query.loadAppointments);
-                        SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
+                        collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
                         DataTable appointmentDetails = dthandler.ExecuteQuery(sqlAppointments, collection);
 
                         string sqlCountProjects = sqlhandler.GetQuery(Query.countProjects);
