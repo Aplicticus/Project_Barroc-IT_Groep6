@@ -146,7 +146,7 @@
             // btnLogout
             // 
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(24, 533);
+            this.btnLogout.Location = new System.Drawing.Point(24, 562);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(165, 43);
             this.btnLogout.TabIndex = 4;
@@ -276,7 +276,7 @@
             // btnAddUser
             // 
             this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.Location = new System.Drawing.Point(582, 541);
+            this.btnAddUser.Location = new System.Drawing.Point(575, 540);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(84, 60);
             this.btnAddUser.TabIndex = 190;
@@ -287,7 +287,7 @@
             // btnAddUserBack
             // 
             this.btnAddUserBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUserBack.Location = new System.Drawing.Point(672, 541);
+            this.btnAddUserBack.Location = new System.Drawing.Point(665, 540);
             this.btnAddUserBack.Name = "btnAddUserBack";
             this.btnAddUserBack.Size = new System.Drawing.Size(84, 60);
             this.btnAddUserBack.TabIndex = 189;
@@ -415,7 +415,7 @@
             this.dgvActivatedUsers.Name = "dgvActivatedUsers";
             this.dgvActivatedUsers.ReadOnly = true;
             this.dgvActivatedUsers.RowHeadersVisible = false;
-            this.dgvActivatedUsers.Size = new System.Drawing.Size(744, 398);
+            this.dgvActivatedUsers.Size = new System.Drawing.Size(740, 440);
             this.dgvActivatedUsers.TabIndex = 189;
             this.dgvActivatedUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdminUserInfo_CellContentClick);
             // 
@@ -464,7 +464,7 @@
             // btnActivatedUsersBack
             // 
             this.btnActivatedUsersBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActivatedUsersBack.Location = new System.Drawing.Point(669, 538);
+            this.btnActivatedUsersBack.Location = new System.Drawing.Point(665, 540);
             this.btnActivatedUsersBack.Name = "btnActivatedUsersBack";
             this.btnActivatedUsersBack.Size = new System.Drawing.Size(84, 60);
             this.btnActivatedUsersBack.TabIndex = 188;
@@ -514,7 +514,7 @@
             this.dgvDeactivatedUsers.Name = "dgvDeactivatedUsers";
             this.dgvDeactivatedUsers.ReadOnly = true;
             this.dgvDeactivatedUsers.RowHeadersVisible = false;
-            this.dgvDeactivatedUsers.Size = new System.Drawing.Size(744, 440);
+            this.dgvDeactivatedUsers.Size = new System.Drawing.Size(740, 440);
             this.dgvDeactivatedUsers.TabIndex = 190;
             this.dgvDeactivatedUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeactivatedUsers_CellContentClick);
             // 
@@ -563,7 +563,7 @@
             // btnDeactivatedUsersBack
             // 
             this.btnDeactivatedUsersBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeactivatedUsersBack.Location = new System.Drawing.Point(668, 540);
+            this.btnDeactivatedUsersBack.Location = new System.Drawing.Point(665, 540);
             this.btnDeactivatedUsersBack.Name = "btnDeactivatedUsersBack";
             this.btnDeactivatedUsersBack.Size = new System.Drawing.Size(84, 60);
             this.btnDeactivatedUsersBack.TabIndex = 189;
@@ -597,7 +597,7 @@
             // btnUserInfoBack
             // 
             this.btnUserInfoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserInfoBack.Location = new System.Drawing.Point(667, 513);
+            this.btnUserInfoBack.Location = new System.Drawing.Point(665, 540);
             this.btnUserInfoBack.Name = "btnUserInfoBack";
             this.btnUserInfoBack.Size = new System.Drawing.Size(84, 60);
             this.btnUserInfoBack.TabIndex = 192;
@@ -623,7 +623,7 @@
             this.dgvUserInfo.Name = "dgvUserInfo";
             this.dgvUserInfo.ReadOnly = true;
             this.dgvUserInfo.RowHeadersVisible = false;
-            this.dgvUserInfo.Size = new System.Drawing.Size(744, 440);
+            this.dgvUserInfo.Size = new System.Drawing.Size(740, 440);
             this.dgvUserInfo.TabIndex = 191;
             // 
             // uUserID

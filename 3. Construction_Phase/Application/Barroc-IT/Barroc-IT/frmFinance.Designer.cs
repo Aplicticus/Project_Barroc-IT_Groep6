@@ -109,6 +109,14 @@
             this.btnProjectSearch = new System.Windows.Forms.Button();
             this.txtProjectSearch = new System.Windows.Forms.TextBox();
             this.dgvProjects = new System.Windows.Forms.DataGridView();
+            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finProCompleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.txtProjectSubject = new System.Windows.Forms.TextBox();
             this.lblProjectSubject = new System.Windows.Forms.Label();
@@ -133,6 +141,14 @@
             this.btnInvoiceSearch = new System.Windows.Forms.Button();
             this.txtSearchInvoice = new System.Windows.Forms.TextBox();
             this.dgvInvoices = new System.Windows.Forms.DataGridView();
+            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPayedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.txtInvoicePaid = new System.Windows.Forms.TextBox();
             this.lblInvoiceInvoicePaid = new System.Windows.Forms.Label();
@@ -159,22 +175,6 @@
             this.lblFinInvoiceExpDate = new System.Windows.Forms.Label();
             this.numFinInvoiceAddValue = new System.Windows.Forms.NumericUpDown();
             this.lblFinInvoiceValue = new System.Windows.Forms.Label();
-            this.finProView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finProCompleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finInvExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSendDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPayedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pnlFinance.SuspendLayout();
@@ -238,7 +238,7 @@
             // btnLogout
             // 
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(24, 556);
+            this.btnLogout.Location = new System.Drawing.Point(24, 562);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(165, 43);
             this.btnLogout.TabIndex = 4;
@@ -249,7 +249,7 @@
             // btnFinanceSelectCustomer
             // 
             this.btnFinanceSelectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinanceSelectCustomer.Location = new System.Drawing.Point(24, 85);
+            this.btnFinanceSelectCustomer.Location = new System.Drawing.Point(24, 82);
             this.btnFinanceSelectCustomer.Name = "btnFinanceSelectCustomer";
             this.btnFinanceSelectCustomer.Size = new System.Drawing.Size(165, 43);
             this.btnFinanceSelectCustomer.TabIndex = 2;
@@ -260,12 +260,13 @@
             // btnFinanceHome
             // 
             this.btnFinanceHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinanceHome.Location = new System.Drawing.Point(24, 22);
+            this.btnFinanceHome.Location = new System.Drawing.Point(24, 33);
             this.btnFinanceHome.Name = "btnFinanceHome";
             this.btnFinanceHome.Size = new System.Drawing.Size(165, 43);
             this.btnFinanceHome.TabIndex = 0;
             this.btnFinanceHome.Text = "Home";
             this.btnFinanceHome.UseVisualStyleBackColor = true;
+            this.btnFinanceHome.Click += new System.EventHandler(this.btnFinanceHome_Click);
             // 
             // pnlFinance
             // 
@@ -344,7 +345,7 @@
             // 
             this.lblCustomers.AutoSize = true;
             this.lblCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomers.Location = new System.Drawing.Point(3, 1);
+            this.lblCustomers.Location = new System.Drawing.Point(302, 23);
             this.lblCustomers.Name = "lblCustomers";
             this.lblCustomers.Size = new System.Drawing.Size(155, 31);
             this.lblCustomers.TabIndex = 189;
@@ -353,7 +354,7 @@
             // btnCustomerViewBack
             // 
             this.btnCustomerViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomerViewBack.Location = new System.Drawing.Point(684, 551);
+            this.btnCustomerViewBack.Location = new System.Drawing.Point(665, 540);
             this.btnCustomerViewBack.Name = "btnCustomerViewBack";
             this.btnCustomerViewBack.Size = new System.Drawing.Size(84, 60);
             this.btnCustomerViewBack.TabIndex = 188;
@@ -369,7 +370,7 @@
             "Company Name",
             "E-Mail",
             "Initials"});
-            this.cBoxCustomerSearch.Location = new System.Drawing.Point(437, 11);
+            this.cBoxCustomerSearch.Location = new System.Drawing.Point(424, 67);
             this.cBoxCustomerSearch.Name = "cBoxCustomerSearch";
             this.cBoxCustomerSearch.Size = new System.Drawing.Size(121, 21);
             this.cBoxCustomerSearch.Sorted = true;
@@ -377,7 +378,7 @@
             // 
             // btnCustomerSearch
             // 
-            this.btnCustomerSearch.Location = new System.Drawing.Point(687, 10);
+            this.btnCustomerSearch.Location = new System.Drawing.Point(674, 66);
             this.btnCustomerSearch.Name = "btnCustomerSearch";
             this.btnCustomerSearch.Size = new System.Drawing.Size(75, 23);
             this.btnCustomerSearch.TabIndex = 25;
@@ -387,7 +388,7 @@
             // 
             // txtCustomerSearch
             // 
-            this.txtCustomerSearch.Location = new System.Drawing.Point(564, 12);
+            this.txtCustomerSearch.Location = new System.Drawing.Point(551, 68);
             this.txtCustomerSearch.Name = "txtCustomerSearch";
             this.txtCustomerSearch.Size = new System.Drawing.Size(119, 20);
             this.txtCustomerSearch.TabIndex = 31;
@@ -415,12 +416,12 @@
             this.finCusPhoneNumber2,
             this.finCusFaxNumber,
             this.finCusEmail});
-            this.dgvCustomers.Location = new System.Drawing.Point(0, 39);
+            this.dgvCustomers.Location = new System.Drawing.Point(9, 94);
             this.dgvCustomers.MultiSelect = false;
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.ReadOnly = true;
             this.dgvCustomers.RowHeadersVisible = false;
-            this.dgvCustomers.Size = new System.Drawing.Size(771, 506);
+            this.dgvCustomers.Size = new System.Drawing.Size(740, 440);
             this.dgvCustomers.TabIndex = 30;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
             // 
@@ -563,7 +564,7 @@
             // 
             // txtFinBalance
             // 
-            this.txtFinBalance.Location = new System.Drawing.Point(585, 115);
+            this.txtFinBalance.Location = new System.Drawing.Point(602, 112);
             this.txtFinBalance.Name = "txtFinBalance";
             this.txtFinBalance.ReadOnly = true;
             this.txtFinBalance.Size = new System.Drawing.Size(137, 20);
@@ -578,7 +579,7 @@
             0,
             0,
             131072});
-            this.nudFinLimit.Location = new System.Drawing.Point(585, 176);
+            this.nudFinLimit.Location = new System.Drawing.Point(602, 173);
             this.nudFinLimit.Maximum = new decimal(new int[] {
             -1593835521,
             466537709,
@@ -597,7 +598,7 @@
             // 
             // txtFinProjects
             // 
-            this.txtFinProjects.Location = new System.Drawing.Point(223, 295);
+            this.txtFinProjects.Location = new System.Drawing.Point(240, 292);
             this.txtFinProjects.Name = "txtFinProjects";
             this.txtFinProjects.ReadOnly = true;
             this.txtFinProjects.Size = new System.Drawing.Size(137, 20);
@@ -607,7 +608,7 @@
             // 
             this.lblFinProjects.AutoSize = true;
             this.lblFinProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinProjects.Location = new System.Drawing.Point(24, 289);
+            this.lblFinProjects.Location = new System.Drawing.Point(41, 286);
             this.lblFinProjects.Name = "lblFinProjects";
             this.lblFinProjects.Size = new System.Drawing.Size(188, 25);
             this.lblFinProjects.TabIndex = 228;
@@ -616,7 +617,7 @@
             // btnCustomerBack
             // 
             this.btnCustomerBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomerBack.Location = new System.Drawing.Point(683, 551);
+            this.btnCustomerBack.Location = new System.Drawing.Point(680, 540);
             this.btnCustomerBack.Name = "btnCustomerBack";
             this.btnCustomerBack.Size = new System.Drawing.Size(84, 60);
             this.btnCustomerBack.TabIndex = 227;
@@ -627,7 +628,7 @@
             // btnViewProjects
             // 
             this.btnViewProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewProjects.Location = new System.Drawing.Point(585, 551);
+            this.btnViewProjects.Location = new System.Drawing.Point(582, 540);
             this.btnViewProjects.Name = "btnViewProjects";
             this.btnViewProjects.Size = new System.Drawing.Size(92, 60);
             this.btnViewProjects.TabIndex = 226;
@@ -638,7 +639,7 @@
             // btnEditFields
             // 
             this.btnEditFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditFields.Location = new System.Drawing.Point(503, 551);
+            this.btnEditFields.Location = new System.Drawing.Point(500, 540);
             this.btnEditFields.Name = "btnEditFields";
             this.btnEditFields.Size = new System.Drawing.Size(76, 60);
             this.btnEditFields.TabIndex = 225;
@@ -654,7 +655,7 @@
             this.cbFinBKR.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbFinBKR.Location = new System.Drawing.Point(585, 263);
+            this.cbFinBKR.Location = new System.Drawing.Point(602, 260);
             this.cbFinBKR.Name = "cbFinBKR";
             this.cbFinBKR.Size = new System.Drawing.Size(137, 21);
             this.cbFinBKR.TabIndex = 224;
@@ -663,7 +664,7 @@
             // 
             this.lblFinBKR.AutoSize = true;
             this.lblFinBKR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinBKR.Location = new System.Drawing.Point(379, 259);
+            this.lblFinBKR.Location = new System.Drawing.Point(396, 256);
             this.lblFinBKR.Name = "lblFinBKR";
             this.lblFinBKR.Size = new System.Drawing.Size(58, 25);
             this.lblFinBKR.TabIndex = 223;
@@ -671,7 +672,7 @@
             // 
             // txtContactPerson
             // 
-            this.txtContactPerson.Location = new System.Drawing.Point(225, 265);
+            this.txtContactPerson.Location = new System.Drawing.Point(242, 262);
             this.txtContactPerson.Name = "txtContactPerson";
             this.txtContactPerson.ReadOnly = true;
             this.txtContactPerson.Size = new System.Drawing.Size(137, 20);
@@ -681,7 +682,7 @@
             // 
             this.lblContactperson.AutoSize = true;
             this.lblContactperson.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContactperson.Location = new System.Drawing.Point(25, 261);
+            this.lblContactperson.Location = new System.Drawing.Point(42, 258);
             this.lblContactperson.Name = "lblContactperson";
             this.lblContactperson.Size = new System.Drawing.Size(146, 25);
             this.lblContactperson.TabIndex = 221;
@@ -691,7 +692,7 @@
             // 
             this.lblFinLimit.AutoSize = true;
             this.lblFinLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinLimit.Location = new System.Drawing.Point(379, 169);
+            this.lblFinLimit.Location = new System.Drawing.Point(396, 166);
             this.lblFinLimit.Name = "lblFinLimit";
             this.lblFinLimit.Size = new System.Drawing.Size(58, 25);
             this.lblFinLimit.TabIndex = 220;
@@ -701,7 +702,7 @@
             // 
             this.lblFinLegderID.AutoSize = true;
             this.lblFinLegderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinLegderID.Location = new System.Drawing.Point(379, 199);
+            this.lblFinLegderID.Location = new System.Drawing.Point(396, 196);
             this.lblFinLegderID.Name = "lblFinLegderID";
             this.lblFinLegderID.Size = new System.Drawing.Size(153, 25);
             this.lblFinLegderID.TabIndex = 219;
@@ -711,7 +712,7 @@
             // 
             this.lblFinBTWCode.AutoSize = true;
             this.lblFinBTWCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinBTWCode.Location = new System.Drawing.Point(379, 229);
+            this.lblFinBTWCode.Location = new System.Drawing.Point(396, 226);
             this.lblFinBTWCode.Name = "lblFinBTWCode";
             this.lblFinBTWCode.Size = new System.Drawing.Size(117, 25);
             this.lblFinBTWCode.TabIndex = 218;
@@ -721,7 +722,7 @@
             // 
             this.lblFinSales.AutoSize = true;
             this.lblFinSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinSales.Location = new System.Drawing.Point(379, 141);
+            this.lblFinSales.Location = new System.Drawing.Point(396, 138);
             this.lblFinSales.Name = "lblFinSales";
             this.lblFinSales.Size = new System.Drawing.Size(68, 25);
             this.lblFinSales.TabIndex = 217;
@@ -731,7 +732,7 @@
             // 
             this.lblFinBalance.AutoSize = true;
             this.lblFinBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinBalance.Location = new System.Drawing.Point(379, 111);
+            this.lblFinBalance.Location = new System.Drawing.Point(396, 108);
             this.lblFinBalance.Name = "lblFinBalance";
             this.lblFinBalance.Size = new System.Drawing.Size(89, 25);
             this.lblFinBalance.TabIndex = 215;
@@ -739,7 +740,7 @@
             // 
             // txtFinSales
             // 
-            this.txtFinSales.Location = new System.Drawing.Point(585, 145);
+            this.txtFinSales.Location = new System.Drawing.Point(602, 142);
             this.txtFinSales.Name = "txtFinSales";
             this.txtFinSales.ReadOnly = true;
             this.txtFinSales.Size = new System.Drawing.Size(137, 20);
@@ -747,7 +748,7 @@
             // 
             // txtFinBTWCode
             // 
-            this.txtFinBTWCode.Location = new System.Drawing.Point(585, 233);
+            this.txtFinBTWCode.Location = new System.Drawing.Point(602, 230);
             this.txtFinBTWCode.Name = "txtFinBTWCode";
             this.txtFinBTWCode.ReadOnly = true;
             this.txtFinBTWCode.Size = new System.Drawing.Size(137, 20);
@@ -755,7 +756,7 @@
             // 
             // txtFinLedgerID
             // 
-            this.txtFinLedgerID.Location = new System.Drawing.Point(585, 199);
+            this.txtFinLedgerID.Location = new System.Drawing.Point(602, 196);
             this.txtFinLedgerID.Name = "txtFinLedgerID";
             this.txtFinLedgerID.ReadOnly = true;
             this.txtFinLedgerID.Size = new System.Drawing.Size(137, 20);
@@ -765,7 +766,7 @@
             // 
             this.lblFax.AutoSize = true;
             this.lblFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFax.Location = new System.Drawing.Point(25, 201);
+            this.lblFax.Location = new System.Drawing.Point(42, 198);
             this.lblFax.Name = "lblFax";
             this.lblFax.Size = new System.Drawing.Size(130, 25);
             this.lblFax.TabIndex = 211;
@@ -775,7 +776,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(25, 231);
+            this.lblEmail.Location = new System.Drawing.Point(42, 228);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(73, 25);
             this.lblEmail.TabIndex = 207;
@@ -783,7 +784,7 @@
             // 
             // txtFinAccountID
             // 
-            this.txtFinAccountID.Location = new System.Drawing.Point(585, 85);
+            this.txtFinAccountID.Location = new System.Drawing.Point(602, 82);
             this.txtFinAccountID.Name = "txtFinAccountID";
             this.txtFinAccountID.ReadOnly = true;
             this.txtFinAccountID.Size = new System.Drawing.Size(137, 20);
@@ -791,7 +792,7 @@
             // 
             // txtPhoneNumber1
             // 
-            this.txtPhoneNumber1.Location = new System.Drawing.Point(225, 175);
+            this.txtPhoneNumber1.Location = new System.Drawing.Point(242, 172);
             this.txtPhoneNumber1.Name = "txtPhoneNumber1";
             this.txtPhoneNumber1.ReadOnly = true;
             this.txtPhoneNumber1.Size = new System.Drawing.Size(137, 20);
@@ -799,7 +800,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(225, 235);
+            this.txtEmail.Location = new System.Drawing.Point(242, 232);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(137, 20);
@@ -809,7 +810,7 @@
             // 
             this.lblFinAccountID.AutoSize = true;
             this.lblFinAccountID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinAccountID.Location = new System.Drawing.Point(379, 81);
+            this.lblFinAccountID.Location = new System.Drawing.Point(396, 78);
             this.lblFinAccountID.Name = "lblFinAccountID";
             this.lblFinAccountID.Size = new System.Drawing.Size(164, 25);
             this.lblFinAccountID.TabIndex = 203;
@@ -817,7 +818,7 @@
             // 
             // txtFaxNumber
             // 
-            this.txtFaxNumber.Location = new System.Drawing.Point(225, 205);
+            this.txtFaxNumber.Location = new System.Drawing.Point(242, 202);
             this.txtFaxNumber.Name = "txtFaxNumber";
             this.txtFaxNumber.ReadOnly = true;
             this.txtFaxNumber.Size = new System.Drawing.Size(137, 20);
@@ -827,7 +828,7 @@
             // 
             this.lblPhoneNumber1.AutoSize = true;
             this.lblPhoneNumber1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber1.Location = new System.Drawing.Point(25, 171);
+            this.lblPhoneNumber1.Location = new System.Drawing.Point(42, 168);
             this.lblPhoneNumber1.Name = "lblPhoneNumber1";
             this.lblPhoneNumber1.Size = new System.Drawing.Size(149, 25);
             this.lblPhoneNumber1.TabIndex = 201;
@@ -835,7 +836,7 @@
             // 
             // txtPostalCode1
             // 
-            this.txtPostalCode1.Location = new System.Drawing.Point(225, 145);
+            this.txtPostalCode1.Location = new System.Drawing.Point(242, 142);
             this.txtPostalCode1.Name = "txtPostalCode1";
             this.txtPostalCode1.ReadOnly = true;
             this.txtPostalCode1.Size = new System.Drawing.Size(137, 20);
@@ -845,7 +846,7 @@
             // 
             this.lblPostalCode1.AutoSize = true;
             this.lblPostalCode1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPostalCode1.Location = new System.Drawing.Point(25, 141);
+            this.lblPostalCode1.Location = new System.Drawing.Point(42, 138);
             this.lblPostalCode1.Name = "lblPostalCode1";
             this.lblPostalCode1.Size = new System.Drawing.Size(125, 25);
             this.lblPostalCode1.TabIndex = 199;
@@ -853,7 +854,7 @@
             // 
             // txtAddress1
             // 
-            this.txtAddress1.Location = new System.Drawing.Point(225, 115);
+            this.txtAddress1.Location = new System.Drawing.Point(242, 112);
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.ReadOnly = true;
             this.txtAddress1.Size = new System.Drawing.Size(137, 20);
@@ -863,7 +864,7 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(25, 111);
+            this.lblAddress.Location = new System.Drawing.Point(42, 108);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(91, 25);
             this.lblAddress.TabIndex = 197;
@@ -873,7 +874,7 @@
             // 
             this.lblCompanyName.AutoSize = true;
             this.lblCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompanyName.Location = new System.Drawing.Point(25, 81);
+            this.lblCompanyName.Location = new System.Drawing.Point(42, 78);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Size = new System.Drawing.Size(160, 25);
             this.lblCompanyName.TabIndex = 196;
@@ -881,7 +882,7 @@
             // 
             // txtCompanyName
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(225, 85);
+            this.txtCompanyName.Location = new System.Drawing.Point(242, 82);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(137, 20);
@@ -891,7 +892,7 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(293, 12);
+            this.lblCustomer.Location = new System.Drawing.Point(314, 23);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(140, 31);
             this.lblCustomer.TabIndex = 194;
@@ -917,7 +918,7 @@
             // 
             this.lblProjects.AutoSize = true;
             this.lblProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjects.Location = new System.Drawing.Point(3, 1);
+            this.lblProjects.Location = new System.Drawing.Point(303, 23);
             this.lblProjects.Name = "lblProjects";
             this.lblProjects.Size = new System.Drawing.Size(121, 31);
             this.lblProjects.TabIndex = 188;
@@ -926,7 +927,7 @@
             // btnProjectViewBack
             // 
             this.btnProjectViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectViewBack.Location = new System.Drawing.Point(684, 560);
+            this.btnProjectViewBack.Location = new System.Drawing.Point(665, 540);
             this.btnProjectViewBack.Name = "btnProjectViewBack";
             this.btnProjectViewBack.Size = new System.Drawing.Size(84, 60);
             this.btnProjectViewBack.TabIndex = 187;
@@ -943,7 +944,7 @@
             "Deadline",
             "Project Name",
             "Subject"});
-            this.cBoxProjectSearch.Location = new System.Drawing.Point(437, 11);
+            this.cBoxProjectSearch.Location = new System.Drawing.Point(424, 67);
             this.cBoxProjectSearch.Name = "cBoxProjectSearch";
             this.cBoxProjectSearch.Size = new System.Drawing.Size(121, 21);
             this.cBoxProjectSearch.Sorted = true;
@@ -951,7 +952,7 @@
             // 
             // btnProjectSearch
             // 
-            this.btnProjectSearch.Location = new System.Drawing.Point(687, 10);
+            this.btnProjectSearch.Location = new System.Drawing.Point(676, 66);
             this.btnProjectSearch.Name = "btnProjectSearch";
             this.btnProjectSearch.Size = new System.Drawing.Size(75, 23);
             this.btnProjectSearch.TabIndex = 33;
@@ -961,7 +962,7 @@
             // 
             // txtProjectSearch
             // 
-            this.txtProjectSearch.Location = new System.Drawing.Point(564, 12);
+            this.txtProjectSearch.Location = new System.Drawing.Point(551, 68);
             this.txtProjectSearch.Name = "txtProjectSearch";
             this.txtProjectSearch.Size = new System.Drawing.Size(119, 20);
             this.txtProjectSearch.TabIndex = 32;
@@ -982,586 +983,14 @@
             this.finProSubject,
             this.finProValue,
             this.finProCompleted});
-            this.dgvProjects.Location = new System.Drawing.Point(0, 39);
+            this.dgvProjects.Location = new System.Drawing.Point(9, 94);
             this.dgvProjects.MultiSelect = false;
             this.dgvProjects.Name = "dgvProjects";
             this.dgvProjects.ReadOnly = true;
             this.dgvProjects.RowHeadersVisible = false;
-            this.dgvProjects.Size = new System.Drawing.Size(771, 506);
+            this.dgvProjects.Size = new System.Drawing.Size(740, 440);
             this.dgvProjects.TabIndex = 31;
             this.dgvProjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjects_CellContentClick);
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage5.Controls.Add(this.txtProjectSubject);
-            this.tabPage5.Controls.Add(this.lblProjectSubject);
-            this.tabPage5.Controls.Add(this.btnProjectBack);
-            this.tabPage5.Controls.Add(this.btnViewInvoices);
-            this.tabPage5.Controls.Add(this.btnAddInvoice);
-            this.tabPage5.Controls.Add(this.dtpDeadlineViewProject);
-            this.tabPage5.Controls.Add(this.txtProjectName);
-            this.tabPage5.Controls.Add(this.lblProjectCompanyName);
-            this.tabPage5.Controls.Add(this.txtProjectValue);
-            this.tabPage5.Controls.Add(this.lblProjectValue);
-            this.tabPage5.Controls.Add(this.txtProjectInvoices);
-            this.tabPage5.Controls.Add(this.lblNumberInvoices);
-            this.tabPage5.Controls.Add(this.lblProjectDeadline);
-            this.tabPage5.Controls.Add(this.lblProjectName);
-            this.tabPage5.Controls.Add(this.txtProjectCompanyName);
-            this.tabPage5.Controls.Add(this.lblSelectedProject);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(771, 586);
-            this.tabPage5.TabIndex = 12;
-            this.tabPage5.Text = "selectedProject";
-            // 
-            // txtProjectSubject
-            // 
-            this.txtProjectSubject.Location = new System.Drawing.Point(360, 175);
-            this.txtProjectSubject.Name = "txtProjectSubject";
-            this.txtProjectSubject.ReadOnly = true;
-            this.txtProjectSubject.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectSubject.TabIndex = 188;
-            // 
-            // lblProjectSubject
-            // 
-            this.lblProjectSubject.AutoSize = true;
-            this.lblProjectSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectSubject.Location = new System.Drawing.Point(174, 171);
-            this.lblProjectSubject.Name = "lblProjectSubject";
-            this.lblProjectSubject.Size = new System.Drawing.Size(84, 25);
-            this.lblProjectSubject.TabIndex = 187;
-            this.lblProjectSubject.Text = "Subject:";
-            // 
-            // btnProjectBack
-            // 
-            this.btnProjectBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProjectBack.Location = new System.Drawing.Point(684, 554);
-            this.btnProjectBack.Name = "btnProjectBack";
-            this.btnProjectBack.Size = new System.Drawing.Size(84, 60);
-            this.btnProjectBack.TabIndex = 186;
-            this.btnProjectBack.Text = "Back";
-            this.btnProjectBack.UseVisualStyleBackColor = true;
-            this.btnProjectBack.Click += new System.EventHandler(this.btnBackClick);
-            // 
-            // btnViewInvoices
-            // 
-            this.btnViewInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewInvoices.Location = new System.Drawing.Point(585, 554);
-            this.btnViewInvoices.Name = "btnViewInvoices";
-            this.btnViewInvoices.Size = new System.Drawing.Size(93, 60);
-            this.btnViewInvoices.TabIndex = 161;
-            this.btnViewInvoices.Text = "View Invoices";
-            this.btnViewInvoices.UseVisualStyleBackColor = true;
-            this.btnViewInvoices.Click += new System.EventHandler(this.btnViewInvoices_Click);
-            // 
-            // btnAddInvoice
-            // 
-            this.btnAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInvoice.Location = new System.Drawing.Point(497, 554);
-            this.btnAddInvoice.Name = "btnAddInvoice";
-            this.btnAddInvoice.Size = new System.Drawing.Size(82, 60);
-            this.btnAddInvoice.TabIndex = 160;
-            this.btnAddInvoice.Text = "Add Invoice";
-            this.btnAddInvoice.UseVisualStyleBackColor = true;
-            this.btnAddInvoice.Click += new System.EventHandler(this.btnAddInvoice_Click);
-            // 
-            // dtpDeadlineViewProject
-            // 
-            this.dtpDeadlineViewProject.Enabled = false;
-            this.dtpDeadlineViewProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(360, 145);
-            this.dtpDeadlineViewProject.Name = "dtpDeadlineViewProject";
-            this.dtpDeadlineViewProject.Size = new System.Drawing.Size(137, 20);
-            this.dtpDeadlineViewProject.TabIndex = 159;
-            // 
-            // txtProjectName
-            // 
-            this.txtProjectName.Location = new System.Drawing.Point(360, 115);
-            this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.ReadOnly = true;
-            this.txtProjectName.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectName.TabIndex = 158;
-            // 
-            // lblProjectCompanyName
-            // 
-            this.lblProjectCompanyName.AutoSize = true;
-            this.lblProjectCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectCompanyName.Location = new System.Drawing.Point(174, 81);
-            this.lblProjectCompanyName.Name = "lblProjectCompanyName";
-            this.lblProjectCompanyName.Size = new System.Drawing.Size(160, 25);
-            this.lblProjectCompanyName.TabIndex = 157;
-            this.lblProjectCompanyName.Text = "Company Name:";
-            // 
-            // txtProjectValue
-            // 
-            this.txtProjectValue.Location = new System.Drawing.Point(360, 205);
-            this.txtProjectValue.Name = "txtProjectValue";
-            this.txtProjectValue.ReadOnly = true;
-            this.txtProjectValue.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectValue.TabIndex = 156;
-            // 
-            // lblProjectValue
-            // 
-            this.lblProjectValue.AutoSize = true;
-            this.lblProjectValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectValue.Location = new System.Drawing.Point(174, 201);
-            this.lblProjectValue.Name = "lblProjectValue";
-            this.lblProjectValue.Size = new System.Drawing.Size(69, 25);
-            this.lblProjectValue.TabIndex = 155;
-            this.lblProjectValue.Text = "Value:";
-            // 
-            // txtProjectInvoices
-            // 
-            this.txtProjectInvoices.Location = new System.Drawing.Point(360, 235);
-            this.txtProjectInvoices.Name = "txtProjectInvoices";
-            this.txtProjectInvoices.ReadOnly = true;
-            this.txtProjectInvoices.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectInvoices.TabIndex = 154;
-            // 
-            // lblNumberInvoices
-            // 
-            this.lblNumberInvoices.AutoSize = true;
-            this.lblNumberInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumberInvoices.Location = new System.Drawing.Point(174, 231);
-            this.lblNumberInvoices.Name = "lblNumberInvoices";
-            this.lblNumberInvoices.Size = new System.Drawing.Size(190, 25);
-            this.lblNumberInvoices.TabIndex = 153;
-            this.lblNumberInvoices.Text = "Number Of Invoices:";
-            // 
-            // lblProjectDeadline
-            // 
-            this.lblProjectDeadline.AutoSize = true;
-            this.lblProjectDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectDeadline.Location = new System.Drawing.Point(174, 141);
-            this.lblProjectDeadline.Name = "lblProjectDeadline";
-            this.lblProjectDeadline.Size = new System.Drawing.Size(95, 25);
-            this.lblProjectDeadline.TabIndex = 152;
-            this.lblProjectDeadline.Text = "Deadline:";
-            // 
-            // lblProjectName
-            // 
-            this.lblProjectName.AutoSize = true;
-            this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectName.Location = new System.Drawing.Point(174, 111);
-            this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Size = new System.Drawing.Size(70, 25);
-            this.lblProjectName.TabIndex = 151;
-            this.lblProjectName.Text = "Name:";
-            // 
-            // txtProjectCompanyName
-            // 
-            this.txtProjectCompanyName.Location = new System.Drawing.Point(360, 85);
-            this.txtProjectCompanyName.Name = "txtProjectCompanyName";
-            this.txtProjectCompanyName.ReadOnly = true;
-            this.txtProjectCompanyName.Size = new System.Drawing.Size(137, 20);
-            this.txtProjectCompanyName.TabIndex = 150;
-            // 
-            // lblSelectedProject
-            // 
-            this.lblSelectedProject.AutoSize = true;
-            this.lblSelectedProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedProject.Location = new System.Drawing.Point(293, 12);
-            this.lblSelectedProject.Name = "lblSelectedProject";
-            this.lblSelectedProject.Size = new System.Drawing.Size(106, 31);
-            this.lblSelectedProject.TabIndex = 149;
-            this.lblSelectedProject.Text = "Project";
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage6.Controls.Add(this.lblListInvoices);
-            this.tabPage6.Controls.Add(this.btnInvoiceViewBack);
-            this.tabPage6.Controls.Add(this.cBoxSearchInvoice);
-            this.tabPage6.Controls.Add(this.btnInvoiceSearch);
-            this.tabPage6.Controls.Add(this.txtSearchInvoice);
-            this.tabPage6.Controls.Add(this.dgvInvoices);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(771, 586);
-            this.tabPage6.TabIndex = 13;
-            this.tabPage6.Text = "listInvoices";
-            // 
-            // lblListInvoices
-            // 
-            this.lblListInvoices.AutoSize = true;
-            this.lblListInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListInvoices.Location = new System.Drawing.Point(3, 1);
-            this.lblListInvoices.Name = "lblListInvoices";
-            this.lblListInvoices.Size = new System.Drawing.Size(123, 31);
-            this.lblListInvoices.TabIndex = 190;
-            this.lblListInvoices.Text = "Invoices";
-            // 
-            // btnInvoiceViewBack
-            // 
-            this.btnInvoiceViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoiceViewBack.Location = new System.Drawing.Point(679, 554);
-            this.btnInvoiceViewBack.Name = "btnInvoiceViewBack";
-            this.btnInvoiceViewBack.Size = new System.Drawing.Size(84, 60);
-            this.btnInvoiceViewBack.TabIndex = 186;
-            this.btnInvoiceViewBack.Text = "Back";
-            this.btnInvoiceViewBack.UseVisualStyleBackColor = true;
-            this.btnInvoiceViewBack.Click += new System.EventHandler(this.btnBackClick);
-            // 
-            // cBoxSearchInvoice
-            // 
-            this.cBoxSearchInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxSearchInvoice.FormattingEnabled = true;
-            this.cBoxSearchInvoice.Items.AddRange(new object[] {
-            "Company Name",
-            "Project Name",
-            "Value"});
-            this.cBoxSearchInvoice.Location = new System.Drawing.Point(437, 11);
-            this.cBoxSearchInvoice.Name = "cBoxSearchInvoice";
-            this.cBoxSearchInvoice.Size = new System.Drawing.Size(121, 21);
-            this.cBoxSearchInvoice.Sorted = true;
-            this.cBoxSearchInvoice.TabIndex = 34;
-            // 
-            // btnInvoiceSearch
-            // 
-            this.btnInvoiceSearch.Location = new System.Drawing.Point(687, 10);
-            this.btnInvoiceSearch.Name = "btnInvoiceSearch";
-            this.btnInvoiceSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnInvoiceSearch.TabIndex = 33;
-            this.btnInvoiceSearch.Text = "Search";
-            this.btnInvoiceSearch.UseVisualStyleBackColor = true;
-            this.btnInvoiceSearch.Click += new System.EventHandler(this.btnInvoiceSearch_Click);
-            // 
-            // txtSearchInvoice
-            // 
-            this.txtSearchInvoice.Location = new System.Drawing.Point(564, 12);
-            this.txtSearchInvoice.Name = "txtSearchInvoice";
-            this.txtSearchInvoice.Size = new System.Drawing.Size(119, 20);
-            this.txtSearchInvoice.TabIndex = 32;
-            // 
-            // dgvInvoices
-            // 
-            this.dgvInvoices.AllowUserToAddRows = false;
-            this.dgvInvoices.AllowUserToDeleteRows = false;
-            this.dgvInvoices.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvInvoices.ColumnHeadersHeight = 34;
-            this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.finInvView,
-            this.cInvoiceID,
-            this.finInvCompanyName,
-            this.finInvSubject,
-            this.finInvValue,
-            this.finInvExpDate,
-            this.InvoiceSendDate,
-            this.cPayedColumn});
-            this.dgvInvoices.Location = new System.Drawing.Point(0, 39);
-            this.dgvInvoices.MultiSelect = false;
-            this.dgvInvoices.Name = "dgvInvoices";
-            this.dgvInvoices.ReadOnly = true;
-            this.dgvInvoices.RowHeadersVisible = false;
-            this.dgvInvoices.Size = new System.Drawing.Size(771, 506);
-            this.dgvInvoices.TabIndex = 31;
-            this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage7.Controls.Add(this.txtInvoicePaid);
-            this.tabPage7.Controls.Add(this.lblInvoiceInvoicePaid);
-            this.tabPage7.Controls.Add(this.btnConfirmPayment);
-            this.tabPage7.Controls.Add(this.btnInvoicesBack);
-            this.tabPage7.Controls.Add(this.txtInvoiceSubject);
-            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSubject);
-            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceCompanyName);
-            this.tabPage7.Controls.Add(this.txtInvoiceCompanyName);
-            this.tabPage7.Controls.Add(this.dtpSelectedInvoiceSendDate);
-            this.tabPage7.Controls.Add(this.dtpSelectedInvoiceExpireDate);
-            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSendDate);
-            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceExpireDate);
-            this.tabPage7.Controls.Add(this.nudSelectedInvoiceValue);
-            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceValue);
-            this.tabPage7.Controls.Add(this.lblInvoice);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(771, 586);
-            this.tabPage7.TabIndex = 14;
-            this.tabPage7.Text = "selectedInvoice";
-            // 
-            // txtInvoicePaid
-            // 
-            this.txtInvoicePaid.Location = new System.Drawing.Point(366, 143);
-            this.txtInvoicePaid.Name = "txtInvoicePaid";
-            this.txtInvoicePaid.ReadOnly = true;
-            this.txtInvoicePaid.Size = new System.Drawing.Size(137, 20);
-            this.txtInvoicePaid.TabIndex = 188;
-            // 
-            // lblInvoiceInvoicePaid
-            // 
-            this.lblInvoiceInvoicePaid.AutoSize = true;
-            this.lblInvoiceInvoicePaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceInvoicePaid.Location = new System.Drawing.Point(174, 139);
-            this.lblInvoiceInvoicePaid.Name = "lblInvoiceInvoicePaid";
-            this.lblInvoiceInvoicePaid.Size = new System.Drawing.Size(57, 25);
-            this.lblInvoiceInvoicePaid.TabIndex = 187;
-            this.lblInvoiceInvoicePaid.Text = "Paid:";
-            // 
-            // btnConfirmPayment
-            // 
-            this.btnConfirmPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmPayment.Location = new System.Drawing.Point(581, 551);
-            this.btnConfirmPayment.Name = "btnConfirmPayment";
-            this.btnConfirmPayment.Size = new System.Drawing.Size(97, 60);
-            this.btnConfirmPayment.TabIndex = 186;
-            this.btnConfirmPayment.Text = "Confirm Payment";
-            this.btnConfirmPayment.UseVisualStyleBackColor = true;
-            this.btnConfirmPayment.Click += new System.EventHandler(this.btnConfirmPayment_Click);
-            // 
-            // btnInvoicesBack
-            // 
-            this.btnInvoicesBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoicesBack.Location = new System.Drawing.Point(684, 551);
-            this.btnInvoicesBack.Name = "btnInvoicesBack";
-            this.btnInvoicesBack.Size = new System.Drawing.Size(84, 60);
-            this.btnInvoicesBack.TabIndex = 185;
-            this.btnInvoicesBack.Text = "Back";
-            this.btnInvoicesBack.UseVisualStyleBackColor = true;
-            this.btnInvoicesBack.Click += new System.EventHandler(this.btnBackClick);
-            // 
-            // txtInvoiceSubject
-            // 
-            this.txtInvoiceSubject.Location = new System.Drawing.Point(366, 115);
-            this.txtInvoiceSubject.Name = "txtInvoiceSubject";
-            this.txtInvoiceSubject.ReadOnly = true;
-            this.txtInvoiceSubject.Size = new System.Drawing.Size(137, 20);
-            this.txtInvoiceSubject.TabIndex = 184;
-            // 
-            // lblInvoiceInvoiceSubject
-            // 
-            this.lblInvoiceInvoiceSubject.AutoSize = true;
-            this.lblInvoiceInvoiceSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceInvoiceSubject.Location = new System.Drawing.Point(174, 111);
-            this.lblInvoiceInvoiceSubject.Name = "lblInvoiceInvoiceSubject";
-            this.lblInvoiceInvoiceSubject.Size = new System.Drawing.Size(84, 25);
-            this.lblInvoiceInvoiceSubject.TabIndex = 183;
-            this.lblInvoiceInvoiceSubject.Text = "Subject:";
-            // 
-            // lblInvoiceInvoiceCompanyName
-            // 
-            this.lblInvoiceInvoiceCompanyName.AutoSize = true;
-            this.lblInvoiceInvoiceCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceInvoiceCompanyName.Location = new System.Drawing.Point(174, 81);
-            this.lblInvoiceInvoiceCompanyName.Name = "lblInvoiceInvoiceCompanyName";
-            this.lblInvoiceInvoiceCompanyName.Size = new System.Drawing.Size(160, 25);
-            this.lblInvoiceInvoiceCompanyName.TabIndex = 182;
-            this.lblInvoiceInvoiceCompanyName.Text = "Company Name:";
-            // 
-            // txtInvoiceCompanyName
-            // 
-            this.txtInvoiceCompanyName.Location = new System.Drawing.Point(366, 85);
-            this.txtInvoiceCompanyName.Name = "txtInvoiceCompanyName";
-            this.txtInvoiceCompanyName.ReadOnly = true;
-            this.txtInvoiceCompanyName.Size = new System.Drawing.Size(137, 20);
-            this.txtInvoiceCompanyName.TabIndex = 181;
-            // 
-            // dtpSelectedInvoiceSendDate
-            // 
-            this.dtpSelectedInvoiceSendDate.Enabled = false;
-            this.dtpSelectedInvoiceSendDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectedInvoiceSendDate.Location = new System.Drawing.Point(366, 231);
-            this.dtpSelectedInvoiceSendDate.Name = "dtpSelectedInvoiceSendDate";
-            this.dtpSelectedInvoiceSendDate.Size = new System.Drawing.Size(137, 20);
-            this.dtpSelectedInvoiceSendDate.TabIndex = 180;
-            // 
-            // dtpSelectedInvoiceExpireDate
-            // 
-            this.dtpSelectedInvoiceExpireDate.Enabled = false;
-            this.dtpSelectedInvoiceExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectedInvoiceExpireDate.Location = new System.Drawing.Point(366, 201);
-            this.dtpSelectedInvoiceExpireDate.Name = "dtpSelectedInvoiceExpireDate";
-            this.dtpSelectedInvoiceExpireDate.Size = new System.Drawing.Size(137, 20);
-            this.dtpSelectedInvoiceExpireDate.TabIndex = 179;
-            // 
-            // lblInvoiceInvoiceSendDate
-            // 
-            this.lblInvoiceInvoiceSendDate.AutoSize = true;
-            this.lblInvoiceInvoiceSendDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceInvoiceSendDate.Location = new System.Drawing.Point(174, 227);
-            this.lblInvoiceInvoiceSendDate.Name = "lblInvoiceInvoiceSendDate";
-            this.lblInvoiceInvoiceSendDate.Size = new System.Drawing.Size(178, 25);
-            this.lblInvoiceInvoiceSendDate.TabIndex = 178;
-            this.lblInvoiceInvoiceSendDate.Text = "Invoice Send Date:";
-            // 
-            // lblInvoiceInvoiceExpireDate
-            // 
-            this.lblInvoiceInvoiceExpireDate.AutoSize = true;
-            this.lblInvoiceInvoiceExpireDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceInvoiceExpireDate.Location = new System.Drawing.Point(174, 197);
-            this.lblInvoiceInvoiceExpireDate.Name = "lblInvoiceInvoiceExpireDate";
-            this.lblInvoiceInvoiceExpireDate.Size = new System.Drawing.Size(186, 25);
-            this.lblInvoiceInvoiceExpireDate.TabIndex = 177;
-            this.lblInvoiceInvoiceExpireDate.Text = "Invoice Expire Date:";
-            // 
-            // nudSelectedInvoiceValue
-            // 
-            this.nudSelectedInvoiceValue.DecimalPlaces = 2;
-            this.nudSelectedInvoiceValue.Enabled = false;
-            this.nudSelectedInvoiceValue.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudSelectedInvoiceValue.Location = new System.Drawing.Point(366, 171);
-            this.nudSelectedInvoiceValue.Maximum = new decimal(new int[] {
-            -1593835521,
-            466537709,
-            54210,
-            0});
-            this.nudSelectedInvoiceValue.Minimum = new decimal(new int[] {
-            -1593835521,
-            466537709,
-            54210,
-            -2147483648});
-            this.nudSelectedInvoiceValue.Name = "nudSelectedInvoiceValue";
-            this.nudSelectedInvoiceValue.ReadOnly = true;
-            this.nudSelectedInvoiceValue.Size = new System.Drawing.Size(137, 20);
-            this.nudSelectedInvoiceValue.TabIndex = 176;
-            this.nudSelectedInvoiceValue.ThousandsSeparator = true;
-            // 
-            // lblInvoiceInvoiceValue
-            // 
-            this.lblInvoiceInvoiceValue.AutoSize = true;
-            this.lblInvoiceInvoiceValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceInvoiceValue.Location = new System.Drawing.Point(174, 167);
-            this.lblInvoiceInvoiceValue.Name = "lblInvoiceInvoiceValue";
-            this.lblInvoiceInvoiceValue.Size = new System.Drawing.Size(136, 25);
-            this.lblInvoiceInvoiceValue.TabIndex = 175;
-            this.lblInvoiceInvoiceValue.Text = "Invoice Value:";
-            // 
-            // lblInvoice
-            // 
-            this.lblInvoice.AutoSize = true;
-            this.lblInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoice.Location = new System.Drawing.Point(293, 12);
-            this.lblInvoice.Name = "lblInvoice";
-            this.lblInvoice.Size = new System.Drawing.Size(108, 31);
-            this.lblInvoice.TabIndex = 160;
-            this.lblInvoice.Text = "Invoice";
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage8.Controls.Add(this.lblAddInvoice);
-            this.tabPage8.Controls.Add(this.btnAddInvoiceCancel);
-            this.tabPage8.Controls.Add(this.btnCreateInvoice);
-            this.tabPage8.Controls.Add(this.dtpFinInvoiceSentDate);
-            this.tabPage8.Controls.Add(this.dtpFinInvoiceExpDate);
-            this.tabPage8.Controls.Add(this.lblFinInvoiceSentDate);
-            this.tabPage8.Controls.Add(this.lblFinInvoiceExpDate);
-            this.tabPage8.Controls.Add(this.numFinInvoiceAddValue);
-            this.tabPage8.Controls.Add(this.lblFinInvoiceValue);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(771, 586);
-            this.tabPage8.TabIndex = 15;
-            this.tabPage8.Text = "addInvoice";
-            // 
-            // lblAddInvoice
-            // 
-            this.lblAddInvoice.AutoSize = true;
-            this.lblAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddInvoice.Location = new System.Drawing.Point(293, 12);
-            this.lblAddInvoice.Name = "lblAddInvoice";
-            this.lblAddInvoice.Size = new System.Drawing.Size(167, 31);
-            this.lblAddInvoice.TabIndex = 187;
-            this.lblAddInvoice.Text = "Add Invoice";
-            // 
-            // btnAddInvoiceCancel
-            // 
-            this.btnAddInvoiceCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(684, 554);
-            this.btnAddInvoiceCancel.Name = "btnAddInvoiceCancel";
-            this.btnAddInvoiceCancel.Size = new System.Drawing.Size(84, 60);
-            this.btnAddInvoiceCancel.TabIndex = 186;
-            this.btnAddInvoiceCancel.Text = "Cancel";
-            this.btnAddInvoiceCancel.UseVisualStyleBackColor = true;
-            this.btnAddInvoiceCancel.Click += new System.EventHandler(this.btnAddInvoiceCancel_Click);
-            // 
-            // btnCreateInvoice
-            // 
-            this.btnCreateInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateInvoice.Location = new System.Drawing.Point(594, 554);
-            this.btnCreateInvoice.Name = "btnCreateInvoice";
-            this.btnCreateInvoice.Size = new System.Drawing.Size(84, 60);
-            this.btnCreateInvoice.TabIndex = 168;
-            this.btnCreateInvoice.Text = "Add Invoice";
-            this.btnCreateInvoice.UseVisualStyleBackColor = true;
-            this.btnCreateInvoice.Click += new System.EventHandler(this.btnCreateInvoice_Click);
-            // 
-            // dtpFinInvoiceSentDate
-            // 
-            this.dtpFinInvoiceSentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFinInvoiceSentDate.Location = new System.Drawing.Point(398, 146);
-            this.dtpFinInvoiceSentDate.Name = "dtpFinInvoiceSentDate";
-            this.dtpFinInvoiceSentDate.Size = new System.Drawing.Size(137, 20);
-            this.dtpFinInvoiceSentDate.TabIndex = 167;
-            // 
-            // dtpFinInvoiceExpDate
-            // 
-            this.dtpFinInvoiceExpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFinInvoiceExpDate.Location = new System.Drawing.Point(398, 117);
-            this.dtpFinInvoiceExpDate.Name = "dtpFinInvoiceExpDate";
-            this.dtpFinInvoiceExpDate.Size = new System.Drawing.Size(137, 20);
-            this.dtpFinInvoiceExpDate.TabIndex = 166;
-            // 
-            // lblFinInvoiceSentDate
-            // 
-            this.lblFinInvoiceSentDate.AutoSize = true;
-            this.lblFinInvoiceSentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinInvoiceSentDate.Location = new System.Drawing.Point(199, 141);
-            this.lblFinInvoiceSentDate.Name = "lblFinInvoiceSentDate";
-            this.lblFinInvoiceSentDate.Size = new System.Drawing.Size(172, 25);
-            this.lblFinInvoiceSentDate.TabIndex = 165;
-            this.lblFinInvoiceSentDate.Text = "Invoice Sent Date:";
-            // 
-            // lblFinInvoiceExpDate
-            // 
-            this.lblFinInvoiceExpDate.AutoSize = true;
-            this.lblFinInvoiceExpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinInvoiceExpDate.Location = new System.Drawing.Point(199, 111);
-            this.lblFinInvoiceExpDate.Name = "lblFinInvoiceExpDate";
-            this.lblFinInvoiceExpDate.Size = new System.Drawing.Size(186, 25);
-            this.lblFinInvoiceExpDate.TabIndex = 164;
-            this.lblFinInvoiceExpDate.Text = "Invoice Expire Date:";
-            // 
-            // numFinInvoiceAddValue
-            // 
-            this.numFinInvoiceAddValue.DecimalPlaces = 2;
-            this.numFinInvoiceAddValue.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numFinInvoiceAddValue.Location = new System.Drawing.Point(398, 87);
-            this.numFinInvoiceAddValue.Maximum = new decimal(new int[] {
-            -1593835521,
-            466537709,
-            54210,
-            0});
-            this.numFinInvoiceAddValue.Name = "numFinInvoiceAddValue";
-            this.numFinInvoiceAddValue.Size = new System.Drawing.Size(137, 20);
-            this.numFinInvoiceAddValue.TabIndex = 163;
-            this.numFinInvoiceAddValue.ThousandsSeparator = true;
-            // 
-            // lblFinInvoiceValue
-            // 
-            this.lblFinInvoiceValue.AutoSize = true;
-            this.lblFinInvoiceValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinInvoiceValue.Location = new System.Drawing.Point(199, 81);
-            this.lblFinInvoiceValue.Name = "lblFinInvoiceValue";
-            this.lblFinInvoiceValue.Size = new System.Drawing.Size(136, 25);
-            this.lblFinInvoiceValue.TabIndex = 162;
-            this.lblFinInvoiceValue.Text = "Invoice Value:";
             // 
             // finProView
             // 
@@ -1619,6 +1048,277 @@
             this.finProCompleted.HeaderText = "Completed";
             this.finProCompleted.Name = "finProCompleted";
             this.finProCompleted.ReadOnly = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.txtProjectSubject);
+            this.tabPage5.Controls.Add(this.lblProjectSubject);
+            this.tabPage5.Controls.Add(this.btnProjectBack);
+            this.tabPage5.Controls.Add(this.btnViewInvoices);
+            this.tabPage5.Controls.Add(this.btnAddInvoice);
+            this.tabPage5.Controls.Add(this.dtpDeadlineViewProject);
+            this.tabPage5.Controls.Add(this.txtProjectName);
+            this.tabPage5.Controls.Add(this.lblProjectCompanyName);
+            this.tabPage5.Controls.Add(this.txtProjectValue);
+            this.tabPage5.Controls.Add(this.lblProjectValue);
+            this.tabPage5.Controls.Add(this.txtProjectInvoices);
+            this.tabPage5.Controls.Add(this.lblNumberInvoices);
+            this.tabPage5.Controls.Add(this.lblProjectDeadline);
+            this.tabPage5.Controls.Add(this.lblProjectName);
+            this.tabPage5.Controls.Add(this.txtProjectCompanyName);
+            this.tabPage5.Controls.Add(this.lblSelectedProject);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(771, 586);
+            this.tabPage5.TabIndex = 12;
+            this.tabPage5.Text = "selectedProject";
+            // 
+            // txtProjectSubject
+            // 
+            this.txtProjectSubject.Location = new System.Drawing.Point(415, 172);
+            this.txtProjectSubject.Name = "txtProjectSubject";
+            this.txtProjectSubject.ReadOnly = true;
+            this.txtProjectSubject.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectSubject.TabIndex = 188;
+            // 
+            // lblProjectSubject
+            // 
+            this.lblProjectSubject.AutoSize = true;
+            this.lblProjectSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectSubject.Location = new System.Drawing.Point(229, 168);
+            this.lblProjectSubject.Name = "lblProjectSubject";
+            this.lblProjectSubject.Size = new System.Drawing.Size(84, 25);
+            this.lblProjectSubject.TabIndex = 187;
+            this.lblProjectSubject.Text = "Subject:";
+            // 
+            // btnProjectBack
+            // 
+            this.btnProjectBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProjectBack.Location = new System.Drawing.Point(682, 540);
+            this.btnProjectBack.Name = "btnProjectBack";
+            this.btnProjectBack.Size = new System.Drawing.Size(84, 60);
+            this.btnProjectBack.TabIndex = 186;
+            this.btnProjectBack.Text = "Back";
+            this.btnProjectBack.UseVisualStyleBackColor = true;
+            this.btnProjectBack.Click += new System.EventHandler(this.btnBackClick);
+            // 
+            // btnViewInvoices
+            // 
+            this.btnViewInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewInvoices.Location = new System.Drawing.Point(583, 540);
+            this.btnViewInvoices.Name = "btnViewInvoices";
+            this.btnViewInvoices.Size = new System.Drawing.Size(93, 60);
+            this.btnViewInvoices.TabIndex = 161;
+            this.btnViewInvoices.Text = "View Invoices";
+            this.btnViewInvoices.UseVisualStyleBackColor = true;
+            this.btnViewInvoices.Click += new System.EventHandler(this.btnViewInvoices_Click);
+            // 
+            // btnAddInvoice
+            // 
+            this.btnAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddInvoice.Location = new System.Drawing.Point(495, 540);
+            this.btnAddInvoice.Name = "btnAddInvoice";
+            this.btnAddInvoice.Size = new System.Drawing.Size(82, 60);
+            this.btnAddInvoice.TabIndex = 160;
+            this.btnAddInvoice.Text = "Add Invoice";
+            this.btnAddInvoice.UseVisualStyleBackColor = true;
+            this.btnAddInvoice.Click += new System.EventHandler(this.btnAddInvoice_Click);
+            // 
+            // dtpDeadlineViewProject
+            // 
+            this.dtpDeadlineViewProject.Enabled = false;
+            this.dtpDeadlineViewProject.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDeadlineViewProject.Location = new System.Drawing.Point(415, 142);
+            this.dtpDeadlineViewProject.Name = "dtpDeadlineViewProject";
+            this.dtpDeadlineViewProject.Size = new System.Drawing.Size(137, 20);
+            this.dtpDeadlineViewProject.TabIndex = 159;
+            // 
+            // txtProjectName
+            // 
+            this.txtProjectName.Location = new System.Drawing.Point(415, 112);
+            this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.ReadOnly = true;
+            this.txtProjectName.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectName.TabIndex = 158;
+            // 
+            // lblProjectCompanyName
+            // 
+            this.lblProjectCompanyName.AutoSize = true;
+            this.lblProjectCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectCompanyName.Location = new System.Drawing.Point(229, 78);
+            this.lblProjectCompanyName.Name = "lblProjectCompanyName";
+            this.lblProjectCompanyName.Size = new System.Drawing.Size(160, 25);
+            this.lblProjectCompanyName.TabIndex = 157;
+            this.lblProjectCompanyName.Text = "Company Name:";
+            // 
+            // txtProjectValue
+            // 
+            this.txtProjectValue.Location = new System.Drawing.Point(415, 202);
+            this.txtProjectValue.Name = "txtProjectValue";
+            this.txtProjectValue.ReadOnly = true;
+            this.txtProjectValue.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectValue.TabIndex = 156;
+            // 
+            // lblProjectValue
+            // 
+            this.lblProjectValue.AutoSize = true;
+            this.lblProjectValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectValue.Location = new System.Drawing.Point(229, 198);
+            this.lblProjectValue.Name = "lblProjectValue";
+            this.lblProjectValue.Size = new System.Drawing.Size(69, 25);
+            this.lblProjectValue.TabIndex = 155;
+            this.lblProjectValue.Text = "Value:";
+            // 
+            // txtProjectInvoices
+            // 
+            this.txtProjectInvoices.Location = new System.Drawing.Point(415, 232);
+            this.txtProjectInvoices.Name = "txtProjectInvoices";
+            this.txtProjectInvoices.ReadOnly = true;
+            this.txtProjectInvoices.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectInvoices.TabIndex = 154;
+            // 
+            // lblNumberInvoices
+            // 
+            this.lblNumberInvoices.AutoSize = true;
+            this.lblNumberInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberInvoices.Location = new System.Drawing.Point(229, 228);
+            this.lblNumberInvoices.Name = "lblNumberInvoices";
+            this.lblNumberInvoices.Size = new System.Drawing.Size(190, 25);
+            this.lblNumberInvoices.TabIndex = 153;
+            this.lblNumberInvoices.Text = "Number Of Invoices:";
+            // 
+            // lblProjectDeadline
+            // 
+            this.lblProjectDeadline.AutoSize = true;
+            this.lblProjectDeadline.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectDeadline.Location = new System.Drawing.Point(229, 138);
+            this.lblProjectDeadline.Name = "lblProjectDeadline";
+            this.lblProjectDeadline.Size = new System.Drawing.Size(95, 25);
+            this.lblProjectDeadline.TabIndex = 152;
+            this.lblProjectDeadline.Text = "Deadline:";
+            // 
+            // lblProjectName
+            // 
+            this.lblProjectName.AutoSize = true;
+            this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectName.Location = new System.Drawing.Point(229, 108);
+            this.lblProjectName.Name = "lblProjectName";
+            this.lblProjectName.Size = new System.Drawing.Size(70, 25);
+            this.lblProjectName.TabIndex = 151;
+            this.lblProjectName.Text = "Name:";
+            // 
+            // txtProjectCompanyName
+            // 
+            this.txtProjectCompanyName.Location = new System.Drawing.Point(415, 82);
+            this.txtProjectCompanyName.Name = "txtProjectCompanyName";
+            this.txtProjectCompanyName.ReadOnly = true;
+            this.txtProjectCompanyName.Size = new System.Drawing.Size(137, 20);
+            this.txtProjectCompanyName.TabIndex = 150;
+            // 
+            // lblSelectedProject
+            // 
+            this.lblSelectedProject.AutoSize = true;
+            this.lblSelectedProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedProject.Location = new System.Drawing.Point(350, 23);
+            this.lblSelectedProject.Name = "lblSelectedProject";
+            this.lblSelectedProject.Size = new System.Drawing.Size(106, 31);
+            this.lblSelectedProject.TabIndex = 149;
+            this.lblSelectedProject.Text = "Project";
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage6.Controls.Add(this.lblListInvoices);
+            this.tabPage6.Controls.Add(this.btnInvoiceViewBack);
+            this.tabPage6.Controls.Add(this.cBoxSearchInvoice);
+            this.tabPage6.Controls.Add(this.btnInvoiceSearch);
+            this.tabPage6.Controls.Add(this.txtSearchInvoice);
+            this.tabPage6.Controls.Add(this.dgvInvoices);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(771, 586);
+            this.tabPage6.TabIndex = 13;
+            this.tabPage6.Text = "listInvoices";
+            // 
+            // lblListInvoices
+            // 
+            this.lblListInvoices.AutoSize = true;
+            this.lblListInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListInvoices.Location = new System.Drawing.Point(300, 23);
+            this.lblListInvoices.Name = "lblListInvoices";
+            this.lblListInvoices.Size = new System.Drawing.Size(123, 31);
+            this.lblListInvoices.TabIndex = 190;
+            this.lblListInvoices.Text = "Invoices";
+            // 
+            // btnInvoiceViewBack
+            // 
+            this.btnInvoiceViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInvoiceViewBack.Location = new System.Drawing.Point(665, 540);
+            this.btnInvoiceViewBack.Name = "btnInvoiceViewBack";
+            this.btnInvoiceViewBack.Size = new System.Drawing.Size(84, 60);
+            this.btnInvoiceViewBack.TabIndex = 186;
+            this.btnInvoiceViewBack.Text = "Back";
+            this.btnInvoiceViewBack.UseVisualStyleBackColor = true;
+            this.btnInvoiceViewBack.Click += new System.EventHandler(this.btnBackClick);
+            // 
+            // cBoxSearchInvoice
+            // 
+            this.cBoxSearchInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxSearchInvoice.FormattingEnabled = true;
+            this.cBoxSearchInvoice.Items.AddRange(new object[] {
+            "Company Name",
+            "Project Name",
+            "Value"});
+            this.cBoxSearchInvoice.Location = new System.Drawing.Point(424, 66);
+            this.cBoxSearchInvoice.Name = "cBoxSearchInvoice";
+            this.cBoxSearchInvoice.Size = new System.Drawing.Size(121, 21);
+            this.cBoxSearchInvoice.Sorted = true;
+            this.cBoxSearchInvoice.TabIndex = 34;
+            // 
+            // btnInvoiceSearch
+            // 
+            this.btnInvoiceSearch.Location = new System.Drawing.Point(674, 65);
+            this.btnInvoiceSearch.Name = "btnInvoiceSearch";
+            this.btnInvoiceSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnInvoiceSearch.TabIndex = 33;
+            this.btnInvoiceSearch.Text = "Search";
+            this.btnInvoiceSearch.UseVisualStyleBackColor = true;
+            this.btnInvoiceSearch.Click += new System.EventHandler(this.btnInvoiceSearch_Click);
+            // 
+            // txtSearchInvoice
+            // 
+            this.txtSearchInvoice.Location = new System.Drawing.Point(551, 67);
+            this.txtSearchInvoice.Name = "txtSearchInvoice";
+            this.txtSearchInvoice.Size = new System.Drawing.Size(119, 20);
+            this.txtSearchInvoice.TabIndex = 32;
+            // 
+            // dgvInvoices
+            // 
+            this.dgvInvoices.AllowUserToAddRows = false;
+            this.dgvInvoices.AllowUserToDeleteRows = false;
+            this.dgvInvoices.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvInvoices.ColumnHeadersHeight = 34;
+            this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.finInvView,
+            this.cInvoiceID,
+            this.finInvCompanyName,
+            this.finInvSubject,
+            this.finInvValue,
+            this.finInvExpDate,
+            this.InvoiceSendDate,
+            this.cPayedColumn});
+            this.dgvInvoices.Location = new System.Drawing.Point(9, 94);
+            this.dgvInvoices.MultiSelect = false;
+            this.dgvInvoices.Name = "dgvInvoices";
+            this.dgvInvoices.ReadOnly = true;
+            this.dgvInvoices.RowHeadersVisible = false;
+            this.dgvInvoices.Size = new System.Drawing.Size(740, 440);
+            this.dgvInvoices.TabIndex = 31;
+            this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
             // 
             // finInvView
             // 
@@ -1679,6 +1379,307 @@
             this.cPayedColumn.HeaderText = "Paid";
             this.cPayedColumn.Name = "cPayedColumn";
             this.cPayedColumn.ReadOnly = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage7.Controls.Add(this.txtInvoicePaid);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoicePaid);
+            this.tabPage7.Controls.Add(this.btnConfirmPayment);
+            this.tabPage7.Controls.Add(this.btnInvoicesBack);
+            this.tabPage7.Controls.Add(this.txtInvoiceSubject);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSubject);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceCompanyName);
+            this.tabPage7.Controls.Add(this.txtInvoiceCompanyName);
+            this.tabPage7.Controls.Add(this.dtpSelectedInvoiceSendDate);
+            this.tabPage7.Controls.Add(this.dtpSelectedInvoiceExpireDate);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceSendDate);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceExpireDate);
+            this.tabPage7.Controls.Add(this.nudSelectedInvoiceValue);
+            this.tabPage7.Controls.Add(this.lblInvoiceInvoiceValue);
+            this.tabPage7.Controls.Add(this.lblInvoice);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(771, 586);
+            this.tabPage7.TabIndex = 14;
+            this.tabPage7.Text = "selectedInvoice";
+            // 
+            // txtInvoicePaid
+            // 
+            this.txtInvoicePaid.Location = new System.Drawing.Point(413, 140);
+            this.txtInvoicePaid.Name = "txtInvoicePaid";
+            this.txtInvoicePaid.ReadOnly = true;
+            this.txtInvoicePaid.Size = new System.Drawing.Size(137, 20);
+            this.txtInvoicePaid.TabIndex = 188;
+            // 
+            // lblInvoiceInvoicePaid
+            // 
+            this.lblInvoiceInvoicePaid.AutoSize = true;
+            this.lblInvoiceInvoicePaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoicePaid.Location = new System.Drawing.Point(221, 136);
+            this.lblInvoiceInvoicePaid.Name = "lblInvoiceInvoicePaid";
+            this.lblInvoiceInvoicePaid.Size = new System.Drawing.Size(57, 25);
+            this.lblInvoiceInvoicePaid.TabIndex = 187;
+            this.lblInvoiceInvoicePaid.Text = "Paid:";
+            // 
+            // btnConfirmPayment
+            // 
+            this.btnConfirmPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmPayment.Location = new System.Drawing.Point(576, 540);
+            this.btnConfirmPayment.Name = "btnConfirmPayment";
+            this.btnConfirmPayment.Size = new System.Drawing.Size(97, 60);
+            this.btnConfirmPayment.TabIndex = 186;
+            this.btnConfirmPayment.Text = "Confirm Payment";
+            this.btnConfirmPayment.UseVisualStyleBackColor = true;
+            this.btnConfirmPayment.Click += new System.EventHandler(this.btnConfirmPayment_Click);
+            // 
+            // btnInvoicesBack
+            // 
+            this.btnInvoicesBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInvoicesBack.Location = new System.Drawing.Point(679, 540);
+            this.btnInvoicesBack.Name = "btnInvoicesBack";
+            this.btnInvoicesBack.Size = new System.Drawing.Size(84, 60);
+            this.btnInvoicesBack.TabIndex = 185;
+            this.btnInvoicesBack.Text = "Back";
+            this.btnInvoicesBack.UseVisualStyleBackColor = true;
+            this.btnInvoicesBack.Click += new System.EventHandler(this.btnBackClick);
+            // 
+            // txtInvoiceSubject
+            // 
+            this.txtInvoiceSubject.Location = new System.Drawing.Point(413, 112);
+            this.txtInvoiceSubject.Name = "txtInvoiceSubject";
+            this.txtInvoiceSubject.ReadOnly = true;
+            this.txtInvoiceSubject.Size = new System.Drawing.Size(137, 20);
+            this.txtInvoiceSubject.TabIndex = 184;
+            // 
+            // lblInvoiceInvoiceSubject
+            // 
+            this.lblInvoiceInvoiceSubject.AutoSize = true;
+            this.lblInvoiceInvoiceSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceSubject.Location = new System.Drawing.Point(221, 108);
+            this.lblInvoiceInvoiceSubject.Name = "lblInvoiceInvoiceSubject";
+            this.lblInvoiceInvoiceSubject.Size = new System.Drawing.Size(84, 25);
+            this.lblInvoiceInvoiceSubject.TabIndex = 183;
+            this.lblInvoiceInvoiceSubject.Text = "Subject:";
+            // 
+            // lblInvoiceInvoiceCompanyName
+            // 
+            this.lblInvoiceInvoiceCompanyName.AutoSize = true;
+            this.lblInvoiceInvoiceCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceCompanyName.Location = new System.Drawing.Point(221, 78);
+            this.lblInvoiceInvoiceCompanyName.Name = "lblInvoiceInvoiceCompanyName";
+            this.lblInvoiceInvoiceCompanyName.Size = new System.Drawing.Size(160, 25);
+            this.lblInvoiceInvoiceCompanyName.TabIndex = 182;
+            this.lblInvoiceInvoiceCompanyName.Text = "Company Name:";
+            // 
+            // txtInvoiceCompanyName
+            // 
+            this.txtInvoiceCompanyName.Location = new System.Drawing.Point(413, 82);
+            this.txtInvoiceCompanyName.Name = "txtInvoiceCompanyName";
+            this.txtInvoiceCompanyName.ReadOnly = true;
+            this.txtInvoiceCompanyName.Size = new System.Drawing.Size(137, 20);
+            this.txtInvoiceCompanyName.TabIndex = 181;
+            // 
+            // dtpSelectedInvoiceSendDate
+            // 
+            this.dtpSelectedInvoiceSendDate.Enabled = false;
+            this.dtpSelectedInvoiceSendDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelectedInvoiceSendDate.Location = new System.Drawing.Point(413, 228);
+            this.dtpSelectedInvoiceSendDate.Name = "dtpSelectedInvoiceSendDate";
+            this.dtpSelectedInvoiceSendDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpSelectedInvoiceSendDate.TabIndex = 180;
+            // 
+            // dtpSelectedInvoiceExpireDate
+            // 
+            this.dtpSelectedInvoiceExpireDate.Enabled = false;
+            this.dtpSelectedInvoiceExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelectedInvoiceExpireDate.Location = new System.Drawing.Point(413, 198);
+            this.dtpSelectedInvoiceExpireDate.Name = "dtpSelectedInvoiceExpireDate";
+            this.dtpSelectedInvoiceExpireDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpSelectedInvoiceExpireDate.TabIndex = 179;
+            // 
+            // lblInvoiceInvoiceSendDate
+            // 
+            this.lblInvoiceInvoiceSendDate.AutoSize = true;
+            this.lblInvoiceInvoiceSendDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceSendDate.Location = new System.Drawing.Point(221, 224);
+            this.lblInvoiceInvoiceSendDate.Name = "lblInvoiceInvoiceSendDate";
+            this.lblInvoiceInvoiceSendDate.Size = new System.Drawing.Size(178, 25);
+            this.lblInvoiceInvoiceSendDate.TabIndex = 178;
+            this.lblInvoiceInvoiceSendDate.Text = "Invoice Send Date:";
+            // 
+            // lblInvoiceInvoiceExpireDate
+            // 
+            this.lblInvoiceInvoiceExpireDate.AutoSize = true;
+            this.lblInvoiceInvoiceExpireDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceExpireDate.Location = new System.Drawing.Point(221, 194);
+            this.lblInvoiceInvoiceExpireDate.Name = "lblInvoiceInvoiceExpireDate";
+            this.lblInvoiceInvoiceExpireDate.Size = new System.Drawing.Size(186, 25);
+            this.lblInvoiceInvoiceExpireDate.TabIndex = 177;
+            this.lblInvoiceInvoiceExpireDate.Text = "Invoice Expire Date:";
+            // 
+            // nudSelectedInvoiceValue
+            // 
+            this.nudSelectedInvoiceValue.DecimalPlaces = 2;
+            this.nudSelectedInvoiceValue.Enabled = false;
+            this.nudSelectedInvoiceValue.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudSelectedInvoiceValue.Location = new System.Drawing.Point(413, 168);
+            this.nudSelectedInvoiceValue.Maximum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            0});
+            this.nudSelectedInvoiceValue.Minimum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            -2147483648});
+            this.nudSelectedInvoiceValue.Name = "nudSelectedInvoiceValue";
+            this.nudSelectedInvoiceValue.ReadOnly = true;
+            this.nudSelectedInvoiceValue.Size = new System.Drawing.Size(137, 20);
+            this.nudSelectedInvoiceValue.TabIndex = 176;
+            this.nudSelectedInvoiceValue.ThousandsSeparator = true;
+            // 
+            // lblInvoiceInvoiceValue
+            // 
+            this.lblInvoiceInvoiceValue.AutoSize = true;
+            this.lblInvoiceInvoiceValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoiceInvoiceValue.Location = new System.Drawing.Point(221, 164);
+            this.lblInvoiceInvoiceValue.Name = "lblInvoiceInvoiceValue";
+            this.lblInvoiceInvoiceValue.Size = new System.Drawing.Size(136, 25);
+            this.lblInvoiceInvoiceValue.TabIndex = 175;
+            this.lblInvoiceInvoiceValue.Text = "Invoice Value:";
+            // 
+            // lblInvoice
+            // 
+            this.lblInvoice.AutoSize = true;
+            this.lblInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoice.Location = new System.Drawing.Point(341, 23);
+            this.lblInvoice.Name = "lblInvoice";
+            this.lblInvoice.Size = new System.Drawing.Size(108, 31);
+            this.lblInvoice.TabIndex = 160;
+            this.lblInvoice.Text = "Invoice";
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage8.Controls.Add(this.lblAddInvoice);
+            this.tabPage8.Controls.Add(this.btnAddInvoiceCancel);
+            this.tabPage8.Controls.Add(this.btnCreateInvoice);
+            this.tabPage8.Controls.Add(this.dtpFinInvoiceSentDate);
+            this.tabPage8.Controls.Add(this.dtpFinInvoiceExpDate);
+            this.tabPage8.Controls.Add(this.lblFinInvoiceSentDate);
+            this.tabPage8.Controls.Add(this.lblFinInvoiceExpDate);
+            this.tabPage8.Controls.Add(this.numFinInvoiceAddValue);
+            this.tabPage8.Controls.Add(this.lblFinInvoiceValue);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(771, 586);
+            this.tabPage8.TabIndex = 15;
+            this.tabPage8.Text = "addInvoice";
+            // 
+            // lblAddInvoice
+            // 
+            this.lblAddInvoice.AutoSize = true;
+            this.lblAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddInvoice.Location = new System.Drawing.Point(335, 23);
+            this.lblAddInvoice.Name = "lblAddInvoice";
+            this.lblAddInvoice.Size = new System.Drawing.Size(167, 31);
+            this.lblAddInvoice.TabIndex = 187;
+            this.lblAddInvoice.Text = "Add Invoice";
+            // 
+            // btnAddInvoiceCancel
+            // 
+            this.btnAddInvoiceCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddInvoiceCancel.Location = new System.Drawing.Point(680, 540);
+            this.btnAddInvoiceCancel.Name = "btnAddInvoiceCancel";
+            this.btnAddInvoiceCancel.Size = new System.Drawing.Size(84, 60);
+            this.btnAddInvoiceCancel.TabIndex = 186;
+            this.btnAddInvoiceCancel.Text = "Cancel";
+            this.btnAddInvoiceCancel.UseVisualStyleBackColor = true;
+            this.btnAddInvoiceCancel.Click += new System.EventHandler(this.btnAddInvoiceCancel_Click);
+            // 
+            // btnCreateInvoice
+            // 
+            this.btnCreateInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateInvoice.Location = new System.Drawing.Point(590, 540);
+            this.btnCreateInvoice.Name = "btnCreateInvoice";
+            this.btnCreateInvoice.Size = new System.Drawing.Size(84, 60);
+            this.btnCreateInvoice.TabIndex = 168;
+            this.btnCreateInvoice.Text = "Add Invoice";
+            this.btnCreateInvoice.UseVisualStyleBackColor = true;
+            this.btnCreateInvoice.Click += new System.EventHandler(this.btnCreateInvoice_Click);
+            // 
+            // dtpFinInvoiceSentDate
+            // 
+            this.dtpFinInvoiceSentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFinInvoiceSentDate.Location = new System.Drawing.Point(452, 143);
+            this.dtpFinInvoiceSentDate.Name = "dtpFinInvoiceSentDate";
+            this.dtpFinInvoiceSentDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpFinInvoiceSentDate.TabIndex = 167;
+            // 
+            // dtpFinInvoiceExpDate
+            // 
+            this.dtpFinInvoiceExpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFinInvoiceExpDate.Location = new System.Drawing.Point(452, 114);
+            this.dtpFinInvoiceExpDate.Name = "dtpFinInvoiceExpDate";
+            this.dtpFinInvoiceExpDate.Size = new System.Drawing.Size(137, 20);
+            this.dtpFinInvoiceExpDate.TabIndex = 166;
+            // 
+            // lblFinInvoiceSentDate
+            // 
+            this.lblFinInvoiceSentDate.AutoSize = true;
+            this.lblFinInvoiceSentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinInvoiceSentDate.Location = new System.Drawing.Point(253, 138);
+            this.lblFinInvoiceSentDate.Name = "lblFinInvoiceSentDate";
+            this.lblFinInvoiceSentDate.Size = new System.Drawing.Size(172, 25);
+            this.lblFinInvoiceSentDate.TabIndex = 165;
+            this.lblFinInvoiceSentDate.Text = "Invoice Sent Date:";
+            // 
+            // lblFinInvoiceExpDate
+            // 
+            this.lblFinInvoiceExpDate.AutoSize = true;
+            this.lblFinInvoiceExpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinInvoiceExpDate.Location = new System.Drawing.Point(253, 108);
+            this.lblFinInvoiceExpDate.Name = "lblFinInvoiceExpDate";
+            this.lblFinInvoiceExpDate.Size = new System.Drawing.Size(186, 25);
+            this.lblFinInvoiceExpDate.TabIndex = 164;
+            this.lblFinInvoiceExpDate.Text = "Invoice Expire Date:";
+            // 
+            // numFinInvoiceAddValue
+            // 
+            this.numFinInvoiceAddValue.DecimalPlaces = 2;
+            this.numFinInvoiceAddValue.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numFinInvoiceAddValue.Location = new System.Drawing.Point(452, 84);
+            this.numFinInvoiceAddValue.Maximum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            0});
+            this.numFinInvoiceAddValue.Name = "numFinInvoiceAddValue";
+            this.numFinInvoiceAddValue.Size = new System.Drawing.Size(137, 20);
+            this.numFinInvoiceAddValue.TabIndex = 163;
+            this.numFinInvoiceAddValue.ThousandsSeparator = true;
+            // 
+            // lblFinInvoiceValue
+            // 
+            this.lblFinInvoiceValue.AutoSize = true;
+            this.lblFinInvoiceValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinInvoiceValue.Location = new System.Drawing.Point(253, 78);
+            this.lblFinInvoiceValue.Name = "lblFinInvoiceValue";
+            this.lblFinInvoiceValue.Size = new System.Drawing.Size(136, 25);
+            this.lblFinInvoiceValue.TabIndex = 162;
+            this.lblFinInvoiceValue.Text = "Invoice Value:";
             // 
             // frmFinance
             // 

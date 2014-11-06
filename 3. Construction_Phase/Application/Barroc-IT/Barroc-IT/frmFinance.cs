@@ -45,10 +45,22 @@ namespace Barroc_IT
                 CloseToLogin();
             }
         }
+        private void btnFinanceHome_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 0;
+        }
         private void btnConfirmPayment_Click(object sender, EventArgs e)
         {
             UpdatePayment(selectedProject, selectedInvoice, true);
             ReloadInvoices();
+            if (txtInvoicePaid.Text == "Yes")
+            {
+                btnConfirmPayment.Enabled = false;
+            }
+            else
+            {
+                btnConfirmPayment.Enabled = true;
+            }
         }
         private void btnFinanceSelectCustomer_Click(object sender, EventArgs e)
         {
@@ -75,7 +87,7 @@ namespace Barroc_IT
                 txtFinLedgerID.ReadOnly = false;
                 txtFinBTWCode.ReadOnly = false;
                 cbFinBKR.Enabled = true;
-                
+                DisableAllButtons();
                 btnEditFields.Text = "Save Changes";
             }
             else if (btnEditFields.Text == "Save Changes")
@@ -99,6 +111,7 @@ namespace Barroc_IT
                                     txtFinLedgerID.ReadOnly = true;
                                     txtFinBTWCode.ReadOnly = true;
                                     cbFinBKR.Enabled = false;
+                                    EnableAllButtons();
                                     GetBKR();
                                     btnEditFields.Text = "Edit Fields";
                             }
@@ -170,9 +183,10 @@ namespace Barroc_IT
             if (numFinInvoiceAddValue.Value > 0)
             {
             if (AddInvoice() == true)
-            {
+            {                
                 tbContr.SelectedIndex = 5;
-                LoadInvoices();                
+                LoadInvoices();
+                ReloadProjects();
                 MessageBox.Show("Invoice succesfully added!");
             }
             else
@@ -191,6 +205,7 @@ namespace Barroc_IT
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 4;
+            ////////
         }
         private void btnCustomerSearch_Click(object sender, EventArgs e)
         {
@@ -226,6 +241,15 @@ namespace Barroc_IT
             LoadCustomers();
             LoadProjects();
             LoadInvoices();
+            int temp = 0;
+            if (txtProjectInvoices.Text != temp.ToString())
+            {
+                btnViewInvoices.Enabled = true;
+            }
+            else
+            {
+                btnViewInvoices.Enabled = false;
+            }
             tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
         // Datagridview CellContentClicks
@@ -272,7 +296,16 @@ namespace Barroc_IT
             {        
                 selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["cInvoiceID"].Value.ToString());
                 ReloadInvoices();
+                GetBKR();
                 tbContr.SelectedIndex = 6;
+                if (txtInvoicePaid.Text == "Yes")
+                {
+                    btnConfirmPayment.Enabled = false;
+                }
+                else
+                {
+                    btnConfirmPayment.Enabled = true;
+                }
             }   
         }
         #endregion
@@ -385,8 +418,7 @@ namespace Barroc_IT
             string sql = sqlhandler.GetQuery(Query.loadInvoiceDetails);
             SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject), new SqlParameter("invoiceID", selectedInvoice) };
             DataTable invoiceDetails = dthandler.ExecuteQuery(sql, collection);
-            LoadInvoiceDetails(invoiceDetails);            
-            GetBKR();
+            LoadInvoiceDetails(invoiceDetails); 
         }
         #endregion
 
@@ -412,6 +444,40 @@ namespace Barroc_IT
                 return false;
             }
         }
+        private void DisableAllButtons()
+        {
+            btnViewProjects.Enabled = false;
+            btnCustomerBack.Enabled = false;
+            btnLogout.Enabled = false;
+            btnFinanceSelectCustomer.Enabled = false;
+            btnFinanceHome.Enabled = false;
+            btnViewInvoices.Enabled = false;
+            btnAddInvoice.Enabled = false;
+            btnProjectBack.Enabled = false;
+            this.ControlBox = false;
+        }
+        private void EnableAllButtons()
+        {
+            
+            btnCustomerBack.Enabled = true;
+            btnLogout.Enabled = true;
+            btnFinanceSelectCustomer.Enabled = true;
+            btnFinanceHome.Enabled = true;
+            int temp = 0;
+            if (txtFinProjects.Text != temp.ToString() )
+            {
+                btnViewProjects.Enabled = true;
+            }
+            else 
+            {
+                btnViewProjects.Enabled = false;
+            }
+            btnViewInvoices.Enabled = true;
+            btnAddInvoice.Enabled = true;
+            btnProjectBack.Enabled = true;
+            this.ControlBox = true;
+        }
+
         #endregion
 
         #region Get & Set BKR ( yes / no, true / false )
@@ -525,5 +591,7 @@ namespace Barroc_IT
             }
         }
         #endregion
+
+
     }
 }

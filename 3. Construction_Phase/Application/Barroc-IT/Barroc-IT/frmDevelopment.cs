@@ -46,7 +46,7 @@ namespace Barroc_IT
                 tbContr.SelectedIndex = 3;
             }
         }
-        private void btnSalesHome_Click(object sender, EventArgs e)
+        private void btnSalesHome_Click_1(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 0;
         }
@@ -234,9 +234,10 @@ namespace Barroc_IT
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
-            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
+            
             LoadCustomers();
             LoadProjects();
+            tbContr.SelectedIndex = tbContr.SelectedIndex - 1;
         }
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
@@ -525,6 +526,9 @@ namespace Barroc_IT
             btnLogout.Enabled = false;
             btnSelectedProjectBack.Enabled = false;
             btnArchiveProject.Enabled = false;
+            this.ControlBox = false;
+            
+
         }
         private void EnableAllButtons()
         {
@@ -536,6 +540,7 @@ namespace Barroc_IT
             btnLogout.Enabled = true;
             btnSelectedProjectBack.Enabled = true;
             btnArchiveProject.Enabled = true;
+            this.ControlBox = true;
         }
 
         #endregion

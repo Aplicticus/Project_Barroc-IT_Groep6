@@ -106,16 +106,19 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvActivatedUsers.Columns["cActivateDeactivate"].Index)
             {
-                selectedUser = int.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
-                selectedDeactivated = bool.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
-                if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                if (e.RowIndex >= 0)
                 {
-                    LoadActivatedUsers();
-                    MessageBox.Show("User succesfully deactivated!");
-                }
-                else
-                {
-                    MessageBox.Show("There is a problem with deactivating a user!");
+                    selectedUser = int.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
+                    selectedDeactivated = bool.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
+                    if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                    {
+                        LoadActivatedUsers();
+                        MessageBox.Show("User succesfully deactivated!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("There is a problem with deactivating a user!");
+                    }
                 }
             }
         }
@@ -123,16 +126,19 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvDeactivatedUsers.Columns["xActivatedDeactivated"].Index)
             {
-                selectedUser = int.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xUserID"].Value.ToString());
-                selectedDeactivated = bool.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xDeactivated"].Value.ToString());
-                if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                if (e.RowIndex >= 0)
                 {
-                    LoadDeactivatedUsers();
-                    MessageBox.Show("User succesfully activated!");
-                }
-                else
-                {
-                    MessageBox.Show("There is a problem with deactivating a user!");
+                    selectedUser = int.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xUserID"].Value.ToString());
+                    selectedDeactivated = bool.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xDeactivated"].Value.ToString());
+                    if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                    {
+                        LoadDeactivatedUsers();
+                        MessageBox.Show("User succesfully activated!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("There is a problem with deactivating a user!");
+                    }
                 }
             }
         }
@@ -171,6 +177,7 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("@Password", txtAddPassword.Text));
             cmd.Parameters.Add(new SqlParameter("@Department", cBoxAddDepartment.SelectedItem.ToString()));
             cmd.Parameters.Add(new SqlParameter("@Deactivated", true));
+            cmd.Parameters.Add(new SqlParameter("@Last_Login", DateTime.Now));
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
