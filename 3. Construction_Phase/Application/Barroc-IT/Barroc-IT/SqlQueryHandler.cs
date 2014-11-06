@@ -47,6 +47,8 @@
         "POSTALCODE2, RESIDENCE2, CONTACTPERSON, INITIALS, PHONE_NR1, PHONE_NR2, FAXNUMBER, EMAIL, PROSPECT) " +
         "VALUES (@CompanyName, @Address1, @PostalCode1, @Residence1, @Address2, @PostalCode2, @Residence2, @ContactPerson, " +
         "@Initials, @PhoneNr1, @PhoneNr2, @FaxNumber, @Email, @Prospect)";
+        string addAppointment = "INSERT INTO tbl_Appointments (CUSTOMER_ID, APPOIN_DATE, SUBJECT, INT_CONTACT, ACCOMPLISHED) VALUES(@customerID, @appoinDate, @subject, @intContact, @accomplished);";
+
         
         // Count Querys
         string countPaidInvoices = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Invoices.PAID='True'";
@@ -147,6 +149,9 @@
                     break;
                 case Query.addUser:
                     sqlQuery = addUser;
+                    break;
+                case Query.addAppointment:
+                    sqlQuery = addAppointment;
                     break;
 
                 case Query.updateFinCustomersInfo:

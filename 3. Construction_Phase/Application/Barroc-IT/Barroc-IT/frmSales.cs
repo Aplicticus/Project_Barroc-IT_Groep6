@@ -65,11 +65,38 @@ namespace Barroc_IT
         }
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
+            txtApoAddCompanyName.Text = txtCusCompanyName.Text;
+            txtApoAddInternalContact.Clear();
+            txtApoAddSubject.Clear();
             tbContr.SelectedIndex = 5;
         }
         private void btnAppointmentAdd_Click(object sender, EventArgs e)
         {
-            tbContr.SelectedIndex = 2;
+            if (txtApoAddInternalContact.TextLength > 0)
+            {
+                if (txtApoAddSubject.TextLength > 0)
+                {
+                    if (addAppointment())
+                    {
+                        MessageBox.Show("Appointment succesfully added.");
+                        tbContr.SelectedIndex = 2;
+                    }
+                    else
+                    {
+                        MessageBox.Show("The appointment could not be added, please try again.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please check the subject.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please check the internal contact person.");
+            }
+
+
         }
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
@@ -180,8 +207,9 @@ namespace Barroc_IT
                 txtCusResidence2.ReadOnly = false;
                 txtCusPhoneNumber2.ReadOnly = false;
 
+                txtCusInitials.ReadOnly = false;
                 txtCusFaxNumber.ReadOnly = false;
-                txtCusOfferStatus.ReadOnly = false;
+                cboxOfferStatus.Enabled = true;
                 txtCusEmail.ReadOnly = false;
                 dtpCusSalesDateOfAction.Enabled = true;
                 txtCusContactPerson.ReadOnly = false;
@@ -194,40 +222,115 @@ namespace Barroc_IT
             }
             else if (btnEditCustomerFields.Text == "Save Changes")
             {
-                if (UpdateCustomer(selectedCustomer) == true)
+                bool everythingCorrect = true;
+
+                TextBox[] firstTextBoxes = { txtCusCompanyName, txtCusInitials, txtCusContactPerson, txtCusAddress1, txtCusResidence1, txtCusEmail };
+                if (!CheckTextBoxes(firstTextBoxes))
                 {
-                    MessageBox.Show("Customer succesfully modified!");
-                    ReloadCustomers();
-                    tbContr.SelectedIndex = 2;
+                    MessageBox.Show("Please check all the neccesary fields.");
                 }
                 else
                 {
-                    MessageBox.Show("There is a problem with modifying the customer!");
+                    if (txtCusPhoneNumber1.MaskFull)
+                    {
+                        if (CheckPostalCode(txtCusPostalCode1))
+                        {
+                            if (CheckEmail(txtCusEmail))
+                            {
+                                string phoneNumber2Text = txtCusPhoneNumber2.Text.Replace(" ", "");
+                                if (phoneNumber2Text.Length > 2)
+                                {
+                                    if (txtCusPhoneNumber2.MaskFull)
+                                    {
+                                        string faxNumberText = txtCusFaxNumber.Text.Replace(" ", "");
+                                        if (faxNumberText.Length > 2)
+                                        {
+                                            if (txtCusFaxNumber.MaskFull)
+                                            {
+                                                if (txtCusPostalCode2.TextLength > 0)
+                                                {
+                                                    if (!CheckPostalCode(txtCusPostalCode2))
+                                                    {
+                                                        everythingCorrect = false;
+                                                        MessageBox.Show("Please check the second postal code.");
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                everythingCorrect = false;
+                                                MessageBox.Show("Please check the fax number.");
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        everythingCorrect = false;
+                                        MessageBox.Show("Please check the second phone number.");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                everythingCorrect = false;
+                                MessageBox.Show("Please check the email address.");
+                            }
+
+                            if (everythingCorrect)
+                            {
+                                if (UpdateCustomer(selectedCustomer) == true)
+                                {
+                                    MessageBox.Show("Customer succesfully modified!");
+                                    ReloadCustomers();
+                                    tbContr.SelectedIndex = 2;
+
+                                    txtCusCompanyName.ReadOnly = true;
+                                    txtCusNumberOfOffers.ReadOnly = true;
+
+                                    txtCusAddress1.ReadOnly = true;
+                                    txtCusPostalCode1.ReadOnly = true;
+                                    txtCusResidence1.ReadOnly = true;
+                                    txtCusPhoneNumber1.ReadOnly = true;
+
+                                    txtCusAddress2.ReadOnly = true;
+                                    txtCusPostalCode2.ReadOnly = true;
+                                    txtCusResidence2.ReadOnly = true;
+                                    txtCusPhoneNumber2.ReadOnly = true;
+
+                                    txtCusInitials.ReadOnly = true;
+                                    txtCusFaxNumber.ReadOnly = true;
+                                    cboxOfferStatus.Enabled = false;
+                                    txtCusEmail.ReadOnly = true;
+                                    dtpCusSalesDateOfAction.Enabled = false;
+                                    txtCusContactPerson.ReadOnly = true;
+                                    dtpCusSalesLastContactDate.Enabled = false;
+                                    txtCusAppointment.ReadOnly = true;
+                                    dtpCusSalesNextAction.Enabled = false;
+                                    cBoxCusProspect.Enabled = false;
+                                    nudCusSalePercentage.Enabled = false;
+                                    btnEditCustomerFields.Text = "Edit Fields";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("There is a problem with modifying the customer, please try again.");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            everythingCorrect = false;
+                            MessageBox.Show("Please check the first postal code.");
+                        }
+                    }
+                    else
+                    {
+                        everythingCorrect = false;
+                        MessageBox.Show("Please check the first phone number.");
+                    }
                 }
-                txtCusCompanyName.ReadOnly = true;
-                txtCusNumberOfOffers.ReadOnly = true;
 
-                txtCusAddress1.ReadOnly = true;
-                txtCusPostalCode1.ReadOnly = true;
-                txtCusResidence1.ReadOnly = true;
-                txtCusPhoneNumber1.ReadOnly = true;
+                
 
-                txtCusAddress2.ReadOnly = true;
-                txtCusPostalCode2.ReadOnly = true;
-                txtCusResidence2.ReadOnly = true;
-                txtCusPhoneNumber2.ReadOnly = true;
-
-                txtCusFaxNumber.ReadOnly = true;
-                txtCusOfferStatus.ReadOnly = true;
-                txtCusEmail.ReadOnly = true;
-                dtpCusSalesDateOfAction.Enabled = false;
-                txtCusContactPerson.ReadOnly = true;
-                dtpCusSalesLastContactDate.Enabled = false;
-                txtCusAppointment.ReadOnly = true;
-                dtpCusSalesNextAction.Enabled = false;
-                cBoxCusProspect.Enabled = false;
-                nudCusSalePercentage.Enabled = false;
-                btnEditCustomerFields.Text = "Edit Fields";
             }
         }
         private void btnAppointmentSearch_Click(object sender, EventArgs e)
@@ -340,17 +443,20 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
             {
-                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
-                ReloadCustomers();
-                tbContr.SelectedIndex = 2;
-                int temp = 0;
-                if (txtCusAppointment.Text != temp.ToString())
+                if (e.RowIndex >= 0)
                 {
-                    btnViewAppointment.Enabled = true;
-                }
-                else
-                {
-                    btnViewAppointment.Enabled = false;
+                    selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                    ReloadCustomers();
+                    tbContr.SelectedIndex = 2;
+                    int temp = 0;
+                    if (txtCusAppointment.Text != temp.ToString())
+                    {
+                        btnViewAppointment.Enabled = true;
+                    }
+                    else
+                    {
+                        btnViewAppointment.Enabled = false;
+                    }
                 }
             }
         }
@@ -358,50 +464,22 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvAppointments.Columns["cAppointmentViewButton"].Index)
             {
-                selectedAppointment = int.Parse(dgvAppointments.Rows[e.RowIndex].Cells["cAppointmentID"].Value.ToString());
-                ReloadAppointments();
-                tbContr.SelectedIndex = 4;
-                if (txtApoAccomplished.Text == "True")
+                if (e.RowIndex >= 0)
                 {
-                    btnEditAppointmentFields.Enabled = false;
-                    btnArchiveAppointment.Enabled = false;
+                    selectedAppointment = int.Parse(dgvAppointments.Rows[e.RowIndex].Cells["cAppointmentID"].Value.ToString());
+                    ReloadAppointments();
+                    tbContr.SelectedIndex = 4;
+                    if (txtApoAccomplished.Text == "True")
+                    {
+                        btnEditAppointmentFields.Enabled = false;
+                        btnArchiveAppointment.Enabled = false;
+                    }
+                    else
+                    {
+                        btnEditAppointmentFields.Enabled = true;
+                        btnArchiveAppointment.Enabled = true;
+                    }
                 }
-                else
-                {
-                    btnEditAppointmentFields.Enabled = true;
-                    btnArchiveAppointment.Enabled = true;
-                }
-            }
-        }
-        #endregion
-
-        #region Get & Set ComboBoxes
-        private void RecoverComboBoxFields()
-        {
-            if (cBoxCusProspect.Text == "True" || cBoxCusProspect.Text == "1")
-            {
-                cBoxCusProspect.Text = "Yes";
-            }
-            else if (cBoxCusProspect.Text == "Yes")
-            {
-                cBoxCusProspect.Text = "True";
-            }
-            else if (cBoxCusProspect.Text == "False" || cBoxCusProspect.Text == "0")
-            {
-                cBoxCusProspect.Text = "No";
-            }
-            else if (cBoxCusProspect.Text == "No")
-            {
-                cBoxCusProspect.Text = "False";
-            }
-
-            if (txtCusOfferStatus.Text == "True" || txtCusOfferStatus.Text == "1")
-            {
-                txtCusOfferStatus.Text = "Yes";
-            }
-            else
-            {
-                txtCusOfferStatus.Text = "No";
             }
         }
         #endregion
@@ -463,12 +541,35 @@ namespace Barroc_IT
                 return false;
             }
         }
+
+        private bool addAppointment()
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.addAppointment);
+
+            SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("customerID", selectedCustomer));
+            cmd.Parameters.Add(new SqlParameter("appoinDate", dtpApoAddAppointmentDate.Value));
+            cmd.Parameters.Add(new SqlParameter("subject", txtApoAddSubject.Text));
+            cmd.Parameters.Add(new SqlParameter("intContact", txtApoAddInternalContact.Text));
+            cmd.Parameters.Add(new SqlParameter("accomplished", false));
+
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region Updaters / Editers
         private bool UpdateCustomer(int customerID)
         {
-            RecoverComboBoxFields();
             string sqlQuery = sqlhandler.GetQuery(Query.updateSalCustomerInfo);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
             cmd.Parameters.Add(new SqlParameter("CompanyName", txtCusCompanyName.Text));
@@ -479,13 +580,13 @@ namespace Barroc_IT
             cmd.Parameters.Add(new SqlParameter("Address2", txtCusAddress2.Text));
             cmd.Parameters.Add(new SqlParameter("PostalCode2", txtCusPostalCode2.Text));
             cmd.Parameters.Add(new SqlParameter("Residence2", txtCusResidence2.Text));
-            cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusAddPhoneNumber2.Text));
+            cmd.Parameters.Add(new SqlParameter("PhoneNumber2", txtCusPhoneNumber2.Text));
             cmd.Parameters.Add(new SqlParameter("ContactPerson", txtCusContactPerson.Text));
             cmd.Parameters.Add(new SqlParameter("Initials", txtCusInitials.Text));
-            cmd.Parameters.Add(new SqlParameter("OfferStatus", txtCusOfferStatus.Text));
-            cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusAddFaxNumber.Text));
+            cmd.Parameters.Add(new SqlParameter("OfferStatus", cboxOfferStatus.Text));
+            cmd.Parameters.Add(new SqlParameter("FaxNumber", txtCusFaxNumber.Text));
             cmd.Parameters.Add(new SqlParameter("Email", txtCusEmail.Text));
-            cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.SelectedIndex));
+            cmd.Parameters.Add(new SqlParameter("Prospect", cBoxCusProspect.Text));
             cmd.Parameters.Add(new SqlParameter("DateOfAction", dtpCusSalesDateOfAction.Value));
             cmd.Parameters.Add(new SqlParameter("LastContactDate", dtpCusSalesLastContactDate.Value));
             cmd.Parameters.Add(new SqlParameter("NextAction", dtpCusSalesNextAction.Value));
@@ -603,7 +704,7 @@ namespace Barroc_IT
             txtCusEmail.Text = CusRow["EMAIL"].ToString();
             txtCusContactPerson.Text = CusRow["CONTACTPERSON"].ToString();
             cBoxCusProspect.Text = CusRow["PROSPECT"].ToString();
-            txtCusOfferStatus.Text = CusRow["OFFER_STAT"].ToString();
+            cboxOfferStatus.Text = CusRow["OFFER_STAT"].ToString();
 
             string sDateOfAction = CusRow["DATE_OF_ACTION"].ToString();
             if (sDateOfAction.Length > 0)
@@ -642,7 +743,6 @@ namespace Barroc_IT
             txtCusNumberOfOffers.Text = countCus[0].ToString();
             DataRow ApoRow = countApo.Rows[0];
             txtCusAppointment.Text = ApoRow[0].ToString();
-            RecoverComboBoxFields();
         }
         private void LoadAppointmentDetails(DataTable CusDet)
         {

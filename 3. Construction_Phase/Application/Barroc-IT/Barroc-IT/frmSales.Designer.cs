@@ -69,6 +69,7 @@
             this.txtCusPhoneNumber2 = new System.Windows.Forms.MaskedTextBox();
             this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
             this.txtCusInitials = new System.Windows.Forms.TextBox();
+            this.cboxOfferStatus = new System.Windows.Forms.ComboBox();
             this.lblCusInitials = new System.Windows.Forms.Label();
             this.txtCusResidence2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -98,13 +99,11 @@
             this.lblOfferStatus = new System.Windows.Forms.Label();
             this.lblOpenProject = new System.Windows.Forms.Label();
             this.lblFax = new System.Windows.Forms.Label();
-            this.txtCusOfferStatus = new System.Windows.Forms.TextBox();
             this.txtCusNumberOfOffers = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtCusAppointment = new System.Windows.Forms.TextBox();
             this.txtCusEmail = new System.Windows.Forms.TextBox();
             this.lblAppointments = new System.Windows.Forms.Label();
-            this.txtCusFaxNumber = new System.Windows.Forms.TextBox();
             this.lblPhoneNumber1 = new System.Windows.Forms.Label();
             this.txtCusPostalCode1 = new System.Windows.Forms.TextBox();
             this.lblPostalCode1 = new System.Windows.Forms.Label();
@@ -119,8 +118,17 @@
             this.btnAppointmentSearch = new System.Windows.Forms.Button();
             this.txtAppointmentSearch = new System.Windows.Forms.TextBox();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.cAppointmentViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cApppointmentSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAppointmentInternalContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ccAppointmentAccomplished = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblListAppointments = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.txtApoAccomplished = new System.Windows.Forms.TextBox();
+            this.lblAppointmentAccomplished = new System.Windows.Forms.Label();
             this.btnSelectedAppointmentBack = new System.Windows.Forms.Button();
             this.dtpAppointmentDate = new System.Windows.Forms.DateTimePicker();
             this.txtApoContactperson = new System.Windows.Forms.TextBox();
@@ -186,15 +194,7 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
-            this.cAppointmentViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAppointmentCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cApppointmentSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAppointmentInternalContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ccAppointmentAccomplished = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblAppointmentAccomplished = new System.Windows.Forms.Label();
-            this.txtApoAccomplished = new System.Windows.Forms.TextBox();
+            this.txtCusFaxNumber = new System.Windows.Forms.MaskedTextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -544,9 +544,11 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.txtCusFaxNumber);
             this.tabPage3.Controls.Add(this.txtCusPhoneNumber2);
             this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
             this.tabPage3.Controls.Add(this.txtCusInitials);
+            this.tabPage3.Controls.Add(this.cboxOfferStatus);
             this.tabPage3.Controls.Add(this.lblCusInitials);
             this.tabPage3.Controls.Add(this.txtCusResidence2);
             this.tabPage3.Controls.Add(this.label2);
@@ -576,13 +578,11 @@
             this.tabPage3.Controls.Add(this.lblOfferStatus);
             this.tabPage3.Controls.Add(this.lblOpenProject);
             this.tabPage3.Controls.Add(this.lblFax);
-            this.tabPage3.Controls.Add(this.txtCusOfferStatus);
             this.tabPage3.Controls.Add(this.txtCusNumberOfOffers);
             this.tabPage3.Controls.Add(this.lblEmail);
             this.tabPage3.Controls.Add(this.txtCusAppointment);
             this.tabPage3.Controls.Add(this.txtCusEmail);
             this.tabPage3.Controls.Add(this.lblAppointments);
-            this.tabPage3.Controls.Add(this.txtCusFaxNumber);
             this.tabPage3.Controls.Add(this.lblPhoneNumber1);
             this.tabPage3.Controls.Add(this.txtCusPostalCode1);
             this.tabPage3.Controls.Add(this.lblPostalCode1);
@@ -600,19 +600,21 @@
             // 
             // txtCusPhoneNumber2
             // 
-            this.txtCusPhoneNumber2.BackColor = System.Drawing.SystemColors.Control;
             this.txtCusPhoneNumber2.Location = new System.Drawing.Point(614, 194);
+            this.txtCusPhoneNumber2.Mask = "000-0000000";
             this.txtCusPhoneNumber2.Name = "txtCusPhoneNumber2";
-            this.txtCusPhoneNumber2.Size = new System.Drawing.Size(138, 20);
-            this.txtCusPhoneNumber2.TabIndex = 242;
+            this.txtCusPhoneNumber2.ReadOnly = true;
+            this.txtCusPhoneNumber2.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPhoneNumber2.TabIndex = 248;
             // 
             // txtCusPhoneNumber1
             // 
-            this.txtCusPhoneNumber1.BackColor = System.Drawing.SystemColors.Control;
-            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(269, 194);
+            this.txtCusPhoneNumber1.Location = new System.Drawing.Point(270, 194);
+            this.txtCusPhoneNumber1.Mask = "000-0000000";
             this.txtCusPhoneNumber1.Name = "txtCusPhoneNumber1";
-            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(138, 20);
-            this.txtCusPhoneNumber1.TabIndex = 241;
+            this.txtCusPhoneNumber1.ReadOnly = true;
+            this.txtCusPhoneNumber1.Size = new System.Drawing.Size(137, 20);
+            this.txtCusPhoneNumber1.TabIndex = 247;
             // 
             // txtCusInitials
             // 
@@ -620,7 +622,20 @@
             this.txtCusInitials.Name = "txtCusInitials";
             this.txtCusInitials.ReadOnly = true;
             this.txtCusInitials.Size = new System.Drawing.Size(137, 20);
-            this.txtCusInitials.TabIndex = 240;
+            this.txtCusInitials.TabIndex = 245;
+            // 
+            // cboxOfferStatus
+            // 
+            this.cboxOfferStatus.BackColor = System.Drawing.SystemColors.Control;
+            this.cboxOfferStatus.Enabled = false;
+            this.cboxOfferStatus.FormattingEnabled = true;
+            this.cboxOfferStatus.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.cboxOfferStatus.Location = new System.Drawing.Point(614, 224);
+            this.cboxOfferStatus.Name = "cboxOfferStatus";
+            this.cboxOfferStatus.Size = new System.Drawing.Size(137, 21);
+            this.cboxOfferStatus.TabIndex = 243;
             // 
             // lblCusInitials
             // 
@@ -739,8 +754,8 @@
             this.cBoxCusProspect.Enabled = false;
             this.cBoxCusProspect.FormattingEnabled = true;
             this.cBoxCusProspect.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
+            "True",
+            "False"});
             this.cBoxCusProspect.Location = new System.Drawing.Point(614, 74);
             this.cBoxCusProspect.Name = "cBoxCusProspect";
             this.cBoxCusProspect.Size = new System.Drawing.Size(137, 21);
@@ -847,7 +862,7 @@
             // 
             // txtCusContactPerson
             // 
-            this.txtCusContactPerson.Location = new System.Drawing.Point(269, 314);
+            this.txtCusContactPerson.Location = new System.Drawing.Point(270, 314);
             this.txtCusContactPerson.Name = "txtCusContactPerson";
             this.txtCusContactPerson.ReadOnly = true;
             this.txtCusContactPerson.Size = new System.Drawing.Size(137, 20);
@@ -923,17 +938,9 @@
             this.lblFax.TabIndex = 107;
             this.lblFax.Text = "Fax Number: ";
             // 
-            // txtCusOfferStatus
-            // 
-            this.txtCusOfferStatus.Location = new System.Drawing.Point(614, 224);
-            this.txtCusOfferStatus.Name = "txtCusOfferStatus";
-            this.txtCusOfferStatus.ReadOnly = true;
-            this.txtCusOfferStatus.Size = new System.Drawing.Size(137, 20);
-            this.txtCusOfferStatus.TabIndex = 103;
-            // 
             // txtCusNumberOfOffers
             // 
-            this.txtCusNumberOfOffers.Location = new System.Drawing.Point(269, 374);
+            this.txtCusNumberOfOffers.Location = new System.Drawing.Point(270, 374);
             this.txtCusNumberOfOffers.Name = "txtCusNumberOfOffers";
             this.txtCusNumberOfOffers.ReadOnly = true;
             this.txtCusNumberOfOffers.Size = new System.Drawing.Size(137, 20);
@@ -951,7 +958,7 @@
             // 
             // txtCusAppointment
             // 
-            this.txtCusAppointment.Location = new System.Drawing.Point(269, 344);
+            this.txtCusAppointment.Location = new System.Drawing.Point(270, 344);
             this.txtCusAppointment.Name = "txtCusAppointment";
             this.txtCusAppointment.ReadOnly = true;
             this.txtCusAppointment.Size = new System.Drawing.Size(137, 20);
@@ -959,7 +966,7 @@
             // 
             // txtCusEmail
             // 
-            this.txtCusEmail.Location = new System.Drawing.Point(269, 284);
+            this.txtCusEmail.Location = new System.Drawing.Point(270, 284);
             this.txtCusEmail.Name = "txtCusEmail";
             this.txtCusEmail.ReadOnly = true;
             this.txtCusEmail.Size = new System.Drawing.Size(137, 20);
@@ -974,14 +981,6 @@
             this.lblAppointments.Size = new System.Drawing.Size(238, 25);
             this.lblAppointments.TabIndex = 85;
             this.lblAppointments.Text = "Number Of Appointments:";
-            // 
-            // txtCusFaxNumber
-            // 
-            this.txtCusFaxNumber.Location = new System.Drawing.Point(269, 254);
-            this.txtCusFaxNumber.Name = "txtCusFaxNumber";
-            this.txtCusFaxNumber.ReadOnly = true;
-            this.txtCusFaxNumber.Size = new System.Drawing.Size(137, 20);
-            this.txtCusFaxNumber.TabIndex = 84;
             // 
             // lblPhoneNumber1
             // 
@@ -1137,6 +1136,54 @@
             this.dgvAppointments.TabIndex = 23;
             this.dgvAppointments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppointments_CellContentClick);
             // 
+            // cAppointmentViewButton
+            // 
+            this.cAppointmentViewButton.HeaderText = "View";
+            this.cAppointmentViewButton.Name = "cAppointmentViewButton";
+            this.cAppointmentViewButton.ReadOnly = true;
+            this.cAppointmentViewButton.Text = "Open";
+            this.cAppointmentViewButton.UseColumnTextForButtonValue = true;
+            // 
+            // cAppointmentID
+            // 
+            this.cAppointmentID.HeaderText = "cAppointmentID";
+            this.cAppointmentID.Name = "cAppointmentID";
+            this.cAppointmentID.ReadOnly = true;
+            this.cAppointmentID.Visible = false;
+            // 
+            // cAppointmentCompanyName
+            // 
+            this.cAppointmentCompanyName.HeaderText = "CompanyName";
+            this.cAppointmentCompanyName.Name = "cAppointmentCompanyName";
+            this.cAppointmentCompanyName.ReadOnly = true;
+            // 
+            // cAppointmentDate
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.cAppointmentDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.cAppointmentDate.HeaderText = "Appointment Date";
+            this.cAppointmentDate.Name = "cAppointmentDate";
+            this.cAppointmentDate.ReadOnly = true;
+            // 
+            // cApppointmentSubject
+            // 
+            this.cApppointmentSubject.HeaderText = "Subject";
+            this.cApppointmentSubject.Name = "cApppointmentSubject";
+            this.cApppointmentSubject.ReadOnly = true;
+            // 
+            // cAppointmentInternalContact
+            // 
+            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
+            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
+            this.cAppointmentInternalContact.ReadOnly = true;
+            // 
+            // ccAppointmentAccomplished
+            // 
+            this.ccAppointmentAccomplished.HeaderText = "Accomplished";
+            this.ccAppointmentAccomplished.Name = "ccAppointmentAccomplished";
+            this.ccAppointmentAccomplished.ReadOnly = true;
+            // 
             // lblListAppointments
             // 
             this.lblListAppointments.AutoSize = true;
@@ -1178,6 +1225,24 @@
             this.tabPage5.Size = new System.Drawing.Size(771, 586);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "selectedAppointment";
+            // 
+            // txtApoAccomplished
+            // 
+            this.txtApoAccomplished.Location = new System.Drawing.Point(408, 311);
+            this.txtApoAccomplished.Name = "txtApoAccomplished";
+            this.txtApoAccomplished.ReadOnly = true;
+            this.txtApoAccomplished.Size = new System.Drawing.Size(137, 20);
+            this.txtApoAccomplished.TabIndex = 159;
+            // 
+            // lblAppointmentAccomplished
+            // 
+            this.lblAppointmentAccomplished.AutoSize = true;
+            this.lblAppointmentAccomplished.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppointmentAccomplished.Location = new System.Drawing.Point(176, 305);
+            this.lblAppointmentAccomplished.Name = "lblAppointmentAccomplished";
+            this.lblAppointmentAccomplished.Size = new System.Drawing.Size(141, 25);
+            this.lblAppointmentAccomplished.TabIndex = 158;
+            this.lblAppointmentAccomplished.Text = "Accomplished:";
             // 
             // btnSelectedAppointmentBack
             // 
@@ -1465,6 +1530,7 @@
             // 
             this.txtApoAddCompanyName.Location = new System.Drawing.Point(419, 74);
             this.txtApoAddCompanyName.Name = "txtApoAddCompanyName";
+            this.txtApoAddCompanyName.ReadOnly = true;
             this.txtApoAddCompanyName.Size = new System.Drawing.Size(137, 20);
             this.txtApoAddCompanyName.TabIndex = 130;
             // 
@@ -1824,110 +1890,14 @@
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
             // 
-            // cAppointmentViewButton
+            // txtCusFaxNumber
             // 
-            this.cAppointmentViewButton.HeaderText = "View";
-            this.cAppointmentViewButton.Name = "cAppointmentViewButton";
-            this.cAppointmentViewButton.ReadOnly = true;
-            this.cAppointmentViewButton.Text = "Open";
-            this.cAppointmentViewButton.UseColumnTextForButtonValue = true;
-            // 
-            // cAppointmentID
-            // 
-            this.cAppointmentID.HeaderText = "cAppointmentID";
-            this.cAppointmentID.Name = "cAppointmentID";
-            this.cAppointmentID.ReadOnly = true;
-            this.cAppointmentID.Visible = false;
-            // 
-            // cAppointmentCompanyName
-            // 
-            this.cAppointmentCompanyName.HeaderText = "CompanyName";
-            this.cAppointmentCompanyName.Name = "cAppointmentCompanyName";
-            this.cAppointmentCompanyName.ReadOnly = true;
-            // 
-            // cAppointmentDate
-            // 
-            this.cAppointmentDate.HeaderText = "Appointment Date";
-            this.cAppointmentDate.Name = "cAppointmentDate";
-            this.cAppointmentDate.ReadOnly = true;
-            // 
-            // cApppointmentSubject
-            // 
-            this.cApppointmentSubject.HeaderText = "Subject";
-            this.cApppointmentSubject.Name = "cApppointmentSubject";
-            this.cApppointmentSubject.ReadOnly = true;
-            // 
-            // cAppointmentInternalContact
-            // 
-            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
-            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
-            this.cAppointmentInternalContact.ReadOnly = true;
-            // 
-            // ccAppointmentAccomplished
-            // 
-            this.ccAppointmentAccomplished.HeaderText = "Accomplished";
-            this.ccAppointmentAccomplished.Name = "ccAppointmentAccomplished";
-            this.ccAppointmentAccomplished.ReadOnly = true;
-            // 
-            // lblAppointmentAccomplished
-            // 
-            this.lblAppointmentAccomplished.AutoSize = true;
-            this.lblAppointmentAccomplished.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppointmentAccomplished.Location = new System.Drawing.Point(176, 305);
-            this.lblAppointmentAccomplished.Name = "lblAppointmentAccomplished";
-            this.lblAppointmentAccomplished.Size = new System.Drawing.Size(141, 25);
-            this.lblAppointmentAccomplished.TabIndex = 158;
-            this.lblAppointmentAccomplished.Text = "Accomplished:";
-            // 
-            // txtApoAccomplished
-            // 
-            this.txtApoAccomplished.Location = new System.Drawing.Point(408, 311);
-            this.txtApoAccomplished.Name = "txtApoAccomplished";
-            this.txtApoAccomplished.ReadOnly = true;
-            this.txtApoAccomplished.Size = new System.Drawing.Size(137, 20);
-            this.txtApoAccomplished.TabIndex = 159;
-            // 
-            // cAppointmentViewButton
-            // 
-            this.cAppointmentViewButton.HeaderText = "View";
-            this.cAppointmentViewButton.Name = "cAppointmentViewButton";
-            this.cAppointmentViewButton.ReadOnly = true;
-            this.cAppointmentViewButton.Text = "Open";
-            this.cAppointmentViewButton.UseColumnTextForButtonValue = true;
-            // 
-            // cAppointmentID
-            // 
-            this.cAppointmentID.HeaderText = "cAppointmentID";
-            this.cAppointmentID.Name = "cAppointmentID";
-            this.cAppointmentID.ReadOnly = true;
-            this.cAppointmentID.Visible = false;
-            // 
-            // cAppointmentCompanyName
-            // 
-            this.cAppointmentCompanyName.HeaderText = "CompanyName";
-            this.cAppointmentCompanyName.Name = "cAppointmentCompanyName";
-            this.cAppointmentCompanyName.ReadOnly = true;
-            // 
-            // cAppointmentDate
-            // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.cAppointmentDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.cAppointmentDate.HeaderText = "Appointment Date";
-            this.cAppointmentDate.Name = "cAppointmentDate";
-            this.cAppointmentDate.ReadOnly = true;
-            // 
-            // cApppointmentSubject
-            // 
-            this.cApppointmentSubject.HeaderText = "Subject";
-            this.cApppointmentSubject.Name = "cApppointmentSubject";
-            this.cApppointmentSubject.ReadOnly = true;
-            // 
-            // cAppointmentInternalContact
-            // 
-            this.cAppointmentInternalContact.HeaderText = "Internal Contact Person";
-            this.cAppointmentInternalContact.Name = "cAppointmentInternalContact";
-            this.cAppointmentInternalContact.ReadOnly = true;
+            this.txtCusFaxNumber.Location = new System.Drawing.Point(270, 254);
+            this.txtCusFaxNumber.Mask = "000-0000000";
+            this.txtCusFaxNumber.Name = "txtCusFaxNumber";
+            this.txtCusFaxNumber.ReadOnly = true;
+            this.txtCusFaxNumber.Size = new System.Drawing.Size(137, 20);
+            this.txtCusFaxNumber.TabIndex = 249;
             // 
             // frmSales
             // 
@@ -2002,13 +1972,11 @@
         private System.Windows.Forms.Label lblOfferStatus;
         private System.Windows.Forms.Label lblOpenProject;
         private System.Windows.Forms.Label lblFax;
-        private System.Windows.Forms.TextBox txtCusOfferStatus;
         private System.Windows.Forms.TextBox txtCusNumberOfOffers;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtCusAppointment;
         private System.Windows.Forms.TextBox txtCusEmail;
         private System.Windows.Forms.Label lblAppointments;
-        private System.Windows.Forms.TextBox txtCusFaxNumber;
         private System.Windows.Forms.Label lblPhoneNumber1;
         private System.Windows.Forms.TextBox txtCusPostalCode1;
         private System.Windows.Forms.Label lblPostalCode1;
@@ -2102,11 +2070,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCusAddress2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCusInitials;
         private System.Windows.Forms.Label lblCusInitials;
         private System.Windows.Forms.ToolTip tTipPostalCode;
-        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber2;
-        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
         private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
@@ -2137,5 +2102,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ccAppointmentAccomplished;
         private System.Windows.Forms.TextBox txtApoAccomplished;
         private System.Windows.Forms.Label lblAppointmentAccomplished;
+        private System.Windows.Forms.ComboBox cboxOfferStatus;
+        private System.Windows.Forms.TextBox txtCusInitials;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber2;
+        private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
+        private System.Windows.Forms.MaskedTextBox txtCusFaxNumber;
     }
 }

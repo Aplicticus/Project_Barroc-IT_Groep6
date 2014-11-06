@@ -25,6 +25,7 @@
         addInvoice,
         addProject,
         addUser,
+        addAppointment,
 
         loadCustomers,
         loadUsers,
