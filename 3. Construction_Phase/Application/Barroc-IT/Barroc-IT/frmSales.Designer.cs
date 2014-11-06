@@ -1671,7 +1671,7 @@
             this.cbCusAddProspect.Name = "cbCusAddProspect";
             this.cbCusAddProspect.Size = new System.Drawing.Size(137, 21);
             this.cbCusAddProspect.TabIndex = 192;
-            this.cbCusAddProspect.Text = "Yes";
+            this.cbCusAddProspect.Text = "True";
             // 
             // btnCusAddCustomer
             // 
