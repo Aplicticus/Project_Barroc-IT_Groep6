@@ -7,11 +7,6 @@ namespace Barroc_IT
 {
     public partial class frmDevelopment : Form
     {
-        // Add check functions
-        // 1: Add Project (done)
-        // 2: Update Project (done)
-        // 3: Update CustomerDevInfo 
-
         #region Properties
         private DatabaseHandler handler;
         private frmLogin loginForm;
@@ -40,6 +35,16 @@ namespace Barroc_IT
         {
             tbContr.SelectedIndex = 1;
             LoadCustomers();
+        }
+        private void btnArchiveProject_Click(object sender, EventArgs e)
+        {
+            if (ArchiveProject(selectedProject))
+            {
+                MessageBox.Show("Project succesfully completed!");
+                LoadProjects();
+                
+                tbContr.SelectedIndex = 3;
+            }
         }
         private void btnSalesHome_Click(object sender, EventArgs e)
         {
@@ -109,6 +114,7 @@ namespace Barroc_IT
                 dtpDeadlineViewProject.Enabled = true;
                 txtProjectSubject.ReadOnly = false;
                 nudProjectValue.ReadOnly = false;
+                btnArchiveProject.Enabled = false;
                 btnEditProject.Text = "Save Changes";
             }
             else if (btnEditProject.Text == "Save Changes")
@@ -125,6 +131,7 @@ namespace Barroc_IT
                                 txtProjectName.ReadOnly = true;
                                 txtProjectSubject.ReadOnly = true;
                                 nudProjectValue.ReadOnly = true;
+                                btnArchiveProject.Enabled = true;
                                 btnEditProject.Text = "Edit Fields";
                             }
                             else
@@ -519,17 +526,5 @@ namespace Barroc_IT
             this.Close();
         }
         #endregion
-
-        private void btnArchiveProject_Click(object sender, EventArgs e)
-        {
-            if (ArchiveProject(selectedProject))
-            {
-                MessageBox.Show("Project succesfully completed!");
-                tbContr.SelectedIndex = 3;
-                LoadProjects();
-            }
-        }
-
-       
     }
 }
