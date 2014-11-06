@@ -66,6 +66,7 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtCusFaxNumber = new System.Windows.Forms.MaskedTextBox();
             this.txtCusPhoneNumber2 = new System.Windows.Forms.MaskedTextBox();
             this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
             this.txtCusInitials = new System.Windows.Forms.TextBox();
@@ -194,7 +195,6 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
-            this.txtCusFaxNumber = new System.Windows.Forms.MaskedTextBox();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -597,6 +597,15 @@
             this.tabPage3.Size = new System.Drawing.Size(771, 586);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
+            // 
+            // txtCusFaxNumber
+            // 
+            this.txtCusFaxNumber.Location = new System.Drawing.Point(270, 254);
+            this.txtCusFaxNumber.Mask = "000-0000000";
+            this.txtCusFaxNumber.Name = "txtCusFaxNumber";
+            this.txtCusFaxNumber.ReadOnly = true;
+            this.txtCusFaxNumber.Size = new System.Drawing.Size(137, 20);
+            this.txtCusFaxNumber.TabIndex = 249;
             // 
             // txtCusPhoneNumber2
             // 
@@ -1656,8 +1665,8 @@
             // 
             this.cbCusAddProspect.FormattingEnabled = true;
             this.cbCusAddProspect.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
+            "True",
+            "False"});
             this.cbCusAddProspect.Location = new System.Drawing.Point(582, 74);
             this.cbCusAddProspect.Name = "cbCusAddProspect";
             this.cbCusAddProspect.Size = new System.Drawing.Size(137, 21);
@@ -1889,15 +1898,6 @@
             this.lblAddCustomer.Size = new System.Drawing.Size(199, 31);
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
-            // 
-            // txtCusFaxNumber
-            // 
-            this.txtCusFaxNumber.Location = new System.Drawing.Point(270, 254);
-            this.txtCusFaxNumber.Mask = "000-0000000";
-            this.txtCusFaxNumber.Name = "txtCusFaxNumber";
-            this.txtCusFaxNumber.ReadOnly = true;
-            this.txtCusFaxNumber.Size = new System.Drawing.Size(137, 20);
-            this.txtCusFaxNumber.TabIndex = 249;
             // 
             // frmSales
             // 
