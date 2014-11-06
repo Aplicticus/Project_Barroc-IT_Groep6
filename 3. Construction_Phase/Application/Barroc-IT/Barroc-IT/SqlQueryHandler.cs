@@ -34,7 +34,7 @@
         string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
         "tbl_Projects.NAME, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
         "tbl_Invoices.INVOICE_SEND, tbl_Invoices.PAID FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
-        string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.COMPANYNAME, tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
+        string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.COMPANYNAME, tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT, tbl_Appointments.ACCOMPLISHED FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
 
         //Insert querys
         string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND, PAID) " +
@@ -77,7 +77,11 @@
         "WHERE CUSTOMER_ID=@customerID";
         string updateAdmActivate = "UPDATE tbl_Users SET DEACTIVATED=@Deactivated WHERE USER_ID=@userID";
         string updateLastLogin = "UPDATE tbl_Users SET LAST_LOGIN=@Last_Login WHERE USER_ID=@userID AND USER_NAME=@User_Name";
-        string updateFinPayment = "UPDATE tbl_Invoices SET PAID=@Paid WHERE PROJECT_ID=@projectID AND INVOICE_ID=@invoiceID";        
+        string updateFinPayment = "UPDATE tbl_Invoices SET PAID=@Paid WHERE PROJECT_ID=@projectID AND INVOICE_ID=@invoiceID";
+        string updateAppointment = "UPDATE tbl_Appointments SET INT_CONTACT=@Int_Contact, SUBJECT=@Subject, APPOIN_DATE=@Appoin_Date " +
+        "WHERE CUSTOMER_ID=@customerID";
+        string updateAccomplish = "UPDATE tbl_Appointments SET ACCOMPLISHED=@Accomplished WHERE CUSTOMER_ID=@customerID AND APPOINTMENT_ID=@AppointmentID";
+
         string copyCountInvoicesToBalance = "UPDATE tbl_Customers SET BALANCE=@Balance WHERE CUSTOMER_ID=@customerID";
 
         string archiveProject = "UPDATE tbl_Projects SET COMPLETED=@Completed WHERE PROJECT_ID = @projectID";
@@ -172,6 +176,12 @@
                     break;
                 case Query.updateFinPayment:
                     sqlQuery = updateFinPayment;
+                    break;
+                case Query.updateAppointment:
+                    sqlQuery = updateAppointment;
+                    break;
+                case Query.updateAccomplish:
+                    sqlQuery = updateAccomplish;
                     break;
 
                 case Query.countInvoices:

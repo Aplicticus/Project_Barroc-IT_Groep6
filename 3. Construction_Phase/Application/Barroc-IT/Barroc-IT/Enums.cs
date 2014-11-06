@@ -57,6 +57,8 @@
         updateLastLogin,
         updateFinPayment,
         updateAdmActivate,
+        updateAppointment,
+        updateAccomplish,
 
         archiveProject
     }
