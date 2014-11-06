@@ -106,19 +106,16 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvActivatedUsers.Columns["cActivateDeactivate"].Index)
             {
-                if (e.RowIndex >= 0)
+                selectedUser = int.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
+                selectedDeactivated = bool.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
+                if (UpdateUser(selectedUser, selectedDeactivated) == true)
                 {
-                    selectedUser = int.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
-                    selectedDeactivated = bool.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
-                    if (UpdateUser(selectedUser, selectedDeactivated) == true)
-                    {
-                        LoadActivatedUsers();
-                        MessageBox.Show("User succesfully deactivated!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("There is a problem with deactivating a user!");
-                    }
+                    LoadActivatedUsers();
+                    MessageBox.Show("User succesfully deactivated!");
+                }
+                else
+                {
+                    MessageBox.Show("There is a problem with deactivating a user!");
                 }
             }
         }
@@ -126,19 +123,16 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvDeactivatedUsers.Columns["xActivatedDeactivated"].Index)
             {
-                if (e.RowIndex >= 0)
+                selectedUser = int.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xUserID"].Value.ToString());
+                selectedDeactivated = bool.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xDeactivated"].Value.ToString());
+                if (UpdateUser(selectedUser, selectedDeactivated) == true)
                 {
-                    selectedUser = int.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xUserID"].Value.ToString());
-                    selectedDeactivated = bool.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xDeactivated"].Value.ToString());
-                    if (UpdateUser(selectedUser, selectedDeactivated) == true)
-                    {
-                        LoadDeactivatedUsers();
-                        MessageBox.Show("User succesfully activated!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("There is a problem with deactivating a user!");
-                    }
+                    LoadDeactivatedUsers();
+                    MessageBox.Show("User succesfully activated!");
+                }
+                else
+                {
+                    MessageBox.Show("There is a problem with deactivating a user!");
                 }
             }
         }
