@@ -61,26 +61,7 @@
             this.btnListCustomerBack = new System.Windows.Forms.Button();
             this.cBoxCustomerSearch = new System.Windows.Forms.ComboBox();
             this.btnCustomerSearch = new System.Windows.Forms.Button();
-            this.txtCustomerSearch = new System.Windows.Forms.TextBox();
-<<<<<<< HEAD
-=======
-            this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.cViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPostalCode2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cResidence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cContactPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cInitials = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhoneNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFaxNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
->>>>>>> parent of b7a472c... change
+            this.txtCustomerSearch = new System.Windows.Forms.TextBox();            
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -158,8 +139,6 @@
             this.lblAddProjectName = new System.Windows.Forms.Label();
             this.txtProjectAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddProject = new System.Windows.Forms.Label();
-<<<<<<< HEAD
-=======
             this.cProjectViewButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -168,7 +147,6 @@
             this.cProjectSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProjectValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Completed = new System.Windows.Forms.DataGridViewTextBoxColumn();
->>>>>>> parent of b7a472c... change
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.pViewCustomer.SuspendLayout();
@@ -486,8 +464,6 @@
             this.txtCustomerSearch.Size = new System.Drawing.Size(119, 20);
             this.txtCustomerSearch.TabIndex = 24;
             // 
-<<<<<<< HEAD
-=======
             // dgvCustomers
             // 
             this.dgvCustomers.AllowUserToAddRows = false;
@@ -495,31 +471,7 @@
             this.dgvCustomers.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvCustomers.ColumnHeadersHeight = 34;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cViewButton,
-            this.cCustomerID,
-            this.cCompanyName,
-            this.cAddress1,
-            this.cPostalCode1,
-            this.cResidence1,
-            this.cAddress2,
-            this.cPostalCode2,
-            this.cResidence2,
-            this.cContactPerson,
-            this.cInitials,
-            this.cPhoneNumber1,
-            this.cPhoneNumber2,
-            this.cFaxNumber,
-            this.cEmail});
-            this.dgvCustomers.Location = new System.Drawing.Point(0, 39);
-            this.dgvCustomers.MultiSelect = false;
-            this.dgvCustomers.Name = "dgvCustomers";
-            this.dgvCustomers.ReadOnly = true;
-            this.dgvCustomers.RowHeadersVisible = false;
-            this.dgvCustomers.Size = new System.Drawing.Size(771, 506);
-            this.dgvCustomers.TabIndex = 23;
-            this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
-            // 
+            //
             // cViewButton
             // 
             this.cViewButton.Frozen = true;
@@ -615,7 +567,6 @@
             this.cEmail.Name = "cEmail";
             this.cEmail.ReadOnly = true;
             // 
->>>>>>> parent of b7a472c... change
             // lblCustomers
             // 
             this.lblCustomers.AutoSize = true;
@@ -1451,8 +1402,6 @@
             this.lblAddProject.TabIndex = 23;
             this.lblAddProject.Text = "Add Project";
             // 
-<<<<<<< HEAD
-=======
             // cProjectViewButton
             // 
             this.cProjectViewButton.FillWeight = 13.70094F;
@@ -1520,7 +1469,6 @@
             this.Completed.Name = "Completed";
             this.Completed.ReadOnly = true;
             // 
->>>>>>> parent of b7a472c... change
             // frmDevelopment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1656,7 +1604,6 @@
         private System.Windows.Forms.Label lblCompleted;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtClosedProjects;
-<<<<<<< HEAD
         private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
@@ -1666,8 +1613,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn Completed;
         private System.Windows.Forms.DataGridView dgvCustomers;
-=======
->>>>>>> parent of b7a472c... change
         private System.Windows.Forms.DataGridViewButtonColumn cViewButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
@@ -1682,14 +1627,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhoneNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFaxNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
-        private System.Windows.Forms.DataGridViewButtonColumn cProjectViewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectCustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectDeadline;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectSubject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cProjectValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Completed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;        
     }
 }
