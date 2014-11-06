@@ -41,10 +41,6 @@ namespace Barroc_IT
             tbContr.SelectedIndex = 1;
             LoadCustomers();
         }
-        private void btnSalesHome_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 0;
-        }
         private void btnCreateProject_Click(object sender, EventArgs e)
         {
             if (txtProjectAddName.Text.Length > 0)
@@ -263,53 +259,47 @@ namespace Barroc_IT
         }        
         // Cell Content Clicks
         private void dgvUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
-            {
-                if (e.RowIndex >= 0)
+        {            
+                if (e.ColumnIndex == dgvCustomers.Columns["cViewButton"].Index)
                 {
-                    selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                        selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                        string sqlCustomer = sqlhandler.GetQuery(Query.loadCustomers);
+                        DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomer);
 
-                    string sqlCustomer = sqlhandler.GetQuery(Query.loadCustomers);
-                    DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomer);
+                        string sqlAppointments = sqlhandler.GetQuery(Query.loadAppointments);
+                        SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
+                        DataTable appointmentDetails = dthandler.ExecuteQuery(sqlAppointments, collection);
 
-                    string sqlAppointments = sqlhandler.GetQuery(Query.loadAppointments);
-                    SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer) };
-                    DataTable appointmentDetails = dthandler.ExecuteQuery(sqlAppointments, collection);
+                        string sqlCountProjects = sqlhandler.GetQuery(Query.countProjects);
+                collection = new SqlParameter[]{ new SqlParameter("customerID", selectedCustomer) };
+                        DataTable projectCount = dthandler.ExecuteQuery(sqlCountProjects, collection);
 
-                    string sqlCountProjects = sqlhandler.GetQuery(Query.countProjects);
-                    collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer) };
-                    DataTable projectCount = dthandler.ExecuteQuery(sqlCountProjects, collection);
+                        string sqlCountOpenProjects = sqlhandler.GetQuery(Query.countProjectsTable);
+                collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("Completed", false)};
+                        DataTable countOpenProjectsTable = dthandler.ExecuteQuery(sqlCountOpenProjects, collection);
 
-                    string sqlCountOpenProjects = sqlhandler.GetQuery(Query.countProjectsTable);
-                    collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("Completed", false) };
-                    DataTable countOpenProjectsTable = dthandler.ExecuteQuery(sqlCountOpenProjects, collection);
+                        string sqlCountClosedProjects = sqlhandler.GetQuery(Query.countProjectsTable);
+                        collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("Completed", true) };
+                        DataTable countClosedProjectsTable = dthandler.ExecuteQuery(sqlCountClosedProjects, collection);
 
-                    string sqlCountClosedProjects = sqlhandler.GetQuery(Query.countProjectsTable);
-                    collection = new SqlParameter[] { new SqlParameter("customerID", selectedCustomer), new SqlParameter("Completed", true) };
-                    DataTable countClosedProjectsTable = dthandler.ExecuteQuery(sqlCountClosedProjects, collection);
+                        LoadCustomerDetails(customerDetails, appointmentDetails, projectCount, countOpenProjectsTable, countClosedProjectsTable);
 
-                    LoadCustomerDetails(customerDetails, appointmentDetails, projectCount, countOpenProjectsTable, countClosedProjectsTable);
-
-                    tbContr.SelectedIndex = 2;
-                    int temp = 0;
-                    if (txtDevProjects.Text != temp.ToString())
-                    {
-                        btnViewProjects.Enabled = true;
+                        tbContr.SelectedIndex = 2;
+                        int temp = 0;
+                        if (txtDevProjects.Text != temp.ToString())
+                        {
+                            btnViewProjects.Enabled = true;
+                        }
+                        else
+                        {
+                            btnViewProjects.Enabled = false;
+                        }
                     }
-                    else
-                    {
-                        btnViewProjects.Enabled = false;
-                    }
-                }
             }
-        }
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvProjects.Columns["cProjectViewButton"].Index)
             {
-                if (e.RowIndex >= 0)
-                {
                     selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
                     string sqlCustomer = sqlhandler.GetQuery(Query.loadCustomers);
                     DataTable customerDetails = dthandler.ExecuteQuery(sqlCustomer);
@@ -317,7 +307,7 @@ namespace Barroc_IT
                     string sqlProject = sqlhandler.GetQuery(Query.loadProjectDetails);
                     SqlParameter[] collection = { new SqlParameter("customerID", selectedCustomer), new SqlParameter("projectID", selectedProject) };
 
-                    DataTable projectDetails = dthandler.ExecuteQuery(sqlProject, collection);
+                DataTable projectDetails = dthandler.ExecuteQuery(sqlProject,collection);                
                     LoadProjectDetails(customerDetails, projectDetails);
                     if (txtProjectCompleted.Text == "True")
                     {
@@ -332,7 +322,6 @@ namespace Barroc_IT
                     tbContr.SelectedIndex = 4;
                 }
             }
-        }
         #endregion
 
         #region Loaders
@@ -529,7 +518,5 @@ namespace Barroc_IT
                 LoadProjects();
             }
         }
-
-       
     }
 }

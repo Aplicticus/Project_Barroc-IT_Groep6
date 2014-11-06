@@ -233,56 +233,47 @@ namespace Barroc_IT
         {
             if (e.ColumnIndex == dgvCustomers.Columns["finCusView"].Index)
             {
-                if (e.RowIndex >= 0)
+                selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                UpdateBalance();
+                ReloadCustomers();
+                tbContr.SelectedIndex = 2;
+                int temp = 0;
+                if (txtFinProjects.Text != temp.ToString())
                 {
-                    selectedCustomer = int.Parse(dgvCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
-                    UpdateBalance();
-                    ReloadCustomers();
-                    tbContr.SelectedIndex = 2;
-                    int temp = 0;
-                    if (txtFinProjects.Text != temp.ToString())
-                    {
-                        btnViewProjects.Enabled = true;
-                    }
-                    else
-                    {
-                        btnViewProjects.Enabled = false;
-                    }
+                    btnViewProjects.Enabled = true;
                 }
+                else
+                {
+                    btnViewProjects.Enabled = false;
+                }   
             }           
         }
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvProjects.Columns["finProView"].Index)
             {
-                if (e.RowIndex >= 0)
+                selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
+                ReloadProjects();
+                tbContr.SelectedIndex = 4;
+                int temp = 0;
+                if (txtProjectInvoices.Text != temp.ToString())
                 {
-                    selectedProject = int.Parse(dgvProjects.Rows[e.RowIndex].Cells["cProjectID"].Value.ToString());
-                    ReloadProjects();
-                    tbContr.SelectedIndex = 4;
-                    int temp = 0;
-                    if (txtProjectInvoices.Text != temp.ToString())
-                    {
-                        btnViewInvoices.Enabled = true;
-                    }
-                    else
-                    {
-                        btnViewInvoices.Enabled = false;
-                    }
+                    btnViewInvoices.Enabled = true;
+                }
+                else
+                {
+                    btnViewInvoices.Enabled = false;
                 }
             }
         }
         private void dgvInvoices_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvInvoices.Columns["finInvView"].Index)
-            {
-                if (e.RowIndex >= 0)
-                {
-                    selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["cInvoiceID"].Value.ToString());
-                    ReloadInvoices();
-                    tbContr.SelectedIndex = 6;
-                }
-            }
+            {        
+                selectedInvoice = int.Parse(dgvInvoices.Rows[e.RowIndex].Cells["cInvoiceID"].Value.ToString());
+                ReloadInvoices();
+                tbContr.SelectedIndex = 6;
+            }   
         }
         #endregion
 
