@@ -79,6 +79,16 @@ namespace Barroc_IT
                     if (addAppointment())
                     {
                         MessageBox.Show("Appointment succesfully added.");
+                        ReloadCustomers();
+                        int temp = 0;
+                        if (txtCusAppointment.Text != temp.ToString())
+                        {
+                            btnViewAppointment.Enabled = true;
+                        }
+                        else
+                        {
+                            btnViewAppointment.Enabled = false;
+                        }
                         tbContr.SelectedIndex = 2;
                     }
                     else
@@ -95,8 +105,6 @@ namespace Barroc_IT
             {
                 MessageBox.Show("Please check the internal contact person.");
             }
-
-
         }
         private void btnAddInvoiceCancel_Click(object sender, EventArgs e)
         {
