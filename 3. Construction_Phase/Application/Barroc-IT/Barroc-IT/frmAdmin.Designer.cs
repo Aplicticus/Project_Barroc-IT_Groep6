@@ -68,10 +68,10 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.btnArchivedCustomersBack = new System.Windows.Forms.Button();
             this.dgvArchivedCustomers = new System.Windows.Forms.DataGridView();
+            this.lblArchivedCustomer = new System.Windows.Forms.Label();
             this.cMakeVisible = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblArchivedCustomer = new System.Windows.Forms.Label();
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -500,6 +500,16 @@
             this.dgvArchivedCustomers.TabIndex = 26;
             this.dgvArchivedCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArchivedCustomers_CellContentClick);
             // 
+            // lblArchivedCustomer
+            // 
+            this.lblArchivedCustomer.AutoSize = true;
+            this.lblArchivedCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArchivedCustomer.Location = new System.Drawing.Point(246, 23);
+            this.lblArchivedCustomer.Name = "lblArchivedCustomer";
+            this.lblArchivedCustomer.Size = new System.Drawing.Size(277, 31);
+            this.lblArchivedCustomer.TabIndex = 25;
+            this.lblArchivedCustomer.Text = "Archived Customers";
+            // 
             // cMakeVisible
             // 
             this.cMakeVisible.HeaderText = "Make Visible";
@@ -507,6 +517,8 @@
             this.cMakeVisible.ReadOnly = true;
             this.cMakeVisible.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cMakeVisible.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cMakeVisible.Text = "Restore";
+            this.cMakeVisible.UseColumnTextForButtonValue = true;
             // 
             // cCustomerID
             // 
@@ -521,16 +533,6 @@
             this.cCompanyName.Name = "cCompanyName";
             this.cCompanyName.ReadOnly = true;
             this.cCompanyName.Width = 635;
-            // 
-            // lblArchivedCustomer
-            // 
-            this.lblArchivedCustomer.AutoSize = true;
-            this.lblArchivedCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArchivedCustomer.Location = new System.Drawing.Point(246, 23);
-            this.lblArchivedCustomer.Name = "lblArchivedCustomer";
-            this.lblArchivedCustomer.Size = new System.Drawing.Size(277, 31);
-            this.lblArchivedCustomer.TabIndex = 25;
-            this.lblArchivedCustomer.Text = "Archived Customers";
             // 
             // frmAdmin
             // 
@@ -602,14 +604,14 @@
         private System.Windows.Forms.DataGridView dgvArchivedCustomers;
         private System.Windows.Forms.Label lblArchivedCustomer;
         private System.Windows.Forms.Button btnArchivedCustomersBack;
-        private System.Windows.Forms.DataGridViewButtonColumn cMakeVisible;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
         private System.Windows.Forms.DataGridViewButtonColumn cActivateDeactivate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cUserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cUsername;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDepartment;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDeactivated;
         private System.Windows.Forms.DataGridViewTextBoxColumn cLastLogin;
+        private System.Windows.Forms.DataGridViewButtonColumn cMakeVisible;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCompanyName;
     }
 }

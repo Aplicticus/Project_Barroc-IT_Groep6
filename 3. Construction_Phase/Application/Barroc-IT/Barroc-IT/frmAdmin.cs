@@ -233,11 +233,11 @@ namespace Barroc_IT
                     if (SetCustomerVisible(selectedCustomer))
                     {
                         LoadArchiveCustomers();
-                        MessageBox.Show("Customer maked visible!");
+                        MessageBox.Show("Customer has been restored!");
                     }
                     else
                     {
-                        MessageBox.Show("There is a problem with making the customer visible!");
+                        MessageBox.Show("There is a problem with restoring a customer!");
                     }
                 }
             }
