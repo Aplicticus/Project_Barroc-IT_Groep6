@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFinance));
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblFinancePanel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -1023,9 +1024,9 @@
             // 
             // finProDeadline
             // 
-            dataGridViewCellStyle66.Format = "d";
-            dataGridViewCellStyle66.NullValue = null;
-            this.finProDeadline.DefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.finProDeadline.DefaultCellStyle = dataGridViewCellStyle1;
             this.finProDeadline.HeaderText = "Deadline";
             this.finProDeadline.Name = "finProDeadline";
             this.finProDeadline.ReadOnly = true;
@@ -1038,9 +1039,9 @@
             // 
             // finProValue
             // 
-            dataGridViewCellStyle67.Format = "C2";
-            dataGridViewCellStyle67.NullValue = null;
-            this.finProValue.DefaultCellStyle = dataGridViewCellStyle67;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.finProValue.DefaultCellStyle = dataGridViewCellStyle2;
             this.finProValue.HeaderText = "Value";
             this.finProValue.Name = "finProValue";
             this.finProValue.ReadOnly = true;
@@ -1352,27 +1353,27 @@
             // 
             // finInvValue
             // 
-            dataGridViewCellStyle68.Format = "C2";
-            dataGridViewCellStyle68.NullValue = null;
-            this.finInvValue.DefaultCellStyle = dataGridViewCellStyle68;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.finInvValue.DefaultCellStyle = dataGridViewCellStyle3;
             this.finInvValue.HeaderText = "Value";
             this.finInvValue.Name = "finInvValue";
             this.finInvValue.ReadOnly = true;
             // 
             // finInvExpDate
             // 
-            dataGridViewCellStyle69.Format = "d";
-            dataGridViewCellStyle69.NullValue = null;
-            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle69;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.finInvExpDate.HeaderText = "Expire Date";
             this.finInvExpDate.Name = "finInvExpDate";
             this.finInvExpDate.ReadOnly = true;
             // 
             // InvoiceSendDate
             // 
-            dataGridViewCellStyle70.Format = "d";
-            dataGridViewCellStyle70.NullValue = null;
-            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle70;
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle5;
             this.InvoiceSendDate.HeaderText = "Invoice Send Date";
             this.InvoiceSendDate.Name = "InvoiceSendDate";
             this.InvoiceSendDate.ReadOnly = true;
@@ -1694,6 +1695,7 @@
             this.Controls.Add(this.pButtons);
             this.Controls.Add(this.pWelcome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmFinance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
