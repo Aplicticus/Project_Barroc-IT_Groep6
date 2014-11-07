@@ -569,6 +569,7 @@ namespace Barroc_IT
             closing = true;
             loginForm.ClearTextBoxes();
             loginForm.Show();
+            loginForm.CenterScreen();
             this.Close();
         }
         #endregion

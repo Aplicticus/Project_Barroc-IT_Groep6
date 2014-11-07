@@ -546,7 +546,7 @@
             this.MaximizeBox = false;
             this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Admin_Panel";
+            this.Text = "Admin Panel";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);
             this.pWelcome.ResumeLayout(false);
             this.pWelcome.PerformLayout();

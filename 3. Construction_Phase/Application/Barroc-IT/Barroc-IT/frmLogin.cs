@@ -130,6 +130,10 @@ namespace Barroc_IT
             }
         }
 
+        public void CenterScreen()
+        {
+            this.CenterToScreen();
+        }
         public void ClearTextBoxes()
         {
             txtUsername.Clear();
