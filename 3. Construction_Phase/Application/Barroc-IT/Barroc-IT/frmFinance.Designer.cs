@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pWelcome = new System.Windows.Forms.Panel();
             this.lblFinancePanel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -345,7 +345,7 @@
             // 
             this.lblCustomers.AutoSize = true;
             this.lblCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomers.Location = new System.Drawing.Point(302, 23);
+            this.lblCustomers.Location = new System.Drawing.Point(3, 1);
             this.lblCustomers.Name = "lblCustomers";
             this.lblCustomers.Size = new System.Drawing.Size(155, 31);
             this.lblCustomers.TabIndex = 189;
@@ -370,7 +370,7 @@
             "Company Name",
             "E-Mail",
             "Initials"});
-            this.cBoxCustomerSearch.Location = new System.Drawing.Point(424, 67);
+            this.cBoxCustomerSearch.Location = new System.Drawing.Point(437, 11);
             this.cBoxCustomerSearch.Name = "cBoxCustomerSearch";
             this.cBoxCustomerSearch.Size = new System.Drawing.Size(121, 21);
             this.cBoxCustomerSearch.Sorted = true;
@@ -378,7 +378,7 @@
             // 
             // btnCustomerSearch
             // 
-            this.btnCustomerSearch.Location = new System.Drawing.Point(674, 66);
+            this.btnCustomerSearch.Location = new System.Drawing.Point(687, 10);
             this.btnCustomerSearch.Name = "btnCustomerSearch";
             this.btnCustomerSearch.Size = new System.Drawing.Size(75, 23);
             this.btnCustomerSearch.TabIndex = 25;
@@ -388,7 +388,7 @@
             // 
             // txtCustomerSearch
             // 
-            this.txtCustomerSearch.Location = new System.Drawing.Point(551, 68);
+            this.txtCustomerSearch.Location = new System.Drawing.Point(564, 12);
             this.txtCustomerSearch.Name = "txtCustomerSearch";
             this.txtCustomerSearch.Size = new System.Drawing.Size(119, 20);
             this.txtCustomerSearch.TabIndex = 31;
@@ -397,6 +397,7 @@
             // 
             this.dgvCustomers.AllowUserToAddRows = false;
             this.dgvCustomers.AllowUserToDeleteRows = false;
+            this.dgvCustomers.AllowUserToResizeRows = false;
             this.dgvCustomers.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvCustomers.ColumnHeadersHeight = 34;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -416,12 +417,12 @@
             this.finCusPhoneNumber2,
             this.finCusFaxNumber,
             this.finCusEmail});
-            this.dgvCustomers.Location = new System.Drawing.Point(9, 94);
+            this.dgvCustomers.Location = new System.Drawing.Point(0, 39);
             this.dgvCustomers.MultiSelect = false;
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.ReadOnly = true;
             this.dgvCustomers.RowHeadersVisible = false;
-            this.dgvCustomers.Size = new System.Drawing.Size(740, 440);
+            this.dgvCustomers.Size = new System.Drawing.Size(771, 506);
             this.dgvCustomers.TabIndex = 30;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserInfo_CellContentClick);
             // 
@@ -918,7 +919,7 @@
             // 
             this.lblProjects.AutoSize = true;
             this.lblProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjects.Location = new System.Drawing.Point(303, 23);
+            this.lblProjects.Location = new System.Drawing.Point(3, 1);
             this.lblProjects.Name = "lblProjects";
             this.lblProjects.Size = new System.Drawing.Size(121, 31);
             this.lblProjects.TabIndex = 188;
@@ -944,7 +945,7 @@
             "Deadline",
             "Project Name",
             "Subject"});
-            this.cBoxProjectSearch.Location = new System.Drawing.Point(424, 67);
+            this.cBoxProjectSearch.Location = new System.Drawing.Point(437, 11);
             this.cBoxProjectSearch.Name = "cBoxProjectSearch";
             this.cBoxProjectSearch.Size = new System.Drawing.Size(121, 21);
             this.cBoxProjectSearch.Sorted = true;
@@ -952,7 +953,7 @@
             // 
             // btnProjectSearch
             // 
-            this.btnProjectSearch.Location = new System.Drawing.Point(676, 66);
+            this.btnProjectSearch.Location = new System.Drawing.Point(687, 10);
             this.btnProjectSearch.Name = "btnProjectSearch";
             this.btnProjectSearch.Size = new System.Drawing.Size(75, 23);
             this.btnProjectSearch.TabIndex = 33;
@@ -962,7 +963,7 @@
             // 
             // txtProjectSearch
             // 
-            this.txtProjectSearch.Location = new System.Drawing.Point(551, 68);
+            this.txtProjectSearch.Location = new System.Drawing.Point(564, 12);
             this.txtProjectSearch.Name = "txtProjectSearch";
             this.txtProjectSearch.Size = new System.Drawing.Size(119, 20);
             this.txtProjectSearch.TabIndex = 32;
@@ -971,6 +972,7 @@
             // 
             this.dgvProjects.AllowUserToAddRows = false;
             this.dgvProjects.AllowUserToDeleteRows = false;
+            this.dgvProjects.AllowUserToResizeRows = false;
             this.dgvProjects.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProjects.ColumnHeadersHeight = 34;
             this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -983,12 +985,12 @@
             this.finProSubject,
             this.finProValue,
             this.finProCompleted});
-            this.dgvProjects.Location = new System.Drawing.Point(9, 94);
+            this.dgvProjects.Location = new System.Drawing.Point(0, 39);
             this.dgvProjects.MultiSelect = false;
             this.dgvProjects.Name = "dgvProjects";
             this.dgvProjects.ReadOnly = true;
             this.dgvProjects.RowHeadersVisible = false;
-            this.dgvProjects.Size = new System.Drawing.Size(740, 440);
+            this.dgvProjects.Size = new System.Drawing.Size(771, 506);
             this.dgvProjects.TabIndex = 31;
             this.dgvProjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjects_CellContentClick);
             // 
@@ -1021,9 +1023,9 @@
             // 
             // finProDeadline
             // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.finProDeadline.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle66.Format = "d";
+            dataGridViewCellStyle66.NullValue = null;
+            this.finProDeadline.DefaultCellStyle = dataGridViewCellStyle66;
             this.finProDeadline.HeaderText = "Deadline";
             this.finProDeadline.Name = "finProDeadline";
             this.finProDeadline.ReadOnly = true;
@@ -1036,9 +1038,9 @@
             // 
             // finProValue
             // 
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.finProValue.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle67.Format = "C2";
+            dataGridViewCellStyle67.NullValue = null;
+            this.finProValue.DefaultCellStyle = dataGridViewCellStyle67;
             this.finProValue.HeaderText = "Value";
             this.finProValue.Name = "finProValue";
             this.finProValue.ReadOnly = true;
@@ -1247,7 +1249,7 @@
             // 
             this.lblListInvoices.AutoSize = true;
             this.lblListInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListInvoices.Location = new System.Drawing.Point(300, 23);
+            this.lblListInvoices.Location = new System.Drawing.Point(3, 1);
             this.lblListInvoices.Name = "lblListInvoices";
             this.lblListInvoices.Size = new System.Drawing.Size(123, 31);
             this.lblListInvoices.TabIndex = 190;
@@ -1256,7 +1258,7 @@
             // btnInvoiceViewBack
             // 
             this.btnInvoiceViewBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoiceViewBack.Location = new System.Drawing.Point(665, 540);
+            this.btnInvoiceViewBack.Location = new System.Drawing.Point(684, 551);
             this.btnInvoiceViewBack.Name = "btnInvoiceViewBack";
             this.btnInvoiceViewBack.Size = new System.Drawing.Size(84, 60);
             this.btnInvoiceViewBack.TabIndex = 186;
@@ -1272,7 +1274,7 @@
             "Company Name",
             "Project Name",
             "Value"});
-            this.cBoxSearchInvoice.Location = new System.Drawing.Point(424, 66);
+            this.cBoxSearchInvoice.Location = new System.Drawing.Point(437, 11);
             this.cBoxSearchInvoice.Name = "cBoxSearchInvoice";
             this.cBoxSearchInvoice.Size = new System.Drawing.Size(121, 21);
             this.cBoxSearchInvoice.Sorted = true;
@@ -1280,7 +1282,7 @@
             // 
             // btnInvoiceSearch
             // 
-            this.btnInvoiceSearch.Location = new System.Drawing.Point(674, 65);
+            this.btnInvoiceSearch.Location = new System.Drawing.Point(687, 10);
             this.btnInvoiceSearch.Name = "btnInvoiceSearch";
             this.btnInvoiceSearch.Size = new System.Drawing.Size(75, 23);
             this.btnInvoiceSearch.TabIndex = 33;
@@ -1290,7 +1292,7 @@
             // 
             // txtSearchInvoice
             // 
-            this.txtSearchInvoice.Location = new System.Drawing.Point(551, 67);
+            this.txtSearchInvoice.Location = new System.Drawing.Point(564, 12);
             this.txtSearchInvoice.Name = "txtSearchInvoice";
             this.txtSearchInvoice.Size = new System.Drawing.Size(119, 20);
             this.txtSearchInvoice.TabIndex = 32;
@@ -1299,6 +1301,7 @@
             // 
             this.dgvInvoices.AllowUserToAddRows = false;
             this.dgvInvoices.AllowUserToDeleteRows = false;
+            this.dgvInvoices.AllowUserToResizeRows = false;
             this.dgvInvoices.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvInvoices.ColumnHeadersHeight = 34;
             this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -1311,12 +1314,12 @@
             this.finInvExpDate,
             this.InvoiceSendDate,
             this.cPayedColumn});
-            this.dgvInvoices.Location = new System.Drawing.Point(9, 94);
+            this.dgvInvoices.Location = new System.Drawing.Point(0, 39);
             this.dgvInvoices.MultiSelect = false;
             this.dgvInvoices.Name = "dgvInvoices";
             this.dgvInvoices.ReadOnly = true;
             this.dgvInvoices.RowHeadersVisible = false;
-            this.dgvInvoices.Size = new System.Drawing.Size(740, 440);
+            this.dgvInvoices.Size = new System.Drawing.Size(771, 506);
             this.dgvInvoices.TabIndex = 31;
             this.dgvInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellContentClick);
             // 
@@ -1349,27 +1352,27 @@
             // 
             // finInvValue
             // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.finInvValue.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle68.Format = "C2";
+            dataGridViewCellStyle68.NullValue = null;
+            this.finInvValue.DefaultCellStyle = dataGridViewCellStyle68;
             this.finInvValue.HeaderText = "Value";
             this.finInvValue.Name = "finInvValue";
             this.finInvValue.ReadOnly = true;
             // 
             // finInvExpDate
             // 
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle69.Format = "d";
+            dataGridViewCellStyle69.NullValue = null;
+            this.finInvExpDate.DefaultCellStyle = dataGridViewCellStyle69;
             this.finInvExpDate.HeaderText = "Expire Date";
             this.finInvExpDate.Name = "finInvExpDate";
             this.finInvExpDate.ReadOnly = true;
             // 
             // InvoiceSendDate
             // 
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle70.Format = "d";
+            dataGridViewCellStyle70.NullValue = null;
+            this.InvoiceSendDate.DefaultCellStyle = dataGridViewCellStyle70;
             this.InvoiceSendDate.HeaderText = "Invoice Send Date";
             this.InvoiceSendDate.Name = "InvoiceSendDate";
             this.InvoiceSendDate.ReadOnly = true;

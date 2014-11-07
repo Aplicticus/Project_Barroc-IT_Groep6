@@ -49,6 +49,20 @@ namespace Barroc_IT
         private void btnSalesAddCustomer_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 6;
+            txtCusAddCompanyName.Clear();
+            txtCusAddInitials.Clear();
+            txtCusAddContactperson.Clear();
+            txtCusAddAddress1.Clear();
+            txtCusAddPostalCode1.Clear();
+            txtCusAddResidence1.Clear();
+            txtCusAddPhoneNumber1.Clear();
+            txtCusAddFaxNumber.Clear();
+            txtCusAddEmail.Clear();
+
+            txtCusAddAddress2.Clear();
+            txtCusAddPostalCode2.Clear();
+            txtCusResidence2.Clear();
+            txtCusAddPhoneNumber2.Clear();
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -227,6 +241,7 @@ namespace Barroc_IT
                 cBoxCusProspect.Enabled = true;
                 nudCusSalePercentage.Enabled = false;
                 btnEditCustomerFields.Text = "Save Changes";
+                DisableAllButtons();
             }
             else if (btnEditCustomerFields.Text == "Save Changes")
             {
@@ -317,6 +332,7 @@ namespace Barroc_IT
                                     cBoxCusProspect.Enabled = false;
                                     nudCusSalePercentage.Enabled = false;
                                     btnEditCustomerFields.Text = "Edit Fields";
+                                    EnableAllButtons();
                                 }
                                 else
                                 {
@@ -373,6 +389,7 @@ namespace Barroc_IT
                 txtApoSubject.ReadOnly = false;
                 dtpAppointmentDate.Enabled = true;
                 btnEditAppointmentFields.Text = "Save Changes";
+                DisableAllButtons();
             }
             else if (btnEditAppointmentFields.Text == "Save Changes")
             {
@@ -395,6 +412,7 @@ namespace Barroc_IT
                             txtApoSubject.ReadOnly = true;
                             dtpAppointmentDate.Enabled = false;
                             btnEditAppointmentFields.Text = "Edit Fields";
+                            EnableAllButtons();
                         }
                         else
                         {
@@ -490,6 +508,11 @@ namespace Barroc_IT
                 }
             }
         }
+
+        private void btnArchiveCustomer_Click(object sender, EventArgs e)
+        {
+            ArchiveCustomer();
+        }
         #endregion
 
         #region Form Closing
@@ -571,6 +594,61 @@ namespace Barroc_IT
             else
             {
                 return false;
+            }
+        }
+
+        private void DisableAllButtons()
+        {
+            btnAddCustomer.Enabled = false;
+            btnSelectCustomer.Enabled = false;
+            btnHome.Enabled = false;
+            btnSelectedCustomerBack.Enabled = false;
+            btnLogout.Enabled = false;
+            btnAddAppointment.Enabled = false;
+            btnViewAppointment.Enabled = false;
+            btnArchiveAppointment.Enabled = false;
+            btnSelectedAppointmentBack.Enabled = false;
+            this.ControlBox = false;
+        }
+
+        private void EnableAllButtons()
+        {
+            btnAddCustomer.Enabled = true;
+            btnSelectCustomer.Enabled = true;
+            btnHome.Enabled = true;
+            btnSelectedCustomerBack.Enabled = true;
+            btnLogout.Enabled = true;
+            btnAddAppointment.Enabled = true;
+            btnViewAppointment.Enabled = true;
+            btnArchiveAppointment.Enabled = true;
+            btnSelectedAppointmentBack.Enabled = true;
+            this.ControlBox = true;
+        }
+
+        private void ArchiveCustomer()
+        {
+            string sqlQuery = sqlhandler.GetQuery(Query.setCustomerArchived);
+            DialogResult confirmArchive = MessageBox.Show("Are you sure you want to archive this customer?", "Confirm Archive", MessageBoxButtons.YesNo);
+            if (confirmArchive == DialogResult.Yes)
+            {
+                SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
+                cmd.Parameters.Add(new SqlParameter("Archived", true));
+                cmd.Parameters.Add(new SqlParameter("customerID", selectedCustomer));
+
+                cmd.Connection.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Customer succesfully archived!");
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem archiving this customer.");
+                }
+
+                LoadCustomers();
+                tbContr.SelectedIndex = 1;
             }
         }
         #endregion

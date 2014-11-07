@@ -458,7 +458,6 @@ namespace Barroc_IT
         }
         private void EnableAllButtons()
         {
-            
             btnCustomerBack.Enabled = true;
             btnLogout.Enabled = true;
             btnFinanceSelectCustomer.Enabled = true;

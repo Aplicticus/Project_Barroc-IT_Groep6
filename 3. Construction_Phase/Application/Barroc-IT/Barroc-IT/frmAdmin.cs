@@ -31,7 +31,7 @@ namespace Barroc_IT
 
         #region Click Events
         // Button Click Events
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void btnAdminAddUser_Click(object sender, EventArgs e)
         {
             tbContr.SelectedIndex = 1;
         }
@@ -41,21 +41,9 @@ namespace Barroc_IT
         }
         private void btnUserInformation_Click(object sender, EventArgs e)
         {
-            tbContr.SelectedIndex = 4;
-            dgvUserInfo.ReadOnly = true;
-            LoadUsers();
-        }
-        private void btnActivatedUsers_Click(object sender, EventArgs e)
-        {
             tbContr.SelectedIndex = 2;
-            dgvActivatedUsers.ReadOnly = true;
-            LoadActivatedUsers();            
-        }
-        private void btnDeactivatedUsers_Click(object sender, EventArgs e)
-        {
-            tbContr.SelectedIndex = 3;
-            dgvDeactivatedUsers.ReadOnly = true;
-            LoadDeactivatedUsers();
+            dgvUsers.ReadOnly = true;
+            LoadUsers();
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -63,8 +51,8 @@ namespace Barroc_IT
             if (confirmationLogout == DialogResult.Yes)
             {
                 CloseToLogin();
-            }            
-        }        
+            }
+        }
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             string password = txtAddPassword.Text;
@@ -104,40 +92,27 @@ namespace Barroc_IT
         // Cell Content Clicks
         private void dgvAdminUserInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvActivatedUsers.Columns["cActivateDeactivate"].Index)
+            if (e.ColumnIndex == dgvUsers.Columns["cActivateDeactivate"].Index)
             {
                 if (e.RowIndex >= 0)
                 {
-                    selectedUser = int.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
-                    selectedDeactivated = bool.Parse(dgvActivatedUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
-                    if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                    if (dgvUsers.Rows[e.RowIndex].Cells["cDepartment"].Value.ToString() == "Administrator")
                     {
-                        LoadActivatedUsers();
-                        MessageBox.Show("User succesfully deactivated!");
+                        MessageBox.Show("This user can't be disabled for security reasons.");
                     }
                     else
                     {
-                        MessageBox.Show("There is a problem with deactivating a user!");
-                    }
-                }
-            }
-        }
-        private void dgvDeactivatedUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvDeactivatedUsers.Columns["xActivatedDeactivated"].Index)
-            {
-                if (e.RowIndex >= 0)
-                {
-                    selectedUser = int.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xUserID"].Value.ToString());
-                    selectedDeactivated = bool.Parse(dgvDeactivatedUsers.Rows[e.RowIndex].Cells["xDeactivated"].Value.ToString());
-                    if (UpdateUser(selectedUser, selectedDeactivated) == true)
-                    {
-                        LoadDeactivatedUsers();
-                        MessageBox.Show("User succesfully activated!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("There is a problem with deactivating a user!");
+                        selectedUser = int.Parse(dgvUsers.Rows[e.RowIndex].Cells["cUserID"].Value.ToString());
+                        selectedDeactivated = bool.Parse(dgvUsers.Rows[e.RowIndex].Cells["cDeactivated"].Value.ToString());
+                        if (UpdateUser(selectedUser, selectedDeactivated) == true)
+                        {
+                            LoadUsers();
+                            MessageBox.Show("User succesfully deactivated!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("There is a problem with deactivating a user!");
+                        }
                     }
                 }
             }
@@ -147,24 +122,10 @@ namespace Barroc_IT
         #region Loaders
         private void LoadUsers()
         {
-            dgvActivatedUsers.Rows.Clear();
+            dgvUsers.Rows.Clear();
             string selectUsers = sqlhandler.GetQuery(Query.loadUsers);
             DataTable allUsers = dthandler.ExecuteQuery(selectUsers);
-            dthandler.AddItemsToDataGridView(allUsers, dgvUserInfo, "uUserID");
-        }
-        private void LoadDeactivatedUsers()
-        {
-            dgvDeactivatedUsers.Rows.Clear();
-            string selectDeactivatedUsers = sqlhandler.GetQuery(Query.LoadDeactivatedUsers);
-            DataTable deactivatedUsers = dthandler.ExecuteQuery(selectDeactivatedUsers);
-            dthandler.AddItemsToDataGridView(deactivatedUsers, dgvDeactivatedUsers, "dUserID");
-        }
-        private void LoadActivatedUsers()
-        {
-            dgvDeactivatedUsers.Rows.Clear();
-            string selectActivatedUsers = sqlhandler.GetQuery(Query.LoadActivatedUsers);
-            DataTable activatedUsers = dthandler.ExecuteQuery(selectActivatedUsers);
-            dthandler.AddItemsToDataGridView(activatedUsers, dgvActivatedUsers, "xUserID");
+            dthandler.AddItemsToDataGridView(allUsers, dgvUsers, "cUserID");
         }
         #endregion
 
@@ -188,17 +149,44 @@ namespace Barroc_IT
             else
             {
                 return false;
-            }  
+            }
+        }
+
+        private bool SetCustomerVisible(int selectedCustomer)
+        {
+            string sql = sqlhandler.GetQuery(Query.setCustomerArchived);
+
+            SqlCommand cmd = new SqlCommand(sql, handler.GetConnection());
+            cmd.Parameters.Add(new SqlParameter("Archived", false));
+            cmd.Parameters.Add(new SqlParameter("customerID", selectedCustomer));
+            cmd.Connection.Open();
+            int rowsAffected = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void LoadArchiveCustomers()
+        {
+            string sql = sqlhandler.GetQuery(Query.selectArchivedCustomers);
+            DataTable archivedCustomers = dthandler.ExecuteQuery(sql);
+            dthandler.AddItemsToDataGridView(archivedCustomers, dgvArchivedCustomers, "cCustomerID");
         }
         #endregion
 
         #region Updaters / Editers
-        private bool UpdateUser(int userID, bool deactivatedID)
+        private bool UpdateUser(int userID, bool deactivated)
         {
-            deactivatedID = !deactivatedID;
+            deactivated = !deactivated;
             string sqlQuery = sqlhandler.GetQuery(Query.updateAdmActivate);
             SqlCommand cmd = new SqlCommand(sqlQuery, handler.GetConnection());
-            cmd.Parameters.Add(new SqlParameter("Deactivated", deactivatedID));
+            cmd.Parameters.Add(new SqlParameter("Deactivated", deactivated));
             cmd.Parameters.Add(new SqlParameter("userID", userID));
             cmd.Connection.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
@@ -233,5 +221,31 @@ namespace Barroc_IT
             }
         }
         #endregion
+
+        private void dgvArchivedCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvArchivedCustomers.Columns["cMakeVisible"].Index)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    int selectedCustomer = int.Parse(dgvArchivedCustomers.Rows[e.RowIndex].Cells["cCustomerID"].Value.ToString());
+                    if (SetCustomerVisible(selectedCustomer))
+                    {
+                        LoadArchiveCustomers();
+                        MessageBox.Show("Customer maked visible!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("There is a problem with making the customer visible!");
+                    }
+                }
+            }
+        }
+
+        private void btnArchivedCustomers_Click(object sender, EventArgs e)
+        {
+            tbContr.SelectedIndex = 3;
+            LoadArchiveCustomers();
+        }
     }
 }

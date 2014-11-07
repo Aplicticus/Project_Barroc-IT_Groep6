@@ -21,20 +21,18 @@
         "FULL OUTER JOIN tbl_Appointments ON tbl_Customers.CUSTOMER_ID=tbl_Appointments.CUSTOMER_ID ";
 
         // Load Querys
-        string loadCustomers = "SELECT * FROM tbl_Customers";
-        string loadUsers = "SELECT tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED, tbl_Users.LAST_LOGIN FROM tbl_Users";
-        string LoadDeactivatedUsers = "SELECT tbl_Users.USER_ID, tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED, tbl_Users.LAST_LOGIN FROM tbl_Users WHERE tbl_Users.DEACTIVATED='true'";
-        string LoadActivatedUsers = "SELECT tbl_Users.USER_ID, tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED, tbl_Users.LAST_LOGIN FROM tbl_Users WHERE tbl_Users.DEACTIVATED='false'";
-        string loadInvoiceDetails = "SELECT * FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID AND tbl_Invoices.INVOICE_ID = @invoiceID";
-        string loadProjectDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
-        string loadAppointmentDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Appointments.APPOINTMENT_ID=@appointmentID";
-        string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID=@customerID";
+        string loadCustomers = "SELECT * FROM tbl_Customers WHERE ARCHIVED = 'FALSE'";
+        string loadUsers = "SELECT tbl_Users.USER_ID, tbl_Users.USER_NAME, tbl_Users.DEPARTMENT, tbl_Users.DEACTIVATED, tbl_Users.LAST_LOGIN FROM tbl_Users";
+        string loadInvoiceDetails = "SELECT * FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID AND tbl_Invoices.INVOICE_ID = @invoiceID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string loadProjectDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string loadAppointmentDetails = "SELECT * FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Appointments.APPOINTMENT_ID=@appointmentID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string loadCustomerDetails = "SELECT * FROM tbl_Customers WHERE CUSTOMER_ID=@customerID AND ARCHIVED = 'FALSE'";
         string loadProjects = "SELECT tbl_Projects.PROJECT_ID, tbl_Customers.COMPANYNAME, tbl_Projects.NAME, tbl_Projects.DEADLINE, " +
-        "tbl_Projects.SUBJECT, tbl_Projects.VALUE, tbl_Projects.COMPLETED FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        "tbl_Projects.SUBJECT, tbl_Projects.VALUE, tbl_Projects.COMPLETED FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Customers.ARCHIVED = 'FALSE'";
         string loadInvoices = "SELECT tbl_Invoices.INVOICE_ID, tbl_Customers.COMPANYNAME, " +
         "tbl_Projects.NAME, tbl_Invoices.INVOICE_VALUE, tbl_Invoices.INVOICE_END_DATE, " +
-        "tbl_Invoices.INVOICE_SEND, tbl_Invoices.PAID FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID";
-        string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.COMPANYNAME, tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT, tbl_Appointments.ACCOMPLISHED FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID";
+        "tbl_Invoices.INVOICE_SEND, tbl_Invoices.PAID FROM tbl_Customers {0}{1}WHERE tbl_Projects.PROJECT_ID=@projectID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string loadAppointments = "SELECT tbl_Appointments.APPOINTMENT_ID, tbl_Customers.COMPANYNAME, tbl_Appointments.APPOIN_DATE, tbl_Appointments.SUBJECT, tbl_Appointments.INT_CONTACT, tbl_Appointments.ACCOMPLISHED FROM tbl_Customers {0}WHERE tbl_Appointments.CUSTOMER_ID=@customerID AND tbl_Customers.ARCHIVED = 'FALSE'";
 
         //Insert querys
         string addInvoice = "INSERT INTO tbl_Invoices (PROJECT_ID, INVOICE_VALUE, INVOICE_END_DATE, INVOICE_SEND, PAID) " +
@@ -44,22 +42,22 @@
         string addUser = "INSERT INTO tbl_Users (USER_NAME, PASSWORD, DEPARTMENT, DEACTIVATED, LAST_LOGIN) " +
         "VALUES (@Username, @Password, @Department, @Deactivated, @Last_Login)";
         string addCustomer = "INSERT INTO tbl_Customers (COMPANYNAME, ADDRESS1, POSTALCODE1, RESIDENCE1, ADDRESS2, " +
-        "POSTALCODE2, RESIDENCE2, CONTACTPERSON, INITIALS, PHONE_NR1, PHONE_NR2, FAXNUMBER, EMAIL, PROSPECT) " +
+        "POSTALCODE2, RESIDENCE2, CONTACTPERSON, INITIALS, PHONE_NR1, PHONE_NR2, FAXNUMBER, EMAIL, PROSPECT, ARCHIVED) " +
         "VALUES (@CompanyName, @Address1, @PostalCode1, @Residence1, @Address2, @PostalCode2, @Residence2, @ContactPerson, " +
-        "@Initials, @PhoneNr1, @PhoneNr2, @FaxNumber, @Email, @Prospect)";
+        "@Initials, @PhoneNr1, @PhoneNr2, @FaxNumber, @Email, @Prospect, 'FALSE')";
         string addAppointment = "INSERT INTO tbl_Appointments (CUSTOMER_ID, APPOIN_DATE, SUBJECT, INT_CONTACT, ACCOMPLISHED) VALUES(@customerID, @appoinDate, @subject, @intContact, @accomplished);";
 
         
         // Count Querys
-        string countPaidInvoices = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Invoices.PAID='True'";
-        string countOpenInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID";
-        string countAllInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
-        string countInvoices = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
-        string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID";
+        string countPaidInvoices = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Invoices.PAID='True' AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string countOpenInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.PROJECT_ID=@projectID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string countAllInvoices = "SELECT COUNT (INVOICE_ID) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string countInvoices = "SELECT SUM (INVOICE_VALUE) FROM tbl_Customers {0}{1}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string countProjects = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Customers.ARCHIVED = 'FALSE'";
         string countValues = "SELECT SUM (INVOICE_VALUE) FROM tbl_Invoices WHERE tbl_Invoices.PROJECT_ID=@customerID";
-        string countAppointments = "SELECT COUNT (APPOINTMENT_ID) FROM tbl_Customers {0} WHERE tbl_Customers.CUSTOMER_ID=@customerID";
-        string countOffers = "SELECT COUNT (OFFER_NUMBERS) FROM tbl_Customers WHERE tbl_Customers.CUSTOMER_ID=@customerID";
-        string countProjectsTable = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.COMPLETED=@Completed";
+        string countAppointments = "SELECT COUNT (APPOINTMENT_ID) FROM tbl_Customers {0} WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string countOffers = "SELECT COUNT (OFFER_NUMBERS) FROM tbl_Customers WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Customers.ARCHIVED = 'FALSE'";
+        string countProjectsTable = "SELECT COUNT (PROJECT_ID) FROM tbl_Customers {0}WHERE tbl_Customers.CUSTOMER_ID=@customerID AND tbl_Projects.COMPLETED=@Completed AND tbl_Customers.ARCHIVED = 'FALSE'";
 
         //Update Querys        
         string updateFinCustomersInfo = "UPDATE tbl_Customers SET ACC_ID=@AccountID, " +
@@ -83,11 +81,11 @@
         string updateAppointment = "UPDATE tbl_Appointments SET INT_CONTACT=@Int_Contact, SUBJECT=@Subject, APPOIN_DATE=@Appoin_Date " +
         "WHERE CUSTOMER_ID=@customerID";
         string updateAccomplish = "UPDATE tbl_Appointments SET ACCOMPLISHED=@Accomplished WHERE CUSTOMER_ID=@customerID AND APPOINTMENT_ID=@AppointmentID";
-
         string copyCountInvoicesToBalance = "UPDATE tbl_Customers SET BALANCE=@Balance WHERE CUSTOMER_ID=@customerID";
-
         string archiveProject = "UPDATE tbl_Projects SET COMPLETED=@Completed WHERE PROJECT_ID = @projectID";
-
+        string loadProjectStatus = "SELECT p.NAME, c.COMPANYNAME, p.DEADLINE FROM tbl_Projects p, tbl_Customers c WHERE p.CUSTOMER_ID = c.CUSTOMER_ID AND p.COMPLETED = 'FALSE' AND c.ARCHIVED = 'FALSE' ORDER BY p.DEADLINE;";
+        string setCustomerArchived = "UPDATE tbl_Customers SET ARCHIVED=@Archived WHERE CUSTOMER_ID=@customerID";
+        string selectArchivedCustomers = "SELECT * FROM tbl_Customers WHERE ARCHIVED = 'TRUE';";
         public string GetQuery(Query query)
         {
             // Default
@@ -130,12 +128,6 @@
                 case Query.loadInvoiceDetails:
                     sqlQuery = loadInvoiceDetails;
                     sqlQuery = string.Format(sqlQuery, OuterJoinProCus, OuterJoinInvPro);
-                    break;
-                case Query.LoadDeactivatedUsers:
-                    sqlQuery = LoadDeactivatedUsers;
-                    break;
-                case Query.LoadActivatedUsers:
-                    sqlQuery = LoadActivatedUsers;
                     break;
 
                 case Query.addCustomer:
@@ -226,6 +218,15 @@
 
                 case Query.archiveProject:
                     sqlQuery = archiveProject;
+                    break;
+                case Query.loadProjectStatus:
+                    sqlQuery = loadProjectStatus;
+                    break;
+                case Query.setCustomerArchived:
+                    sqlQuery = setCustomerArchived;
+                    break;
+                case Query.selectArchivedCustomers:
+                    sqlQuery = selectArchivedCustomers;
                     break;
 
                 default:

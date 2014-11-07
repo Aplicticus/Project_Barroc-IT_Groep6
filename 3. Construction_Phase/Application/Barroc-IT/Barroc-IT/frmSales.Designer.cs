@@ -34,11 +34,10 @@
             this.lblSalesPanel = new System.Windows.Forms.Label();
             this.pButtons = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.btnSalesSelectCustomer = new System.Windows.Forms.Button();
-            this.btnSalesAddCustomer = new System.Windows.Forms.Button();
-            this.btnSalesHome = new System.Windows.Forms.Button();
+            this.btnSelectCustomer = new System.Windows.Forms.Button();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
             this.tbContr = new TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblHome = new System.Windows.Forms.Label();
@@ -66,6 +65,7 @@
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnArchiveCustomer = new System.Windows.Forms.Button();
             this.txtCusFaxNumber = new System.Windows.Forms.MaskedTextBox();
             this.txtCusPhoneNumber2 = new System.Windows.Forms.MaskedTextBox();
             this.txtCusPhoneNumber1 = new System.Windows.Forms.MaskedTextBox();
@@ -195,6 +195,7 @@
             this.lblCusAddress1 = new System.Windows.Forms.Label();
             this.txtCusAddCompanyName = new System.Windows.Forms.TextBox();
             this.lblAddCustomer = new System.Windows.Forms.Label();
+            this.tTipPostalCode = new System.Windows.Forms.ToolTip(this.components);
             this.pWelcome.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -235,9 +236,9 @@
             // 
             this.pButtons.BackColor = System.Drawing.SystemColors.Control;
             this.pButtons.Controls.Add(this.btnLogout);
-            this.pButtons.Controls.Add(this.btnSalesSelectCustomer);
-            this.pButtons.Controls.Add(this.btnSalesAddCustomer);
-            this.pButtons.Controls.Add(this.btnSalesHome);
+            this.pButtons.Controls.Add(this.btnSelectCustomer);
+            this.pButtons.Controls.Add(this.btnAddCustomer);
+            this.pButtons.Controls.Add(this.btnHome);
             this.pButtons.Location = new System.Drawing.Point(0, 118);
             this.pButtons.Name = "pButtons";
             this.pButtons.Size = new System.Drawing.Size(223, 612);
@@ -254,38 +255,38 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // btnSalesSelectCustomer
+            // btnSelectCustomer
             // 
-            this.btnSalesSelectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalesSelectCustomer.Location = new System.Drawing.Point(24, 131);
-            this.btnSalesSelectCustomer.Name = "btnSalesSelectCustomer";
-            this.btnSalesSelectCustomer.Size = new System.Drawing.Size(165, 43);
-            this.btnSalesSelectCustomer.TabIndex = 2;
-            this.btnSalesSelectCustomer.Text = "Select Customer";
-            this.btnSalesSelectCustomer.UseVisualStyleBackColor = true;
-            this.btnSalesSelectCustomer.Click += new System.EventHandler(this.btnSalesSelectCustomer_Click);
+            this.btnSelectCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectCustomer.Location = new System.Drawing.Point(24, 131);
+            this.btnSelectCustomer.Name = "btnSelectCustomer";
+            this.btnSelectCustomer.Size = new System.Drawing.Size(165, 43);
+            this.btnSelectCustomer.TabIndex = 2;
+            this.btnSelectCustomer.Text = "Select Customer";
+            this.btnSelectCustomer.UseVisualStyleBackColor = true;
+            this.btnSelectCustomer.Click += new System.EventHandler(this.btnSalesSelectCustomer_Click);
             // 
-            // btnSalesAddCustomer
+            // btnAddCustomer
             // 
-            this.btnSalesAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalesAddCustomer.Location = new System.Drawing.Point(24, 82);
-            this.btnSalesAddCustomer.Name = "btnSalesAddCustomer";
-            this.btnSalesAddCustomer.Size = new System.Drawing.Size(165, 43);
-            this.btnSalesAddCustomer.TabIndex = 1;
-            this.btnSalesAddCustomer.Text = "Add Customer";
-            this.btnSalesAddCustomer.UseVisualStyleBackColor = true;
-            this.btnSalesAddCustomer.Click += new System.EventHandler(this.btnSalesAddCustomer_Click);
+            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCustomer.Location = new System.Drawing.Point(24, 82);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(165, 43);
+            this.btnAddCustomer.TabIndex = 1;
+            this.btnAddCustomer.Text = "Add Customer";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnSalesAddCustomer_Click);
             // 
-            // btnSalesHome
+            // btnHome
             // 
-            this.btnSalesHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalesHome.Location = new System.Drawing.Point(24, 33);
-            this.btnSalesHome.Name = "btnSalesHome";
-            this.btnSalesHome.Size = new System.Drawing.Size(165, 43);
-            this.btnSalesHome.TabIndex = 0;
-            this.btnSalesHome.Text = "Home";
-            this.btnSalesHome.UseVisualStyleBackColor = true;
-            this.btnSalesHome.Click += new System.EventHandler(this.btnSalesHome_Click);
+            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.Location = new System.Drawing.Point(24, 33);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(165, 43);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnSalesHome_Click);
             // 
             // panel1
             // 
@@ -294,13 +295,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(779, 612);
             this.panel1.TabIndex = 2;
-            // 
-            // tTipPostalCode
-            // 
-            this.tTipPostalCode.AutoPopDelay = 5000;
-            this.tTipPostalCode.InitialDelay = 500;
-            this.tTipPostalCode.ReshowDelay = 1;
-            this.tTipPostalCode.ToolTipTitle = "Postal Code";
             // 
             // tbContr
             // 
@@ -410,6 +404,7 @@
             // 
             this.dgvCustomers.AllowUserToAddRows = false;
             this.dgvCustomers.AllowUserToDeleteRows = false;
+            this.dgvCustomers.AllowUserToResizeRows = false;
             this.dgvCustomers.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -544,6 +539,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.btnArchiveCustomer);
             this.tabPage3.Controls.Add(this.txtCusFaxNumber);
             this.tabPage3.Controls.Add(this.txtCusPhoneNumber2);
             this.tabPage3.Controls.Add(this.txtCusPhoneNumber1);
@@ -597,6 +593,17 @@
             this.tabPage3.Size = new System.Drawing.Size(771, 586);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "selectedCustomer";
+            // 
+            // btnArchiveCustomer
+            // 
+            this.btnArchiveCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArchiveCustomer.Location = new System.Drawing.Point(2, 526);
+            this.btnArchiveCustomer.Name = "btnArchiveCustomer";
+            this.btnArchiveCustomer.Size = new System.Drawing.Size(131, 60);
+            this.btnArchiveCustomer.TabIndex = 250;
+            this.btnArchiveCustomer.Text = "Archive Customer";
+            this.btnArchiveCustomer.UseVisualStyleBackColor = true;
+            this.btnArchiveCustomer.Click += new System.EventHandler(this.btnArchiveCustomer_Click);
             // 
             // txtCusFaxNumber
             // 
@@ -861,9 +868,9 @@
             // btnEditCustomerFields
             // 
             this.btnEditCustomerFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditCustomerFields.Location = new System.Drawing.Point(303, 526);
+            this.btnEditCustomerFields.Location = new System.Drawing.Point(289, 526);
             this.btnEditCustomerFields.Name = "btnEditCustomerFields";
-            this.btnEditCustomerFields.Size = new System.Drawing.Size(90, 60);
+            this.btnEditCustomerFields.Size = new System.Drawing.Size(104, 60);
             this.btnEditCustomerFields.TabIndex = 6;
             this.btnEditCustomerFields.Text = "Edit Fields";
             this.btnEditCustomerFields.UseVisualStyleBackColor = true;
@@ -1125,6 +1132,7 @@
             // 
             this.dgvAppointments.AllowUserToAddRows = false;
             this.dgvAppointments.AllowUserToDeleteRows = false;
+            this.dgvAppointments.AllowUserToResizeRows = false;
             this.dgvAppointments.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvAppointments.ColumnHeadersHeight = 34;
             this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -1423,9 +1431,9 @@
             // btnEditAppointmentFields
             // 
             this.btnEditAppointmentFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditAppointmentFields.Location = new System.Drawing.Point(466, 530);
+            this.btnEditAppointmentFields.Location = new System.Drawing.Point(437, 530);
             this.btnEditAppointmentFields.Name = "btnEditAppointmentFields";
-            this.btnEditAppointmentFields.Size = new System.Drawing.Size(73, 60);
+            this.btnEditAppointmentFields.Size = new System.Drawing.Size(102, 60);
             this.btnEditAppointmentFields.TabIndex = 6;
             this.btnEditAppointmentFields.Text = "Edit Fields";
             this.btnEditAppointmentFields.UseVisualStyleBackColor = true;
@@ -1899,6 +1907,13 @@
             this.lblAddCustomer.TabIndex = 139;
             this.lblAddCustomer.Text = "Add Customer";
             // 
+            // tTipPostalCode
+            // 
+            this.tTipPostalCode.AutoPopDelay = 5000;
+            this.tTipPostalCode.InitialDelay = 500;
+            this.tTipPostalCode.ReshowDelay = 1;
+            this.tTipPostalCode.ToolTipTitle = "Postal Code";
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1945,9 +1960,9 @@
         private System.Windows.Forms.Panel pWelcome;
         private System.Windows.Forms.Label lblSalesPanel;
         private System.Windows.Forms.Panel pButtons;
-        private System.Windows.Forms.Button btnSalesSelectCustomer;
-        private System.Windows.Forms.Button btnSalesAddCustomer;
-        private System.Windows.Forms.Button btnSalesHome;
+        private System.Windows.Forms.Button btnSelectCustomer;
+        private System.Windows.Forms.Button btnAddCustomer;
+        private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel1;
         private TablessControl tbContr;
@@ -2107,5 +2122,6 @@
         private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber2;
         private System.Windows.Forms.MaskedTextBox txtCusPhoneNumber1;
         private System.Windows.Forms.MaskedTextBox txtCusFaxNumber;
+        private System.Windows.Forms.Button btnArchiveCustomer;
     }
 }

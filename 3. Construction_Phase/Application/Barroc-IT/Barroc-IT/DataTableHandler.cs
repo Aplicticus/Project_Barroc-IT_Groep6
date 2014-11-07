@@ -54,6 +54,16 @@ namespace Barroc_IT
             return DT;
         }
 
+        public void AddItemsToDataGridView(DataTable table, DataGridView dataGridView)
+        {
+            dataGridView.Rows.Clear();
+
+            foreach (DataRow dr in table.Rows)
+            {
+                dataGridView.Rows.Add(dr.ItemArray);
+            }
+        }
+
         public void AddItemsToDataGridView(DataTable table, DataGridView dataGridView, string idColumnName)
         {
             dataGridView.Rows.Clear();

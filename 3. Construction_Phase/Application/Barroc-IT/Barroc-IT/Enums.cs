@@ -33,11 +33,9 @@
         loadInvoices,
         loadAppointments,
         loadCustomerDetails,
-        LoadDeactivatedUsers,
         loadProjectDetails,
         loadAppointmentDetails,
         loadInvoiceDetails,
-        LoadActivatedUsers,
 
         countInvoices,
         countPaidInvoices,
@@ -61,7 +59,10 @@
         updateAppointment,
         updateAccomplish,
 
-        archiveProject
+        archiveProject,
+        loadProjectStatus,
+        setCustomerArchived,
+        selectArchivedCustomers
     }
 
 }
